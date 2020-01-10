@@ -21,7 +21,10 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/css",
+              "src/icon-fonts",
+              "src/img",
+              "src/js"
             ],
             "styles": [
               "src/styles.css"
