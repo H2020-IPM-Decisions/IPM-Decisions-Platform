@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KeepHtmlPipe } from './keep-html.pipe';
+import { RunScriptsDirective } from './run-scripts.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    KeepHtmlPipe
+    KeepHtmlPipe,
+    RunScriptsDirective
   ],
   imports: [
     BrowserModule,
