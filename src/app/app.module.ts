@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { KeepHtmlPipe } from './keep-html.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    KeepHtmlPipe
   ],
   imports: [
     BrowserModule,
