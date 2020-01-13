@@ -555,6 +555,7 @@ a {
  }
  
  .site-nav-menu ul li .sub-menu {
+   z-index: 999 !important;
    position: absolute;
    top: 100%;
    left: 0;
@@ -737,7 +738,7 @@ a {
    padding-top: 56px;
    padding-bottom: 30px;
    max-width: 1227px;
-   margin: -91px auto 0;
+   margin: 0 auto 0;
    background: #fff;
    position: relative;
    -webkit-box-shadow: 0 0 0 #00000075;
@@ -1891,7 +1892,7 @@ section#ipm-news {
    .header-right {
      padding-right: 50px;
      text-align: center;
-     display: inline-block;
+     display: none;
      float: none;
    }
    .header-info-box {
@@ -1935,7 +1936,7 @@ section#ipm-news {
    .header-right {
      padding-right: 50px;
      text-align: center;
-     display: inline-block;
+     display: none;
      float: none;
    }
    .header-info-box {
@@ -2034,7 +2035,7 @@ section#ipm-news {
      text-align: left;
    }
    .site-nav-menu {
-     display: none;
+     display: inline-flex;
    }
    .search-switch {
      display: none;
