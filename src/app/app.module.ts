@@ -9,11 +9,14 @@ import { RunScriptsDirective } from './run-scripts.directive';
 import { AdminComponent } from './admin/admin.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AccountComponent } from './user/components/account/account.component';
+import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'user', component: UserComponent },
-  { path: 'user/account', component: AccountComponent }
+  { path: 'user/account', component: AccountComponent },
+  { path: 'user/account/edit', component: EditAccountComponent }
+
 ];
 
 @NgModule({
@@ -23,7 +26,8 @@ const appRoutes: Routes = [
     RunScriptsDirective,
     AdminComponent,
     UserComponent,
-    AccountComponent
+    AccountComponent,
+    EditAccountComponent
   ],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
   providers: [],
