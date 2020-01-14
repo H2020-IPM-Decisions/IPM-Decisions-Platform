@@ -37,20 +37,6 @@ import { EditObservationComponent } from './user/components/pest-disease/observa
 import { AddPestDiseaseComponent } from './user/components/pest-disease/add-pest-disease/add-pest-disease.component';
 import { AlertComponent } from './user/components/pest-disease/alert/alert.component';
 
-const appRoutes: Routes = [
-  { path: 'admin', component: AdminComponent },
-  { path: 'admin/cms', component: ContentManagementSystemComponent },
-  { path: 'admin/add-user', component: AddUserComponent },
-  { path: 'admin/user-list', component: UserListComponent },
-  { path: 'admin/user-profile', component: UserProfileComponent },
-  { path: 'admin/dataset-repo', component: DatasetRepositoryComponent },
-  { path: 'admin/manage-metadata', component: ManageMetadataComponent },
-  { path: 'admin/manage-catalogue', component: ManageCatalogueComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'user/account', component: AccountComponent },
-  { path: 'user/account/edit', component: EditAccountComponent }
-]
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,13 +73,8 @@ const appRoutes: Routes = [
     AddPestDiseaseComponent,
     AlertComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(
-      appRoutes
-    )
-  ],
+  imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
