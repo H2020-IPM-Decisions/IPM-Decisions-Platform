@@ -1,3 +1,21 @@
+import { EditDashboardComponent } from './user/components/dashboard-manager/edit-dashboard/edit-dashboard.component';
+import { AddDashboardComponent } from './user/components/dashboard-manager/add-dashboard/add-dashboard.component';
+import { DashboardManagerComponent } from './user/components/dashboard-manager/dashboard-manager.component';
+import { ManagePestDiseaseComponent } from './user/components/pest-disease/manage-pest-disease/manage-pest-disease.component';
+import { AlertComponent } from './user/components/pest-disease/alert/alert.component';
+import { AddPestDiseaseComponent } from './user/components/pest-disease/add-pest-disease/add-pest-disease.component';
+import { PestDiseaseListComponent } from './user/components/pest-disease/pest-disease-list/pest-disease-list.component';
+import { ObservationListComponent } from './user/components/pest-disease/observation-list/observation-list.component';
+import { ActionListComponent } from './user/components/pest-disease/action-list/action-list.component';
+import { CropListComponent } from './user/components/crop/crop-list/crop-list.component';
+import { ManageCropComponent } from './user/components/crop/manage-crop/manage-crop.component';
+import { EditCropComponent } from './user/components/crop/edit-crop/edit-crop.component';
+import { AddCropComponent } from './user/components/crop/add-crop/add-crop.component';
+import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-farm.component';
+import { FarmListComponent } from './user/components/farm/farm-list/farm-list.component';
+import { AddFarmComponent } from './user/components/farm/add-farm/add-farm.component';
+import { EditFarmComponent } from './user/components/farm/edit-farm/edit-farm.component';
+import { FarmComponent } from './user/components/farm/farm.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
@@ -26,22 +44,25 @@ const appRoutes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'user/account', component: AccountComponent },
   { path: 'user/account/edit', component: EditAccountComponent },
-  { path: 'user/farm', component: UserComponent },
-  { path: 'user/farm/edit', component: UserComponent },
-  { path: 'user/farm/add', component: UserComponent },
-  { path: 'user/farm/list', component: UserComponent },
-  { path: 'user/farm/manage', component: UserComponent },
-  { path: 'user/crop/add', component: UserComponent },
-  { path: 'user/crop/edit', component: UserComponent },
-  { path: 'user/crop/manage', component: UserComponent },
-  { path: 'user/crop/list', component: UserComponent },
-  { path: 'user/pest-disease/action-list', component: UserComponent },
-  { path: 'user/pest-disease/observation-list', component: UserComponent },
-  { path: 'user/pest-disease/pest-disease-list', component: UserComponent },
-  { path: 'user/pest-disease/add', component: UserComponent },
-  { path: 'user/pest-disease/alert', component: UserComponent },
-  { path: 'user/pest-disease/manage', component: UserComponent },
-  { path: 'user/dashboard-manager', component: UserComponent }
+  { path: 'user/farm', component: FarmComponent },
+  { path: 'user/farm/edit', component: EditFarmComponent },
+  { path: 'user/farm/add', component: AddFarmComponent },
+  { path: 'user/farm/list', component: FarmListComponent },
+  { path: 'user/farm/manage', component: ManageFarmComponent },
+  { path: 'user/crop/add', component: AddCropComponent },
+  { path: 'user/crop/edit', component: EditCropComponent },
+  { path: 'user/crop/manage', component: ManageCropComponent },
+  { path: 'user/crop/list', component: CropListComponent },
+  { path: 'user/pest-disease/action-list', component: ActionListComponent },
+  { path: 'user/pest-disease/observation-list', component: ObservationListComponent },
+  { path: 'user/pest-disease/pest-disease-list', component: PestDiseaseListComponent },
+  { path: 'user/pest-disease/add', component: AddPestDiseaseComponent },
+  { path: 'user/pest-disease/alert', component: AlertComponent },
+  { path: 'user/pest-disease/manage', component: ManagePestDiseaseComponent },
+  { path: 'user/dashboard-manager', component: DashboardManagerComponent },
+  { path: 'user/dashboard-manager/add', component: AddDashboardComponent },
+  { path: 'user/dashboard-manager/edit', component: EditDashboardComponent }
+
 ];
 
 @NgModule({
