@@ -28,6 +28,8 @@ import { ManageCropComponent } from './user/components/crop/manage-crop/manage-c
 import { EditCropComponent } from './user/components/crop/edit-crop/edit-crop.component';
 import { PestDiseaseListComponent } from './user/components/pest-disease/pest-disease-list/pest-disease-list.component';
 import { ManagePestDiseaseComponent } from './user/components/pest-disease/manage-pest-disease/manage-pest-disease.component';
+import { ActionListComponent } from './user/components/pest-disease/action-list/action-list.component';
+import { AddActionComponent } from './user/components/pest-disease/action-list/add-action/add-action.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
@@ -69,7 +71,9 @@ const appRoutes: Routes = [
     ManageCropComponent,
     EditCropComponent,
     PestDiseaseListComponent,
-    ManagePestDiseaseComponent
+    ManagePestDiseaseComponent,
+    ActionListComponent,
+    AddActionComponent
   ],
   imports: [
     BrowserModule,
