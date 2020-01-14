@@ -21,6 +21,7 @@ import { FarmComponent } from './user/components/farm/farm.component';
 import { FarmListComponent } from './user/components/farm/farm-list/farm-list.component';
 import { AddFarmComponent } from './user/components/farm/add-farm/add-farm.component';
 import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-farm.component';
+import { EditFarmComponent } from './edit-farm/edit-farm.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
@@ -55,7 +56,8 @@ const appRoutes: Routes = [
     FarmComponent,
     FarmListComponent,
     AddFarmComponent,
-    ManageFarmComponent
+    ManageFarmComponent,
+    EditFarmComponent
   ],
   imports: [
     BrowserModule,
