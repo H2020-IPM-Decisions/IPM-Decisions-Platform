@@ -36,6 +36,7 @@ import { AddObservationComponent } from './user/components/pest-disease/observat
 import { EditObservationComponent } from './user/components/pest-disease/observation-list/edit-observation/edit-observation.component';
 import { AddPestDiseaseComponent } from './user/components/pest-disease/add-pest-disease/add-pest-disease.component';
 import { AlertComponent } from './user/components/pest-disease/alert/alert.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,7 @@ import { AlertComponent } from './user/components/pest-disease/alert/alert.compo
     EditObservationComponent,
     AddPestDiseaseComponent,
     AlertComponent,
-    
+    FooterComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
