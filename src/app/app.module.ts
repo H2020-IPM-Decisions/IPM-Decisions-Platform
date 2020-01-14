@@ -40,6 +40,11 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { DashboardManagerComponent } from './user/components/dashboard-manager/dashboard-manager.component';
 import { AddDashboardComponent } from './user/components/dashboard-manager/add-dashboard/add-dashboard.component';
 import { EditDashboardComponent } from './user/components/dashboard-manager/edit-dashboard/edit-dashboard.component';
+import { DssListComponent } from './user/components/dss/dss-list/dss-list.component';
+import { DssUseDashboardComponent } from './user/components/dss/dss-use-dashboard/dss-use-dashboard.component';
+import { DssEvaluationDashboardComponent } from './user/components/dss/dss-evaluation-dashboard/dss-evaluation-dashboard.component';
+import { DssAdaptationDashboardComponent } from './user/components/dss/dss-adaptation-dashboard/dss-adaptation-dashboard.component';
+import { DssIntegrationDashboardComponent } from './user/components/dss/dss-integration-dashboard/dss-integration-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +84,12 @@ import { EditDashboardComponent } from './user/components/dashboard-manager/edit
     FooterComponent,
     DashboardManagerComponent,
     AddDashboardComponent,
-    EditDashboardComponent
+    EditDashboardComponent,
+    DssListComponent,
+    DssUseDashboardComponent,
+    DssEvaluationDashboardComponent,
+    DssAdaptationDashboardComponent,
+    DssIntegrationDashboardComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

@@ -30,8 +30,6 @@ import { UserComponent } from './user/user.component';
 import { AccountComponent } from './user/components/account/account.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
 
-
-
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'admin/cms', component: ContentManagementSystemComponent },
@@ -54,19 +52,29 @@ const appRoutes: Routes = [
   { path: 'user/crop/manage', component: ManageCropComponent },
   { path: 'user/crop/list', component: CropListComponent },
   { path: 'user/pest-disease/action-list', component: ActionListComponent },
-  { path: 'user/pest-disease/observation-list', component: ObservationListComponent },
-  { path: 'user/pest-disease/pest-disease-list', component: PestDiseaseListComponent },
+  {
+    path: 'user/pest-disease/observation-list',
+    component: ObservationListComponent
+  },
+  {
+    path: 'user/pest-disease/pest-disease-list',
+    component: PestDiseaseListComponent
+  },
   { path: 'user/pest-disease/add', component: AddPestDiseaseComponent },
   { path: 'user/pest-disease/alert', component: AlertComponent },
   { path: 'user/pest-disease/manage', component: ManagePestDiseaseComponent },
   { path: 'user/dashboard-manager', component: DashboardManagerComponent },
   { path: 'user/dashboard-manager/add', component: AddDashboardComponent },
-  { path: 'user/dashboard-manager/edit', component: EditDashboardComponent }
-
+  { path: 'user/dashboard-manager/edit', component: EditDashboardComponent },
+  { path: 'user/dss/use-dashboard', component: UserComponent },
+  { path: 'user/dss/evaluation-dashboard', component: UserComponent },
+  { path: 'user/dss/adaptation-dashboard', component: UserComponent },
+  { path: 'user/dss/integration-dashboard', component: UserComponent },
+  { path: 'user/dss/list', component: UserComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
