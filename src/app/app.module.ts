@@ -1,3 +1,6 @@
+import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
+import { AccountComponent } from './user/components/account/account.component';
+import { UserComponent } from './user/user.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -23,7 +26,10 @@ const appRoutes: Routes = [
   { path: 'admin/user-profile', component: UserProfileComponent },
   { path: 'admin/dataset-repo', component: DatasetRepositoryComponent },
   { path: 'admin/manage-metadata', component: ManageMetadataComponent },
-  { path: 'admin/manage-catalogue', component: ManageCatalogueComponent }
+  { path: 'admin/manage-catalogue', component: ManageCatalogueComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'user/account', component: AccountComponent },
+  { path: 'user/account/edit', component: EditAccountComponent }
 ]
 
 @NgModule({
@@ -38,7 +44,10 @@ const appRoutes: Routes = [
     UserProfileComponent,
     DatasetRepositoryComponent,
     ManageMetadataComponent,
-    ManageCatalogueComponent
+    ManageCatalogueComponent,
+    UserComponent,
+    AccountComponent,
+    EditAccountComponent
   ],
   imports: [
     BrowserModule,
