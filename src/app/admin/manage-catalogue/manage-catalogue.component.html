@@ -1,1 +1,189 @@
-<p>manage-catalogue works!</p>
+<!-- Header section  -->
+<div id="login-account" class="collapse">
+    <div class="container">
+  
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#login-form">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#create-form">Create Account</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="login-form" class="container tab-pane active"><br>
+          <div class="container login-container">
+            <div class="row">
+              <div class="col-md-12 login-form">
+                <div class="row">
+                  <div class="col-md-4 form-group">
+                    <input type="text" class="form-control" name="username" placeholder="Username">
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <input type="text" class="form-control" name="password" placeholder="Password">
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn-login">Sign In</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 form-group forget-password text-right">
+                    <a href="#">Forget Password</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="create-form" class="container tab-pane fade"><br>
+          Form
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  <header class="header-section clearfix">
+  
+    <div class="header-top">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+          </div>
+          <div class="col-md-6 text-md-right">
+            <a href="admin">Greetings Admin!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="site-navbar">
+      <!-- Logo -->
+      <a href="index.html" class="site-logo">
+        <img src="img/logo-ipm-decision.png" alt="Logo Ipm Decisions" title="Logo IPM">
+      </a>
+      <div class="header-right">
+  
+        <button class="search-switch"><i class="fa fa-search"></i></button>
+      </div>
+      <!-- Menu -->
+      <nav class="site-nav-menu">
+        <ul>
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a routerLink="/admin/cms">Content Management System</a></li>
+          <li><a>Users</a>
+            <ul class="sub-menu">
+              <li><a routerLink="/admin/add-user">Add User</a></li>
+              <li><a routerLink="/admin/user-list">User list</a></li>
+            </ul>
+          </li>
+          <li><a routerLink="/admin/user-profile">User Profile</a></li>
+          <li><a routerLink="/admin/dataset-repo">Dataset Repository</a></li>
+          <li><a>Metadata & Catalogue Repository</a>
+            <ul class="sub-menu">
+              <li><a routerLink="/admin/manage-metadata">Manage Metadata</a></li>
+              <li><a routerLink="/admin/manage-catalogue">Manage Catalogue</a></li>
+            </ul>
+          </li>
+          <li><a href="https://github.com/H2020-IPM-Decisions/IPM-Decisions-Platform">Source Code Repository</a></li>
+        </ul>
+      </nav>
+  
+    </div>
+  
+  </header>
+  <!-- Header section end  -->
+
+<!-- Footer section -->
+<footer class="footer-section spad">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-widget about-widget">
+            <img src="img/logo-ipm-decision.png" alt="Logo Ipm Decisions" title="Logo IPM">
+            <p>Lorem ipsum dolor sit amet, consec-tetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit
+              sollicitudin est. Nam ornare ipsum ac accumsan auctor. Donec consequat arcu et commodo interdum. </p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <h2 class="fw-title">Title</h2>
+            <ul>
+              <li><a href="">Title</a></li>
+              <li><a href="">Title</a></li>
+              <li><a href="">Title</a></li>
+              <li><a href="">Title</a></li>
+              <li><a href="">Title</a></li>
+              <li><a href="">Title</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <h2 class="fw-title">Title</h2>
+            <ul>
+              <li><a href="">Title</a></li>
+              <li><a href="">Title</a></li>
+              <li><a href="">Title</a></li>
+              <li><a href="">Title</a></li>
+              <li><a href="">Title</a></li>
+              <li><a href="">Title</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-7">
+          <div class="footer-widget">
+            <h2 class="fw-title">Contact Us</h2>
+            <div class="footer-info-box">
+              <div class="fib-icon">
+                <img src="img/icons/map-marker.png" alt="" class="">
+              </div>
+              <div class="fib-text">
+                <p>Address</p>
+              </div>
+            </div>
+            <div class="footer-info-box">
+              <div class="fib-icon">
+                <img src="img/icons/phone.png" alt="" class="">
+              </div>
+              <div class="fib-text">
+                <p>+39 000 0000 000<br>contact@ipm-decisions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-animation"></div>
+    <div class="footer-buttom">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 order-2 order-lg-1 p-0">
+            <div class="copyright">
+              Copyright &copy;
+            </div>
+          </div>
+          <div class="col-lg-7 order-1 order-lg-2 p-0">
+            <ul class="footer-menu">
+              <li class="active"><a href="index.html">Title</a></li>
+              <li><a href="#">Title</a></li>
+              <li><a href="#">Title</a></li>
+              <li><a href="#">Title</a></li>
+              <li><a href="#">Title</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer section end -->
+  
+  <!-- Search model -->
+  <div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+      <div class="search-close-switch">+</div>
+      <form class="search-model-form">
+        <input type="text" id="search-input" placeholder="Search here.....">
+      </form>
+    </div>
+  </div>
+  <!-- Search model end -->
