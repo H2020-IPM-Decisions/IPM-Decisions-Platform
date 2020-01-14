@@ -13,8 +13,18 @@
   <!-- Menu -->
   <nav class="site-nav-menu">
     <ul>
-      <li class="active"><a [routerLink]="['/user']" routerLinkActive="router-link-active" >Home</a></li>
-      <li><a [routerLink]="['/user/account']" routerLinkActive="router-link-active" >Account</a></li>
+      <li class="active">
+        <a [routerLink]="['/user']" routerLinkActive="router-link-active"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['/user/account']"
+          routerLinkActive="router-link-active"
+          >Account</a
+        >
+      </li>
       <li><a href="#">Farm</a></li>
 
       <li>
@@ -98,17 +108,17 @@
           </div>
         </div>
         <div class="form-group">
-            <label class="col-md-3 control-label">Country</label>
-            <div class="col-md-8">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>Wonderland</option>
-                  <option>UK</option>
-                  <option>Denmark</option>
-                  <option>Germany</option>
-                  <option>Italy</option>
-                </select>
-              </div>           
+          <label class="col-md-3 control-label">Country</label>
+          <div class="col-md-8">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>Wonderland</option>
+              <option>UK</option>
+              <option>Denmark</option>
+              <option>Germany</option>
+              <option>Italy</option>
+            </select>
           </div>
+        </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Password</label>
           <div class="col-md-8">
@@ -131,7 +141,13 @@
               value="Save Changes"
             />
             <span></span>
-            <input type="reset" class="btn btn-default" value="Cancel"  [routerLink]="['/user/account']" routerLinkActive="router-link-active" />
+            <input
+              type="reset"
+              class="btn btn-default"
+              value="Cancel"
+              [routerLink]="['/user/account']"
+              routerLinkActive="router-link-active"
+            />
           </div>
         </div>
       </form>
