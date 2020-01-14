@@ -38,6 +38,7 @@ import { AddPestDiseaseComponent } from './user/components/pest-disease/add-pest
 import { AlertComponent } from './user/components/pest-disease/alert/alert.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { DashboardManagerComponent } from './user/components/dashboard-manager/dashboard-manager.component';
+import { AddDashboardComponent } from './user/components/dashboard-manager/add-dashboard/add-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { DashboardManagerComponent } from './user/components/dashboard-manager/d
     AddPestDiseaseComponent,
     AlertComponent,
     FooterComponent,
-    DashboardManagerComponent
+    DashboardManagerComponent,
+    AddDashboardComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
