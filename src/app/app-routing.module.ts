@@ -40,8 +40,9 @@ const appRoutes: Routes = [
   { path: 'user/pest-disease/pest-disease-list', component: UserComponent },
   { path: 'user/pest-disease/add', component: UserComponent },
   { path: 'user/pest-disease/alert', component: UserComponent },
-  { path: 'user/pest-disease/manage', component: UserComponent }
-]
+  { path: 'user/pest-disease/manage', component: UserComponent },
+  { path: 'user/dashboard-manager', component: UserComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],

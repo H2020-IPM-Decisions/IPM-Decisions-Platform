@@ -13,9 +13,9 @@
   <!-- Menu -->
   <nav class="site-nav-menu">
     <ul>
-      <li class="active"><a [routerLink]="['/user']">Home</a></li>
-      <li><a [routerLink]="['/user/account']">Account</a></li>
-      <li><a href="#">Farm</a></li>
+      <li class="active"><a [routerLink]="['/user']" routerLinkActive="router-link-active" >Home</a></li>
+      <li><a [routerLink]="['/user/account']" routerLinkActive="router-link-active" >Account</a></li>
+      <li><a [routerLink]="['/user/farm']" routerLinkActive="router-link-active" >Farm</a></li>
 
       <li>
         <a href="solutions.html">DSS</a>
@@ -27,7 +27,7 @@
           <li><a href="#">DSS List</a></li>
         </ul>
       </li>
-      <li><a href="#">Dashboard Manager</a></li>
+      <li><a [routerLink]="['/user/dashboard-manager']" routerLinkActive="router-link-active" >Dashboard Manager</a></li>
     </ul>
   </nav>
 </div>
