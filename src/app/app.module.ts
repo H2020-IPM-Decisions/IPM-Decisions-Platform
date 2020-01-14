@@ -19,6 +19,7 @@ import { ManageMetadataComponent } from './admin/manage-metadata/manage-metadata
 import { ManageCatalogueComponent } from './admin/manage-catalogue/manage-catalogue.component';
 import { FarmComponent } from './user/components/farm/farm.component';
 import { FarmListComponent } from './user/components/farm/farm-list/farm-list.component';
+import { AddFarmComponent } from './user/components/farm/add-farm/add-farm.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
@@ -51,7 +52,8 @@ const appRoutes: Routes = [
     AccountComponent,
     EditAccountComponent,
     FarmComponent,
-    FarmListComponent
+    FarmListComponent,
+    AddFarmComponent
   ],
   imports: [
     BrowserModule,
