@@ -18,6 +18,7 @@ import { DatasetRepositoryComponent } from './admin/dataset-repository/dataset-r
 import { ManageMetadataComponent } from './admin/manage-metadata/manage-metadata.component';
 import { ManageCatalogueComponent } from './admin/manage-catalogue/manage-catalogue.component';
 import { FarmComponent } from './user/components/farm/farm.component';
+import { FarmListComponent } from './user/components/farm/farm-list/farm-list.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     UserComponent,
     AccountComponent,
     EditAccountComponent,
-    FarmComponent
+    FarmComponent,
+    FarmListComponent
   ],
   imports: [
     BrowserModule,
