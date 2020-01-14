@@ -27,6 +27,7 @@ import { AddCropComponent } from './user/components/crop/add-crop/add-crop.compo
 import { ManageCropComponent } from './user/components/crop/manage-crop/manage-crop.component';
 import { EditCropComponent } from './user/components/crop/edit-crop/edit-crop.component';
 import { PestDiseaseListComponent } from './user/components/pest-disease/pest-disease-list/pest-disease-list.component';
+import { ManagePestDiseaseComponent } from './user/components/pest-disease/manage-pest-disease/manage-pest-disease.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
@@ -67,7 +68,8 @@ const appRoutes: Routes = [
     AddCropComponent,
     ManageCropComponent,
     EditCropComponent,
-    PestDiseaseListComponent
+    PestDiseaseListComponent,
+    ManagePestDiseaseComponent
   ],
   imports: [
     BrowserModule,
