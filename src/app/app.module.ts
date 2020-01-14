@@ -20,6 +20,7 @@ import { ManageCatalogueComponent } from './admin/manage-catalogue/manage-catalo
 import { FarmComponent } from './user/components/farm/farm.component';
 import { FarmListComponent } from './user/components/farm/farm-list/farm-list.component';
 import { AddFarmComponent } from './user/components/farm/add-farm/add-farm.component';
+import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-farm.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     EditAccountComponent,
     FarmComponent,
     FarmListComponent,
-    AddFarmComponent
+    AddFarmComponent,
+    ManageFarmComponent
   ],
   imports: [
     BrowserModule,
