@@ -33,6 +33,7 @@ import { AddActionComponent } from './user/components/pest-disease/action-list/a
 import { EditActionComponent } from './user/components/pest-disease/action-list/edit-action/edit-action.component';
 import { ObservationListComponent } from './user/components/pest-disease/observation-list/observation-list.component';
 import { AddObservationComponent } from './user/components/pest-disease/observation-list/add-observation/add-observation.component';
+import { EditObservationComponent } from './user/components/pest-disease/observation-list/edit-observation/edit-observation.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
@@ -79,7 +80,8 @@ const appRoutes: Routes = [
     AddActionComponent,
     EditActionComponent,
     ObservationListComponent,
-    AddObservationComponent
+    AddObservationComponent,
+    EditObservationComponent
   ],
   imports: [
     BrowserModule,
