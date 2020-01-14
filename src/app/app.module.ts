@@ -1,3 +1,4 @@
+import { UserComponent } from './user/user.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -7,9 +8,12 @@ import { KeepHtmlPipe } from './keep-html.pipe';
 import { RunScriptsDirective } from './run-scripts.directive';
 import { AdminComponent } from './admin/admin.component';
 import { Routes, RouterModule } from '@angular/router';
+import { AccountComponent } from './user/components/account/account.component';
+
 
 const appRoutes: Routes = [
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: 'user', component: UserComponent }
 ]
 
 @NgModule({
@@ -17,7 +21,9 @@ const appRoutes: Routes = [
     AppComponent,
     KeepHtmlPipe,
     RunScriptsDirective,
-    AdminComponent
+    AdminComponent,
+    UserComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
