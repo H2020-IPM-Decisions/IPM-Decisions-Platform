@@ -7,9 +7,23 @@ import { KeepHtmlPipe } from './keep-html.pipe';
 import { RunScriptsDirective } from './run-scripts.directive';
 import { AdminComponent } from './admin/admin.component';
 import { Routes, RouterModule } from '@angular/router';
+import { ContentManagementSystemComponent } from './admin/content-management-system/content-management-system.component';
+import { AddUserComponent } from './admin/add-user/add-user.component';
+import { UserListComponent } from './admin/user-list/user-list.component';
+import { UserProfileComponent } from './admin/user-profile/user-profile.component';
+import { DatasetRepositoryComponent } from './admin/dataset-repository/dataset-repository.component';
+import { ManageMetadataComponent } from './admin/manage-metadata/manage-metadata.component';
+import { ManageCatalogueComponent } from './admin/manage-catalogue/manage-catalogue.component';
 
 const appRoutes: Routes = [
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: 'admin/cms', component: ContentManagementSystemComponent },
+  { path: 'admin/add-user', component: AddUserComponent },
+  { path: 'admin/user-list', component: UserListComponent },
+  { path: 'admin/user-profile', component: UserProfileComponent },
+  { path: 'admin/dataset-repo', component: DatasetRepositoryComponent },
+  { path: 'admin/manage-metadata', component: ManageMetadataComponent },
+  { path: 'admin/manage-catalogue', component: ManageCatalogueComponent }
 ]
 
 @NgModule({
@@ -17,7 +31,14 @@ const appRoutes: Routes = [
     AppComponent,
     KeepHtmlPipe,
     RunScriptsDirective,
-    AdminComponent
+    AdminComponent,
+    ContentManagementSystemComponent,
+    AddUserComponent,
+    UserListComponent,
+    UserProfileComponent,
+    DatasetRepositoryComponent,
+    ManageMetadataComponent,
+    ManageCatalogueComponent
   ],
   imports: [
     BrowserModule,
