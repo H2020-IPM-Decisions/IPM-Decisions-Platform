@@ -10,11 +10,11 @@ import { AdminComponent } from './admin/admin.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AccountComponent } from './user/components/account/account.component';
 
-
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
-  { path: 'user', component: UserComponent }
-]
+  { path: 'user', component: UserComponent },
+  { path: 'user/account', component: AccountComponent }
+];
 
 @NgModule({
   declarations: [
@@ -25,13 +25,8 @@ const appRoutes: Routes = [
     UserComponent,
     AccountComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(
-      appRoutes
-    )
-  ],
+  imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
