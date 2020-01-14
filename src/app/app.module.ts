@@ -71,9 +71,10 @@ import { AlertComponent } from './user/components/pest-disease/alert/alert.compo
     AddObservationComponent,
     EditObservationComponent,
     AddPestDiseaseComponent,
-    AlertComponent
+    AlertComponent,
+    
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })
