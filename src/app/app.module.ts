@@ -25,6 +25,7 @@ import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-f
 import { CropListComponent } from './user/components/crop/crop-list/crop-list.component';
 import { AddCropComponent } from './user/components/crop/add-crop/add-crop.component';
 import { ManageCropComponent } from './user/components/crop/manage-crop/manage-crop.component';
+import { EditCropComponent } from './user/components/crop/edit-crop/edit-crop.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
     EditFarmComponent,
     CropListComponent,
     AddCropComponent,
-    ManageCropComponent
+    ManageCropComponent,
+    EditCropComponent
   ],
   imports: [
     BrowserModule,
