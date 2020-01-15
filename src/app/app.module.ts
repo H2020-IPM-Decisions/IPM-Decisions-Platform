@@ -1,3 +1,4 @@
+import { DssParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-detail/dss-parameters-detail.component';
 import { EditDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/edit-dss-observation/edit-dss-observation.component';
 import { DssObservationListComponent } from './user/components/dss/dss-detail/dss-observation-list/dss-observation-list.component';
 import { AddDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/add-dss-observation/add-dss-observation.component';
@@ -114,7 +115,8 @@ import { DssStatusDetailComponent } from './user/components/dss/dss-detail/dss-p
     DssOutputsDescriptionComponent,
     DssPlatformStatusComponent,
     UpdateParametersComponent,
-    DssStatusDetailComponent
+    DssStatusDetailComponent,
+    DssParametersDetailComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
