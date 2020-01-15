@@ -1,1 +1,32 @@
-<p>add-crop works!</p>
+<div class="site-navbar">
+    <!-- Logo -->
+    <a href="index.html" class="site-logo">
+      <img
+        src="img/logo-ipm-decision.png"
+        alt="Logo Ipm Decisions"
+        title="Logo IPM"
+      />
+    </a>
+    <div class="header-right">
+      <button class="search-switch"><i class="fa fa-search"></i></button>
+    </div>
+    <!-- Menu -->
+    <nav class="site-nav-menu">
+      <ul>
+        <li><a [routerLink]="['/user']" routerLinkActive="router-link-active" >Home</a></li>
+        <li><a [routerLink]="['/user/account']" routerLinkActive="router-link-active" >Account</a></li>
+        <li  class="active"><a [routerLink]="['/user/farm']" routerLinkActive="router-link-active" >Farm</a></li>
+        <li>
+          <a>DSS</a>
+          <ul class="sub-menu"> 
+            <li><a [routerLink]="['/user/dss/use-dashboard']" routerLinkActive="router-link-active" >DSS Use Dashboard</a></li>
+            <li><a [routerLink]="['/user/dss/evaluation-dashboard']" routerLinkActive="router-link-active" >DSS Evaluation Dashboard</a></li>
+            <li><a [routerLink]="['/user/dss/adaptation-dashboard']" routerLinkActive="router-link-active" >DSS Adaptation Dashboard</a></li>
+            <li><a [routerLink]="['/user/dss/integration-dashboard']" routerLinkActive="router-link-active" >DSS Integration Dashboard</a></li>
+            <li><a [routerLink]="['/user/dss/list']" routerLinkActive="router-link-active" >DSS List</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink]="['/user/dashboard-manager']" routerLinkActive="router-link-active" >Dashboard Manager</a></li>
+      </ul>
+    </nav>
+  </div>

@@ -13,18 +13,17 @@
   <!-- Menu -->
   <nav class="site-nav-menu">
     <ul>
-      <li class="active"><a [routerLink]="['/user']" routerLinkActive="router-link-active" >Home</a></li>
+      <li><a [routerLink]="['/user']" routerLinkActive="router-link-active" >Home</a></li>
       <li><a [routerLink]="['/user/account']" routerLinkActive="router-link-active" >Account</a></li>
       <li><a [routerLink]="['/user/farm']" routerLinkActive="router-link-active" >Farm</a></li>
-
       <li>
-        <a href="solutions.html">DSS</a>
+        <a>DSS</a>
         <ul class="sub-menu"> 
-          <li><a href="#">DSS Use Dashboard</a></li>
-          <li><a href="#">DSS Evaluation Dashboard</a></li>
-          <li><a href="#">DSS Adaptation Dashboard</a></li>
-          <li><a href="#">DSS Integration Dashboard</a></li>
-          <li><a href="#">DSS List</a></li>
+          <li><a [routerLink]="['/user/dss/use-dashboard']" routerLinkActive="router-link-active" >DSS Use Dashboard</a></li>
+          <li><a [routerLink]="['/user/dss/evaluation-dashboard']" routerLinkActive="router-link-active" >DSS Evaluation Dashboard</a></li>
+          <li><a [routerLink]="['/user/dss/adaptation-dashboard']" routerLinkActive="router-link-active" >DSS Adaptation Dashboard</a></li>
+          <li><a [routerLink]="['/user/dss/integration-dashboard']" routerLinkActive="router-link-active" >DSS Integration Dashboard</a></li>
+          <li><a [routerLink]="['/user/dss/list']" routerLinkActive="router-link-active" >DSS List</a></li>
         </ul>
       </li>
       <li><a [routerLink]="['/user/dashboard-manager']" routerLinkActive="router-link-active" >Dashboard Manager</a></li>
@@ -339,98 +338,6 @@
   </div>
 </section>
 <!-- Video section end  -->
-
-<!-- Footer section -->
-<footer class="footer-section spad">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3 col-md-6">
-        <div class="footer-widget about-widget">
-          <img
-            src="img/logo-ipm-decision.png"
-            alt="Logo Ipm Decisions"
-            title="Logo IPM"
-          />
-          <p>
-            Lorem ipsum dolor sit amet, consec-tetur adipiscing elit. Quisque
-            orci purus, sodales in est quis, blandit sollicitudin est. Nam
-            ornare ipsum ac accumsan auctor. Donec consequat arcu et commodo
-            interdum.
-          </p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="footer-widget">
-          <h2 class="fw-title">Title</h2>
-          <ul>
-            <li><a href="">Title</a></li>
-            <li><a href="">Title</a></li>
-            <li><a href="">Title</a></li>
-            <li><a href="">Title</a></li>
-            <li><a href="">Title</a></li>
-            <li><a href="">Title</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="footer-widget">
-          <h2 class="fw-title">Title</h2>
-          <ul>
-            <li><a href="">Title</a></li>
-            <li><a href="">Title</a></li>
-            <li><a href="">Title</a></li>
-            <li><a href="">Title</a></li>
-            <li><a href="">Title</a></li>
-            <li><a href="">Title</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-7">
-        <div class="footer-widget">
-          <h2 class="fw-title">Contact Us</h2>
-          <div class="footer-info-box">
-            <div class="fib-icon">
-              <img src="img/icons/map-marker.png" alt="" class="" />
-            </div>
-            <div class="fib-text">
-              <p>Address</p>
-            </div>
-          </div>
-          <div class="footer-info-box">
-            <div class="fib-icon">
-              <img src="img/icons/phone.png" alt="" class="" />
-            </div>
-            <div class="fib-text">
-              <p>+39 000 0000 000<br />contact@ipm-decisions</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="border-animation"></div>
-  <div class="footer-buttom">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 order-2 order-lg-1 p-0">
-          <div class="copyright">
-            Copyright &copy;
-          </div>
-        </div>
-        <div class="col-lg-7 order-1 order-lg-2 p-0">
-          <ul class="footer-menu">
-            <li class="active"><a href="index.html">Title</a></li>
-            <li><a href="#">Title</a></li>
-            <li><a href="#">Title</a></li>
-            <li><a href="#">Title</a></li>
-            <li><a href="#">Title</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-<!-- Footer section end -->
 
 <!-- Search model -->
 <div class="search-model">
