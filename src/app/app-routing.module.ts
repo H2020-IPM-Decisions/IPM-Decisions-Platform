@@ -1,3 +1,8 @@
+import { DssListComponent } from './user/components/dss/dss-list/dss-list.component';
+import { DssIntegrationDashboardComponent } from './user/components/dss/dss-integration-dashboard/dss-integration-dashboard.component';
+import { DssAdaptationDashboardComponent } from './user/components/dss/dss-adaptation-dashboard/dss-adaptation-dashboard.component';
+import { DssEvaluationDashboardComponent } from './user/components/dss/dss-evaluation-dashboard/dss-evaluation-dashboard.component';
+import { DssUseDashboardComponent } from './user/components/dss/dss-use-dashboard/dss-use-dashboard.component';
 import { EditDashboardComponent } from './user/components/dashboard-manager/edit-dashboard/edit-dashboard.component';
 import { AddDashboardComponent } from './user/components/dashboard-manager/add-dashboard/add-dashboard.component';
 import { DashboardManagerComponent } from './user/components/dashboard-manager/dashboard-manager.component';
@@ -66,11 +71,11 @@ const appRoutes: Routes = [
   { path: 'user/dashboard-manager', component: DashboardManagerComponent },
   { path: 'user/dashboard-manager/add', component: AddDashboardComponent },
   { path: 'user/dashboard-manager/edit', component: EditDashboardComponent },
-  { path: 'user/dss/use-dashboard', component: UserComponent },
-  { path: 'user/dss/evaluation-dashboard', component: UserComponent },
-  { path: 'user/dss/adaptation-dashboard', component: UserComponent },
-  { path: 'user/dss/integration-dashboard', component: UserComponent },
-  { path: 'user/dss/list', component: UserComponent }
+  { path: 'user/dss/use-dashboard', component: DssUseDashboardComponent },
+  { path: 'user/dss/evaluation-dashboard', component: DssEvaluationDashboardComponent },
+  { path: 'user/dss/adaptation-dashboard', component: DssAdaptationDashboardComponent },
+  { path: 'user/dss/integration-dashboard', component: DssIntegrationDashboardComponent },
+  { path: 'user/dss/list', component: DssListComponent }
 ];
 
 @NgModule({
