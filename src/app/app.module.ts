@@ -46,6 +46,7 @@ import { DssAdaptationDashboardComponent } from './user/components/dss/dss-adapt
 import { DssIntegrationDashboardComponent } from './user/components/dss/dss-integration-dashboard/dss-integration-dashboard.component';
 import { DatasourceRepositoryComponent } from './admin/datasource-repository/datasource-repository.component';
 import { HomeComponent } from './home/home.component';
+import { DssDetailComponent } from './user/components/dss/dss-detail/dss-detail.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { HomeComponent } from './home/home.component';
     DssAdaptationDashboardComponent,
     DssIntegrationDashboardComponent,
     DatasourceRepositoryComponent,
-    HomeComponent
+    HomeComponent,
+    DssDetailComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

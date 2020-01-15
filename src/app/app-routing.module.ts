@@ -91,7 +91,8 @@ const appRoutes: Routes = [
   { path: 'user/dss/evaluation-dashboard', component: DssEvaluationDashboardComponent },
   { path: 'user/dss/adaptation-dashboard', component: DssAdaptationDashboardComponent },
   { path: 'user/dss/integration-dashboard', component: DssIntegrationDashboardComponent },
-  { path: 'user/dss/list', component: DssListComponent }
+  { path: 'user/dss/list', component: DssListComponent },
+  { path: 'user/dss/details', component: DssListComponent }
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 <div class="site-navbar">
     <!-- Logo -->
-    <a href="index.html" class="site-logo">
+    <a [routerLink]="['/user']" class="site-logo">
       <img
         src="img/logo-ipm-decision.png"
         alt="Logo Ipm Decisions"
@@ -29,4 +29,22 @@
         <li class="active"><a [routerLink]="['/user/dashboard-manager']" routerLinkActive="router-link-active" >Dashboard Manager</a></li>
       </ul>
     </nav>
+  </div>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/user">User</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Dashboard Manager</li>
+    </ol>
+  </nav>
+  
+  <div class="container mx-auto my-5">
+    <h1 class="text-center mb-5">Dashboard list</h1>
+    <a routerLink="/user/dashboard-manager/add">Add Dashboard</a>
+    <br>
+    <a routerLink="/user/dashboard-manager/edit">Edit Dashboard</a>
+    <br>
+    <a routerLink="/user/dashboard-manager">Delete Dashboard</a>
+
+    <img src="img/maintenance.png" />
   </div>
