@@ -1,3 +1,7 @@
+import { EditDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/edit-dss-observation/edit-dss-observation.component';
+import { DssObservationListComponent } from './user/components/dss/dss-detail/dss-observation-list/dss-observation-list.component';
+import { AddDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/add-dss-observation/add-dss-observation.component';
+import { DssDetailComponent } from './user/components/dss/dss-detail/dss-detail.component';
 import { EditFarmComponent } from './user/components/farm/edit-farm/edit-farm.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
 import { AccountComponent } from './user/components/account/account.component';
@@ -45,10 +49,7 @@ import { DssEvaluationDashboardComponent } from './user/components/dss/dss-evalu
 import { DssAdaptationDashboardComponent } from './user/components/dss/dss-adaptation-dashboard/dss-adaptation-dashboard.component';
 import { DssIntegrationDashboardComponent } from './user/components/dss/dss-integration-dashboard/dss-integration-dashboard.component';
 import { DatasourceRepositoryComponent } from './admin/datasource-repository/datasource-repository.component';
-import { DssDetailComponent } from './user/components/dss/dss-detail/dss-detail.component';
-import { DssObservationListComponent } from './user/components/dss/dss-detail/dss-observation-list/dss-observation-list.component';
-import { EditDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/edit-dss-observation/edit-dss-observation.component';
-import { AddDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/add-dss-observation/add-dss-observation.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -95,10 +96,12 @@ import { AddDssObservationComponent } from './user/components/dss/dss-detail/dss
     DssAdaptationDashboardComponent,
     DssIntegrationDashboardComponent,
     DatasourceRepositoryComponent,
+    HomeComponent,
     DssDetailComponent,
-    DssObservationListComponent,
+    AddDssObservationComponent,
     EditDssObservationComponent,
-    AddDssObservationComponent
+    DssObservationListComponent,
+    
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

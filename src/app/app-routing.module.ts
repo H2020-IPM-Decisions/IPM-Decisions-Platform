@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 import { EditDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/edit-dss-observation/edit-dss-observation.component';
 import { AddDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/add-dss-observation/add-dss-observation.component';
 import { DssObservationListComponent } from './user/components/dss/dss-detail/dss-observation-list/dss-observation-list.component';
 import { DssDetailComponent } from './user/components/dss/dss-detail/dss-detail.component';
+=======
+import { HomeComponent } from './home/home.component';
+>>>>>>> 3348823bbbf4f3593936f349893e037f3c4e2b03
 import { AddObservationComponent } from './user/components/pest-disease/observation-list/add-observation/add-observation.component';
 import { EditObservationComponent } from './user/components/pest-disease/observation-list/edit-observation/edit-observation.component';
 import { EditActionComponent } from './user/components/pest-disease/action-list/edit-action/edit-action.component';
@@ -44,6 +48,7 @@ import { AccountComponent } from './user/components/account/account.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
 
 const appRoutes: Routes = [
+  { path: '', component: HomeComponent},
   { path: 'admin', component: AdminComponent },
   { path: 'admin/cms', component: ContentManagementSystemComponent },
   { path: 'admin/add-user', component: AddUserComponent },
