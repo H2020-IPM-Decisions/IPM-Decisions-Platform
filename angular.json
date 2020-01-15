@@ -29,7 +29,15 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/js/jquery-3.2.1.min.js",
+              "src/js/bootstrap.min.js",
+              "src/js/jquery.slicknav.min.js",
+              "src/js/owl.carousel.min.js",
+              "src/js/circle-progress.min.js",
+              "src/js/jquery.magnific-popup.min.js",
+              "src/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
