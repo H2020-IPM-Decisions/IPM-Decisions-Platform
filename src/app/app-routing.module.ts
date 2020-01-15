@@ -1,3 +1,7 @@
+import { AddObservationComponent } from './user/components/pest-disease/observation-list/add-observation/add-observation.component';
+import { EditObservationComponent } from './user/components/pest-disease/observation-list/edit-observation/edit-observation.component';
+import { EditActionComponent } from './user/components/pest-disease/action-list/edit-action/edit-action.component';
+import { AddActionComponent } from './user/components/pest-disease/action-list/add-action/add-action.component';
 import { DssListComponent } from './user/components/dss/dss-list/dss-list.component';
 import { DssIntegrationDashboardComponent } from './user/components/dss/dss-integration-dashboard/dss-integration-dashboard.component';
 import { DssAdaptationDashboardComponent } from './user/components/dss/dss-adaptation-dashboard/dss-adaptation-dashboard.component';
@@ -57,6 +61,8 @@ const appRoutes: Routes = [
   { path: 'user/crop/manage', component: ManageCropComponent },
   { path: 'user/crop/list', component: CropListComponent },
   { path: 'user/pest-disease/action-list', component: ActionListComponent },
+  { path: 'user/pest-disease/action-list/add', component: AddActionComponent },
+  { path: 'user/pest-disease/action-list/edit', component: EditActionComponent },
   {
     path: 'user/pest-disease/observation-list',
     component: ObservationListComponent
@@ -64,6 +70,14 @@ const appRoutes: Routes = [
   {
     path: 'user/pest-disease/pest-disease-list',
     component: PestDiseaseListComponent
+  },
+  {
+    path: 'user/pest-disease/observation-list/edit',
+    component: EditObservationComponent
+  },
+  {
+    path: 'user/pest-disease/observation-list/add',
+    component: AddObservationComponent
   },
   { path: 'user/pest-disease/add', component: AddPestDiseaseComponent },
   { path: 'user/pest-disease/alert', component: AlertComponent },

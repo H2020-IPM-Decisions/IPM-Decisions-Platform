@@ -30,3 +30,29 @@
       </ul>
     </nav>
   </div>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/user">User</a></li>
+      <li class="breadcrumb-item"><a routerLink="/user/farm">Farm</a></li>
+      <li class="breadcrumb-item"><a routerLink="/user/farm/list">Farm List</a></li>
+      <li class="breadcrumb-item"><a routerLink="/user/farm/manage">Manage Farm</a></li>
+      <li class="breadcrumb-item"><a routerLink="/user/crop/list">Crop list</a></li>
+      <li class="breadcrumb-item"><a routerLink="/user/crop/manage">Manage Crop</a></li>
+      <li class="breadcrumb-item"><a routerLink="/user/pest-disease/pest-disease-list">Pest-Disease List</a></li>
+      <li class="breadcrumb-item"><a routerLink="/user/pest-disease/manage">Manage Pest-Disease</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Observation List</li>
+    </ol>
+  </nav>
+  
+  <div class="container mx-auto my-5">
+    <h1 class="text-center mb-5">Observation List</h1>
+    <a routerLink="/user/pest-disease/observation-list/add">Add-Upload Observation</a>
+    <br>
+    <a routerLink="/user/pest-disease/observation-list/edit">Edit Observation</a>
+    <br>
+    <a routerLink="/user/pest-disease/observation-list/edit">Delete Observation</a>
+    <br>
+    <a routerLink="/user/pest-disease/observation-list/edit">Connect Observation</a>
+    <img src="img/maintenance.png" />
+  </div>
