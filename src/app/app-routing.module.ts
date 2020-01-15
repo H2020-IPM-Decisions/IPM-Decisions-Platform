@@ -1,3 +1,10 @@
+import { WeatherParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-description/weather-parameters-detail/weather-parameters-detail.component';
+import { UpdateParametersComponent } from './user/components/dss/dss-detail/update-parameters/update-parameters.component';
+import { DssPlatformStatusComponent } from './user/components/dss/dss-detail/dss-platform-status/dss-platform-status.component';
+import { DssParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-detail/dss-parameters-detail.component';
+import { DssOutputsDescriptionComponent } from './user/components/dss/dss-detail/dss-outputs-description/dss-outputs-description.component';
+import { DssInputsDescriptionComponent } from './user/components/dss/dss-detail/dss-inputs-description/dss-inputs-description.component';
+import { DssParametersDescriptionComponent } from './user/components/dss/dss-detail/dss-parameters-description/dss-parameters-description.component';
 
 import { EditDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/edit-dss-observation/edit-dss-observation.component';
 import { AddDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/add-dss-observation/add-dss-observation.component';
@@ -100,7 +107,15 @@ const appRoutes: Routes = [
   { path: 'user/dss/details', component: DssDetailComponent },
   { path: 'user/dss/details/observation-list', component: DssObservationListComponent },
   { path: 'user/dss/details/observation-list/add', component: AddDssObservationComponent },
-  { path: 'user/dss/details/observation-list/edit', component: EditDssObservationComponent }
+  { path: 'user/dss/details/observation-list/edit', component: EditDssObservationComponent },
+  { path: 'user/dss/details/parameters-description', component: DssParametersDescriptionComponent },
+  { path: 'user/dss/details/parameters-description/weather-parameters-detail', component: WeatherParametersDetailComponent },
+  { path: 'user/dss/details/inputs-description', component: DssInputsDescriptionComponent },
+  { path: 'user/dss/details/outputs-description', component: DssOutputsDescriptionComponent },
+  { path: 'user/dss/details/parameters-detail', component: DssParametersDetailComponent },
+  { path: 'user/dss/details/platform-status/dss-status-detail', component: EditDssObservationComponent },
+  { path: 'user/dss/details/platform-status', component: DssPlatformStatusComponent },
+  { path: 'user/dss/details/update-parameters', component: UpdateParametersComponent },
 ];
 
 @NgModule({
