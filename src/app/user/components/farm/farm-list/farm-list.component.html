@@ -1,6 +1,6 @@
 <div class="site-navbar">
   <!-- Logo -->
-  <a href="index.html" class="site-logo">
+  <a [routerLink]="['/user']" class="site-logo">
     <img
       src="img/logo-ipm-decision.png"
       alt="Logo Ipm Decisions"
@@ -31,7 +31,7 @@
         >
       </li>
       <li>
-        <a href="solutions.html">DSS</a>
+        <a>DSS</a>
         <ul class="sub-menu">
           <li>
             <a
@@ -90,6 +90,7 @@
 </nav>
 
 <div class="container mx-auto my-5">
+  <h1 class="text-center mb-5">Farm List</h1>
   <a routerLink="/user/farm/add">Add Farm</a>
   <br>
   <a routerLink="/user/farm/manage">Manage Farm</a>

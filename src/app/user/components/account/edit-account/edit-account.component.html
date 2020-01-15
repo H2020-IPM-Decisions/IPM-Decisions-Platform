@@ -1,6 +1,6 @@
 <div class="site-navbar">
   <!-- Logo -->
-  <a href="index.html" class="site-logo">
+  <a [routerLink]="['/user']" routerLinkActive="router-link-active"  class="site-logo">
     <img
       src="img/logo-ipm-decision.png"
       alt="Logo Ipm Decisions"
@@ -30,6 +30,15 @@
     </ul>
   </nav>
 </div>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/user">User</a></li>
+    <li class="breadcrumb-item"><a routerLink="/user/account">Accout</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+  </ol>
+</nav>
+
 <!-- Header section end  -->
 <div class="container emp-profile">
   <div class="row">
