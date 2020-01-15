@@ -46,6 +46,9 @@ import { DssAdaptationDashboardComponent } from './user/components/dss/dss-adapt
 import { DssIntegrationDashboardComponent } from './user/components/dss/dss-integration-dashboard/dss-integration-dashboard.component';
 import { DatasourceRepositoryComponent } from './admin/datasource-repository/datasource-repository.component';
 import { DssDetailComponent } from './user/components/dss/dss-detail/dss-detail.component';
+import { DssObservationListComponent } from './user/components/dss/dss-detail/dss-observation-list/dss-observation-list.component';
+import { EditDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/edit-dss-observation/edit-dss-observation.component';
+import { AddDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/add-dss-observation/add-dss-observation.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +95,10 @@ import { DssDetailComponent } from './user/components/dss/dss-detail/dss-detail.
     DssAdaptationDashboardComponent,
     DssIntegrationDashboardComponent,
     DatasourceRepositoryComponent,
-    DssDetailComponent
+    DssDetailComponent,
+    DssObservationListComponent,
+    EditDssObservationComponent,
+    AddDssObservationComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
