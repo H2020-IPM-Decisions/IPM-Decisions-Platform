@@ -15,7 +15,6 @@ import { ContentManagementSystemComponent } from './admin/content-management-sys
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { UserListComponent } from './admin/user-list/user-list.component';
 import { UserProfileComponent } from './admin/user-profile/user-profile.component';
-import { DatasetRepositoryComponent } from './admin/dataset-repository/dataset-repository.component';
 import { ManageMetadataComponent } from './admin/manage-metadata/manage-metadata.component';
 import { ManageCatalogueComponent } from './admin/manage-catalogue/manage-catalogue.component';
 import { FarmComponent } from './user/components/farm/farm.component';
@@ -57,7 +56,7 @@ import { DatasourceRepositoryComponent } from './admin/datasource-repository/dat
     AddUserComponent,
     UserListComponent,
     UserProfileComponent,
-    DatasetRepositoryComponent,
+    DatasourceRepositoryComponent,
     ManageMetadataComponent,
     ManageCatalogueComponent,
     UserComponent,
