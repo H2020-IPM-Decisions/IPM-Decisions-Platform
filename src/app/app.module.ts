@@ -50,6 +50,13 @@ import { DssAdaptationDashboardComponent } from './user/components/dss/dss-adapt
 import { DssIntegrationDashboardComponent } from './user/components/dss/dss-integration-dashboard/dss-integration-dashboard.component';
 import { DatasourceRepositoryComponent } from './admin/datasource-repository/datasource-repository.component';
 import { HomeComponent } from './home/home.component';
+import { DssParametersDescriptionComponent } from './user/components/dss/dss-detail/dss-parameters-description/dss-parameters-description.component';
+import { WeatherParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-description/weather-parameters-detail/weather-parameters-detail.component';
+import { DssInputsDescriptionComponent } from './user/components/dss/dss-detail/dss-inputs-description/dss-inputs-description.component';
+import { DssOutputsDescriptionComponent } from './user/components/dss/dss-detail/dss-outputs-description/dss-outputs-description.component';
+import { DssPlatformStatusComponent } from './user/components/dss/dss-detail/dss-platform-status/dss-platform-status.component';
+import { UpdateParametersComponent } from './user/components/dss/dss-detail/update-parameters/update-parameters.component';
+import { DssStatusDetailComponent } from './user/components/dss/dss-detail/dss-platform-status/dss-status-detail/dss-status-detail.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +108,13 @@ import { HomeComponent } from './home/home.component';
     AddDssObservationComponent,
     EditDssObservationComponent,
     DssObservationListComponent,
-    
+    DssParametersDescriptionComponent,
+    WeatherParametersDetailComponent,
+    DssInputsDescriptionComponent,
+    DssOutputsDescriptionComponent,
+    DssPlatformStatusComponent,
+    UpdateParametersComponent,
+    DssStatusDetailComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
