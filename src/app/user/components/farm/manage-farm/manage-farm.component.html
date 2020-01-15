@@ -27,9 +27,11 @@
       </li>
       <li>
         <a [routerLink]="['/user/farm']" routerLinkActive="router-link-active"
-          >Farm</a
-        >
-      </li>
+          >FFarm List</a>
+          <ul class="sub-menu"> 
+            <li><a [routerLink]="['/user/farm/add']" routerLinkActive="router-link-active" >Add Farm</a></li>
+            <li><a [routerLink]="['/user/farm/manage']" routerLinkActive="router-link-active" >Manage Farm</a></li>
+          </ul></li>
       <li>
         <a>DSS</a>
         <ul class="sub-menu">
