@@ -57,7 +57,7 @@
   </div>
   <div class="site-navbar">
     <!-- Logo -->
-    <a href="index.html" class="site-logo">
+    <a routerLink="/admin" class="site-logo">
       <img src="img/logo-ipm-decision.png" alt="Logo Ipm Decisions" title="Logo IPM">
     </a>
     <div class="header-right">
@@ -67,15 +67,15 @@
     <!-- Menu -->
     <nav class="site-nav-menu">
       <ul>
-        <li class="active"><a href="index.html">Home</a></li>
-        <li><a routerLink="cms">Content Management System</a></li>
+        <li class="active"><a routerLink="/admin">Home</a></li>
+        <li><a routerLink="cms">CMS</a></li>
         <li><a>Users</a>
           <ul class="sub-menu">
             <li><a routerLink="add-user">Add User</a></li>
             <li><a routerLink="user-list">User list</a></li>
+            <li><a routerLink="user-profile">User Profile</a></li>
           </ul>
         </li>
-        <li><a routerLink="user-profile">User Profile</a></li>
         <li><a routerLink="dataset-repo">Dataset Repository</a></li>
         <li><a>Metadata & Catalogue Repository</a>
           <ul class="sub-menu">
@@ -91,6 +91,12 @@
 
 </header>
 <!-- Header section end  -->
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+  </ol>
+</nav>
 
 <!-- Hero section  -->
 <section class="hero-section">
