@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { AddObservationComponent } from './user/components/pest-disease/observation-list/add-observation/add-observation.component';
 import { EditObservationComponent } from './user/components/pest-disease/observation-list/edit-observation/edit-observation.component';
 import { EditActionComponent } from './user/components/pest-disease/action-list/edit-action/edit-action.component';
@@ -40,6 +41,7 @@ import { AccountComponent } from './user/components/account/account.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
 
 const appRoutes: Routes = [
+  { path: '', component: HomeComponent},
   { path: 'admin', component: AdminComponent },
   { path: 'admin/cms', component: ContentManagementSystemComponent },
   { path: 'admin/add-user', component: AddUserComponent },
