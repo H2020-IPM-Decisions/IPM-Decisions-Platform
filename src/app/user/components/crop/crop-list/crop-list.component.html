@@ -30,3 +30,22 @@
       </ul>
     </nav>
   </div>
+
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/user">User</a></li>
+      <li class="breadcrumb-item"><a routerLink="/user/farm">Farm</a></li>
+      <li class="breadcrumb-item"><a routerLink="/user/farm/list">Farm List</a></li>
+      <li class="breadcrumb-item"><a routerLink="/user/farm/manage">Manage Farm</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Crop List</li>
+    </ol>
+  </nav>
+  
+  <div class="container mx-auto my-5">
+    <h1 class="text-center mb-5">Crop List</h1>
+    <a routerLink="/user/crop/add">Add Crop</a>
+    <br>
+    <a routerLink="/user/crop/manage">Manage Crop</a>
+    <img src="img/maintenance.png" />
+  </div>
