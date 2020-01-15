@@ -1,3 +1,4 @@
+import { DssStatusDetailComponent } from './user/components/dss/dss-detail/dss-platform-status/dss-status-detail/dss-status-detail.component';
 import { WeatherParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-description/weather-parameters-detail/weather-parameters-detail.component';
 import { UpdateParametersComponent } from './user/components/dss/dss-detail/update-parameters/update-parameters.component';
 import { DssPlatformStatusComponent } from './user/components/dss/dss-detail/dss-platform-status/dss-platform-status.component';
@@ -113,7 +114,7 @@ const appRoutes: Routes = [
   { path: 'user/dss/details/inputs-description', component: DssInputsDescriptionComponent },
   { path: 'user/dss/details/outputs-description', component: DssOutputsDescriptionComponent },
   { path: 'user/dss/details/parameters-detail', component: DssParametersDetailComponent },
-  { path: 'user/dss/details/platform-status/dss-status-detail', component: EditDssObservationComponent },
+  { path: 'user/dss/details/platform-status/dss-status-detail', component: DssStatusDetailComponent },
   { path: 'user/dss/details/platform-status', component: DssPlatformStatusComponent },
   { path: 'user/dss/details/update-parameters', component: UpdateParametersComponent },
 ];
