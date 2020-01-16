@@ -30,6 +30,7 @@
               "src/styles.css"
             ],
             "scripts": [
+              "node_modules/popper.js/dist/umd/popper.min.js",
               "src/js/jquery-3.2.1.min.js",
               "src/js/bootstrap.min.js",
               "src/js/jquery.slicknav.min.js",
