@@ -108,14 +108,78 @@
   </ol>
 </nav>
 
-<body class="container body-fixing">
-  <div class="container mx-auto my-5 page-box">
-    <h1 class="text-center mb-5">DSS List</h1>
-    <a
-      [routerLink]="['/user/dss/details']"
-      routerLinkActive="router-link-active"
-      >DSS Details</a
-    >
-    <div style="text-align: center;"><img style="height: 500px;" src="img/maintenance.png" /></div>
+<div class="container mx-auto my-5 page-box">
+  <div class="row">
+    <div class="col-lg-12 col-md-10 ml-auto mr-auto">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <h4>DSS list</h4>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="text-center">Name</th>
+                <th class="text-center">Details</th>
+                <th class="text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">DSS 1</td>
+                <td class="text-center">Lorem ipsum</td>
+                <td class="td-actions text-center">
+                  <button
+                    type="button"
+                    rel="tooltip"
+                    class="btn btn-info btn-sm button-custom"
+                    data-original-title=""
+                    title=""
+                    routerLink="/user/dss/details"
+                  >
+                    Details
+                  </button>
+
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">DSS 2</td>
+                <td class="text-center">Lorem ipsum</td>
+                <td class="td-actions text-center">
+                  <button
+                    type="button"
+                    rel="tooltip"
+                    class="btn btn-info btn-sm button-custom"
+                    data-original-title=""
+                    title=""
+                    routerLink="/user/dss/details"
+                  >
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">DSS 3</td>
+                <td class="text-center">Lorem ipsum</td>
+                <td class="td-actions text-center">
+                  <button
+                    type="button"
+                    rel="tooltip"
+                    class="btn btn-info btn-sm button-custom"
+                    data-original-title=""
+                    title=""
+                    routerLink="/user/dss/details"
+                  >
+                    Details
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-</body>
+</div>
