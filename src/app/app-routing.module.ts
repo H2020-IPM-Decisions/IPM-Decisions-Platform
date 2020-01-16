@@ -1,3 +1,4 @@
+import { DssUseDashboardEditComponent } from './user/components/dss/dss-use-dashboard/dss-use-dashboard-edit/dss-use-dashboard-edit.component';
 import { SourceRepoComponent } from './admin/source-repo/source-repo.component';
 import { DssStatusDetailComponent } from './user/components/dss/dss-detail/dss-platform-status/dss-status-detail/dss-status-detail.component';
 import { WeatherParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-description/weather-parameters-detail/weather-parameters-detail.component';
@@ -103,6 +104,7 @@ const appRoutes: Routes = [
   { path: 'user/dashboard-manager/add', component: AddDashboardComponent },
   { path: 'user/dashboard-manager/edit', component: EditDashboardComponent },
   { path: 'user/dss/use-dashboard', component: DssUseDashboardComponent },
+  { path: 'user/dss/use-dashboard/edit', component: DssUseDashboardEditComponent },
   { path: 'user/dss/evaluation-dashboard', component: DssEvaluationDashboardComponent },
   { path: 'user/dss/adaptation-dashboard', component: DssAdaptationDashboardComponent },
   { path: 'user/dss/integration-dashboard', component: DssIntegrationDashboardComponent },
