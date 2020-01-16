@@ -26,12 +26,28 @@
         >
       </li>
       <li>
-        <a [routerLink]="['/user/farm']" routerLinkActive="router-link-active"
-          >Farm List</a>
-          <ul class="sub-menu"> 
-            <li><a [routerLink]="['/user/farm/add']" routerLinkActive="router-link-active" >Add Farm</a></li>
-            <li><a [routerLink]="['/user/farm/manage']" routerLinkActive="router-link-active" >Manage Farm</a></li>
-          </ul></li>
+        <a
+          [routerLink]="['/user/farm/list']"
+          routerLinkActive="router-link-active"
+          >Farm List</a
+        >
+        <ul class="sub-menu">
+          <li>
+            <a
+              [routerLink]="['/user/farm/add']"
+              routerLinkActive="router-link-active"
+              >Add Farm</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="['/user/farm/manage']"
+              routerLinkActive="router-link-active"
+              >Manage Farm</a
+            >
+          </li>
+        </ul>
+      </li>
       <li>
         <a class="active">DSS</a>
         <ul class="sub-menu">
@@ -92,8 +108,14 @@
   </ol>
 </nav>
 
-<div class="container mx-auto my-5 page-box">
-  <h1 class="text-center mb-5">DSS List</h1>
-  <a [routerLink]="['/user/dss/details']" routerLinkActive="router-link-active" >DSS Details</a>
-  <img src="img/maintenance.png" />
-</div>
+<body class="container body-fixing">
+  <div class="container mx-auto my-5 page-box">
+    <h1 class="text-center mb-5">DSS List</h1>
+    <a
+      [routerLink]="['/user/dss/details']"
+      routerLinkActive="router-link-active"
+      >DSS Details</a
+    >
+    <div style="text-align: center;"><img style="height: 500px;" src="img/maintenance.png" /></div>
+  </div>
+</body>

@@ -15,7 +15,7 @@
       <ul>
         <li class="active"><a [routerLink]="['/user']" routerLinkActive="router-link-active" >Home</a></li>
         <li><a [routerLink]="['/user/account']" routerLinkActive="router-link-active" >Account</a></li>
-        <li><a [routerLink]="['/user/farm']" routerLinkActive="router-link-active" >Farm List</a>
+        <li><a [routerLink]="['/user/farm/list']" routerLinkActive="router-link-active" >Farm List</a>
           <ul class="sub-menu"> 
             <li><a [routerLink]="['/user/farm/add']" routerLinkActive="router-link-active" >Add Farm</a></li>
             <li><a [routerLink]="['/user/farm/manage']" routerLinkActive="router-link-active" >Manage Farm</a></li>
@@ -39,7 +39,6 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a routerLink="/user">Home</a></li>
-    <li class="breadcrumb-item"><a routerLink="/user/farm">Farm</a></li>
     <li class="breadcrumb-item"><a routerLink="/user/farm/list">Farm List</a></li>
     <li class="breadcrumb-item"><a routerLink="/user/farm/manage">Manage Farm</a></li>
     <li class="breadcrumb-item active" aria-current="page">Edit Farm</li>

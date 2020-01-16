@@ -7,3 +7,12 @@
     border-style: solid;
     border-color: #7abc2a;
   }
+
+
+  .button-custom {
+    margin: 2px;
+  }
+  
+  .add-farm {
+    bottom: 12px;
+  }
