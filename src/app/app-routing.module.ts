@@ -1,3 +1,4 @@
+import { SourceRepoComponent } from './admin/source-repo/source-repo.component';
 import { DssStatusDetailComponent } from './user/components/dss/dss-detail/dss-platform-status/dss-status-detail/dss-status-detail.component';
 import { WeatherParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-description/weather-parameters-detail/weather-parameters-detail.component';
 import { UpdateParametersComponent } from './user/components/dss/dss-detail/update-parameters/update-parameters.component';
@@ -63,6 +64,7 @@ const appRoutes: Routes = [
   { path: 'admin/datasource-repo', component: DatasourceRepositoryComponent },
   { path: 'admin/manage-metadata', component: ManageMetadataComponent },
   { path: 'admin/manage-catalogue', component: ManageCatalogueComponent },
+  { path: 'admin/source-repo', component: SourceRepoComponent },
   { path: 'user', component: UserComponent },
   { path: 'user/account', component: AccountComponent },
   { path: 'user/account/edit', component: EditAccountComponent },
