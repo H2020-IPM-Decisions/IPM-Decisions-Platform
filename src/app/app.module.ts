@@ -58,6 +58,7 @@ import { DssOutputsDescriptionComponent } from './user/components/dss/dss-detail
 import { DssPlatformStatusComponent } from './user/components/dss/dss-detail/dss-platform-status/dss-platform-status.component';
 import { UpdateParametersComponent } from './user/components/dss/dss-detail/update-parameters/update-parameters.component';
 import { DssStatusDetailComponent } from './user/components/dss/dss-detail/dss-platform-status/dss-status-detail/dss-status-detail.component';
+import { DssUseDashboardEditComponent } from './user/components/dss/dss-use-dashboard/dss-use-dashboard-edit/dss-use-dashboard-edit.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +117,8 @@ import { DssStatusDetailComponent } from './user/components/dss/dss-detail/dss-p
     DssPlatformStatusComponent,
     UpdateParametersComponent,
     DssStatusDetailComponent,
-    DssParametersDetailComponent
+    DssParametersDetailComponent,
+    DssUseDashboardEditComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
