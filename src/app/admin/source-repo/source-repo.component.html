@@ -50,13 +50,17 @@
           <div class="col-md-6">
           </div>
           <div class="col-md-6 text-md-right">
-            <a href="admin">Greetings Dave Skirvin!</a>
-            &nbsp;
-            <a [routerLink]="['/']" >Logout</a>
+              <a href="#" class="nav-link dropdown-toggle user-up-nav" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false"> 
+                  Welcome, Dave Skirvin <b class="caret"></b>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="navbarDropdown">  
+                  <a class="dropdown-item" [routerLink]="['/']" >Logout</a>
+              </div>
           </div>
         </div>
       </div>
     </div>
+    
     <div class="site-navbar">
       <!-- Logo -->
       <a routerLink="/admin" class="site-logo">
@@ -71,7 +75,7 @@
         <ul>
           <li><a routerLink="/admin">Home</a></li>
           <li><a routerLink="/admin/cms">CMS</a></li>
-          <li class="active"><a>Users</a>
+          <li ><a>Users</a>
             <ul class="sub-menu">
               <li><a routerLink="/admin/add-user">Add User</a></li>
               <li><a routerLink="/admin/user-list">User list</a></li>
@@ -85,7 +89,7 @@
               <li><a routerLink="/admin/manage-catalogue">Manage Catalogue</a></li>
             </ul>
           </li>
-          <li><a routerLink="/admin/source-repo">Source Code Repository</a></li>
+          <li class="active"><a routerLink="/admin/source-repo">Source Code Repository</a></li>
         </ul>
       </nav>
   
@@ -101,7 +105,7 @@
     </ol>
   </nav>
   
-  <div class="container mx-auto my-5 page-box">
+  <div class="container mx-auto my-5 page-box" style="height: 700px;">
     <h1 class="text-center mb-5">Source Code Repository</h1>
-    <a href="https://github.com/H2020-IPM-Decisions/IPM-Decisions-Platform" target="_blank">Source Code Repository</a>  
+    <a href="https://github.com/H2020-IPM-Decisions/IPM-Decisions-Platform" target="_blank">Source Code Repository Link</a>  
 </div>

@@ -8,8 +8,8 @@
               Welcome, Dave Skirvin <b class="caret"></b>
           </a>
           <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" [routerLink]="['/user']">Lorem ipsum</a>
-              <a class="dropdown-item" [routerLink]="['/user']">Lorem ipsum</a>
+            <a class="dropdown-item" [routerLink]="['/user/account']">Account</a>
+
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" [routerLink]="['/']" >Logout</a>
           </div>
@@ -34,11 +34,9 @@
     <nav class="site-nav-menu">
       <ul>
         <li><a [routerLink]="['/user']" routerLinkActive="router-link-active" >Home</a></li>
-        <li><a [routerLink]="['/user/account']" routerLinkActive="router-link-active" >Account</a></li>
         <li class="active"><a [routerLink]="['/user/farm/list']"  routerLinkActive="router-link-active" >Farm List</a>
           <ul class="sub-menu"> 
             <li><a [routerLink]="['/user/farm/add']" routerLinkActive="router-link-active" >Add Farm</a></li>
-            <li><a [routerLink]="['/user/farm/manage']" routerLinkActive="router-link-active" >Manage Farm</a></li>
           </ul></li>
         <li>
           <a>DSS</a>
