@@ -1,3 +1,5 @@
+import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
+import { AdminAccountComponent } from './admin/admin-account/admin-account.component';
 import { DssUseDashboardEditComponent } from './user/components/dss/dss-use-dashboard/dss-use-dashboard-edit/dss-use-dashboard-edit.component';
 import { SourceRepoComponent } from './admin/source-repo/source-repo.component';
 import { DssStatusDetailComponent } from './user/components/dss/dss-detail/dss-platform-status/dss-status-detail/dss-status-detail.component';
@@ -58,6 +60,8 @@ import { EditAccountComponent } from './user/components/account/edit-account/edi
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'admin', component: AdminComponent },
+  { path: 'admin/account', component: AdminAccountComponent },
+  { path: 'admin/account/edit', component: AdminAccountEditComponent },
   { path: 'admin/cms', component: ContentManagementSystemComponent },
   { path: 'admin/add-user', component: AddUserComponent },
   { path: 'admin/user-list', component: UserListComponent },

@@ -60,6 +60,8 @@ import { UpdateParametersComponent } from './user/components/dss/dss-detail/upda
 import { DssStatusDetailComponent } from './user/components/dss/dss-detail/dss-platform-status/dss-status-detail/dss-status-detail.component';
 import { DssUseDashboardEditComponent } from './user/components/dss/dss-use-dashboard/dss-use-dashboard-edit/dss-use-dashboard-edit.component';
 import { SourceRepoComponent } from './admin/source-repo/source-repo.component';
+import { AdminAccountComponent } from './admin/admin-account/admin-account.component';
+import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
 
 @NgModule({
   declarations: [
@@ -120,7 +122,9 @@ import { SourceRepoComponent } from './admin/source-repo/source-repo.component';
     DssStatusDetailComponent,
     DssParametersDetailComponent,
     DssUseDashboardEditComponent,
-    SourceRepoComponent
+    SourceRepoComponent,
+    AdminAccountComponent,
+    AdminAccountEditComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
