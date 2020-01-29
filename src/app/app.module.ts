@@ -62,6 +62,7 @@ import { DssUseDashboardEditComponent } from './user/components/dss/dss-use-dash
 import { SourceRepoComponent } from './admin/source-repo/source-repo.component';
 import { AdminAccountComponent } from './admin/admin-account/admin-account.component';
 import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 
 @NgModule({
   declarations: [
@@ -124,7 +125,8 @@ import { AdminAccountEditComponent } from './admin/admin-account/admin-account-e
     DssUseDashboardEditComponent,
     SourceRepoComponent,
     AdminAccountComponent,
-    AdminAccountEditComponent
+    AdminAccountEditComponent,
+    AdminHeaderComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
