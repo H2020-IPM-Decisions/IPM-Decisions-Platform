@@ -56,6 +56,8 @@ import { ManageCatalogueComponent } from './admin/manage-catalogue/manage-catalo
 import { UserComponent } from './user/user.component';
 import { AccountComponent } from './user/components/account/account.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
+import { LoginComponent } from './shared/authentication/login/login.component';
+import { RegisterComponent } from './shared/authentication/register/register.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -125,6 +127,9 @@ const appRoutes: Routes = [
   { path: 'user/dss/details/platform-status/dss-status-detail', component: DssStatusDetailComponent },
   { path: 'user/dss/details/platform-status', component: DssPlatformStatusComponent },
   { path: 'user/dss/details/update-parameters', component: UpdateParametersComponent },
+  {path: 'register', component: RegisterComponent},
+
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

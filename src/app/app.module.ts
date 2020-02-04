@@ -9,6 +9,7 @@ import { AccountComponent } from './user/components/account/account.component';
 import { UserComponent } from './user/user.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -63,6 +64,10 @@ import { SourceRepoComponent } from './admin/source-repo/source-repo.component';
 import { AdminAccountComponent } from './admin/admin-account/admin-account.component';
 import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { UserHeaderComponent } from './user/components/user-header/user-header.component';
+import { LoginComponent } from './shared/authentication/login/login.component';
+import { RegisterComponent } from './shared/authentication/register/register.component';
+import { ForgetPasswordComponent } from './shared/authentication/forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -126,9 +131,13 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
     SourceRepoComponent,
     AdminAccountComponent,
     AdminAccountEditComponent,
-    AdminHeaderComponent
+    AdminHeaderComponent,
+    UserHeaderComponent,
+    LoginComponent,
+    RegisterComponent,
+    ForgetPasswordComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,],
   providers: [],
   bootstrap: [AppComponent]
 })
