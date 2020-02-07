@@ -9,7 +9,8 @@ import { AccountComponent } from './user/components/account/account.component';
 import { UserComponent } from './user/user.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -68,6 +69,12 @@ import { UserHeaderComponent } from './user/components/user-header/user-header.c
 import { LoginComponent } from './shared/authentication/login/login.component';
 import { RegisterComponent } from './shared/authentication/register/register.component';
 import { ForgetPasswordComponent } from './shared/authentication/forget-password/forget-password.component';
+import { CMSBannerComponent } from './admin/content-management-system/cmsbanner/cmsbanner.component';
+import { CMSFooterComponent } from './admin/content-management-system/cmsfooter/cmsfooter.component';
+import { CMSDSSUseComponent } from './admin/content-management-system/cmsdssuse/cmsdssuse.component';
+import { CMSDSSEvaluationComponent } from './admin/content-management-system/cmsdssevaluation/cmsdssevaluation.component';
+import { CMSDSSAdaptionComponent } from './admin/content-management-system/cmsdssadaption/cmsdssadaption.component';
+import { CMSDSSIntegrationComponent } from './admin/content-management-system/cmsdssintegration/cmsdssintegration.component';
 
 @NgModule({
   declarations: [
@@ -135,10 +142,22 @@ import { ForgetPasswordComponent } from './shared/authentication/forget-password
     UserHeaderComponent,
     LoginComponent,
     RegisterComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    CMSBannerComponent,
+    CMSFooterComponent,
+    CMSDSSUseComponent,
+    CMSDSSEvaluationComponent,
+    CMSDSSAdaptionComponent,
+    CMSDSSIntegrationComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
