@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CMSService } from 'src/app/shared/services/cms.service';
 
 @Component({
   selector: 'user-header',
@@ -8,9 +9,16 @@ import { Component, OnInit, Input } from '@angular/core';
 export class UserHeaderComponent implements OnInit {
 
   @Input() active;
-  constructor() { }
+  bannerUrl = "";
+
+  constructor(
+    private cmsService: CMSService
+  ) { }
 
   ngOnInit() {
+    this.cmsService
+      .getBanner()
+      .then((response: any) => { this.bannerUrl = response.image.path });
   }
 
 }

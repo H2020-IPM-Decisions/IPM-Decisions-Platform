@@ -23,4 +23,14 @@ export class CMSService {
       .toPromise();
   }
 
+  getBanner() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/banner`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CMSService } from '../shared/services/cms.service';
 declare var init: any;
 
 @Component({
@@ -8,10 +9,17 @@ declare var init: any;
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  bannerUrl = "";
+
+  constructor(
+    private cmsService: CMSService
+  ) { }
 
   ngOnInit() {
-    init()
+    init();
+    this.cmsService
+      .getBanner()
+      .then((response: any) => { this.bannerUrl = response.image.path });
   }
 
 }
