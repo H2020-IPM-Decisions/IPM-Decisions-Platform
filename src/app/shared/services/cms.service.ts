@@ -33,4 +33,44 @@ export class CMSService {
       .toPromise();
   }
 
+  getDSSUse() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/dssuse`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+  
+  getDSSEvaluation() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/dssevaluation`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getDSSAdaptation() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/dssadaptation`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getDSSIntegration() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/dssintegration`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
 }
