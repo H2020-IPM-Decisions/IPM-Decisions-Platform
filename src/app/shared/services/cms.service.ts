@@ -73,4 +73,44 @@ export class CMSService {
       .toPromise();
   }
 
+  getHomeSlideshow() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/homeslideshow`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getHomeArticle1() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/homearticle1`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getHomeArticle2() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/homearticle2`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getHomeGrid() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/homegrid`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
 }
