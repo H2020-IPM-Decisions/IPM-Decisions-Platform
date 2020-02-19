@@ -1,3 +1,5 @@
+import { FooterComponent } from './core/components/footer/footer.component';
+import { TermsComponent } from './core/auth/pages/terms/terms.component';
 import { DssParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-detail/dss-parameters-detail.component';
 import { EditDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/edit-dss-observation/edit-dss-observation.component';
 import { DssObservationListComponent } from './user/components/dss/dss-detail/dss-observation-list/dss-observation-list.component';
@@ -6,16 +8,14 @@ import { DssDetailComponent } from './user/components/dss/dss-detail/dss-detail.
 import { EditFarmComponent } from './user/components/farm/edit-farm/edit-farm.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
 import { AccountComponent } from './user/components/account/account.component';
-import { UserComponent } from './user/user.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KeepHtmlPipe } from './keep-html.pipe';
 import { RunScriptsDirective } from './run-scripts.directive';
 import { AdminComponent } from './admin/admin.component';
-import { Routes, RouterModule } from '@angular/router';
 import { ContentManagementSystemComponent } from './admin/content-management-system/content-management-system.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { UserListComponent } from './admin/user-list/user-list.component';
@@ -40,7 +40,6 @@ import { AddObservationComponent } from './user/components/pest-disease/observat
 import { EditObservationComponent } from './user/components/pest-disease/observation-list/edit-observation/edit-observation.component';
 import { AddPestDiseaseComponent } from './user/components/pest-disease/add-pest-disease/add-pest-disease.component';
 import { AlertComponent } from './user/components/pest-disease/alert/alert.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
 import { DashboardManagerComponent } from './user/components/dashboard-manager/dashboard-manager.component';
 import { AddDashboardComponent } from './user/components/dashboard-manager/add-dashboard/add-dashboard.component';
 import { EditDashboardComponent } from './user/components/dashboard-manager/edit-dashboard/edit-dashboard.component';
@@ -63,6 +62,10 @@ import { SourceRepoComponent } from './admin/source-repo/source-repo.component';
 import { AdminAccountComponent } from './admin/admin-account/admin-account.component';
 import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { UserHeaderComponent } from './user/components/user-header/user-header.component';
+import { LoginComponent } from './core/auth/pages/login/login.component';
+import { RegisterComponent } from './core/auth/pages/register/register.component';
+import { ForgetPasswordComponent } from './core/auth/pages/forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +80,6 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
     DatasourceRepositoryComponent,
     ManageMetadataComponent,
     ManageCatalogueComponent,
-    UserComponent,
     AccountComponent,
     EditAccountComponent,
     FarmComponent,
@@ -126,9 +128,14 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
     SourceRepoComponent,
     AdminAccountComponent,
     AdminAccountEditComponent,
-    AdminHeaderComponent
+    AdminHeaderComponent,
+    UserHeaderComponent,
+    LoginComponent,
+    RegisterComponent,
+    ForgetPasswordComponent,
+    TermsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,],
   providers: [],
   bootstrap: [AppComponent]
 })

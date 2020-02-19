@@ -33,7 +33,7 @@
     <!-- Menu -->
     <nav class="site-nav-menu">
       <ul>
-        <li class="{{active == 'home' ? 'active' : ''}}"  ><a [routerLink]="['/user']" routerLinkActive="router-link-active" >Home</a></li>
+        <li class="{{active == 'home' ? 'active' : ''}}"  ><a [routerLink]="['/user/farm/list']" routerLinkActive="router-link-active" >Home</a></li>
         <li class="{{active == 'farm-list' ? 'active' : ''}}" ><a [routerLink]="['/user/farm/list']"  routerLinkActive="router-link-active" >Farm List</a>
           <ul class="sub-menu"> 
             <li><a [routerLink]="['/user/farm/add']" routerLinkActive="router-link-active" >Add Farm</a></li>
