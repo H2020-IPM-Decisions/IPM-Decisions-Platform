@@ -131,4 +131,14 @@ export class CMSService {
       .toPromise();
   }
 
+  getTermsAndConditions() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/termsnconditions`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
 }
