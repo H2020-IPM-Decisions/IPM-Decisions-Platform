@@ -136,6 +136,7 @@ import { UserHeaderComponent } from './user/components/user-header/user-header.c
     LoginComponent,
     RegisterComponent,
     ForgetPasswordComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,
