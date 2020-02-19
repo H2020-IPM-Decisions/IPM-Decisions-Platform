@@ -9,29 +9,53 @@ declare var init: any;
 })
 export class HomeComponent implements OnInit {
 
+  cmsPath = "";
+  assetPath = "";
   bannerUrl = "";
-  dssUseDescription: "";
-  dssEvaluationDescription: "";
-  dssAdaptationDescription: "";
-  dssIntegrationDescription: "";
+  homeArticle1 = {};
+  homeArticle2 = {};
+  homeGrid = {};
+  homeSlideshow = {};
+  news = {};
+  dssUse = {};
+  dssEvaluation = {};
+  dssAdaptation = {};
+  dssIntegration = {};
 
   constructor(
     private cmsService: CMSService
-  ) { }
+  ) {
+    this.cmsPath = cmsService.getUrl();
+    this.assetPath = cmsService.getAssetPath();
+  }
 
   ngOnInit() {
     let cmsService = this.cmsService;
-    init();
-    cmsService.getBanner()
-      .then((response: any) => { this.bannerUrl = response.image.path });
-    cmsService.getDSSUse()
-      .then((response: any) => { this.dssUseDescription = response.description });
-    cmsService.getDSSEvaluation()
-      .then((response: any) => { this.dssEvaluationDescription = response.description });
-    cmsService.getDSSAdaptation()
-      .then((response: any) => { this.dssAdaptationDescription = response.description });
-    cmsService.getDSSIntegration()
-      .then((response: any) => { this.dssIntegrationDescription = response.description });
+    let promises = [
+      cmsService.getBanner()
+        .then((response: any) => { this.bannerUrl = response.image.path }),
+      cmsService.getDSSUse()
+        .then((response: any) => { this.dssUse = response }),
+      cmsService.getDSSEvaluation()
+        .then((response: any) => { this.dssEvaluation = response; }),
+      cmsService.getDSSAdaptation()
+        .then((response: any) => { this.dssAdaptation = response }),
+      cmsService.getDSSIntegration()
+        .then((response: any) => { this.dssIntegration = response }),
+      cmsService.getHomeArticle1()
+        .then((response: any) => { this.homeArticle1 = response }),
+      cmsService.getHomeArticle2()
+        .then((response: any) => { this.homeArticle2 = response }),
+      cmsService.getHomeGrid()
+        .then((response: any) => { this.homeGrid = response }),
+      cmsService.getHomeSlideshow()
+        .then((response: any) => { this.homeSlideshow = response; }),
+      cmsService.getNews()
+        .then((response: any) => { this.news = response; }),
+    ];
+    Promise.all(promises).then(() => {
+      setTimeout(()=>init(), 100)
+    })
   }
 
 }

@@ -13,6 +13,14 @@ export class CMSService {
     private http: HttpClient
   ) { }
 
+  getUrl() {
+    return this.cmsUrl;
+  }
+
+  getAssetPath() {
+    return `${this.cmsUrl}/storage/uploads`;
+  }
+
   getFooter() {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/footer`, {
@@ -106,6 +114,16 @@ export class CMSService {
   getHomeGrid() {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/homegrid`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getNews() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/news`, {
         headers: {
           'Cockpit-Token': `${this.key}`
         }
