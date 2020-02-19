@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/admin');
     }
     if (this.loginForm.get('username').value === 'user') {
-      this.router.navigateByUrl('/user');
+      this.router.navigateByUrl('/user/farm/list');
     }
   }
 

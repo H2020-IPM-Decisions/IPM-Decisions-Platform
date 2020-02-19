@@ -1,5 +1,5 @@
+import { CMSService } from './../../../shared/services/cms.service';
 import { Component, OnInit } from '@angular/core';
-import { CMSService } from '../../services/cms.service';
 
 
 @Component({

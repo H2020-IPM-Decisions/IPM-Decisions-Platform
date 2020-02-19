@@ -1,3 +1,6 @@
+import { LoginComponent } from './core/auth/pages/login/login.component';
+import { RegisterComponent } from './core/auth/pages/register/register.component';
+import { TermsComponent } from './core/auth/pages/terms/terms.component';
 import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
 import { AdminAccountComponent } from './admin/admin-account/admin-account.component';
 import { DssUseDashboardEditComponent } from './user/components/dss/dss-use-dashboard/dss-use-dashboard-edit/dss-use-dashboard-edit.component';
@@ -53,11 +56,8 @@ import { UserProfileComponent } from './admin/user-profile/user-profile.componen
 import { DatasourceRepositoryComponent } from './admin/datasource-repository/datasource-repository.component';
 import { ManageMetadataComponent } from './admin/manage-metadata/manage-metadata.component';
 import { ManageCatalogueComponent } from './admin/manage-catalogue/manage-catalogue.component';
-import { UserComponent } from './user/user.component';
 import { AccountComponent } from './user/components/account/account.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
-import { LoginComponent } from './shared/authentication/login/login.component';
-import { RegisterComponent } from './shared/authentication/register/register.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -72,7 +72,6 @@ const appRoutes: Routes = [
   { path: 'admin/manage-metadata', component: ManageMetadataComponent },
   { path: 'admin/manage-catalogue', component: ManageCatalogueComponent },
   { path: 'admin/source-repo', component: SourceRepoComponent },
-  { path: 'user', component: UserComponent },
   { path: 'user/account', component: AccountComponent },
   { path: 'user/account/edit', component: EditAccountComponent },
   { path: 'user/farm', component: FarmComponent },
