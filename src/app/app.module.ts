@@ -1,3 +1,6 @@
+import { ForgetPasswordComponent } from './core/auth/pages/forget-password/forget-password.component';
+import { RegisterComponent } from './core/auth/pages/register/register.component';
+import { LoginComponent } from './core/auth/pages/login/login.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { TermsComponent } from './core/auth/pages/terms/terms.component';
 import { DssParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-detail/dss-parameters-detail.component';
@@ -10,7 +13,10 @@ import { EditAccountComponent } from './user/components/account/edit-account/edi
 import { AccountComponent } from './user/components/account/account.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KeepHtmlPipe } from './keep-html.pipe';
@@ -63,9 +69,6 @@ import { AdminAccountComponent } from './admin/admin-account/admin-account.compo
 import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { UserHeaderComponent } from './user/components/user-header/user-header.component';
-import { LoginComponent } from './core/auth/pages/login/login.component';
-import { RegisterComponent } from './core/auth/pages/register/register.component';
-import { ForgetPasswordComponent } from './core/auth/pages/forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -133,9 +136,15 @@ import { ForgetPasswordComponent } from './core/auth/pages/forget-password/forge
     LoginComponent,
     RegisterComponent,
     ForgetPasswordComponent,
-    TermsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

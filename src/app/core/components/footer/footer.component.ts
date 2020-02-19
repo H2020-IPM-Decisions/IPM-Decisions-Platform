@@ -1,4 +1,6 @@
+import { CMSService } from './../../../shared/services/cms.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  footer = "";
+
+  constructor(
+    private cmsService: CMSService
+  ) { }
 
   ngOnInit() {
+    this.cmsService
+      .getFooter()
+      .then((response: any) => { this.footer = response.content; });
   }
 
 }

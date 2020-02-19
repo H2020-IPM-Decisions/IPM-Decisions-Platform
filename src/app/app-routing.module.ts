@@ -1,3 +1,5 @@
+import { LoginComponent } from './core/auth/pages/login/login.component';
+import { RegisterComponent } from './core/auth/pages/register/register.component';
 import { TermsComponent } from './core/auth/pages/terms/terms.component';
 import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
 import { AdminAccountComponent } from './admin/admin-account/admin-account.component';
@@ -56,8 +58,6 @@ import { ManageMetadataComponent } from './admin/manage-metadata/manage-metadata
 import { ManageCatalogueComponent } from './admin/manage-catalogue/manage-catalogue.component';
 import { AccountComponent } from './user/components/account/account.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
-import { LoginComponent } from './core/auth/pages/login/login.component';
-import { RegisterComponent } from './core/auth/pages/register/register.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -127,10 +127,8 @@ const appRoutes: Routes = [
   { path: 'user/dss/details/platform-status', component: DssPlatformStatusComponent },
   { path: 'user/dss/details/update-parameters', component: UpdateParametersComponent },
   {path: 'register', component: RegisterComponent},
-  {path: 'register/terms', component: TermsComponent},
-  {path: 'login', component: LoginComponent}
 
-  
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
