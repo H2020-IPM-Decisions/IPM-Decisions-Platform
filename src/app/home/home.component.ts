@@ -12,15 +12,15 @@ export class HomeComponent implements OnInit {
   cmsPath = "";
   assetPath = "";
   bannerUrl = "";
-  homeArticle1 = {};
-  homeArticle2 = {};
-  homeGrid = {};
-  homeSlideshow = {};
-  news = {};
-  dssUse = {};
-  dssEvaluation = {};
-  dssAdaptation = {};
-  dssIntegration = {};
+  homeArticle1: any = {};
+  homeArticle2: any = {};
+  homeGrid: any = {};
+  homeSlideshow: any = {};
+  news: any = {};
+  dssUse: any = {};
+  dssEvaluation: any = {};
+  dssAdaptation: any = {};
+  dssIntegration: any = {};
 
   constructor(
     private cmsService: CMSService
