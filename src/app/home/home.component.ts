@@ -9,6 +9,7 @@ declare var init: any;
 })
 export class HomeComponent implements OnInit {
 
+  cmsUrl;
   cmsPath = "";
   assetPath = "";
   bannerUrl = "";
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private cmsService: CMSService
   ) {
+    this.cmsUrl = cmsService.getUrl();
     this.cmsPath = cmsService.getUrl();
     this.assetPath = cmsService.getAssetPath();
   }
@@ -56,6 +58,11 @@ export class HomeComponent implements OnInit {
     Promise.all(promises).then(() => {
       setTimeout(()=>init(), 100)
     })
+  }
+
+  updateUrl(newUrl) {
+    this.cmsService.setUrl(newUrl);
+    this.cmsUrl = newUrl;
   }
 
 }

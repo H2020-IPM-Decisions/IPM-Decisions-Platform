@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@src/environments/environment';
+import { CookieService } from 'ngx-cookie';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,19 @@ export class CMSService {
   cmsUrl = environment.cmsUrl;
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private cookieService: CookieService
+  ) {
+    this.cmsUrl = cookieService.get("cmsUrl") || this.cmsUrl;
+  }
 
   getUrl() {
     return this.cmsUrl;
+  }
+
+  setUrl(newUrl) {
+    this.cookieService.put("cmsUrl", newUrl);
+    this.cmsUrl = newUrl;
   }
 
   getAssetPath() {

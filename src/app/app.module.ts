@@ -16,8 +16,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
+import { CookieModule } from 'ngx-cookie';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { KeepHtmlPipe } from './keep-html.pipe';
 import { RunScriptsDirective } from './run-scripts.directive';
@@ -145,6 +146,7 @@ import { UserHeaderComponent } from './user/components/user-header/user-header.c
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
+    CookieModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

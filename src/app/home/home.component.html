@@ -3,14 +3,10 @@
   <div class="container">
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#login-form"
-          >Login</a
-        >
+        <a class="nav-link active" data-toggle="tab" href="#login-form">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#create-form"
-          >Create Account</a
-        >
+        <a class="nav-link" data-toggle="tab" href="#create-form">Create Account</a>
       </li>
     </ul>
     <div class="tab-content">
@@ -31,11 +27,17 @@
   <div class="header-top">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6"></div>
+        <div class="col-md-6 text-md-left">
+          <a href="#" class="nav-link user-up-nav" id="cmsDropdown" data-toggle="dropdown"
+            aria-expanded="false">
+            CMS URL: {{cmsUrl}}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="cmsDropdown">
+            &nbsp;<input #urlInput [attr.value]="cmsUrl"> &nbsp; <button (click)="updateUrl(urlInput.value)">Enter</button> &nbsp;
+          </div>
+        </div>
         <div class="col-md-6 text-md-right">
-          <a href="#" data-toggle="collapse" data-target="#login-account"
-            >Login or Create Account</a
-          >
+          <a href="#" data-toggle="collapse" data-target="#login-account">Login or Create Account</a>
         </div>
       </div>
     </div>
@@ -44,11 +46,7 @@
   <div class="site-navbar">
     <!-- Logo -->
     <a href="index.html" class="site-logo">
-      <img
-        [src]="bannerUrl"
-        alt="Logo Ipm Decisions"
-        title="Logo IPM"
-      />
+      <img [src]="bannerUrl" alt="Logo Ipm Decisions" title="Logo IPM" />
     </a>
     <div class="header-right">
       <button class="search-switch"><i class="fa fa-search"></i></button>
@@ -80,8 +78,7 @@
           <div class="row">
             <div class="col-xl-8">
               <h2>
-                <span>IPM</span><span>DECISIONS</span
-                ><span> Support System Platform</span>
+                <span>IPM</span><span>DECISIONS</span><span> Support System Platform</span>
               </h2>
             </div>
           </div>
@@ -222,10 +219,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-6 p-0">
-        <div
-          class="testimonial-bg set-bg"
-          [attr.data-setbg]="news?.picture?.path"
-        ></div>
+        <div class="testimonial-bg set-bg" [attr.data-setbg]="news?.picture?.path"></div>
       </div>
       <div class="col-lg-6 p-0">
         <div class="testimonial-box">
@@ -256,10 +250,7 @@
       </div>
       <div class="col-lg-6">
         <div class="video-box set-bg" [attr.data-setbg]="homeArticle2?.mediabackground?.path">
-          <a
-            href="{{assetPath + homeArticle2?.media?.path}}"
-            class="video-popup"
-          >
+          <a href="{{assetPath + homeArticle2?.media?.path}}" class="video-popup">
             <i class="fa fa-play"></i>
           </a>
         </div>

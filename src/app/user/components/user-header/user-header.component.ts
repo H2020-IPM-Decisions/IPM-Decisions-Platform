@@ -10,15 +10,23 @@ export class UserHeaderComponent implements OnInit {
 
   @Input() active;
   bannerUrl = "";
+  cmsUrl: string;
 
   constructor(
     private cmsService: CMSService
-  ) { }
+  ) {
+    this.cmsUrl = cmsService.getUrl();
+  }
 
   ngOnInit() {
     this.cmsService
       .getBanner()
       .then((response: any) => { this.bannerUrl = response.image.path });
+  }
+  
+  updateUrl(newUrl) {
+    this.cmsService.setUrl(newUrl);
+    this.cmsUrl = newUrl;
   }
 
 }
