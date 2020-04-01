@@ -1,4 +1,3 @@
-import { RegisterUpdateComponent } from './core/auth/pages/register-update/register-update.component';
 import { LoginComponent } from './core/auth/pages/login/login.component';
 import { RegisterComponent } from './core/auth/pages/register/register.component';
 import { TermsComponent } from './core/auth/pages/terms/terms.component';
@@ -75,62 +74,66 @@ const appRoutes: Routes = [
   { path: 'admin/manage-metadata', component: ManageMetadataComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
   { path: 'admin/manage-catalogue', component: ManageCatalogueComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
   { path: 'admin/source-repo', component: SourceRepoComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
-  { path: 'user/account', component: AccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], userTypes: ['Level0']} },
-  { path: 'user/account/edit', component: EditAccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], userTypes: ['Level0']} },
-  { path: 'user/farm', component: FarmComponent, canActivate: [AuthGuard] , data: { userTypes: ['Level0']}}, //data: { userTypes: ['Level0']}
-  { path: 'user/farm/edit', component: EditFarmComponent, canActivate: [AuthGuard],   data: { userTypes: ['Level0']}}, //, data: { userTypes: ['Level0']}
-  { path: 'user/farm/add', component: AddFarmComponent, canActivate: [AuthGuard], data: { userTypes: ['Level1']} },
-  { path: 'user/farm/list', component: FarmListComponent, canActivate: [AuthGuard], data: { userTypes: ['Level0']} },
-  { path: 'user/farm/manage', component: ManageFarmComponent, canActivate: [AuthGuard] },
-  { path: 'user/crop/add', component: AddCropComponent, canActivate: [AuthGuard] },
-  { path: 'user/crop/edit', component: EditCropComponent, canActivate: [AuthGuard] },
-  { path: 'user/crop/manage', component: ManageCropComponent, canActivate: [AuthGuard] },
-  { path: 'user/crop/list', component: CropListComponent, canActivate: [AuthGuard] },
-  { path: 'user/pest-disease/action-list', component: ActionListComponent, canActivate: [AuthGuard] },
-  { path: 'user/pest-disease/action-list/add', component: AddActionComponent, canActivate: [AuthGuard] },
-  { path: 'user/pest-disease/action-list/edit', component: EditActionComponent, canActivate: [AuthGuard] },
-  { path: 'register-update', component: RegisterUpdateComponent },
+  { path: 'user/account', component: AccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], userTypes: ['Developer', 'Farmer', 'Advisor']} },
+  { path: 'user/account/edit', component: EditAccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], userTypes: ['Level0', 'Developer', 'Farmer', 'Advisor']} },
+  { path: 'user/farm', component: FarmComponent, canActivate: [AuthGuard] , data: { roles: [Role.Admin], userTypes: ['Developer', 'Farmer', 'Advisor' ]}},
+  { path: 'user/farm/edit', component: EditFarmComponent, canActivate: [AuthGuard],   data: { roles: [Role.Admin], userTypes: ['Developer', 'Farmer', 'Advisor']}},
+  { path: 'user/farm/add', component: AddFarmComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], userTypes: ['Developer', 'Farmer', 'Advisor']} },
+  { path: 'user/farm/list', component: FarmListComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], userTypes: ['Developer', 'Farmer', 'Advisor']} },
+  { path: 'user/farm/manage', component: ManageFarmComponent, canActivate: [AuthGuard] , data: { roles: [Role.Admin], userTypes: ['Developer', 'Farmer', 'Advisor']} },
+  { path: 'user/crop/add', component: AddCropComponent, canActivate: [AuthGuard] , data: { roles: [Role.Admin], userTypes: ['Developer', 'Farmer', 'Advisor']} },
+  { path: 'user/crop/edit', component: EditCropComponent, canActivate: [AuthGuard] , data: { roles: [Role.Admin], userTypes: ['Developer', 'Farmer', 'Advisor']} },
+  { path: 'user/crop/manage', component: ManageCropComponent, canActivate: [AuthGuard] , data: { roles: [Role.Admin], userTypes: ['Developer', 'Farmer', 'Advisor']} },
+  { path: 'user/crop/list', component: CropListComponent, canActivate: [AuthGuard] , data: { roles: [Role.Admin], userTypes: ['Developer', 'Farmer', 'Advisor']} },
+  { path: 'user/pest-disease/action-list', component: ActionListComponent, canActivate: [AuthGuard] , data: { roles: [Role.Admin], userTypes: ['Developer', 'Farmer', 'Advisor']} },
+  { path: 'user/pest-disease/action-list/add', component: AddActionComponent, canActivate: [AuthGuard] , data: { roles: [Role.Admin], userTypes: ['Developer', 'Farmer', 'Advisor']} },
+  { path: 'user/pest-disease/action-list/edit', component: EditActionComponent, canActivate: [AuthGuard] , data: { roles: [Role.Admin], userTypes: ['Developer', 'Farmer', 'Advisor']} },
   {
     path: 'user/pest-disease/observation-list',
-    component: ObservationListComponent
+    component: ObservationListComponent,
+    canActivate: [AuthGuard] , data: { roles: [Role.Admin] }
   },
   {
     path: 'user/pest-disease/pest-disease-list',
-    component: PestDiseaseListComponent
+    component: PestDiseaseListComponent,
+    canActivate: [AuthGuard] , data: { roles: [Role.Admin] }
   },
   {
     path: 'user/pest-disease/observation-list/edit',
-    component: EditObservationComponent
+    component: EditObservationComponent,
+    canActivate: [AuthGuard] , data: { roles: [Role.Admin] }
   },
   {
     path: 'user/pest-disease/observation-list/add',
-    component: AddObservationComponent
+    component: AddObservationComponent,
+    canActivate: [AuthGuard] , data: { roles: [Role.Admin] }
   },
-  { path: 'user/pest-disease/add', component: AddPestDiseaseComponent },
-  { path: 'user/pest-disease/alert', component: AlertComponent },
-  { path: 'user/pest-disease/manage', component: ManagePestDiseaseComponent },
-  { path: 'user/dashboard-manager', component: DashboardManagerComponent },
-  { path: 'user/dashboard-manager/add', component: AddDashboardComponent },
-  { path: 'user/dashboard-manager/edit', component: EditDashboardComponent },
-  { path: 'user/dss/use-dashboard', component: DssUseDashboardComponent },
-  { path: 'user/dss/use-dashboard/edit', component: DssUseDashboardEditComponent },
-  { path: 'user/dss/evaluation-dashboard', component: DssEvaluationDashboardComponent },
-  { path: 'user/dss/adaptation-dashboard', component: DssAdaptationDashboardComponent },
-  { path: 'user/dss/integration-dashboard', component: DssIntegrationDashboardComponent },
-  { path: 'user/dss/list', component: DssListComponent },
-  { path: 'user/dss/details', component: DssDetailComponent },
-  { path: 'user/dss/details/observation-list', component: DssObservationListComponent },
-  { path: 'user/dss/details/observation-list/add', component: AddDssObservationComponent },
-  { path: 'user/dss/details/observation-list/edit', component: EditDssObservationComponent },
-  { path: 'user/dss/details/parameters-description', component: DssParametersDescriptionComponent },
-  { path: 'user/dss/details/parameters-description/weather-parameters-detail', component: WeatherParametersDetailComponent },
-  { path: 'user/dss/details/inputs-description', component: DssInputsDescriptionComponent },
-  { path: 'user/dss/details/outputs-description', component: DssOutputsDescriptionComponent },
-  { path: 'user/dss/details/parameters-detail', component: DssParametersDetailComponent },
-  { path: 'user/dss/details/platform-status/dss-status-detail', component: DssStatusDetailComponent },
-  { path: 'user/dss/details/platform-status', component: DssPlatformStatusComponent },
-  { path: 'user/dss/details/update-parameters', component: UpdateParametersComponent },
-  // {path: 'register', component: RegisterComponent},
+  { path: 'user/pest-disease/add', component: AddPestDiseaseComponent, canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/pest-disease/alert', component: AlertComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/pest-disease/manage', component: ManagePestDiseaseComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dashboard-manager', component: DashboardManagerComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dashboard-manager/add', component: AddDashboardComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dashboard-manager/edit', component: EditDashboardComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/use-dashboard', component: DssUseDashboardComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/use-dashboard/edit', component: DssUseDashboardEditComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/evaluation-dashboard', component: DssEvaluationDashboardComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/adaptation-dashboard', component: DssAdaptationDashboardComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/integration-dashboard', component: DssIntegrationDashboardComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/list', component: DssListComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/details', component: DssDetailComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/details/observation-list', component: DssObservationListComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/details/observation-list/add', component: AddDssObservationComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/details/observation-list/edit', component: EditDssObservationComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/details/parameters-description', component: DssParametersDescriptionComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/details/parameters-description/weather-parameters-detail', component: WeatherParametersDetailComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/details/inputs-description', component: DssInputsDescriptionComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/details/outputs-description', component: DssOutputsDescriptionComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/details/parameters-detail', component: DssParametersDetailComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/details/platform-status/dss-status-detail', component: DssStatusDetailComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/details/platform-status', component: DssPlatformStatusComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
+  { path: 'user/dss/details/update-parameters', component: UpdateParametersComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin] } }
+
+  // {path: 'register', component: RegisterComponent, canActivate: [AuthGuard] , data: { roles: [Role.Admin] } },
 
   // {path: 'login', component: LoginComponent}
 ];
