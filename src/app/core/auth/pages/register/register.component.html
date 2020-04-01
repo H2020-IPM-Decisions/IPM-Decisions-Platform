@@ -2,6 +2,9 @@
   <div class="alert alert-danger" *ngIf="errors.length">
     <p *ngFor="let error of errors">{{ error.description }}</p>
   </div>
+  <div class="alert alert-success" *ngIf="successMsg">
+    <span>{{successMsg }}</span>
+  </div>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-row">
 <!--     <div class="form-group col-5">
@@ -40,7 +43,7 @@
             userType
           }}</option>
         </select>
-        <div *ngIf="submitted && f.userType.errors" class="invalid-feedback">
+        <div *ngIf="f.userType.errors && registerForm.get('userType').touched" class="invalid-feedback">
           <div *ngIf="f.userType.errors.required">User Type is required</div>
         </div>
       </div>
@@ -52,13 +55,11 @@
         type="text"
         formControlName="email"
         class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+        [ngClass]="{ 'is-invalid': f.email.errors && registerForm.get('email').touched }"
       />
-      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+      <div *ngIf="f.email.errors && registerForm.get('email').touched" class="invalid-feedback">
         <div *ngIf="f.email.errors.required">Email is required</div>
-        <div *ngIf="f.email.errors.email">
-          Email must be a valid email address
-        </div>
+        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
       </div>
     </div>
  <!--    <div class="form-row">
@@ -137,13 +138,13 @@
           type="password"
           formControlName="password"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+          [ngClass]="{ 'is-invalid': f.password.errors && registerForm.get('password').touched }"
         />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors && (registerForm.get('password').touched || registerForm.get('password').dirty)" class="invalid-feedback">
           <div *ngIf="f.password.errors.required">Password is required</div>
-          <div *ngIf="f.password.errors.minlength">
-            Password must be at least 6 characters
-          </div>
+          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+          <!-- <div *ngIf="f.password.errors.pattern">Passwords must have at least one non alphanumeric character.</div>
+          <div *ngIf="f.password.errors.pattern">Passwords must have at least one digit ('0'-'9').</div> -->
         </div>
       </div>
       <div class="form-group col">
@@ -152,10 +153,10 @@
           type="password"
           formControlName="confirmPassword"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"
+          [ngClass]="{ 'is-invalid': f.confirmPassword.errors && registerForm.get('confirmPassword').touched }"
         />
         <div
-          *ngIf="submitted && f.confirmPassword.errors"
+          *ngIf="f.confirmPassword.errors && registerForm.get('confirmPassword').touched"
           class="invalid-feedback"
         >
           <div *ngIf="f.confirmPassword.errors.required">
@@ -167,14 +168,13 @@
         </div>
       </div>
     </div>
-
+    <!-- [disabled]="!registerForm.valid" -->
     <div class="text-center">
-      <!-- [disabled]="!registerForm.valid" -->
-      <button class="btn btn-login btn-block">Register</button>
+      <button [disabled]="!registerForm.valid" class="btn btn-login btn-block">Register</button>
     </div>
   </form>
 </div>
 
 <div *ngIf="termsAccepted">
-  <app-terms (termsAccepted)="removeAcceptedTerms($event)" [registrationData]="registerForm.value"></app-terms>
+  <app-terms (termsAccepted)="removeAcceptedTerms($event)" (message)="successMsg=$event" [registrationData]="registerForm.value"></app-terms>
 </div>

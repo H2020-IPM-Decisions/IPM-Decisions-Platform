@@ -18,6 +18,7 @@ export class TermsComponent implements OnInit {
   @Input() registrationData: IRegistrationData;
   isLoading: boolean = false;
  @Output() termsAccepted = new EventEmitter<boolean>();
+ @Output() message = new EventEmitter<string>();
  
 
   constructor(
@@ -47,25 +48,16 @@ export class TermsComponent implements OnInit {
     }
    
     this.isLoading = true; 
-    // const data = {
-    //   "password" : this.registrationData.password,
-    //   "email" : this.registrationData.email
-    // }
-    console.log("iz forme", this.registrationData);
-    
-    // this.authService.register(data).subscribe(
+
     this.authService.register(this.registrationData).subscribe(    
-      dataRes => {
-        console.log("sign", dataRes);     
-        // redirect to login   
+      responseData => {
         this.isLoading = false;
-        // this.router.navigate(['/'])
-        this.router.navigate([''], {state: {data: {active: 'active'}}});
+        const successMsg = "Account successfully created!";
+        this.message.emit(successMsg);
+        this.termsAccepted.emit(false);    
 
       },
       errorRes => {
-        console.log("nesto", errorRes);
-        
           this.isLoading = false;
           this.termsAccepted.emit(false);     
         }
