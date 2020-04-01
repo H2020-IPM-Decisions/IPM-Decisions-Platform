@@ -1,6 +1,9 @@
+import { Role } from './../../models/role.enum';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'login',
@@ -11,33 +14,64 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   forgotPass = false;
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  loading = false; //todo
+  returnUrl: string;
+  errors: string[] = [];
+
+  constructor(
+    private formBuilder: FormBuilder, 
+    private route: ActivatedRoute,
+    private router: Router, 
+    private authenticationService: AuthenticationService) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group(
       {
-        username: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]]
       },
     );
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
   }
 
   get f() {
     return this.loginForm.controls;
   }
 
-  onSubmit() {
+  onLogin() {
     this.submitted = true;
-
+            
     if (this.loginForm.invalid) {
+      console.log("invalid login form")
       return;
     }
-    if (this.loginForm.get('username').value === 'admin') {
-      this.router.navigateByUrl('/admin');
+
+    const email = (<string>this.f.email.value).toLowerCase();
+    const password = this.f.password.value;
+    this.loading = true;
+
+    const loginObsever = {
+      next: 
+        (res: any) => {
+          this.loading = false;
+          
+          if(this.authenticationService.currentUserValue.role === Role.Admin) {
+            this.router.navigate(["/admin"]);
+          } else {
+            this.router.navigate(["/user/farm"]);
+          }
+        },
+      error: 
+        (errorMessages: any) => {
+          this.loading = false;
+          this.errors = [errorMessages];
+        }
     }
-    if (this.loginForm.get('username').value === 'user') {
-      this.router.navigateByUrl('/user/farm/list');
-    }
+
+    this.authenticationService.login(email, password)
+    .pipe(first())
+    .subscribe(loginObsever);
+    
   }
 
   forgotPassword(){

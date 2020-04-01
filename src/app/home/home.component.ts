@@ -1,5 +1,11 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CMSService } from '../shared/services/cms.service';
+import { User } from '../core/auth/models/user.model';
+import { AuthenticationService } from '../shared/services/authentication.service';
+import { Role } from '../core/auth/models/role.enum';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 declare var init: any;
 
 @Component({
@@ -22,16 +28,23 @@ export class HomeComponent implements OnInit {
   dssEvaluation: any = {};
   dssAdaptation: any = {};
   dssIntegration: any = {};
-
+  
+  currentUser: User;
+  state$: Observable<object>;
   constructor(
-    private cmsService: CMSService
+    private cmsService: CMSService,
+    private authenticationService: AuthenticationService,
+    private router: Router,
+    public activatedRoute: ActivatedRoute
   ) {
     this.cmsUrl = cmsService.getUrl();
     this.cmsPath = cmsService.getUrl();
     this.assetPath = cmsService.getAssetPath();
+    // this.authenticationService.currentUser.subscribe(user => this.currentUser = user);
   }
 
   ngOnInit() {
+
     let cmsService = this.cmsService;
     let promises = [
       cmsService.getBanner()
@@ -55,14 +68,15 @@ export class HomeComponent implements OnInit {
       cmsService.getNews()
         .then((response: any) => { this.news = response; }),
     ];
-    Promise.all(promises).then(() => {
-      setTimeout(()=>init(), 100)
-    })
+    // Promise.all(promises).then(() => {
+    //   setTimeout(()=>init(), 100)
+    // })
   }
 
   updateUrl(newUrl) {
     this.cmsService.setUrl(newUrl);
     this.cmsUrl = newUrl;
   }
+
 
 }

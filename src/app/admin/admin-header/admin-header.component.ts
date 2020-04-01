@@ -1,3 +1,4 @@
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { CMSService } from 'src/app/shared/services/cms.service';
 
@@ -13,7 +14,8 @@ export class AdminHeaderComponent implements OnInit {
   cmsUrl: string;
 
   constructor(
-    private cmsService: CMSService
+    private cmsService: CMSService,
+    private authenticationService: AuthenticationService
   ) {
     this.cmsUrl = cmsService.getUrl();
   }
@@ -27,6 +29,12 @@ export class AdminHeaderComponent implements OnInit {
   updateUrl(newUrl) {
     this.cmsService.setUrl(newUrl);
     this.cmsUrl = newUrl;
+  }
+
+  logout() {
+    console.log('admin-header');
+    
+    this.authenticationService.logout();
   }
 
 }

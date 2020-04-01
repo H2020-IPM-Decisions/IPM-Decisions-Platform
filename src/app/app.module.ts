@@ -70,6 +70,8 @@ import { AdminAccountComponent } from './admin/admin-account/admin-account.compo
 import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { UserHeaderComponent } from './user/components/user-header/user-header.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthModule } from './core/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -134,19 +136,18 @@ import { UserHeaderComponent } from './user/components/user-header/user-header.c
     AdminAccountEditComponent,
     AdminHeaderComponent,
     UserHeaderComponent,
-    LoginComponent,
-    RegisterComponent,
-    ForgetPasswordComponent,
-    TermsComponent
+    // LoginComponent,
+    // RegisterComponent,
+    // ForgetPasswordComponent,
+    // TermsComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
+    AppRoutingModule,  
     CommonModule,
     HttpClientModule,
-    CookieModule.forRoot()
+    CookieModule.forRoot(),
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

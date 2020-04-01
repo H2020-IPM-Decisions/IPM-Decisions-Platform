@@ -1,7 +1,9 @@
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MustMatch } from '../../_helpers/must-match.validator';
+
 
 @Component({
   selector: 'register',
@@ -13,28 +15,46 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   termsAccepted = false;
   countries = ['GB', 'Norway', 'France', 'Serbia'];
-  userTypes = ['Farmer', 'Advisor', 'Admin'];
-  constructor(private formBuilder: FormBuilder, private router:Router) {}
+  userTypes = ['Farmer', 'Advisor', 'Developer'];
+  errors: string[] = [];
+  constructor(private formBuilder: FormBuilder, private router:Router, private authService: AuthenticationService) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group(
       {
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        userType: ['', Validators.required],
+        // firstName: ['', Validators.required],
+        // lastName: ['', Validators.required],
+        // userType: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        phone: ['', Validators.required],
-        mobile: ['', Validators.required],
-        address: ['', Validators.required],
-        postalCode: ['', Validators.required],
-        country: ['', Validators.required],
+        // phone: ['', Validators.required],
+        // mobile: ['', Validators.required],
+        // address: ['', Validators.required],
+        // postalCode: ['', Validators.required],
+        // country: ['', Validators.required],
         password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', Validators.required],
+        // confirmPassword: ['', Validators.required],
+        firstName: [''],
+        lastName: [''],
+        userType: [''],
+        // email: [''],
+        phone: [''],
+        mobile: [''],
+        address: [''],
+        postalCode: [''],
+        country: [''],
+        // password: ['',],
+        confirmPassword: [''],
       },
       {
-        validator: MustMatch('password', 'confirmPassword')
+        // validator: MustMatch('password', 'confirmPassword')
       }
     );
+
+    this.authService.errors.subscribe(errors => {
+      console.log("sa tersa" , errors);
+      
+      this.errors = errors;
+    });
   }
 
   get f() {
@@ -44,16 +64,17 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.registerForm.invalid) {
-      console.log('false');
       return;
     }
-    console.log('register/terms');
-    this.termsAccepted = true;
-    console.log(this.termsAccepted);
+    this.termsAccepted = true;   
   }
 
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
+  }  
+
+  removeAcceptedTerms(removeTerms:boolean) {
+    this.termsAccepted = removeTerms; 
   }
 }

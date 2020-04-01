@@ -1,3 +1,4 @@
+import { RegisterUpdateComponent } from './core/auth/pages/register-update/register-update.component';
 import { LoginComponent } from './core/auth/pages/login/login.component';
 import { RegisterComponent } from './core/auth/pages/register/register.component';
 import { TermsComponent } from './core/auth/pages/terms/terms.component';
@@ -58,34 +59,37 @@ import { ManageMetadataComponent } from './admin/manage-metadata/manage-metadata
 import { ManageCatalogueComponent } from './admin/manage-catalogue/manage-catalogue.component';
 import { AccountComponent } from './user/components/account/account.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
+import { AuthGuard } from './core/auth/guard/auth.guard';
+import { Role } from './core/auth/models/role.enum';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
-  { path: 'admin', component: AdminComponent },
-  { path: 'admin/account', component: AdminAccountComponent },
-  { path: 'admin/account/edit', component: AdminAccountEditComponent },
-  { path: 'admin/cms', component: ContentManagementSystemComponent },
-  { path: 'admin/add-user', component: AddUserComponent },
-  { path: 'admin/user-list', component: UserListComponent },
-  { path: 'admin/user-profile', component: UserProfileComponent },
-  { path: 'admin/datasource-repo', component: DatasourceRepositoryComponent },
-  { path: 'admin/manage-metadata', component: ManageMetadataComponent },
-  { path: 'admin/manage-catalogue', component: ManageCatalogueComponent },
-  { path: 'admin/source-repo', component: SourceRepoComponent },
-  { path: 'user/account', component: AccountComponent },
-  { path: 'user/account/edit', component: EditAccountComponent },
-  { path: 'user/farm', component: FarmComponent },
-  { path: 'user/farm/edit', component: EditFarmComponent },
-  { path: 'user/farm/add', component: AddFarmComponent },
-  { path: 'user/farm/list', component: FarmListComponent },
-  { path: 'user/farm/manage', component: ManageFarmComponent },
-  { path: 'user/crop/add', component: AddCropComponent },
-  { path: 'user/crop/edit', component: EditCropComponent },
-  { path: 'user/crop/manage', component: ManageCropComponent },
-  { path: 'user/crop/list', component: CropListComponent },
-  { path: 'user/pest-disease/action-list', component: ActionListComponent },
-  { path: 'user/pest-disease/action-list/add', component: AddActionComponent },
-  { path: 'user/pest-disease/action-list/edit', component: EditActionComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'admin/account', component: AdminAccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'admin/account/edit', component: AdminAccountEditComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'admin/cms', component: ContentManagementSystemComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'admin/add-user', component: AddUserComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'admin/user-list', component: UserListComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'admin/user-profile', component: UserProfileComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'admin/datasource-repo', component: DatasourceRepositoryComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'admin/manage-metadata', component: ManageMetadataComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'admin/manage-catalogue', component: ManageCatalogueComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'admin/source-repo', component: SourceRepoComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'user/account', component: AccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], userTypes: ['Level0']} },
+  { path: 'user/account/edit', component: EditAccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], userTypes: ['Level0']} },
+  { path: 'user/farm', component: FarmComponent, canActivate: [AuthGuard] , data: { userTypes: ['Level0']}}, //data: { userTypes: ['Level0']}
+  { path: 'user/farm/edit', component: EditFarmComponent, canActivate: [AuthGuard],   data: { userTypes: ['Level0']}}, //, data: { userTypes: ['Level0']}
+  { path: 'user/farm/add', component: AddFarmComponent, canActivate: [AuthGuard], data: { userTypes: ['Level1']} },
+  { path: 'user/farm/list', component: FarmListComponent, canActivate: [AuthGuard], data: { userTypes: ['Level0']} },
+  { path: 'user/farm/manage', component: ManageFarmComponent, canActivate: [AuthGuard] },
+  { path: 'user/crop/add', component: AddCropComponent, canActivate: [AuthGuard] },
+  { path: 'user/crop/edit', component: EditCropComponent, canActivate: [AuthGuard] },
+  { path: 'user/crop/manage', component: ManageCropComponent, canActivate: [AuthGuard] },
+  { path: 'user/crop/list', component: CropListComponent, canActivate: [AuthGuard] },
+  { path: 'user/pest-disease/action-list', component: ActionListComponent, canActivate: [AuthGuard] },
+  { path: 'user/pest-disease/action-list/add', component: AddActionComponent, canActivate: [AuthGuard] },
+  { path: 'user/pest-disease/action-list/edit', component: EditActionComponent, canActivate: [AuthGuard] },
+  { path: 'register-update', component: RegisterUpdateComponent },
   {
     path: 'user/pest-disease/observation-list',
     component: ObservationListComponent
@@ -126,9 +130,9 @@ const appRoutes: Routes = [
   { path: 'user/dss/details/platform-status/dss-status-detail', component: DssStatusDetailComponent },
   { path: 'user/dss/details/platform-status', component: DssPlatformStatusComponent },
   { path: 'user/dss/details/update-parameters', component: UpdateParametersComponent },
-  {path: 'register', component: RegisterComponent},
+  // {path: 'register', component: RegisterComponent},
 
-  {path: 'login', component: LoginComponent}
+  // {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
