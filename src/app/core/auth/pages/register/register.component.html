@@ -59,7 +59,7 @@
       />
       <div *ngIf="f.email.errors && f.email.touched" class="invalid-feedback">
         <div *ngIf="f.email.errors.required">Email is required</div>
-        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        <div *ngIf="f.email.errors.pattern">Email must be a valid email address</div>
       </div>
     </div>
  <!--    <div class="form-row">
