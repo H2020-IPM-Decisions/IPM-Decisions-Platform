@@ -11,7 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guard/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ErrorInterceptorService } from './services/error-interceptor.service';
 
 
 @NgModule({
@@ -30,7 +29,6 @@ import { ErrorInterceptorService } from './services/error-interceptor.service';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
     AuthGuard
   ],
   exports: [
