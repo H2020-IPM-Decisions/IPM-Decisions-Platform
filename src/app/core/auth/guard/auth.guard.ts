@@ -24,11 +24,16 @@ export class AuthGuard implements CanActivate {
       take(1),
       map(user => {
 
-        if (route.data.roles && route.data.roles.indexOf(user.role) === -1) {
-          return this.router.createUrlTree(['/']);
+        if(user.role) {
+          if (route.data.roles && route.data.roles.indexOf(user.role) === -1) {
+            return this.router.createUrlTree(['/']);
+          }
         }
-        if (route.data.userTypes && route.data.userTypes.indexOf(user.userType) === -1) {
-          return this.router.createUrlTree(['/']);
+        
+        if(user.userType) {
+          if (route.data.userTypes && route.data.userTypes.indexOf(user.userType) === -1) {
+            return this.router.createUrlTree(['/']);
+          }
         }
         
         if (!!user) {

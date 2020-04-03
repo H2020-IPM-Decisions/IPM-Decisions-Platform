@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
         (res: any) => {
           this.loading = false;
           
+          // console.log("res", res);
           if(this.authenticationService.currentUserValue.role === Role.Admin) {
             this.router.navigate(["/admin"]);
           } else {
@@ -62,6 +63,7 @@ export class LoginComponent implements OnInit {
         },
       error: 
         (errorMessages: any) => {
+          // console.log("res", errorMessages);
           this.loading = false;
           this.errors = [errorMessages];
         }

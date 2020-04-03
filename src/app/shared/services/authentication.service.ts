@@ -39,7 +39,7 @@ export class AuthenticationService {
                 catchError(this.handleError), 
                 tap(response => {
                     const decoded = jwt_decode(response.token);
-         
+                    console.log("decoded", decoded);
                     // console.log("decoded", decoded);
                     const currentUser: User = new User(
                         decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'],
@@ -66,6 +66,7 @@ export class AuthenticationService {
         return this.http.post<AuthResponseData>(url, registrationData)
             .pipe(    
                 catchError( (errorRes) => {
+                    console.log("errorRes", errorRes);
                     let errorMessage = 'An unknown error occured!';
                     if(!errorRes.error || !errorRes.error.errors) {
                         this.errors.next([errorMessage]);
@@ -73,11 +74,17 @@ export class AuthenticationService {
 
                     this.errors.next(errorRes.error.errors);
                     return throwError(errorRes.error.errors);
-                })              
+                })
+                // tap((user:AuthResponseData) => {
+                //     console.log("user", user);
+                    
+                //     window.sessionStorage.setItem("user", JSON.stringify(user));
+                // })            
             );
     }
 
     logout() {
+        console.log("exit")
         window.sessionStorage.removeItem('user');
         this.currentUserSubject.next(null);
     }
