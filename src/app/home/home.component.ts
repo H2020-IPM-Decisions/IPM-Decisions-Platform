@@ -68,9 +68,9 @@ export class HomeComponent implements OnInit {
       cmsService.getNews()
         .then((response: any) => { this.news = response; }),
     ];
-    // Promise.all(promises).then(() => {
-    //   setTimeout(()=>init(), 100)
-    // })
+    Promise.all(promises).then(() => {
+      setTimeout(()=>init(), 100)
+    })
   }
 
   updateUrl(newUrl) {
