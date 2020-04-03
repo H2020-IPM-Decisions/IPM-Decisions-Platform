@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
           [
             Validators.required, 
             Validators.minLength(6), 
-            Validators.pattern(".*(?=^.{6,}$)(?=[^\\d]*\\d)(?=[^\\W]*\\W)(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z]).*")
+            Validators.pattern("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+])[A-Za-z\\d][A-Za-z\\d!@#$%^&*()_+]{6,}$")
           ]], 
         confirmPassword: ['', Validators.required],
         // firstName: ['', Validators.required],
@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
         validator: MustMatch('password', 'confirmPassword')
       }
     );
-    console.log("kontrola" ,this.registerForm);
+    // console.log("kontrola" ,this.registerForm);
     this.authService.errors.subscribe(errors => {
       this.errors = errors;
     });

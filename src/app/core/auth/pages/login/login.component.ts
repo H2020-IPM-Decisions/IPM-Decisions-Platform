@@ -29,7 +29,11 @@ export class LoginComponent implements OnInit {
       {
         email: ['', [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]],
         // email: ['', [Validators.required, Validators.pattern('^(([^<>()\\[\\]\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$')]],
-        password: ['', [Validators.required, Validators.minLength(6),Validators.pattern(".*(?=^.{6,}$)(?=[^\\d]*\\d)(?=[^\\W]*\\W)(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z]).*")]]
+        password: ['', [
+          Validators.required, 
+          Validators.minLength(6),
+          Validators.pattern("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+])[A-Za-z\\d][A-Za-z\\d!@#$%^&*()_+]{6,}$")
+        ]]
       },
     );
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
