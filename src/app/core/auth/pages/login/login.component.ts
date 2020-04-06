@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
           if(this.authenticationService.currentUserValue.role === Role.Admin) {
             this.router.navigate(["/admin"]);
           } else {
-            this.router.navigate(["/user/farm"]);
+            this.router.navigate(["/user/farm/list"]);
           }
         },
       error: 
