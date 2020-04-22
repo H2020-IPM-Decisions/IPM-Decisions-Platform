@@ -72,6 +72,7 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
 import { UserHeaderComponent } from './user/components/user-header/user-header.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthModule } from './core/auth/auth.module';
+import { CmsLinkPipe } from './shared/pipes/cms-link.pipe';
 
 @NgModule({
   declarations: [
@@ -136,6 +137,7 @@ import { AuthModule } from './core/auth/auth.module';
     AdminAccountEditComponent,
     AdminHeaderComponent,
     UserHeaderComponent,
+    CmsLinkPipe,
     // LoginComponent,
     // RegisterComponent,
     // ForgetPasswordComponent,
