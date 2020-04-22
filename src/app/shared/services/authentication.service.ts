@@ -12,6 +12,8 @@ export class AuthenticationService {
     public currentUser: Observable<User>;
 
     public errors = new Subject<string[]>();
+    tokenExpirationTimer: any;
+    currentTimeInSeconds: number;
 
     constructor(private http: HttpClient) {  
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(window.sessionStorage.getItem('user')));
@@ -20,6 +22,25 @@ export class AuthenticationService {
 
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
+    }
+
+    register(registrationData: any) {
+
+        const url = `${environment.apiUrl}/idp/api/authorization/register`;
+    
+        return this.http.post<AuthResponseData>(url, registrationData)
+            .pipe(    
+                catchError( (errorRes) => {
+                    // console.log("errorRes", errorRes);
+                    let errorMessage = 'An unknown error occured!';
+                    if(!errorRes.error || !errorRes.error.errors) {
+                        this.errors.next([errorMessage]);
+                    }
+
+                    this.errors.next(errorRes.error.errors);
+                    return throwError(errorRes.error.errors);
+                })                          
+            );
     }
 
     login(email: string, password: string) {
@@ -51,29 +72,10 @@ export class AuthenticationService {
                         // console.log('current user', currentUser);
           
                         this.currentUserSubject.next(currentUser);
+                        this.currentTimeInSeconds = Math.round(new Date().getTime()/1000);
+                        this.autoLogout(currentUser.tokenExpiration - this.currentTimeInSeconds);
                         window.sessionStorage.setItem('user', JSON.stringify(currentUser));
                 }) 
-            );
-    }
-
-
-    
-    register(registrationData: any) {
-
-        const url = `${environment.apiUrl}/idp/api/authorization/register`;
-    
-        return this.http.post<AuthResponseData>(url, registrationData)
-            .pipe(    
-                catchError( (errorRes) => {
-                    // console.log("errorRes", errorRes);
-                    let errorMessage = 'An unknown error occured!';
-                    if(!errorRes.error || !errorRes.error.errors) {
-                        this.errors.next([errorMessage]);
-                    }
-
-                    this.errors.next(errorRes.error.errors);
-                    return throwError(errorRes.error.errors);
-                })                          
             );
     }
 
@@ -84,7 +86,7 @@ export class AuthenticationService {
             userType: string,
             role: string,
             _token: string,
-            _tokenExpirationDate: number
+            _tokenExpiration: number
         } = JSON.parse(window.sessionStorage.getItem('user'));
 
         if(!userData) { return; }
@@ -95,17 +97,29 @@ export class AuthenticationService {
             userData.userType,
             userData.role,
             userData._token,
-            userData._tokenExpirationDate   
+            userData._tokenExpiration   
         );
 
         if(loadedUser.token) {
             this.currentUserSubject.next(loadedUser);
+            const expirationDuration = loadedUser.tokenExpiration - this.currentTimeInSeconds;
+            this.autoLogout(expirationDuration);
         }
     }
 
     logout() {
         window.sessionStorage.removeItem('user');
         this.currentUserSubject.next(null);
+        if(this.tokenExpirationTimer) {
+            clearTimeout(this.tokenExpirationTimer);
+        }
+        this.tokenExpirationTimer = null;
+    }
+
+    autoLogout(expirationDuration: number) {
+        this.tokenExpirationTimer = setTimeout(()=>{
+            this.logout();
+        }, expirationDuration);
     }
 
     private handleError(errorRes: HttpErrorResponse) {
