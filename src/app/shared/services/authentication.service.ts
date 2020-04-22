@@ -13,7 +13,6 @@ export class AuthenticationService {
 
     public errors = new Subject<string[]>();
     tokenExpirationTimer: any;
-    currentTimeInSeconds: number;
 
     constructor(private http: HttpClient) {  
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(window.sessionStorage.getItem('user')));
@@ -72,8 +71,9 @@ export class AuthenticationService {
                         // console.log('current user', currentUser);
           
                         this.currentUserSubject.next(currentUser);
-                        this.currentTimeInSeconds = Math.round(new Date().getTime()/1000);
-                        this.autoLogout(currentUser.tokenExpiration - this.currentTimeInSeconds);
+                        const expirationDuration = currentUser.tokenExpiration * 1000 - new Date().getTime();
+                        // console.log("ex", expirationDuration);                        
+                        this.autoLogout(expirationDuration);
                         window.sessionStorage.setItem('user', JSON.stringify(currentUser));
                 }) 
             );
@@ -102,7 +102,7 @@ export class AuthenticationService {
 
         if(loadedUser.token) {
             this.currentUserSubject.next(loadedUser);
-            const expirationDuration = loadedUser.tokenExpiration - this.currentTimeInSeconds;
+            const expirationDuration = loadedUser.tokenExpiration * 1000 - new Date().getTime();
             this.autoLogout(expirationDuration);
         }
     }
@@ -119,7 +119,8 @@ export class AuthenticationService {
     autoLogout(expirationDuration: number) {
         this.tokenExpirationTimer = setTimeout(()=>{
             this.logout();
-        }, expirationDuration * 1000);
+            
+        }, expirationDuration);
     }
 
     private handleError(errorRes: HttpErrorResponse) {
