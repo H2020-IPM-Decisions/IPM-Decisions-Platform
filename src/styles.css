@@ -11,6 +11,13 @@
 /* Template default CSS
 /*----------------------------------------*/
 
+
+:root {
+  --main-bg-color: #259fa6;
+  --main-txt-color: blue;
+  --main-padding: 15px;
+}
+
 html,
 body {
   height: 100%;
@@ -444,8 +451,8 @@ Header section
  ---------------------*/
 
 .header-top {
-  padding: 14px 40px;
-  background: #081624;
+  padding: 5px 0;
+  background: var(--main-bg-color);
 }
 
 .header-top p {
@@ -501,7 +508,7 @@ Header section
   color: #fff;
   font-size: 25px;
   border: none;
-  background: #249fa5;
+  background: #afafaf;
   height: 86px;
 }
 
@@ -613,8 +620,12 @@ Header section
  ---------------------*/ 
 
    .header-top a{
-       color: #718090;
+       color: #fff;
        font-size: 14px;
+   }
+
+   a.dropdown-item {
+    color: #081624;
    }
 
    #login-account {
@@ -660,7 +671,7 @@ Header section
 }
 
 .hero-item {
-  height: 777px;
+  height: 450px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -671,23 +682,24 @@ Header section
 
 .hero-item h2 {
   font-size: 50px;
-  font-weight: 300;
+  font-weight: 600;
   color: #fff;
   margin-bottom: 34px;
   opacity: 0;
   top: 50px;
   position: relative;
+  left: 25%;
+  text-align: center;
 }
 
 .hero-item h2 span {
   padding-left: 25px;
   padding-bottom: 15px;
   display: inline-block;
-  background: rgba(122, 188, 42, 0.7098039215686275);
 }
 
 .set-bg {
-   background: #7abc2a;
+   background: #5074ac;
 }
 
 .hero-item h2 span:nth-child(1) {
@@ -734,7 +746,7 @@ Service Section
  ---------------------*/
 
 .services-warp {
-  padding-top: 56px;
+  padding-top: 30px;
   padding-bottom: 30px;
   max-width: 1227px;
   margin: -91px auto 0;
@@ -764,7 +776,6 @@ Service Section
   top: -4px;
   -webkit-box-shadow: 0 0 0 #000;
   box-shadow: 0 0 0 #000;
-  border-top: 4px solid #7abc2a;
   z-index: -1;
 }
 
@@ -892,7 +903,7 @@ Service Section
 
 .testimonial-box {
   padding: 100px 15px 70px;
-  background: #081624;
+  background: #259fa6;
 }
 
 .testimonial-box .testi-box-warp {
@@ -921,7 +932,7 @@ Service Section
 }
 
 .testimonial-slider .owl-dots .owl-dot.active {
-  background: #249fa5;
+  background: #fff;
 }
 
 .testimonial {
@@ -931,6 +942,7 @@ Service Section
 .testimonial p {
   font-size: 14px;
   margin-bottom: 55px;
+  color: #fff;
 }
 
 .testimonial .testi-thumb {
@@ -1026,7 +1038,7 @@ section#ipm-news {
 ---------------------*/
 
 .footer-section {
-  background: #17172d;
+  background: #1d1b1b;
   padding-bottom: 0;
 }
 
@@ -1061,7 +1073,7 @@ section#ipm-news {
 .footer-widget ul li a {
   display: block;
   font-size: 14px;
-  color: #718090;
+  color: #fff;
   margin-bottom: 15px;
 }
 
@@ -1075,7 +1087,7 @@ section#ipm-news {
   padding-right: 47px;
   padding-left: 22px;
   font-size: 12px;
-  color: #718090;
+  color: #fff;
   font-style: italic;
   border: none;
   background: #393958;
@@ -1087,7 +1099,7 @@ section#ipm-news {
   height: 100%;
   right: 0;
   top: 0;
-  color: #249fa5;
+  color: #fff;
   font-size: 12px;
   border: none;
   background: transparent;
@@ -1115,7 +1127,7 @@ section#ipm-news {
 }
 
 .footer-social a:hover {
-  background: #249fa5;
+  background: #fff;
 }
 
 .footer-info-box {
@@ -1137,22 +1149,22 @@ section#ipm-news {
 }
 
 .footer-buttom {
-  background: #03031b;
+  background: #151414;
 }
 
 .copyright {
-  color: #646470;
+  color: #fff;
   font-size: 14px;
   padding-top: 25px;
 }
 
 .copyright a {
-  color: #646470;
+  color: #fff;
   text-decoration: underline;
 }
 
 .copyright a:hover {
-  color: #249fa5;
+  color: #fff;
 }
 
 .footer-menu {
@@ -1169,7 +1181,7 @@ section#ipm-news {
   padding: 21px 17px;
   margin-left: 13px;
   font-size: 15px;
-  color: #646470;
+  color: #fff;
   position: relative;
 }
 
