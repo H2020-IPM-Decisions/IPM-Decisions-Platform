@@ -119,7 +119,7 @@ export class AuthenticationService {
     autoLogout(expirationDuration: number) {
         this.tokenExpirationTimer = setTimeout(()=>{
             this.logout();
-        }, expirationDuration);
+        }, expirationDuration * 1000);
     }
 
     private handleError(errorRes: HttpErrorResponse) {
