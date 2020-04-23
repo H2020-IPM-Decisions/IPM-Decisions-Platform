@@ -148,6 +148,8 @@ import { CmsLinkPipe } from './shared/pipes/cms-link.pipe';
     AppRoutingModule,  
     CommonModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     CookieModule.forRoot(),
     AuthModule
   ],
