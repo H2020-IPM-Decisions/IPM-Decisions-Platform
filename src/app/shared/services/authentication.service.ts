@@ -1,16 +1,19 @@
+import { Authentication } from './../../core/auth/models/authentication.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap} from 'rxjs/operators';
 import * as jwt_decode from 'jwt-decode';
+
 import { environment } from 'src/environments/environment';
 import { User } from '@app/core/auth/models/user.model';
+import { UserForAuthentication } from '@app/core/auth/models/user-for-authentication.model';
+import { UserForRegistration } from '@app/core/auth/models/user-for-registration.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     currentUserSubject = new BehaviorSubject<User>(null);
     public currentUser: Observable<User>;
-
     public errors = new Subject<string[]>();
     tokenExpirationTimer: any;
 
@@ -22,10 +25,9 @@ export class AuthenticationService {
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
     }
+    register(registrationData: UserForRegistration):Observable<AuthResponseData> {
 
-    register(registrationData: any) {
-
-        const url = `${environment.apiUrl}/idp/api/authorization/register`;
+        const url: string = `${environment.apiUrl}/idp/api/authorization/register`;
     
         return this.http.post<AuthResponseData>(url, registrationData)
             .pipe(    
@@ -42,9 +44,9 @@ export class AuthenticationService {
             );
     }
 
-    login(email: string, password: string) {
+    login(userForAuthentication: UserForAuthentication):Observable<Authentication> {
 
-        const url = `${environment.apiUrl}/idp/api/authorization/authenticate`;
+        const url:string = `${environment.apiUrl}/idp/api/authorization/authenticate`;
 
         const headers = { 
             'Content-Type':'application/json',
@@ -54,27 +56,28 @@ export class AuthenticationService {
             'client_secret':'bpjiu9ticX8TB0owtMESxM27iQdp9iX_b4RpZ8VAujA' 
         };
 
-        return this.http.post<any>(url, { email, password }, { headers } )
+        return this.http.post<Authentication>(url, userForAuthentication, { headers })
             .pipe(
                 catchError(this.handleError), 
                 tap(response => {
+
+                    console.log("ovo je response login", response);
+                    
                     const decoded = jwt_decode(response.token);
-                    // console.log("decoded", decoded);
+                    console.log("decoded", decoded);
                     const currentUser: User = new User(
                         decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'],
-                        email,
+                        userForAuthentication.email,
                         decoded['UserAccessType'],
                         decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'],
                         response.token,
                         decoded['exp']
                     );
-                        // console.log('current user', currentUser);
           
-                        this.currentUserSubject.next(currentUser);
-                        const expirationDuration = currentUser.tokenExpiration * 1000 - new Date().getTime();
-                        // console.log("ex", expirationDuration);                        
-                        this.autoLogout(expirationDuration);
-                        window.sessionStorage.setItem('user', JSON.stringify(currentUser));
+                    this.currentUserSubject.next(currentUser);
+                    const expirationDuration = currentUser.tokenExpiration * 1000 - new Date().getTime();
+                    this.autoLogout(expirationDuration);
+                    window.sessionStorage.setItem('user', JSON.stringify(currentUser));
                 }) 
             );
     }
@@ -136,7 +139,7 @@ export class AuthenticationService {
     }
 }
 
-interface AuthResponseData {
+export interface AuthResponseData {
     id: string,
     email: string
 }
