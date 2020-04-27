@@ -19,7 +19,7 @@ export class EditAccountComponent implements OnInit {
   accountForm: FormGroup;
   countries = ['GB', 'Norway', 'France', 'Serbia'];
   private id: string = this.authenticationService.currentUserValue.id;
-
+  submitted;
   errors: string[] = [];
   isCreated: boolean = false;
   isUpdated: boolean = false;
