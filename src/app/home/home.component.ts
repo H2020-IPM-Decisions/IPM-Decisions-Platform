@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
         .then((response: any) => { this.news = response; }),
     ];
     Promise.all(promises).then(() => {
-      setTimeout(()=>init(), 100)
+      setTimeout(()=>init(), 0)
     })
   }
 
