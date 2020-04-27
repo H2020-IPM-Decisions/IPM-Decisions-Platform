@@ -40,7 +40,6 @@ export class HomeComponent implements OnInit {
     this.cmsUrl = cmsService.getUrl();
     this.cmsPath = cmsService.getUrl();
     this.assetPath = cmsService.getAssetPath();
-    // this.authenticationService.currentUser.subscribe(user => this.currentUser = user);
   }
 
   ngOnInit() {
