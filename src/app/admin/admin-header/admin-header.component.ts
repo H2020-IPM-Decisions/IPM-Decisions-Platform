@@ -32,8 +32,6 @@ export class AdminHeaderComponent implements OnInit {
   }
 
   logout() {
-    // console.log('admin-header');
-    
     this.authenticationService.logout();
   }
 

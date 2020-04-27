@@ -30,7 +30,7 @@
 <div class="site-navbar">
   <!-- Logo -->
   <a [routerLink]="['/user']" class="site-logo">
-    <img [src]="bannerUrl" alt="Logo Ipm Decisions" title="Logo IPM" />
+    <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
   </a>
   <div class="header-right">
     <button class="search-switch"><i class="fa fa-search"></i></button>

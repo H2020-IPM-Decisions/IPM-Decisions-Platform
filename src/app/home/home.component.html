@@ -250,7 +250,7 @@
       </div>
       <div class="col-lg-6">
         <div class="video-box set-bg" [attr.data-setbg]="homeArticle2?.mediabackground?.path | cmsLink">
-          <a href="{{homeArticle2?.media?.path | cmsLink}}" class="video-popup">
+          <a href="{{'/storage/uploads' + homeArticle2?.media?.path | cmsLink}}" class="video-popup">
             <i class="fa fa-play"></i>
           </a>
         </div>
