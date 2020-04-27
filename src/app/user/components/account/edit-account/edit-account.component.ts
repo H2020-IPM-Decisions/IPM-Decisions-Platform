@@ -5,7 +5,6 @@ import { compare } from 'fast-json-patch';
 
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { UserProfileService } from '../../../../shared/services/user-profile.service';
-import { User } from '@app/core/auth/models/user.model';
 import { UserProfile } from './../../../../shared/models/user-profile.model';
 import { UserProfileForCreation } from './../../../../shared/models/user-profile-for-creation.model';
 
@@ -23,7 +22,7 @@ export class EditAccountComponent implements OnInit {
   errors: string[] = [];
   isCreated: boolean = false;
   isUpdated: boolean = false;
-  userIdentity: User;
+  // userIdentity: User;
   userProfile: UserProfile;
   userProfileCreation: UserProfileForCreation;
 
@@ -85,11 +84,11 @@ export class EditAccountComponent implements OnInit {
     return this.accountForm.controls;
   }
 
-  updateUserIdentity(user: User) {
-    this.accountForm.patchValue({
-      email: user.email
-    })
-  }
+  // updateUserIdentity(user: User) {
+  //   this.accountForm.patchValue({
+  //     email: user.email
+  //   })
+  // }
  
   updateUserProfile(user: UserProfile) {
     const fullName = user.fullName;

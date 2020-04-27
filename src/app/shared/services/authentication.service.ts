@@ -1,4 +1,3 @@
-import { Authentication } from './../../core/auth/models/authentication.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
@@ -6,30 +5,32 @@ import { catchError, tap} from 'rxjs/operators';
 import * as jwt_decode from 'jwt-decode';
 
 import { environment } from 'src/environments/environment';
-import { User } from '@app/core/auth/models/user.model';
 import { UserForAuthentication } from '@app/core/auth/models/user-for-authentication.model';
 import { UserForRegistration } from '@app/core/auth/models/user-for-registration.model';
+import { User } from '@app/core/auth/models/user.model';
+import { Account } from './../../core/auth/models/account.model';
+import { Authentication } from './../../core/auth/models/authentication.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    currentUserSubject = new BehaviorSubject<User>(null);
-    public currentUser: Observable<User>;
+    currentAccountSubject = new BehaviorSubject<Account>(null);
+    public currentAccount: Observable<Account>;
     public errors = new Subject<string[]>();
     tokenExpirationTimer: any;
 
     constructor(private http: HttpClient) {  
-        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(window.sessionStorage.getItem('user')));
-        this.currentUser = this.currentUserSubject.asObservable();
+        this.currentAccountSubject = new BehaviorSubject<Account>(JSON.parse(window.sessionStorage.getItem('user')));
+        this.currentAccount = this.currentAccountSubject.asObservable();
     }
 
-    public get currentUserValue(): User {
-        return this.currentUserSubject.value;
+    public get currentUserValue(): Account {
+        return this.currentAccountSubject.value;
     }
-    register(registrationData: UserForRegistration):Observable<AuthResponseData> {
+    register(registrationData: UserForRegistration):Observable<User> {
 
         const url: string = `${environment.apiUrl}/idp/api/authorization/register`;
     
-        return this.http.post<AuthResponseData>(url, registrationData)
+        return this.http.post<User>(url, registrationData)
             .pipe(    
                 catchError( (errorRes) => {
                     // console.log("errorRes", errorRes);
@@ -61,58 +62,63 @@ export class AuthenticationService {
                 catchError(this.handleError), 
                 tap(response => {
 
-                    console.log("ovo je response login", response);
-                    
                     const decoded = jwt_decode(response.token);
-                    console.log("decoded", decoded);
-                    const currentUser: User = new User(
-                        decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'],
+                    // console.log("decoded", decoded);
+                    const currentAccount: Account = new Account(  
+                        decoded['sub'],
                         userForAuthentication.email,
-                        decoded['UserAccessType'],
-                        decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'],
+                        decoded['nbf'],
+                        decoded['exp'],
                         response.token,
-                        decoded['exp']
+                        decoded['UserAccessType'],
+                        decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+                        // decoded['iss'],
+                        // decoded['aud']
                     );
+                    // const auth : Authentication = {
+                    //     id: response.id,
+                    //     email: response.email,
+                    //     roles: response.roles,
+                    //     claims: response.claims,
+                    //     token: response.token,
+                    //     tokenType: response.tokenType,
+                    //     bearer: response.bearer,
+                    //     refreshToken: response.refreshToken
+                    // } 
           
-                    this.currentUserSubject.next(currentUser);
-                    const expirationDuration = currentUser.tokenExpiration * 1000 - new Date().getTime();
+                    this.currentAccountSubject.next(currentAccount);
+                    const expirationDuration = currentAccount.tokenExpiration - currentAccount.tokenInit;
                     this.autoLogout(expirationDuration);
-                    window.sessionStorage.setItem('user', JSON.stringify(currentUser));
+                    window.sessionStorage.setItem('user', JSON.stringify(currentAccount));
                 }) 
             );
     }
 
     autoLogin() {
-        const userData: {
-            id: string,
-            email: string,
-            userType: string,
-            role: string,
-            _token: string,
-            _tokenExpiration: number
-        } = JSON.parse(window.sessionStorage.getItem('user'));
+        const accountData: Account = JSON.parse(window.sessionStorage.getItem('user'));
 
-        if(!userData) { return; }
+        if(!accountData) { return; }
 
-        const loadedUser = new User(
-            userData.id,
-            userData.email,
-            userData.userType,
-            userData.role,
-            userData._token,
-            userData._tokenExpiration   
+        const loadedAccount: Account = new Account(  
+            accountData.id,
+            accountData.email,
+            accountData.tokenInit,
+            accountData.tokenExpiration,
+            accountData.token,
+            accountData.userAccessType,
+            accountData.role            
         );
 
-        if(loadedUser.token) {
-            this.currentUserSubject.next(loadedUser);
-            const expirationDuration = loadedUser.tokenExpiration * 1000 - new Date().getTime();
+        if(loadedAccount.token) {
+            this.currentAccountSubject.next(loadedAccount);
+            const expirationDuration = loadedAccount.tokenExpiration - loadedAccount.tokenInit;
             this.autoLogout(expirationDuration);
         }
     }
 
     logout() {
         window.sessionStorage.removeItem('user');
-        this.currentUserSubject.next(null);
+        this.currentAccountSubject.next(null);
         if(this.tokenExpirationTimer) {
             clearTimeout(this.tokenExpirationTimer);
         }
@@ -120,10 +126,10 @@ export class AuthenticationService {
     }
 
     autoLogout(expirationDuration: number) {
+        const duration = expirationDuration * 1000;
         this.tokenExpirationTimer = setTimeout(()=>{
-            this.logout();
-            
-        }, expirationDuration);
+            this.logout();            
+        }, duration);
     }
 
     private handleError(errorRes: HttpErrorResponse) {
@@ -137,9 +143,4 @@ export class AuthenticationService {
         console.log("err", errorRes);
         return throwError(errorRes.error.message);
     }
-}
-
-export interface AuthResponseData {
-    id: string,
-    email: string
 }

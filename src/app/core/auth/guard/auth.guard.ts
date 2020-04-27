@@ -1,3 +1,4 @@
+import { Account } from './../models/account.model';
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 
@@ -20,23 +21,23 @@ export class AuthGuard implements CanActivate {
   | Promise<boolean | UrlTree>
   | Observable<boolean | UrlTree> {
 
-    return this.authenticationService.currentUserSubject.pipe(
+    return this.authenticationService.currentAccountSubject.pipe(
       take(1),
-      map(user => {
+      map((userAccount: Account) => {
 
-        if(user && user.role) {
-          if (route.data.roles && route.data.roles.indexOf(user.role) === -1) {
+        if(userAccount && userAccount.role) {
+          if (route.data.roles && route.data.roles.indexOf(userAccount.role) === -1) {
             return this.router.createUrlTree(['/']);
           }
         }
         
-        if(user && user.userType) {
-          if (route.data.userTypes && route.data.userTypes.indexOf(user.userType) === -1) {
+        if(userAccount && userAccount.userAccessType) {
+          if (route.data.userTypes && route.data.userTypes.indexOf(userAccount.userAccessType) === -1) {
             return this.router.createUrlTree(['/']);
           }
         }
         
-        if (!!user) {
+        if (!!userAccount) {
           return true;
         }
 

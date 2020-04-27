@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   dssAdaptation: any = {};
   dssIntegration: any = {};
   
-  currentUser: User;
+  currentAccount: User;
   state$: Observable<object>;
   constructor(
     private cmsService: CMSService,
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
     this.cmsUrl = cmsService.getUrl();
     this.cmsPath = cmsService.getUrl();
     this.assetPath = cmsService.getAssetPath();
-    // this.authenticationService.currentUser.subscribe(user => this.currentUser = user);
+    // this.authenticationService.currentAccount.subscribe(user => this.currentAccount = user);
   }
 
   ngOnInit() {

@@ -1,9 +1,12 @@
-import { Role } from './../../models/role.enum';
+import { Authentication } from './../../models/authentication.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { first } from 'rxjs/operators';
+
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { Role } from './../../models/role.enum';
+import { UserForAuthentication } from '../../models/user-for-authentication.model';
 
 @Component({
   selector: 'login',
@@ -43,23 +46,26 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
   onLogin() {
-    this.submitted = true;
-            
+    this.submitted = true;            
     if (this.loginForm.invalid) {
       return;
     }
 
-    const email = (<string>this.f.email.value).toLowerCase();
-    const password = this.f.password.value;
+    const userForAuthentication: UserForAuthentication = {
+      email: (<string>this.f.email.value).toLowerCase(),
+      password: this.f.password.value
+    }
+
     this.loading = true;
 
     const loginObsever = {
       next: 
-        (res: any) => {
-          this.loading = false;
+        (res: Authentication) => {
+
+          console.log("Authentication", res);
           
-          // console.log("res", res);
-          if(this.authenticationService.currentUserValue.role === Role.Admin) {
+          this.loading = false;
+          if(this.authenticationService.currentUserValue.role === Role.Admin) { //todo
             this.router.navigate(["/admin"]);
           } else {
             this.router.navigate(["/user/farm/list"]);
@@ -67,13 +73,12 @@ export class LoginComponent implements OnInit {
         },
       error: 
         (errorMessages: any) => {
-          // console.log("res", errorMessages);
           this.loading = false;
           this.errors = [errorMessages];
         }
     }
 
-    this.authenticationService.login(email, password)
+    this.authenticationService.login(userForAuthentication)
     .pipe(first())
     .subscribe(loginObsever);
     
