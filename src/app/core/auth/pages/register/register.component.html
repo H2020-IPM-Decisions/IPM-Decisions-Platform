@@ -12,7 +12,7 @@
         <select
           formControlName="userType"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.userType.errors }">
+          [ngClass]="{ 'is-invalid': f.userType.errors && f.userType.touched }">
           <option [label]="userType" *ngFor="let userType of userTypes" [value]="userType">
             {{ userType }}</option>
         </select>
