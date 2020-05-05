@@ -130,7 +130,7 @@ export class EditAccountComponent implements OnInit {
         this.isUpdated = true;
       },
       error => {
-        console.log("error", error);
+        // console.log("error", error);
         this.errors = error;
       })
     } else {
@@ -151,7 +151,7 @@ export class EditAccountComponent implements OnInit {
         this.isCreated = true;
       },
       error => {
-        console.log("error", error);
+        // console.log("error", error);
         this.errors = error;
       })
     }

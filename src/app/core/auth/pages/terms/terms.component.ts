@@ -1,10 +1,10 @@
-import { User } from '@app/core/auth/models/user.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { CMSService } from 'src/app/shared/services/cms.service';
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { UserForRegistration } from '../../models/user-for-registration.model';
+import { User } from '@app/core/auth/models/user.model';
 
 @Component({
   selector: 'app-terms',

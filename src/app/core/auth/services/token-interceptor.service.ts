@@ -3,8 +3,8 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { Observable } from 'rxjs';
 import { exhaustMap, take } from 'rxjs/operators';
 
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { Account } from './../models/account.model';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CMSService } from '@app/shared/services/cms.service';
-import { AuthenticationService } from '@app/shared/services/authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 declare var init: any;
 
 @Component({

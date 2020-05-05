@@ -1,5 +1,5 @@
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 
 @Component({
   selector: 'app-admin-account-edit',

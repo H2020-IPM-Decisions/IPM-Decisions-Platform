@@ -2,10 +2,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CMSService } from '../shared/services/cms.service';
 import { User } from '../core/auth/models/user.model';
-import { AuthenticationService } from '../shared/services/authentication.service';
 import { Role } from '../core/auth/models/role.enum';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 declare var init: any;
 
 @Component({

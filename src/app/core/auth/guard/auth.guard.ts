@@ -1,10 +1,10 @@
-import { Account } from './../models/account.model';
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
-
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
+
+import { Account } from './../models/account.model';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 @Injectable({

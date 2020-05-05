@@ -65,11 +65,8 @@ export class UserProfileService {
 
     let errorMessage = 'An unknown error occured!';
     if(!errorRes.error || !errorRes.error.message) {
-        console.log("err", errorRes);
-        
         return throwError(errorMessage);
     }
-    console.log("err", errorRes);
     return throwError(errorRes.error.message);
   }
 }

@@ -1,12 +1,12 @@
-import { Authentication } from './../../models/authentication.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
-import { Role } from './../../models/role.enum';
 import { UserForAuthentication } from '../../models/user-for-authentication.model';
+import { Authentication } from './../../models/authentication.model';
+import { Role } from './../../models/role.enum';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'login',
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   forgotPass = false;
-  loading = false; //todo
+  loading = false;
   returnUrl: string;
   errors: string[] = [];
 
@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]],
-        // email: ['', [Validators.required, Validators.pattern('^(([^<>()\\[\\]\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$')]],
         password: ['', [
           Validators.required, 
           Validators.minLength(6),
@@ -61,11 +60,8 @@ export class LoginComponent implements OnInit {
     const loginObsever = {
       next: 
         (res: Authentication) => {
-
-          console.log("Authentication", res);
-          
           this.loading = false;
-          if(this.authenticationService.currentUserValue.role === Role.Admin) { //todo
+          if(this.authenticationService.currentUserValue.role === Role.Admin) {
             this.router.navigate(["/admin"]);
           } else {
             this.router.navigate(["/user/farm/list"]);

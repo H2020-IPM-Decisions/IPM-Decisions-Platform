@@ -8,8 +8,8 @@ import { environment } from 'src/environments/environment';
 import { UserForAuthentication } from '@app/core/auth/models/user-for-authentication.model';
 import { UserForRegistration } from '@app/core/auth/models/user-for-registration.model';
 import { User } from '@app/core/auth/models/user.model';
-import { Account } from './../../core/auth/models/account.model';
-import { Authentication } from './../../core/auth/models/authentication.model';
+import { Account } from '../models/account.model';
+import { Authentication } from '../models/authentication.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -60,10 +60,9 @@ export class AuthenticationService {
         return this.http.post<Authentication>(url, userForAuthentication, { headers })
             .pipe(
                 catchError(this.handleError), 
-                tap(response => {
+                tap((response: Authentication) => {
 
                     const decoded = jwt_decode(response.token);
-                    // console.log("decoded", decoded);
                     const currentAccount: Account = new Account(  
                         decoded['sub'],
                         userForAuthentication.email,
@@ -74,17 +73,7 @@ export class AuthenticationService {
                         decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
                         // decoded['iss'],
                         // decoded['aud']
-                    );
-                    // const auth : Authentication = {
-                    //     id: response.id,
-                    //     email: response.email,
-                    //     roles: response.roles,
-                    //     claims: response.claims,
-                    //     token: response.token,
-                    //     tokenType: response.tokenType,
-                    //     bearer: response.bearer,
-                    //     refreshToken: response.refreshToken
-                    // } 
+                    );                    
           
                     this.currentAccountSubject.next(currentAccount);
                     const expirationDuration = currentAccount.tokenExpiration - currentAccount.tokenInit;
@@ -126,9 +115,9 @@ export class AuthenticationService {
     }
 
     autoLogout(expirationDuration: number) {
-        const duration = expirationDuration * 1000;
+        let duration = expirationDuration * 1000;
         this.tokenExpirationTimer = setTimeout(()=>{
-            this.logout();            
+            this.logout();   
         }, duration);
     }
 
@@ -136,11 +125,8 @@ export class AuthenticationService {
 
         let errorMessage = 'An unknown error occured!';
         if(!errorRes.error || !errorRes.error.message) {
-            console.log("err", errorRes);
-            
             return throwError(errorMessage);
         }
-        console.log("err", errorRes);
         return throwError(errorRes.error.message);
     }
 }
