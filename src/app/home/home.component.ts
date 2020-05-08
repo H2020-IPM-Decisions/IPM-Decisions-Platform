@@ -72,10 +72,5 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  updateUrl(newUrl) {
-    this.cmsService.setUrl(newUrl);
-    this.cmsUrl = newUrl;
-  }
-
 
 }

@@ -15,7 +15,7 @@ export class CMSService {
     private http: HttpClient,
     private cookieService: CookieService
   ) {
-    this.cmsUrl = cookieService.get("cmsUrl") || this.cmsUrl;
+    this.cmsUrl = this.cmsUrl;
   }
 
   getUrl() {
@@ -23,7 +23,6 @@ export class CMSService {
   }
 
   setUrl(newUrl) {
-    this.cookieService.put("cmsUrl", newUrl);
     this.cmsUrl = newUrl;
   }
 

@@ -25,11 +25,6 @@ export class AdminHeaderComponent implements OnInit {
       .getBanner()
       .then((response: any) => { this.bannerUrl = response.image.path });
   }
-  
-  updateUrl(newUrl) {
-    this.cmsService.setUrl(newUrl);
-    this.cmsUrl = newUrl;
-  }
 
   logout() {
     this.authenticationService.logout();
