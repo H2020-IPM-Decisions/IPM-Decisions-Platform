@@ -1,8 +1,8 @@
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MustMatch } from '../../_helpers/must-match.validator';
+import { AuthenticationService } from '../../services/authentication.service';
 
 
 @Component({
@@ -22,7 +22,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
    
-   
     this.registerForm = this.formBuilder.group(
       {
         userType: ['', Validators.required],
@@ -33,24 +32,17 @@ export class RegisterComponent implements OnInit {
             Validators.minLength(6), 
             Validators.pattern("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+])[A-Za-z\\d][A-Za-z\\d!@#$%^&*()_+]{6,}$")
           ]], 
-        confirmPassword: ['', Validators.required],
-        // firstName: ['', Validators.required],
-        // lastName: ['', Validators.required],
-        // phone: ['', Validators.required],
-        // mobile: ['', Validators.required],
-        // address: ['', Validators.required],
-        // postalCode: ['', Validators.required],
-        // country: ['', Validators.required],
-       
+        confirmPassword: ['', Validators.required]       
       },
       {
         validator: MustMatch('password', 'confirmPassword')
       }
     );
-    // console.log("kontrola" ,this.registerForm);
+
     this.authService.errors.subscribe(errors => {
       this.errors = errors;
     });
+    
   }
 
   get f() {

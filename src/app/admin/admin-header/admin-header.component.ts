@@ -1,6 +1,7 @@
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { CMSService } from 'src/app/shared/services/cms.service';
+import { AuthenticationService } from '@app/core/auth/services/authentication.service';
+
 
 @Component({
   selector: 'admin-header',

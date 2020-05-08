@@ -6,8 +6,8 @@ import { Operation } from 'fast-json-patch';
 
 import { environment } from 'src/environments/environment';
 import { User } from '@app/core/auth/models/user.model';
-import { UserProfile } from '../models/user-profile.model';
-import { UserProfileForCreation } from '../models/user-profile-for-creation.model';
+import { UserProfile } from '../../models/user-profile.model';
+import { UserProfileForCreation } from '../../models/user-profile-for-creation.model';
 
 
 @Injectable({
@@ -25,13 +25,13 @@ export class UserProfileService {
   // }
 
   getUserProfile(id: string): Observable<UserProfile> {
-    // Accept values should be 'application/json' or 'application/vnd.h2020ipmdecisions.hateoas+json'
-    const headers = { 
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    };
-    
-    return this.http.get<UserProfile>(`${environment.apiUrl}/upr/api/users/${id}/profiles`, {headers});
+    return this.http.get<UserProfile>(`${environment.apiUrl}/upr/api/users/${id}/profiles`, {
+      headers: { 
+        'Content-Type': 'application/json',    
+        'Accept': 'application/json' 
+      }
+        // Accept values should be 'application/json' or 'application/vnd.h2020ipmdecisions.hateoas+json'
+    });
   }
 
   createUserProfile(id: string, userForCreation: UserProfileForCreation) {
@@ -51,19 +51,22 @@ export class UserProfileService {
       'Content-Type':'application/json-patch+json'
     };
 
-    return this.http.patch(url, operations, {headers})
-    .pipe(catchError(this.handleError));
+    return this.http.patch(url, operations, {headers}).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteUserProfile(id: string) {
+    const url = `${environment.apiUrl}/upr/api/users/${id}/profiles`;
+    return this.http.delete(url).pipe(catchError(this.handleError));
   }
 
   private handleError(errorRes: HttpErrorResponse) {
 
     let errorMessage = 'An unknown error occured!';
     if(!errorRes.error || !errorRes.error.message) {
-        console.log("err", errorRes);
-        
         return throwError(errorMessage);
     }
-    console.log("err", errorRes);
     return throwError(errorRes.error.message);
   }
 }

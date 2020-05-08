@@ -2,135 +2,39 @@
   <div class="alert alert-danger" *ngIf="errors.length">
     <p *ngFor="let error of errors">{{ error.description }}</p>
   </div>
-  <div class="alert alert-success" *ngIf="successMsg">
-    <span>{{successMsg }}</span>
+  <div class="alert alert-success" *ngIf="isSuccess">
+    <span>Account successfully created!</span>
   </div>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-row">
-<!--     <div class="form-group col-5">
-        <label>First Name</label>
-        <input
-          type="text"
-          formControlName=ro"firstName"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
-        />
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-          <div *ngIf="f.firstName.errors.required">First Name is required</div>
-        </div>
-      </div>
-      <div class="form-group col-5">
-        <label>Last Name</label>
-        <input
-          type="text"
-          formControlName="lastName"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
-        />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-          <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-        </div>
-      </div>--> 
-
       <div class="form-group col-2">
         <label>User Type</label>
         <select
           formControlName="userType"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.userType.errors }"
-        >
-          <option [label]="userType" *ngFor="let userType of userTypes" [value]="userType">{{
-            userType
-          }}</option>
+          [ngClass]="{ 'is-invalid': f.userType.errors && f.userType.touched }">
+          <option [label]="userType" *ngFor="let userType of userTypes" [value]="userType">
+            {{ userType }}</option>
         </select>
         <div *ngIf="f.userType.errors && f.userType.touched" class="invalid-feedback">
           <div *ngIf="f.userType.errors.required">User Type is required</div>
         </div>
       </div>
-
     </div>
+
     <div class="form-group">
       <label>Email</label>
       <input
         type="text"
         formControlName="email"
         class="form-control"
-        [ngClass]="{ 'is-invalid': f.email.errors && f.email.touched }"
-      />
+        [ngClass]="{ 'is-invalid': f.email.errors && f.email.touched }" />
       <div *ngIf="f.email.errors && f.email.touched" class="invalid-feedback">
         <div *ngIf="f.email.errors.required">Email is required</div>
         <div *ngIf="f.email.errors.pattern">Email must be a valid email address</div>
       </div>
     </div>
- <!--    <div class="form-row">
-      <div class="form-group col-6">
-        <label>Phone</label>
-        <input
-          type="number"
-          formControlName="phone"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
-        />
-        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-          <div *ngIf="f.phone.errors.required">Phone is required</div>
-        </div>
-      </div>
-      <div class="form-group col-6">
-        <label>Mobile</label>
-        <input
-          type="number"
-          formControlName="mobile"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
-        />
-        <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
-          <div *ngIf="f.mobile.errors.required">Mobile is required</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group col-7">
-        <label>Address</label>
-        <input
-          type="text"
-          formControlName="address"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
-        />
-        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-          <div *ngIf="f.address.errors.required">Address is required</div>
-        </div>
-      </div>
-      <div class="form-group col-3">
-        <label>Postal Code</label>
-        <input
-          type="number"
-          formControlName="postalCode"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.postalCode.errors }"
-        />
-        <div *ngIf="submitted && f.postalCode.errors" class="invalid-feedback">
-          <div *ngIf="f.postalCode.errors.required">Postal code is required</div>
-        </div>
-      </div>
-      <div class="form-group col-2">
-        <label>Country</label>
-        <select
-          formControlName="country"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.country.errors }"
-        >
-          <option [label]="country" *ngFor="let country of countries" [value]="country">{{
-            country
-          }}</option>
-        </select>
-
-        <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
-          <div *ngIf="f.country.errors.required">Country is required</div>
-        </div>
-      </div>
-    </div> -->
+ 
     <div class="form-row">
       <div class="form-group col">
         <label>Password</label>
@@ -138,8 +42,7 @@
           type="password"
           formControlName="password"
           class="form-control"
-          [ngClass]="{ 'is-invalid': f.password.errors && f.password.touched }"
-        />
+          [ngClass]="{ 'is-invalid': f.password.errors && f.password.touched }" />
 
         <div *ngIf="f.password.errors && f.password.touched" class="invalid-feedback">
           <div *ngIf="f.password.errors?.required">Password is required</div>
@@ -154,12 +57,8 @@
           type="password"
           formControlName="confirmPassword"
           class="form-control"
-          [ngClass]="{ 'is-invalid': f.confirmPassword.errors && f.confirmPassword.touched }"
-        />
-        <div
-          *ngIf="f.confirmPassword.errors && f.confirmPassword.touched"
-          class="invalid-feedback"
-        >
+          [ngClass]="{ 'is-invalid': f.confirmPassword.errors && f.confirmPassword.touched }" />
+        <div *ngIf="f.confirmPassword.errors && f.confirmPassword.touched" class="invalid-feedback">
           <div *ngIf="f.confirmPassword.errors.required">
             Confirm Password is required
           </div>
@@ -169,7 +68,7 @@
         </div>
       </div>
     </div>
-    <!-- [disabled]="!registerForm.valid" -->
+
     <div class="text-center">
       <button [disabled]="!registerForm.valid" class="btn btn-login btn-block">Register</button>
     </div>
@@ -177,5 +76,5 @@
 </div>
 
 <div *ngIf="termsAccepted">
-  <app-terms (termsAccepted)="removeAcceptedTerms($event)" (message)="successMsg=$event" [registrationData]="registerForm.value"></app-terms>
+  <app-terms (termsAccepted)="removeAcceptedTerms($event)" (message)="isSuccess=$event" [registrationData]="registerForm.value"></app-terms>
 </div>

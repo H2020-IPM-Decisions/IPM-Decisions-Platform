@@ -72,37 +72,31 @@
           <label class="col-md-3 control-label">Phone</label>
           <div class="col-md-8">
             <input type="number" formControlName="phoneNumber" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }"/>
+              [ngClass]="{'is-invalid': f.phoneNumber.errors && f.phoneNumber.touched}"/>
               
-            <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
-              <div *ngIf="f.phoneNumber.errors.required">Phone is required</div>
+            <div *ngIf="f.phoneNumber.errors && f.phoneNumber.touched" class="invalid-feedback">
+              <div *ngIf="f.phoneNumber.errors.required">Phone number is required</div>
             </div>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Mobile</label>
           <div class="col-md-8">
-            <input
-              type="number"
-              formControlName="mobileNumber"
-              class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" />
-
-            <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
-              <div *ngIf="f.mobileNumber.errors.required">Mobile is required</div>
+            <input type="number" formControlName="mobileNumber" class="form-control"
+              [ngClass]="{'is-invalid': f.mobileNumber.errors && f.mobileNumber.touched}"/>
+              
+            <div *ngIf="f.mobileNumber.errors && f.mobileNumber.touched" class="invalid-feedback">
+              <div *ngIf="f.mobileNumber.errors.required">Mobile number is required</div>
             </div>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Adress Line 1</label>
           <div class="col-md-8">
-            <input
-              type="text"
-              formControlName="address"
-              class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+            <input type="number" formControlName="address" class="form-control"
+              [ngClass]="{'is-invalid': f.address.errors && f.address.touched}"/>
               
-            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+            <div *ngIf="f.address.errors && f.address.touched" class="invalid-feedback">
               <div *ngIf="f.address.errors.required">Address is required</div>
             </div>
           </div>
@@ -137,14 +131,11 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Post Code</label>
           <div class="col-md-8">
-            <input
-              type="number"
-              formControlName="postcode"
-              class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.postcode.errors }"
-            />
-            <div *ngIf="submitted && f.postcode.errors" class="invalid-feedback">
-              <div *ngIf="f.postcode.errors.required">Postal code is required</div>
+            <input type="number" formControlName="postcode" class="form-control"
+              [ngClass]="{'is-invalid': f.postcode.errors && f.postcode.touched}"/>
+              
+            <div *ngIf="f.postcode.errors && f.postcode.touched" class="invalid-feedback">
+              <div *ngIf="f.postcode.errors.required">Post code is required</div>
             </div>
           </div>
         </div>
@@ -167,7 +158,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label class="col-md-3 control-label">Password</label>
           <div class="col-md-8">
             <input
@@ -184,8 +175,8 @@
               <div *ngIf="f.password.errors?.pattern">Passwords must have at least one digit ('0'-'9').</div>
             </div>
           </div>
-        </div>
-        <div class="form-group">
+        </div> -->
+        <!-- <div class="form-group">
           <label class="col-md-3 control-label">Confirm password</label>
           <div class="col-md-8">
             <input
@@ -199,11 +190,11 @@
               <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <button class="btn btn-primary" style=" background-color:#249fa5 !important">Save Changes</button>
+            <button class="btn btn-primary" [disabled]="accountForm.invalid" style=" background-color:#249fa5 !important">Save Changes</button>
             <span></span>
             <input
               type="reset"

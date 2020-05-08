@@ -7,26 +7,25 @@
       <p>{{termsAndConditions}}</p>
    
     <div class="checkbox-box"> 
-      <div class="form-group form-check">
-  
+      <div class="form-group form-check">  
         <input
           type="checkbox"
           formControlName="acceptTerms" 
           id="acceptTerms"
           class="form-check-input" 
           #acceptTerms
-          [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }"
-        />
+          [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+
         <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+
         <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">
           Accept Ts & Cs is required
         </div>
       </div>   
 
       <div class="text-center col-6 float-right">
-        <button 
-          [disabled]="!acceptTerms.checked" 
-          class="btn btn-login btn-block float-right">Register</button>
+        <button [disabled]="!acceptTerms.checked" 
+        class="btn btn-login btn-block float-right">Register</button>
       </div>
     </div>
   </div>

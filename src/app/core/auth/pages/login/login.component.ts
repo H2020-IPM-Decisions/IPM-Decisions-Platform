@@ -1,9 +1,12 @@
-import { Role } from './../../models/role.enum';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { first } from 'rxjs/operators';
+
+import { UserForAuthentication } from '../../models/user-for-authentication.model';
+import { Authentication } from './../../models/authentication.model';
+import { Role } from './../../models/role.enum';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'login',
@@ -14,7 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   forgotPass = false;
-  loading = false; //todo
+  loading = false;
   returnUrl: string;
   errors: string[] = [];
 
@@ -28,7 +31,6 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]],
-        // email: ['', [Validators.required, Validators.pattern('^(([^<>()\\[\\]\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$')]],
         password: ['', [
           Validators.required, 
           Validators.minLength(6),
@@ -43,22 +45,22 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
   onLogin() {
-    this.submitted = true;
-            
+    this.submitted = true;            
     if (this.loginForm.invalid) {
       return;
     }
 
-    const email = (<string>this.f.email.value).toLowerCase();
-    const password = this.f.password.value;
+    const userForAuthentication: UserForAuthentication = {
+      email: (<string>this.f.email.value).toLowerCase(),
+      password: this.f.password.value
+    }
+
     this.loading = true;
 
     const loginObsever = {
       next: 
-        (res: any) => {
+        (res: Authentication) => {
           this.loading = false;
-          
-          // console.log("res", res);
           if(this.authenticationService.currentUserValue.role === Role.Admin) {
             this.router.navigate(["/admin"]);
           } else {
@@ -67,13 +69,12 @@ export class LoginComponent implements OnInit {
         },
       error: 
         (errorMessages: any) => {
-          // console.log("res", errorMessages);
           this.loading = false;
           this.errors = [errorMessages];
         }
     }
 
-    this.authenticationService.login(email, password)
+    this.authenticationService.login(userForAuthentication)
     .pipe(first())
     .subscribe(loginObsever);
     
