@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, Subject } from 'rxjs';
-import Ajv from 'ajv';
+import Ajv, { ErrorObject } from 'ajv';
 import * as weatherDataSchema from "./schemas/weather-data-schema.json";
 
 @Injectable({
@@ -10,7 +10,7 @@ import * as weatherDataSchema from "./schemas/weather-data-schema.json";
 })
 export class WeatherService {
   weatherSchema: any = (weatherDataSchema as any).default;
-  public errors$ = new Subject<string[]>();
+  public errors$ = new Subject<ErrorObject[]>();
 
   constructor(private http: HttpClient) { }
 
