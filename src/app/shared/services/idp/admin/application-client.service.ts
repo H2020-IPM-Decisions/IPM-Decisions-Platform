@@ -11,7 +11,7 @@ export class ApplicationClientService {
 
   constructor(private http: HttpClient) { }
   getApplicationClients(isEnabled, pageSize, orderBy, searchQuery, pageNumber, fields):Observable<ShapedDataWithLinksApplicationClients> {
-    const url = 'http://localhost:5000/idp/api/admin/applicationclients';
+    const url = 'http://localhost:5000/api/idp/admin/applicationclients';
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       params: {
         isEnabled: isEnabled,
@@ -29,7 +29,7 @@ export class ApplicationClientService {
   }
 
   getApplicationClientsWithHATEOASLinks(isEnabled, pageSize, orderBy, searchQuery, pageNumber, fields):Observable<ShapedDataWithLinksApplicationClients> {
-    const url = 'http://localhost:5000/idp/api/admin/applicationclients';
+    const url = 'http://localhost:5000/api/idp/admin/applicationclients';
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       params: {
         isEnabled: isEnabled,
@@ -47,7 +47,7 @@ export class ApplicationClientService {
   }
 
   getApplicationClientWithSearchQuery(searchquery):Observable<any> {
-    const url = 'http://localhost:5000/idp/api/admin/applicationclients';
+    const url = 'http://localhost:5000/api/idp/admin/applicationclients';
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       params: {
         searchquery: searchquery
@@ -59,7 +59,7 @@ export class ApplicationClientService {
   }
 
   getEnabledApplicationClients(isEnabled):Observable<any> {
-    const url = 'http://localhost:5000/idp/api/admin/applicationclients';
+    const url = 'http://localhost:5000/api/idp/admin/applicationclients';
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       params: {
         isEnabled: isEnabled
@@ -70,7 +70,7 @@ export class ApplicationClientService {
     });
   }
   getApplicationClientsWithSearchQueryAndEnabled(searchquery, isEnabled):Observable<any> {
-    const url = 'http://localhost:5000/idp/api/admin/applicationclients';
+    const url = 'http://localhost:5000/api/idp/admin/applicationclients';
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       params: {
         searchquery: searchquery,
@@ -83,7 +83,7 @@ export class ApplicationClientService {
   }
 
   getApplicationClientWithFields(fields):Observable<any> {
-    const url = 'http://localhost:5000/idp/api/admin/applicationclients';
+    const url = 'http://localhost:5000/api/idp/admin/applicationclients';
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       params: {
         fields: fields
@@ -95,7 +95,7 @@ export class ApplicationClientService {
   }
 
   getApplicationClientsOrderBy(orderby:string):Observable<any> {
-    const url = 'http://localhost:5000/idp/api/admin/applicationclients';
+    const url = 'http://localhost:5000/api/idp/admin/applicationclients';
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       params: {
         orderby: orderby
@@ -107,7 +107,7 @@ export class ApplicationClientService {
   }
 
   getApplicationClientsOrderByDesc(orderby:string):Observable<any> {
-    const url = 'http://localhost:5000/idp/api/admin/applicationclients';
+    const url = 'http://localhost:5000/api/idp/admin/applicationclients';
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       params: {
         orderby: `${orderby} desc`
@@ -118,7 +118,7 @@ export class ApplicationClientService {
     });
   }
   getApplicationClientsPageSizeAndPageNumber(PageSize, pageNumber):Observable<any> {
-    const url = 'http://localhost:5000/idp/api/admin/applicationclients';
+    const url = 'http://localhost:5000/api/idp/admin/applicationclients';
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       params: {
         PageSize: PageSize,       
@@ -131,7 +131,7 @@ export class ApplicationClientService {
   }
 
   getApplicationClientsWithAllOptions(PageSize, pageNumber, searchquery, IsEnabled, fields, orderby):Observable<any> {
-    const url = 'http://localhost:5000/idp/api/admin/applicationclients';
+    const url = 'http://localhost:5000/api/idp/admin/applicationclients';
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       params: {
         PageSize: PageSize,       
@@ -148,7 +148,7 @@ export class ApplicationClientService {
   }
 
   getApplicationClientsWithAllOptionsHATEOAS(PageSize, pageNumber, searchquery, IsEnabled, fields, orderby):Observable<any> {
-    const url = 'http://localhost:5000/idp/api/admin/applicationclients';
+    const url = 'http://localhost:5000/api/idp/admin/applicationclients';
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       params: {
         PageSize: PageSize,       
@@ -165,7 +165,7 @@ export class ApplicationClientService {
   }
 
   getApplicationClientById(id:string):Observable<any> {
-    const url = `http://localhost:5000/idp/api/admin/applicationclients/${id}`;
+    const url = `http://localhost:5000/api/idp/admin/applicationclients/${id}`;
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       headers: {
         'Accept':'application/json'
@@ -174,7 +174,7 @@ export class ApplicationClientService {
   }
 
   getApplicationClientByIdWithParams(id:string, fields:string):Observable<any> {
-    const url = `http://localhost:5000/idp/api/admin/applicationclients/${id}`;
+    const url = `http://localhost:5000/api/idp/admin/applicationclients/${id}`;
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       params: {
         fields: fields
@@ -186,7 +186,7 @@ export class ApplicationClientService {
   }
 
   getApplicationClientByIdWithParamsHATEOAS(id:string, fields:string):Observable<any> {
-    const url = `http://localhost:5000/idp/api/admin/applicationclients/${id}`;
+    const url = `http://localhost:5000/api/idp/admin/applicationclients/${id}`;
     return this.http.get<ShapedDataWithLinksApplicationClients>(url, {
       params: {
         fields: fields  
@@ -198,7 +198,7 @@ export class ApplicationClientService {
   }
 
   createApplicationClient():Observable<any> {
-    const url = 'http://localhost:5000/idp/api/admin/applicationclients/';
+    const url = 'http://localhost:5000/api/idp/admin/applicationclients/';
     return this.http.post<ShapedDataWithLinksApplicationClients>(url, {
         "name": "H2020 API Gateway 28",
           "applicationClientType": 1,
@@ -214,7 +214,7 @@ export class ApplicationClientService {
     });
   }
   createApplicationClientHATEOAS():Observable<any> {
-    const url = 'http://localhost:5000/idp/api/admin/applicationclients/';
+    const url = 'http://localhost:5000/api/idp/admin/applicationclients/';
     return this.http.post<ShapedDataWithLinksApplicationClients>(url, {
         "name": "H2020 API Gateway 28",
           "applicationClientType": 1,
@@ -231,7 +231,7 @@ export class ApplicationClientService {
   }
 
   deleteApplicationClient(id:string):Observable<any> {
-    const url = `http://localhost:5000/idp/api/admin/applicationclients/${id}`;
+    const url = `http://localhost:5000/api/idp/admin/applicationclients/${id}`;
 
     return this.http.delete<ShapedDataWithLinksApplicationClients>(url, {
       // "name": "My Authorization Server",

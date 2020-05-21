@@ -10,7 +10,7 @@ export class UserRoleService {
   constructor(private http: HttpClient) { }
 
   addRolesToUser(id: any): Observable<any> {
-    const url = `http://localhost:5000/idp/api/admin/users/${id}/roles`;
+    const url = `http://localhost:5000/api/idp/admin/users/${id}/roles`;
 
     return this.http.post<any>(url, [
       {
@@ -29,7 +29,7 @@ export class UserRoleService {
   }
 
   getUserRoles(id: string): Observable<any> {
-    const url = `http://localhost:5000/idp/api/admin/users/${id}/roles`;
+    const url = `http://localhost:5000/api/idp/admin/users/${id}/roles`;
     return this.http.get<any>(url, {
       headers: {
         'Accept': 'application/json'
@@ -38,7 +38,7 @@ export class UserRoleService {
   }
 
   deleteUserClaims(id: string): Observable<any> {
-    const url = `http://localhost:5000/idp/api/admin/users/${id}/roles`;
+    const url = `http://localhost:5000/api/idp/admin/users/${id}/roles`;
     return this.http.delete<any>(url, {
       headers: {
         'Accept': 'application/json',
@@ -48,7 +48,7 @@ export class UserRoleService {
   }
 
   getOptions(id: string): Observable<any> {
-    return this.http.options<any>(`http://localhost:5000/idp/api/admin/users/${id}/roles`);
+    return this.http.options<any>(`http://localhost:5000/api/idp/admin/users/${id}/roles`);
   }
 
 }

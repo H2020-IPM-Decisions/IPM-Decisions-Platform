@@ -9,7 +9,7 @@ export class UserClaimService {
   constructor(private http: HttpClient) { }
 
   addClaimToUser(id: string):Observable<any> {
-    const url = `http://localhost:5000/idp/api/admin/users/${id}/claims`;
+    const url = `http://localhost:5000/api/idp/admin/users/${id}/claims`;
 
     return this.http.post<any>(url, {
       "type" : "UserAccessType",
@@ -24,7 +24,7 @@ export class UserClaimService {
   }
   
   getUserClaims(id: string):Observable<any> {
-    const url = `http://localhost:5000/idp/api/admin/users/${id}/claims`;
+    const url = `http://localhost:5000/api/idp/admin/users/${id}/claims`;
     return this.http.get<any>(url, {
       headers: {
         'Accept':'application/json',
@@ -34,7 +34,7 @@ export class UserClaimService {
   }
 
   deleteUserClaims(id: string):Observable<any> {
-    const url = `http://localhost:5000/idp/api/admin/users/${id}/claims`;
+    const url = `http://localhost:5000/api/idp/admin/users/${id}/claims`;
     return this.http.get<any>(url, {      
       headers: {
         'Accept':'application/json',
@@ -44,7 +44,7 @@ export class UserClaimService {
   }
 
   getOptions(id: string):Observable<any> {
-    return this.http.options<any>(`http://localhost:5000/idp/api/admin/users/${id}/claims`);
+    return this.http.options<any>(`http://localhost:5000/api/idp/admin/users/${id}/claims`);
   }
 
 }

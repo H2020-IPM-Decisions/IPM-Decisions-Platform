@@ -25,7 +25,7 @@ export class UserProfileService {
   // }
 
   getUserProfile(id: string): Observable<UserProfile> {
-    return this.http.get<UserProfile>(`${environment.apiUrl}/upr/api/users/${id}/profiles`, {
+    return this.http.get<UserProfile>(`${environment.apiUrl}/api/upr/users/${id}/profiles`, {
       headers: { 
         'Content-Type': 'application/json',    
         'Accept': 'application/json' 
@@ -35,7 +35,7 @@ export class UserProfileService {
   }
 
   createUserProfile(id: string, userForCreation: UserProfileForCreation) {
-    const url = `${environment.apiUrl}/upr/api/users/${id}/profiles`;
+    const url = `${environment.apiUrl}/api/upr/users/${id}/profiles`;
     const headers = { 
       'Accept':'application/json',
       'Content-Type':'application/json'
@@ -46,7 +46,7 @@ export class UserProfileService {
   }
 
   updateUserProfile(id: string, operations: Operation[]) {
-    const url = `${environment.apiUrl}/upr/api/users/${id}/profiles`;
+    const url = `${environment.apiUrl}/api/upr/users/${id}/profiles`;
     const headers = { 
       'Content-Type':'application/json-patch+json'
     };
@@ -57,7 +57,7 @@ export class UserProfileService {
   }
 
   deleteUserProfile(id: string) {
-    const url = `${environment.apiUrl}/upr/api/users/${id}/profiles`;
+    const url = `${environment.apiUrl}/api/upr/users/${id}/profiles`;
     return this.http.delete(url).pipe(catchError(this.handleError));
   }
 
