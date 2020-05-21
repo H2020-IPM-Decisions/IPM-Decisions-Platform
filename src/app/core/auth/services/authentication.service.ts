@@ -28,7 +28,7 @@ export class AuthenticationService {
     }
     register(registrationData: UserForRegistration):Observable<User> {
 
-        const url: string = `${environment.apiUrl}/idp/api/authorization/register`;
+        const url: string = `${environment.apiUrl}/api/idp/authorization/register`;
     
         return this.http.post<User>(url, registrationData)
             .pipe(    
@@ -47,7 +47,7 @@ export class AuthenticationService {
 
     login(userForAuthentication: UserForAuthentication):Observable<Authentication> {
 
-        const url:string = `${environment.apiUrl}/idp/api/authorization/authenticate`;
+        const url:string = `${environment.apiUrl}/api/idp/authorization/authenticate`;
 
         const headers = { 
             'Content-Type':'application/json',
