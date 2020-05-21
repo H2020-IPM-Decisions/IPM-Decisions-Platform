@@ -11,6 +11,7 @@ import { AuthenticationService } from '../../services/authentication.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   registerForm: FormGroup;
   submitted = false;
   termsAccepted = false;
@@ -18,6 +19,8 @@ export class RegisterComponent implements OnInit {
   userTypes = ['Farmer', 'Advisor', 'Developer'];
   errors: string[] = [];
   successMsg: string;
+  isSuccess;
+
   constructor(private formBuilder: FormBuilder, private router:Router, private authService: AuthenticationService) {}
 
   ngOnInit() {
