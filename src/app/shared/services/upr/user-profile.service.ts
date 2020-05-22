@@ -16,14 +16,6 @@ import { UserProfileForCreation } from '../../models/user-profile-for-creation.m
 export class UserProfileService {
   constructor(private http: HttpClient) { }
 
-  // getAll() {
-  //   return this.http.get<User[]>(`${environment.appUrl}/users`);
-  // }
-
-  // getById(id: string) {
-  //   return this.http.get<User>(`${environment.appUrl}/api/users/${id}?fields=id`);
-  // }
-
   getUserProfile(id: string): Observable<UserProfile> {
     return this.http.get<UserProfile>(`${environment.apiUrl}/api/upr/users/${id}/profiles`, {
       headers: { 
