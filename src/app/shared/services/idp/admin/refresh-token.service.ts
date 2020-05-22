@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class RefreshTokenService {
 
   constructor(private http: HttpClient) { }
   getRefreshTokens():Observable<any> {
-    const url = 'http://localhost:5000/api/idp/admin/refreshtokens';
+    const url = environment.apiUrl + '/api/idp/admin/refreshtokens';
 
     return this.http.get<any>(url, {     
       headers: {
@@ -18,7 +19,7 @@ export class RefreshTokenService {
     });
   }  
   getRefreshTokensHATEOAS(fields:string):Observable<any> {
-    const url = 'http://localhost:5000/api/idp/admin/refreshtokens';
+    const url = environment.apiUrl + '/api/idp/admin/refreshtokens';
     
     return this.http.get<any>(url, {  
       params: {
@@ -30,7 +31,7 @@ export class RefreshTokenService {
     });
   }
   getRefreshTokensWithPageSize(pageSize:string, pagenumber:string):Observable<any> {
-    const url = 'http://localhost:5000/api/idp/admin/refreshtokens';
+    const url = environment.apiUrl + '/api/idp/admin/refreshtokens';
     
     return this.http.get<any>(url, {      
       headers: {
@@ -43,7 +44,7 @@ export class RefreshTokenService {
     });
   }
   getRefreshTokensParams(pageSize:string, pagenumber:string, fields:string):Observable<any> {
-    const url = 'http://localhost:5000/api/idp//admin/refreshtokens';
+    const url = environment.apiUrl + '/api/idp//admin/refreshtokens';
     
     return this.http.get<any>(url, {  
       params: {
@@ -57,7 +58,7 @@ export class RefreshTokenService {
     });
   }
   getRefreshTokensParamsHATEOAS(pageSize:string, pagenumber:string, fields:string):Observable<any> {
-    const url = 'http://localhost:5000/api/idp/admin/refreshtokens';
+    const url = environment.apiUrl + '/api/idp/admin/refreshtokens';
     
     return this.http.get<any>(url, {  
       params: {
@@ -71,7 +72,7 @@ export class RefreshTokenService {
     });
   }
   getRefreshTokensParamsById(id:string):Observable<any> {
-    const url = `http://localhost:5000/api/idp/admin/refreshtokens/${id}`;
+    const url = environment.apiUrl + `/api/idp/admin/refreshtokens/${id}`;
 
     return this.http.get<any>(url, {
       headers: {
@@ -81,7 +82,7 @@ export class RefreshTokenService {
   }
 
   getRefreshTokensParamsByIdWithFieldsParam(id:string, fields:string):Observable<any> {
-    const url = `http://localhost:5000/api/idp/admin/refreshtokens/${id}`;
+    const url = environment.apiUrl + `/api/idp/admin/refreshtokens/${id}`;
 
     return this.http.get<any>(url, {
       params: {
@@ -94,7 +95,7 @@ export class RefreshTokenService {
   }
 
   getRefreshTokensParamsByIdWithParamsHATEOAS(id:string, fields:string):Observable<any> {
-    const url = `http://localhost:5000/api/idp/admin/refreshtokens/${id}`;
+    const url = environment.apiUrl + `/api/idp/admin/refreshtokens/${id}`;
     return this.http.get<any>(url, {
       params: {
         fields: fields  
@@ -106,7 +107,7 @@ export class RefreshTokenService {
   }
 
   deleteRefreshToken(id:string):Observable<any> {
-    const url = `http://localhost:5000/api/idp/admin/refreshtokens/${id}`;
+    const url = environment.apiUrl + `/api/idp/admin/refreshtokens/${id}`;
     return this.http.delete<any>(url);
   }
   

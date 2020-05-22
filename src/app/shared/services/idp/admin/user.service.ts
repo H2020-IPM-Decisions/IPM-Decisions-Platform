@@ -2,6 +2,7 @@
   import { Injectable } from '@angular/core';
   import { catchError } from 'rxjs/operators';
   import { Observable } from 'rxjs';
+  import { environment } from 'src/environments/environment';
   
   @Injectable({
     providedIn: 'root'
@@ -10,7 +11,7 @@
   
     constructor(private http: HttpClient) { }
     getAllUsers():Observable<any> {
-      const url = 'http://localhost:5000/api/idp/admin/users';
+      const url = environment.apiUrl + '/api/idp/admin/users';
       return this.http.get<any>(url, {
         headers: {
           'Accept':'application/json'
@@ -19,7 +20,7 @@
     }
   
     getAllUsersWithHATEOASLinks():Observable<any> {
-      const url = 'http://localhost:5000/api/idp/admin/users';
+      const url = environment.apiUrl + '/api/idp/admin/users';
       return this.http.get<any>(url, {
         headers: {
           'Accept':'application/vnd.h2020ipmdecisions.hateoas+json'
@@ -28,7 +29,7 @@
     }
   
     getAllUserWithSearchQuery(searchquery: string):Observable<any> {
-      const url = 'http://localhost:5000/api/idp/admin/users';
+      const url = environment.apiUrl + '/api/idp/admin/users';
       return this.http.get<any>(url, {
         params: {
           searchquery: searchquery
@@ -40,7 +41,7 @@
     }
   
     getEnabledApplicationClients(fields: string):Observable<any> {
-      const url = 'http://localhost:5000/api/idp/admin/users';
+      const url = environment.apiUrl + '/api/idp/admin/users';
       return this.http.get<any>(url, {
         params: {
           fields: fields
@@ -50,33 +51,9 @@
         }
       });
     }
-    // getAllUsersWithSearchQueryAndEnabled(searchquery, isEnabled):Observable<any> {
-    //   const url = 'http://localhost:5000/api/idp/admin/users';
-    //   return this.http.get<any>(url, {
-    //     params: {
-    //       searchquery: searchquery,
-    //       isEnabled: isEnabled
-    //     },
-    //     headers: {
-    //       'Accept':'application/json'
-    //     }
-    //   });
-    // }
-  
-    // getAllUserWithFields(fields):Observable<any> {
-    //   const url = 'http://localhost:5000/api/idp/admin/users';
-    //   return this.http.get<any>(url, {
-    //     params: {
-    //       fields: fields
-    //     },
-    //     headers: {
-    //       'Accept':'application/json'
-    //     }
-    //   });
-    // }
   
     getAllUsersOrderBy(orderby:string):Observable<any> {
-      const url = 'http://localhost:5000/api/idp/admin/users';
+      const url = environment.apiUrl + '/api/idp/admin/users';
       return this.http.get<any>(url, {
         params: {
           orderby: orderby
@@ -88,7 +65,7 @@
     }
   
     getAllUsersOrderByDesc(orderby:string):Observable<any> {
-      const url = 'http://localhost:5000/api/idp/admin/users';
+      const url = environment.apiUrl + '/api/idp/admin/users';
       return this.http.get<any>(url, {
         params: {
           orderby: `${orderby} desc`
@@ -99,7 +76,7 @@
       });
     }
     getAllUsersWithPageParams(pageSize, pageNumber):Observable<any> {
-      const url = 'http://localhost:5000/api/idp/admin/users';
+      const url = environment.apiUrl + '/api/idp/admin/users';
       return this.http.get<any>(url, {
         params: {
           pageSize: pageSize,       
@@ -112,7 +89,7 @@
     }
   
     getAllUsersWithParams(PageSize, pageNumber, searchquery, IsEnabled, fields, orderby):Observable<any> {
-      const url = 'http://localhost:5000/api/idp/admin/users';
+      const url = environment.apiUrl + '/api/idp/admin/users';
       return this.http.get<any>(url, {
         params: {
           PageSize: PageSize,       
@@ -129,7 +106,7 @@
     }
   
     getAllUsersWithParamsHATEOAS(PageSize, pageNumber, searchquery, IsEnabled, fields, orderby):Observable<any> {
-      const url = 'http://localhost:5000/api/idp/admin/users';
+      const url = environment.apiUrl + '/api/idp/admin/users';
       return this.http.get<any>(url, {
         params: {
           PageSize: PageSize,       
@@ -146,7 +123,7 @@
     }
   
     getAllUserById(id:string):Observable<any> {
-      const url = `http://localhost:5000/api/idp/admin/users/${id}`;
+      const url = environment.apiUrl + `/api/idp/admin/users/${id}`;
       return this.http.get<any>(url, {
         headers: {
           'Accept':'application/json'
@@ -155,7 +132,7 @@
     } 
      
     getAllUserByIdHATEOAS(id:string, fields:string):Observable<any> {
-      const url = `http://localhost:5000/api/idp/admin/users/${id}`;
+      const url = environment.apiUrl + `/api/idp/admin/users/${id}`;
       return this.http.get<any>(url, {
         params: {
           fields: fields  
@@ -167,7 +144,7 @@
     }
   
     deleteUser(id:string):Observable<any> {
-      const url = `http://localhost:5000/api/idp/admin/users/${id}`;
+      const url = environment.apiUrl + `/api/idp/admin/users/${id}`;
   
       return this.http.delete<any>(url, {
         headers: {

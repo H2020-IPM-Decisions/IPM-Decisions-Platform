@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class RoleService {
   constructor(private http: HttpClient) { }
 
   getAllRoles():Observable<any> {
-    const url = 'http://localhost:5000/api/idp/admin/roles';
+    const url = environment.apiUrl + '/api/idp/admin/roles';
     return this.http.get<any>(url, {
       headers: {
         'Accept':'application/json;' 
@@ -19,7 +20,7 @@ export class RoleService {
   }
 
   getAllRolesFields(fields: string):Observable<any> {
-    const url = 'http://localhost:5000/api/idp/admin/roles';
+    const url = environment.apiUrl + '/api/idp/admin/roles';
 
     return this.http.get<any>(url, {
       params: {
@@ -32,7 +33,7 @@ export class RoleService {
   }
 
   getAllRolesHATEOAS():Observable<any> {
-    const url = 'http://localhost:5000/api/idp/admin/roles';
+    const url = environment.apiUrl + '/api/idp/admin/roles';
     return this.http.get<any>(url, {      
       headers: {
         'Accept':'application/vnd.h2020ipmdecisions.hateoas+json'
@@ -41,7 +42,7 @@ export class RoleService {
   }
 
   getAllRolesFieldsWithHATEOAS(fields: string):Observable<any> {
-    const url = 'http://localhost:5000/api/idp/admin/roles';
+    const url = environment.apiUrl + '/api/idp/admin/roles';
     return this.http.get<any>(url, {
       params: {
         fields: fields
@@ -53,7 +54,7 @@ export class RoleService {
   }
 
   createRole():Observable<any> {
-    const url = 'http://localhost:5000/api/idp/admin/roles';
+    const url = environment.apiUrl + '/api/idp/admin/roles';
     return this.http.post<any>(url, {
       body: {
         "name" : "Role1"
@@ -65,7 +66,7 @@ export class RoleService {
     });
   }
   createRoleHATEOAS():Observable<any> {
-    const url = 'http://localhost:5000/api/idp/admin/roles';
+    const url = environment.apiUrl + '/api/idp/admin/roles';
     return this.http.post<any>(url, {
       body: {
         "name" : "Role1"
@@ -77,7 +78,7 @@ export class RoleService {
     });
   }
   getRoleById(id: string):Observable<any> {
-    const url = `http://localhost:5000/api/idp/admin/roles/${id}`;
+    const url = environment.apiUrl + `/api/idp/admin/roles/${id}`;
     return this.http.get<any>(url, {
       headers: {
         'Accept':'application/json'
@@ -86,7 +87,7 @@ export class RoleService {
   }
 
   getRoleByIdFields(id: string, fields: string):Observable<any> {
-    const url = `http://localhost:5000/api/idp/admin/roles/${id}`;
+    const url = environment.apiUrl + `/api/idp/admin/roles/${id}`;
 
     return this.http.get<any>(url, {
       params: {
@@ -99,7 +100,7 @@ export class RoleService {
   }
 
   getRoleByIdFieldsHATEOAS(id: string, fields: string):Observable<any> {
-    const url = `http://localhost:5000/api/idp/admin/roles/${id}`;
+    const url = environment.apiUrl + `/api/idp/admin/roles/${id}`;
 
     return this.http.get<any>(url, {
       params: {
@@ -112,7 +113,7 @@ export class RoleService {
   }
 
   deleteRole(id: string):Observable<any> {
-    const url = `http://localhost:5000/api/idp/admin/roles/${id}`;
+    const url = environment.apiUrl + `/api/idp/admin/roles/${id}`;
 
     return this.http.get<any>(url);
   }
