@@ -10,6 +10,7 @@ declare var init: any;
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  active: string = "home";
 
   cmsUrl;
   cmsPath = "";
@@ -24,10 +25,11 @@ export class AdminComponent implements OnInit {
   dssEvaluation: any = {};
   dssAdaptation: any = {};
   dssIntegration: any = {};
+  isLoggedIn: boolean;
 
   constructor(
     private cmsService: CMSService,
-    private authenticationService: AuthenticationService,
+    private _authService: AuthenticationService,
     private router: Router,
     public activatedRoute: ActivatedRoute
   ) {
@@ -37,6 +39,8 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.isLoggedIn = this._authService.isLoggedIn();
 
     let cmsService = this.cmsService;
     let promises = [

@@ -1,0 +1,131 @@
+<nav class="site-nav-menu">
+    <ul>
+        <!-- ADMIN MENU -->
+        <li *ngIf="isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            <a routerLink="/admin">Home</a>
+        </li>
+        <li *ngIf="isAdmin" routerLinkActive="active">
+            <a routerLink="/admin/cms">CMS</a>
+        </li>
+        <li *ngIf="isAdmin" routerLinkActive="active"><a>Users</a>
+            <ul class="sub-menu">
+                <li *ngIf="isAdmin"><a routerLink="/admin/add-user">Add User</a></li>
+                <li *ngIf="isAdmin"><a routerLink="/admin/user-list">User list</a></li>
+                <li *ngIf="isAdmin"><a routerLink="/admin/user-profile">User Profile</a></li>
+            </ul>
+        </li>
+        <li *ngIf="isAdmin" routerLinkActive="active">
+            <a routerLink="/admin/datasource-repo">Datasource Repository</a>
+        </li>
+        <li *ngIf="isAdmin" routerLinkActive="active">
+            <a>Metadata & Catalogue Repository</a>
+            <ul class="sub-menu">
+                <li *ngIf="isAdmin"><a routerLink="/admin/manage-metadata">Manage Metadata</a></li>
+                <li *ngIf="isAdmin"><a routerLink="/admin/manage-catalogue">Manage Catalogue</a></li>
+            </ul>
+        </li>
+        <li *ngIf="isAdmin" routerLinkActive="active">
+            <a routerLink="/admin/source-repo">Source Code Repository</a>
+        </li>
+
+
+
+    
+        <!-- <li>
+            <a [routerLink]="['/admin/farm/list']" routerLinkActive="router-link-active">Farm List</a>
+            <ul class="sub-menu">
+                <li>
+                    <a [routerLink]="['/admin/farm/add']" routerLinkActive="router-link-active">Add Farm</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a>DSS</a>
+            <ul class="sub-menu">
+                <li>
+                    <a [routerLink]="['/admin/dss/use-dashboard']" routerLinkActive="router-link-active">DSS Use
+                        Dashboard</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/admin/dss/evaluation-dashboard']" routerLinkActive="router-link-active">DSS
+                        Evaluation Dashboard</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/admin/dss/adaptation-dashboard']" routerLinkActive="router-link-active">DSS
+                        Adaptation Dashboard</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/admin/dss/integration-dashboard']" routerLinkActive="router-link-active">DSS
+                        Integration Dashboard</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/admin/dss/list']" routerLinkActive="router-link-active">DSS List</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a [routerLink]="['/admin/dashboard-manager']" routerLinkActive="router-link-active">Dashboard Manager</a>
+        </li> -->
+
+
+        <!-- USER MENU -->
+        <!-- <ul> -->
+        <li *ngIf="!isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            <a [routerLink]="['/user/farm']">Home</a>
+        </li>
+        <li *ngIf="!isAdmin" routerLinkActive="active">
+            <a [routerLink]="['/user/farm/list']">Farm List</a>
+            <ul class="sub-menu">
+                <li *ngIf="!isAdmin" routerLinkActive="active">
+                    <a [routerLink]="['/user/farm/add']">Add Farm</a>
+                </li>
+            </ul>
+        </li>
+        <!-- crops -->
+        <li *ngIf="!isAdmin" routerLinkActive="active">
+            <a [routerLink]="['/user/crop/list']">Crop List</a>
+            <ul class="sub-menu">
+                <li *ngIf="!isAdmin" routerLinkActive="active">
+                    <a [routerLink]="['/user/crop/add']">Add Crop</a>
+                </li>
+            </ul>
+        </li>
+        <!-- pest-disease -->
+        <li *ngIf="!isAdmin" routerLinkActive="active">
+            <a [routerLink]="['/user/pest-disease/action-list']">Pest Disease List</a>
+            <ul class="sub-menu">
+                <li *ngIf="!isAdmin" routerLinkActive="active">
+                    <a [routerLink]="['/user/pest-disease/action-list/add']">Add Pest Disease</a>
+                </li>
+            </ul>
+        </li>
+
+        <li *ngIf="!isAdmin" routerLinkActive="active">
+            <a>DSS</a>
+            <ul class="sub-menu">
+                <li *ngIf="!isAdmin" routerLinkActive="active">
+                    <a [routerLink]="['/user/dss/use-dashboard']">DSS Use Dashboard</a>
+                </li>
+                <li *ngIf="!isAdmin" routerLinkActive="active">
+                    <a [routerLink]="['/user/dss/evaluation-dashboard']">DSS Evaluation Dashboard</a>
+                </li>
+                <li *ngIf="!isAdmin" routerLinkActive="active">
+                    <a [routerLink]="['/user/dss/adaptation-dashboard']">DSS Adaptation Dashboard</a>
+                </li>
+                <li *ngIf="!isAdmin" routerLinkActive="active">
+                    <a [routerLink]="['/user/dss/integration-dashboard']">DSS Integration Dashboard</a>
+                </li>
+                <li *ngIf="!isAdmin" routerLinkActive="active">
+                    <a [routerLink]="['/user/dss/list']">DSS List</a>
+                </li>
+            </ul>
+        </li>
+        <li *ngIf="!isAdmin" routerLinkActive="router-link-active">
+            <a [routerLink]="['/user/dashboard-manager']">Dashboard Manager</a>
+        </li>
+        <!-- </ul> -->
+
+
+
+    </ul>
+</nav>

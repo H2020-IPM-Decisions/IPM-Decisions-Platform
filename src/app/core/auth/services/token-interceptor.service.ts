@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { exhaustMap, take } from 'rxjs/operators';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError, empty } from 'rxjs';
+import { catchError, tap, switchMap } from 'rxjs/operators';
 
 import { Account } from './../models/account.model';
 import { AuthenticationService } from './authentication.service';
@@ -11,28 +11,64 @@ import { AuthenticationService } from './authentication.service';
 })
 export class TokenInterceptorService implements HttpInterceptor {
 
-  constructor(private injector: Injector) { }
+  private isRefreshing: boolean;
+  // private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  // tokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  constructor(private injector: Injector, private authService: AuthenticationService) {
+    this.isRefreshing = false;
+  }
 
-    let authenticationService = this.injector.get(AuthenticationService); 
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    return authenticationService.currentAccountSubject.pipe(
-      take(1),
-      exhaustMap( (userAccount: Account) => { 
+    let sessionDetails = this.authService.getUserSession();
 
-        if(!userAccount) {
-          return next.handle(req);
+    if (sessionDetails.token) {
+      request = this.addToken(request, sessionDetails.token);
+    }
+
+    return next.handle(request).pipe(
+      catchError((error: HttpErrorResponse) => {
+
+        if (error.status === 401 && !this.isRefreshing) {
+
+          return this.handle401Error(request, next).pipe(
+            switchMap((res) => {
+              request = this.addToken(request, res.body.token);
+              return next.handle(request);
+            }),
+            catchError((err: any) => {
+              this.authService.logout();
+              return empty();
+            })
+          );
         }
 
-        const modifiedReq = req.clone({
-            setHeaders: {
-                Authorization: `Bearer ${userAccount.token}`
-            }
-        });
+        return throwError(error);
 
-        return next.handle(modifiedReq);
       })
-    )
+    );
   }
+
+  handle401Error(request: HttpRequest<any>, next: HttpHandler) {
+    this.isRefreshing = true;
+    let userDetails: Account = this.authService.getUserSession();
+
+    if (userDetails) {
+      return this.authService.authenticateWithRefreshToken(userDetails.refreshToken).pipe(
+        tap(() => {
+          this.isRefreshing = false;
+        })
+      );
+    }
+  }
+
+  private addToken(request: HttpRequest<any>, token: string) {
+    return request.clone({
+      setHeaders: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+  }
+
 }

@@ -68,11 +68,15 @@ import { DssUseDashboardEditComponent } from './user/components/dss/dss-use-dash
 import { SourceRepoComponent } from './admin/source-repo/source-repo.component';
 import { AdminAccountComponent } from './admin/admin-account/admin-account.component';
 import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
-import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
-import { UserHeaderComponent } from './user/components/user-header/user-header.component';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthModule } from './core/auth/auth.module';
 import { CmsLinkPipe } from './shared/pipes/cms-link.pipe';
+import { HeaderComponent } from './core/components/header/header.component';
+import { SiteLogoComponent } from './core/components/header/site-logo/site-logo.component';
+import { SiteCorouselComponent } from './core/components/site-corousel/site-corousel.component';
+import { MenuComponent } from './core/components/header/menu/menu.component';
+import { HomeMenuComponent } from './core/components/header/home-menu/home-menu.component';
+import { AdminAccountMenuComponent } from './core/components/header/admin-account-menu/admin-account-menu.component';
+import { SignInComponent } from './core/components/header/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -135,9 +139,14 @@ import { CmsLinkPipe } from './shared/pipes/cms-link.pipe';
     SourceRepoComponent,
     AdminAccountComponent,
     AdminAccountEditComponent,
-    AdminHeaderComponent,
-    UserHeaderComponent,
     CmsLinkPipe,
+    HeaderComponent,
+    MenuComponent,
+    HomeMenuComponent,
+    AdminAccountMenuComponent,
+    SiteLogoComponent,
+    SignInComponent,
+    SiteCorouselComponent,
     // LoginComponent,
     // RegisterComponent,
     // ForgetPasswordComponent,

@@ -57,7 +57,6 @@ export class WeatherService {
     ajv.addMetaSchema(schema);
     var valid = ajv.validate(schema, data);
     if (!valid) {
-      // console.log(ajv.errors);
       this.errors$.next(ajv.errors);
     }
   }

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { first } from 'rxjs/operators';
 
 import { UserForAuthentication } from '../../models/user-for-authentication.model';
 import { Authentication } from './../../models/authentication.model';
-import { Role } from './../../models/role.enum';
 import { AuthenticationService } from '../../services/authentication.service';
+import { Role } from '../../enums/role.enum';
 
 @Component({
   selector: 'login',
@@ -61,7 +60,8 @@ export class LoginComponent implements OnInit {
       next: 
         (res: Authentication) => {
           this.loading = false;
-          if(this.authenticationService.currentUserValue.role === Role.Admin) {
+          const hasRoles = this.authenticationService.currentUserValue.roles;
+          if(hasRoles && hasRoles.includes(Role.Admin)) {
             this.router.navigate(["/admin"]);
           } else {
             this.router.navigate(["/user/farm/list"]);
@@ -75,7 +75,6 @@ export class LoginComponent implements OnInit {
     }
 
     this.authenticationService.login(userForAuthentication)
-    .pipe(first())
     .subscribe(loginObsever);
     
   }

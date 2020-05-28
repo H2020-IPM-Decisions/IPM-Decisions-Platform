@@ -26,10 +26,10 @@ export class TermsComponent implements OnInit {
     private authService: AuthenticationService
   ) {
     cmsService.getTermsAndConditions()
-      .then( (terms: any) => { this.termsAndConditions = terms.content } );
+      .then((terms: any) => { this.termsAndConditions = terms.content });
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.termsForm = this.formBuilder.group(
       {
         acceptTerms: [false, Validators.requiredTrue]
@@ -39,27 +39,28 @@ export class TermsComponent implements OnInit {
   get f() {
     return this.termsForm.controls;
   }
-  onRegister():void {
-    this.submitted = true; 
+  onRegister(): void {
+    this.submitted = true;
     if (this.termsForm.invalid) {
       return;
     }
-   
-    this.isLoading = true; 
 
-    this.authService.register(this.registrationData).subscribe(    
-      (registeredUser: User) => {
-        if(registeredUser.id) {
+    this.isLoading = true;
+
+      this.authService.register(this.registrationData).subscribe(
+        (registeredUser: User) => {
+          if (registeredUser.id) {
+            this.isLoading = false;
+            this.message.emit(true);
+            this.termsAccepted.emit(false);
+          }
+        },
+        errorRes => {
           this.isLoading = false;
-          this.message.emit(true);
           this.termsAccepted.emit(false);
         }
-      },
-      errorRes => {
-        this.isLoading = false;
-        this.termsAccepted.emit(false);     
-      }
-    );
+      );
+    
   }
 
 

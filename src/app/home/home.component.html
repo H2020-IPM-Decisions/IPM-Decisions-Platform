@@ -1,33 +1,18 @@
 <!-- Header section  -->
-<div id="login-account" class="collapse">
-  <div class="container">
-    <ul class="nav nav-tabs" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#login-form">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#create-form">Create Account</a>
-      </li>
-    </ul>
-    <div class="tab-content">
-      <div id="login-form" class="container tab-pane active">
-        <br />
-        <div class="container login-container">
-          <login></login>
-        </div>
-      </div>
-      <div id="create-form" class="container tab-pane fade">
-        <br />
-        <register></register>
-      </div>
-    </div>
-  </div>
-</div>
+<app-sign-in></app-sign-in>
+
 <header class="header-section clearfix">
   <div class="header-top">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6 text-md-left">
+          <a href="#" class="nav-link user-up-nav" id="cmsDropdown" data-toggle="dropdown"
+            aria-expanded="false">
+            CMS URL: {{cmsUrl}}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="cmsDropdown">
+            &nbsp;<input #urlInput [attr.value]="cmsUrl"> &nbsp; <button (click)="updateUrl(urlInput.value)">Enter</button> &nbsp;
+          </div>
         </div>
         <div class="col-md-6 text-md-right">
           <a href="#" data-toggle="collapse" data-target="#login-account">Login or Create Account</a>
@@ -38,16 +23,19 @@
 
   <div class="site-navbar">
     <!-- Logo -->
-    <a href="index.html" class="site-logo">
-      <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
-    </a>
-    <div class="header-right">
-      <button class="search-switch"><i class="fa fa-search"></i></button>
-    </div>
+    <app-site-logo></app-site-logo>
     <!-- Menu -->
     <nav class="site-nav-menu">
       <ul>
         <li class="active"><a href="index.html">Home</a></li>
+        <li>
+          <a href="solutions.html">Title 1</a>
+          <ul class="sub-menu">
+            <li><a href="#">Sub Title 1</a></li>
+            <li><a href="#">Sub Title 2</a></li>
+            <li><a href="#">Sub Title 3</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </div>

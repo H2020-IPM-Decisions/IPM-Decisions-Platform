@@ -1,0 +1,41 @@
+<ul>
+    <li>
+        <a [routerLink]="['/admin']" routerLinkActive="router-link-active">Home</a>
+    </li>
+
+    <li>
+        <a [routerLink]="['/admin/farm/list']" routerLinkActive="router-link-active">Farm List</a>
+        <ul class="sub-menu">
+            <li>
+                <a [routerLink]="['/admin/farm/add']" routerLinkActive="router-link-active">Add Farm</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a>DSS</a>
+        <ul class="sub-menu">
+            <li>
+                <a [routerLink]="['/admin/dss/use-dashboard']" routerLinkActive="router-link-active">DSS Use
+                    Dashboard</a>
+            </li>
+            <li>
+                <a [routerLink]="['/admin/dss/evaluation-dashboard']" routerLinkActive="router-link-active">DSS
+                    Evaluation Dashboard</a>
+            </li>
+            <li>
+                <a [routerLink]="['/admin/dss/adaptation-dashboard']" routerLinkActive="router-link-active">DSS
+                    Adaptation Dashboard</a>
+            </li>
+            <li>
+                <a [routerLink]="['/admin/dss/integration-dashboard']" routerLinkActive="router-link-active">DSS
+                    Integration Dashboard</a>
+            </li>
+            <li>
+                <a [routerLink]="['/admin/dss/list']" routerLinkActive="router-link-active">DSS List</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a [routerLink]="['/admin/dashboard-manager']" routerLinkActive="router-link-active">Dashboard Manager</a>
+    </li>
+</ul>

@@ -15,7 +15,7 @@ import { compare } from 'fast-json-patch';
 export class AdminAccountEditComponent implements OnInit {
   adminAccountForm: FormGroup;
   countries = ['GB', 'Norway', 'France', 'Serbia'];
-  private id: string = this.authenticationService.currentUserValue.id;
+  private id: string;
   submitted;
   errors: string[] = [];
   isCreated: boolean = false;
@@ -29,6 +29,8 @@ export class AdminAccountEditComponent implements OnInit {
     private userProfileService: UserProfileService) { }
 
   ngOnInit() {
+    this.id = this.authenticationService.currentUserValue.id;
+
     this.adminAccountForm = this.formBuilder.group(
       {
         firstName: ['', Validators.required],
@@ -81,9 +83,6 @@ export class AdminAccountEditComponent implements OnInit {
 
   onSubmit() {
 
-    console.log("ok");
-    
-
     if(this.adminAccountForm.invalid) {
       return;
     }
@@ -106,7 +105,6 @@ export class AdminAccountEditComponent implements OnInit {
         this.isUpdated = true;
       },
       error => {
-        // console.log("error", error);
         this.errors = error;
       })
     } else {

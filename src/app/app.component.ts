@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
     this.authenticationService.autoLogin();
 
     this.weather.getWeatherData().subscribe(res => {
-      // console.log("resul", res);
     })
   }
 }

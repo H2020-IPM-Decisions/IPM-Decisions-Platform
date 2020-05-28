@@ -17,12 +17,11 @@ export class EditAccountComponent implements OnInit {
 
   accountForm: FormGroup;
   countries = ['GB', 'Norway', 'France', 'Serbia'];
-  private id: string = this.authenticationService.currentUserValue.id;
+  private id: string;
   submitted;
   errors: string[] = [];
   isCreated: boolean = false;
   isUpdated: boolean = false;
-  // userIdentity: User;
   userProfile: UserProfile;
   userProfileCreation: UserProfileForCreation;
 
@@ -32,6 +31,10 @@ export class EditAccountComponent implements OnInit {
     private userProfileService: UserProfileService) { }
 
   ngOnInit() {
+    if(this.authenticationService.currentUserValue) {
+       this.id = this.authenticationService.currentUserValue.id;
+    }
+
     this.accountForm = this.formBuilder.group(
       {
         firstName: ['', Validators.required],
@@ -130,7 +133,6 @@ export class EditAccountComponent implements OnInit {
         this.isUpdated = true;
       },
       error => {
-        // console.log("error", error);
         this.errors = error;
       })
     } else {
@@ -151,7 +153,6 @@ export class EditAccountComponent implements OnInit {
         this.isCreated = true;
       },
       error => {
-        // console.log("error", error);
         this.errors = error;
       })
     }

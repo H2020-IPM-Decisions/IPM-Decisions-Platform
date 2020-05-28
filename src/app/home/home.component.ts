@@ -1,10 +1,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CMSService } from '../shared/services/cms.service';
-import { User } from '../core/auth/models/user.model';
-import { Role } from '../core/auth/models/role.enum';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 declare var init: any;
 
@@ -29,11 +26,11 @@ export class HomeComponent implements OnInit {
   dssAdaptation: any = {};
   dssIntegration: any = {};
   
-  currentUser: User;
+  isLoggedIn: boolean;
   state$: Observable<object>;
   constructor(
     private cmsService: CMSService,
-    private authenticationService: AuthenticationService,
+    private authService: AuthenticationService,
     private router: Router,
     public activatedRoute: ActivatedRoute
   ) {
@@ -70,6 +67,8 @@ export class HomeComponent implements OnInit {
     Promise.all(promises).then(() => {
       setTimeout(()=>init(), 0)
     })
+
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
 
