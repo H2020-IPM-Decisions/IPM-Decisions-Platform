@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject, throwError, empty, of } from 'rxjs';
-import { catchError, tap, mergeMap, first, map } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import * as jwt_decode from 'jwt-decode';
 import * as bcrypt from 'bcryptjs';
 const saltRounds = 10;
@@ -74,10 +74,9 @@ export class AuthenticationService {
 
     }
 
-    doLogin(userForAuthentication: UserForAuthentication): Observable<Authentication>
-     {
+    doLogin(userForAuthentication: UserForAuthentication): Observable<Authentication> {
 
-        const url:string = `${environment.apiUrl}/api/idp/authorization/authenticate`;
+        const url: string = `${environment.apiUrl}/api/idp/authorization/authenticate`;
 
         const headers = {
             'Content-Type': 'application/json',
@@ -98,20 +97,23 @@ export class AuthenticationService {
                     return empty();
                 }),
                 catchError(this.handleError),
-//                 map(response => {
-//                    if(response && response.token) {
-//                        window.sessionStorage.setItem('token', response.token);
-//                     //    return true;
-//                     this.currentAccountSubject.next(currentAccount);
+                //                 map(response => {
+                //                    if(response && response.token) {
+                //                        window.sessionStorage.setItem('token', response.token);
+                //                     //    return true;
+                //                     this.currentAccountSubject.next(currentAccount);
 
-//                    }
+                //                    }
 
-//                 //    return false;
+                //                 //    return false;
 
-//                 }),
+                //                 }),
 
                 tap((response: Authentication) => {
                     const decoded = jwt_decode(response.token);
+
+                    const userAccessType = (decoded['UserAccessType']) ? [decoded['UserAccessType']] : null;
+                    const role = (decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']) ? [decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']] : null;
 
                     const currentAccount: Account = new Account(
                         decoded['sub'],
@@ -120,8 +122,8 @@ export class AuthenticationService {
                         decoded['exp'],
                         response.token,
                         response.refreshToken,
-                        [decoded['UserAccessType']],
-                        [decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']]
+                        userAccessType,
+                        role
                         // decoded['iss'],
                         // decoded['aud']
                     );
@@ -219,49 +221,30 @@ export class AuthenticationService {
         let errorMessage = 'Services not responding!';
 
         if (!errorRes.error || !errorRes.error.message) {
-            
+
             return throwError(errorMessage);
         }
         return throwError(errorRes.error.message);
     }
 
     public getUserSession(): Account {
-        let token = window.sessionStorage.getItem('user');
-
-        // let decoded = jwt_decode(token);
-        
-        if(!token) return null;
-        return Object.assign(new Account(), token);
+        let loggedUser = window.sessionStorage.getItem('user');
+        if (!loggedUser) return null;
+        return Object.assign(new Account(), JSON.parse(loggedUser));
     }
 
     public isLoggedIn() {
         let token = window.sessionStorage.getItem('user');
-        if(!token) {
+        if (!token) {
             return false;
-        }      
+        }
         return !!token;
     }
 
     public isAdmin(): boolean {
-        if(this.currentUserValue.roles && this.currentUserValue.roles.length > 0) {
+        if (this.currentUserValue.roles && this.currentUserValue.roles.length > 0) {
             return this.currentUserValue.roles.includes('Admin');
-        }      
+        }
     }
 
-    public getClaim(): string {
-        if(this.currentUserValue && this.currentUserValue.claims.length > 0) {
-            return this.currentUserValue.claims.find(claim => {
-                switch(claim) {
-                    case "Farmer":
-                        return "Farmer";
-                    case "Advisor":
-                        return "Advisor";
-                    case "Developer":
-                        return "Developer";
-                    default:
-                        return null;
-                }
-            });
-        }      
-    }
 }

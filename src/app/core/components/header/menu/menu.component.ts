@@ -1,5 +1,6 @@
+import { ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -8,20 +9,59 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  isAdmin: boolean;
-  hasClaim: string;
+  isAdmin: boolean = false;
+  isFarmer: boolean = false;
+  isAdvisor: boolean = false;
+  isDeveloper: boolean = false;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private _authService: AuthenticationService, private _route: ActivatedRoute) { }
 
   ngOnInit() {
-    
-    if(this.authService.currentUserValue.roles.length > 0) {
-      this.isAdmin = this.authService.isAdmin();
+
+    if (this._authService.currentUserValue.roles && this._authService.currentUserValue.roles.length > 0) {
+      this.isAdmin = this._authService.isAdmin();
     } else {
-      let claim = this.authService.getClaim();
-      this.hasClaim = claim;
-      
+
+      this._route.data.subscribe(data => {
+        let currentClaim = this._authService.currentUserValue.claims;
+
+        if (currentClaim && data.claims) {
+
+          let activeClaim = data.claims.filter((item: string) => {
+            return currentClaim.indexOf(item) != -1;
+          });
+
+          if (activeClaim.length > 0) {
+            this.getActiveClaim(activeClaim);
+          }
+          console.log(this.isAdmin);
+          console.log(this.isFarmer);
+          console.log(this.isAdvisor);
+          console.log(this.isDeveloper);
+
+        }
+      });
     }
+
+
+
+  }
+
+
+  getActiveClaim(activeClaim: string[]) {
+    activeClaim.forEach((item: string) => {
+      switch (item) {
+        case "Farmer":
+          this.isFarmer = true;
+          break;
+        case "Advisor":
+          this.isAdvisor = true;
+          break;
+        case "Developer":
+          this.isDeveloper = true;
+          break;
+      }
+    })
 
   }
 

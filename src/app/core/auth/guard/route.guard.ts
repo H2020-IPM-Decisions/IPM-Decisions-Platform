@@ -12,9 +12,9 @@ export class RouteGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      if(this._authService.isAdmin() || this._authService.getClaim()) {
-         return true;
-      }
+      console.log("rouet", this._authService.isAdmin());
+      
+      
       
       return this._router.createUrlTree(['/']);
   }
