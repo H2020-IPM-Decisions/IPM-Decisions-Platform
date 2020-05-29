@@ -34,11 +34,6 @@ export class MenuComponent implements OnInit {
           if (activeClaim.length > 0) {
             this.getActiveClaim(activeClaim);
           }
-          console.log(this.isAdmin);
-          console.log(this.isFarmer);
-          console.log(this.isAdvisor);
-          console.log(this.isDeveloper);
-
         }
       });
     }
