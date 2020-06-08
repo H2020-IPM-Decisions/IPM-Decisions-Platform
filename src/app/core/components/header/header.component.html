@@ -6,15 +6,6 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6 text-md-left">
-                    <a href="#" class="nav-link user-up-nav" id="cmsDropdown" data-toggle="dropdown"
-                        aria-expanded="false">
-                        CMS URL: {{cmsUrl}}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="cmsDropdown">
-                        &nbsp;<input #urlInput [attr.value]="cmsUrl"> &nbsp; <button
-                            (click)="updateUrl(urlInput.value)">Enter</button>
-                        &nbsp;
-                    </div>
                 </div>
 
                 <div *ngIf="!isLoggedIn" class="col-md-6 text-md-right">
