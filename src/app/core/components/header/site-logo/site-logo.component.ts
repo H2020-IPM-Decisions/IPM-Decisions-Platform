@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CMSService } from '@app/shared/services/cms.service';
 
 @Component({
   selector: 'app-site-logo',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./site-logo.component.css']
 })
 export class SiteLogoComponent implements OnInit {
+  bannerUrl: any;
 
-  constructor() { }
+  constructor(
+    private cmsService: CMSService
+    ) { }
 
   ngOnInit() {
+    let cmsService = this.cmsService;
+    cmsService.getBanner()
+        .then((response: any) => { this.bannerUrl = response.image.path })
   }
 
 }
