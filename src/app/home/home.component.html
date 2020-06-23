@@ -190,7 +190,7 @@
       <div class="col-lg-6 p-0">
         <div class="testimonial-box">
           <div class="testi-box-warp">
-            <h2>News</h2>
+            <h2>Platform progress</h2>
             <div class="testimonial-slider owl-carousel">
               <ng-template ngFor let-article [ngForOf]="news?.articles">
                 <div class="testimonial" [innerHtml]="article.value">
@@ -203,25 +203,3 @@
     </div>
   </div>
 </section>
-
-<!-- Video section  -->
-<section class="video-section spad">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="video-text">
-          <h2>{{ homeArticle2.title }}</h2>
-          <p>{{ homeArticle2.content }}</p>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="video-box set-bg" [attr.data-setbg]="homeArticle2?.mediabackground?.path | cmsLink">
-          <a href="{{'/storage/uploads' + homeArticle2?.media?.path | cmsLink}}" class="video-popup">
-            <i class="fa fa-play"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Video section end  -->
