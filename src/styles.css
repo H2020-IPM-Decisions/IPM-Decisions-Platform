@@ -2159,3 +2159,10 @@ Responsive
     padding: 13px 10px;
   }
 }
+
+/*---------------------
+Additional
+ -----------------------*/
+.terms-and-conditions ul {
+  padding-left: 40px;
+}
