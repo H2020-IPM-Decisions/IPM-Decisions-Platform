@@ -3,43 +3,47 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 
 import { AuthenticationService } from '../services/authentication.service';
+import { map, take } from 'rxjs/operators';
+import { toUnicode } from 'punycode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(
-    private _authService: AuthenticationService,
-    private _router: Router) { }
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean
-    | UrlTree
-    | Promise<boolean | UrlTree>
-    | Observable<boolean | UrlTree> {
-
-    if (this._authService.isLoggedIn()) {
-
-      let session = this._authService.getUserSession();
-      if (session) {
-        if (session.roles && session.roles.length > 0) {
-          const allRoles: string[] = route.data.roles;
-
-          if (allRoles && !(allRoles.some((role: string) => session.roles.includes(role)))) {
-            return this._router.createUrlTree(['/']);
-          }
-        }
-
-        if (session.claims && session.claims.length > 0) {
-          const allClaims: string[] = route.data.claims;
-
-          if (allClaims && !(allClaims.some((claim: string) => session.claims.includes(claim)))) {
-            return this._router.createUrlTree(['/']);
-          }
-        }
-      }
+  constructor(private _authService: AuthenticationService, private _router: Router) { }
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree
+    | Promise<boolean | UrlTree> | Observable<boolean | UrlTree> {
       return true;
-    }
 
-    return this._router.createUrlTree(['/']);
+    // if (this._authService.isLoggedIn()) {
+
+    //   return this._authService.account$.pipe(
+    //     take(1),
+    //     map(acct => {
+    //       if (acct) {
+    //         if (acct.roles && acct.roles.length > 0) {
+    //           const roles: string[] = route.data.roles;
+
+    //           if (roles && (roles.some((role: string) => acct.roles.includes(role)))) {
+    //             return true;
+    //           }
+    //         }
+
+    //         if (acct.claims && acct.claims.length > 0) {
+    //           const claims: string[] = route.data.claims;
+
+    //           if (claims && (claims.some((claim: string) => acct.claims.includes(claim)))) {
+    //             return true;
+    //           }
+    //         }
+    //       }
+
+    //     })
+    //   );
+    // }
+    // return this._router.createUrlTree(['/']);
+
   }
-
 }
+
+

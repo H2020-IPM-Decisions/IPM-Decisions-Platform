@@ -28,8 +28,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     ReactiveFormsModule,
   ],
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
-    // AuthGuard
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
+    AuthGuard
   ],
   exports: [
     LoginComponent,

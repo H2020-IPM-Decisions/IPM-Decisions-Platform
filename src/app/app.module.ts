@@ -1,8 +1,9 @@
-import { ForgetPasswordComponent } from './core/auth/pages/forget-password/forget-password.component';
-import { RegisterComponent } from './core/auth/pages/register/register.component';
-import { LoginComponent } from './core/auth/pages/login/login.component';
-import { FooterComponent } from './core/components/footer/footer.component';
-import { TermsComponent } from './core/auth/pages/terms/terms.component';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { DssParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-detail/dss-parameters-detail.component';
 import { EditDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/edit-dss-observation/edit-dss-observation.component';
 import { DssObservationListComponent } from './user/components/dss/dss-detail/dss-observation-list/dss-observation-list.component';
@@ -11,15 +12,12 @@ import { DssDetailComponent } from './user/components/dss/dss-detail/dss-detail.
 import { EditFarmComponent } from './user/components/farm/edit-farm/edit-farm.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
 import { AccountComponent } from './user/components/account/account.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { CookieModule } from 'ngx-cookie';
 import { AppRoutingModule } from './app-routing.module';
-
+import { FooterComponent } from './core/components/footer/footer.component';
 import { AppComponent } from './app.component';
+import { UserHeaderComponent } from './user/components/user-header/user-header.component';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { KeepHtmlPipe } from './keep-html.pipe';
 import { RunScriptsDirective } from './run-scripts.directive';
 import { AdminComponent } from './admin/admin.component';
@@ -72,7 +70,7 @@ import { AuthModule } from './core/auth/auth.module';
 import { CmsLinkPipe } from './shared/pipes/cms-link.pipe';
 import { HeaderComponent } from './core/components/header/header.component';
 import { SiteLogoComponent } from './core/components/header/site-logo/site-logo.component';
-import { MenuComponent } from './core/components/header/menu/menu.component';
+import { SiteCorouselComponent } from './core/components/site-corousel/site-corousel.component';
 import { HomeMenuComponent } from './core/components/header/home-menu/home-menu.component';
 import { AdminAccountMenuComponent } from './core/components/header/admin-account-menu/admin-account-menu.component';
 import { SignInComponent } from './core/components/header/sign-in/sign-in.component';
@@ -140,15 +138,13 @@ import { SignInComponent } from './core/components/header/sign-in/sign-in.compon
     AdminAccountEditComponent,
     CmsLinkPipe,
     HeaderComponent,
-    MenuComponent,
     HomeMenuComponent,
     AdminAccountMenuComponent,
     SiteLogoComponent,
     SignInComponent,
-    // LoginComponent,
-    // RegisterComponent,
-    // ForgetPasswordComponent,
-    // TermsComponent,
+    SiteCorouselComponent,
+    AdminHeaderComponent, 
+    UserHeaderComponent
   ],
   imports: [
     BrowserModule,

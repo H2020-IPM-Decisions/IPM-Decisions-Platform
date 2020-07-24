@@ -2,6 +2,11 @@
   <div class="alert alert-danger" *ngIf="errors.length">
     <p *ngFor="let error of errors">{{ error }}</p>
   </div>
+
+  {{isVerified}}
+  <div class="alert alert-success" *ngIf="isVerified">
+    <span>Account successfully verified! Please, log in into your account.</span>
+  </div>
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <div class="form-group col">
       <label>Email</label>

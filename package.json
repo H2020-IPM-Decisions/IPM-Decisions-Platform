@@ -25,6 +25,7 @@
     "bcryptjs": "^2.4.3",
     "fast-json-patch": "^3.0.0-1",
     "jwt-decode": "^2.2.0",
+    "moment": "^2.26.0",
     "ngx-cookie": "4.0.2",
     "popper.js": "^1.16.1",
     "rxjs": "~6.4.0",

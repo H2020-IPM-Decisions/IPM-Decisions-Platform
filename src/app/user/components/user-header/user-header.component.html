@@ -1,0 +1,68 @@
+<div class="header-top">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 text-md-left">
+      </div>
+      <div class="col-md-6 text-md-right">
+        <a href="#" class="nav-link dropdown-toggle user-up-nav" id="navbarDropdown" data-toggle="dropdown"
+          aria-expanded="false">
+          Welcome, Dave Skirvin <b class="caret"></b>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/user/account']">Account</a>
+
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()" [routerLink]="['/']">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-navbar">
+  <!-- Logo -->
+  <app-site-logo></app-site-logo>
+  <!-- Menu -->
+  <nav class="site-nav-menu">
+    <ul>
+      <li routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/user/farm']">Farm</a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['/user/farm/list']">Farm List</a>
+        <ul class="sub-menu">
+          <li routerLinkActive="active">
+            <a [routerLink]="['/user/farm/add']">Add Farm</a>
+          </li>
+        </ul>
+      </li>
+
+      <li routerLinkActive="active">
+        <a>DSS</a>
+        <ul class="sub-menu">
+          <li routerLinkActive="active">
+            <a [routerLink]="['/user/dss/use-dashboard']">DSS Use Dashboard</a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['/user/dss/evaluation-dashboard']">DSS Evaluation Dashboard</a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['/user/dss/adaptation-dashboard']">DSS Adaptation Dashboard</a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['/user/dss/integration-dashboard']">DSS Integration Dashboard</a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['/user/dss/list']">DSS List</a>
+          </li>
+        </ul>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['/user/dashboard-manager']">Dashboard Manager</a>
+      </li>
+    </ul>
+  </nav>
+</div>

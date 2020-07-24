@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment';
 import { User } from '@app/core/auth/models/user.model';
 import { UserProfile } from '../../models/user-profile.model';
 import { UserProfileForCreation } from '../../models/user-profile-for-creation.model';
+import { USER_PROFILE } from '@app/mock/user-profile.mock';
+import { ADVISORS_EMAIL_LIST } from './../../../mock/advisors-emial-list.mock';
 
 
 @Injectable({
@@ -16,8 +18,15 @@ import { UserProfileForCreation } from '../../models/user-profile-for-creation.m
 export class UserProfileService {
   constructor(private http: HttpClient) { }
 
+  getUserProfileMock() :any{
+    return USER_PROFILE;
+  }
+  getAdvosorsEmailListMock() :any{
+    return ADVISORS_EMAIL_LIST;
+  }
+
   getUserProfile(id: string): Observable<UserProfile> {
-    return this.http.get<UserProfile>(`${environment.apiUrl}/api/upr/users/${id}/profiles`, {
+    return this.http.get<UserProfile>(`${environment.apiUrl}/api/users/${id}/profiles`, {
       headers: { 
         'Content-Type': 'application/json',    
         'Accept': 'application/json' 
