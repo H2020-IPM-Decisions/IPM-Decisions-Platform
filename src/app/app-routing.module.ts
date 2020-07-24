@@ -56,9 +56,11 @@ import { AccountComponent } from './user/components/account/account.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
 import { AuthGuard } from './core/auth/guard/auth.guard';
 import { Role } from './core/auth/enums/role.enum';
+import { MapRisksComponent } from './maprisks/maprisks.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
+  { path: 'maprisks', component: MapRisksComponent},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/account', component: AdminAccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/account/edit', component: AdminAccountEditComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },

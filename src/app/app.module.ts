@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DssParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-detail/dss-parameters-detail.component';
 import { EditDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/edit-dss-observation/edit-dss-observation.component';
 import { DssObservationListComponent } from './user/components/dss/dss-detail/dss-observation-list/dss-observation-list.component';
@@ -20,6 +20,7 @@ import { UserHeaderComponent } from './user/components/user-header/user-header.c
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { KeepHtmlPipe } from './keep-html.pipe';
 import { RunScriptsDirective } from './run-scripts.directive';
+import { MapRisksComponent } from './maprisks/maprisks.component';
 import { AdminComponent } from './admin/admin.component';
 import { ContentManagementSystemComponent } from './admin/content-management-system/content-management-system.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
@@ -80,6 +81,7 @@ import { SignInComponent } from './core/components/header/sign-in/sign-in.compon
     AppComponent,
     KeepHtmlPipe,
     RunScriptsDirective,
+    MapRisksComponent,
     AdminComponent,
     ContentManagementSystemComponent,
     AddUserComponent,
@@ -153,6 +155,7 @@ import { SignInComponent } from './core/components/header/sign-in/sign-in.compon
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
     CookieModule.forRoot(),
     AuthModule
   ],

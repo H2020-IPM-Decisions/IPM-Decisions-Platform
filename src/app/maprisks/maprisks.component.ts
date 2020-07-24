@@ -3,14 +3,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CMSService } from '../shared/services/cms.service';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
+import {MaprisksService} from './maprisks.service';
+import * as L from 'leaflet';
 declare var init: any;
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-maprisks',
+  templateUrl: './maprisks.component.html',
+  styleUrls: ['./maprisks.component.css'] 
 })
-export class HomeComponent implements OnInit {
-  active: string = "home";
+
+export class MapRisksComponent implements OnInit {
 
   cmsUrl;
   cmsPath = "";
@@ -31,10 +33,13 @@ export class HomeComponent implements OnInit {
   collapseDiv: boolean;
   @Output() verified: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  map!: L.Map;
+
   constructor(
     private cmsService: CMSService,
     private _authService: AuthenticationService,
     private router: Router,
+    private maprisksService: MaprisksService,
     public _activatedRoute: ActivatedRoute
   ) {
     this.cmsUrl = cmsService.getUrl();
@@ -58,6 +63,13 @@ export class HomeComponent implements OnInit {
       }
 
     });
+
+    this.maprisksService.initialize ('map').subscribe(data=> {
+      this.map=data;
+      const featureGroup = this.maprisksService.createFeatureGroup(this.map);
+      this.maprisksService.addMarker(47.4744951, 10.9576836, featureGroup);
+    });
+
 
     let cmsService = this.cmsService;
     let promises = [

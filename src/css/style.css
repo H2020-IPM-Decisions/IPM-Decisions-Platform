@@ -458,7 +458,6 @@ a {
  .site-logo {
    display: inline-block;
    margin-right: 100px;
-   padding-left: 63px;
  }
  
  .header-right {
@@ -677,6 +676,7 @@ a {
    opacity: 0;
    top: 50px;
    position: relative;
+   text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
  }
  
  .hero-item h2 span {
@@ -2149,3 +2149,9 @@ section#ipm-news {
    }
  }
  
+ .morecontent div {
+  display: none;
+}
+.morelink {
+  display: block;
+}

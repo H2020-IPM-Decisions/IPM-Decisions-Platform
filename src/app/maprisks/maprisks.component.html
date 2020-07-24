@@ -1,0 +1,193 @@
+<!-- Header section  -->
+<div id="login-account" class="collapse" [ngClass]="{'show' : collapseDiv}">
+    <div class="container">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#login-form">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#create-form">Create Account</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="login-form" class="container tab-pane active">
+          <br />
+          <div class="container login-container">
+            <login (verified)="setVerified($event)"></login>
+          </div>
+        </div>
+        <div id="create-form" class="container tab-pane fade">
+          <br />
+          <register></register>
+        </div>
+      </div>
+    </div>
+  </div>
+  <header class="header-section clearfix">
+    <div class="header-top">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 text-md-left">
+          </div>
+          <div class="col-md-6 text-md-right">
+            <a href="#" data-toggle="collapse" data-target="#login-account">Login or Create Account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="container .site-logosite-navbar">
+      <!-- Logo -->
+      <a href="index.html" class="site-logo">
+        <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
+      </a>
+    <!-- div class="header-right">
+        <button class="search-switch"><i class="fa fa-search"></i></button>
+    </div>-->
+      <!-- Menu -->
+      <nav class="site-nav-menu">
+        <ul>
+          <li ><a href="index.html">Home</a></li>
+          <li class="active"><a routerLink="maprisks">Map Risks</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- Header section end  -->
+  
+  <!-- Hero section  -->
+  <section class="hero-section">
+    <div class="hero-slider owl-carousel">
+        <div class="hero-item set-bg set-map">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-8">
+                <h2>
+                 DECISION SUPPORT
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="border-animation"></div>
+  </section>
+  <!-- Hero section end  -->
+  
+  <section class="services-section">
+    <div class="services-warp">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <h2 class="text-center">MAPS</h2>
+
+            <div id="map">
+              <button (click)="toggleOn =!toggleOn">Toggle Greetings</button>
+              <div *ngIf="!toggleOn" class="block-container-layer">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-4 col-md-4 blk4">
+                      <div id="demo" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ul class="carousel-indicators">
+                          <li data-target="#demo" data-slide-to="0" class="active"></li>
+                          <li data-target="#demo" data-slide-to="1"></li>
+                          <li data-target="#demo" data-slide-to="2"></li>
+                        </ul>
+                        <!-- The slideshow -->
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="https://images.kojaro.com/2016/10/b27794c5-6d3b-4287-bb94-0a547ad23108.jpg" width="100%" alt="Los Angeles">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="https://images.kojaro.com/2016/10/dc324b2a-ab12-4c11-9f9f-c4673ac90737.jpg" width="100%" alt="Chicago"> 
+                          </div>
+                          <div class="carousel-item">
+                            <img src="https://images.kojaro.com/2016/10/98d7ce85-704f-4d89-9f9f-a3bb57d6be38.jpg" width="100%" alt="New York">
+                          </div>
+                        </div>
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                          <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                          <span class="carousel-control-next-icon"></span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-lg-8 col-md-8 blk8">
+                      <h4 class="text-center">Farm crop conditions and observations </h4>
+                      <div id="card-491584">
+                        <div class="card">
+                          <div class="card-header">
+                             <a class="card-link" data-toggle="collapse" data-parent="#card-491584" href="#card-element-Barley">
+                              <i class="fa fa-plus" aria-hidden="true"></i> Barley Crops
+                                <span class="high-risk-label float-right"><i class="fa fa-leaf" aria-hidden="true"></i>High Risk</span>
+                              </a>
+                          </div>
+                          <div id="card-element-Barley" class="collapse">
+                            <div class="card-body">
+                              Anim pariatur cliche...
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-header">
+                             <a class="collapsed card-link" data-toggle="collapse" data-parent="#card-491584" href="#card-element-Oilseed">
+                              <i class="fa fa-plus" aria-hidden="true"></i> Oilseed Crops
+                               <span class="low-risk-label float-right"><i class="fa fa-leaf" aria-hidden="true"></i>Low Risk</span>
+                              </a>
+                          </div>
+                          <div id="card-element-Oilseed" class="collapse">
+                            <div class="card-body">
+                              Anim pariatur cliche...
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-header">
+                             <a class="collapsed card-link" data-toggle="collapse" data-parent="#card-491584" href="#card-element-Vegetable">
+                              <i class="fa fa-plus" aria-hidden="true"></i> Vegetable Crops
+                               <span class="medium-risk-label float-right"><i class="fa fa-leaf" aria-hidden="true"></i>Medium Risk</span>
+                              </a>
+                          </div>
+                          <div id="card-element-Vegetable" class="collapse">
+                            <div class="card-body">
+                              Anim pariatur cliche...
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
+
+
+
+  
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features section  
+  <section class="maps-section spad">
+    <div class="container-fluid">
+      <h2>MAPS</h2>
+      <br>
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+
+        </div>
+    </div>
+    </div>
+  </section> -->
+
+  
+  

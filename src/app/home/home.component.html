@@ -36,14 +36,14 @@
     </div>
   </div>
 
-  <div class="site-navbar">
+  <div class="container .site-logosite-navbar">
     <!-- Logo -->
     <a href="index.html" class="site-logo">
       <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
     </a>
-    <div class="header-right">
+  <!-- div class="header-right">
       <button class="search-switch"><i class="fa fa-search"></i></button>
-    </div>
+  </div>-->
     <!-- Menu -->
     <nav class="site-nav-menu">
       <ul>
@@ -56,6 +56,7 @@
             <li><a href="#">Sub Title 3</a></li>
           </ul>
         </li>
+        <li><a routerLink="maprisks">Map Risks</a></li>
       </ul>
     </nav>
   </div>
@@ -136,7 +137,7 @@
             <div class="si-head">
               <h5>{{ homeGrid?.title6 }}</h5>
             </div>
-            <p>{{ homeGrid?.content6 }}</p>
+            <p >{{ homeGrid?.content6 }}</p>
           </div>
         </div>
       </div>
@@ -147,50 +148,53 @@
 
 <!-- Features section   -->
 <section class="features-section spad set-bg">
-  <div class="container">
+  <div class="container-fluid">
+    <h2><span class="c-l">D</span>ECISION <span class="c-l">S</span>UPPORT <span class="c-l">S</span>YSTEM</h2>
+    <br>
     <div class="row">
-      <div class="col-lg-6 col-md-6">
+      <div class="col-lg-3 col-md-3">
         <div class="feature-box">
           <img [src]="dssUse?.image?.path | cmsLink" alt="" />
           <div class="fb-text">
             <h5>DSS use</h5>
-            <p>{{ dssUse?.description }}</p>
+            <p class="more">{{ dssUse?.description }}</p>
             <a href="" class="fb-more-btn">Read More</a>
           </div>
         </div>
       </div>
-      <div class="col-lg-6 col-md-6">
+      <div class="col-lg-3 col-md-3">
         <div class="feature-box">
           <img [src]="dssEvaluation?.image?.path | cmsLink" alt="" />
           <div class="fb-text">
             <h5>DSS evaluation</h5>
-            <p>{{ dssEvaluation?.description }}</p>
+            <p class="more">{{ dssEvaluation?.description }}</p>
+            <a href="" class="fb-more-btn">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3">
+        <div class="feature-box">
+          <img [src]="dssAdaptation?.image?.path | cmsLink" alt="" />
+          <div class="fb-text">
+            <h5>DSS adaptation</h5>
+            <p class="more">{{ dssAdaptation?.description }}</p>
+            <a href="" class="fb-more-btn">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3">
+        <div class="feature-box">
+          <img [src]="dssIntegration?.image?.path | cmsLink" alt="" />
+          <div class="fb-text">
+            <h5>DSS integration</h5>
+            <p ><span class="more">{{ dssIntegration?.description }}</span></p>
             <a href="" class="fb-more-btn">Read More</a>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-6 col-md-6">
-        <div class="feature-box">
-          <img [src]="dssAdaptation?.image?.path | cmsLink" alt="" />
-          <div class="fb-text">
-            <h5>DSS adaptation</h5>
-            <p>{{ dssAdaptation?.description }}</p>
-            <a href="" class="fb-more-btn">Read More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="feature-box">
-          <img [src]="dssIntegration?.image?.path | cmsLink" alt="" />
-          <div class="fb-text">
-            <h5>DSS integration</h5>
-            <p>{{ dssIntegration?.description }}</p>
-            <a href="" class="fb-more-btn">Read More</a>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>

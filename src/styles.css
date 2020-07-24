@@ -11,7 +11,6 @@
 /* Template default CSS
 /*----------------------------------------*/
 
-
 :root {
   --main-bg-color: #259fa6;
   --main-txt-color: blue;
@@ -465,7 +464,6 @@ Header section
 .site-logo {
   display: inline-block;
   margin-right: 100px;
-  padding-left: 63px;
 }
 
 .header-right {
@@ -690,6 +688,7 @@ Header section
   position: relative;
   left: 25%;
   text-align: center;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
 }
 
 .hero-item h2 span {
@@ -801,6 +800,16 @@ Service Section
 
 .service-item p {
   margin-bottom: 0;
+  text-align: justify;
+}
+
+.set-bg h2{
+  text-align: center;
+  color: #fff;
+}
+
+span.c-l {
+  color: #000;
 }
 
 /* ----------------
@@ -813,6 +822,9 @@ Service Section
 
 .feature-box {
   margin-bottom: 30px;
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(33, 33, 33, 0.98);
+  -moz-box-shadow: 0px 5px 5px 0px rgba(33, 33, 33, 0.98);
+  box-shadow: 0px 5px 5px 0px rgba(33, 33, 33, 0.98);
 }
 
 .feature-box .fb-text {
@@ -830,6 +842,8 @@ Service Section
 
 .feature-box p {
   margin-bottom: 25px;
+  text-align: justify;
+  min-height: 200px;
 }
 
 .feature-box .fb-more-btn {
@@ -1073,7 +1087,7 @@ section#ipm-news {
 .footer-widget ul li a {
   display: block;
   font-size: 14px;
-  color: #fff;
+  color: #718090;
   margin-bottom: 15px;
 }
 
@@ -2165,4 +2179,11 @@ Additional
  -----------------------*/
 .terms-and-conditions ul {
   padding-left: 40px;
+}
+
+.morecontent span {
+  display: none;
+}
+.morelink {
+  display: block;
 }
