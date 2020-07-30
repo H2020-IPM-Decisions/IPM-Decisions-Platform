@@ -10,6 +10,7 @@ export class MaprisksService {
         this.mapObservable = this.mapSubject.asObservable();
 
     }
+    
 
     initialize(containerId: string): Observable<L.Map> {
 
@@ -18,7 +19,7 @@ export class MaprisksService {
             if (true && !!document.getElementById(containerId)) {
                 const m = new L.Map(containerId);
                 this.mapSubject.next(m);
-
+                
                 L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
                     maxZoom: 20,
                     opacity: 0.5,
@@ -35,12 +36,31 @@ export class MaprisksService {
 
         });
     }
+    
     addMarker(latitude: number, longitude: number, feature:L.FeatureGroup): L.Marker {
-        const marker = new L.Marker([latitude, longitude], {
-            
+        //var myIcon = L.icon({
+          //  iconUrl: 'pin-mappa-green40.png',
+            //iconSize: [38, 95],
+            //iconAnchor: [22, 94], 
+            //popupAnchor: [-3, -76],
+            //shadowUrl: 'my-icon-shadow.png',
+            //shadowSize: [68, 95],
+            //shadowAnchor: [22, 94] 
+            //{icon: myIcon}
+        //});
+        
+        var popup = L.popup({
+            maxWidth:400
         });
+        
+        const marker = new L.Marker([latitude, longitude],);
+
+        marker.bindPopup("ciao").openPopup();
+        
+        
         marker.on('click', event => {
             // TODO
+            console.log("ciao");
            
             
           });

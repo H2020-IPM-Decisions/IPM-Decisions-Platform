@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,ViewEncapsulation } from '@angular/core';
 import { CMSService } from 'src/app/shared/services/cms.service';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 
@@ -6,6 +6,7 @@ import { AuthenticationService } from '@app/core/auth/services/authentication.se
 @Component({
   selector: 'admin-header',
   templateUrl: './admin-header.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./admin-header.component.css']
 })
 export class AdminHeaderComponent implements OnInit {

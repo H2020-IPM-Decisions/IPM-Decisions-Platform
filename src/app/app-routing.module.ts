@@ -57,12 +57,30 @@ import { EditAccountComponent } from './user/components/account/edit-account/edi
 import { AuthGuard } from './core/auth/guard/auth.guard';
 import { Role } from './core/auth/enums/role.enum';
 import { MapRisksComponent } from './maprisks/maprisks.component';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { AdminSxComponent } from './admin/admin-sx/admin-sx.component';
+import { AccordionsComponent } from './admin/assets/accordions.component';
+import { AdminBreadcumbsComponent } from './admin/admin-breadcumbs/admin-breadcumbs.component';
+import { DropdownsComponent } from './admin/assets/dropdowns.component';
+import { IconsComponent } from './admin/assets/icons.component';
+import { TabsComponent } from './admin/assets/tabs.component';
+import { ModalComponent } from './admin/assets/modal.component';
+import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'maprisks', component: MapRisksComponent},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/account', component: AdminAccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
+  { path: 'admin/admin-header', component: AdminHeaderComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
+  { path: 'admin/admin-footer', component: AdminFooterComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
+  { path: 'admin/admin-sx', component: AdminSxComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
+  { path: 'admin/admin-breadcumbs', component: AdminBreadcumbsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } }, 
+  { path: 'admin/assets/accordions', component: AccordionsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
+  { path: 'admin/assets/dropdowns', component: DropdownsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
+  { path: 'admin/assets/icons', component: IconsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
+  { path: 'admin/assets/tabs', component: TabsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
+  { path: 'admin/assets/modal', component: ModalComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/account/edit', component: AdminAccountEditComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/cms', component: ContentManagementSystemComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/add-user', component: AddUserComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },

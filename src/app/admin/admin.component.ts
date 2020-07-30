@@ -62,9 +62,7 @@ export class AdminComponent implements OnInit {
       cmsService.getNews()
         .then((response: any) => { this.news = response; }),
     ];
-    Promise.all(promises).then(() => {
-      setTimeout(()=>init(), 0)
-    })
+   
   }
 
 }
