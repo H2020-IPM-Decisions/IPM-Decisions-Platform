@@ -1,5 +1,5 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { CMSService } from '../shared/services/cms.service';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
@@ -7,6 +7,7 @@ declare var init: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {

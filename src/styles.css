@@ -451,12 +451,12 @@ Header section
 
 .header-top {
   padding: 5px 0;
-  background: var(--main-bg-color);
+  background: #dadada;
 }
 
 .header-top p {
   margin-bottom: 0;
-  color: #718090;
+  color: #000;
   font-size: 12px;
   line-height: 1;
 }
@@ -618,8 +618,9 @@ Header section
  ---------------------*/ 
 
    .header-top a{
-       color: #fff;
+       color: #000;
        font-size: 14px;
+       font-weight: 600;
    }
 
    a.dropdown-item {
@@ -716,7 +717,11 @@ Header section
 }
 
 .set-bg {
-   background: #5074ac;
+  background: linear-gradient(to bottom, #00b09b, #96c93d) ;
+}
+
+.features-section.set-bg {
+  background: linear-gradient(to bottom, #00b09b, #96c93d) !important;
 }
 
 .hero-item h2 span:nth-child(1) {
@@ -935,7 +940,7 @@ span.c-l {
 
 .testimonial-box {
   padding: 100px 15px 70px;
-  background: #259fa6;
+  background: #8bc743;
 }
 
 .testimonial-box .testi-box-warp {
