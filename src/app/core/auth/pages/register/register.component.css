@@ -1,0 +1,15 @@
+.registrazione {
+    padding: 10px;
+    font-size: 14px;
+    color: #1a1b1b;
+    font-weight: 600;
+    margin-top: 33px;
+}
+
+.btn-login {
+    width: 100%;
+    background: #1a1b1b;
+    color: #fff !important;
+}
+
+

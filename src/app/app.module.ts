@@ -82,9 +82,11 @@ import { AdminAccountMenuComponent } from './core/components/header/admin-accoun
 import { SignInComponent } from './core/components/header/sign-in/sign-in.component';
 import { ModalComponent } from './admin/assets/modal.component';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
+    LoginComponent,
     AdminFooterComponent,
     AccordionsComponent,
     ModalComponent,

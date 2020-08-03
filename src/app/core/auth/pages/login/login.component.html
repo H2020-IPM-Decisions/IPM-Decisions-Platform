@@ -1,52 +1,77 @@
-<div *ngIf="!forgotPass">
-  <div class="alert alert-danger" *ngIf="errors.length">
-    <p *ngFor="let error of errors">{{ error }}</p>
-  </div>
+<div id="login">
+  <div class="container">
+      <div id="login-row" class="row justify-content-center align-items-center">
+          <div id="login-column" class="col-md-6">
+              <div id="login-box" class="col-md-12">
+                <ul class="nav nav-justified">
+                  <li class="nav-item"><a data-toggle="tab" href="#login-form" class="active nav-link"><i class="fa fa-user" aria-hidden="true"></i> Login</a></li>
+                  <li class="nav-item"><a data-toggle="tab" href="#registrer-form" class="nav-link"><i class="fa fa-address-book" aria-hidden="true"></i> Registrer</a></li>
+                  <li class="nav-item"><a data-toggle="tab" href="#forgot-password" class="nav-link"> <i class="fa fa-question-circle" aria-hidden="true"></i> Forgot Password</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="login-form" role="tabpanel">
 
-  {{isVerified}}
-  <div class="alert alert-success" *ngIf="isVerified">
-    <span>Account successfully verified! Please, log in into your account.</span>
-  </div>
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <div class="form-group col">
-      <label>Email</label>
-      <input
-        type="text"
-        formControlName="email"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': f.email.errors && f.email.touched }"
-      />
-      <div *ngIf="f.email.errors && f.email.touched" class="invalid-feedback">
-        <div *ngIf="f.email.errors.required">Email is required</div>
-        <div *ngIf="f.email.errors.pattern">Email must be a valid email address</div>
+                  <div *ngIf="!forgotPass">
+                    {{isVerified}}
+                    <!-- <div class="alert alert-danger" *ngIf="errors.length">
+                      <p *ngFor="let error of errors">{{ error }}</p>
+                    </div> -->
+                    <!-- <div class="alert alert-success" *ngIf="isVerified">
+                      <span>Account successfully verified! Please, log in into your account.</span>
+                    </div> -->
+                    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" id="login-form" class="form" >
+                      <br>
+                      <img alt="Logo Ipm Decisions" src="img/logo-ipm-decision.png" title="Logo IPM" class="text-center" style="margin: 0 auto; display: block;">
+                      <br>
+                      <div class="form-group">
+                        <label class="text-info">Email</label>
+                        <input
+                          type="text"
+                          formControlName="email"
+                          class="form-control"
+                        />
+                        <!-- <div *ngIf="f.email.errors && f.email.touched" class="invalid-feedback">
+                          <div *ngIf="f.email.errors.required">Email is required</div>
+                          <div *ngIf="f.email.errors.pattern">Email must be a valid email address</div>
+                        </div> -->
+                      </div>
+                  
+                      <div class="form-group">
+                        <label class="text-info">Password</label>
+                        <input
+                          type="password"
+                          formControlName="password"
+                          class="form-control"
+                        />
+                  
+                        <!-- <div *ngIf="f.password.errors && f.password.touched" class="invalid-feedback">
+                          <div *ngIf="f.password.errors.required">Password is required</div>
+                          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                          <div *ngIf="f.password.errors?.pattern">Passwords must have at least one non alphanumeric character.</div>
+                          <div *ngIf="f.password.errors?.pattern">Passwords must have at least one digit ('0'-'9').</div>
+                        </div> -->
+                      </div>
+                      <div class="text-center col" id="register-link" class="text-center">
+                        <button class="text-info btn btn-login" >Login</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="tab-pane" id="registrer-form" role="tabpanel">
+                  <register></register>
+                </div>
+                <div class="tab-pane" id="forgot-password" role="tabpanel">
+                  
+                    <forget-password></forget-password>
+                
+                </div>
+            </div>
+                
+                
+                
+              </div>
+          </div>
       </div>
-    </div>
-
-    <div class="form-group col">
-      <label>Password</label>
-      <input
-        type="password"
-        formControlName="password"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': f.password.errors && f.password.touched }"
-      />
-
-      <div *ngIf="f.password.errors && f.password.touched" class="invalid-feedback">
-        <div *ngIf="f.password.errors.required">Password is required</div>
-        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-        <div *ngIf="f.password.errors?.pattern">Passwords must have at least one non alphanumeric character.</div>
-        <div *ngIf="f.password.errors?.pattern">Passwords must have at least one digit ('0'-'9').</div>
-      </div>
-    </div>
-    <div class="text-center col">
-      <button [disabled]="!loginForm.valid" class="btn btn-login btn-block">Login</button>
-    </div>
-  </form>
-<div class="text-center col">
-    <button class="btn blue-button btn-block"  (click)="forgotPassword()" >Forgot your password?</button>
   </div>
 </div>
 
-<div *ngIf="forgotPass">
-<forget-password></forget-password>
-</div>

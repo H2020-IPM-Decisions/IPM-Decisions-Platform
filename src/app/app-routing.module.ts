@@ -66,11 +66,13 @@ import { IconsComponent } from './admin/assets/icons.component';
 import { TabsComponent } from './admin/assets/tabs.component';
 import { ModalComponent } from './admin/assets/modal.component';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
+import { LoginComponent } from './core/auth/pages/login/login.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'maprisks', component: MapRisksComponent},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/account', component: AdminAccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/admin-header', component: AdminHeaderComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/admin-footer', component: AdminFooterComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
