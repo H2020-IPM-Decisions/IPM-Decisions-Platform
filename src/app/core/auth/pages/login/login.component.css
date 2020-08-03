@@ -28,23 +28,27 @@ div#login {
     color: #fff !important;
 }
 
-ul.nav.nav-justified {
-    margin-top: -45px;
-}
+
 
 .nav-link {
     display: block;
     padding: .5rem 1rem;
-    color: white;
+    color: #000;
+    font-size: 14px;
 }
 
 a.active.nav-link {
-    background: #fff;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     color: #07b197;
     font-weight: 600;
     font-size: 14px;
+    background: #e8e7e7;
+}
+
+ul.nav.nav-justified {
+    bottom: 10px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
 }
 
