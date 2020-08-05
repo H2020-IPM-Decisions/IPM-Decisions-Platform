@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject, throwError, empty, of } from 'rxjs';
-import { catchError, tap, shareReplay} from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import * as jwt_decode from 'jwt-decode';
 import * as bcrypt from 'bcryptjs';
-import * as moment from "moment";
 const saltRounds = 10;
 
 import { environment } from 'src/environments/environment';
@@ -14,14 +13,19 @@ import { UserForRegistration } from '@app/core/auth/models/user-for-registration
 import { User } from '@app/core/auth/models/user.model';
 import { Account } from '../models/account.model';
 import { Authentication } from '../models/authentication.model';
+import { observe } from 'fast-json-patch';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     currentAccountSubject = new BehaviorSubject<Account>(null);
-    public account$: Observable<Account> = this.currentAccountSubject.asObservable();
+    public currentAccount: Observable<Account>;
     public errors = new Subject<string[]>();
+    tokenExpirationTimer: any;
 
-    constructor(private http: HttpClient, private router: Router) { }
+    constructor(private http: HttpClient, private _router: Router) {
+        this.currentAccountSubject = new BehaviorSubject<Account>(JSON.parse(window.sessionStorage.getItem('user')));
+        this.currentAccount = this.currentAccountSubject.asObservable();
+    }
 
     public get currentUserValue(): Account {
         return this.currentAccountSubject.value;
@@ -51,7 +55,7 @@ export class AuthenticationService {
         return bcrypt.hashSync(password, salt);
     }
 
-    login(userForAuthentication: UserForAuthentication):  boolean {
+    login(userForAuthentication: UserForAuthentication): Observable<Authentication> {
         // const url:string = `${environment.apiUrl}/api/idp/authorization/authenticate`;
         let obs: Observable<Authentication> = new Observable;
         // this.http.get(`${environment.apiUrl}/idp/api/authorization/authenticate`).pipe(
@@ -63,10 +67,10 @@ export class AuthenticationService {
         //     return bcrypt.compare(userForAuthentication.password, 'hashed password here');
         // }),
         // tap(user => {
-        // obs = this.doLogin(userForAuthentication);
+        obs = this.doLogin(userForAuthentication);
         // })
         // )
-      return true;
+        return obs;
 
     }
 
@@ -84,14 +88,13 @@ export class AuthenticationService {
 
         return this.http.post<Authentication>(url, userForAuthentication, { headers })
             .pipe(
-                shareReplay(),
                 catchError((err: HttpErrorResponse) => {
                     if (err instanceof HttpErrorResponse) {
                         if (err.status === 401) {
-                            this.router.navigate(['/']);
+                            this._router.navigate(['/login']);
                         }
                     }
-                    return throwError(err)
+                    return empty();
                 }),
                 catchError(this.handleError),
                 //                 map(response => {
@@ -107,56 +110,31 @@ export class AuthenticationService {
                 //                 }),
 
                 tap((response: Authentication) => {
-
                     const decoded = jwt_decode(response.token);
-                    if (decoded) {
-                        const userAccessType = (decoded['UserAccessType']) ? [decoded['UserAccessType']] : null;
-                        const role = (decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']) ? [decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']] : null;
 
-                        const account: Account = {
-                            id: decoded['sub'],
-                            email: decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
-                            token: response.token,
-                            tokenInit: decoded['iat'],
-                            tokenExpiration: decoded['exp'],
-                            refreshToken: response.refreshToken,
-                            claims: userAccessType,
-                            roles: role
-                        }
+                    const userAccessType = (decoded['UserAccessType']) ? [decoded['UserAccessType']] : null;
+                    const role = (decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']) ? [decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']] : null;
 
-                        this.currentAccountSubject.next(account);
-                        this.setSession(account);
-                    }
+                    const currentAccount: Account = new Account(
+                        decoded['sub'],
+                        userForAuthentication.email,
+                        decoded['nbf'],
+                        decoded['exp'],
+                        response.token,
+                        response.refreshToken,
+                        userAccessType,
+                        role
+                        // decoded['iss'],
+                        // decoded['aud']
+                    );
+
+                    this.currentAccountSubject.next(currentAccount);
+                    // const expirationDuration = currentAccount.tokenExpiration - currentAccount.tokenInit;
+
+                    // this.autoLogout(expirationDuration);
+                    window.sessionStorage.setItem('user', JSON.stringify(currentAccount));
                 })
             );
-    }
-
-    private setSession(authResult: Account) {
-        sessionStorage.setItem('token', authResult.token);
-        sessionStorage.setItem("expires_at", JSON.stringify(authResult.tokenExpiration));
-        sessionStorage.setItem('refresh_token', authResult.refreshToken);
-    }
-
-    public isLoggedIn() {
-        return moment().isBefore(this.getExpiration());
-    }
-
-    isLoggedOut() {
-        return !this.isLoggedIn();
-    }
-
-    getExpiration() {
-        const expiration = sessionStorage.getItem("expires_at");
-        const expiresAt = JSON.parse(expiration);
-        return moment.unix(expiresAt);
-    }
-
-    logout() {
-        sessionStorage.removeItem('token');
-        sessionStorage.removeItem('expires_at');
-        sessionStorage.removeItem('refresh_token');
-        this.currentAccountSubject.next(null);
-        this.router.navigate(['/']);
     }
 
     authenticateWithRefreshToken(refreshToken: string) {
@@ -173,54 +151,70 @@ export class AuthenticationService {
                 'refresh_token': refreshToken
             },
             observe: 'response'
-        }).pipe(
-            tap((resp: HttpResponse<any>) => {
-                if (resp) {
-                    let tokenCreated = moment().unix();
-                    let account: Account = {
-                        id: resp.body.id,
-                        email: resp.body.email,
-                        token: resp.body.token,
-                        tokenInit: tokenCreated,
-                        tokenExpiration: tokenCreated + 4800,
-                        refreshToken: resp.body.refreshToken,
-                        claims: resp.body.claims,
-                        roles: resp.body.roles
-                    };
+        })
+            .pipe(
+                tap((res: HttpResponse<any>) => {
 
-                    this.setSession(account);
-                }
-            })
-        );
+                    if (res) {
+                        let tokenInit = Math.floor(+new Date() / 1000);
+                        let acct: Account = new Account(
+                            res.body.id,
+                            res.body.email,
+                            tokenInit,
+                            tokenInit + 4800,
+                            res.body.token,
+                            res.body.refreshToken,
+                            res.body.claims,
+                            res.body.roles
+                        );
+                        window.sessionStorage.setItem('user', JSON.stringify(acct));
+                    }
+                })
+            );
     }
 
     autoLogin() {
+        const accountData: Account = JSON.parse(window.sessionStorage.getItem('user'));
 
-        const token: string = sessionStorage.getItem('token');
-        if (!token) return null;
+        if (!accountData) { return; }
 
-        const decoded = jwt_decode(token);
+        const loadedAccount: Account = new Account(
+            accountData.id,
+            accountData.email,
+            accountData.tokenInit,
+            accountData.tokenExpiration,
+            accountData.token,
+            accountData.refreshToken,
+            accountData.claims,
+            accountData.roles
+        );
 
-        if (decoded) {
-            const userAccessType = (decoded['UserAccessType']) ? [decoded['UserAccessType']] : null;
-            const role = (decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']) ? [decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']] : null;
-
-            const account: Account = {
-                id: decoded['sub'],
-                email: decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
-                token: token,
-                tokenInit: decoded['iat'],
-                tokenExpiration: decoded['exp'],
-                refreshToken: sessionStorage.getItem('refresh_token'),
-                claims: userAccessType,
-                roles: role
-            }
-            if (account) {
-                this.currentAccountSubject.next(account);
-            }
+        if (loadedAccount.token) {
+            this.currentAccountSubject.next(loadedAccount);
+            const expirationDuration = loadedAccount.tokenExpiration - loadedAccount.tokenInit;
+            // this.autoLogout(expirationDuration);
         }
     }
 
+    logout() {
+        window.sessionStorage.removeItem('user');
+        this.currentAccountSubject.next(null);
+        if (this.tokenExpirationTimer) {
+            clearTimeout(this.tokenExpirationTimer);
+        }
+        this.tokenExpirationTimer = null;
+        this._router.navigate(['/']);
+
+    }
+
+    // autoLogout(expirationDuration: number) {
+    //     let duration = expirationDuration * 1000;
+
+    //     this.tokenExpirationTimer = setTimeout(() => {
+    //         this.logout();
+
+    //     }, 10000);
+    // }
 
     private handleError(errorRes: HttpErrorResponse) {
 
@@ -230,8 +224,21 @@ export class AuthenticationService {
 
             return throwError(errorMessage);
         }
-
         return throwError(errorRes.error.message);
+    }
+
+    public getUserSession(): Account {
+        let loggedUser = window.sessionStorage.getItem('user');
+        if (!loggedUser) return null;
+        return Object.assign(new Account(), JSON.parse(loggedUser));
+    }
+
+    public isLoggedIn() {
+        let token = window.sessionStorage.getItem('user');
+        if (!token) {
+            return false;
+        }
+        return !!token;
     }
 
     public isAdmin(): boolean {
