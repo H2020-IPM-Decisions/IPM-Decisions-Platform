@@ -1,5 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -15,44 +14,37 @@ import { Role } from '../../enums/role.enum';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  submitted = false;
   forgotPass = false;
   loading = false;
   returnUrl: string;
   errors: string[] = [];
-  isVerified: boolean;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private _activatedRoute: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService) { }
+    private formBuilder: FormBuilder, 
+    private route: ActivatedRoute,
+    private router: Router, 
+    private authenticationService: AuthenticationService) {}
 
   ngOnInit() {
-    console.log("fg", this.isVerified);
-
     this.loginForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]],
         password: ['', [
-          Validators.required,
+          Validators.required, 
           Validators.minLength(6),
           Validators.pattern("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+])[A-Za-z\\d][A-Za-z\\d!@#$%^&*()_+]{6,}$")
         ]]
       },
     );
-    this.returnUrl = this._activatedRoute.snapshot.queryParams['returnUrl'] || '';
-  }
-
-  setVerified(val: boolean) {
-    console.log("dd", val);
-    
-    this.isVerified = val;
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
   }
 
   get f() {
     return this.loginForm.controls;
   }
   onLogin() {
+    this.submitted = true;            
     if (this.loginForm.invalid) {
       return;
     }
@@ -65,38 +57,29 @@ export class LoginComponent implements OnInit {
     this.loading = true;
 
     const loginObsever = {
-      next:
+      next: 
         (res: Authentication) => {
           this.loading = false;
           const hasRoles = this.authenticationService.currentUserValue.roles;
-          if (hasRoles && hasRoles.includes(Role.Admin)) {
+          if(hasRoles && hasRoles.includes(Role.Admin)) {
             this.router.navigate(["/admin"]);
           } else {
             this.router.navigate(["/user/farm/list"]);
           }
         },
-      error:
+      error: 
         (errorMessages: any) => {
           this.loading = false;
-          console.log(errorMessages);
-
           this.errors = [errorMessages];
         }
     }
 
-    if(this.authenticationService.login(userForAuthentication)) {
-      this.loading = false;
-      const hasRoles = this.authenticationService.currentUserValue.roles;
-      if (hasRoles && hasRoles.includes(Role.Admin)) {
-        this.router.navigate(["/admin"]);
-      } else {
-        this.router.navigate(["/user/farm/list"]);
-      }
-    }
-
+    this.authenticationService.login(userForAuthentication)
+    .subscribe(loginObsever);
+    
   }
 
-  forgotPassword() {
+  forgotPassword(){
     this.forgotPass = true;
   }
 }
