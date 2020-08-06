@@ -1,5 +1,5 @@
 <div *ngIf="!termsAccepted">
-  <div class="alert alert-danger" *ngIf="errors.length">
+  <div class="alert alert-danger" *ngIf="errors?.length">
     <p *ngFor="let error of errors">{{ error.description }}</p>
   </div>
   <div class="alert alert-success" *ngIf="isSuccess">
