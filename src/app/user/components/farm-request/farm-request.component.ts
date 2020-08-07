@@ -1,3 +1,5 @@
+import { environment } from './../../../../environments/environment.prod';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FarmRequestComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  email = "";
+
+  sendRequest() {
+    this.http.post(
+      `${environment.apiUrl}/api/upr/datashare`,
+      {
+        "email": this.email
+      }
+    ).toPromise()
+      .catch( x => x) 
+      .then(
+        (response) => { alert(JSON.stringify(response)); }
+      )
+  }
 
   ngOnInit() {
   }
