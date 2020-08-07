@@ -67,6 +67,7 @@ import { TabsComponent } from './admin/assets/tabs.component';
 import { ModalComponent } from './admin/assets/modal.component';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { LoginComponent } from './core/auth/pages/login/login.component';
+import { FarmRequestComponent } from './user/components/farm-request/farm-request.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -95,6 +96,7 @@ const appRoutes: Routes = [
   { path: 'user/account', component: AccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: ['Developer', 'Farmer', 'Advisor']} },
   { path: 'user/account/edit', component: EditAccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: ['Level0', 'Developer', 'Farmer', 'Advisor']} },
   { path: 'user/farm', component: FarmComponent, canActivate: [AuthGuard] , data: { roles: [Role.Admin], claims: ['Developer', 'Farmer', 'Advisor' ]}},
+  { path: 'user/farm-request', component: FarmRequestComponent, canActivate: [AuthGuard] , data: { roles: [Role.Admin], claims: ['Developer', 'Farmer', 'Advisor' ]}},
   { path: 'user/farm/edit', component: EditFarmComponent, canActivate: [AuthGuard],   data: { roles: [Role.Admin], claims: ['Developer','Farmer', 'Advisor']}},
   { path: 'user/farm/add', component: AddFarmComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: ['Developer', 'Farmer', 'Advisor']} },
   { path: 'user/farm/list', component: FarmListComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: ['Developer', 'Farmer', 'Advisor']} },

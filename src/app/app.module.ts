@@ -83,6 +83,7 @@ import { SignInComponent } from './core/components/header/sign-in/sign-in.compon
 import { ModalComponent } from './admin/assets/modal.component';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { LoginComponent } from './login/login.component';
+import { FarmRequestComponent } from './user/components/farm-request/farm-request.component';
 
 @NgModule({
   declarations: [
@@ -163,7 +164,8 @@ import { LoginComponent } from './login/login.component';
     SignInComponent,
     SiteCorouselComponent,
     AdminHeaderComponent, 
-    UserHeaderComponent
+    UserHeaderComponent,
+    FarmRequestComponent
   ],
   imports: [
     BrowserModule,
