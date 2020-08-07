@@ -33,8 +33,6 @@ export class AuthenticationService {
 
     register(registrationData: UserForRegistration): Observable<User> {
 
-        registrationData.userType = registrationData.userType.toLowerCase();
-
         const url: string = `${environment.apiUrl}/api/idp/authorization/register`;
         // registrationData.password = this.hashPassword(registrationData.password);
 
