@@ -51,9 +51,6 @@ export class MapRisksComponent implements OnInit {
 
 
     this._activatedRoute.queryParams.subscribe(params => {
-      console.log("dfsfa", params);
-      console.log(params['token']);
-
       if (params['token'] && params['userId']) {
         this.collapseDiv = true;
         this.verified.emit(true);
