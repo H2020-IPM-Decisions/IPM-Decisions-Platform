@@ -1,6 +1,28 @@
-<!-- Header section  -->
-<app-sign-in></app-sign-in>
-
+<!-- Header section  
+<div id="login-account" class="collapse" [ngClass]="{'show' : collapseDiv}">
+  <div class="container">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#login-form">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#create-form">Create Account</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div id="login-form" class="container tab-pane active">
+        <br />
+        <div class="container login-container">
+         
+        </div>
+      </div>
+      <div id="create-form" class="container tab-pane fade">
+        <br />
+        <register></register>
+      </div>
+    </div>
+  </div>
+</div>-->
 <header class="header-section clearfix">
   <div class="header-top">
     <div class="container-fluid">
@@ -8,27 +30,25 @@
         <div class="col-md-6 text-md-left">
         </div>
         <div class="col-md-6 text-md-right">
-          <a href="#" data-toggle="collapse" data-target="#login-account">Login or Create Account</a>
+          <a routerLink="login" class="btn-login">Login or Create Account</a>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="site-navbar">
+  <div class="container .site-logosite-navbar">
     <!-- Logo -->
-    <app-site-logo></app-site-logo>
+    <a href="index.html" class="site-logo">
+      <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
+    </a>
+  <!-- div class="header-right">
+      <button class="search-switch"><i class="fa fa-search"></i></button>
+  </div>-->
     <!-- Menu -->
     <nav class="site-nav-menu">
       <ul>
         <li class="active"><a href="index.html">Home</a></li>
-        <li>
-          <a href="solutions.html">Title 1</a>
-          <ul class="sub-menu">
-            <li><a href="#">Sub Title 1</a></li>
-            <li><a href="#">Sub Title 2</a></li>
-            <li><a href="#">Sub Title 3</a></li>
-          </ul>
-        </li>
+        <li><a routerLink="maprisks">Map Risks</a></li>
       </ul>
     </nav>
   </div>
@@ -109,7 +129,7 @@
             <div class="si-head">
               <h5>{{ homeGrid?.title6 }}</h5>
             </div>
-            <p>{{ homeGrid?.content6 }}</p>
+            <p >{{ homeGrid?.content6 }}</p>
           </div>
         </div>
       </div>
@@ -120,50 +140,53 @@
 
 <!-- Features section   -->
 <section class="features-section spad set-bg">
-  <div class="container">
+  <div class="container-fluid">
+    <h2><span class="c-l">D</span>ECISION <span class="c-l">S</span>UPPORT <span class="c-l">S</span>YSTEM</h2>
+    <br>
     <div class="row">
-      <div class="col-lg-6 col-md-6">
+      <div class="col-lg-3 col-md-3">
         <div class="feature-box">
           <img [src]="dssUse?.image?.path | cmsLink" alt="" />
           <div class="fb-text">
             <h5>DSS use</h5>
-            <p>{{ dssUse?.description }}</p>
+            <p class="more">{{ dssUse?.description }}</p>
             <a href="" class="fb-more-btn">Read More</a>
           </div>
         </div>
       </div>
-      <div class="col-lg-6 col-md-6">
+      <div class="col-lg-3 col-md-3">
         <div class="feature-box">
           <img [src]="dssEvaluation?.image?.path | cmsLink" alt="" />
           <div class="fb-text">
             <h5>DSS evaluation</h5>
-            <p>{{ dssEvaluation?.description }}</p>
+            <p class="more">{{ dssEvaluation?.description }}</p>
+            <a href="" class="fb-more-btn">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3">
+        <div class="feature-box">
+          <img [src]="dssAdaptation?.image?.path | cmsLink" alt="" />
+          <div class="fb-text">
+            <h5>DSS adaptation</h5>
+            <p class="more">{{ dssAdaptation?.description }}</p>
+            <a href="" class="fb-more-btn">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3">
+        <div class="feature-box">
+          <img [src]="dssIntegration?.image?.path | cmsLink" alt="" />
+          <div class="fb-text">
+            <h5>DSS integration</h5>
+            <p ><span class="more">{{ dssIntegration?.description }}</span></p>
             <a href="" class="fb-more-btn">Read More</a>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-6 col-md-6">
-        <div class="feature-box">
-          <img [src]="dssAdaptation?.image?.path | cmsLink" alt="" />
-          <div class="fb-text">
-            <h5>DSS adaptation</h5>
-            <p>{{ dssAdaptation?.description }}</p>
-            <a href="" class="fb-more-btn">Read More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="feature-box">
-          <img [src]="dssIntegration?.image?.path | cmsLink" alt="" />
-          <div class="fb-text">
-            <h5>DSS integration</h5>
-            <p>{{ dssIntegration?.description }}</p>
-            <a href="" class="fb-more-btn">Read More</a>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>
@@ -190,7 +213,7 @@
       <div class="col-lg-6 p-0">
         <div class="testimonial-box">
           <div class="testi-box-warp">
-            <h2>News</h2>
+            <h2>Platform progress</h2>
             <div class="testimonial-slider owl-carousel">
               <ng-template ngFor let-article [ngForOf]="news?.articles">
                 <div class="testimonial" [innerHtml]="article.value">
@@ -204,24 +227,4 @@
   </div>
 </section>
 
-<!-- Video section  -->
-<section class="video-section spad">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="video-text">
-          <h2>{{ homeArticle2.title }}</h2>
-          <p>{{ homeArticle2.content }}</p>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="video-box set-bg" [attr.data-setbg]="homeArticle2?.mediabackground?.path | cmsLink">
-          <a href="{{'/storage/uploads' + homeArticle2?.media?.path | cmsLink}}" class="video-popup">
-            <i class="fa fa-play"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Video section end  -->
+<app-footer></app-footer>

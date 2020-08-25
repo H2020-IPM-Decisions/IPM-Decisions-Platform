@@ -19,7 +19,6 @@ export class AdminComponent implements OnInit {
   homeArticle1: any = {};
   homeArticle2: any = {};
   homeGrid: any = {};
-  homeSlideshow: any = {};
   news: any = {};
   dssUse: any = {};
   dssEvaluation: any = {};
@@ -59,15 +58,11 @@ export class AdminComponent implements OnInit {
       cmsService.getHomeArticle2()
         .then((response: any) => { this.homeArticle2 = response }),
       cmsService.getHomeGrid()
-        .then((response: any) => { this.homeGrid = response }),
-      cmsService.getHomeSlideshow()
-        .then((response: any) => { this.homeSlideshow = response; }),
+        .then((response: any) => { this.homeGrid = response }),   
       cmsService.getNews()
         .then((response: any) => { this.news = response; }),
     ];
-    Promise.all(promises).then(() => {
-      setTimeout(()=>init(), 0)
-    })
+   
   }
 
 }

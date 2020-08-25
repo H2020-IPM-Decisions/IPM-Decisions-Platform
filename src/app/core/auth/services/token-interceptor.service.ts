@@ -1,9 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, empty } from 'rxjs';
-import { catchError, tap, switchMap } from 'rxjs/operators';
+import { catchError, tap, switchMap} from 'rxjs/operators';
 
-import { Account } from './../models/account.model';
 import { AuthenticationService } from './authentication.service';
 
 @Injectable({
@@ -21,15 +20,16 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    let sessionDetails = this.authService.getUserSession();
+    const token = sessionStorage.getItem("token");
 
-    if (sessionDetails.token) {
-      request = this.addToken(request, sessionDetails.token);
+    if (!token) {
+      return next.handle(request);
     }
+
+    request = this.addToken(request, token);
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-
         if (error.status === 401 && !this.isRefreshing) {
 
           return this.handle401Error(request, next).pipe(
@@ -52,10 +52,10 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   handle401Error(request: HttpRequest<any>, next: HttpHandler) {
     this.isRefreshing = true;
-    let userDetails: Account = this.authService.getUserSession();
+    let refreshToken = sessionStorage.getItem('refresh_token');
 
-    if (userDetails) {
-      return this.authService.authenticateWithRefreshToken(userDetails.refreshToken).pipe(
+    if (refreshToken) {
+      return this.authService.authenticateWithRefreshToken(refreshToken).pipe(
         tap(() => {
           this.isRefreshing = false;
         })

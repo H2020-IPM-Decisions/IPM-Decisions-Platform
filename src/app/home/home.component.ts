@@ -1,16 +1,17 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { CMSService } from '../shared/services/cms.service';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 declare var init: any;
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  active: string = "home";
 
   cmsUrl;
   cmsPath = "";
@@ -25,14 +26,17 @@ export class HomeComponent implements OnInit {
   dssEvaluation: any = {};
   dssAdaptation: any = {};
   dssIntegration: any = {};
-  
+
   isLoggedIn: boolean;
   state$: Observable<object>;
+  collapseDiv: boolean;
+  @Output() verified: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor(
     private cmsService: CMSService,
-    private authService: AuthenticationService,
+    private _authService: AuthenticationService,
     private router: Router,
-    public activatedRoute: ActivatedRoute
+    public _activatedRoute: ActivatedRoute
   ) {
     this.cmsUrl = cmsService.getUrl();
     this.cmsPath = cmsService.getUrl();
@@ -40,6 +44,18 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+
+    this._activatedRoute.queryParams.subscribe(params => {
+      if (params['token'] && params['userId']) {
+        this.collapseDiv = true;
+        this.verified.emit(true);
+      } else {
+        this.collapseDiv = false;
+        this.verified.emit(false);
+      }
+
+    });
 
     let cmsService = this.cmsService;
     let promises = [
@@ -65,10 +81,10 @@ export class HomeComponent implements OnInit {
         .then((response: any) => { this.news = response; }),
     ];
     Promise.all(promises).then(() => {
-      setTimeout(()=>init(), 0)
+      setTimeout(() => init(), 0)
     })
 
-    this.isLoggedIn = this.authService.isLoggedIn();
+    this.isLoggedIn = this._authService.isLoggedIn();
   }
 
 

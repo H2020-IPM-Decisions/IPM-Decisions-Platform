@@ -27,17 +27,18 @@
               "src/js"
             ],
             "styles": [
+              "./node_modules/leaflet/dist/leaflet.css",
               "src/styles.css"
             ],
             "scripts": [
+              "src/js/admin.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
-              "src/js/jquery-3.2.1.min.js",
-              "src/js/bootstrap.min.js",
+              "src/js/jquery-3.2.1.min.js",              
               "src/js/jquery.slicknav.min.js",
               "src/js/owl.carousel.min.js",
               "src/js/circle-progress.min.js",
-              "src/js/jquery.magnific-popup.min.js",
               "src/js/main.js"
+              
             ]
           },
           "configurations": {

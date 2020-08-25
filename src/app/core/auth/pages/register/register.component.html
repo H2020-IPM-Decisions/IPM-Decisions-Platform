@@ -1,13 +1,13 @@
 <div *ngIf="!termsAccepted">
-  <div class="alert alert-danger" *ngIf="errors.length">
+  <div class="alert alert-danger" *ngIf="errors?.length">
     <p *ngFor="let error of errors">{{ error.description }}</p>
   </div>
   <div class="alert alert-success" *ngIf="isSuccess">
     <span>Account successfully created!</span>
   </div>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="registrazione">
     <div class="form-row">
-      <div class="form-group col-2">
+      <div class="form-group col-12">
         <label>User Type</label>
         <select
           formControlName="userType"

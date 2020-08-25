@@ -6,9 +6,9 @@ export const environment = {
   production: false,
   appUrl: 'http://localhost:3000',
   key: "3fd7616d24a0681333b1532d66bf0f",
-  cmsUrl: 'http://' + window.location.hostname + ':5000/cms',
+  cmsUrl: 'https://cms.ipmdecisions.nibio.no',
   apiUrl: 'http://localhost:5000',
-  weatherApi: 'https://ipmdecisions.nibio.no/WeatherService/'
+  weatherApi: 'https://ipmdecisions.nibio.no/WeatherService/api'
   
 };
 

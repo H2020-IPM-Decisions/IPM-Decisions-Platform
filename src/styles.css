@@ -11,7 +11,6 @@
 /* Template default CSS
 /*----------------------------------------*/
 
-
 :root {
   --main-bg-color: #259fa6;
   --main-txt-color: blue;
@@ -23,7 +22,7 @@ body {
   height: 100%;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
+  /*font-smoothing: antialiased;*/
 }
 
 a {
@@ -452,12 +451,12 @@ Header section
 
 .header-top {
   padding: 5px 0;
-  background: var(--main-bg-color);
+  background: #dadada;
 }
 
 .header-top p {
   margin-bottom: 0;
-  color: #718090;
+  color: #000;
   font-size: 12px;
   line-height: 1;
 }
@@ -465,7 +464,6 @@ Header section
 .site-logo {
   display: inline-block;
   margin-right: 100px;
-  padding-left: 63px;
 }
 
 .header-right {
@@ -620,8 +618,9 @@ Header section
  ---------------------*/ 
 
    .header-top a{
-       color: #fff;
+       color: #000;
        font-size: 14px;
+       font-weight: 600;
    }
 
    a.dropdown-item {
@@ -630,15 +629,33 @@ Header section
 
    #login-account {
        padding: 50px;
-       background: white;
+       background: rgb(34,193,195);
+       background: linear-gradient(0deg, rgb(106 94 163) 0%, rgb(37 159 166) 100%);
    }
 
-   .btn-login{
-       color: #fff;
-       background-color: #249fa6;
-       border-color: #269eac;
-       padding: .2rem 1rem;
-   }
+   .login-container label {
+      color: #fff;
+    }
+
+  .invalid-feedback div {
+      background: #f98900;
+      color: #fff;
+      margin-bottom: 10px;
+      padding: 5px;
+  }
+
+  .btn-login {
+    color: #259fa6;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    padding: .2rem 1rem;
+    opacity: 1 !important;
+}
+
+#login-account ul.nav.nav-tabs li {
+  margin: 0 auto;
+  display: list-item;
+}
 
 
 /* ----------------
@@ -671,7 +688,7 @@ Header section
 }
 
 .hero-item {
-  height: 450px;
+  height: 350px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -690,6 +707,7 @@ Header section
   position: relative;
   left: 25%;
   text-align: center;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
 }
 
 .hero-item h2 span {
@@ -699,7 +717,11 @@ Header section
 }
 
 .set-bg {
-   background: #5074ac;
+  background: linear-gradient(to bottom, #00b09b, #96c93d) ;
+}
+
+.features-section.set-bg {
+  background: linear-gradient(to bottom, #00b09b, #96c93d) !important;
 }
 
 .hero-item h2 span:nth-child(1) {
@@ -801,6 +823,16 @@ Service Section
 
 .service-item p {
   margin-bottom: 0;
+  text-align: justify;
+}
+
+.set-bg h2{
+  text-align: center;
+  color: #fff;
+}
+
+span.c-l {
+  color: #000;
 }
 
 /* ----------------
@@ -813,6 +845,9 @@ Service Section
 
 .feature-box {
   margin-bottom: 30px;
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(33, 33, 33, 0.98);
+  -moz-box-shadow: 0px 5px 5px 0px rgba(33, 33, 33, 0.98);
+  box-shadow: 0px 5px 5px 0px rgba(33, 33, 33, 0.98);
 }
 
 .feature-box .fb-text {
@@ -830,6 +865,8 @@ Service Section
 
 .feature-box p {
   margin-bottom: 25px;
+  text-align: justify;
+  min-height: 200px;
 }
 
 .feature-box .fb-more-btn {
@@ -903,7 +940,7 @@ Service Section
 
 .testimonial-box {
   padding: 100px 15px 70px;
-  background: #259fa6;
+  background: #8bc743;
 }
 
 .testimonial-box .testi-box-warp {
@@ -1073,7 +1110,7 @@ section#ipm-news {
 .footer-widget ul li a {
   display: block;
   font-size: 14px;
-  color: #fff;
+  color: #718090;
   margin-bottom: 15px;
 }
 
@@ -2158,4 +2195,39 @@ Responsive
     margin-left: 0;
     padding: 13px 10px;
   }
+}
+
+/*---------------------
+Additional
+ -----------------------*/
+.terms-and-conditions ul {
+  padding-left: 40px;
+}
+
+.morecontent span {
+  display: none;
+}
+.morelink {
+  display: block;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

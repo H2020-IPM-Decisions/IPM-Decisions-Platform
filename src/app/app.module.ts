@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { DssParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-detail/dss-parameters-detail.component';
 import { EditDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/edit-dss-observation/edit-dss-observation.component';
 import { DssObservationListComponent } from './user/components/dss/dss-detail/dss-observation-list/dss-observation-list.component';
@@ -18,8 +17,15 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { AppComponent } from './app.component';
 import { UserHeaderComponent } from './user/components/user-header/user-header.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { AdminSxComponent } from './admin/admin-sx/admin-sx.component';
+import { AdminBreadcumbsComponent } from './admin/admin-breadcumbs/admin-breadcumbs.component';
+import { AccordionsComponent } from './admin/assets/accordions.component';
+import { TabsComponent } from './admin/assets/tabs.component';
+import { IconsComponent } from './admin/assets/icons.component';
+import { DropdownsComponent } from './admin/assets/dropdowns.component';
 import { KeepHtmlPipe } from './keep-html.pipe';
 import { RunScriptsDirective } from './run-scripts.directive';
+import { MapRisksComponent } from './maprisks/maprisks.component';
 import { AdminComponent } from './admin/admin.component';
 import { ContentManagementSystemComponent } from './admin/content-management-system/content-management-system.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
@@ -74,12 +80,26 @@ import { SiteCorouselComponent } from './core/components/site-corousel/site-coro
 import { HomeMenuComponent } from './core/components/header/home-menu/home-menu.component';
 import { AdminAccountMenuComponent } from './core/components/header/admin-account-menu/admin-account-menu.component';
 import { SignInComponent } from './core/components/header/sign-in/sign-in.component';
+import { ModalComponent } from './admin/assets/modal.component';
+import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
+import { LoginComponent } from './login/login.component';
+import { FarmRequestComponent } from './user/components/farm-request/farm-request.component';
 
 @NgModule({
   declarations: [
+    LoginComponent,
+    AdminFooterComponent,
+    AccordionsComponent,
+    ModalComponent,
+    TabsComponent,
+    IconsComponent,
+    DropdownsComponent,
+    AdminSxComponent,
+    AdminBreadcumbsComponent,
     AppComponent,
     KeepHtmlPipe,
     RunScriptsDirective,
+    MapRisksComponent,
     AdminComponent,
     ContentManagementSystemComponent,
     AddUserComponent,
@@ -144,7 +164,8 @@ import { SignInComponent } from './core/components/header/sign-in/sign-in.compon
     SignInComponent,
     SiteCorouselComponent,
     AdminHeaderComponent, 
-    UserHeaderComponent
+    UserHeaderComponent,
+    FarmRequestComponent
   ],
   imports: [
     BrowserModule,

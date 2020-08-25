@@ -4,7 +4,8 @@
 <div class="container page-box" *ngIf="!isLoading">
 <form [formGroup]="termsForm" (ngSubmit)="onRegister()">
   <div class="form-row">
-      <p>{{termsAndConditions}}</p>
+      <div class="terms-and-conditions" [innerHtml]="termsAndConditions"></div>
+
    
     <div class="checkbox-box"> 
       <div class="form-group form-check">  

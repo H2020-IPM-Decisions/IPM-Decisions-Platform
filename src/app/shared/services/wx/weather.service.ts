@@ -1,3 +1,4 @@
+import { environment } from '@src/environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { catchError, tap } from 'rxjs/operators';
@@ -15,7 +16,7 @@ export class WeatherService {
   constructor(private http: HttpClient) { }
 
   getWeatherData() {
-    const url = 'http://localhost:8080/WeatherService/rest/schema/weatherdata';
+    const url = `${environment.weatherApi}/rest/schema/weatherdata`;
 
     return this.http.get(url)
       .pipe(
@@ -27,14 +28,14 @@ export class WeatherService {
   }
   
   getWeatherParameterList() {
-    const url = 'http://localhost:8080/WeatherService/rest/parameter/list';
+    const url = `${environment.weatherApi}/rest/parameter/list`;
 
     return this.http.get(url)
       .pipe(catchError(this.handleError));
   }
 
   setWeatherForecast(longitude, latitude, altitude) {
-    const url = 'http://ipmdecisions.nibio.no/WeatherService/rest/forecasts/yr/';
+    const url = `${environment.weatherApi}/rest/forecasts/yr/`;
 
     return this.http.post(url, {
       params: {
