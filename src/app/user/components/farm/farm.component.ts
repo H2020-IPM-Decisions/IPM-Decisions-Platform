@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 
 @Component({
   selector: 'app-farm',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FarmComponent implements OnInit {
 
-  constructor() { }
+  canRequestFarm = false;
+
+  constructor(
+     private authService: AuthenticationService
+  ) { }
 
   ngOnInit() {
+    this.canRequestFarm = this.authService.currentUserValue.claims.includes("advisor");
   }
 
 }
