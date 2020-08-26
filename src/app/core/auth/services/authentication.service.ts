@@ -110,7 +110,7 @@ export class AuthenticationService {
 
                     const decoded = jwt_decode(response.token);
                     if (decoded) {
-                        const userAccessType = (decoded['UserAccessType']) ? [decoded['UserAccessType']] : null;
+                        const userAccessType = (decoded['useraccesstype']) ? [decoded['useraccesstype']] : null;
                         const role = (decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']) ? [decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']] : null;
 
                         const account: Account = {
