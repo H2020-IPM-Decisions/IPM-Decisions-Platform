@@ -1,0 +1,14 @@
+@import url("../../../admin/admin.component.css"); 
+
+.app-header.header-shadow.header-text-dark {
+    background: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    z-index: 10;
+    transition: all .2s;
+}
