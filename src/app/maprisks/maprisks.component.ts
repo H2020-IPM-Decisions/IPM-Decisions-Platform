@@ -28,6 +28,9 @@ export class MapRisksComponent implements OnInit {
   dssAdaptation: any = {};
   dssIntegration: any = {};
 
+  toggleOn;
+  setVerified;
+
   isLoggedIn: boolean;
   state$: Observable<object>;
   collapseDiv: boolean;
