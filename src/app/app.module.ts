@@ -1,3 +1,4 @@
+import { MenuComponent } from './core/components/header/menu/menu.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
@@ -84,6 +85,7 @@ import { ModalComponent } from './admin/assets/modal.component';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { LoginComponent } from './login/login.component';
 import { FarmRequestComponent } from './user/components/farm-request/farm-request.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -165,7 +167,9 @@ import { FarmRequestComponent } from './user/components/farm-request/farm-reques
     SiteCorouselComponent,
     AdminHeaderComponent, 
     UserHeaderComponent,
-    FarmRequestComponent
+    FarmRequestComponent,
+    MenuComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
