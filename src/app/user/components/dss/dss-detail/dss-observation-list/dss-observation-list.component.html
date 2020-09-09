@@ -1,157 +1,101 @@
-
-<user-header></user-header>
-
-
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
-        <li class="breadcrumb-item"><a routerLink="/user/dss/list">DSS</a></li>
-        <li class="breadcrumb-item"><a routerLink="/user/dss/details">DSS Details</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Observation List</li>
-    </ol>
-  </nav>
-  
-  <div class="container mx-auto my-5 page-box">
-    <div class="row">
-      <div class="col-lg-12 col-md-10 ml-auto mr-auto">
-        <div class="container">
+<div class="app-container app-theme-white fixed-sidebar fixed-header body-tabs-shadow fixed-footer">
+  <user-header></user-header>
+  <div class="app-main">
+    <sidebar></sidebar>
+    <div class="app-main__outer">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
+          <li class="breadcrumb-item"><a routerLink="/user/dss/list">DSS</a></li>
+          <li class="breadcrumb-item"><a routerLink="/user/dss/details">DSS Details</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Observation List</li>
+        </ol>
+      </nav>
+      <div class="app-main__inner">
+        <div class="container mx-auto my-5 page-box">
           <div class="row">
-            <div class="col-sm">
-              <h4>Observation list</h4>
+            <div class="col-lg-12 col-md-10 ml-auto mr-auto">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    <h4>Observation list</h4>
+                  </div>
+                  <div class="col-sm text-right add-farm">
+                    <button type="button" rel="tooltip" class="btn btn-info btn" data-original-title="" title=""
+                      routerLink="/user/dss/details/observation-list/add">
+                      + Add-Upload
+                    </button>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Details</th>
+                        <th class="text-center">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center">Observation 1</td>
+                        <td class="text-center">Lorem ipsum</td>
+                        <td class="td-actions text-center">
+                          <button type="button" rel="tooltip" class="btn btn-info btn-sm button-custom"
+                            data-original-title="" title="" routerLink="/user/dss/details/observation-list/edit">
+                            Edit
+                          </button>
+                          <button type="button" rel="tooltip" class="btn btn-warning btn-sm button-custom"
+                            data-original-title="" title="" routerLink="/user/dss/details/observation-list">
+                            Connect
+                          </button>
+                          <button type="button" rel="tooltip" class="btn btn-danger btn-sm button-custom"
+                            data-original-title="" title="" routerLink="/user/dss/details/observation-list">
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">Observation 2</td>
+                        <td class="text-center">Lorem ipsum</td>
+                        <td class="td-actions text-center">
+                          <button type="button" rel="tooltip" class="btn btn-info btn-sm button-custom"
+                            data-original-title="" title="" routerLink="/user/dss/details/observation-list/edit">
+                            Edit
+                          </button>
+                          <button type="button" rel="tooltip" class="btn btn-warning btn-sm button-custom"
+                            data-original-title="" title="" routerLink="/user/dss/details/observation-list">
+                            Connect
+                          </button>
+                          <button type="button" rel="tooltip" class="btn btn-danger btn-sm button-custom"
+                            data-original-title="" title="" routerLink="/user/dss/details/observation-list">
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">Observation 3</td>
+                        <td class="text-center">Lorem ipsum</td>
+                        <td class="td-actions text-center">
+                          <button type="button" rel="tooltip" class="btn btn-info btn-sm button-custom"
+                            data-original-title="" title="" routerLink="/user/dss/details/observation-list/edit">
+                            Edit
+                          </button>
+                          <button type="button" rel="tooltip" class="btn btn-warning btn-sm button-custom"
+                            data-original-title="" title="" routerLink="/user/dss/details/observation-list">
+                            Connect
+                          </button>
+                          <button type="button" rel="tooltip" class="btn btn-danger btn-sm button-custom"
+                            data-original-title="" title="" routerLink="/user/dss/details/observation-list">
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
-            <div class="col-sm text-right add-farm">
-              <button
-                type="button"
-                rel="tooltip"
-                class="btn btn-info btn"
-                data-original-title=""
-                title=""
-                routerLink="/user/dss/details/observation-list/add"
-              >
-                + Add-Upload
-              </button>
-            </div>
-          </div>
-          <div class="table-responsive">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="text-center">Name</th>
-                  <th class="text-center">Details</th>
-                  <th class="text-center">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="text-center">Observation 1</td>
-                  <td class="text-center">Lorem ipsum</td>
-                  <td class="td-actions text-center">
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-info btn-sm button-custom"
-                      data-original-title=""
-                      title=""
-                      routerLink="/user/dss/details/observation-list/edit"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-warning btn-sm button-custom"
-                      data-original-title=""
-                      title=""
-                      routerLink="/user/dss/details/observation-list"
-                    >
-                      Connect
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-danger btn-sm button-custom"
-                      data-original-title=""
-                      title=""
-                      routerLink="/user/dss/details/observation-list"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">Observation 2</td>
-                  <td class="text-center">Lorem ipsum</td>
-                  <td class="td-actions text-center">
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-info btn-sm button-custom"
-                      data-original-title=""
-                      title=""
-                      routerLink="/user/dss/details/observation-list/edit"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-warning btn-sm button-custom"
-                      data-original-title=""
-                      title=""
-                      routerLink="/user/dss/details/observation-list"
-                    >
-                      Connect
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-danger btn-sm button-custom"
-                      data-original-title=""
-                      title=""
-                      routerLink="/user/dss/details/observation-list"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">Observation 3</td>
-                  <td class="text-center">Lorem ipsum</td>
-                  <td class="td-actions text-center">
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-info btn-sm button-custom"
-                      data-original-title=""
-                      title=""
-                      routerLink="/user/dss/details/observation-list/edit"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-warning btn-sm button-custom"
-                      data-original-title=""
-                      title=""
-                      routerLink="/user/dss/details/observation-list"
-                    >
-                      Connect
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-danger btn-sm button-custom"
-                      data-original-title=""
-                      title=""
-                      routerLink="/user/dss/details/observation-list"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </div>

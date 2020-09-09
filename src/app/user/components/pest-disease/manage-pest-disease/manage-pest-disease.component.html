@@ -1,33 +1,34 @@
-
-<user-header></user-header>
-
-
-
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
-    <li class="breadcrumb-item"><a routerLink="/user/farm/manage">Manage Farm</a></li>
-    <li class="breadcrumb-item"><a routerLink="/user/crop/list">Crop list</a></li>
-    <li class="breadcrumb-item"><a routerLink="/user/crop/manage">Manage Crop</a></li>
-    <li class="breadcrumb-item"><a routerLink="/user/pest-disease/pest-disease-list">Pest-Disease List</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Manage Pest-Disease</li>
-  </ol>
-</nav>
-
-
-
-<div class="container mx-auto my-5 page-box">
-  <div class="col-sm text-right add-farm">
-    <button type="button" rel="tooltip" class="btn btn-info btn" data-original-title="" title=""
-      routerLink="/user/pest-disease/action-list">
-      Action List
-    </button>
- | 
-    <button type="button" rel="tooltip" class="btn btn-info btn" data-original-title="" title=""
-      routerLink="/user/pest-disease/observation-list">
-      Observations List
-    </button>
+<div class="app-container app-theme-white fixed-sidebar fixed-header body-tabs-shadow fixed-footer">
+  <user-header></user-header>
+  <div class="app-main">
+    <sidebar></sidebar>
+    <div class="app-main__outer">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
+          <li class="breadcrumb-item"><a routerLink="/user/farm/manage">Manage Farm</a></li>
+          <li class="breadcrumb-item"><a routerLink="/user/crop/list">Crop list</a></li>
+          <li class="breadcrumb-item"><a routerLink="/user/crop/manage">Manage Crop</a></li>
+          <li class="breadcrumb-item"><a routerLink="/user/pest-disease/pest-disease-list">Pest-Disease List</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Manage Pest-Disease</li>
+        </ol>
+      </nav>
+      <div class="app-main__inner">
+        <div class="container mx-auto my-5 page-box">
+          <div class="col-sm text-right add-farm">
+            <button type="button" rel="tooltip" class="btn btn-info btn" data-original-title="" title=""
+              routerLink="/user/pest-disease/action-list">
+              Action List
+            </button>
+            |
+            <button type="button" rel="tooltip" class="btn btn-info btn" data-original-title="" title=""
+              routerLink="/user/pest-disease/observation-list">
+              Observations List
+            </button>
+          </div>
+          <h1 class="text-center mb-5">Manage Pest-Disease</h1>
+          <img src="img/maintenance.png" />
+        </div>
+      </div>
+    </div>
   </div>
-  <h1 class="text-center mb-5">Manage Pest-Disease</h1>
-  <img src="img/maintenance.png" />
-</div>

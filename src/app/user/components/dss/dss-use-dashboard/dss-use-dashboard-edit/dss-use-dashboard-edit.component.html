@@ -1,17 +1,19 @@
-
-<user-header></user-header>
-
-  
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
-        <li class="breadcrumb-item"><a routerLink="/user/dss/use-dashboard">DSS Use Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Edit</li>
-      </ol>
-    </nav>
-    
- 
-      <div class="container mx-auto my-5 page-box">
-        <img src="img/DSSUseDashboardEdit.jpg">
+<div class="app-container app-theme-white fixed-sidebar fixed-header body-tabs-shadow fixed-footer">
+  <user-header></user-header>
+  <div class="app-main">
+    <sidebar></sidebar>
+    <div class="app-main__outer">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
+          <li class="breadcrumb-item"><a routerLink="/user/dss/use-dashboard">DSS Use Dashboard</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Edit</li>
+        </ol>
+      </nav>
+      <div class="app-main__inner">
+        <div class="container mx-auto my-5 page-box">
+          <img src="img/DSSUseDashboardEdit.jpg">
+        </div>
       </div>
-  
+    </div>
+  </div>
