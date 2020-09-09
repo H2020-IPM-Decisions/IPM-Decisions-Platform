@@ -1,14 +1,22 @@
 
+<div class="app-container app-theme-white fixed-sidebar fixed-header body-tabs-shadow fixed-footer">
 <admin-header></admin-header>
+<div class="app-main">
+  <sidebar></sidebar>
+  <div class="app-main__outer">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/admin">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Content Management System</li>
+      </ol>
+    </nav>
 
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink="/admin">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Content Management System</li>
-  </ol>
-</nav>
-
-<div class="container mx-auto my-5 page-box">
-  <h1 class="text-center mb-5"> Content Management System </h1>
-  <img src="img/cockpit.png">
+    <div class="app-main__inner">
+      <div class="container mx-auto my-5 page-box">
+        <h1 class="text-center mb-5"> Content Management System </h1>
+        <img src="img/cockpit.png">
+      </div>
+    </div>
+  </div>
+</div>
 </div>

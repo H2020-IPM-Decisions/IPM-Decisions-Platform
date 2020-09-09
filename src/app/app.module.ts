@@ -86,6 +86,7 @@ import { AdminFooterComponent } from './admin/admin-footer/admin-footer.componen
 import { LoginComponent } from './login/login.component';
 import { FarmRequestComponent } from './user/components/farm-request/farm-request.component';
 import { UserComponent } from './user/user.component';
+import { SidebarComponent } from './core/components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -169,7 +170,8 @@ import { UserComponent } from './user/user.component';
     UserHeaderComponent,
     FarmRequestComponent,
     MenuComponent,
-    UserComponent
+    UserComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
