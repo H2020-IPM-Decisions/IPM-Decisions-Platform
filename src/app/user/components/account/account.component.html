@@ -1,167 +1,172 @@
-
-<user-header></user-header>
-
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Account</li>
-  </ol>
-</nav>
-
-<body class="custom-body">
-<div class="container page-box w-75 p-3">
-  <form method="post">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="profile-img">
-          <img src="../../../../img/profile.png" alt="" />
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="profile-head">
-          <h5>
-            John Doe
-          </h5>
-          <h6>
-            Farmer
-          </h6>
-          <p class="proile-rating">Number of Farms : <span>3</span></p>
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                id="home-tab"
-                data-toggle="tab"
-                href="#home"
-                role="tab"
-                aria-controls="home"
-                aria-selected="true"
-                >About</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                id="profile-tab"
-                data-toggle="tab"
-                href="#profile"
-                role="tab"
-                aria-controls="profile"
-                aria-selected="false"
-                >List of Farms</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <input
-          type="button"
-          class="profile-edit-btn"
-          name="btnAddMore"
-          value="Edit Profile"
-          [routerLink]="['/user/account/edit']"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-8">
-        <div class="tab-content profile-tab" id="myTabContent">
-          <div
-            class="tab-pane fade show active"
-            id="home"
-            role="tabpanel"
-            aria-labelledby="home-tab"
-          >
-            <div class="row">
-              <div class="col-md-6">
-                <label>Contact Name</label>
-              </div>
-              <div class="col-md-6">
-                <p>Dave Skirvin</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Email</label>
-              </div>
-              <div class="col-md-6">
-                <p>dave@gmail.com</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Phone</label>
-              </div>
-              <div class="col-md-6">
-                <p>123 456 7890</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Mobile</label>
-              </div>
-              <div class="col-md-6">
-                <p>123 456 7890</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Adress Line 1</label>
-              </div>
-              <div class="col-md-6">
-                <p>This Farm</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Adress Line 2</label>
-              </div>
-              <div class="col-md-6">
-                <p>This Vilage</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Adress Line 3</label>
-              </div>
-              <div class="col-md-6">
-                <p>This Town</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Post Code</label>
-              </div>
-              <div class="col-md-6">
-                <p>11111</p>
-              </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                  <label>Country</label>
+<div class="app-container app-theme-white fixed-sidebar fixed-header body-tabs-shadow fixed-footer">
+  <user-header></user-header>
+  <div class="app-main">
+    <sidebar></sidebar>
+    <div class="app-main__outer">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/admin">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Account</li>
+        </ol>
+      </nav>
+      <div class="app-main__inner">
+        <div class="container mx-auto my-5 page-box">
+          <div class="container page-box w-75 p-3">
+            <form method="post">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="profile-img">
+                    <img src="../../../../img/profile.png" alt="" />
+                  </div>
                 </div>
                 <div class="col-md-6">
-                  <p>Wonderland</p>
+                  <div class="profile-head">
+                    <h5>
+                      John Doe
+                    </h5>
+                    <h6>
+                      Farmer
+                    </h6>
+                    <p class="proile-rating">Number of Farms : <span>3</span></p>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a
+                          class="nav-link active"
+                          id="home-tab"
+                          data-toggle="tab"
+                          href="#home"
+                          role="tab"
+                          aria-controls="home"
+                          aria-selected="true"
+                          >About</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="profile-tab"
+                          data-toggle="tab"
+                          href="#profile"
+                          role="tab"
+                          aria-controls="profile"
+                          aria-selected="false"
+                          >List of Farms</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <input
+                    type="button"
+                    class="profile-edit-btn"
+                    name="btnAddMore"
+                    value="Edit Profile"
+                    [routerLink]="['/user/account/edit']"
+                  />
                 </div>
               </div>
-          </div>
-          <div
-            class="tab-pane fade"
-            id="profile"
-            role="tabpanel"
-            aria-labelledby="profile-tab"
-          >
-            <a href="">Lorem ipsum</a><br />
-            <a href="">Lorem ipsum</a><br />
-            <a href="">Lorem ipsum</a><br />
-            <a href="">Lorem ipsum</a><br />
-            <a href="">Lorem ipsum</a><br />
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-8">
+                  <div class="tab-content profile-tab" id="myTabContent">
+                    <div
+                      class="tab-pane fade show active"
+                      id="home"
+                      role="tabpanel"
+                      aria-labelledby="home-tab"
+                    >
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label>Contact Name</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>Dave Skirvin</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label>Email</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>dave@gmail.com</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label>Phone</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>123 456 7890</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label>Mobile</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>123 456 7890</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label>Adress Line 1</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>This Farm</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label>Adress Line 2</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>This Vilage</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label>Adress Line 3</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>This Town</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label>Post Code</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>11111</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                            <label>Country</label>
+                          </div>
+                          <div class="col-md-6">
+                            <p>Wonderland</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="profile"
+                      role="tabpanel"
+                      aria-labelledby="profile-tab"
+                    >
+                      <a href="">Lorem ipsum</a><br />
+                      <a href="">Lorem ipsum</a><br />
+                      <a href="">Lorem ipsum</a><br />
+                      <a href="">Lorem ipsum</a><br />
+                      <a href="">Lorem ipsum</a><br />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </form>
 </div>
-</body>
