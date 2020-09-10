@@ -87,9 +87,11 @@ import { LoginComponent } from './login/login.component';
 import { FarmRequestComponent } from './user/components/farm-request/farm-request.component';
 import { UserComponent } from './user/user.component';
 import { SidebarComponent } from './core/components/sidebar/sidebar.component';
+import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mail.component';
 
 @NgModule({
   declarations: [
+    ConfirmMailComponent,
     LoginComponent,
     AdminFooterComponent,
     AccordionsComponent,
@@ -171,7 +173,8 @@ import { SidebarComponent } from './core/components/sidebar/sidebar.component';
     FarmRequestComponent,
     MenuComponent,
     UserComponent,
-    SidebarComponent
+    SidebarComponent,
+    ConfirmMailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+.screen {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

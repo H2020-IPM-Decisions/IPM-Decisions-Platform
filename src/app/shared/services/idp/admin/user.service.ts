@@ -10,6 +10,19 @@
   export class UserService {
   
     constructor(private http: HttpClient) { }
+
+    registerUser(token, userId):Observable<any> {
+      const url = environment.apiUrl + '/api/idp/accounts/confirmemail';
+      return this.http.get(
+        url, {
+          params: {
+            token,
+            userId
+          }
+        }
+      )
+    }
+
     getAllUsers():Observable<any> {
       const url = environment.apiUrl + '/api/idp/admin/users';
       return this.http.get<any>(url, {
