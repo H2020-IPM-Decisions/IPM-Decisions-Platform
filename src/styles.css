@@ -848,11 +848,12 @@ span.c-l {
   -webkit-box-shadow: 0px 5px 5px 0px rgba(33, 33, 33, 0.98);
   -moz-box-shadow: 0px 5px 5px 0px rgba(33, 33, 33, 0.98);
   box-shadow: 0px 5px 5px 0px rgba(33, 33, 33, 0.98);
+  background: #fff;
+  height: 100%;
 }
 
 .feature-box .fb-text {
   padding: 50px 27px 43px;
-  background: #fff;
 }
 
 .feature-box img {
