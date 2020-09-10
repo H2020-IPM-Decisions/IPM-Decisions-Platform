@@ -3,7 +3,9 @@
     <p *ngFor="let error of errors">{{ error.description }}</p>
   </div>
   <div class="alert alert-success" *ngIf="isSuccess">
-    <span>Account successfully created!</span>
+    <strong>Verify your email address</strong>
+    <br>
+    <span>Please click on the link that has just been sent to your email account to complete the registration process</span>
   </div>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="registrazione">
     <div class="form-row">
