@@ -83,7 +83,6 @@ import { AdminAccountMenuComponent } from './core/components/header/admin-accoun
 import { SignInComponent } from './core/components/header/sign-in/sign-in.component';
 import { ModalComponent } from './admin/assets/modal.component';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
-import { LoginComponent } from './login/login.component';
 import { FarmRequestComponent } from './user/components/farm-request/farm-request.component';
 import { UserComponent } from './user/user.component';
 import { SidebarComponent } from './core/components/sidebar/sidebar.component';
@@ -92,7 +91,6 @@ import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mai
 @NgModule({
   declarations: [
     ConfirmMailComponent,
-    LoginComponent,
     AdminFooterComponent,
     AccordionsComponent,
     ModalComponent,
