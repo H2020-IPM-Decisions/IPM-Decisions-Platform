@@ -147,9 +147,13 @@ function init() {
 		/*------------------
 			Image Popup
 		--------------------*/
-		$('.video-popup').magnificPopup({
-			type: 'iframe'
-		});
+		let videoPopup = $('.video-popup');
+		if($(videoPopup).length > 0) {
+			$('.video-popup').magnificPopup({
+				type: 'iframe'
+			});
+		}
+		
 		
 		/*------------------
 			Accordions

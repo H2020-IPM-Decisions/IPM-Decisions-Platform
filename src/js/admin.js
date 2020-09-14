@@ -26600,8 +26600,11 @@
             this.classPrefix = "SVG", d.SVGCanvasElement.parentClass.call(this, "svg"), this.defsElement = new d.SVGElement("defs"), this.node.appendChild(this.defsElement.node), d.AbstractCanvasElement.apply(this, arguments)
         }, d.inherits(d.SVGCanvasElement, d.SVGElement), d.mixin(d.SVGCanvasElement, d.AbstractCanvasElement), d.SVGCanvasElement.prototype.setSize = function (e, t) {
             this.width = e, this.height = t, this.node.setAttribute("width", e), this.node.setAttribute("height", t)
-        }, d.SVGCanvasElement.prototype.applyTransformParams = function (e, t, n) {
-            this.scale = e, this.transX = t, this.transY = n, this.rootElement.node.setAttribute("transform", "scale(" + e + ") translate(" + t + ", " + n + ")")
+        }, d.SVGCanvasElement.prototype.applyTransformParams = function (e, t, n) {            
+            this.scale = e, this.transX = t, this.transY = n;
+            if(!isNaN(e)) {
+                this.rootElement.node.setAttribute("transform", "scale(" + e + ") translate(" + t + ", " + n + ")")
+            }            
         }, d.SVGShapeElement = function (e, t) {
             d.SVGShapeElement.parentClass.call(this, e, t), d.AbstractShapeElement.apply(this, arguments)
         }, d.inherits(d.SVGShapeElement, d.SVGElement), d.mixin(d.SVGShapeElement, d.AbstractShapeElement), d.SVGShapeElement.prototype.applyAttr = function (e, t) {
