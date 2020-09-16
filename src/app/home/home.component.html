@@ -1,56 +1,18 @@
-<!-- Header section  
-<div id="login-account" class="collapse" [ngClass]="{'show' : collapseDiv}">
-  <div class="container">
-    <ul class="nav nav-tabs" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#login-form">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#create-form">Create Account</a>
-      </li>
-    </ul>
-    <div class="tab-content">
-      <div id="login-form" class="container tab-pane active">
-        <br />
-        <div class="container login-container">
-         
-        </div>
-      </div>
-      <div id="create-form" class="container tab-pane fade">
-        <br />
-        <register></register>
-      </div>
-    </div>
-  </div>
-</div>-->
 <header class="header-section clearfix">
-  <div class="header-top">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6 text-md-left">
-        </div>
-        <div class="col-md-6 text-md-right">
-          <a routerLink="/login" class="btn-login">Login or Create Account</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="container .site-logosite-navbar">
+  <div class="container site-navbar">
     <!-- Logo -->
     <a href="index.html" class="site-logo">
       <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
     </a>
-  <!-- div class="header-right">
-      <button class="search-switch"><i class="fa fa-search"></i></button>
-  </div>-->
-    <!-- Menu -->
-    <nav class="site-nav-menu">
-      <ul>
-        <li class="active"><a href="index.html">Home</a></li>
-        <li><a routerLink="maprisks">Map Risks</a></li>
-      </ul>
-    </nav>
+    <div class="login-registration-menu">
+      <div class="login-registration-menu-item">
+        <a routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i><br>Log in</a>
+      </div>
+      <div class="login-registration-menu-item">
+        <a routerLink="/login"><i class="fa fa-user-circle-o" aria-hidden="true"></i><br>Register</a>
+      </div>
+    </div>
   </div>
 </header>
 <!-- Header section end  -->
@@ -101,7 +63,7 @@
           <div class="service-item">
             <div class="si-head">
               <!--<div class="si-icon">
-                                      <img src="img/icons/wind-engine.png" alt=""> 
+                                      <img src="img/icons/wind-engine.png" alt="">
                                  </div>-->
               <h5>{{ homeGrid?.title3 }}</h5>
             </div>

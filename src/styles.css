@@ -1,6 +1,6 @@
 /* =================================
 ------------------------------------
-  Template Name: IPM Decision 
+  Template Name: IPM Decision
   Version: 1.0
   Bootstrap v4.3.1
  ------------------------------------
@@ -110,7 +110,7 @@ ol {
  100% {
    background-position: 0% 50%;
  }
-} 
+}
 
 /*---------------------
 Helper CSS
@@ -448,6 +448,36 @@ Commom elements
 /*------------------
 Header section
  ---------------------*/
+.header-section {
+  position: relative;
+  height: 86px;
+}
+
+.site-navbar {
+  height: 100%;
+}
+
+.login-registration-menu {
+  height: inherit;
+  float: right;
+}
+
+.login-registration-menu-item {
+  height: inherit;
+  float: left;
+  text-align: center;
+}
+
+.login-registration-menu-item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.login-registration-menu-item > a {
+  display: block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 .header-top {
   padding: 5px 0;
@@ -464,6 +494,9 @@ Header section
 .site-logo {
   display: inline-block;
   margin-right: 100px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .header-right {
@@ -526,6 +559,7 @@ Header section
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  float: right;
 }
 
 .site-nav-menu ul {
@@ -615,7 +649,7 @@ Header section
 
 /* ----------------
  Login Section
- ---------------------*/ 
+ ---------------------*/
 
    .header-top a{
        color: #000;
@@ -1929,17 +1963,6 @@ Responsive
 /* Medium screen : 992px. */
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .site-navbar {
-    text-align: center;
-  }
-  .site-logo {
-    display: block;
-    padding-top: 20px;
-    padding-left: 0;
-    margin-right: 0;
-    margin-bottom: 20px;
-    text-align: center;
-  }
   .header-right {
     padding-right: 50px;
     text-align: center;
@@ -1973,17 +1996,6 @@ Responsive
 /* Tablet :768px. */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .site-navbar {
-    text-align: center;
-  }
-  .site-logo {
-    display: block;
-    padding-top: 20px;
-    padding-left: 0;
-    margin-right: 0;
-    margin-bottom: 20px;
-    text-align: center;
-  }
   .header-right {
     padding-right: 50px;
     text-align: center;
@@ -2063,17 +2075,6 @@ Responsive
   }
   .header-top p {
     line-height: 1.5;
-  }
-  .site-navbar {
-    text-align: center;
-  }
-  .site-logo {
-    display: block;
-    padding-top: 20px;
-    padding-left: 0;
-    margin-right: 0;
-    margin-bottom: 20px;
-    text-align: center;
   }
   .header-right {
     display: none;
