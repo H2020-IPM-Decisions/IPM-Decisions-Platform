@@ -90,6 +90,7 @@ import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mai
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FarmDetailsComponent } from './user/components/farm/farm-details/farm-details.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -188,6 +189,7 @@ import { FarmDetailsComponent } from './user/components/farm/farm-details/farm-d
     CookieModule.forRoot(),
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
+    MDBBootstrapModule.forRoot(),
     AuthModule,
   ],
   providers: [],
