@@ -26,7 +26,6 @@ import { IconsComponent } from './admin/assets/icons.component';
 import { DropdownsComponent } from './admin/assets/dropdowns.component';
 import { KeepHtmlPipe } from './keep-html.pipe';
 import { RunScriptsDirective } from './run-scripts.directive';
-import { MapRisksComponent } from './maprisks/maprisks.component';
 import { AdminComponent } from './admin/admin.component';
 import { ContentManagementSystemComponent } from './admin/content-management-system/content-management-system.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
@@ -102,7 +101,6 @@ import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mai
     AppComponent,
     KeepHtmlPipe,
     RunScriptsDirective,
-    MapRisksComponent,
     AdminComponent,
     ContentManagementSystemComponent,
     AddUserComponent,
@@ -166,7 +164,7 @@ import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mai
     SiteLogoComponent,
     SignInComponent,
     SiteCorouselComponent,
-    AdminHeaderComponent, 
+    AdminHeaderComponent,
     UserHeaderComponent,
     FarmRequestComponent,
     MenuComponent,
@@ -176,7 +174,7 @@ import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mai
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,  
+    AppRoutingModule,
     CommonModule,
     HttpClientModule,
     FormsModule,
