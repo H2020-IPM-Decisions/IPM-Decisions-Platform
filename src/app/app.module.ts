@@ -86,6 +86,9 @@ import { FarmRequestComponent } from './user/components/farm-request/farm-reques
 import { UserComponent } from './user/user.component';
 import { SidebarComponent } from './core/components/sidebar/sidebar.component';
 import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mail.component';
+import { FarmersAdvisorsArticleComponent } from './farmers-advisors-article/farmers-advisors-article.component';
+import { ResearchersArticleComponent } from './researchers-article/researchers-article.component';
+import { DevelopersArticleComponent } from './developers-article/developers-article.component';
 
 @NgModule({
   declarations: [
@@ -170,7 +173,10 @@ import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mai
     MenuComponent,
     UserComponent,
     SidebarComponent,
-    ConfirmMailComponent
+    ConfirmMailComponent,
+    FarmersAdvisorsArticleComponent,
+    ResearchersArticleComponent,
+    DevelopersArticleComponent
   ],
   imports: [
     BrowserModule,

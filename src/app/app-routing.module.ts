@@ -1,3 +1,6 @@
+import { DevelopersArticleComponent } from './developers-article/developers-article.component';
+import { ResearchersArticleComponent } from './researchers-article/researchers-article.component';
+import { FarmersAdvisorsArticleComponent } from './farmers-advisors-article/farmers-advisors-article.component';
 import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mail.component';
 import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
 import { AdminAccountComponent } from './admin/admin-account/admin-account.component';
@@ -73,6 +76,9 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'login', component: LoginComponent},
+  { path: 'farmer-advisor-article', component: FarmersAdvisorsArticleComponent },
+  { path: 'research-article', component: ResearchersArticleComponent },
+  { path: 'coding-article', component: DevelopersArticleComponent },
   { path: 'confirmemail', component: ConfirmMailComponent},
   { path: 'admin/account', component: AdminAccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/admin-header', component: AdminHeaderComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
