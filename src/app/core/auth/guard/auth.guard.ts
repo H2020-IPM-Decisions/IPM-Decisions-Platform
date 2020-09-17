@@ -28,10 +28,10 @@ export class AuthGuard implements CanActivate {
               }
             }
 
-            if (acct.claims && acct.claims.length > 0) {
+            if (acct.useraccesstype && acct.useraccesstype.length > 0) {
               const claims: string[] = route.data.claims;
 
-              if (claims && (claims.some((claim: string) => acct.claims.includes(claim)))) {
+              if (claims && (claims.some((claim: string) => acct.useraccesstype.includes(claim)))) {
                 return true;
               }
             }

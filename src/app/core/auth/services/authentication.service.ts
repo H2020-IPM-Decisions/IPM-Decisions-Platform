@@ -120,7 +120,7 @@ export class AuthenticationService {
                             tokenInit: decoded['iat'],
                             tokenExpiration: decoded['exp'],
                             refreshToken: response.refreshToken,
-                            claims: userAccessType,
+                            useraccesstype: userAccessType,
                             roles: role
                         }
 
@@ -184,7 +184,7 @@ export class AuthenticationService {
                         tokenInit: tokenCreated,
                         tokenExpiration: tokenCreated + 4800,
                         refreshToken: resp.body.refreshToken,
-                        claims: resp.body.claims,
+                        useraccesstype: resp.body.claims,
                         roles: resp.body.roles
                     };
 
@@ -212,7 +212,7 @@ export class AuthenticationService {
                 tokenInit: decoded['iat'],
                 tokenExpiration: decoded['exp'],
                 refreshToken: sessionStorage.getItem('refresh_token'),
-                claims: userAccessType,
+                useraccesstype: userAccessType,
                 roles: role
             }
             if (account) {

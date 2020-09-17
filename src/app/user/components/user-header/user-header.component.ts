@@ -37,7 +37,7 @@ export class UserHeaderComponent implements OnInit {
     } else {
 
       this._route.data.subscribe(data => {
-        let currentClaim = this._authService.currentUserValue.claims;
+        let currentClaim = this._authService.currentUserValue.useraccesstype;
 
         if (currentClaim && data.claims) {
 
