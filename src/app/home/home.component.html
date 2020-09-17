@@ -16,135 +16,56 @@
   </div>
 </header>
 <!-- Header section end  -->
-
-<!-- Hero section  -->
-<section class="hero-section">
-  <div class="hero-slider owl-carousel">
-    <ng-template ngFor let-picture [ngForOf]="homeSlideshow?.gallery">
-      <div class="hero-item set-bg" [attr.data-setbg]="picture.path | cmsLink">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-8">
-              <h2>
-                <span>IPM</span><span>DECISIONS</span><span> Support System Platform</span>
-              </h2>
-            </div>
+<div class="border-animation"></div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="news">
+        <h3>IPM Decisions key information</h3>
+        <div class="articles">
+        <ng-template ngFor let-article [ngForOf]="news?.articles">
+          <div [innerHtml]="article.value">
           </div>
-        </div>
-      </div>
-    </ng-template>
-  </div>
-  <div class="border-animation"></div>
-</section>
-<!-- Hero section end  -->
-
-<!-- Services section  -->
-<section class="services-section">
-  <div class="services-warp">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-6">
-          <div class="service-item">
-            <div class="si-head">
-              <h5>{{ homeGrid?.title1 }}</h5>
-            </div>
-            <p>{{ homeGrid?.content1 }}</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="service-item">
-            <div class="si-head">
-              <h5>{{ homeGrid?.title2 }}</h5>
-            </div>
-            <p>{{ homeGrid?.content2 }}</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="service-item">
-            <div class="si-head">
-              <!--<div class="si-icon">
-                                      <img src="img/icons/wind-engine.png" alt="">
-                                 </div>-->
-              <h5>{{ homeGrid?.title3 }}</h5>
-            </div>
-            <p>{{ homeGrid?.content3 }}</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="service-item">
-            <div class="si-head">
-              <h5>{{ homeGrid?.title4 }}</h5>
-            </div>
-            <p>{{ homeGrid?.content4 }}</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="service-item">
-            <div class="si-head">
-              <h5>{{ homeGrid?.title5 }}</h5>
-            </div>
-            <p>{{ homeGrid?.content5 }}</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="service-item">
-            <div class="si-head">
-              <h5>{{ homeGrid?.title6 }}</h5>
-            </div>
-            <p >{{ homeGrid?.content6 }}</p>
-          </div>
+        </ng-template>
         </div>
       </div>
     </div>
+    <div class="col-md-8 px-0">
+      <div id="map">
+      </div>
+    </div>
   </div>
-</section>
-<!-- Services section end  -->
+</div>
 
 <!-- Features section   -->
 <section class="features-section spad set-bg">
   <div class="container-fluid">
-    <h2><span class="c-l">D</span>ECISION <span class="c-l">S</span>UPPORT <span class="c-l">S</span>YSTEM</h2>
-    <br>
     <div class="row">
-      <div class="col-lg-3 col-md-3">
+      <div class="col-lg-4 col-md-4">
+        <a routerLink="/farmer-advisor-article">
         <div class="feature-box">
-          <img [src]="dssUse?.image?.path | cmsLink" alt="" />
-          <div class="fb-text">
-            <h5>DSS use</h5>
-            <p class="more">{{ dssUse?.description }}</p>
-            <a href="" class="fb-more-btn">Read More</a>
-          </div>
+          <img src="img/farming.jpg" alt="">
+          <br>
+          Farmers/Advisors
         </div>
+        </a>
       </div>
-      <div class="col-lg-3 col-md-3">
-        <div class="feature-box">
-          <img [src]="dssEvaluation?.image?.path | cmsLink" alt="" />
-          <div class="fb-text">
-            <h5>DSS evaluation</h5>
-            <p class="more">{{ dssEvaluation?.description }}</p>
-            <a href="" class="fb-more-btn">Read More</a>
-          </div>
+      <div class="col-lg-4 col-md-4">
+        <a routerLink="/research-article"><div class="feature-box">
+          <img src="img/research.jpg" alt="">
+          <br>
+          Researchers
         </div>
+        </a>
       </div>
-      <div class="col-lg-3 col-md-3">
+      <div class="col-lg-4 col-md-4">
+        <a routerLink="/coding-article">
         <div class="feature-box">
-          <img [src]="dssAdaptation?.image?.path | cmsLink" alt="" />
-          <div class="fb-text">
-            <h5>DSS adaptation</h5>
-            <p class="more">{{ dssAdaptation?.description }}</p>
-            <a href="" class="fb-more-btn">Read More</a>
-          </div>
+          <img src="img/coding.jpg" alt="">
+          <br>
+          DSS Developers
         </div>
-      </div>
-      <div class="col-lg-3 col-md-3">
-        <div class="feature-box">
-          <img [src]="dssIntegration?.image?.path | cmsLink" alt="" />
-          <div class="fb-text">
-            <h5>DSS integration</h5>
-            <p ><span class="more">{{ dssIntegration?.description }}</span></p>
-            <a href="" class="fb-more-btn">Read More</a>
-          </div>
-        </div>
+        </a>
       </div>
     </div>
     <div class="row">
@@ -153,40 +74,5 @@
   </div>
 </section>
 <!-- Features section end  -->
-
-<!-- Clients section  -->
-<section class="clients-section spad">
-  <div class="container">
-    <div class="client-text">
-      <h2>{{ homeArticle1?.title }}</h2>
-      <p>{{ homeArticle1?.content }}</p>
-    </div>
-  </div>
-</section>
-<!-- Clients section end  -->
-
-<!-- Testimonial section -->
-<section class="testimonial-section">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-6 p-0">
-        <div class="testimonial-bg set-bg" [attr.data-setbg]="news?.picture?.path | cmsLink"></div>
-      </div>
-      <div class="col-lg-6 p-0">
-        <div class="testimonial-box">
-          <div class="testi-box-warp">
-            <h2>Platform progress</h2>
-            <div class="testimonial-slider owl-carousel">
-              <ng-template ngFor let-article [ngForOf]="news?.articles">
-                <div class="testimonial" [innerHtml]="article.value">
-                </div>
-              </ng-template>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <app-footer></app-footer>

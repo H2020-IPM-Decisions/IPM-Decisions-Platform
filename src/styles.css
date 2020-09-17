@@ -884,6 +884,12 @@ span.c-l {
   box-shadow: 0px 5px 5px 0px rgba(33, 33, 33, 0.98);
   background: #fff;
   height: 100%;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.feature-box:hover {
+  background-color: #dfdfdf;
 }
 
 .feature-box .fb-text {
@@ -974,6 +980,7 @@ span.c-l {
 }
 
 .testimonial-box {
+  height: calc(100vh - 86px);
   padding: 100px 15px 70px;
   background: #8bc743;
 }
@@ -1227,7 +1234,7 @@ section#ipm-news {
 .copyright {
   color: #fff;
   font-size: 14px;
-  padding-top: 25px;
+  padding: 10px 15px;
 }
 
 .copyright a {

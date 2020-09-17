@@ -1,3 +1,4 @@
+import { MaprisksService } from './../shared/services/maprisks.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { CMSService } from '../shared/services/cms.service';
@@ -13,6 +14,7 @@ declare var init: any;
 export class HomeComponent implements OnInit {
   active: string = "home";
 
+  map;
   cmsUrl;
   cmsPath = "";
   assetPath = "";
@@ -36,7 +38,8 @@ export class HomeComponent implements OnInit {
     private cmsService: CMSService,
     private _authService: AuthenticationService,
     private router: Router,
-    public _activatedRoute: ActivatedRoute
+    public _activatedRoute: ActivatedRoute,
+    private maprisksService: MaprisksService
   ) {
     this.cmsUrl = cmsService.getUrl();
     this.cmsPath = cmsService.getUrl();
@@ -55,6 +58,12 @@ export class HomeComponent implements OnInit {
         this.verified.emit(false);
       }
 
+    });
+    this.maprisksService.initialize('map').subscribe(data => {
+      this.map = data;
+      this.map.scrollWheelZoom.disable();
+      const featureGroup = this.maprisksService.createFeatureGroup(this.map);
+      this.maprisksService.addMarker(47.4744951, 10.9576836, featureGroup);
     });
 
     let cmsService = this.cmsService;
