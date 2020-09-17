@@ -89,6 +89,7 @@ import { SidebarComponent } from './core/components/sidebar/sidebar.component';
 import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { FarmDetailsComponent } from './user/components/farm/farm-details/farm-details.component';
 
 @NgModule({
   declarations: [
@@ -174,7 +175,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     MenuComponent,
     UserComponent,
     SidebarComponent,
-    ConfirmMailComponent
+    ConfirmMailComponent,
+    FarmDetailsComponent
   ],
   imports: [
     BrowserModule,

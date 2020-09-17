@@ -69,6 +69,7 @@ import { AdminFooterComponent } from './admin/admin-footer/admin-footer.componen
 import { LoginComponent } from './core/auth/pages/login/login.component';
 import { MapRisksComponent } from './maprisks/maprisks.component';
 import { FarmRequestComponent } from './user/components/farm-request/farm-request.component';
+import { FarmDetailsComponent } from './user/components/farm/farm-details/farm-details.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -96,13 +97,14 @@ const appRoutes: Routes = [
   { path: 'admin/manage-catalogue', component: ManageCatalogueComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/source-repo', component: SourceRepoComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'user/account', component: AccountComponent, canActivate: [AuthGuard], data: { roles: [], claims: ['developer', 'farmer', 'advisor']} },
-  { path: 'user/account/edit', component: EditAccountComponent, canActivate: [AuthGuard], data: { roles: [], claims: ['Level0', 'developer', 'farmer', 'advisor']} },
+  { path: 'user/account/edit', component: EditAccountComponent, canActivate: [AuthGuard], data: { roles: [], claims: ['developer', 'farmer', 'advisor']} },
   { path: 'user/farm', component: FarmComponent, canActivate: [AuthGuard] , data: { roles: [], claims: ['developer', 'farmer', 'advisor' ]}},
   { path: 'user/farm-request', component: FarmRequestComponent, canActivate: [AuthGuard] , data: { roles: [], claims: ['developer', 'farmer', 'advisor' ]}},
   { path: 'user/farm/edit', component: EditFarmComponent, canActivate: [AuthGuard], data: { roles: [], claims: ['developer','farmer', 'advisor']}},
   { path: 'user/farm/add', component: AddFarmComponent, canActivate: [AuthGuard], data: { roles: [], claims: ['developer', 'farmer', 'advisor']} },
   { path: 'user/farm/list', component: FarmListComponent, canActivate: [AuthGuard], data: { roles: [], claims: ['developer', 'farmer', 'advisor']} },
   { path: 'user/farm/manage', component: ManageFarmComponent, canActivate: [AuthGuard] , data: { roles: [], claims: ['developer', 'farmer', 'advisor']} },
+  { path: 'user/farm/details', component: FarmDetailsComponent, canActivate: [AuthGuard] , data: { roles: [], claims: ['developer', 'farmer', 'advisor']} },
   { path: 'user/crop/add', component: AddCropComponent, canActivate: [AuthGuard] , data: { roles: [], claims: ['developer', 'farmer', 'advisor']} },
   { path: 'user/crop/edit', component: EditCropComponent, canActivate: [AuthGuard] , data: { roles: [], claims: ['developer', 'farmer', 'advisor']} },
   { path: 'user/crop/manage', component: ManageCropComponent, canActivate: [AuthGuard] , data: { roles: [], claims: ['developer', 'farmer', 'advisor']} },
