@@ -87,6 +87,8 @@ import { FarmRequestComponent } from './user/components/farm-request/farm-reques
 import { UserComponent } from './user/user.component';
 import { SidebarComponent } from './core/components/sidebar/sidebar.component';
 import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -182,7 +184,9 @@ import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mai
     FormsModule,
     ReactiveFormsModule,
     CookieModule.forRoot(),
-    AuthModule
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

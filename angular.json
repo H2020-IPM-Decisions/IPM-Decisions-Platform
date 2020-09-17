@@ -27,6 +27,7 @@
               "src/js"
             ],
             "styles": [
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "./node_modules/leaflet/dist/leaflet.css",
               "src/styles.css"
             ],
@@ -133,6 +134,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "IPM-Decisions-Platform"
 }
