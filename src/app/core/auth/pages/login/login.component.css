@@ -12,7 +12,7 @@ div#login-background {
 }
 
 #login-column {
-    min-width: 320px;
+    width: 420px;
 }
 
 #login .container #login-row #login-column #login-box {
@@ -25,11 +25,21 @@ div#login-background {
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   }
+
+  #login .container #login-row #login-column #login-box.with-terms {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 0;
+    width: 100%;
+    max-width: none;
+  }
+
   #login .container #login-row #login-column #login-box #login-form {
     padding: 20px;
   }
   #login .container #login-row #login-column #login-box #login-form #register-link {
-    
+
   }
 
   .btn-login {

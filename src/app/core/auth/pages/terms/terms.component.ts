@@ -32,6 +32,8 @@ export class TermsComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById('login-box').classList.add("with-terms");
+    document.getElementById('login-register-nav').hidden = true;
     this.termsForm = this.formBuilder.group(
       {
         acceptTerms: [false, Validators.requiredTrue]
@@ -56,10 +58,14 @@ export class TermsComponent implements OnInit {
           this.message.emit(true);
           this.termsAccepted.emit(false);
         }
+        document.getElementById('login-box').classList.remove("with-terms");
+        document.getElementById('login-register-nav').hidden = false;
       },
       errorRes => {
         this.isLoading = false;
         this.termsAccepted.emit(false);
+        document.getElementById('login-box').classList.remove("with-terms");
+        document.getElementById('login-register-nav').hidden = false;
       }
     );
 

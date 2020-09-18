@@ -1,19 +1,19 @@
 <div *ngIf="isLoading" style="text-align: center;">
   <app-loading-spinner></app-loading-spinner>
 </div>
-<div class="container page-box" *ngIf="!isLoading">
+<div class="container page-box">
 <form [formGroup]="termsForm" (ngSubmit)="onRegister()">
   <div class="form-row">
       <div class="terms-and-conditions" [innerHtml]="termsAndConditions"></div>
 
-   
-    <div class="checkbox-box"> 
-      <div class="form-group form-check">  
+
+    <div class="checkbox-box">
+      <div class="form-group form-check">
         <input
           type="checkbox"
-          formControlName="acceptTerms" 
+          formControlName="acceptTerms"
           id="acceptTerms"
-          class="form-check-input" 
+          class="form-check-input"
           #acceptTerms
           [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
 
@@ -22,10 +22,10 @@
         <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">
           Accept Ts & Cs is required
         </div>
-      </div>   
+      </div>
 
       <div class="text-center col-6 float-right">
-        <button [disabled]="!acceptTerms.checked" 
+        <button [disabled]="!acceptTerms.checked"
         class="btn btn-login btn-block float-right">Register</button>
       </div>
     </div>
