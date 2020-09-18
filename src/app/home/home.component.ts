@@ -1,5 +1,5 @@
 import { MaprisksService } from './../shared/services/maprisks.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { CMSService } from '../shared/services/cms.service';
 import { Observable } from 'rxjs';
@@ -48,6 +48,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+      window.scrollTo(0, 0)
+  });
 
     this._activatedRoute.queryParams.subscribe(params => {
       if (params['token'] && params['userId']) {
@@ -96,5 +102,11 @@ export class HomeComponent implements OnInit {
     this.isLoggedIn = this._authService.isLoggedIn();
   }
 
+  goToRegistrationPage() {
+    this.router.navigate(['/login'])
+      .then(()=>{
+        document.getElementById('register-button').click();
+      });
+  }
 
 }

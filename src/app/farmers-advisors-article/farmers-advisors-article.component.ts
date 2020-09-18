@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CMSService } from '@app/shared/services/cms.service';
 declare var init: any;
 
@@ -12,6 +13,7 @@ export class FarmersAdvisorsArticleComponent implements OnInit {
   bannerUrl = "";
 
   constructor(
+    private router: Router,
     private cmsService: CMSService
   ) { }
 
@@ -24,6 +26,13 @@ export class FarmersAdvisorsArticleComponent implements OnInit {
     Promise.all(promises).then(() => {
       setTimeout(() => init(), 0)
     })
+  }
+
+  goToRegistrationPage() {
+    this.router.navigate(['/login'])
+      .then(()=>{
+        document.getElementById('register-button').click();
+      });
   }
 
 }

@@ -457,6 +457,11 @@ Header section
   height: 100%;
 }
 
+.register-link:hover {
+  cursor: pointer;
+  color: #0056b3 !important;
+}
+
 .login-registration-menu {
   height: inherit;
   float: right;

@@ -4,7 +4,7 @@
       <div id="login-row" class="row justify-content-center align-items-center">
           <div id="login-column">
               <div id="login-box" class="col-md-12">
-                
+
               <div class="tab-content">
                 <div class="tab-pane active" id="login-form" role="tabpanel">
 
@@ -31,7 +31,7 @@
                           <div *ngIf="f.email.errors.pattern">Email must be a valid email address</div>
                         </div> -->
                       </div>
-                  
+
                       <div class="form-group">
                         <label class="text-info">Password</label>
                         <input
@@ -39,7 +39,7 @@
                           formControlName="password"
                           class="form-control"
                         />
-                  
+
                         <!-- <div *ngIf="f.password.errors && f.password.touched" class="invalid-feedback">
                           <div *ngIf="f.password.errors.required">Password is required</div>
                           <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
@@ -57,18 +57,18 @@
                   <register></register>
                 </div>
                 <div class="tab-pane" id="forgot-password" role="tabpanel">
-                  
+
                     <forget-password></forget-password>
-                
+
                 </div>
             </div>
             <ul class="nav nav-justified">
               <li class="nav-item"><a data-toggle="tab" href="#login-form" class="active nav-link"><i class="fa fa-user" aria-hidden="true"></i> Login</a></li>
-              <li class="nav-item"><a data-toggle="tab" href="#registrer-form" class="nav-link"><i class="fa fa-address-book" aria-hidden="true"></i> Registrer</a></li>
+              <li class="nav-item"><a id="register-button" data-toggle="tab" href="#registrer-form" class="nav-link"><i class="fa fa-address-book" aria-hidden="true"></i> Registrer</a></li>
               <li class="nav-item"><a data-toggle="tab" href="#forgot-password" class="nav-link"> <i class="fa fa-question-circle" aria-hidden="true"></i> Forgot Password</a></li>
           </ul>
-                
-                
+
+
               </div>
           </div>
       </div>

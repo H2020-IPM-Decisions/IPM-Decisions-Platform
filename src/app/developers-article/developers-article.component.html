@@ -2,7 +2,7 @@
 
   <div class="container site-navbar">
     <!-- Logo -->
-    <a href="index.html" class="site-logo">
+    <a routerLink="/" class="site-logo">
       <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
     </a>
     <div class="login-registration-menu">
@@ -10,7 +10,7 @@
         <a routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i><br>Log in</a>
       </div>
       <div class="login-registration-menu-item">
-        <a routerLink="/register"><i class="fa fa-user-circle-o" aria-hidden="true"></i><br>Register</a>
+        <a class="register-link" (click)='goToRegistrationPage()'><i class="fa fa-user-circle-o" aria-hidden="true"></i><br>Register</a>
       </div>
     </div>
   </div>
