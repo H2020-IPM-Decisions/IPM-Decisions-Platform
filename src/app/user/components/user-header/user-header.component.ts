@@ -4,6 +4,7 @@ import { CMSService } from 'src/app/shared/services/cms.service';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
+import { SidebarMenuUpdateService } from '@app/shared/services/sidebar-menu-update/sidebar-menu-update.service';
 
 @Component({
   selector: 'user-header',
@@ -22,6 +23,7 @@ export class UserHeaderComponent implements OnInit {
   constructor(
     private cmsService: CMSService,
     private _authService: AuthenticationService,
+    private _sidebarMenuService: SidebarMenuUpdateService,
     private _route: ActivatedRoute
   ) {
     this.cmsUrl = cmsService.getUrl();
@@ -68,6 +70,10 @@ export class UserHeaderComponent implements OnInit {
       }
     })
 
+  }
+
+  showFarmActions(menuItem: string) {
+    this._sidebarMenuService.changeSidebarMenu(menuItem);
   }
 
   logout() {
