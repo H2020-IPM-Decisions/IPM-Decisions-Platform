@@ -1,7 +1,10 @@
 <div class="app-sidebar sidebar-shadow bg-happy-green sidebar-text-light">
     <div class="scrollbar-sidebar">
         <div class="app-sidebar__inner">
-            <admin-header-sx ></admin-header-sx>
+            <admin-header-sx *ngIf="this.authenticationService.isAdmin(); else userheadersx"></admin-header-sx>
+            <ng-template #userheadersx>
+                <user-header-sx></user-header-sx>
+            </ng-template>
         </div>
     </div>
 </div>
