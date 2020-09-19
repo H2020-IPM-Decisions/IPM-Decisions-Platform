@@ -91,6 +91,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FarmDetailsComponent } from './user/components/farm/farm-details/farm-details.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { UserSxComponent } from './user/components/user-sx/user-sx.component';
 
 @NgModule({
   declarations: [
@@ -177,7 +178,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     UserComponent,
     SidebarComponent,
     ConfirmMailComponent,
-    FarmDetailsComponent
+    FarmDetailsComponent,
+    UserSxComponent
   ],
   imports: [
     BrowserModule,
