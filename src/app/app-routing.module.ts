@@ -1,3 +1,6 @@
+import { DevelopersArticleComponent } from './developers-article/developers-article.component';
+import { ResearchersArticleComponent } from './researchers-article/researchers-article.component';
+import { FarmersAdvisorsArticleComponent } from './farmers-advisors-article/farmers-advisors-article.component';
 import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mail.component';
 import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
 import { AdminAccountComponent } from './admin/admin-account/admin-account.component';
@@ -67,21 +70,22 @@ import { TabsComponent } from './admin/assets/tabs.component';
 import { ModalComponent } from './admin/assets/modal.component';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { LoginComponent } from './core/auth/pages/login/login.component';
-import { MapRisksComponent } from './maprisks/maprisks.component';
 import { FarmRequestComponent } from './user/components/farm-request/farm-request.component';
 import { FarmDetailsComponent } from './user/components/farm/farm-details/farm-details.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
-  { path: 'maprisks', component: MapRisksComponent},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'login', component: LoginComponent},
+  { path: 'farmer-advisor-article', component: FarmersAdvisorsArticleComponent },
+  { path: 'research-article', component: ResearchersArticleComponent },
+  { path: 'coding-article', component: DevelopersArticleComponent },
   { path: 'confirmemail', component: ConfirmMailComponent},
   { path: 'admin/account', component: AdminAccountComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/admin-header', component: AdminHeaderComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/admin-footer', component: AdminFooterComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/admin-sx', component: AdminSxComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
-  { path: 'admin/admin-breadcumbs', component: AdminBreadcumbsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } }, 
+  { path: 'admin/admin-breadcumbs', component: AdminBreadcumbsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/assets/accordions', component: AccordionsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/assets/dropdowns', component: DropdownsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },
   { path: 'admin/assets/icons', component: IconsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin], claims: [] } },

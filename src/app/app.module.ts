@@ -26,7 +26,6 @@ import { IconsComponent } from './admin/assets/icons.component';
 import { DropdownsComponent } from './admin/assets/dropdowns.component';
 import { KeepHtmlPipe } from './keep-html.pipe';
 import { RunScriptsDirective } from './run-scripts.directive';
-import { MapRisksComponent } from './maprisks/maprisks.component';
 import { AdminComponent } from './admin/admin.component';
 import { ContentManagementSystemComponent } from './admin/content-management-system/content-management-system.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
@@ -92,6 +91,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FarmDetailsComponent } from './user/components/farm/farm-details/farm-details.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { UserSxComponent } from './user/components/user-sx/user-sx.component';
+import { FarmersAdvisorsArticleComponent } from './farmers-advisors-article/farmers-advisors-article.component';
+import { ResearchersArticleComponent } from './researchers-article/researchers-article.component';
+import { DevelopersArticleComponent } from './developers-article/developers-article.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +109,6 @@ import { UserSxComponent } from './user/components/user-sx/user-sx.component';
     AppComponent,
     KeepHtmlPipe,
     RunScriptsDirective,
-    MapRisksComponent,
     AdminComponent,
     ContentManagementSystemComponent,
     AddUserComponent,
@@ -171,7 +172,7 @@ import { UserSxComponent } from './user/components/user-sx/user-sx.component';
     SiteLogoComponent,
     SignInComponent,
     SiteCorouselComponent,
-    AdminHeaderComponent, 
+    AdminHeaderComponent,
     UserHeaderComponent,
     FarmRequestComponent,
     MenuComponent,
@@ -179,11 +180,14 @@ import { UserSxComponent } from './user/components/user-sx/user-sx.component';
     SidebarComponent,
     ConfirmMailComponent,
     FarmDetailsComponent,
-    UserSxComponent
+    UserSxComponent,
+    FarmersAdvisorsArticleComponent,
+    ResearchersArticleComponent,
+    DevelopersArticleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,  
+    AppRoutingModule,
     CommonModule,
     HttpClientModule,
     FormsModule,
