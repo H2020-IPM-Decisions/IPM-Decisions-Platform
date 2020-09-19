@@ -29,17 +29,20 @@
             "styles": [
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "./node_modules/leaflet/dist/leaflet.css",
+              "./node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
+              "./node_modules/animate.css/animate.css",
               "src/styles.css"
             ],
             "scripts": [
               "src/js/admin.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
-              "src/js/jquery-3.2.1.min.js",              
+              "src/js/jquery-3.2.1.min.js",
               "src/js/jquery.slicknav.min.js",
               "src/js/owl.carousel.min.js",
               "src/js/circle-progress.min.js",
+              "node_modules/chart.js/dist/Chart.js",
+              "node_modules/hammerjs/hammer.min.js",
               "src/js/main.js"
-              
             ]
           },
           "configurations": {
