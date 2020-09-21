@@ -936,11 +936,12 @@ span.c-l {
  ---------------------*/
 
 .client-text {
-  text-align: center;
+  text-align: justify;
   margin-bottom: 90px;
 }
 
 .client-text h2 {
+  text-align: center;
   font-weight: 300;
   margin-bottom: 40px;
 }
@@ -948,6 +949,10 @@ span.c-l {
 .client-text p {
   font-size: 14px;
     text-align: justify;
+}
+
+.client-text ul {
+  list-style-position: inside;
 }
 
 .client-slider .single-brand {
