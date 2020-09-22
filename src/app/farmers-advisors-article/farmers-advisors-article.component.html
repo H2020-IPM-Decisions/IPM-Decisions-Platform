@@ -1,17 +1,17 @@
 <header class="header-section clearfix">
 
-  <div class="container site-navbar">
-    <!-- Logo -->
-    <a routerLink="/" class="site-logo">
-      <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
-    </a>
-    <div class="login-registration-menu">
-      <div class="login-registration-menu-item">
-        <a routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i><br>Log in</a>
-      </div>
-      <div class="login-registration-menu-item">
-        <a class="register-link" (click)='goToRegistrationPage()'><i class="fa fa-user-circle-o" aria-hidden="true"></i><br>Register</a>
-      </div>
+  <div class="site-navbar"></div>
+  <!-- Logo -->
+  <a routerLink="/" class="site-logo">
+    <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
+  </a>
+  <div class="login-registration-menu">
+    <div class="login-registration-menu-item">
+      <a routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i><br>Log in</a>
+    </div>
+    <div class="login-registration-menu-item">
+      <a class="register-link" (click)='goToRegistrationPage()'><i class="fa fa-user-circle-o"
+          aria-hidden="true"></i><br>Register</a>
     </div>
   </div>
 </header>
@@ -22,7 +22,9 @@
   <div class="container">
     <div class="client-text">
       <h2>Farmers&amp;Advisors</h2>
-      Farmers & Advisors are invited to use IPM Decisions Platform and dashboards to support decisions for a specific farm or crop. They will be able to access a wide range of pest DSS tools and have the ability to compare the outputs of different DSS tools to aid them in selecting those of most relevance to their specific situation.
+      Farmers & Advisors are invited to use IPM Decisions Platform and dashboards to support decisions for a specific
+      farm or crop. They will be able to access a wide range of pest DSS tools and have the ability to compare the
+      outputs of different DSS tools to aid them in selecting those of most relevance to their specific situation.
     </div>
   </div>
 </section>

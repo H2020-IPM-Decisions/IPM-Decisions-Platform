@@ -502,6 +502,7 @@ Header section
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  padding-left: 15px;
 }
 
 .header-right {
@@ -1960,7 +1961,6 @@ Responsive
 @media only screen and (min-width: 1200px) and (max-width: 1595px) {
   .site-logo {
     margin-right: 20px;
-    padding-left: 15px;
   }
   .header-right {
     padding-right: 60px;
