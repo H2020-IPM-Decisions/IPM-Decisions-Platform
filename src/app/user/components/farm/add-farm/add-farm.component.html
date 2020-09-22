@@ -11,11 +11,59 @@
         </ol>
       </nav>
       <div class="app-main__inner">
+
+        <div class="app-page-title">
+          <div class="page-title-wrapper">
+            <div class="page-title-heading">
+              <div class="page-title-icon">
+                <i class="pe-7s-leaf icon-gradient bg-mean-fruit">
+                </i>
+              </div>
+              <div>Add Farm</div>
+            </div>
+          </div>
+        </div>
+
         <div class="container mx-auto my-5 page-box">
-          <h1 class="text-center mb-5">Add Farm</h1>
-          
-          <img src="img/maintenance.png" />
+
+          <!-- left column -->
+          <div class="row">
+            <div class="col-4">
+              <div class="col border">
+
+                <div class="row">
+                  <div class="col-md-12 mt-4 mb-2">
+                    <div class="form-group">
+                      <label for="farm-name" class="col-form-label">Farm name</label>
+                      <input type="text" class="form-control" id="farm-name">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-8">
+              <div class="col border">
+                <div class="row">
+                  <div class="col-md-12 mt-4 mb-2">
+                    <div class="form-group">
+                      <label for="find-location" class="col-form-label">Find location</label>
+                      <input type="text" class="form-control" id="find-location">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12 mt-2">
+                    <div class="map-container" #map></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
-</div>
+  </div>
