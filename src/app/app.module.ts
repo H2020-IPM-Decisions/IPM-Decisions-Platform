@@ -94,6 +94,7 @@ import { UserSxComponent } from './user/components/user-sx/user-sx.component';
 import { FarmersAdvisorsArticleComponent } from './farmers-advisors-article/farmers-advisors-article.component';
 import { ResearchersArticleComponent } from './researchers-article/researchers-article.component';
 import { DevelopersArticleComponent } from './developers-article/developers-article.component';
+import { DssSelectionComponent } from './user/components/farm/dss-selection/dss-selection.component';
 
 @NgModule({
   declarations: [
@@ -183,7 +184,8 @@ import { DevelopersArticleComponent } from './developers-article/developers-arti
     UserSxComponent,
     FarmersAdvisorsArticleComponent,
     ResearchersArticleComponent,
-    DevelopersArticleComponent
+    DevelopersArticleComponent,
+    DssSelectionComponent
   ],
   imports: [
     BrowserModule,
