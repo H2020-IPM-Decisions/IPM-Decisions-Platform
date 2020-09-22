@@ -10,7 +10,8 @@
         <a routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i><br>Log in</a>
       </div>
       <div class="login-registration-menu-item">
-        <a class="register-link" (click)='goToRegistrationPage()'><i class="fa fa-user-circle-o" aria-hidden="true"></i><br>Register</a>
+        <a class="register-link" (click)='goToRegistrationPage()'><i class="fa fa-user-circle-o"
+            aria-hidden="true"></i><br>Register</a>
       </div>
     </div>
   </div>
@@ -23,10 +24,10 @@
       <div class="news">
         <h3>IPM Decisions key information</h3>
         <div class="articles">
-        <ng-template ngFor let-article [ngForOf]="news?.articles">
-          <div [innerHtml]="article.value">
-          </div>
-        </ng-template>
+          <ng-template ngFor let-article [ngForOf]="news?.articles">
+            <div [innerHtml]="article.value">
+            </div>
+          </ng-template>
         </div>
       </div>
     </div>
@@ -38,33 +39,34 @@
 </div>
 
 <!-- Features section   -->
-<section class="features-section spad set-bg">
+<section class="features-section set-bg">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-4 col-md-4">
+      <div class="col-lg-4 col-md-4 features-section-column">
         <a routerLink="/farmer-advisor-article">
-        <div class="feature-box">
-          <img src="img/farming.jpg" alt="">
-          <br>
-          Farmers/Advisors
-        </div>
+          <div class="feature-box">
+            <img src="img/farming.jpg" alt="">
+            <br>
+            Farmers/Advisors
+          </div>
         </a>
       </div>
-      <div class="col-lg-4 col-md-4">
-        <a routerLink="/research-article"><div class="feature-box">
-          <img src="img/research.jpg" alt="">
-          <br>
-          Researchers
-        </div>
+      <div class="col-lg-4 col-md-4 features-section-column">
+        <a routerLink="/research-article">
+          <div class="feature-box">
+            <img src="img/research.jpg" alt="">
+            <br>
+            Researchers
+          </div>
         </a>
       </div>
-      <div class="col-lg-4 col-md-4">
+      <div class="col-lg-4 col-md-4 features-section-column">
         <a routerLink="/coding-article">
-        <div class="feature-box">
-          <img src="img/coding.jpg" alt="">
-          <br>
-          DSS Developers
-        </div>
+          <div class="feature-box">
+            <img src="img/coding.jpg" alt="">
+            <br>
+            DSS Developers
+          </div>
         </a>
       </div>
     </div>
