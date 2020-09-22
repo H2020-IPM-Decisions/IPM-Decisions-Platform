@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageFarmComponent implements OnInit {
 
-  constructor() { }
+  elements: any = [];
+  middleTblElements: any = [];
+  leftHeadElements = ['spray', 'date', 'rate'];
+  middleHeadElements = ['date', 'severity'];
 
   ngOnInit() {
+    for (let i = 1; i <= 1; i++) {
+      this.elements.push({ spray: i, date: 'User ' + i, rate: 'Name ' + i });
+    }
+    for (let i = 1; i <= 3; i++) {
+      this.middleTblElements.push({ date: 'Date ' + i, severity: 'Severity ' + i });
+    }
   }
 
 }

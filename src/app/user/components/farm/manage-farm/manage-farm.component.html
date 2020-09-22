@@ -10,11 +10,22 @@
         </ol>
       </nav>
       <div class="app-main__inner">
-        <div class="container mx-auto my-5 page-box">
+
+        <div class="app-page-title">
+          <div class="page-title-wrapper">
+            <div class="page-title-heading">
+              <div class="page-title-icon">
+                <i class="pe-7s-tools icon-gradient bg-mean-fruit">
+                </i>
+              </div>
+              <div>Manage Farm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container mx-auto page-box">
           <!-- <h1 class="text-center mb-5">Manage Farm</h1> -->
           <!-- <img src="img/maintenance.png" /> -->
-
-
           <div class="accordion" id="crops-accordion">
 
             <h3>Warwickershire Wolds</h3>
@@ -29,8 +40,8 @@
                 </h2>
                 <div class="col-sm-6">
                   <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                    <label class="custom-control-label" for="customSwitch1"></label>
+                    <input type="checkbox" class="custom-control-input" id="customSwitch14">
+                    <label class="custom-control-label" for="customSwitch14"></label>
                   </div>
                 </div>
               </div>
@@ -127,8 +138,8 @@
                 </h2>
                 <div class="col-sm-6">
                   <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                    <label class="custom-control-label" for="customSwitch1"></label>
+                    <input type="checkbox" class="custom-control-input" id="customSwitch15">
+                    <label class="custom-control-label" for="customSwitch15"></label>
                   </div>
                 </div>
               </div>
@@ -155,8 +166,8 @@
                 </h2>
                 <div class="col-sm-6">
                   <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                    <label class="custom-control-label" for="customSwitch1"></label>
+                    <input type="checkbox" class="custom-control-input" id="customSwitch16">
+                    <label class="custom-control-label" for="customSwitch16"></label>
                   </div>
                 </div>
               </div>
@@ -183,100 +194,318 @@
                 </h2>
                 <div class="col-sm-6">
                   <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                    <label class="custom-control-label" for="customSwitch1"></label>
+                    <input type="checkbox" class="custom-control-input" id="customSwitch17" checked>
+                    <label class="custom-control-label" for="customSwitch17"></label>
                   </div>
                 </div>
+
               </div>
               <div id="cropCollapse4" class="collapse" aria-labelledby="headingThree" data-parent="#crops-accordion">
                 <div class="card-body">
                   <!-- Wheat pests -->
 
                   <div class="accordion" id="accordion-wheat-pests">
+
+                        <div class="col-md-5 offset-md-1 pl-0">
+                          <div class="form-group row">
+                            <label for="variety" class="col-sm-4 col-form-label col-form-label-sm">Variety</label>
+                            <div class="col-sm-8 pl-0">
+                              <input type="text" class="form-control form-control-sm" id="variety">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="sowing-date" class="col-sm-4 col-form-label col-form-label-sm">Sowing Date</label>
+                            <div class="col-sm-8 pl-0">
+                              <input type="text" class="form-control form-control-sm" id="sowing-date">
+                            </div>
+                          </div>
+                        </div>
+
+
                     <div class="card">
+                      <!-- card-header -->
                       <div class="card-header" id="headingOne">
-                        <h2 class="col-sm-4 mb-0">
-                          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                        <h2 class="col-md-4 mb-0">
+                          <button class="btn btn-link btn-block text-left red-button-link" type="button" data-toggle="collapse"
                             data-target="#pest-aphids" aria-expanded="true" aria-controls="pest-aphids">
                             Aphids
                           </button>
                         </h2>
-                        <div class="col-sm-8">
+                        
+                        <div class="col-md-8">
+
                           <div class="row align-items-center">
-                            <div class="col">
-                              <input type="text" placeholder=" / / " class="form-control" bsDatepicker>
-                            </div>
-                            <div class="col">
-                              <input type="text" placeholder=" / / " class="form-control" bsDatepicker>
-                            </div>
-                            <div class="col">
-                              <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                                <label class="custom-control-label" for="customSwitch1"><small>Alert</small></label>
+                            <div class="col-8">
+                              <div class="row">
+                                <label for="date-from" class="col-form-label col-form-label-sm label-sm-no-weight">
+                                  Date from</label>
+                                <div class="col input-group px-1">
+                                  <input type="text" id="date-from" placeholder="dd/mm/yyyy"
+                                    class="form-control form-control-sm" bsDatepicker>
+                                  <div class="input-group-append">
+                                    <span class="input-group-text">
+                                      <i class="fas fa-calendar-alt"></i>
+                                    </span>
+                                  </div>
+                                </div>
+
+                                <label for="date-from" class="col-form-label col-form-label-sm label-sm-no-weight"> to
+                                </label>
+                                <div class="col input-group px-1">
+                                  <input type="text" id="date-from" placeholder="dd/mm/yyyy"
+                                    class="form-control form-control-sm" bsDatepicker>
+                                  <div class="input-group-append">
+                                    <span class="input-group-text">
+                                      <i class="fas fa-calendar-alt"></i>
+                                    </span>
+                                  </div>
+                                </div>
                               </div>
-                            </div>
-                            <div class="col">
-                              <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                                <label class="custom-control-label" for="customSwitch1"><small>View graph</small></label>
+                            </div> <!-- col-8 -->
+
+                            <div class="col-4 px-0">
+                              <div class="row">
+                                <div class="col-4 ml-2">
+                                  <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch10" checked>
+                                    <label class="custom-control-label" for="customSwitch10"><small>Alert</small></label>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch2" checked>
+                                    <label class="custom-control-label" for="customSwitch2"><small>View
+                                        graph</small></label>
+                                  </div>
+                                </div>
                               </div>
-                            </div>
-                            
+                            </div><!-- col-4 -->
                           </div>
 
+                        </div> <!-- end col-8 -->
+                      </div> 
 
-                          
-                        </div>
-                      </div>
-
-                      <div id="pest-aphids" class="collapse show" aria-labelledby="headingOne"
+                      <div id="pest-aphids" class="collapse" aria-labelledby="headingOne"
                         data-parent="#accordion-wheat-pests">
-                        <div class="card-body">
-                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                          squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                          nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                          single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer
-                          labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                          Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
-                          haven't heard of them accusamus labore sustainable VHS.
+                        <div class="card-body">                         
+
+                          <div class="row ">
+                            <!-- left column -->
+
+                            <div class="col-md-4 align-last-bottom">
+
+                              <div class="row">
+                                <div class="col">
+                                  <h3 class="component-title">Sprays applied</h3>
+                                  <table id="tbl-sprays" mdbTable class="z-depth-1" small="true" bordered="true"
+                                    hover="true">
+                                    <thead class="btn-success white-text">
+                                      <tr>
+                                        <th *ngFor="let head of leftHeadElements; let i = index"
+                                          aria-controls="tbl-sprays" scope="col">{{head | titlecase}}
+
+                                        </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let el of elements; let i = index">
+                                        <th scope="row">{{el.spray}}</th>
+                                        <td>{{el.date}}</td>
+                                        <td>{{el.rate}}</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col">
+                                  <form>
+                                    <div class="form-group row">
+                                      <label for="spray" class="col-sm-3 col-form-label col-form-label-sm">Spray</label>
+                                      <div class="col-sm-8 pl-0">
+                                        <input type="text" class="form-control form-control-sm" id="spray">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="date" class="col-sm-3 col-form-label col-form-label-sm">Date</label>
+                                      <div class="col-sm-8 pl-0">
+                                        <input type="text" class="form-control form-control-sm" id="date">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="rate" class="col-sm-3 col-form-label col-form-label-sm">Rate</label>
+                                      <div class="col-sm-8 pl-0">
+                                        <input type="text" class="form-control form-control-sm" id="rate">
+                                      </div>
+
+                                      <i class="metismenu-icon pe-7s-plus add-btn"></i>
+
+                                    </div>
+
+
+                                  </form>
+                                </div>
+                              </div>
+
+
+                            </div>
+
+                            <!-- middle column -->
+                            <div class="col-md-4">
+
+                              <div class="row">
+                                <div class="col">
+                                  <h3 class="component-title">Pest observation</h3>
+                                  <table id="tbl-pest-obs" mdbTable class="z-depth-1" small="true" bordered="true"
+                                    hover="true">
+                                    <thead class="btn-success white-text">
+                                      <tr>
+                                        <th *ngFor="let head of middleHeadElements; let i = index"
+                                          aria-controls="tbl-pest-obs" scope="col">{{head | titlecase}}
+
+                                        </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let el of middleTblElements; let i = index">
+                                        <th scope="row">{{el.date}}</th>
+                                        <td>{{el.severity}}</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col">
+                                  <form>
+                                    <div class="form-group row">
+                                      <label for="date-pest-obs"
+                                        class="col-sm-3 col-form-label col-form-label-sm">Date</label>
+                                      <div class="col-sm-8 pl-0">
+                                        <input type="email" class="form-control form-control-sm" id="date-pest-obs">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="severity"
+                                        class="col-sm-3 col-form-label col-form-label-sm pr-1">Severity</label>
+                                      <div class="col-sm-8 pl-0">
+                                        <input type="email" class="form-control form-control-sm" id="severity">
+                                      </div>
+                                      <i class="metismenu-icon pe-7s-plus add-btn"></i>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+
+                            </div>
+
+                            <!-- right column -->
+                            <div class="col-md-4">
+                              <div class="row full-height">
+
+                                <div class="col-md-9 vertical-center">
+                                  <!-- <form>-->
+                                  <div class="form-group row">
+                                    <label for="dss-1" class="col-sm-3 col-form-label col-form-label-sm px-2">DSS
+                                      1</label>
+                                    <div class="col-sm-8 px-0">
+                                      <select class="form-control" id="dss-1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="dss-2" class="col-sm-3 col-form-label col-form-label-sm px-2">DSS
+                                      2</label>
+                                    <div class="col-sm-8 px-0">
+                                      <select class="form-control" id="dss-2">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <!-- </form> -->
+                                </div>
+                                <div class="col-md-3 button-column">
+                                  <button class="btn btn-success save-btn">Save</button>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+
                         </div>
                       </div>
                     </div>
                     <div class="card">
                       <div class="card-header" id="headingTwo">
                         <h2 class="col-sm-4 mb-0">
-                          <button class="btn btn-link btn-block text-left collapsed" type="button"
+                          <button class="btn btn-link btn-block text-left red-button-link collapsed" type="button"
                             data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo">
                             Septoria
                           </button>
                         </h2>
-                        <div class="col-sm-8">
+                        <div class="col-md-8">
+
                           <div class="row align-items-center">
-                            <div class="col">
-                              <input type="text" placeholder=" / / " class="form-control" bsDatepicker>
-                            </div>
-                            <div class="col">
-                              <input type="text" placeholder=" / / " class="form-control" bsDatepicker>
-                            </div>
-                            <div class="col">
-                              <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                                <label class="custom-control-label" for="customSwitch1"><small>Alert</small></label>
+                            <div class="col-8">
+                              <div class="row">
+                                <label for="date-from" class="col-form-label col-form-label-sm label-sm-no-weight">
+                                  Date from</label>
+                                <div class="col input-group px-1">
+                                  <input type="text" id="date-from" placeholder="dd/mm/yyyy"
+                                    class="form-control form-control-sm" bsDatepicker>
+                                  <div class="input-group-append">
+                                    <span class="input-group-text">
+                                      <i class="fas fa-calendar-alt"></i>
+                                    </span>
+                                  </div>
+                                </div>
+
+                                <label for="date-from" class="col-form-label col-form-label-sm label-sm-no-weight"> to
+                                </label>
+                                <div class="col input-group px-1">
+                                  <input type="text" id="date-from" placeholder="dd/mm/yyyy"
+                                    class="form-control form-control-sm" bsDatepicker>
+                                  <div class="input-group-append">
+                                    <span class="input-group-text">
+                                      <i class="fas fa-calendar-alt"></i>
+                                    </span>
+                                  </div>
+                                </div>
                               </div>
-                            </div>
-                            <div class="col">
-                              <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                                <label class="custom-control-label" for="customSwitch1"><small>View graph</small></label>
+                            </div> <!-- col-8 -->
+
+                            <div class="col-4 px-0">
+                              <div class="row">
+                                <div class="col-4 ml-2">
+                                  <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch12" checked>
+                                    <label class="custom-control-label" for="customSwitch12"><small>Alert</small></label>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch13" checked>
+                                    <label class="custom-control-label" for="customSwitch13"><small>View
+                                        graph</small></label>
+                                  </div>
+                                </div>
                               </div>
-                            </div>
-                            
+                            </div><!-- col-4 -->
                           </div>
 
-
-                          
-                        </div>
+                        </div> <!-- end col-8 -->
                       </div>
                       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                         data-parent="#accordion-wheat-pests">
@@ -291,29 +520,6 @@
                         </div>
                       </div>
                     </div>
-                    <!-- <div class="card">
-                      <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                          <button class="btn btn-link btn-block text-left collapsed" type="button"
-                            data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                            aria-controls="collapseThree">
-                            Collapsible Group Item #3
-                          </button>
-                        </h2>
-                      </div>
-                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                        data-parent="#accordion-wheat-pests">
-                        <div class="card-body">
-                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                          squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                          nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                          single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer
-                          labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                          Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
-                          haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                      </div>
-                    </div> -->
                   </div>
 
                   <!-- end Wheat pests -->
