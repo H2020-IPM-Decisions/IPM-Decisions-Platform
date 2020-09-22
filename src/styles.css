@@ -1130,10 +1130,7 @@ section#ipm-news {
 .footer-section {
   background: #1d1b1b;
   padding-bottom: 0;
-}
-
-.footer-widget {
-  margin-bottom: 40px;
+  padding-top: 30px;
 }
 
 .footer-widget.about-widget {
@@ -1152,7 +1149,7 @@ section#ipm-news {
   font-size: 22px;
   font-weight: 300;
   color: #fff;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
 }
 
 .footer-widget ul {
@@ -1160,9 +1157,14 @@ section#ipm-news {
   display: inline-block;
 }
 
+.footer-widget ul li {
+  float: left;
+  margin-right: 5px;
+}
+
 .footer-widget ul li a {
   display: block;
-  font-size: 14px;
+  font-size: 50px;
   color: #718090;
   margin-bottom: 15px;
 }
