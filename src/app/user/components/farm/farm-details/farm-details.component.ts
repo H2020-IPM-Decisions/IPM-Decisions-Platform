@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { MaprisksService } from '@app/maprisks/maprisks.service';
 import * as L from 'leaflet';
 
 @Component({
@@ -22,21 +21,14 @@ export class FarmDetailsComponent implements OnInit {
     ["Met. Station_5", 10.5929, 122.6325]
   ];
 
-  constructor(private maprisksService: MaprisksService) { }
+  constructor() { }
 
   ngOnInit() {
 
     for (let i = 1; i <= 7; i++) {
       this.elements.push({ field: i, type: 'Crop Type ' + i, variety: 'Crop Variety ' + i, sowing_date: 'Sowing Date ' + i });
-    }
-
-
-    // init map
-    this.maprisksService.initialize('map').subscribe(data => {
-      this.map = data;
-      const featureGroup = this.maprisksService.createFeatureGroup(this.map);
-      this.maprisksService.addMarker(47.4744951, 10.9576836, featureGroup);
-    });
+    }   
+    
   }
 
 
