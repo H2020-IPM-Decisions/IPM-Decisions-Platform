@@ -27,7 +27,10 @@
               "src/js"
             ],
             "styles": [
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "./node_modules/leaflet/dist/leaflet.css",
+              "./node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
+              "./node_modules/animate.css/animate.css",
               "src/styles.css"
             ],
             "scripts": [
@@ -38,6 +41,8 @@
               "src/js/bootstrap.min.js",
               "src/js/owl.carousel.min.js",
               "src/js/circle-progress.min.js",
+              "node_modules/chart.js/dist/Chart.js",
+              "node_modules/hammerjs/hammer.min.js",
               "src/js/main.js"
             ]
           },
@@ -133,6 +138,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "IPM-Decisions-Platform"
 }

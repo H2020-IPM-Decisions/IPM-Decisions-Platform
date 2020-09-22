@@ -1,0 +1,187 @@
+<div class="app-container app-theme-white fixed-sidebar fixed-header body-tabs-shadow fixed-footer">
+    <user-header></user-header>
+    <div class="app-main">
+        <sidebar></sidebar>
+        <div class="app-main__outer">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
+                    <li class="breadcrumb-item"><a routerLink="/user/farm/list">Farm List</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Farm Details</li>
+                </ol>
+            </nav>
+
+            <div class="app-main__inner">
+
+                <div class="app-page-title">
+                    <div class="page-title-wrapper">
+                        <div class="page-title-heading">
+                            <div class="page-title-icon">
+                                <i class="pe-7s-note2 icon-gradient bg-mean-fruit">
+                                </i>
+                            </div>
+                            <div>Farm Details</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="container mx-auto page-box">
+                    <div class="row">
+                        <!-- left column -->
+                        <div class="col-md-3">
+                            <div class="col-md border details-legend">
+                                <h1 class="details-legend-title">Farm information</h1>
+
+                                <div class="row">
+                                    <div class="col-md-12 mt-4 mb-2">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Farm Name</span>
+                                            </div>
+                                            <input type="text" aria-label="Farm Name"
+                                                class="form-control form-control-sm">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 mt-2">
+                                        <h3 class="component-title">Select farm location on map</h3>                                   
+                                        <div class="map-container" #map></div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 my-3">
+                                        <h3 class="component-title">Select met. station</h3>
+
+                                        <select name="met-stations" id="met-stations"
+                                            class="form-control form-control-sm">
+                                            <option value="met-station1">Met Station 1(x km)</option>
+                                            <option value="met-station2">Met Station 2(y km)</option>
+                                            <option value="met-station3">Met Station 3(z km)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- end left column -->
+
+                        <!-- right column -->
+                        <div class="col-md-9 pl-0">
+                            <div class="col-md border details-legend">
+                                <h1 class="details-legend-title">Select crops and pests</h1>
+
+                                <div class="row mt-3">
+                                    <div class="col-md-3">
+
+                                        <h3 class="component-title">Step 1: Select</h3>
+
+                                        <select name="met-stations" id="met-stations"
+                                            class="form-control form-control-sm">
+                                            <option value="brassica">Brassica</option>
+                                            <option value="oilseed">Oilseed</option>
+                                            <option value="wheat">Wheat</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="col-md-3">
+
+                                        <h3 class="component-title">Step 2: Select pests and diseases</h3>
+
+                                        <select name="met-stations" id="met-stations" multiple 
+                                            class="form-control form-control-sm">
+                                            <option value="pest1">Pest 1</option>
+                                            <option value="disease1">Disease 1</option>
+                                            <option value="pest1">Pest 2</option>
+                                            <option value="disease1">Wheat 1</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <h3 class="component-title">Step 3: Field name, variety &amp; sowing date</h3>
+                                        <div class="row">
+                                            <div class="col-md-4 input-group input-group-sm">
+                                                <input type="text" value="Big field"
+                                                    class="form-control form-control-sm">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select name="met-stations" id="met-stations" size="4"
+                                                    class="form-control form-control-sm">
+                                                    <option value="elotion">Elotion</option>
+                                                    <option value="kws">KWS</option>
+                                                    <option value="leeds">Leeds</option>
+                                                    <option value="zulu">Zulu</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-4 input-group input-group-sm">
+                                                <input type="text" placeholder="" class="form-control form-control-sm"
+                                                    bsDatepicker [bsConfig]="{ adaptivePosition: true }">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row my-5 button-right">
+                                    <div class="col-md">
+                                        <button class="btn btn-success pull-right">Add to farm</button>
+                                    </div>
+                                </div>
+
+
+                                <!-- table -->
+                                <div class="row">
+                                    <div class="col-md">
+                                        <h3 class="component-title">Crop information table</h3>
+
+                                        <div class="table-responsive">
+                                            <table id="farm-table" mdbTable class="z-depth-1" small="true" striped="true">
+                                                <thead class="btn-success white-text">
+                                                    <tr>
+                                                        <th *ngFor="let head of headElements; let i = index"
+                                                            aria-controls="farm-table" scope="col"
+                                                            [mdbTableSort]="elements" [sortBy]="headElements[i]">
+                                                            {{head | titlecase}}
+                                                            <mdb-icon fas icon="sort"></mdb-icon>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let el of elements; let i = index">
+                                                        <th scope="row">{{el.field}}</th>
+                                                        <td>{{el.type}}</td>
+                                                        <td>{{el.variety}}</td>
+                                                        <td>{{el.sowing_date}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end table -->
+
+
+
+                            </div> <!-- end right column with legend-->
+
+
+
+
+
+                        </div>
+                        <!-- end right column -->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

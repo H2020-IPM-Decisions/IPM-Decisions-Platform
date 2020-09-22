@@ -86,9 +86,15 @@ import { FarmRequestComponent } from './user/components/farm-request/farm-reques
 import { UserComponent } from './user/user.component';
 import { SidebarComponent } from './core/components/sidebar/sidebar.component';
 import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { FarmDetailsComponent } from './user/components/farm/farm-details/farm-details.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { UserSxComponent } from './user/components/user-sx/user-sx.component';
 import { FarmersAdvisorsArticleComponent } from './farmers-advisors-article/farmers-advisors-article.component';
 import { ResearchersArticleComponent } from './researchers-article/researchers-article.component';
 import { DevelopersArticleComponent } from './developers-article/developers-article.component';
+import { DssSelectionComponent } from './user/components/farm/dss-selection/dss-selection.component';
 
 @NgModule({
   declarations: [
@@ -174,9 +180,12 @@ import { DevelopersArticleComponent } from './developers-article/developers-arti
     UserComponent,
     SidebarComponent,
     ConfirmMailComponent,
+    FarmDetailsComponent,
+    UserSxComponent,
     FarmersAdvisorsArticleComponent,
     ResearchersArticleComponent,
-    DevelopersArticleComponent
+    DevelopersArticleComponent,
+    DssSelectionComponent
   ],
   imports: [
     BrowserModule,
@@ -186,7 +195,10 @@ import { DevelopersArticleComponent } from './developers-article/developers-arti
     FormsModule,
     ReactiveFormsModule,
     CookieModule.forRoot(),
-    AuthModule
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
+    MDBBootstrapModule.forRoot(),
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

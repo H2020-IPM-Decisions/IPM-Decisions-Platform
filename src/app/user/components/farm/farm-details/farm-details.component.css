@@ -1,0 +1,36 @@
+.details-legend {
+    position: relative;
+    height: 100%;
+}
+
+.details-legend-title {
+    position: absolute;
+    top: -12px;
+    left: 5px;
+    padding: 0 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: #fff;
+}
+
+.map-container {
+    height: 200px;
+}
+
+/* .component-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+} */
+
+.z-depth-1 {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)!important;
+}
+
+.input-group-text {
+    padding: 0 4px;
+}
+
+.button-right {
+    display: flex;
+    justify-content: flex-end;
+}
