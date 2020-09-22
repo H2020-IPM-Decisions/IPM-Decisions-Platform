@@ -3,7 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MustMatch } from '../../_helpers/must-match.validator';
 import { AuthenticationService } from '../../services/authentication.service';
-
+declare var $;
 
 @Component({
   selector: 'register',
@@ -24,18 +24,18 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router:Router, private authService: AuthenticationService) {}
 
   ngOnInit() {
-   
+
     this.registerForm = this.formBuilder.group(
       {
         userType: ['', Validators.required],
         email:    ['', [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]],
-        password: ['', 
+        password: ['',
           [
-            Validators.required, 
-            Validators.minLength(6), 
+            Validators.required,
+            Validators.minLength(6),
             Validators.pattern("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+])[A-Za-z\\d][A-Za-z\\d!@#$%^&*()_+]{6,}$")
-          ]], 
-        confirmPassword: ['', Validators.required]       
+          ]],
+        confirmPassword: ['', Validators.required]
       },
       {
         validator: MustMatch('password', 'confirmPassword')
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
     this.authService.errors.subscribe(errors => {
       this.errors = errors;
     });
-    
+
   }
 
   get f() {
@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    this.termsAccepted = true;   
+    this.termsAccepted = true;
     this.errors = [];
     this.successMsg = '';
   }
@@ -65,12 +65,11 @@ export class RegisterComponent implements OnInit {
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
-  }  
+  }
 
   removeAcceptedTerms(removeTerms:boolean) {
-    this.termsAccepted = removeTerms; 
-    if(this.successMsg) {
-      this.onReset();
-    }
+    this.termsAccepted = removeTerms;
+    $('#registrationModal').modal('toggle');
+    this.onReset();
   }
 }

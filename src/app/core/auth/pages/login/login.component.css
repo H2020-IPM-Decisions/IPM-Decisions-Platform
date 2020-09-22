@@ -31,7 +31,9 @@ div#login-background {
     top: 0;
     left: 0;
     margin-top: 0;
-    width: 100%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
     max-width: none;
   }
 

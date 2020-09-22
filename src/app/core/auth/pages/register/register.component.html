@@ -1,19 +1,9 @@
 <div *ngIf="!termsAccepted">
-  <div class="alert alert-danger" *ngIf="errors?.length">
-    <p *ngFor="let error of errors">{{ error.description }}</p>
-  </div>
-  <div class="alert alert-success" *ngIf="isSuccess">
-    <strong>Verify your email address</strong>
-    <br>
-    <span>Please click on the link that has just been sent to your email account to complete the registration process</span>
-  </div>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="registrazione">
     <div class="form-row">
       <div class="form-group col-12">
         <label>User Type</label>
-        <select
-          formControlName="userType"
-          class="form-control"
+        <select formControlName="userType" class="form-control"
           [ngClass]="{ 'is-invalid': f.userType.errors && f.userType.touched }">
           <option [label]="userType" *ngFor="let userType of userTypes" [value]="userType">
             {{ userType }}</option>
@@ -26,24 +16,18 @@
 
     <div class="form-group">
       <label>Email</label>
-      <input
-        type="text"
-        formControlName="email"
-        class="form-control"
+      <input type="text" formControlName="email" class="form-control"
         [ngClass]="{ 'is-invalid': f.email.errors && f.email.touched }" />
       <div *ngIf="f.email.errors && f.email.touched" class="invalid-feedback">
         <div *ngIf="f.email.errors.required">Email is required</div>
         <div *ngIf="f.email.errors.pattern">Email must be a valid email address</div>
       </div>
     </div>
- 
+
     <div class="form-row">
       <div class="form-group col">
         <label>Password</label>
-        <input
-          type="password"
-          formControlName="password"
-          class="form-control"
+        <input type="password" formControlName="password" class="form-control"
           [ngClass]="{ 'is-invalid': f.password.errors && f.password.touched }" />
 
         <div *ngIf="f.password.errors && f.password.touched" class="invalid-feedback">
@@ -55,10 +39,7 @@
       </div>
       <div class="form-group col">
         <label>Confirm Password</label>
-        <input
-          type="password"
-          formControlName="confirmPassword"
-          class="form-control"
+        <input type="password" formControlName="confirmPassword" class="form-control"
           [ngClass]="{ 'is-invalid': f.confirmPassword.errors && f.confirmPassword.touched }" />
         <div *ngIf="f.confirmPassword.errors && f.confirmPassword.touched" class="invalid-feedback">
           <div *ngIf="f.confirmPassword.errors.required">
@@ -78,5 +59,25 @@
 </div>
 
 <div *ngIf="termsAccepted">
-  <app-terms (termsAccepted)="removeAcceptedTerms($event)" (message)="isSuccess=$event" [registrationData]="registerForm.value"></app-terms>
+  <app-terms (termsAccepted)="removeAcceptedTerms($event)" (message)="isSuccess=$event"
+    [registrationData]="registerForm.value"></app-terms>
+</div>
+
+<div class="modal" id="registrationModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="alert alert-danger" *ngIf="errors?.length">
+          <p *ngFor="let error of errors">{{ error.description }}</p>
+        </div>
+        <div class="alert alert-success" *ngIf="isSuccess">
+          <strong>Verify your email address</strong>
+          <br>
+          <span>Please click on the link that has just been sent to your email account to complete the registration
+            process</span>
+        </div>
+        <button type="button" class="btn btn-primary float-right" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
 </div>
