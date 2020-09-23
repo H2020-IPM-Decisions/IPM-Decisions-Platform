@@ -24,7 +24,7 @@ export class ConfirmMailComponent implements OnInit {
         token = encodeURIComponent(token);
         this.userService.registerUser(token, userId)
           .toPromise()
-          .then((x) => this.text = JSON.stringify(x))
+          .then((x) => this.text = "Success!")
           .catch((x) => this.text = JSON.stringify(x));
       },
       null,
