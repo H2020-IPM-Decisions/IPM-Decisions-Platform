@@ -29,6 +29,8 @@
     "animate.css": "^4.1.1",
     "bcryptjs": "^2.4.3",
     "chart.js": "^2.5.0",
+    "esri-leaflet": "^2.5.0",
+    "esri-leaflet-geocoder": "^2.3.3",
     "fast-json-patch": "^3.0.0-1",
     "hammerjs": "^2.0.8",
     "jquery": "^3.5.1",
