@@ -4,6 +4,7 @@ import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@ang
 import { CMSService } from '../shared/services/cms.service';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
+import * as L from 'leaflet';
 declare var init: any;
 @Component({
   selector: 'app-home',
@@ -68,8 +69,18 @@ export class HomeComponent implements OnInit {
     this.maprisksService.initialize('map').subscribe(data => {
       this.map = data;
       this.map.scrollWheelZoom.disable();
+      this.map.zoomControl.setPosition('topright');
+      console.log(this.map);
       const featureGroup = this.maprisksService.createFeatureGroup(this.map);
-      this.maprisksService.addMarker(47.4744951, 10.9576836, featureGroup);
+      let wheatIcon = L.icon({
+        iconUrl: 'img/wheat-pointer.png',
+        iconSize: [40, 50],
+        iconAnchor: [20, 48],
+        popupAnchor:  [0, -43]
+      });
+      L.marker([47.4744951, 10.9576836], {icon: wheatIcon})
+        .bindPopup('Farm data goes here')
+        .addTo(this.map);
     });
 
     let cmsService = this.cmsService;
