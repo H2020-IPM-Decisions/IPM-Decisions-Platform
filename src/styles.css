@@ -6,8 +6,8 @@
  ------------------------------------
  ====================================*/
 
-
 /*----------------------------------------*/
+
 /* Template default CSS
 /*----------------------------------------*/
 
@@ -17,8 +17,7 @@
   --main-padding: 15px;
 }
 
-html,
-body {
+html, body {
   height: 100%;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -26,15 +25,10 @@ body {
 }
 
 a {
-   color: #000;
+  color: #000;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   margin: 0;
   color: #081624;
   font-weight: 600;
@@ -74,42 +68,38 @@ img {
   max-width: 100%;
 }
 
-input:focus,
-select:focus,
-button:focus,
-textarea:focus {
+input:focus, select:focus, button:focus, textarea:focus {
   outline: none;
 }
 
-a:hover,
-a:focus {
+a:hover, a:focus {
   text-decoration: none;
   outline: none;
 }
 
-ul,
-ol {
+ul, ol {
   padding: 0;
   margin: 0;
 }
 
-.border-animation{
-   background: linear-gradient(-45deg, #4c78af, #95c566, #24a0a3, #5074ac);
-   background-size: 400% 400%;
-   animation: gradientBG 15s ease infinite;
-   height: 5px;
-   width: 100%;
+.border-animation {
+  background: linear-gradient(-45deg, #4c78af, #95c566, #24a0a3, #5074ac);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  height: 5px;
+  width: 100%;
 }
+
 @keyframes gradientBG {
- 0% {
-   background-position: 0% 50%;
- }
- 50% {
-   background-position: 100% 50%;
- }
- 100% {
-   background-position: 0% 50%;
- }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /*---------------------
@@ -135,16 +125,7 @@ Helper CSS
   padding-bottom: 10px;
 }
 
-.text-white h1,
-.text-white h2,
-.text-white h3,
-.text-white h4,
-.text-white h5,
-.text-white h6,
-.text-white p,
-.text-white span,
-.text-white li,
-.text-white a {
+.text-white h1, .text-white h2, .text-white h3, .text-white h4, .text-white h5, .text-white h6, .text-white p, .text-white span, .text-white li, .text-white a {
   color: #fff;
 }
 
@@ -448,6 +429,7 @@ Commom elements
 /*------------------
 Header section
  ---------------------*/
+
 .header-section {
   position: relative;
   height: 86px;
@@ -477,7 +459,7 @@ Header section
   margin-right: 10px;
 }
 
-.login-registration-menu-item > a {
+.login-registration-menu-item>a {
   display: block;
   position: relative;
   top: 50%;
@@ -657,39 +639,39 @@ Header section
  Login Section
  ---------------------*/
 
-   .header-top a{
-       color: #000;
-       font-size: 14px;
-       font-weight: 600;
-   }
+.header-top a {
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+}
 
-   a.dropdown-item {
-    color: #081624;
-   }
+a.dropdown-item {
+  color: #081624;
+}
 
-   #login-account {
-       padding: 50px;
-       background: rgb(34,193,195);
-       background: linear-gradient(0deg, rgb(106 94 163) 0%, rgb(37 159 166) 100%);
-   }
+#login-account {
+  padding: 50px;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(0deg, rgb(106 94 163) 0%, rgb(37 159 166) 100%);
+}
 
-   .login-container label {
-      color: #fff;
-    }
+.login-container label {
+  color: #fff;
+}
 
-  .invalid-feedback div {
-      background: #f98900;
-      color: #fff;
-      margin-bottom: 10px;
-      padding: 5px;
-  }
+.invalid-feedback div {
+  background: #f98900;
+  color: #fff;
+  margin-bottom: 10px;
+  padding: 5px;
+}
 
-  .btn-login {
-    color: #259fa6;
-    background-color: #ffffff;
-    border-color: #ffffff;
-    padding: .2rem 1rem;
-    opacity: 1 !important;
+.btn-login {
+  color: #259fa6;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  padding: .2rem 1rem;
+  opacity: 1 !important;
 }
 
 #login-account ul.nav.nav-tabs li {
@@ -697,13 +679,11 @@ Header section
   display: list-item;
 }
 
-
 /* ----------------
  Hero Section
  ---------------------*/
 
-.hero-slider .owl-nav button.owl-prev,
-.hero-slider .owl-nav button.owl-next {
+.hero-slider .owl-nav button.owl-prev, .hero-slider .owl-nav button.owl-next {
   position: absolute;
   width: 84px;
   height: 84px;
@@ -716,8 +696,7 @@ Header section
   transition: all 0.4s;
 }
 
-.hero-slider .owl-nav button.owl-prev:hover,
-.hero-slider .owl-nav button.owl-next:hover {
+.hero-slider .owl-nav button.owl-prev:hover, .hero-slider .owl-nav button.owl-next:hover {
   color: #fff;
   background: #249fa5;
 }
@@ -747,7 +726,7 @@ Header section
   position: relative;
   left: 25%;
   text-align: center;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
 }
 
 .hero-item h2 span {
@@ -757,7 +736,7 @@ Header section
 }
 
 .set-bg {
-  background: linear-gradient(to bottom, #00b09b, #96c93d) ;
+  background: linear-gradient(to bottom, #00b09b, #96c93d);
 }
 
 .features-section.set-bg {
@@ -782,8 +761,7 @@ Header section
   position: relative;
 }
 
-.hero-slider .owl-item.active .hero-item h2,
-.hero-slider .owl-item.active .hero-item .site-btn {
+.hero-slider .owl-item.active .hero-item h2, .hero-slider .owl-item.active .hero-item .site-btn {
   top: 0;
   opacity: 1;
 }
@@ -819,8 +797,7 @@ Service Section
   z-index: 99;
 }
 
-.services-warp:after,
-.services-warp::before {
+.services-warp:after, .services-warp::before {
   position: absolute;
   content: "";
   width: 100%;
@@ -866,7 +843,7 @@ Service Section
   text-align: justify;
 }
 
-.set-bg h2{
+.set-bg h2 {
   text-align: center;
   color: #fff;
 }
@@ -954,7 +931,7 @@ span.c-l {
 
 .client-text p {
   font-size: 14px;
-    text-align: justify;
+  text-align: justify;
 }
 
 .client-text ul {
@@ -1065,7 +1042,7 @@ span.c-l {
 ------------------------*/
 
 section#ipm-news {
-   background: #ddd;
+  background: #ddd;
 }
 
 /* ------------------------
@@ -1294,8 +1271,7 @@ section#ipm-news {
   transition: all 0.4s;
 }
 
-.footer-menu li:hover a:after,
-.footer-menu li.active a:after {
+.footer-menu li:hover a:after, .footer-menu li.active a:after {
   width: 100%;
 }
 
@@ -1358,9 +1334,10 @@ section#ipm-news {
   color: #249fa5;
 }
 
-.blue-button{
- color: #249fa5;
+.blue-button {
+  color: #249fa5;
 }
+
 .milestones-section {
   padding-top: 135px;
   padding-bottom: 105px;
@@ -1927,8 +1904,7 @@ section#ipm-news {
   margin-bottom: 10px;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-form input, .contact-form textarea {
   width: 100%;
   height: 54px;
   padding: 20px 25px;
@@ -1942,8 +1918,7 @@ section#ipm-news {
   background: #f7fafd;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
+.contact-form input:focus, .contact-form textarea:focus {
   border-bottom: 3px solid #249fa5;
 }
 
@@ -1974,6 +1949,18 @@ Responsive
 @media (min-width: 1200px) {
   .container {
     max-width: 1176px;
+  }
+}
+
+@media (min-width: 576px) {
+  .footer-section .container {
+    max-width: 100%;
+  }
+  .footer-section .container .col-sm-4:nth-child(2) {
+    text-align: center;
+  }
+  .footer-section .container .col-sm-4:nth-child(3) .footer-widget {
+    float: right;
   }
 }
 
@@ -2057,8 +2044,7 @@ Responsive
     border-radius: 50%;
     top: 15px;
   }
-  .hero-slider .owl-nav button.owl-prev,
-  .hero-slider .owl-nav button.owl-next {
+  .hero-slider .owl-nav button.owl-prev, .hero-slider .owl-nav button.owl-next {
     position: absolute;
     width: 60px;
     height: 60px;
@@ -2101,8 +2087,6 @@ Responsive
     padding-top: 50px;
   }
 }
-
-/* Large Mobile :480px. */
 
 @media only screen and (max-width: 767px) {
   .features-section-column {
@@ -2148,8 +2132,7 @@ Responsive
     padding: 8px 5px;
     margin-bottom: 15px;
   }
-  .slicknav_nav a:hover,
-  .slicknav_nav .slicknav_row:hover {
+  .slicknav_nav a:hover, .slicknav_nav .slicknav_row:hover {
     background: #25394c;
     color: #fff;
   }
@@ -2163,8 +2146,7 @@ Responsive
     color: #081624;
     padding-right: 15px;
   }
-  .hero-slider .owl-nav button.owl-prev,
-  .hero-slider .owl-nav button.owl-next {
+  .hero-slider .owl-nav button.owl-prev, .hero-slider .owl-nav button.owl-next {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -2241,6 +2223,7 @@ Responsive
 /*---------------------
 Additional
  -----------------------*/
+
 .terms-and-conditions ul {
   padding-left: 40px;
 }
@@ -2248,6 +2231,7 @@ Additional
 .morecontent span {
   display: none;
 }
+
 .morelink {
   display: block;
 }
@@ -2258,17 +2242,27 @@ Additional
   border-top: 16px solid #3498db;
   width: 120px;
   height: 120px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
   animation: spin 2s linear infinite;
 }
 
 /* Safari */
+
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
