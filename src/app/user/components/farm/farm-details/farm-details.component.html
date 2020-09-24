@@ -29,7 +29,7 @@
                 <div class="container mx-auto page-box">
                     <div class="row">
                         <!-- left column -->
-                        <div class="col-md-3">
+                        <div class="col-md-3 pr-0" [formGroup]="farmForm">
                             <div class="col-md border details-legend">
                                 <h1 class="details-legend-title">Farm information</h1>
 
@@ -39,15 +39,15 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Farm Name</span>
                                             </div>
-                                            <input type="text" aria-label="Farm Name"
-                                                class="form-control form-control-sm">
+                                            <input type="text" aria-label="Farm Name" formControlName="name"
+                                                class="form-control form-control-sm" [readonly]="!canEdit">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-12 mt-2">
-                                        <h3 class="component-title">Select farm location on map</h3>                                   
+                                        <h3 class="component-title">Select farm location on map</h3>
                                         <div class="map-container" #map></div>
                                     </div>
                                 </div>
@@ -65,74 +65,104 @@
                                     </div>
                                 </div>
 
+                                <div class="row pull-right">
+                                    <div class="col-md-12 mb-2">
+                                        <button class="btn btn-info" (click)="editFarm(farm.id)">Edit</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- end left column -->
-
+                        
                         <!-- right column -->
-                        <div class="col-md-9 pl-0">
+                        <div class="col-md-9">
                             <div class="col-md border details-legend">
                                 <h1 class="details-legend-title">Select crops and pests</h1>
 
-                                <div class="row mt-3">
+                                <div class="row mt-3" [formGroup]="cropPestForm">
                                     <div class="col-md-3">
 
                                         <h3 class="component-title">Step 1: Select</h3>
 
-                                        <select name="met-stations" id="met-stations"
-                                            class="form-control form-control-sm">
+                                        <select id="crops" class="form-control form-control-sm" formControlName="crop"
+                                            [ngClass]="{'is-invalid': f.crop.errors && f.crop.touched}">
                                             <option value="brassica">Brassica</option>
                                             <option value="oilseed">Oilseed</option>
                                             <option value="wheat">Wheat</option>
                                         </select>
 
+                                        <small class="invalid-feedback help-block">Select a crop!</small>
                                     </div>
 
                                     <div class="col-md-3">
 
                                         <h3 class="component-title">Step 2: Select pests and diseases</h3>
 
-                                        <select name="met-stations" id="met-stations" multiple 
-                                            class="form-control form-control-sm">
+                                        <select id="pests" multiple class="form-control form-control-sm"
+                                            formControlName="pest" [ngClass]="{'is-invalid': f.pest.errors &&
+                                                f.pest.touched}">
                                             <option value="pest1">Pest 1</option>
                                             <option value="disease1">Disease 1</option>
                                             <option value="pest1">Pest 2</option>
                                             <option value="disease1">Wheat 1</option>
                                         </select>
 
+                                        <small class="invalid-feedback help-block">Select pest/s!</small>
                                     </div>
 
                                     <div class="col-md-6">
 
-                                        <h3 class="component-title">Step 3: Field name, variety &amp; sowing date</h3>
+                                        <h3 class="component-title">Step 3: Field name, variety &amp; sowing date
+                                        </h3>
                                         <div class="row">
                                             <div class="col-md-4 input-group input-group-sm">
-                                                <input type="text" value="Big field"
-                                                    class="form-control form-control-sm">
+                                                <input type="text" class="form-control form-control-sm"
+                                                    formControlName="fieldName"
+                                                    [ngClass]="{'is-invalid': f.fieldName.errors && f.fieldName.touched}">
+
+
+                                                <div *ngIf="f.fieldName.errors && f.fieldName.touched"
+                                                    class="invalid-feedback">
+                                                    <small class="help-block" *ngIf="f.fieldName.errors?.required">Enter
+                                                        field name!</small>
+                                                    <small class="help-block" *ngIf="f.fieldName.errors?.minlength">Must
+                                                        be at least 3 character long!</small>
+                                                </div>
+
                                             </div>
                                             <div class="col-md-4">
-                                                <select name="met-stations" id="met-stations" size="4"
-                                                    class="form-control form-control-sm">
+                                                <select id="variety" class="form-control form-control-sm"
+                                                    formControlName="variety"
+                                                    [ngClass]="{'is-invalid': f.variety.errors && f.variety.touched}">
                                                     <option value="elotion">Elotion</option>
                                                     <option value="kws">KWS</option>
                                                     <option value="leeds">Leeds</option>
                                                     <option value="zulu">Zulu</option>
                                                 </select>
+
+                                                <small class="invalid-feedback help-block">Select a variety!</small>
                                             </div>
 
                                             <div class="col-md-4 input-group input-group-sm">
-                                                <input type="text" placeholder="" class="form-control form-control-sm"
-                                                    bsDatepicker [bsConfig]="{ adaptivePosition: true }">
+                                                <input type="text" placeholder="" formControlName="sowingDate"
+                                                    class="form-control form-control-sm" bsDatepicker [bsConfig]="{ 
+                                                         dateInputFormat: 'DD/MM/YYYY',
+                                                         adaptivePosition: true 
+                                                    }"
+                                                    [ngClass]="{'is-invalid': f.sowingDate.errors && f.sowingDate.touched}">
+
+                                                <small class="invalid-feedback help-block">Select a sowing date!</small>
+
                                             </div>
 
                                         </div>
                                     </div>
                                 </div>
 
-
                                 <div class="row my-5 button-right">
                                     <div class="col-md">
-                                        <button class="btn btn-success pull-right">Add to farm</button>
+                                        <button class="btn btn-success pull-right" (click)="addToFarm()"
+                                            [disabled]="cropPestForm.invalid">Add to farm</button>
                                     </div>
                                 </div>
 
@@ -143,7 +173,8 @@
                                         <h3 class="component-title">Crop information table</h3>
 
                                         <div class="table-responsive">
-                                            <table id="farm-table" mdbTable class="z-depth-1" small="true" striped="true">
+                                            <table id="farm-table" mdbTable class="z-depth-1" small="true"
+                                                striped="true">
                                                 <thead class="btn-success white-text">
                                                     <tr>
                                                         <th *ngFor="let head of headElements; let i = index"
@@ -154,7 +185,7 @@
                                                         </th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody *ngIf="elements.length > 0; else noDetails">
                                                     <tr *ngFor="let el of elements; let i = index">
                                                         <th scope="row">{{el.field}}</th>
                                                         <td>{{el.type}}</td>
@@ -162,6 +193,13 @@
                                                         <td>{{el.sowing_date}}</td>
                                                     </tr>
                                                 </tbody>
+                                                <ng-template #noDetails>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-center" colspan="4">No data available.</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </ng-template>
                                             </table>
                                         </div>
                                     </div>
