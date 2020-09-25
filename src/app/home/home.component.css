@@ -1,16 +1,17 @@
 #map {
-  height: calc(100vh - 91px);
+  height: 400px;
   max-width: 100%;
 }
 
 .news {
-  height: calc(100vh - 91px);
+  max-height: 400px;
   max-width: 100%;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .articles {
   margin-top: 20px;
   overflow-y: scroll;
-  height: 70%;
+  max-height: 260px;
 }

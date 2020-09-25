@@ -1,17 +1,17 @@
 <header class="header-section clearfix">
 
-  <div class="site-navbar"></div>
-  <!-- Logo -->
-  <a routerLink="/" class="site-logo">
-    <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
-  </a>
-  <div class="login-registration-menu">
-    <div class="login-registration-menu-item">
-      <a routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i><br>Log in</a>
-    </div>
-    <div class="login-registration-menu-item">
-      <a class="register-link" (click)='goToRegistrationPage()'><i class="fa fa-user-circle-o"
-          aria-hidden="true"></i><br>Register</a>
+  <div class="site-navbar">
+    <!-- Logo -->
+    <a routerLink="/" class="site-logo">
+      <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
+    </a>
+    <div class="login-registration-menu">
+      <div class="login-registration-menu-item">
+        <a routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i><br>Log in</a>
+      </div>
+      <div class="login-registration-menu-item">
+        <a class="register-link" (click)='goToRegistrationPage()'><i class="fa fa-user-circle-o" aria-hidden="true"></i><br>Register</a>
+      </div>
     </div>
   </div>
 </header>

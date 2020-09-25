@@ -22,7 +22,7 @@
   <div class="row">
     <div class="col-md-4">
       <div class="news">
-        <h3>IPM Decisions key information</h3>
+        <h4>IPM Decisions<br> key information</h4>
         <div class="articles">
           <ng-template ngFor let-article [ngForOf]="news?.articles">
             <div [innerHtml]="article.value">
@@ -40,9 +40,9 @@
 
 <!-- Features section   -->
 <section class="features-section set-bg">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-4 features-section-column">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-6 col-md-4 features-section-column">
         <a routerLink="/farmer-advisor-article">
           <div class="feature-box">
             <img src="img/farming.png" alt="">
@@ -51,7 +51,7 @@
           </div>
         </a>
       </div>
-      <div class="col-sm-4 features-section-column">
+      <div class="col-12 col-sm-6 col-md-4 features-section-column">
         <a routerLink="/research-article">
           <div class="feature-box">
             <img src="img/research.png" alt="">
@@ -60,7 +60,7 @@
           </div>
         </a>
       </div>
-      <div class="col-sm-4 features-section-column">
+      <div class="col-12 col-sm-6 col-md-4 features-section-column">
         <a routerLink="/coding-article">
           <div class="feature-box">
             <img src="img/coding.png" alt="">
