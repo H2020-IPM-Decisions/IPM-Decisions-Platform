@@ -1,56 +1,86 @@
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import * as L from 'leaflet';
-import { throwIfEmpty } from 'rxjs/operators';
+import { ValueConverter } from "@angular/compiler/src/render3/view/template";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import * as L from "leaflet";
+import { throwIfEmpty } from "rxjs/operators";
 
 @Component({
-  selector: 'app-farm-details',
-  templateUrl: './farm-details.component.html',
-  styleUrls: ['./farm-details.component.css']
+  selector: "app-farm-details",
+  templateUrl: "./farm-details.component.html",
+  styleUrls: ["./farm-details.component.css"],
 })
 export class FarmDetailsComponent implements OnInit {
   elements: any = [];
-  headElements = ['field', 'type', 'variety', 'sowing_date'];
+  headElements = ["field", "type", "variety", "sowing_date"];
 
   cropPestForm: FormGroup;
   farmForm: FormGroup;
   canEdit: boolean = false;
 
   private map: L.Map;
-  @ViewChild('map', { static: false }) private mapContainer: ElementRef<HTMLElement>;
+  @ViewChild("map", { static: false }) private mapContainer: ElementRef<
+    HTMLElement
+  >;
 
   locations: any = [
-    { metStationName: "Met. Station_1", metStationCoords: { lat: 11.8166, lng: 122.0942 } },
-    { metStationName: "Met. Station_2", metStationCoords: { lat: 11.9804, lng: 121.9189 } }
+    {
+      metStationName: "Met. Station_1",
+      metStationCoords: { lat: 11.8166, lng: 122.0942 },
+    },
+    {
+      metStationName: "Met. Station_2",
+      metStationCoords: { lat: 11.9804, lng: 121.9189 },
+    },
   ];
 
   farm: any = {
     id: 123,
     farmCoords: { lat: 11.8804, lng: 121.9189 },
-    name: "My Farm"
-  }
+    name: "My Farm",
+  };
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-
     this.formInit();
     this.farmFormInit();
 
+    this.elements.push({
+      field: "Big field",
+      type: "Oilseed",
+      variety: "KWS ",
+      sowing_date: "24/09/2020",
+    });
+    this.elements.push({
+      field: "Middle field",
+      type: "Wheat",
+      variety: "Leeds ",
+      sowing_date: "20/09/2020",
+    });
+    this.elements.push({
+      field: "Small field",
+      type: "Brassica",
+      variety: "Zulu ",
+      sowing_date: "24/07/2020",
+    });
     // for (let i = 1; i <= 7; i++) {
     //   this.elements.push({ field: i, type: 'Crop Type ' + i, variety: 'Crop Variety ' + i, sowing_date: 'Sowing Date ' + i });
     // }
-
   }
 
   private formInit() {
     this.cropPestForm = this.fb.group({
-      crop: ['', Validators.required],
-      pest: ['', Validators.required],
-      fieldName: ['', [Validators.required, Validators.minLength(3)]],
-      variety: ['', Validators.required],
-      sowingDate: ['', Validators.required]
+      crop: ["", Validators.required],
+      pest: ["", Validators.required],
+      fieldName: ["", [Validators.required, Validators.minLength(3)]],
+      variety: ["", Validators.required],
+      sowingDate: ["", Validators.required],
     });
   }
 

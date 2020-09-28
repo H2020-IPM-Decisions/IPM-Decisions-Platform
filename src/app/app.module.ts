@@ -96,6 +96,7 @@ import { ResearchersArticleComponent } from './researchers-article/researchers-a
 import { DevelopersArticleComponent } from './developers-article/developers-article.component';
 import { DssSelectionComponent } from './user/components/farm/dss-selection/dss-selection.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { PopoverModule } from "ngx-bootstrap/popover";
 
 @NgModule({
   declarations: [
@@ -186,7 +187,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     FarmersAdvisorsArticleComponent,
     ResearchersArticleComponent,
     DevelopersArticleComponent,
-    DssSelectionComponent
+    DssSelectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -198,11 +199,12 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CookieModule.forRoot(),
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
+    PopoverModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     AuthModule,
     ModalModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
