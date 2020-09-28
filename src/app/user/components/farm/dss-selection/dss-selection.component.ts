@@ -15,6 +15,7 @@ export interface exam {
 export class DssSelectionComponent implements OnInit {
   chkPestList: any[] = [];
 
+  pestTitle: string = "Aphid 1 information";
   pestTitle2: string = "Aphid 2 information";
   pestTableContent: string = `<table class="table table-sm table-responsive table-bordered">
   <tr><th>Name</th><th>Units</th><th>Description</th><th>Input/Output</th></tr>
