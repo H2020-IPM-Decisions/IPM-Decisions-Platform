@@ -42,7 +42,7 @@
                 <div class="form-inline row">
                   <div class="form-group col-md-4">
                     <label for="crops" class="col-md-2 col-form-label">Crop</label>
-                    <select id="crops" class="col-md-8 form-control">
+                    <select id="crops" class="col-md-10 form-control">
                       <option value="brassica">Brassica</option>
                       <option value="oilseed">Oilseed</option>
                       <option value="wheat">Wheat</option>
@@ -50,14 +50,14 @@
                   </div>
                   <div class="form-group col-md-4">
                     <label for="pests" class="col-md-2 col-form-label">Pest</label>
-                    <select id="pests" class="col-md-8 form-control">
+                    <select id="pests" class="col-md-10 form-control">
                       <option value="Aphid">Aphid</option>
                       <option value="Septoria">Septoria</option>
                     </select>
                   </div>
 
                   <div class="form-group col-md-4">
-                    <div class="input-group">
+                    <div class="input-group col-md-12">
                       <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fas fa-search"></i></div>
                       </div>
@@ -93,8 +93,6 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i></div>
-
-
 
                         </div>
                       </div>
@@ -136,88 +134,13 @@
                   </div>
                 </div>
 
+                <div class="col mt-3 text-right">
+                  <button class="btn btn-success">Save</button>
+                  <button class="btn btn-info ml-2">Go to Dashboard actions</button>
+                </div>
 
 
-                <!-- <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                  <div class="col-sm-10">
-                    <select id="pests" multiple class="form-control form-control-sm" formControlName="pest"
-                      [ngClass]="{'is-invalid': f.pest.errors && f.pest.touched}">
-                      <option value="pest1">Pest 1</option>
-                      <option value="disease1">Disease 1</option>
-                      <option value="pest1">Pest 2</option>
-                      <option value="disease1">Wheat 1</option>
-                    </select>
-                  </div>
-
-                  <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                  <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                  </div> -->
               </div>
-
-
-              <!-- <div class="table-responsive">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th class="text-center">Name</th>
-                          <th class="text-center">Farm location</th>
-                          <th class="text-center">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-center">Farm 1</td>
-                          <td class="text-center">Address 1</td>
-                          <td class="td-actions text-center">
-                           
-                            <button type="button" rel="tooltip" class="btn btn-success btn-sm button-custom"
-                              data-original-title="" title="" routerLink="/user/crop/list">
-                              Crop List
-                            </button>
-  
-                            <button type="button" rel="tooltip" class="btn btn-info btn-sm button-custom"
-                              data-original-title="" title="" routerLink="/user/farm/details">
-                              Details
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">Farm 2</td>
-                          <td class="text-center">Address 2</td>
-                          <td class="td-actions text-center">
-                 
-                      
-                            <button type="button" rel="tooltip" class="btn btn-success btn-sm button-custom"
-                              data-original-title="" title="" routerLink="/user/crop/list">
-                              Crop List
-                            </button>
-  
-                            <button type="button" rel="tooltip" class="btn btn-info btn-sm button-custom"
-                              data-original-title="" title="" routerLink="/user/farm/details">
-                              Details
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">Farm 3</td>
-                          <td class="text-center">Address 3</td>
-                          <td class="td-actions text-center">
- 
-                            <button type="button" rel="tooltip" class="btn btn-success btn-sm button-custom"
-                              data-original-title="" title="" routerLink="/user/crop/list">
-                              Crop List
-                            </button>
-  
-                            <button type="button" rel="tooltip" class="btn btn-info btn-sm button-custom"
-                              data-original-title="" title="" routerLink="/user/farm/details">
-                              Details
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div> -->
             </div>
           </div>
         </div>
