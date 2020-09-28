@@ -78,7 +78,16 @@ export class HomeComponent implements OnInit {
         popupAnchor:  [0, -43]
       });
       L.marker([47.4744951, 10.9576836], {icon: wheatIcon})
-        .bindPopup('Farm data goes here')
+        .bindPopup(
+          `Farm name: Fera<br>
+          Field name: Potato case study<br>
+          Growth Stage:4<br>
+          Click marker to view site risk information<br>
+          Please note that for case study site, risks and weather
+          metrics are calculated based on weather data
+          from elsewhere in the country
+          `
+        )
         .addTo(this.map);
     });
 
