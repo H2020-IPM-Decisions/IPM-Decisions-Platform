@@ -27,6 +27,7 @@
               "src/js"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "./node_modules/leaflet/dist/leaflet.css",
               "./node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
@@ -39,7 +40,6 @@
               "node_modules/popper.js/dist/umd/popper.min.js",
               "src/js/jquery-3.2.1.min.js",
               "src/js/jquery.slicknav.min.js",
-              "src/js/bootstrap.min.js",
               "src/js/owl.carousel.min.js",
               "src/js/circle-progress.min.js",
               "node_modules/chart.js/dist/Chart.js",
@@ -47,7 +47,6 @@
               "./node_modules/leaflet/dist/leaflet.js",
               "./node_modules/esri-leaflet/dist/esri-leaflet.js",
               "./node_modules/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js",
-
               "src/js/main.js"
             ]
           },
@@ -107,8 +106,14 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
             "scripts": []
           }
         },
@@ -120,7 +125,9 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {

@@ -63,12 +63,10 @@
     [registrationData]="registerForm.value"></app-terms>
 </div>
 
-<div class="modal" id="registrationModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+<ng-template #registrationModal>
       <div class="modal-body">
         <div class="alert alert-danger" *ngIf="errors?.length">
-          <p *ngFor="let error of errors">{{ error.description }}</p>
+          <p *ngFor="let error of errors">{{ error?.description }}</p>
         </div>
         <div class="alert alert-success" *ngIf="isSuccess">
           <strong>Verify your email address</strong>
@@ -76,8 +74,7 @@
           <span>Please click on the link that has just been sent to your email account to complete the registration
             process</span>
         </div>
-        <button type="button" class="btn btn-primary float-right" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">OK</button>
       </div>
-    </div>
-  </div>
-</div>
+</ng-template>
+

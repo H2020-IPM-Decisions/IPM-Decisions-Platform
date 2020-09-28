@@ -28,6 +28,7 @@
     "angular-read-more": "^1.0.7",
     "animate.css": "^4.1.1",
     "bcryptjs": "^2.4.3",
+    "bootstrap": "4.1.1",
     "chart.js": "^2.5.0",
     "esri-leaflet": "^2.5.0",
     "esri-leaflet-geocoder": "^2.3.3",
