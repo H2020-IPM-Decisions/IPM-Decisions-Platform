@@ -30,16 +30,12 @@
                     <p class="proile-rating">Number of Farms : <span>3</span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                       <li class="nav-item">
-                        <a
-                          class="nav-link active"
-                          id="home-tab"
-                          data-toggle="tab"
-                          href="#home"
-                          role="tab"
-                          aria-controls="home"
-                          aria-selected="true"
-                          >About</a
-                        >
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                          aria-controls="home" aria-selected="true">About</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                          aria-controls="profile" aria-selected="false">Settings</a>
                       </li>
                       <!-- <li class="nav-item">
                         <a
@@ -57,25 +53,15 @@
                   </div>
                 </div>
                 <div class="col-md-2">
-                  <input
-                    type="button"
-                    class="profile-edit-btn"
-                    name="btnAddMore"
-                    value="Edit Profile"
-                    [routerLink]="['/user/account/edit']"
-                  />
+                  <input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"
+                    [routerLink]="['/user/account/edit']" />
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-8">
                   <div class="tab-content profile-tab" id="myTabContent">
-                    <div
-                      class="tab-pane fade show active"
-                      id="home"
-                      role="tabpanel"
-                      aria-labelledby="home-tab"
-                    >
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                       <div class="row">
                         <div class="col-md-6">
                           <label>Contact Name</label>
@@ -141,20 +127,15 @@
                         </div>
                       </div>
                       <div class="row">
-                          <div class="col-md-6">
-                            <label>Country</label>
-                          </div>
-                          <div class="col-md-6">
-                            <p>Wonderland</p>
-                          </div>
+                        <div class="col-md-6">
+                          <label>Country</label>
                         </div>
+                        <div class="col-md-6">
+                          <p>Wonderland</p>
+                        </div>
+                      </div>
                     </div>
-                    <div
-                      class="tab-pane fade"
-                      id="profile"
-                      role="tabpanel"
-                      aria-labelledby="profile-tab"
-                    >
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                       <a href="">Lorem ipsum</a><br />
                       <a href="">Lorem ipsum</a><br />
                       <a href="">Lorem ipsum</a><br />
@@ -169,4 +150,4 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
