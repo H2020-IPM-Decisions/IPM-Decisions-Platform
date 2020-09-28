@@ -1,8 +1,9 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MustMatch } from '../../_helpers/must-match.validator';
 import { AuthenticationService } from '../../services/authentication.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 declare var $;
 
 @Component({
@@ -17,18 +18,25 @@ export class RegisterComponent implements OnInit {
   termsAccepted = false;
   countries = ['GB', 'Norway', 'France', 'Serbia'];
   userTypes = ['Farmer', 'Advisor', 'Developer'];
-  errors: string[] = [];
+  errors: any = [];
   successMsg: string;
   isSuccess;
+  @ViewChild('registrationModal', {static: false}) public registrationModal: TemplateRef<any>;
+  modalRef: any;
 
-  constructor(private formBuilder: FormBuilder, private router:Router, private authService: AuthenticationService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthenticationService,
+    private modalService: BsModalService
+  ) { }
 
   ngOnInit() {
 
     this.registerForm = this.formBuilder.group(
       {
         userType: ['', Validators.required],
-        email:    ['', [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]],
+        email: ['', [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]],
         password: ['',
           [
             Validators.required,
@@ -67,9 +75,9 @@ export class RegisterComponent implements OnInit {
     this.registerForm.reset();
   }
 
-  removeAcceptedTerms(removeTerms:boolean) {
+  removeAcceptedTerms(removeTerms: boolean) {
     this.termsAccepted = removeTerms;
-    $('#registrationModal').modal('toggle');
+    this.modalRef = this.modalService.show(this.registrationModal);
     this.onReset();
   }
 }

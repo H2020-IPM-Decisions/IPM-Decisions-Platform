@@ -95,6 +95,7 @@ import { FarmersAdvisorsArticleComponent } from './farmers-advisors-article/farm
 import { ResearchersArticleComponent } from './researchers-article/researchers-article.component';
 import { DevelopersArticleComponent } from './developers-article/developers-article.component';
 import { DssSelectionComponent } from './user/components/farm/dss-selection/dss-selection.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -199,6 +200,7 @@ import { DssSelectionComponent } from './user/components/farm/dss-selection/dss-
     BsDatepickerModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     AuthModule,
+    ModalModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
