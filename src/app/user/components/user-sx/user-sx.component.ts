@@ -18,7 +18,7 @@ export class UserSxComponent implements OnInit {
   bannerUrl = "";
   cmsUrl: string;
 
-  private activeMenuItem: string;
+  public activeMenuItem: string;
 
   constructor(
     private cmsService: CMSService,

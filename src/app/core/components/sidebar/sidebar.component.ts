@@ -8,7 +8,7 @@ import { AuthenticationService } from '@app/core/auth/services/authentication.se
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(public authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
