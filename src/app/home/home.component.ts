@@ -69,7 +69,6 @@ export class HomeComponent implements OnInit {
       this.map = data;
       this.map.scrollWheelZoom.disable();
       this.map.zoomControl.setPosition('topright');
-      console.log(this.map);
       const featureGroup = this.maprisksService.createFeatureGroup(this.map);
       let wheatIcon = L.icon({
         iconUrl: 'img/wheat-pointer.png',
