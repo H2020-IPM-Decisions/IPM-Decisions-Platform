@@ -15,3 +15,21 @@
   overflow-y: scroll;
   max-height: 260px;
 }
+
+.fa-sign-in-alt:before {
+  content: "\f2f6";
+}
+
+.sign-in::before {
+  content: "\f090";
+  font-family: "fontAwesome";
+}
+
+.user-circle::before {
+  content: "\f2be";
+  font-family: "fontAwesome";
+}
+
+.icon-size {
+  font-size: 1.5rem;
+}
