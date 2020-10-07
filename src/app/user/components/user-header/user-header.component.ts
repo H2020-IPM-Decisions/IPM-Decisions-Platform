@@ -5,6 +5,7 @@ import { AuthenticationService } from '@app/core/auth/services/authentication.se
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { SidebarMenuUpdateService } from '@app/shared/services/sidebar-menu-update/sidebar-menu-update.service';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'user-header',
@@ -13,6 +14,7 @@ import { SidebarMenuUpdateService } from '@app/shared/services/sidebar-menu-upda
 })
 export class UserHeaderComponent implements OnInit {
 
+  username;
   bannerUrl = "";
   cmsUrl: string;
   isAdmin: boolean = false;
@@ -30,10 +32,16 @@ export class UserHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    let accountSub = this._authService.account$.subscribe(
+      (account) => { this.username = (/(.*)@/).exec(account.email)[1]; },
+      null,
+      () => { accountSub.unsubscribe() }
+    )
+
     this.cmsService
       .getBanner()
       .then((response: any) => { this.bannerUrl = response.image.path });
-         
+
     if (this._authService.currentUserValue.roles && this._authService.currentUserValue.roles.length > 0) {
       this.isAdmin = this._authService.isAdmin();
     } else {
