@@ -5,8 +5,90 @@
     vertical-align: middle;
 }
 
-.text {
-    position: relative;
+.content-center {
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    left:50%;
+    transform: translate(-50%,-50%);
 }
+
+app-footer {
+  display: none;
+}
+div#login {
+  height: 100%;
+}
+div#login-background {
+  position: fixed;
+  background-image: linear-gradient(to bottom, #00b09b, #96c93d) !important;
+  width: 100%;
+  height: 100%;
+}
+
+#login-column {
+  width: 500px;
+}
+
+#login .container #login-row #login-column #login-box {
+  margin-top: 120px;
+  max-width: 800px;
+  min-height: 450px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+#login .container #login-row #login-column #login-box.with-terms {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 0;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  max-width: none;
+}
+
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+
+}
+
+.btn-login {
+  width: 100%;
+  background: #07b197;
+  color: #fff !important;
+}
+
+
+
+.nav-link {
+  display: block;
+  padding: .5rem 1rem;
+  color: #000;
+  font-size: 14px;
+}
+
+a.active.nav-link {
+  color: #07b197;
+  font-weight: 600;
+  font-size: 14px;
+  background: #e8e7e7;
+}
+
+ul.nav.nav-justified {
+  bottom: 10px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+.icon-size {
+  font-size: 1.5rem;
+}
+

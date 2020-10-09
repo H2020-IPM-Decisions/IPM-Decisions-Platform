@@ -9,7 +9,8 @@ import { UserService } from '@app/shared/services/idp/admin/user.service';
 })
 export class ConfirmMailComponent implements OnInit {
 
-  text = "Wait";
+  errorMessage = "";
+  success = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,8 +25,8 @@ export class ConfirmMailComponent implements OnInit {
         token = encodeURIComponent(token);
         this.userService.registerUser(token, userId)
           .toPromise()
-          .then((x) => this.text = "Success!")
-          .catch((x) => this.text = JSON.stringify(x));
+          .then((x) => this.success = true)
+          .catch((x) => (this.errorMessage = JSON.stringify(x), this.success = false));
       },
       null,
       () => { sub.unsubscribe() }
