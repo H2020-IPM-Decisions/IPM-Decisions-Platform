@@ -22,7 +22,7 @@
             "assets": [
               "src/favicon.ico",
               "src/css",
-              "src/icon-fonts",
+              "src/webfonts",
               "src/img",
               "src/js"
             ],
