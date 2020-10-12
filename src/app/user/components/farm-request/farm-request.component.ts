@@ -1,6 +1,9 @@
 import { environment } from './../../../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ViewChild } from '@angular/core';
+import { TemplateRef } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-farm-request',
@@ -10,10 +13,14 @@ import { Component, OnInit } from '@angular/core';
 export class FarmRequestComponent implements OnInit {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private modalService: BsModalService
   ) { }
 
   email = "";
+  message = "";
+  @ViewChild('farmRequestModal', {static: false}) public farmRequestModal: TemplateRef<any>;
+  modalRef: any;
 
   sendRequest() {
     this.http.post(
@@ -22,10 +29,9 @@ export class FarmRequestComponent implements OnInit {
         "email": this.email
       }
     ).toPromise()
-      .catch( x => x) 
-      .then(
-        (response) => { alert(JSON.stringify(response)); }
-      )
+      .then(response => this.message = "Success!")
+      .catch(response => this.message = response.error.message)
+      .then(() => this.modalRef = this.modalService.show(this.farmRequestModal))
   }
 
   ngOnInit() {
