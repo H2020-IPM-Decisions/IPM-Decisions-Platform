@@ -97,6 +97,7 @@ import { DevelopersArticleComponent } from './developers-article/developers-arti
 import { DssSelectionComponent } from './user/components/farm/dss-selection/dss-selection.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from "ngx-bootstrap/popover";
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -201,6 +202,7 @@ import { PopoverModule } from "ngx-bootstrap/popover";
     BsDatepickerModule.forRoot(),
     PopoverModule.forRoot(),
     MDBBootstrapModule.forRoot(),
+    ToastrModule.forRoot(),
     AuthModule,
     ModalModule.forRoot(),
   ],

@@ -52,8 +52,8 @@ export class AdminAccountEditComponent implements OnInit {
     );
 
 
-    this.userProfileService.getUserProfile(this.id).subscribe(
-      (user: UserProfile) => {
+    this.userProfileService.getUserProfile().subscribe(
+      (user: any) => {
         this.updateUserProfile(user);
         this.userProfile = user;
       },
@@ -100,33 +100,32 @@ export class AdminAccountEditComponent implements OnInit {
    
     if(this.userProfile && this.userProfile.id) {
       const patch = compare(this.userProfileCreation, userProfileData);
-      this.userProfileService.updateUserProfile(this.userProfile.userId, patch).subscribe(
-      result => {     
-        this.isUpdated = true;
-      },
-      error => {
-        this.errors = error;
-      })
+      this.userProfileService.updateUserProfile(patch).subscribe(
+        (result) => {
+          this.isUpdated = true;
+        },
+        (error) => {
+          this.errors = error;
+        }
+      );
     } else {
-      this.userProfileService.createUserProfile(this.id, userProfileData).subscribe(
-        (user: UserProfile) => {
-        this.userProfile =  {
-          id: user.id,
-          userId: user.userId,
-          fullName: user.fullName,
-          phoneNumber: user.phoneNumber,
-          mobileNumber: user.mobileNumber,
-          address: user.address,
-          postcode: user.postcode,
-          country: user.country
-        }; 
+      // this.userProfileService.createUserProfile(this.id, userProfileData).subscribe(
+      //   (user: UserProfile) => {
+      //   this.userProfile = {
+      //     id: user.id,
+      //     userId: user.userId,
+      //     fullName: user.fullName,
+      //     phoneNumber: user.phoneNumber,
+      //     mobileNumber: user.mobileNumber,
+      //     fullAddress: user.fullAddress,
+      //   }; 
 
-        this.userProfileCreation = userProfileData;
-        this.isCreated = true;
-      },
-      error => {
-        this.errors = error;
-      })
+      //   this.userProfileCreation = userProfileData;
+      //   this.isCreated = true;
+      // },
+      // error => {
+      //   this.errors = error;}
+      // )
     }
     
     

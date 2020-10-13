@@ -1,167 +1,146 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { MustMatch } from '@app/core/auth/_helpers/must-match.validator';
-import { compare } from 'fast-json-patch';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Component, OnInit } from "@angular/core";
+import { compare } from "fast-json-patch";
+import { HttpErrorResponse } from "@angular/common/http";
+import { IndividualConfig, ToastrService } from "ngx-toastr";
 
-import { UserProfile } from './../../../../shared/models/user-profile.model';
-import { UserProfileForCreation } from './../../../../shared/models/user-profile-for-creation.model';
-import { UserProfileService } from '@app/shared/services/upr/user-profile.service';
-import { AuthenticationService } from '@app/core/auth/services/authentication.service';
+import { UserProfile } from "./../../../../shared/models/user-profile.model";
+import { UserProfileForCreation } from "./../../../../shared/models/user-profile-for-creation.model";
+import { UserProfileService } from "@app/shared/services/upr/user-profile.service";
+import { AuthenticationService } from "@app/core/auth/services/authentication.service";
+import { UserProfileForUpdate } from "@app/shared/models/user-profile-for-update.model";
+import { throwError } from "rxjs";
 
 @Component({
-  selector: 'app-edit-account',
-  templateUrl: './edit-account.component.html',
-  styleUrls: ['./edit-account.component.css']
+  selector: "app-edit-account",
+  templateUrl: "./edit-account.component.html",
+  styleUrls: ["./edit-account.component.css"],
 })
 export class EditAccountComponent implements OnInit {
-
   accountForm: FormGroup;
-  countries = ['GB', 'Norway', 'France', 'Serbia'];
+  countries = ["GB", "Norway", "France", "Serbia"];
   private id: string;
   submitted;
   errors: string[] = [];
   isCreated: boolean = false;
   isUpdated: boolean = false;
-  userProfile: UserProfile;
-  userProfileCreation: UserProfileForCreation;
+  userProfile: UserProfileForCreation;
 
   constructor(
-    private formBuilder: FormBuilder, 
-    private authenticationService: AuthenticationService,
-    private userProfileService: UserProfileService) { }
+    private _fb: FormBuilder,
+    private _authService: AuthenticationService,
+    private _userProfileService: UserProfileService,
+    private _toastr: ToastrService
+  ) {}
 
   ngOnInit() {
-    if(this.authenticationService.currentUserValue) {
-       this.id = this.authenticationService.currentUserValue.id;
-    }
+    // initialize form
+    this.userAccountForm();
 
-    this.accountForm = this.formBuilder.group(
-      {
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        email: [this.authenticationService.currentUserValue.email, 
-          [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]
-        ],
-        phoneNumber: ['', Validators.required],
-        mobileNumber: ['', Validators.required],
-        address: ['', Validators.required],
-      //   address2: ['', Validators.required],
-      //   address3: ['', Validators.required],
-        postcode: ['', Validators.required],
-        country: ['', Validators.required],
-        // password: ['', [
-        //   Validators.required, 
-        //   Validators.minLength(6),
-        //   Validators.pattern("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+])[A-Za-z\\d][A-Za-z\\d!@#$%^&*()_+]{6,}$")]
-        // ],
-        // confirmPassword: ['', Validators.required],
-      },
-      // {
-      //   validator: MustMatch('password', 'confirmPassword')
-      // }
-    );
+    // retreive current user
+    this._userProfileService.getUserProfile().subscribe(
+      (user: UserProfileForUpdate) => {
 
-
-    this.userProfileService.getUserProfile(this.id).subscribe(
-      (user: UserProfile) => {
+        // console.log('user Pro', user);
         this.updateUserProfile(user);
-        this.userProfile = user;
       },
-      (err: any) => console.log(err)
+      (err: any) => {
+        console.log("greska", err);
+        this._toastr.show(
+          "Error fetching user account!",
+          "Error!",
+          null,
+          "toast-error"
+        );
+      }
     );
-
-    
-
   } // end ngOnInit
 
+  private userAccountForm() {
+    this.accountForm = this._fb.group({
+      firstName: ["", Validators.required],
+      lastName: ["", Validators.required],
+      email: [
+        this._authService.currentUserValue.email,
+        [
+          Validators.required,
+          Validators.pattern(
+            "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$"
+          ),
+        ],
+      ],
+      phoneNumber: ["", Validators.required],
+      mobileNumber: ["", Validators.required],
+      street: ["", Validators.required],
+      city: ["", Validators.required],
+      postcode: ["", Validators.required],
+      country: ["", Validators.required],
+    });
+  }
 
   get f() {
     return this.accountForm.controls;
   }
 
-  // updateUserIdentity(user: User) {
-  //   this.accountForm.patchValue({
-  //     email: user.email
-  //   })
-  // }
- 
-  updateUserProfile(user: UserProfile) {
-    const fullName = user.fullName;
-    const firstName = fullName.split(' ').slice(0, -1).join(' '); 
-    const lastName = fullName.split(' ').slice(-1).join(' ');
-
+  private updateUserProfile(user: UserProfileForUpdate) {
     const userData = {
-      firstName: firstName,
-      lastName: lastName,
+      firstName: user.firstName,
+      lastName: user.lastName,
       phoneNumber: user.phoneNumber,
       mobileNumber: user.mobileNumber,
-      address: user.address,
+      street: user.street,
+      city: user.city,
       postcode: user.postcode,
-      country: user.country
+      country: user.country,
     };
     // UPDATE USER PROFILE FORM
     this.accountForm.patchValue(userData);
     // UPDATE USER PROFILE FOR CREATION OBJECT ON INIT
-    this.userProfileCreation = userData;
+    this.userProfile = userData;
   }
 
   onSubmit() {
-
-    if(this.accountForm.invalid) {
-      return;
-    }
+    if (this.accountForm.invalid) return;
 
     const form: any = this.accountForm.value;
 
-    const userProfileData: UserProfileForCreation = {
+    const userProfileData: UserProfileForUpdate = {
       firstName: form.firstName,
       lastName: form.lastName,
       phoneNumber: form.phoneNumber,
       mobileNumber: form.mobileNumber,
-      address: form.address,
+      street: form.street,
+      city: form.city,
       postcode: form.postcode,
-      country: form.country
+      country: form.country,
     };
 
-    // const userIdentityForm: any = {}
-
-   
-    if(this.userProfile && this.userProfile.id) {
-      const patch = compare(this.userProfileCreation, userProfileData);
-      this.userProfileService.updateUserProfile(this.userProfile.userId, patch).subscribe(
-      result => {     
-        this.isUpdated = true;
-      },
-      error => {
-        this.errors = error;
-      })
-    } else {
-      this.userProfileService.createUserProfile(this.id, userProfileData).subscribe(
-        (user: UserProfile) => {
-        this.userProfile =  {
-          id: user.id,
-          userId: user.userId,
-          fullName: user.fullName,
-          phoneNumber: user.phoneNumber,
-          mobileNumber: user.mobileNumber,
-          address: user.address,
-          postcode: user.postcode,
-          country: user.country
-        }; 
-
-        this.userProfileCreation = userProfileData;
-        this.isCreated = true;
-      },
-      error => {
-        this.errors = error;
-      })
-    }
-    
-    
+    this.doUpdateUserProfile(userProfileData);
   }
 
+  private doUpdateUserProfile(newData: UserProfileForUpdate) {
+    if (this.userProfile && newData) {
+      const patch = compare(this.userProfile, newData);
 
-
-  
-
+      this._userProfileService.updateUserProfile(patch).subscribe(
+        (result) => {
+          // this.isUpdated = true;
+          this._toastr.show(
+            "User account successfully updated!",
+            "Success!",
+            null,
+            "toast-success"
+          );
+        },
+        (error: HttpErrorResponse) => {
+          this._toastr.show(
+            "Error updating user account!",
+            "Error!",
+            null,
+            "toast-error"
+          );
+        }
+      );
+    }
+  }
 }
