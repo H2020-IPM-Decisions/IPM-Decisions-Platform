@@ -88,6 +88,9 @@ export class HomeComponent implements OnInit {
           `
         )
         .addTo(this.map);
+      var wmsLayer = L.tileLayer.wms('http://ows.mundialis.de/services/service?', {
+          layers: 'TOPO-OSM-WMS'
+      }).addTo(this.map);
     });
 
     // map search box
