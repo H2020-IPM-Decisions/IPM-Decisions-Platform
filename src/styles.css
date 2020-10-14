@@ -761,10 +761,6 @@ a.dropdown-item {
   display: inline-block;
 }
 
-.set-bg {
-  background: linear-gradient(to bottom, #00b09b, #96c93d);
-}
-
 .features-section.set-bg {
   background: linear-gradient(to bottom, #00b09b, #96c93d) !important;
 }

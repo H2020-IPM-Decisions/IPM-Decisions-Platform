@@ -65,44 +65,6 @@ export class HomeComponent implements OnInit {
         this.verified.emit(false);
       }
     });
-    this.maprisksService.initialize("map").subscribe((data) => {
-      this.map = data;
-      this.map.scrollWheelZoom.disable();
-      this.map.zoomControl.setPosition('topright');
-      const featureGroup = this.maprisksService.createFeatureGroup(this.map);
-      let wheatIcon = L.icon({
-        iconUrl: 'img/wheat-pointer.png',
-        iconSize: [40, 50],
-        iconAnchor: [20, 48],
-        popupAnchor:  [0, -43]
-      });
-      L.marker([47.4744951, 10.9576836], {icon: wheatIcon})
-        .bindPopup(
-          `Farm name: Fera<br>
-          Field name: Potato case study<br>
-          Growth Stage:4<br>
-          Click marker to view site risk information<br>
-          Please note that for case study site, risks and weather
-          metrics are calculated based on weather data
-          from elsewhere in the country
-          `
-        )
-        .addTo(this.map);
-      var wmsLayer = L.tileLayer.wms('http://ows.mundialis.de/services/service?', {
-          layers: 'TOPO-OSM-WMS'
-      }).addTo(this.map);
-    });
-
-    // map search box
-    var searchControl = esri_geo.geosearch().addTo(this.map);
-    var results = L.layerGroup().addTo(this.map);
-
-    searchControl.on("results", function (data) {
-      results.clearLayers();
-      for (var i = data.results.length - 1; i >= 0; i--) {
-        results.addLayer(L.marker(data.results[i].latlng));
-      }
-    });
 
     let cmsService = this.cmsService;
     let promises = [
