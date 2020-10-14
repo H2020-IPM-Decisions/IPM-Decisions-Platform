@@ -7,6 +7,7 @@ import { AuthenticationService } from '@app/core/auth/services/authentication.se
 import * as L from 'leaflet';
 import * as esri_geo from "esri-leaflet-geocoder";
 declare var init: any;
+declare var $;
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -110,5 +111,14 @@ export class HomeComponent implements OnInit {
     this.router.navigate(["/login"]).then(() => {
       document.getElementById("register-button").click();
     });
+  }
+
+  play() {
+    $('.hero-slider').trigger("play.owl.autoplay");
+    $('.hero-slider').trigger("next.owl.carousel");
+  }
+
+  pause() {
+    $('.hero-slider').trigger("stop.owl.autoplay");
   }
 }

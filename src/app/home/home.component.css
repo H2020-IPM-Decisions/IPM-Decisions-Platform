@@ -15,3 +15,21 @@
   overflow-y: scroll;
   max-height: 260px;
 }
+
+.fa-play, .fa-pause {
+  position: absolute;
+  font-size: 1.5rem;
+  color: gray;
+  z-index: 2;
+  bottom: 10px;
+  left:50%;
+  cursor: pointer;
+}
+
+.fa-play {
+  transform: translateX(-100%);
+}
+
+.fa-pause {
+  transform: translateX(100%);
+}

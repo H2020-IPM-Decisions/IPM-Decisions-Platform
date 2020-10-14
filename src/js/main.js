@@ -25,23 +25,23 @@ function init() {
 		var ellipsestext = "...";
 		var moretext = "Show more >";
 		var lesstext = "Show less";
-		
-	
+
+
 		$('.service-item p').each(function() {
 			var content = $(this).html();
-	 
+
 			if(content.length > showChar) {
-	 
+
 				var c = content.substr(0, showChar);
 				var h = content.substr(showChar, content.length - showChar);
-	 
+
 				var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-	 
+
 				$(this).html(html);
 			}
-	 
+
 		});
-	 
+
 		$(".morelink").click(function(){
 			if($(this).hasClass("less")) {
 				$(this).removeClass("less");
@@ -95,7 +95,7 @@ function init() {
 			Hero Slider
 		--------------------*/
 		$('.hero-slider').owlCarousel({
-			nav: true,
+			nav: false,
 			dots: false,
 			loop: true,
 			navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
@@ -153,8 +153,8 @@ function init() {
 				type: 'iframe'
 			});
 		}
-		
-		
+
+
 		/*------------------
 			Accordions
 		--------------------*/
