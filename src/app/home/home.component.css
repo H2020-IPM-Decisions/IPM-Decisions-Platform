@@ -16,9 +16,9 @@
   max-height: 260px;
 }
 
-.fa-play, .fa-pause {
+.fa-play-circle, .fa-pause-circle {
   position: absolute;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: gray;
   z-index: 2;
   bottom: 10px;
@@ -26,10 +26,10 @@
   cursor: pointer;
 }
 
-.fa-play {
-  transform: translateX(-100%);
+.fa-play-circle {
+  transform: translateX(-50%);
 }
 
-.fa-pause {
-  transform: translateX(100%);
+.fa-pause-circle {
+  transform: translateX(50%);
 }
