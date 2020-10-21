@@ -52,7 +52,7 @@ export class AdminAccountEditComponent implements OnInit {
     );
 
 
-    this.userProfileService.getUserProfile().subscribe(
+    this.userProfileService.getUserProfile(false).subscribe(
       (user: any) => {
         this.updateUserProfile(user);
         this.userProfile = user;

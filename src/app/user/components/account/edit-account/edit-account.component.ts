@@ -38,9 +38,8 @@ export class EditAccountComponent implements OnInit {
     this.userAccountForm();
 
     // retreive current user
-    this._userProfileService.getUserProfile().subscribe(
+    this._userProfileService.getUserProfile(false).subscribe(
       (user: UserProfileForUpdate) => {
-
         // console.log('user Pro', user);
         this.updateUserProfile(user);
       },

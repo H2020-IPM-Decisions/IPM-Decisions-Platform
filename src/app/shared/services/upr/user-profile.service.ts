@@ -8,6 +8,7 @@ import { environment } from "src/environments/environment";
 import { USER_PROFILE } from "@app/mock/user-profile.mock";
 import { ADVISORS_EMAIL_LIST } from "./../../../mock/advisors-emial-list.mock";
 import { UserProfileForUpdate } from '@app/shared/models/user-profile-for-update.model';
+import { UserProfile } from '@app/shared/models/user-profile.model';
 
 @Injectable({
   providedIn: "root",
@@ -23,11 +24,11 @@ export class UserProfileService {
     return ADVISORS_EMAIL_LIST;
   }
 
-  getUserProfile(): Observable<UserProfileForUpdate> {
+  getUserProfile(friendly: boolean): Observable<UserProfile | UserProfileForUpdate> {
     return this.http.get<UserProfileForUpdate>(`${this.apiUrl}/api/upr/users/profiles`, {
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/vnd.h2020ipmdecisions.profile.full+json",
+        "Accept": friendly ? "application/vnd.h2020ipmdecisions.profile.friendly.hateoas+json" : "application/vnd.h2020ipmdecisions.profile.full+json"
       },
     });
   }
