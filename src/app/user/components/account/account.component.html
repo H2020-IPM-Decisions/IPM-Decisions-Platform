@@ -34,7 +34,7 @@
                 <div class="col-md-6">
                   <div class="profile-head">
                     <h5>
-                      John Doe
+                      {{ user?.fullName | titlecase }}
                     </h5>
                     <h6>
                       Farmer
@@ -79,7 +79,7 @@
                           <label>Contact Name</label>
                         </div>
                         <div class="col-md-6">
-                          <p>Dave Skirvin</p>
+                          <p>{{ user?.fullName | titlecase }}</p>
                         </div>
                       </div>
                       <div class="row">
@@ -87,7 +87,7 @@
                           <label>Email</label>
                         </div>
                         <div class="col-md-6">
-                          <p>dave@gmail.com</p>
+                          <p>{{ authService.currentUserValue.email }}</p>
                         </div>
                       </div>
                       <div class="row">
@@ -95,7 +95,7 @@
                           <label>Phone</label>
                         </div>
                         <div class="col-md-6">
-                          <p>123 456 7890</p>
+                          <p>{{ user?.phoneNumber }}</p>
                         </div>
                       </div>
                       <div class="row">
@@ -103,34 +103,18 @@
                           <label>Mobile</label>
                         </div>
                         <div class="col-md-6">
-                          <p>123 456 7890</p>
+                          <p>{{ user?.mobileNumber }}</p>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-6">
-                          <label>Adress Line 1</label>
+                          <label>Full Address</label>
                         </div>
                         <div class="col-md-6">
-                          <p>This Farm</p>
+                          <p>{{ user?.fullAddress }}</p>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <label>Adress Line 2</label>
-                        </div>
-                        <div class="col-md-6">
-                          <p>This Vilage</p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <label>Adress Line 3</label>
-                        </div>
-                        <div class="col-md-6">
-                          <p>This Town</p>
-                        </div>
-                      </div>
-                      <div class="row">
+                      <!-- <div class="row">
                         <div class="col-md-6">
                           <label>Post Code</label>
                         </div>
@@ -145,7 +129,7 @@
                         <div class="col-md-6">
                           <p>Wonderland</p>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                       <a href="">Lorem ipsum</a><br />
