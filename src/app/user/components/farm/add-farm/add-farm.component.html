@@ -24,52 +24,55 @@
           </div>
         </div>
 
+
+
         <div class="container mx-auto my-5 page-box">
 
-          <!-- left column -->
+          <fieldset class="border p-3 col-8">
+            <legend class="w-auto px-1 text-muted">Farm creation</legend>
+
+            <form>
+              <div class="form-group row">
+                <label for="farm-name" class="col-sm-3 col-form-label">Farm name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="farm-name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="map" class="col-sm-3 col-form-label">Select farm location</label>
+                <div class="col-sm-9">
+                  <div class="map-container" #map></div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="met-station" class="col-sm-3 col-form-label">Nearest met. station</label>
+                <div class="col-sm-9">
+                  <select class="form-control" id="met-station">
+                    <option value="Met Station 1">Met. Station 1 (x KM)</option>
+                    <option value="Met Station 2">Met. Station 2 (x KM)</option>
+                    <option value="Met Station 3">Met. Station 3 (x KM)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="forecast" class="col-sm-3 col-form-label">Weather forecast service</label>
+                <div class="col-sm-9">
+                  <select class="form-control" id="forecast">
+                    <option value="default">default selection</option>
+                    <option value="forecast selection 1">forecast selection 1</option>
+                    <option value="forecast selection 2">forecast selection 2</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+            </fieldset>
           <div class="row">
-            <div class="col-4">
-              <div class="col border">
-
-                <div class="row">
-                  <div class="col-md-12 mt-4 mb-2">
-                    <div class="form-group">
-                      <label for="farm-name" class="col-form-label">Farm name</label>
-                      <input type="text" class="form-control" id="farm-name">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-12 mb-2">
-                    <button class="btn btn-success pull-right">
-                      <i class="metismenu-icon pe-7s-plus centered-btn-icon"></i>
-                      Add</button>
-                  </div>
-                </div>
-
-              </div>
+            <div class="col-md-12 mb-2">
+              <button class="btn btn-success pull-right">
+                <!-- <i class="metismenu-icon pe-7s-plus centered-btn-icon"></i> -->
+                <i class="far fa-save fa-lg mr-1"></i>
+                Save</button>
             </div>
-
-            <div class="col-8">
-              <div class="col border">
-                <div class="row">
-                  <div class="col-md-12 mt-4 mb-2">
-                    <div class="form-group">
-                      <label for="find-location" class="col-form-label">Find location</label>
-                      <input type="text" class="form-control" id="find-location">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="map-container" #map></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
