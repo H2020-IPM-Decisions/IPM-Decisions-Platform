@@ -13,23 +13,4 @@
   bottom: 12px;
 }
 
-button.btn.btn-link {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.8);
-  font-weight: 500;
-}
 
-i.action-icon {
-  margin-right: 5px;
-  color: #3ac47d;
-}
-
-i.light-blue-icon {
-  color: #0090e2;
-}
-
-i.size-2 {
-  font-size: 1.4rem;
-}

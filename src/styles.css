@@ -1973,6 +1973,27 @@ popover-container.popover.in.popover-right.bs-popover-right.right.show {
   max-width: 100%;
 }
 
+button.btn.btn-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+}
+
+i.action-icon {
+  margin-right: 5px;
+  color: #3ac47d;
+}
+
+i.light-blue-icon {
+  color: #0090e2;
+}
+
+i.size-12 {
+  font-size: 1.1rem;
+}
+
 /* ----------------
 Responsive
  ---------------------*/
