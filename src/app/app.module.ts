@@ -98,6 +98,7 @@ import { DssSelectionComponent } from './user/components/farm/dss-selection/dss-
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from "ngx-bootstrap/popover";
 import { ToastrModule } from "ngx-toastr";
+import { AddAdvancedFarmComponent } from './user/components/farm/add-advanced-farm/add-advanced-farm.component';
 
 @NgModule({
   declarations: [
@@ -189,6 +190,7 @@ import { ToastrModule } from "ngx-toastr";
     ResearchersArticleComponent,
     DevelopersArticleComponent,
     DssSelectionComponent,
+    AddAdvancedFarmComponent,
   ],
   imports: [
     BrowserModule,
