@@ -34,3 +34,8 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.details-text {
+    font-weight: 600;
+    margin-bottom: .5rem;
+}
