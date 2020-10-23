@@ -210,7 +210,9 @@ function init() {
 				});
 			}
 
-		});
+    });
+
+    var $easyzoom = $('.easyzoom').easyZoom();
 
 	})(jQuery);
 }

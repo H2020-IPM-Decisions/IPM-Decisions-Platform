@@ -33,3 +33,9 @@
 .fa-pause-circle {
   transform: translateX(50%);
 }
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 960px;
+  }
+}
