@@ -32,7 +32,7 @@
                   <img src="img/profile.png" class="avatar img-circle" alt="avatar" />
                   <h6>Upload a different photo...</h6>
 
-                  <input type="file" class="form-control" />
+                  <input type="file" #profileImage class="form-control" (change)="uploadProfileImage($event.target.files)" />
                 </div>
               </div>
 
@@ -50,6 +50,7 @@
                 </div>
 
                 <h3>Personal info</h3>
+                
                 <form [formGroup]="accountForm" (ngSubmit)="onSubmit()" class="form-horizontal" role="form">
                   <div class="form-group">
                     <label class="col-lg-3 control-label">First name</label>
