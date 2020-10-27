@@ -7,7 +7,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
                     <li class="breadcrumb-item"><a routerLink="/user/farm/list">Farm List</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Crop Pest Combination</li>
+                    <li class="breadcrumb-item active" aria-current="page">Create Crop Pest Combination</li>
                 </ol>
             </nav>
             <div class="app-main__inner">
@@ -19,7 +19,7 @@
                                 <i class="pe-7s-leaf icon-gradient bg-mean-fruit">
                                 </i>
                             </div>
-                            <div>Crop Pest Combination</div>
+                            <div>Create Crop Pest Combination</div>
                         </div>
                     </div>
                 </div>
@@ -107,23 +107,31 @@
 
                                 <fieldset class="border p-3">
                                     <legend class="w-auto px-1 text-muted">Step 1: Select crop and pest</legend>
-                                    <div class="row">
-                                        <div class="col-5">
-                                            <select class="form-control" id="crop">
 
-                                                <option>Crop Types</option>
-                                                <option value="Apple">Apple</option>
-                                                <option value="Cereal">Cereal</option>
-                                                <option value="Grapes">Grapes</option>
-                                            </select>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group row">
+                                                <label for="field" class="col-sm-2 col-form-label">Crop</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-control" id="crop">
+                                                        <option value="Apple">Apple</option>
+                                                        <option value="Cereal">Cereal</option>
+                                                        <option value="Grapes">Grapes</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-5">
-                                            <select class="form-control" id="pest">
-                                                <option>Pest/Disease/Weed</option>
-                                                <option value="Aphids">Aphids</option>
-                                                <option value="Blackgrass">Blackgrass</option>
-                                                <option value="Septoria">Septoria</option>
-                                            </select>
+                                        <div class="col-4">
+                                            <div class="form-group row">
+                                                <label for="variety" class="col-sm-2 col-form-label">Pest</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-control" id="pest">
+                                                        <option value="Aphids">Aphids</option>
+                                                        <option value="Blackgrass">Blackgrass</option>
+                                                        <option value="Septoria">Septoria</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -191,7 +199,12 @@
                         </div>
                     </fieldset>
 
+                    <div class="row">
+                        <div class="col-md-12 mt-4 mr-0">
+                            <a routerLink="/user/farm/crop-pest-combination" class="btn btn-info pull-right">
+                                Go to DSS Selection</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
