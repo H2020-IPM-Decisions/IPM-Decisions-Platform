@@ -1990,8 +1990,12 @@ i.light-blue-icon {
   color: #0090e2;
 }
 
-i.size-12 {
+i.size-11 {
   font-size: 1.1rem;
+}
+
+.bold-600 {
+  font-weight: 600;
 }
 
 /* ----------------
