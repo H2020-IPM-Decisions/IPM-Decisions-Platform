@@ -98,7 +98,7 @@ import { DssSelectionComponent } from './user/components/farm/dss-selection/dss-
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from "ngx-bootstrap/popover";
 import { ToastrModule } from "ngx-toastr";
-import { AddAdvancedFarmComponent } from './user/components/farm/add-advanced-farm/add-advanced-farm.component';
+import { CropPestCombinationComponent } from './user/components/farm/advanced/crop-pest-combination.component';
 
 @NgModule({
   declarations: [
@@ -190,7 +190,7 @@ import { AddAdvancedFarmComponent } from './user/components/farm/add-advanced-fa
     ResearchersArticleComponent,
     DevelopersArticleComponent,
     DssSelectionComponent,
-    AddAdvancedFarmComponent,
+    CropPestCombinationComponent,
   ],
   imports: [
     BrowserModule,

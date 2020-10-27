@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddAdvancedFarmComponent } from './add-advanced-farm.component';
+import { AddAdvancedFarmComponent } from './crop-pest-combination.component';
 
 describe('AddAdvancedFarmComponent', () => {
   let component: AddAdvancedFarmComponent;
