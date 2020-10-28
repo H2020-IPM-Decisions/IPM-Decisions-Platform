@@ -1,122 +1,239 @@
-<header class="header-section clearfix">
+<div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+  <div class="container d-flex">
+      <div class="contact-info mr-auto">
 
-  <div class="site-navbar">
-    <!-- Logo -->
-    <a routerLink="/" class="site-logo">
-      <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
-    </a>
-    <div class="login-registration-menu">
-      <div class="login-registration-menu-item">
-        <a routerLink="/login">
-          <i class="fas fa-sign-in-alt icon-size" aria-hidden="true"></i>
-          <br>
-          <span class="small text-muted">Log in</span>
-        </a>
       </div>
-      <div class="login-registration-menu-item">
-        <a class="register-link mr-2" (click)='goToRegistrationPage()'>
-          <i class="fas fa-user-circle icon-size" aria-hidden="true"></i>
-          <br>
-          <span class="small text-muted">Register</span>
-        </a>
+      <div class="social-links btn-registration">
+          <a class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>Login </span></a>
+          <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>Registrer</span></a>
       </div>
-    </div>
-  </div>
-</header>
-<!-- Header section end  -->
-<div class="border-animation"></div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12 px-0">
-      <!-- Hero section  -->
-      <section class="hero-section">
-        <i class="fas fa-play-circle" (click)="play()"></i>
-        <i class="fas fa-pause-circle" (click)="pause()"></i>
-        <div class="hero-slider owl-carousel">
-          <ng-template ngFor let-picture [ngForOf]="homeSlideshow?.gallery">
-            <div class="hero-item set-bg" [attr.data-setbg]="picture.path | cmsLink">
-              <a [attr.href]="picture.path | cmsLink">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-xl-8">
-                      <h2>
-                        <span>IPM</span><span>DECISIONS</span><span> Support System Platform</span>
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </ng-template>
-        </div>
-        <div class="border-animation"></div>
-      </section>
-      <!-- Hero section end  -->
-    </div>
   </div>
 </div>
 
-<!-- Features section   -->
-<section class="features-section set-bg">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-sm-6 col-md-4 features-section-column">
-        <a routerLink="/farmer-advisor-article">
-          <div class="feature-box">
-            <img src="img/farming.png" alt="">
-            <br>
-            Farmers/Advisors
-          </div>
-        </a>
-      </div>
-      <div class="col-12 col-sm-6 col-md-4 features-section-column">
-        <a routerLink="/research-article">
-          <div class="feature-box">
-            <img src="img/research.png" alt="">
-            <br>
-            Researchers
-          </div>
-        </a>
-      </div>
-      <div class="col-12 col-sm-6 col-md-4 features-section-column">
-        <a routerLink="/coding-article">
-          <div class="feature-box">
-            <img src="img/coding.png" alt="">
-            <br>
-            DSS Developers
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="row">
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+      <a href="index.html"><img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions"></a>
 
-    </div>
+      <nav class="nav-menu d-none d-lg-block">
+          <ul>
+              <li class="active"><a href="index.html">Home</a></li>
+              <li><a href="#about">Lorem 2</a></li>
+              <li><a href="#services">Lorem 3</a></li>
+              <li><a href="#contact">Lorem 4</a></li>
+              <li><a href="#team" class="login-btn">Lorem 5</a></li>
+          </ul>
+      </nav><!-- .nav-menu -->
+
   </div>
-</section>
-<!-- Features section end  -->
+</header><!-- End Header -->
 
-<!-- Testimonial section -->
-<section class="testimonial-section">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-6 p-0">
-        <div class="testimonial-bg set-bg" [attr.data-setbg]="news?.picture?.path | cmsLink"></div>
-      </div>
-      <div class="col-lg-6 p-0">
-        <div class="testimonial-box">
-          <div class="testi-box-warp">
-            <h2>IPM Decisions key information</h2>
-            <div class="testimonial-slider owl-carousel">
-              <ng-template ngFor let-article [ngForOf]="news?.articles">
-                <div class="testimonial" [innerHtml]="article.value">
+
+
+<main id="main">
+  <!-- ======= Hero Section ======= -->
+  <section id="map-content" class="hero-section d-flex align-items-center">
+    <i class="fas fa-play-circle" (click)="play()"></i>
+    <i class="fas fa-pause-circle" (click)="pause()"></i>
+    <div class="hero-slider owl-carousel">
+      <ng-template ngFor let-picture [ngForOf]="homeSlideshow?.gallery">
+        <div class="hero-item set-bg" [attr.data-setbg]="picture.path | cmsLink">
+          <a [attr.href]="picture.path | cmsLink">
+            <div class="container">
+              <div class="row">
+                <div class="col-xl-8">
+                  <h2>
+                    <span>IPM</span><span>DECISIONS</span><span> Support System Platform</span>
+                  </h2>
                 </div>
-              </ng-template>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
-      </div>
+      </ng-template>
     </div>
-  </div>
-</section>
+  </section>
 
-<app-footer></app-footer>
+  <!-- ======= Featured Services Section ======= -->
+  <section id="featured-services" class="featured-services">
+
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-5 sect-news no-padd">
+                  <div class="section-title">
+                      <span class="subheading">News &amp; Blog</span>
+                      <h3><b>IPM Decisions</b> key information </h3>
+                  </div>
+                  <div id="news-slider8" class="owl-carousel">
+                      <div class="post-slide8">
+                          <div class="post-content">
+                              <h3 class="post-title">
+                                  <a href="#">Latest News Post</a>
+                              </h3>
+                              <p class="post-description">
+                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......
+                              </p>
+                              <a href="#" class="read-more">read more</a>
+                          </div>
+                      </div>
+
+                      <div class="post-slide8">
+                          <div class="post-content">
+                              <h3 class="post-title">
+                                  <a href="#">Latest News Post</a>
+                              </h3>
+                              <p class="post-description">
+                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......
+                              </p>
+                              <a href="#" class="read-more">read more</a>
+                          </div>
+                      </div>
+
+                      <div class="post-slide8">
+                          <div class="post-content">
+                              <h3 class="post-title">
+                                  <a href="#">Latest News Post</a>
+                              </h3>
+                              <p class="post-description">
+                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......
+                              </p>
+                              <a href="#" class="read-more">read more</a>
+                          </div>
+                      </div>
+
+                      <div class="post-slide8">
+                          <div class="post-content">
+                              <h3 class="post-title">
+                                  <a href="#">Latest News Post</a>
+                              </h3>
+                              <p class="post-description">
+                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......
+                              </p>
+                              <a href="#" class="read-more">read more</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-7 no-padd">
+                  <div class="container" data-aos="fade-up">
+                      <div class="section-title">
+                          <h3>SECTIONS </h3>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6 col-lg-6">
+                              <a href="">
+                                  <div class="icon-box" data-aos="fade-up" data-aos-delay="100" style="margin: 0 auto;">
+                                      <div class="icon">
+                                          <img src="img/farming.png">
+                                      </div>
+                                      <h4 class="title">Farming</h4>
+                                  </div>
+                              </a>
+                          </div>
+
+                          <div class="col-md-3 col-lg-3">
+                              <a href="">
+                                  <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                                      <div class="icon">
+                                          <img src="img/research.png">
+                                      </div>
+                                      <h4 class="title">Research</h4>
+                                  </div>
+                              </a>
+                          </div>
+
+                          <div class="col-md-3 col-lg-3">
+                              <a href="">
+                                  <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                                      <div class="icon"><img src="img/coding.png"></div>
+                                      <h4 class="title">Coding</h4>
+                                  </div>
+                              </a>
+                          </div>
+
+                      </div>
+
+                  </div>
+              </div>
+
+          </div>
+      </div>
+
+
+
+  </section><!-- End Featured Services Section -->
+
+
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+          <div class="section-title">
+              <h3><span>Contacts</span></h3>
+          </div>
+
+          <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+
+              <div class="col-lg-4 col-md-6">
+                  <div class="info-box  mb-4">
+                      <h3>Email Us</h3>
+                      <p> info@XXX.eu</p>
+                      <br>
+                  </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6">
+                  <div class="info-box  mb-4">
+                      <h3>Web Site</h3>
+                      <p>https://XXX/</p>
+                      <br>
+                  </div>
+              </div>
+
+              <div class="col-lg-4">
+                  <div class="info-box mb-4">
+                      <h3>Social</h3>
+                      <a href="#" class="icoLinkedin" title="Linkedin"><i class='bx bxl-linkedin-square'></i></a>
+                      <a href="#" class="icoTwitter" title="Twitter"><i class='bx bxl-twitter'></i></a>
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+  </section><!-- End Contact Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+
+  <div class="container py-4">
+      <div class="row">
+          <div class="col-lg-4 col-md-4 eu-flag">
+              <img src="img/logo-euro.jpg" style="float: left;
+display: inline-grid;
+margin-right: 5px;">
+              <p>Co-funded by the Horizon 2020<br>Framework Programme of the European Union<br>Under grant agreement No 817617</p>
+          </div>
+          <div class="col-lg-4 col-md-4 ">
+              <p>Project lead:<br>Neil Paveley (neil.paveley@adas.co.uk)</p>
+              <p>Technical contacts:<br>Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
+              <p>Tor-Einar Skog (tor-einar.skog@nibio.no)</p>
+              <p>General enquiries:<br>IPMDecisions@adas.co.uk</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 ">
+              <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+          </div>
+      </div>
+  </div>
+  <div class="copyright">
+      © 2020 <b>All Rights Reserved Engineering</b> <br>VAT: 05724831002
+  </div>
+</footer><!-- End Footer -->
+<div>
+
+</div>
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
