@@ -24,6 +24,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     HTMLElement
   >;
   farmForm: FormGroup;
+  canRedirect: boolean = true;
   constructor(
     private _fb: FormBuilder,
     private _farmService: FarmService,
@@ -129,6 +130,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
             null,
             "toast-success"
           );
+          this.canRedirect = false;
         }
       },
       (error) => {
