@@ -42,111 +42,212 @@
                 <div class="form-inline row">
                   <div class="form-group col-md-4">
                     <label for="crops" class="col-md-2 col-form-label">Crop</label>
-                    <select id="crops" class="col-md-10 form-control">
-                      <option value="brassica">Brassica</option>
-                      <option value="oilseed">Oilseed</option>
-                      <option value="wheat">Wheat</option>
+                    <select id="crops" class="col-md-10 form-control" [formControl]="cropSearch">
+                      <option value="Wheat">Wheat</option>
+                      <option value="Cabbage">Cabbage</option>
+                      <option value="Apple">Apple</option>
+                      <option value="Carrot">Carrot</option>
                     </select>
                   </div>
                   <div class="form-group col-md-4">
                     <label for="pests" class="col-md-2 col-form-label">Pest</label>
-                    <select id="pests" class="col-md-10 form-control">
-                      <option value="Aphid">Aphid</option>
+                    <select id="pests" class="col-md-10 form-control" [formControl]="pestSearch">
+                      <option value="Aphids">Aphids</option>
                       <option value="Septoria">Septoria</option>
+                      <option value="Cabbate moth">Cabbate moth</option>
+                      <option value="Apple scab">Apple scab</option>
+                      <option value="Carrot rust fly">Carrot rust fly</option>
                     </select>
                   </div>
 
                   <div class="form-group col-md-4">
                     <div class="input-group col-md-12">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="fas fa-search"></i></div>
+                      <button class="btn btn-info col-5">Search</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- end search -->
+
+                <form [formGroup]="dssSelectionForm">
+                  <fieldset class="border p-3 col-8 my-4">
+
+                    <div class="row">
+                      <div class="col-md-12">
+
+                        <div *ngFor="let skill of skills.controls; let i=index">
+                          <input type="checkbox" [formControl]="skill" [value]="user.skills[i].name" />
+                          {{user.skills[i].name}}
+
+                          <i class="fas fa-info-circle ml-2" [popover]="pestTemplate0" placement="right"
+                            container="body" triggers="focus" tabindex="1"></i>
+
+                        </div>
+
+
+                        <ng-template #pestTemplate0>
+                          <div class="col">
+                            <div class="row">
+                              <div class="col-sm-8">
+                                <p>
+                                  {{cropTitle}}
+                                </p>
+                              </div>
+                              <div class="col-sm-4 pl-0 text-right"><i class="fas fa-star"
+                                  style="color: #2198e9;"></i>
+                                <i class="fas fa-star" style="color: #2198e9;"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i></div>
+
+                            </div>
+                          </div>
+
+                          <div [innerHtml]="pestTableContent"></div>
+                        </ng-template>
+
+                        <ng-template #pestTemplate1>
+                          <div class="col my-3">
+                            <div class="row">
+                              <div class="col-sm-8">
+                                <p>
+                                  {{cropTitle2}}
+                                </p>
+                              </div>
+                              <div class="col-sm-4 pl-0 text-right"><i class="fas fa-star" style="color: #2198e9;"></i>
+                                <i class="fas fa-star" style="color: #2198e9;"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i></div>
+                            </div>
+                          </div>
+
+                          <div [innerHtml]="pestTableContent2"></div>
+                        </ng-template>
+
+
+                        <!-- <div class="form-check" formArrayName="dss"                          *ngFor="let dssItem of dssSelectionForm.get('dss')['controls']; let i=index;">
+
+                          <input class="form-check-input" type="checkbox" [formControlName]="i" [id]="dssItem.id"
+                            [value]="dssItem.name">
+                          <label class="form-check-label" for="{{dssItem.id}}">
+                            {{dssItem.name}}
+                          </label>
+
+                          <ng-template #pestTemplate>
+                            <div class="col my-3">
+                              <div class="row">
+                                <div class="col-sm-8">
+                                  <h3>
+                                    {{pestTitle}}
+                                  </h3>
+                                </div>
+                                <div class="col-sm-4 pl-0 text-right"><i class="fas fa-star"
+                                    style="color: #2198e9;"></i>
+                                  <i class="fas fa-star" style="color: #2198e9;"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i></div>
+
+                              </div>
+                            </div>
+
+                            <div [innerHtml]="pestTableContent"></div>
+                          </ng-template>
+                          <i class="fas fa-info-circle ml-2" [popover]="pestTemplate" placement="right" container="body"
+                            triggers="focus" tabindex="1"></i>
+                        </div> -->
+
+
+
+                        <!-- <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="aphid2">
+                          <label class="form-check-label" for="aphid2">
+                            Aphid DSS 2
+                          </label>
+                          <ng-template #pestTemplate2>
+                            <div class="col my-3">
+                              <div class="row">
+                                <div class="col-sm-8">
+                                  <h3>
+                                    {{pestTitle2}}
+                                  </h3>
+                                </div>
+                                <div class="col-sm-4 pl-0 text-right"><i class="fas fa-star"
+                                    style="color: #2198e9;"></i>
+                                  <i class="fas fa-star" style="color: #2198e9;"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i></div>
+
+
+
+                              </div>
+                            </div>
+
+                            <div [innerHtml]="pestTableContent2"></div>
+                          </ng-template>
+                          <i class="fas fa-info-circle ml-2" [popover]="pestTemplate2" placement="right"
+                            container="body" triggers="focus" tabindex="1"></i>
+                        </div> -->
                       </div>
-                      <input type="text" class="col-md-auto form-control" id="search" placeholder="Search DSS">
                     </div>
-                  </div>
-                </div>
+                  </fieldset>
 
+                  <fieldset class="border p-3 col-8 mb-4">
+                    <legend class="w-auto px-1 text-muted">DSS Setup</legend>
+                    <div class="row col">
 
-                <div class="my-5"></div>
-
-                <div class="row">
-                  <div class="col-md-12">
-
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="aphid1" id="aphid1">
-                      <label class="form-check-label" for="aphid1">
-                        Aphid DSS 1
-                      </label>
-
-                      <ng-template #pestTemplate>
-                        <div class="col my-3">
-                          <div class="row">
-                            <div class="col-sm-8">
-                              <h3>
-                                {{pestTitle}}
-                              </h3>
+                      <div class="col-7">
+                        <div class="form-row mb-2">
+                          <div class="col-sm-4">Crop</div>
+                          <div class="col-sm-7">
+                            <div formArrayName="cropsArray"
+                              *ngFor="let item of dssSelectionForm.get('cropsArray')['controls']; let i = index;">
+                              <select class="form-control form-control-sm mb-1" [formControlName]="i">
+                                <option *ngFor="let cropItem of crops" [value]="cropItem.value">
+                                  {{ cropItem.label }}
+                                </option>
+                              </select>
                             </div>
-                            <div class="col-sm-4 pl-0 text-right"><i class="fas fa-star" style="color: #2198e9;"></i>
-                              <i class="fas fa-star" style="color: #2198e9;"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i></div>
-
+                          </div>
+                          <div class="col-sm-1">
+                            <i class="fas fa-plus action-icon v-center pointer" (click)="addCrop()"></i>
                           </div>
                         </div>
-
-                        <div [innerHtml]="pestTableContent"></div>
-                      </ng-template>
-                      <i class="fas fa-info-circle ml-2" [popover]="pestTemplate" placement="right" container="body"
-                        triggers="focus" tabindex="1"></i>
-                    </div>
-
-
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="aphid2">
-                      <label class="form-check-label" for="aphid2">
-                        Aphid DSS 2
-                      </label>
-                      <ng-template #pestTemplate2>
-                        <div class="col my-3">
-                          <div class="row">
-                            <div class="col-sm-8">
-                              <h3>
-                                {{pestTitle2}}
-                              </h3>
+                        <div class="form-row">
+                          <div class="col-sm-4">Parameter</div>
+                          <div class="col-sm-7">
+                            <div formArrayName="parameters"
+                              *ngFor="let item of dssSelectionForm.get('parameters')['controls']; let i = index;">
+                              <select class="form-control form-control-sm mb-1" [formControlName]="i">
+                                <option *ngFor="let option of cropParameters" [value]="option.value">
+                                  {{ option.label }}
+                                </option>
+                              </select>
                             </div>
-                            <div class="col-sm-4 pl-0 text-right"><i class="fas fa-star" style="color: #2198e9;"></i>
-                              <i class="fas fa-star" style="color: #2198e9;"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i></div>
-
-
-
+                          </div>
+                          <div class="col-sm-1">
+                            <i class="fas fa-plus action-icon v-center pointer" (click)="addParameter()"></i>
                           </div>
                         </div>
+                      </div>
 
-                        <div [innerHtml]="pestTableContent2"></div>
-                      </ng-template>
-                      <i class="fas fa-info-circle ml-2" [popover]="pestTemplate2" placement="right" container="body"
-                        triggers="focus" tabindex="1"></i>
+                      <div class="col-5 d-flex justify-content-end flex-column mb-1">
+                        <button class="btn btn-info btn-sm" (click)="onAddCombinationToTable(dssSelectionForm.value)">
+                          Add to Crop-Pest Combination
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                
-                
-                <div class="my-5"></div>
-                
-                
+                  </fieldset>
+                </form>
+
                 <div class="row">
-                
+
                   <div class="col-12">
                     <div class="table-responsive">
                       <h6 class="bold-600">Crop-pest-DSS combinations</h6>
                       <table class="table table-striped table-bordered">
-                
+
                         <thead>
                           <tr>
                             <th class="text-center" scope="col">Crop</th>
@@ -156,41 +257,29 @@
                           </tr>
                         </thead>
                         <tbody>
-                
-                          <tr>
-                            <td class="text-center">Wheat</td>
-                            <td class="text-center">Aphids</td>
-                            <td class="text-center"><a routerLink="/user/farm/details">Aphids DSS 2</a></td>
+
+                          <tr *ngFor="let item of tblCropPestCombinations">
+                            <td class="text-center">{{ item.crop }}</td>
+                            <td class="text-center">{{ item.pest }}</td>
+                            <td class="text-center"><a routerLink="/user/dss/details">{{ item.dss }}</a></td>
                             <td class="td-actions text-center">
-                              <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Update" title="Update"
-                                routerLink="/user/farm/manage">
+                              <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit"
+                                title="Edit" routerLink="/user/crop/edit">
                                 <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
                               </button>
                             </td>
                           </tr>
-                          <tr>
-                            <td class="text-center">Cerial</td>
-                            <td class="text-center">Pest</td>
-                            <td class="text-center"><a routerLink="/user/farm/details">Cerial DSS x</a></td>
-                            <td class="td-actions text-center">
-                              <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Update" title="Update"
-                                routerLink="/user/farm/manage">
-                                <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
-                              </button>
-                            </td>
-                          </tr>
-                
                         </tbody>
                       </table>
                     </div>
                   </div>
-                
+
                 </div>
 
                 <div class="col mt-3 text-right">
-                  <button class="btn btn-info ml-2">Go to Dashboard actions</button>
+                  <button routerLink="/user/dss/use-dashboard" class="btn btn-info ml-2">Go to DSS Use
+                    dashboard</button>
                 </div>
-
 
               </div>
             </div>
