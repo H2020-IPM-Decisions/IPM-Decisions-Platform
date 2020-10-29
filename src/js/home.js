@@ -218,6 +218,10 @@ function home() {
 
 
   $(document).ready(function() {
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
       $("#news-slider").owlCarousel({
           items : 2,
           itemsDesktop : [1199,2],
