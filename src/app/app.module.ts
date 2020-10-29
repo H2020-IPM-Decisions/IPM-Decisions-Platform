@@ -99,6 +99,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from "ngx-bootstrap/popover";
 import { ToastrModule } from "ngx-toastr";
 import { CropPestCombinationComponent } from './user/components/farm/advanced/crop-pest-combination.component';
+import { FieldAddComponent } from './user/components/field/field-add/field-add.component';
 
 @NgModule({
   declarations: [
@@ -191,6 +192,7 @@ import { CropPestCombinationComponent } from './user/components/farm/advanced/cr
     DevelopersArticleComponent,
     DssSelectionComponent,
     CropPestCombinationComponent,
+    FieldAddComponent,
   ],
   imports: [
     BrowserModule,
