@@ -31,20 +31,15 @@
   <section id="map-content" class="hero-section d-flex align-items-center">
     <i class="fas fa-play-circle" (click)="play()"></i>
     <i class="fas fa-pause-circle" (click)="pause()"></i>
+    <i class="fas fa-search-plus" (click)="zoomIn()"></i>
+    <i class="fas fa-search-minus" (click)="zoomOut()"></i>
     <div class="hero-slider owl-carousel">
       <ng-template ngFor let-picture [ngForOf]="homeSlideshow?.gallery">
-        <div class="hero-item set-bg" [attr.data-setbg]="picture.path | cmsLink">
-          <a [attr.href]="picture.path | cmsLink">
-            <div class="container">
-              <div class="row">
-                <div class="col-xl-8">
-                  <h2>
-                    <span>IPM</span><span>DECISIONS</span><span> Support System Platform</span>
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </a>
+        <div
+          class="hero-item set-bg"
+          [attr.data-setbg]="picture.path | cmsLink"
+          [style.background-size]="sliderImageSize + 'px'"
+        >
         </div>
       </ng-template>
     </div>

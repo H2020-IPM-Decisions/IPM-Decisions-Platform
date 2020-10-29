@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
   dssAdaptation: any = {};
   dssIntegration: any = {};
 
+  sliderImageSize = 300;
   isLoggedIn: boolean;
   state$: Observable<object>;
   collapseDiv: boolean;
@@ -122,5 +123,13 @@ export class HomeComponent implements OnInit {
 
   pause() {
     $('.hero-slider').trigger("stop.owl.autoplay");
+  }
+
+  zoomIn() {
+    this.sliderImageSize = Math.min(this.sliderImageSize + 100, 1000);
+  }
+
+  zoomOut() {
+    this.sliderImageSize = Math.max(this.sliderImageSize - 100, 100);
   }
 }
