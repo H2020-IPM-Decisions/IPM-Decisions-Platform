@@ -942,6 +942,10 @@ span.c-l {
  Clients Section
  ---------------------*/
 
+.clients-section {
+  height: 1000px;
+}
+
 .client-text {
   text-align: justify;
   margin-bottom: 90px;
