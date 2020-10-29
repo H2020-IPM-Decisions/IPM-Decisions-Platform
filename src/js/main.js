@@ -97,7 +97,8 @@ function init() {
 		$('.hero-slider').owlCarousel({
 			nav: false,
 			dots: false,
-			loop: true,
+      loop: false,
+      rewind: true,
 			navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
 			autoplay: true,
 			items: 1,
