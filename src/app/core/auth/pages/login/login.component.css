@@ -6,7 +6,7 @@ div#login {
 }
 div#login-background {
     position: fixed;
-    background-image: linear-gradient(to bottom, #00b09b, #96c93d) !important;
+    background-color: #f6f9fe;
     width: 100%;
     height: 100%;
 }

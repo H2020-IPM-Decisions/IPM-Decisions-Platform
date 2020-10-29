@@ -16,20 +16,48 @@
   max-height: 260px;
 }
 
-.fa-play-circle, .fa-pause-circle {
+.fa-play-circle,
+.fa-pause-circle,
+.fa-search-plus,
+.fa-search-minus {
   position: absolute;
   font-size: 2rem;
   color: gray;
   z-index: 2;
-  bottom: 10px;
-  left:50%;
   cursor: pointer;
 }
 
 .fa-play-circle {
+  bottom: 10px;
+  left:50%;
   transform: translateX(-50%);
 }
 
 .fa-pause-circle {
+  bottom: 10px;
+  left:50%;
   transform: translateX(50%);
+}
+
+.fa-search-plus {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.fa-search-minus {
+  right: 10px;
+  top: 50%;
+  transform: translateY(50%);
+}
+
+.hero-section {
+  position: relative;
+  padding-bottom: 0px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 960px;
+  }
 }

@@ -7,12 +7,13 @@ import { AuthenticationService } from '@app/core/auth/services/authentication.se
 import * as L from 'leaflet';
 import * as esri_geo from "esri-leaflet-geocoder";
 declare var init: any;
+declare var home: any;
 declare var $;
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ["./home.component.css"],
+  styleUrls: ["./home.component.css", "./style.css"],
 })
 export class HomeComponent implements OnInit {
   active: string = "home";
@@ -32,6 +33,7 @@ export class HomeComponent implements OnInit {
   dssAdaptation: any = {};
   dssIntegration: any = {};
 
+  sliderImageSize = 300;
   isLoggedIn: boolean;
   state$: Observable<object>;
   collapseDiv: boolean;
@@ -50,6 +52,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    home();
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;
@@ -120,5 +123,13 @@ export class HomeComponent implements OnInit {
 
   pause() {
     $('.hero-slider').trigger("stop.owl.autoplay");
+  }
+
+  zoomIn() {
+    this.sliderImageSize = Math.min(this.sliderImageSize + 100, 1000);
+  }
+
+  zoomOut() {
+    this.sliderImageSize = Math.max(this.sliderImageSize - 100, 100);
   }
 }

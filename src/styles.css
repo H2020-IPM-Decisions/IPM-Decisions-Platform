@@ -740,6 +740,7 @@ a.dropdown-item {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  background-position: center;
 }
 
 .hero-item h2 {
@@ -942,6 +943,10 @@ span.c-l {
  Clients Section
  ---------------------*/
 
+.clients-section {
+  height: 1000px;
+}
+
 .client-text {
   text-align: justify;
   margin-bottom: 90px;
@@ -999,7 +1004,7 @@ span.c-l {
 .testimonial-box {
   height: calc(100vh - 86px);
   padding: 100px 15px 70px;
-  background: #8bc743;
+  background: #fff;
 }
 
 .testimonial-box .testi-box-warp {
@@ -1008,7 +1013,7 @@ span.c-l {
 }
 
 .testimonial-box h2 {
-  color: #fff;
+  color: #081624;
   font-weight: 300;
   margin-bottom: 40px;
 }
@@ -1024,11 +1029,11 @@ span.c-l {
   height: 8px;
   border-radius: 15px;
   margin-right: 12px;
-  background: #fff;
+  background: #081624;
 }
 
 .testimonial-slider .owl-dots .owl-dot.active {
-  background: #fff;
+  background: #081624;
 }
 
 .testimonial {
@@ -1038,7 +1043,7 @@ span.c-l {
 .testimonial p {
   font-size: 14px;
   margin-bottom: 55px;
-  color: #fff;
+  color: #718090;
 }
 
 .testimonial .testi-thumb {
@@ -1563,7 +1568,6 @@ section#ipm-news {
 }
 
 .info-box {
-  background: #304a5f;
   padding: 60px 39px 58px;
   margin-bottom: 33px;
 }
