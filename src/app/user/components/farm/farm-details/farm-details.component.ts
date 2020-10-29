@@ -1,19 +1,16 @@
-import { ValueConverter } from "@angular/compiler/src/render3/view/template";
 import {
   Component,
   OnInit,
-  ViewChild,
-  ElementRef,
-  AfterViewInit,
+  TemplateRef,
 } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import * as L from "leaflet";
-import { throwIfEmpty } from "rxjs/operators";
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: "app-farm-details",
   templateUrl: "./farm-details.component.html",
   styleUrls: ["./farm-details.component.css"],
+  providers: [BsModalRef]
 })
 export class FarmDetailsComponent implements OnInit {
   elements: any = [];
@@ -26,66 +23,65 @@ export class FarmDetailsComponent implements OnInit {
   // mock: {field: string, crop: string, pest:string}[] = [
   // mock: {field: string, crop: string, pest:string}[] =
   mock = {
-    name: "Farm 1",
+    name: "Heart and Soil Farm",
     address: "15 street, England",
     nearestMetStation: "Met station 1",
     weatherForecast: "Forecast service",
     fields: [
       {
         field: "Field 1",
-        crop: "Cereal",
-        pest: "Aphids-Septoria",
-        variety: "var1",
-        sowingDate: "dd/mm/aaaa",
+        crop: "Wheat",
+        pest: "Aphids",
+        variety: "variety_x",
+        sowingDate: "01/04/2019",
         spraysApplied: [
-          { spray: "Mancozeb", date: "01/03/2019", rate: "2.0" }
+          { spray: "Mancozeb", date: "01/06/2019", rate: "2.0" }
         ],
         listDss: [
-          { name: "DSS 1", parameter: "x-y" },
-          { name: "DSS 2", parameter: "z" },
+          { name: "Aphids DSS1", parameter: "Temperature" },
+          { name: "Aphid DSS2", parameter: "Aphid count" },
         ],
         pestObservation: [
           { pest: "Aphids", date: "16/06/2019", severity: "1" },
           { pest: "Aphids", date: "20/07/2019", severity: "2" },
-          { pest: "Septoria", date: "5/10/2019", severity: "3" }
         ]
       },
       {
         field: "Field 2",
-        crop: "Grapewine",
-        pest: "Pest 2",
-        variety: "var3",
-        sowingDate: "dd/mm/aaaa",
+        crop: "Apple",
+        pest: "Apple scab",
+        variety: "variety_y",
+        sowingDate: "15/05/2019",
         spraysApplied: [
-          { spray: "Pest 13", date: "01/03/2019", rate: "4.0" }
+          { spray: "Pest 13", date: "01/09/2019", rate: "4.0" }
         ],
         listDss: [
-          { name: "DSS 4", parameter: "x-y" },
-          { name: "DSS 3", parameter: "v-v-v" },
+          { name: "VIPS", parameter: "Temperature" },
+          { name: "Apple Scab model", parameter: "humidity" },
         ],
         pestObservation: [
-          { pest: "Aphids", date: "16/06/2019", severity: "5" },
-          { pest: "Aphids", date: "25/03/2019", severity: "4" },
-          { pest: "Septoria", date: "5/10/2019", severity: "3" }
+          { pest: "Apple scab", date: "16/06/2019", severity: "5" },
+          { pest: "Apple scab", date: "25/03/2019", severity: "4" },
+          { pest: "Apple scab", date: "5/10/2019", severity: "3" }
         ]
       },
       {
         field: "Field 3",
-        crop: "Wheat",
-        pest: "Aphids-Septoria",
-        variety: "var33",
-        sowingDate: "dd/mm/aaaa",
+        crop: "Cabbage",
+        pest: "Cabbate moth",
+        variety: "variety_x",
+        sowingDate: "03/05/2019",
         spraysApplied: [
-          { spray: "Mancozeb 2", date: "03/03/2019", rate: "3.0" }
+          { spray: "Mancozeb 2", date: "03/08/2019", rate: "3.0" }
         ],
         listDss: [
-          { name: "DSS 3", parameter: "x-y" },
-          { name: "DSS 4", parameter: "z" },
+          { name: "VIPS", parameter: "z" },
+          { name: "Cabbage moth model", parameter: "x-y" },
         ],
         pestObservation: [
-          { pest: "Septoria", date: "16/06/2019", severity: "3" },
-          { pest: "Septoria", date: "20/07/2019", severity: "3" },
-          { pest: "Septoria", date: "5/10/2019", severity: "4" }
+          { pest: "Cabbate moth", date: "16/06/2019", severity: "3" },
+          { pest: "Cabbate moth", date: "20/07/2019", severity: "3" },
+          { pest: "Cabbate moth", date: "5/10/2019", severity: "4" }
         ]
       },
     ],
@@ -114,9 +110,14 @@ export class FarmDetailsComponent implements OnInit {
   // };
   showDetails: boolean;
   selectedCrop: any;
+  modalRef: BsModalRef;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private modalService: BsModalService) {}
 
+  openModal(template: TemplateRef<any>, field: any) {
+    this.modalRef = this.modalService.show(template);
+    this.showFieldDetails(field);
+  }
   ngOnInit() {
     // this.formInit();
     // this.farmFormInit();
@@ -257,7 +258,7 @@ export class FarmDetailsComponent implements OnInit {
   // }
 
   showFieldDetails(field) {
-    this.showDetails = true;
+    // this.showDetails = true;
     this.selectedCrop = field;
     // console.log("details field", field);
   }

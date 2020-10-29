@@ -64,8 +64,13 @@
                                     <tbody>
                                         <tr *ngFor="let field of mock.fields">
                                             <td class="text-center">{{ field.field }}</td>
-                                            <td class="text-center"><a routerLink="/user/farm/details"
-                                                    (click)="showFieldDetails(field)">{{ field.crop }}</a></td>
+                                            <td class="text-center">
+                                                <a routerLink="/user/farm/details" class="details"
+                                                    (click)="openModal(template, field)">{{ field.crop }}
+                                                    <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
+                                                </a>
+                                                <!-- (click)="showFieldDetails(field)" -->
+                                            </td>
                                             <td class="text-center">{{ field.pest }}</td>
                                             <td class="td-actions text-center py-1">
 
@@ -125,104 +130,132 @@
 
                     </div> <!-- end table row -->
 
-                    <div class="row mt-3" *ngIf="showDetails">
-                        <div class="col-6">
-                            <div class="row mb-4">
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="col-md-6 details-text">Variety:</div>
-                                        <div class="col-md-6">{{ selectedCrop.variety }}</div>
+                    <!-- modal examples -->
+
+
+                    <ng-template #template>
+                        <div class="modal-header">
+                            <h4 class="modal-title pull-left">{{ selectedCrop.crop }} details</h4>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <div class="row mb-4">
+                                        <div class="col-6">
+                                            <div class="row">
+                                                <div class="col-md-6 details-text">Variety:</div>
+                                                <div class="col-md-6">{{ selectedCrop.variety }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 details-text">Sowing date:</div>
+                                                <div class="col-md-6">{{ selectedCrop.sowingDate }}</div>
+                                            </div>
+                                        </div>
                                     </div>
+
                                     <div class="row">
-                                        <div class="col-md-6 details-text">Sowing date:</div>
-                                        <div class="col-md-6">{{ selectedCrop.sowingDate }}</div>
-                                    </div>
+                                        <!-- table row -->
+
+                                        <div class="col-12">
+                                            <div class="table-responsive">
+                                                <h6 class="text-muted size-09">Sprays applied:</h6>
+                                                <table class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center" scope="col">Spray</th>
+                                                            <th class="text-center" scope="col">Date</th>
+                                                            <th class="text-center" scope="col">Rate (kg/ha)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let spray of selectedCrop.spraysApplied">
+                                                            <td class="text-center">{{ spray.spray }}</td>
+                                                            <td class="text-center">{{ spray.date }}</td>
+                                                            <td class="text-center">{{ spray.rate }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div> <!-- end table row -->
+
+
+                                    <div class="row">
+                                        <!-- table row -->
+
+                                        <div class="col-12">
+                                            <div class="table-responsive">
+                                                <h6 class="text-muted size-09">List of DSS:</h6>
+                                                <table class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center" scope="col">Name</th>
+                                                            <th class="text-center" scope="col">Parameters</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let dss of selectedCrop.listDss">
+                                                            <td class="text-center">{{ dss.name }}</td>
+                                                            <td class="text-center">{{ dss.parameter }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div> <!-- end table row -->
+
+
+                                    <div class="row">
+                                        <!-- table row -->
+
+                                        <div class="col-12">
+                                            <div class="table-responsive">
+                                                <h6 class="text-muted size-09">Pest Observations</h6>
+                                                <table class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center" scope="col">Pest</th>
+                                                            <th class="text-center" scope="col">Date</th>
+                                                            <th class="text-center" scope="col">Severity (%)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let observation of selectedCrop.pestObservation">
+                                                            <td class="text-center">{{ observation.pest }}</td>
+                                                            <td class="text-center">{{ observation.date }}</td>
+                                                            <td class="text-center">{{ observation.severity }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div> <!-- end table row -->
+
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <!-- table row -->
-
-                                <div class="col-12">
-                                    <div class="table-responsive">
-                                        <h6 class="text-muted size-09">Sprays applied:</h6>
-                                        <table class="table table-striped table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center" scope="col">Spray</th>
-                                                    <th class="text-center" scope="col">Date</th>
-                                                    <th class="text-center" scope="col">Rate (kg/ha)</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let spray of selectedCrop.spraysApplied">
-                                                    <td class="text-center">{{ spray.spray }}</td>
-                                                    <td class="text-center">{{ spray.date }}</td>
-                                                    <td class="text-center">{{ spray.rate }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                            </div> <!-- end table row -->
-
-
-                            <div class="row">
-                                <!-- table row -->
-
-                                <div class="col-12">
-                                    <div class="table-responsive">
-                                        <h6 class="text-muted size-09">List of DSS:</h6>
-                                        <table class="table table-striped table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center" scope="col">Name</th>
-                                                    <th class="text-center" scope="col">Parameters</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let dss of selectedCrop.listDss">
-                                                    <td class="text-center">{{ dss.name }}</td>
-                                                    <td class="text-center">{{ dss.parameter }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                            </div> <!-- end table row -->
-
-
-                            <div class="row">
-                                <!-- table row -->
-
-                                <div class="col-12">
-                                    <div class="table-responsive">
-                                        <h6 class="text-muted size-09">Pest Observations</h6>
-                                        <table class="table table-striped table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center" scope="col">Pest</th>
-                                                    <th class="text-center" scope="col">Date</th>
-                                                    <th class="text-center" scope="col">Severity (%)</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let observation of selectedCrop.pestObservation">
-                                                    <td class="text-center">{{ observation.pest }}</td>
-                                                    <td class="text-center">{{ observation.date }}</td>
-                                                    <td class="text-center">{{ observation.severity }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                            </div> <!-- end table row -->
-
+                            <div class="">
+                                <button type="button" class="btn btn-info pull-right"
+                                    (click)="modalRef.hide()">Close</button>
+                            </div>
                         </div>
-                    </div>
+                    </ng-template>
+
+
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>
