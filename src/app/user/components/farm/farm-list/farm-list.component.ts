@@ -21,7 +21,7 @@ export class FarmListComponent implements OnInit {
   copyFarm() {
 
     let farm  = {
-      name: "Heart and Soil Farm Copy",
+      name: "Heart and Soil Farm [Copy]",
       inf1: "Address 1" 
     }
     console.log('farm clicked', farm);
