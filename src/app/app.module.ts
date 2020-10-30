@@ -100,6 +100,7 @@ import { PopoverModule } from "ngx-bootstrap/popover";
 import { ToastrModule } from "ngx-toastr";
 import { CropPestCombinationComponent } from './user/components/farm/advanced/crop-pest-combination.component';
 import { FieldAddComponent } from './user/components/field/field-add/field-add.component';
+import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
 
 @NgModule({
   declarations: [
@@ -193,6 +194,7 @@ import { FieldAddComponent } from './user/components/field/field-add/field-add.c
     DssSelectionComponent,
     CropPestCombinationComponent,
     FieldAddComponent,
+    FieldEditComponent,
   ],
   imports: [
     BrowserModule,
