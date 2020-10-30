@@ -1999,8 +1999,26 @@ i.size-11 {
   font-size: 1.1rem;
 }
 
+.size-09 {
+  font-size: .9rem;
+}
+
 .bold-600 {
   font-weight: 600;
+}
+
+.v-center {
+  display: inline-flex;
+  align-items: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+a.disable-link {
+  pointer-events: none;
+  opacity: .5;
 }
 
 /* ----------------

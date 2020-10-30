@@ -11,6 +11,7 @@ import { ToastrService } from "ngx-toastr";
 import * as L from "leaflet";
 import { FarmModel } from "@app/shared/models/farm.model";
 import { FarmLocation } from "@app/shared/models/farm-location.model";
+import { HttpResponse } from "@angular/common/http";
 
 @Component({
   selector: "app-add-farm",
@@ -117,18 +118,18 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
 
     const formValues: FarmModel = this.farmForm.value;
 
-    console.log("farm values", formValues);
-
     this._farmService.createFarm(formValues).subscribe(
-      (addFarmResponse: FarmModel) => {
+      (addFarmResponse: HttpResponse<FarmModel>) => {
         console.log("response", addFarmResponse);
 
-        this._toastr.show(
-          "Farm successfully created!",
-          "Success!",
-          null,
-          "toast-success"
-        );
+        if (addFarmResponse) {
+          this._toastr.show(
+            "Farm successfully created!",
+            "Success!",
+            null,
+            "toast-success"
+          );
+        }
       },
       (error) => {
         console.log("catched error show msg", error);

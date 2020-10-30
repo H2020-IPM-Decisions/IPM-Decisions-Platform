@@ -25,6 +25,7 @@ export class EditAccountComponent implements OnInit {
   isCreated: boolean = false;
   isUpdated: boolean = false;
   userProfile: UserProfileForCreation;
+  imageUrl: string;
 
   constructor(
     private _fb: FormBuilder,
@@ -143,5 +144,20 @@ export class EditAccountComponent implements OnInit {
         }
       );
     }
+  }
+
+  uploadProfileImage(files: FileList) {
+    const file = files.item(0);
+    console.log("file loaders", file);
+
+    let reader = new FileReader();
+    reader.addEventListener("load", (ev: any) => {
+      console.log("event", ev);
+
+      let a = ev.target.result;
+      this.imageUrl = ev.target.result;
+      console.log('dddd', a);
+    });
+    reader.readAsDataURL(file);
   }
 }

@@ -1,6 +1,12 @@
-.page-box {
-  padding: 3%;
-  margin-top: 3%;
-  margin-bottom: 3%;
-  background: #fff;
+.details {
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.details:hover i.icon-toggle {
+  visibility: visible;
+}
+
+.icon-toggle {
+  visibility: hidden;
 }

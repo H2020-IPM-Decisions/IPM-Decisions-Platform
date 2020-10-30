@@ -31,12 +31,15 @@
                   <!-- <div class="col-sm">
                     <h4>Farm list</h4>
                   </div> -->
-                  <div class="col-sm text-right add-farm">
+                  <div class="col-sm text-right">
                     <button type="button" rel="tooltip" class="btn btn-link" routerLink="/user/farm/add">
                       <i class="action-icon fas fa-plus-circle fa-2x"></i> Add Farm
-                    </button> </div>
+                    </button>
+                  </div>
                 </div>
+
                 <div class="table-responsive">
+                  <h6 class="bold-600 text-uppercase">Farm Information Table</h6>
                   <table class="table table-striped table-bordered">
                     <thead>
                       <tr>
@@ -46,52 +49,120 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class="text-center"><a routerLink="/user/farm/details">Farm 1</a></td>
-                        <td class="text-center">Address 1</td>
+                      <!-- <tr *ngFor="let farm of farmList">
+                        <td class="text-center"><a routerLink="/user/farm/crop-pest-combination">{{ farm.name }}</a></td>
+                        <td class="text-center">{{ farm.inf1 }}</td>
                         <td class="td-actions text-center py-1">
                         
                           <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy" title="Copy"
-                            routerLink="/user/farm/list">
+                            routerLink="/user/farm/list" (click)="copyFarm(farm)">
                             <i class="action-icon size-11 fas fa-copy"></i>
                           </button>
 
-                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Update" title="Update"
-                            routerLink="/user/farm/manage">
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit" title="Edit"
+                            routerLink="/user/farm/edit">
                             <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
                           </button>
+
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Details" title="Details"
+                            routerLink="/user/farm/details">
+                            <i class="action-icon light-blue-icon size-11 fas fa-eye"></i>
+                          </button>
+                        </td>
+                      </tr> -->
+                      <tr>
+                        <td class="text-center">Heart and Soil Farm</td>
+                        <td class="text-center">Address 1</td>
+                        <td class="td-actions text-center py-1">
+
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy"
+                            title="Copy" (click)="copyFarm()">
+                            <i class="action-icon size-11 fas fa-copy"></i>
+                          </button>
+
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit"
+                            title="Edit" routerLink="/user/farm/edit">
+                            <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
+                          </button>
+
+                          <!-- <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Details"
+                            title="Details" routerLink="/user/farm/details">
+                            <i class="action-icon size-11 fas fa-eye"></i>
+                          </button> -->
                         </td>
                       </tr>
                       <tr>
-                        <td class="text-center"><a routerLink="/user/farm/details">Farm 2</a></td>
+                        <td class="text-center">Happy Farm</td>
                         <td class="text-center">Address 2</td>
                         <td class="td-actions text-center">
-                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy" title="Copy"
-                            routerLink="/user/farm/list">
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy"
+                            title="Copy" (click)="copyFarm()">
                             <i class="action-icon size-11 fas fa-copy"></i>
                           </button>
 
-                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Update" title="Update"
-                            routerLink="/user/farm/manage">
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Update"
+                            title="Update" routerLink="/user/farm/edit">
                             <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
                           </button>
+
+                          <!-- <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Details"
+                            title="Details" routerLink="/user/farm/details">
+                            <i class="action-icon size-11 fas fa-eye"></i>
+                          </button> -->
                         </td>
                       </tr>
                       <tr>
-                        <td class="text-center"><a routerLink="/user/farm/details">Farm 3</a></td>
+                        <td class="text-center">Ocean view Farm</td>
                         <td class="text-center">Address 3</td>
                         <td class="td-actions text-center">
-                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy" title="Copy"
-                            routerLink="/user/farm/list">
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy"
+                            title="Copy" (click)="copyFarm()">
                             <i class="action-icon size-11 fas fa-copy"></i>
                           </button>
 
-                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Update" title="Update"
-                            routerLink="/user/farm/manage">
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit"
+                            title="Edit" routerLink="/user/farm/edit">
                             <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
                           </button>
+
+                          <!-- <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Details"
+                            title="Details" routerLink="/user/farm/details">
+                            <i class="action-icon size-11 fas fa-eye"></i> 
+
+                          </button>-->
                         </td>
                       </tr>
+
+
+
+
+                      <tr *ngFor="let farm of farmList">
+                        <!-- <div *ngIf="farmList.length > 0"> -->
+                        <td class="text-center">{{ farm.name }}</td>
+                        <td class="text-center">{{ farm.inf1 }}</td>
+                        <td class="td-actions text-center py-1">
+
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy"
+                            title="Copy" routerLink="/user/farm/list" (click)="copyFarm(farm)">
+                            <i class="action-icon size-11 fas fa-copy"></i>
+                          </button>
+
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit"
+                            title="Edit" routerLink="/user/farm/edit">
+                            <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
+                          </button>
+
+                          <!-- <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Details" title="Details"
+                            routerLink="/user/farm/details">
+                            <i class="action-icon light-blue-icon size-11 fas fa-eye"></i>
+                          </button> -->
+                        </td>
+                        <!-- </div> -->
+                      </tr>
+
+
+
+
                     </tbody>
                   </table>
                 </div>

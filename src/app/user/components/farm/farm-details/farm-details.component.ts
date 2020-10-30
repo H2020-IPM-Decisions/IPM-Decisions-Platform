@@ -1,19 +1,16 @@
-import { ValueConverter } from "@angular/compiler/src/render3/view/template";
 import {
   Component,
   OnInit,
-  ViewChild,
-  ElementRef,
-  AfterViewInit,
+  TemplateRef,
 } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import * as L from "leaflet";
-import { throwIfEmpty } from "rxjs/operators";
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: "app-farm-details",
   templateUrl: "./farm-details.component.html",
   styleUrls: ["./farm-details.component.css"],
+  providers: [BsModalRef]
 })
 export class FarmDetailsComponent implements OnInit {
   elements: any = [];
@@ -23,52 +20,125 @@ export class FarmDetailsComponent implements OnInit {
   farmForm: FormGroup;
   canEdit: boolean = false;
 
-  private map: L.Map;
-  @ViewChild("map", { static: false }) private mapContainer: ElementRef<
-    HTMLElement
-  >;
-
-  locations: any = [
-    {
-      metStationName: "Met. Station_1",
-      metStationCoords: { lat: 11.8166, lng: 122.0942 },
-    },
-    {
-      metStationName: "Met. Station_2",
-      metStationCoords: { lat: 11.9804, lng: 121.9189 },
-    },
-  ];
-
-  farm: any = {
-    id: 123,
-    farmCoords: { lat: 11.8804, lng: 121.9189 },
-    name: "My Farm",
+  // mock: {field: string, crop: string, pest:string}[] = [
+  // mock: {field: string, crop: string, pest:string}[] =
+  mock = {
+    name: "Heart and Soil Farm",
+    address: "15 street, England",
+    nearestMetStation: "Met station 1",
+    weatherForecast: "Forecast service",
+    fields: [
+      {
+        field: "Field 1",
+        crop: "Wheat",
+        pest: "Aphids",
+        variety: "variety_x",
+        sowingDate: "01/04/2019",
+        spraysApplied: [
+          { spray: "Mancozeb", date: "01/06/2019", rate: "2.0" }
+        ],
+        listDss: [
+          { name: "Aphids DSS1", parameter: "Temperature" },
+          { name: "Aphid DSS2", parameter: "Aphid count" },
+        ],
+        pestObservation: [
+          { pest: "Aphids", date: "16/06/2019", severity: "1" },
+          { pest: "Aphids", date: "20/07/2019", severity: "2" },
+        ]
+      },
+      {
+        field: "Field 2",
+        crop: "Apple",
+        pest: "Apple scab",
+        variety: "variety_y",
+        sowingDate: "15/05/2019",
+        spraysApplied: [
+          { spray: "Pest 13", date: "01/09/2019", rate: "4.0" }
+        ],
+        listDss: [
+          { name: "VIPS", parameter: "Temperature" },
+          { name: "Apple Scab model", parameter: "humidity" },
+        ],
+        pestObservation: [
+          { pest: "Apple scab", date: "16/06/2019", severity: "5" },
+          { pest: "Apple scab", date: "25/03/2019", severity: "4" },
+          { pest: "Apple scab", date: "5/10/2019", severity: "3" }
+        ]
+      },
+      {
+        field: "Field 3",
+        crop: "Cabbage",
+        pest: "Cabbate moth",
+        variety: "variety_x",
+        sowingDate: "03/05/2019",
+        spraysApplied: [
+          { spray: "Mancozeb 2", date: "03/08/2019", rate: "3.0" }
+        ],
+        listDss: [
+          { name: "VIPS", parameter: "z" },
+          { name: "Cabbage moth model", parameter: "x-y" },
+        ],
+        pestObservation: [
+          { pest: "Cabbate moth", date: "16/06/2019", severity: "3" },
+          { pest: "Cabbate moth", date: "20/07/2019", severity: "3" },
+          { pest: "Cabbate moth", date: "5/10/2019", severity: "4" }
+        ]
+      },
+    ],
   };
 
-  constructor(private fb: FormBuilder) {}
+  // private map: L.Map;
+  // @ViewChild("map", { static: false }) private mapContainer: ElementRef<
+  //   HTMLElement
+  // >;
 
+  // locations: any = [
+  //   {
+  //     metStationName: "Met. Station_1",
+  //     metStationCoords: { lat: 11.8166, lng: 122.0942 },
+  //   },
+  //   {
+  //     metStationName: "Met. Station_2",
+  //     metStationCoords: { lat: 11.9804, lng: 121.9189 },
+  //   },
+  // ];
+
+  // farm: any = {
+  //   id: 123,
+  //   farmCoords: { lat: 11.8804, lng: 121.9189 },
+  //   name: "My Farm",
+  // };
+  showDetails: boolean;
+  selectedCrop: any;
+  modalRef: BsModalRef;
+
+  constructor(private fb: FormBuilder, private modalService: BsModalService) {}
+
+  openModal(template: TemplateRef<any>, field: any) {
+    this.modalRef = this.modalService.show(template);
+    this.showFieldDetails(field);
+  }
   ngOnInit() {
-    this.formInit();
-    this.farmFormInit();
-
-    this.elements.push({
-      field: "Big field",
-      type: "Oilseed",
-      variety: "KWS ",
-      sowing_date: "24/09/2020",
-    });
-    this.elements.push({
-      field: "Middle field",
-      type: "Wheat",
-      variety: "Leeds ",
-      sowing_date: "20/09/2020",
-    });
-    this.elements.push({
-      field: "Small field",
-      type: "Brassica",
-      variety: "Zulu ",
-      sowing_date: "24/07/2020",
-    });
+    // this.formInit();
+    // this.farmFormInit();
+    // this.elements.push({
+    //   field: "Big field",
+    //   type: "Oilseed",
+    //   variety: "KWS ",
+    //   sowing_date: "24/09/2020",
+    // });
+    // this.elements.push({
+    //   field: "Middle field",
+    //   type: "Wheat",
+    //   variety: "Leeds ",
+    //   sowing_date: "20/09/2020",
+    // });
+    // this.elements.push({
+    //   field: "Small field",
+    //   type: "Brassica",
+    //   variety: "Zulu ",
+    //   sowing_date: "24/07/2020",
+    // });
     // for (let i = 1; i <= 7; i++) {
     //   this.elements.push({ field: i, type: 'Crop Type ' + i, variety: 'Crop Variety ' + i, sowing_date: 'Sowing Date ' + i });
     // }
@@ -86,7 +156,7 @@ export class FarmDetailsComponent implements OnInit {
 
   private farmFormInit() {
     this.farmForm = this.fb.group({
-      name: [this.farm.name, Validators.required],
+      // name: [this.farm.name, Validators.required],
       // sowingDate: ['', Validators.required]
     });
   }
@@ -95,110 +165,109 @@ export class FarmDetailsComponent implements OnInit {
     return this.cropPestForm.controls;
   }
   ngAfterViewInit(): void {
-    this.initMap();
+    // this.initMap();
   }
 
-  private initMap(): void {
-    const initialState = {
-      lng: 0,
-      lat: 0,
-      zoom: 9
-    };
-    const map = new L.Map(this.mapContainer.nativeElement).setView(
-      [initialState.lat, initialState.lng],
-      initialState.zoom
-    );
+  // private initMap(): void {
+  //   const initialState = {
+  //     lng: 0,
+  //     lat: 0,
+  //     zoom: 9
+  //   };
+  //   const map = new L.Map(this.mapContainer.nativeElement).setView(
+  //     [initialState.lat, initialState.lng],
+  //     initialState.zoom
+  //   );
 
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
+  //   const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //     maxZoom: 19,
+  //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  //   });
 
-    tiles.addTo(map);
+  //   tiles.addTo(map);
 
-    // one marker
-    // L.marker([51.5, -0.09]).addTo(map).bindPopup("Farm name").openPopup();
+  //   // one marker
+  //   // L.marker([51.5, -0.09]).addTo(map).bindPopup("Farm name").openPopup();
 
-    map.fitBounds([
-      [11.5804, 121.5189],
-      [11.9804, 121.9189]
-    ]);
+  //   map.fitBounds([
+  //     [11.5804, 121.5189],
+  //     [11.9804, 121.9189]
+  //   ]);
 
+  //   // farm marker
 
-    // farm marker
+  //   const farmIcon = L.divIcon({
+  //     html: '<i class="fas fa-home fa-3x"></i>',
+  //     iconSize: [20, 20],
+  //     className: 'myDivIcon'
+  //   });
 
-    const farmIcon = L.divIcon({
-      html: '<i class="fas fa-home fa-3x"></i>',
-      iconSize: [20, 20],
-      className: 'myDivIcon'
-    });
+  //   L.marker(this.farm.farmCoords, { icon: farmIcon }).addTo(map).bindPopup(this.farm.name);
 
-    L.marker(this.farm.farmCoords, { icon: farmIcon }).addTo(map).bindPopup(this.farm.name);
+  //   // L.circle(this.farm.farmCoords, {
+  //   //   color: 'red',
+  //   //   fillColor: '#f03',
+  //   //   fillOpacity: 0.5,
+  //   //   radius: 500
+  //   // }).addTo(map).bindPopup(this.farm.name);
 
-    // L.circle(this.farm.farmCoords, {
-    //   color: 'red',
-    //   fillColor: '#f03',
-    //   fillOpacity: 0.5,
-    //   radius: 500
-    // }).addTo(map).bindPopup(this.farm.name);
+  //   // many markers
+  //   this.locations.forEach((location) => {
+  //     L.marker(location.metStationCoords).addTo(map).bindPopup(location.metStationName);
+  //   });
 
+  //   this.setMarkerLocation(map);
 
-    // many markers
-    this.locations.forEach((location) => {
-      L.marker(location.metStationCoords).addTo(map).bindPopup(location.metStationName);
-    });
+  // }
 
+  // setMarkerLocation(map: any) {
+  //   var marker;
+  //   map.on('click', function (e) {
+  //     if (marker)
+  //       map.removeLayer(marker);
+  //     console.log(e); // e is an event object (MouseEvent in this case)
+  //     console.log(e.latlng); // e is an event object (MouseEvent in this case)
+  //     marker = L.marker(e.latlng).addTo(map);
 
-    this.setMarkerLocation(map);
+  //     // { metStationName: "Met. Station_1", metStationCoords: { lat: 11.8166, lng: 122.0942 } },
+  //     this.farm.metStationCoords = e.latlng;
+  //     console.log(this.farm.metStationCoords); // e is an event object (MouseEvent in this case)
+  //   });
+  // }
 
+  // addToFarm() {
+  //   if (this.cropPestForm.invalid) { return; }
+
+  //   const val: CropPest = this.cropPestForm.value;
+
+  //   if (val.sowingDate) {
+  //     val.sowingDate = new Date(val.sowingDate).toLocaleDateString('en-GB').split(",")[0];
+  //   }
+
+  //   this.elements.push({ field: val.fieldName, type: val.crop, variety: val.variety, sowing_date: val.sowingDate });
+  // }
+
+  // editFarm(farmId: string) {
+  //   console.log("farm ", farmId);
+  //   this.canEdit = !this.canEdit;
+
+  //   const farmValues = this.farmForm.value;
+
+  //   this.farm.name = farmValues.name;
+  //   console.log("va", this.farm.name);
+  // }
+
+  showFieldDetails(field) {
+    // this.showDetails = true;
+    this.selectedCrop = field;
+    // console.log("details field", field);
   }
-
-  setMarkerLocation(map: any) {
-    var marker;
-    map.on('click', function (e) {
-      if (marker)
-        map.removeLayer(marker);
-      console.log(e); // e is an event object (MouseEvent in this case)
-      console.log(e.latlng); // e is an event object (MouseEvent in this case)
-      marker = L.marker(e.latlng).addTo(map);
-
-      // { metStationName: "Met. Station_1", metStationCoords: { lat: 11.8166, lng: 122.0942 } },
-      this.farm.metStationCoords = e.latlng;
-      console.log(this.farm.metStationCoords); // e is an event object (MouseEvent in this case)
-    });
-  }
-
-
-  addToFarm() {
-    if (this.cropPestForm.invalid) { return; }
-
-    const val: CropPest = this.cropPestForm.value;
-
-    if (val.sowingDate) {
-      val.sowingDate = new Date(val.sowingDate).toLocaleDateString('en-GB').split(",")[0];
-    }
-
-    this.elements.push({ field: val.fieldName, type: val.crop, variety: val.variety, sowing_date: val.sowingDate });
-  }
-
-  editFarm(farmId: string) {
-    console.log("farm ", farmId);
-    this.canEdit = !this.canEdit;
-
-    const farmValues = this.farmForm.value;
-
-    this.farm.name = farmValues.name;
-    console.log("va", this.farm.name);
-  }
-
-
-
 }
 
-interface CropPest {
-  crop: string,
-  pest: string,
-  fieldName: string,
-  variety: string,
-  sowingDate: string
-}
+// interface CropPest {
+//   crop: string,
+//   pest: string,
+//   fieldName: string,
+//   variety: string,
+//   sowingDate: string
+// }
