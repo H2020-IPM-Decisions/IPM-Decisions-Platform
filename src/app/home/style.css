@@ -1947,11 +1947,13 @@ section#about p {
 }
 
 .post-slide8 .post-content {
-    padding: 30px
+    padding: 15px 30px;
+    height: 230px;
 }
 
 .post-slide8 .post-title {
-    margin: 0 0 15px 0
+    margin: 0 0 15px 0;
+    font-size: 1.6rem;
 }
 
 .post-slide8 .post-title a {

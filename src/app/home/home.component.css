@@ -56,6 +56,13 @@
   padding-bottom: 0px;
 }
 
+.slider-text {
+  position: absolute;
+  z-index: 2;
+  bottom: 10px;
+  left: 5%;
+}
+
 @media (min-width: 768px) {
   .container {
     max-width: 960px;
