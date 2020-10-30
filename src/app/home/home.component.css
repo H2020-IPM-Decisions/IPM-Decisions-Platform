@@ -62,9 +62,3 @@
   bottom: 10px;
   left: 5%;
 }
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 960px;
-  }
-}

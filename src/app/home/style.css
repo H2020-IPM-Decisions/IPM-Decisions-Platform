@@ -704,7 +704,7 @@ section {
 # Featured Services
 --------------------------------------------------------------*/
 .featured-services .icon-box {
-    padding: 30px;
+    padding: 25px 20px;
     position: relative;
     overflow: hidden;
     background: #fff;
@@ -1948,7 +1948,7 @@ section#about p {
 
 .post-slide8 .post-content {
     padding: 15px 30px;
-    height: 230px;
+    height: 228px;
 }
 
 .post-slide8 .post-title {
