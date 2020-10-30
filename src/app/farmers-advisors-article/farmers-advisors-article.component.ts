@@ -6,7 +6,7 @@ declare var init: any;
 @Component({
   selector: 'app-farmers-advisors-article',
   templateUrl: './farmers-advisors-article.component.html',
-  styleUrls: ['./farmers-advisors-article.component.css']
+  styleUrls: ['./farmers-advisors-article.component.css', '../home/./style.css']
 })
 export class FarmersAdvisorsArticleComponent implements OnInit {
 

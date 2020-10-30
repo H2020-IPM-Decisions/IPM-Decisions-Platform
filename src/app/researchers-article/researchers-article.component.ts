@@ -6,7 +6,7 @@ declare var init: any;
 @Component({
   selector: 'app-researchers-article',
   templateUrl: './researchers-article.component.html',
-  styleUrls: ['./researchers-article.component.css']
+  styleUrls: ['./researchers-article.component.css', '../home/./style.css']
 })
 export class ResearchersArticleComponent implements OnInit {
 

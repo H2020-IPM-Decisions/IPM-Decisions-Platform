@@ -43,4 +43,29 @@
   </div>
 </section>
 
-<app-footer></app-footer>
+<footer id="footer">
+
+  <div class="container py-4">
+      <div class="row">
+          <div class="col-lg-4 col-md-4 eu-flag">
+              <img src="img/logo-euro.jpg" style="float: left;
+display: inline-grid;
+margin-right: 5px;">
+              <p>Co-funded by the Horizon 2020<br>Framework Programme of the European Union<br>Under grant agreement No 817617</p>
+          </div>
+          <div class="col-lg-4 col-md-4 ">
+              <p>Project lead:<br>Neil Paveley (neil.paveley@adas.co.uk)</p>
+              <p>Technical contacts:<br>Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
+              <p>Tor-Einar Skog (tor-einar.skog@nibio.no)</p>
+              <p>General enquiries:<br>IPMDecisions@adas.co.uk</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 ">
+              <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+          </div>
+      </div>
+  </div>
+  <div class="copyright">
+      © 2020 <b>All Rights Reserved Engineering</b> <br>VAT: 05724831002
+  </div>
+</footer><!-- End Footer -->
