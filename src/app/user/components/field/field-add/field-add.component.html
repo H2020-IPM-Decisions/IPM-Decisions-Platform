@@ -7,7 +7,8 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
                     <li class="breadcrumb-item"><a routerLink="/user/farm/list">Farm List</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Add new field</li>
+                    <li class="breadcrumb-item"><a routerLink="/user/farm/edit">Edit Farm</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Add Field</li>
                 </ol>
             </nav>
             <div class="app-main__inner">
@@ -19,7 +20,7 @@
                                 <i class="pe-7s-leaf icon-gradient bg-mean-fruit">
                                 </i>
                             </div>
-                            <div>Add new field</div>
+                            <div>Add Field</div>
                         </div>
                     </div>
                 </div>
@@ -98,114 +99,121 @@
 
                     </div>-->
                     <!-- end table -->
+                    <h6 class="bold-600 text-uppercase">Add crop/pest combination</h6>
 
                     <fieldset class="border p-2">
-                        <div class="row">
-                            <div class="col-12">
+                        <form [formGroup]="addFieldForm">
+                            <div class="row">
+                                <div class="col-12">
+                                    <fieldset class="border p-3">
+                                        <legend class="w-auto px-1 text-muted">Step 1: Select crop and pest</legend>
 
-                                <fieldset class="border p-3">
-                                    <legend class="w-auto px-1 text-muted">Step 1: Select crop and pest</legend>
-
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="form-group row">
-                                                <label for="field" class="col-sm-2 col-form-label">Crop</label>
-                                                <div class="col-sm-10">
-                                                    <select class="form-control" id="crop">
-                                                        <option value="Wheat">Wheat</option>
-                                                        <option value="Cabbage">Cabbage</option>
-                                                        <option value="Apple">Apple</option>
-                                                        <option value="Carrot">Carrot</option>
-                                                    </select>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="form-group row">
+                                                    <label for="field" class="col-sm-2 col-form-label">Crop</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control" id="crop" formControlName="crop">
+                                                            <option value="Wheat">Wheat</option>
+                                                            <option value="Cabbage">Cabbage</option>
+                                                            <option value="Apple">Apple</option>
+                                                            <option value="Carrot">Carrot</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group row">
+                                                    <label for="variety" class="col-sm-2 col-form-label">Pest</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control" id="pest" formControlName="pest">
+                                                            <option value="Aphids">Aphids</option>
+                                                            <option value="Septoria">Septoria</option>
+                                                            <option value="Cabbage moth">Cabbage moth</option>
+                                                            <option value="Apple scab">Apple scab</option>
+                                                            <option value="Carrot rust fly">Carrot rust fly</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-4">
-                                            <div class="form-group row">
-                                                <label for="variety" class="col-sm-2 col-form-label">Pest</label>
-                                                <div class="col-sm-10">
-                                                    <select class="form-control" id="pest">
-                                                        <option value="Aphids">Aphids</option>
-                                                        <option value="Septoria">Septoria</option>
-                                                        <option value="Cabbate moth">Cabbate moth</option>
-                                                        <option value="Apple scab">Apple scab</option>
-                                                        <option value="Carrot rust fly">Carrot rust fly</option>
-                                                    </select>
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-12 mt-4">
+                                    <fieldset class="border p-3">
+                                        <legend class="w-auto px-1 text-muted">Step 2: Select field, wariety and sowing
+                                            date
+                                        </legend>
+                                        <div class="form-row">
+                                            <div class="col-4">
+                                                <div class="form-group row">
+                                                    <label for="field" class="col-sm-2 col-form-label">Field</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control" id="field" formControlName="field">
+                                                            <option value="Field 1">Field 1</option>
+                                                            <option value="Field 2">Field 2</option>
+                                                            <option value="Field 3">Field 3</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
-
-                            </div>
-
-                            <div class="col-12 mt-4">
-
-                                <fieldset class="border p-3">
-                                    <legend class="w-auto px-1 text-muted">Step 2: Select field, wariety and sowing date
-                                    </legend>
-                                    <div class="form-row">
-                                        <div class="col-4">
-                                            <div class="form-group row">
-                                                <label for="field" class="col-sm-2 col-form-label">Field</label>
-                                                <div class="col-sm-10">
-                                                    <select class="form-control" id="field">
-                                                        <option value="Field 1">Field 1</option>
-                                                        <option value="Field 2">Field 2</option>
-                                                        <option value="Field 3">Field 3</option>
-                                                    </select>
+                                            <div class="col-4">
+                                                <div class="form-group row">
+                                                    <label for="variety" class="col-sm-2 col-form-label">Variety</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control" id="variety"
+                                                            formControlName="variety">
+                                                            <option value="Variety_x">Variety_x</option>
+                                                            <option value="Variety_y">Variety_y</option>
+                                                            <option value="Variety_z">Variety_z</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="form-group row">
-                                                <label for="variety" class="col-sm-2 col-form-label">Variety</label>
-                                                <div class="col-sm-10">
-                                                    <select class="form-control" id="variety">
-                                                        <option value="Variety_x">Variety_x</option>
-                                                        <option value="Variety_y">Variety_y</option>
-                                                        <option value="Variety_z">Variety_z</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="form-group row">
-                                                <label for="sowing-date" class="col-auto pr-0 col-form-label">Sowing
-                                                    date</label>
-                                                <div class="col-sm-8 input-group">
-                                                    <input type="text" class="form-control" id="sowing-date"
-                                                        bsDatepicker placeholder="dd/mm/yyyy"
-                                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}">
-                                                    <div class=" input-group-append">
-                                                        <div class="input-group-text">
-                                                            <i class="far fa-calendar-alt fa-lg"></i>
+                                            <div class="col-4">
+                                                <div class="form-group row">
+                                                    <label for="sowing-date" class="col-auto pr-0 col-form-label">Sowing
+                                                        date</label>
+                                                    <div class="col-sm-8 input-group">
+                                                        <input type="text" class="form-control" id="sowing-date"
+                                                            formControlName="sowingDate" bsDatepicker
+                                                            placeholder="dd/mm/yyyy"
+                                                            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}">
+                                                        <div class=" input-group-append">
+                                                            <div class="input-group-text">
+                                                                <i class="far fa-calendar-alt fa-lg"></i>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </fieldset>
-
+                                    </fieldset>
+                                </div>
                             </div>
+                        </form>
 
-                        </div>
                         <div class="row">
-                            <div class="col-md-12 mt-3">
-                                <button class="btn btn-success pull-right col-2" (click)="onAddField()">
-                                    <!-- <i class="far fa-save fa-lg mr-1"></i> -->
+
+
+                            <div class="col-md-12 mt-3 d-flex justify-content-end">
+
+                                <a class="btn btn-link mr-4" routerLink="/user/farm/edit">
+                                    Cancel</a>
+                                <button class="btn btn-info col-2" (click)="onAddField()">
                                     Save</button>
                             </div>
                         </div>
+
                     </fieldset>
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-12 mt-4 mr-0">
                             <a routerLink="/user/farm/crop-pest-combination" class="btn btn-info pull-right">
                                 Go to DSS Selection</a>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
