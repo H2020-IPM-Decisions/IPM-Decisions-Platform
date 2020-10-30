@@ -84,7 +84,7 @@ export class DssSelectionComponent implements OnInit {
 
     this.tblCropPestCombinations = [
       { crop: "Wheat", pest: "Aphids", dss: "Aphids DSS1" },
-      { crop: "Cabbage", pest: "Cabbate moth", dss: "VIPS, Cabbage moth model" },
+      // { crop: "Cabbage", pest: "Cabbage moth", dss: "VIPS, Cabbage moth model" },
     ];
 
     this.chkPestList[0] = [
