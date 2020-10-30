@@ -11,7 +11,7 @@ import { ToastrService } from "ngx-toastr";
 import * as L from "leaflet";
 import { FarmModel } from "@app/shared/models/farm.model";
 import { FarmLocation } from "@app/shared/models/farm-location.model";
-import { HttpResponse } from '@angular/common/http';
+import { HttpResponse } from "@angular/common/http";
 
 @Component({
   selector: "app-add-farm",
@@ -24,7 +24,6 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     HTMLElement
   >;
   farmForm: FormGroup;
-  canRedirect: boolean = true;
   constructor(
     private _fb: FormBuilder,
     private _farmService: FarmService,
@@ -130,7 +129,6 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
             null,
             "toast-success"
           );
-          this.canRedirect = false;
         }
       },
       (error) => {
