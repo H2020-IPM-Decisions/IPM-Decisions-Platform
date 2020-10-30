@@ -1,11 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, TemplateRef } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import L from "leaflet";
+import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 
 @Component({
   selector: "app-edit-farm",
   templateUrl: "./edit-farm.component.html",
   styleUrls: ["./edit-farm.component.css"],
+  providers: [BsModalRef],
 })
 export class EditFarmComponent implements OnInit {
   // elements: any = [];
@@ -19,6 +20,67 @@ export class EditFarmComponent implements OnInit {
   editFarmForm: FormGroup;
   fieldDetailsForm: FormGroup;
   fieldDetailsTbl: FieldModel[] = [];
+
+  mock = {
+    name: "Heart and Soil Farm",
+    address: "15 street, England",
+    nearestMetStation: "Met station 1",
+    weatherForecast: "Forecast service",
+    fields: [
+      {
+        field: "Field 1",
+        crop: "Wheat",
+        pest: "Aphids",
+        variety: "variety_x",
+        sowingDate: "01/04/2019",
+        spraysApplied: [{ spray: "Mancozeb", date: "01/06/2019", rate: "2.0" }],
+        listDss: [
+          { name: "Aphids DSS1", parameter: "Temperature" },
+          { name: "Aphid DSS2", parameter: "Aphid count" },
+        ],
+        pestObservation: [
+          { pest: "Aphids", date: "16/06/2019", severity: "1" },
+          { pest: "Aphids", date: "20/07/2019", severity: "2" },
+        ],
+      },
+      {
+        field: "Field 2",
+        crop: "Apple",
+        pest: "Apple scab",
+        variety: "variety_y",
+        sowingDate: "15/05/2019",
+        spraysApplied: [{ spray: "Pest 13", date: "01/09/2019", rate: "4.0" }],
+        listDss: [
+          { name: "VIPS", parameter: "Temperature" },
+          { name: "Apple Scab model", parameter: "humidity" },
+        ],
+        pestObservation: [
+          { pest: "Apple scab", date: "16/06/2019", severity: "5" },
+          { pest: "Apple scab", date: "25/03/2019", severity: "4" },
+          { pest: "Apple scab", date: "5/10/2019", severity: "3" },
+        ],
+      },
+      {
+        field: "Field 3",
+        crop: "Cabbage",
+        pest: "Cabbage moth",
+        variety: "variety_x",
+        sowingDate: "03/05/2019",
+        spraysApplied: [
+          { spray: "Mancozeb 2", date: "03/08/2019", rate: "3.0" },
+        ],
+        listDss: [
+          { name: "VIPS", parameter: "z" },
+          { name: "Cabbage moth model", parameter: "x-y" },
+        ],
+        pestObservation: [
+          { pest: "Cabbage moth", date: "16/06/2019", severity: "3" },
+          { pest: "Cabbage moth", date: "20/07/2019", severity: "3" },
+          { pest: "Cabbage moth", date: "5/10/2019", severity: "4" },
+        ],
+      },
+    ],
+  };
 
   // private map: L.Map;
   // @ViewChild("map", { static: false }) private mapContainer: ElementRef<
@@ -41,8 +103,21 @@ export class EditFarmComponent implements OnInit {
   //   farmCoords: { lat: 11.8804, lng: 121.9189 },
   //   name: "My Farm",
   // };
+  modalRef: BsModalRef;
+  selectedCrop: any;
 
-  constructor(private _fb: FormBuilder) {}
+  constructor(private _fb: FormBuilder, private modalService: BsModalService) {}
+
+  openModal(template: TemplateRef<any>, field: any) {
+    this.modalRef = this.modalService.show(template);
+    this.showFieldDetails(field);
+  }
+
+  showFieldDetails(field) {
+    // this.showDetails = true;
+    this.selectedCrop = field;
+    // console.log("details field", field);
+  }
 
   ngOnInit() {
     this.initEditFarmForm();
@@ -110,13 +185,13 @@ export class EditFarmComponent implements OnInit {
   }
 
   onAddFieldDetails() {
-    const valuesToAdd:FieldModel = this.fieldDetailsForm.value;
+    const valuesToAdd: FieldModel = this.fieldDetailsForm.value;
 
     console.log("changed values from form", valuesToAdd);
 
     this.fieldDetailsTbl.push(valuesToAdd);
-    console.log('array filed', this.fieldDetailsTbl);
-    
+    console.log("array filed", this.fieldDetailsTbl);
+
     // call service and edit
   }
 
@@ -229,8 +304,6 @@ export class EditFarmComponent implements OnInit {
   //   this.farm.name = farmValues.name;
   //   console.log("va", this.farm.name);
   // }
-
-
 }
 
 interface FieldModel {
