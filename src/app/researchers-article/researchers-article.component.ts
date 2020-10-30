@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CMSService } from '@app/shared/services/cms.service';
 declare var init: any;
+declare var home: any;
 
 @Component({
   selector: 'app-researchers-article',
@@ -18,6 +19,7 @@ export class ResearchersArticleComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    home();
     let cmsService = this.cmsService;
     let promises = [
       cmsService.getBanner()
