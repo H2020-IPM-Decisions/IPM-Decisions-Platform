@@ -6,8 +6,10 @@
         <div id="login-box" class="col-md-12">
 
           <div class="tab-content">
+            <br>
+            <a routerLink="/"><img style="margin: 0 auto; display: block;" alt="Logo Ipm Decisions" src="img/logo-ipm-decision.png" title="Logo IPM" class="text-center"></a>
+            <br>
             <div class="tab-pane active" id="login-form" role="tabpanel">
-
               <div *ngIf="!forgotPass">
                 <!-- <div class="alert alert-danger" *ngIf="errors.length">
                       <p *ngFor="let error of errors">{{ error }}</p>
@@ -16,9 +18,6 @@
                       <span>Account successfully verified! Please, log in into your account.</span>
                     </div> -->
                 <form [formGroup]="loginForm" (ngSubmit)="onLogin()" id="login-form" class="form">
-                  <br>
-                  <a routerLink="/"><img style="margin: 0 auto; display: block;" alt="Logo Ipm Decisions" src="img/logo-ipm-decision.png" title="Logo IPM" class="text-center"></a>
-                  <br>
                   <div class="form-group">
                     <label class="text-info">Email</label>
                     <input type="text" formControlName="email" class="form-control"
@@ -52,9 +51,7 @@
               <register></register>
             </div>
             <div class="tab-pane" id="forgot-password" role="tabpanel">
-
               <forget-password></forget-password>
-
             </div>
           </div>
           <ul class="nav nav-justified" id="login-register-nav">

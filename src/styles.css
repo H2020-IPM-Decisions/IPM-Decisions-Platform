@@ -944,7 +944,8 @@ span.c-l {
  ---------------------*/
 
 .clients-section {
-  height: 1000px;
+  padding-top: 180px !important;
+  height: 800px;
 }
 
 .client-text {

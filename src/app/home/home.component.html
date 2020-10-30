@@ -13,12 +13,9 @@
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
   <div class="container d-flex align-items-center">
-      <a href="index.html"><img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions"></a>
+      <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
 
       <nav class="nav-menu d-none d-lg-block">
-          <ul>
-              <li class="active"><a href="index.html">Home</a></li>
-          </ul>
       </nav><!-- .nav-menu -->
 
   </div>
@@ -33,6 +30,7 @@
     <i class="fas fa-pause-circle" (click)="pause()"></i>
     <i class="fas fa-search-plus" (click)="zoomIn()"></i>
     <i class="fas fa-search-minus" (click)="zoomOut()"></i>
+    <h3 class="slider-text">BYDV Risk Forecast</h3>
     <div class="hero-slider owl-carousel">
       <ng-template ngFor let-picture [ngForOf]="homeSlideshow?.gallery">
         <div
@@ -52,61 +50,50 @@
           <div class="row">
               <div class="col-md-6 sect-news no-padd">
                   <div class="section-title">
-                      <span class="subheading">News &amp; Blog</span>
+                      <span class="subheading">News</span>
                       <h3><b>IPM Decisions</b> key information </h3>
                   </div>
                   <div id="news-slider8" class="owl-carousel">
                       <div class="post-slide8">
                           <div class="post-content">
                               <h3 class="post-title">
-                                  <a href="#">Latest News Post</a>
+                                  30th October 2020
                               </h3>
                               <p class="post-description">
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......
+                                On the 4th of November the IPM DECISIONS Platform Home page and the farm creation page will be showed during our General Assembly.
                               </p>
-                              <a href="#" class="read-more">read more</a>
                           </div>
                       </div>
 
                       <div class="post-slide8">
                           <div class="post-content">
                               <h3 class="post-title">
-                                  <a href="#">Latest News Post</a>
+                                1st July 2020
                               </h3>
                               <p class="post-description">
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......
+                                The IPM DECISIONS Platform is up and running.
                               </p>
-                              <a href="#" class="read-more">read more</a>
                           </div>
                       </div>
 
                       <div class="post-slide8">
                           <div class="post-content">
                               <h3 class="post-title">
-                                  <a href="#">Latest News Post</a>
+                                1st March 2020
                               </h3>
                               <p class="post-description">
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......
+                                The layouts and specifications for dashboards aimed at farmers, advisors and interest groups are defined in their first iteration.
                               </p>
-                              <a href="#" class="read-more">read more</a>
-                          </div>
-                      </div>
-
-                      <div class="post-slide8">
-                          <div class="post-content">
-                              <h3 class="post-title">
-                                  <a href="#">Latest News Post</a>
-                              </h3>
-                              <p class="post-description">
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......
-                              </p>
-                              <a href="#" class="read-more">read more</a>
                           </div>
                       </div>
                   </div>
               </div>
               <div class="col-md-6 no-padd">
-                  <div class="container" data-aos="fade-up">
+                  <div
+                    class="container"
+                    data-aos="fade-up"
+                    [style.padding-top]="'7px'"
+                  >
                       <div class="section-title">
                           <h3>SECTIONS </h3>
                       </div>
@@ -117,7 +104,7 @@
                                       <div class="icon">
                                           <img src="img/farming.png">
                                       </div>
-                                      <h4 class="title">Farming</h4>
+                                      <h4 class="title">Farmers&amp;Advisors</h4>
                                   </div>
                               </a>
                           </div>
@@ -128,7 +115,7 @@
                                       <div class="icon">
                                           <img src="img/research.png">
                                       </div>
-                                      <h4 class="title">Research</h4>
+                                      <h4 class="title">Researchers</h4>
                                   </div>
                               </a>
                           </div>
@@ -137,7 +124,7 @@
                               <a routerLink="/coding-article">
                                   <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                                       <div class="icon"><img src="img/coding.png"></div>
-                                      <h4 class="title">Coding</h4>
+                                      <h4 class="title">Developers</h4>
                                   </div>
                               </a>
                           </div>
@@ -169,7 +156,7 @@
               <div class="col-lg-4 col-md-6">
                   <div class="info-box  mb-4">
                       <h3>Email Us</h3>
-                      <p> info@XXX.eu</p>
+                      <p>IPMDecisions@adas.co.uk</p>
                       <br>
                   </div>
               </div>
@@ -177,7 +164,7 @@
               <div class="col-lg-4 col-md-6">
                   <div class="info-box  mb-4">
                       <h3>Web Site</h3>
-                      <p>https://XXX/</p>
+                      <p>https://www.ipmdecisions.net</p>
                       <br>
                   </div>
               </div>
@@ -185,8 +172,8 @@
               <div class="col-lg-4">
                   <div class="info-box mb-4">
                       <h3>Social</h3>
-                      <a href="#" class="icoLinkedin" title="Linkedin"><i class='bx bxl-linkedin-square'></i></a>
-                      <a href="#" class="icoTwitter" title="Twitter"><i class='bx bxl-twitter'></i></a>
+                      <a href="https://www.facebook.com/IPM-Decisions-113070703594951" class="icoFacebook" title="Linkedin"><i class='bx bxl-facebook-square'></i></a>
+                      <a href="https://twitter.com/intent/follow?source=followbutton&variant=1.0&screen_name=IpmDecisions" class="icoTwitter" title="Twitter"><i class='bx bxl-twitter'></i></a>
                   </div>
               </div>
 
@@ -212,7 +199,7 @@ margin-right: 5px;">
               <p>Project lead:<br>Neil Paveley (neil.paveley@adas.co.uk)</p>
               <p>Technical contacts:<br>Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
               <p>Tor-Einar Skog (tor-einar.skog@nibio.no)</p>
-              <p>General enquiries:<br>IPMDecisions@adas.co.uk</p>
+              <p class="invisible">General enquiries:<br>IPMDecisions@adas.co.uk</p>
           </div>
 
           <div class="col-lg-4 col-md-4 ">

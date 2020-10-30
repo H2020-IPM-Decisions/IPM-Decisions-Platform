@@ -1,40 +1,76 @@
-<header class="header-section clearfix">
+<div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+  <div class="container d-flex">
+      <div class="contact-info mr-auto">
 
-  <div class="site-navbar">
-    <!-- Logo -->
-    <a routerLink="/" class="site-logo">
-      <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
-    </a>
-    <div class="login-registration-menu">
-      <div class="login-registration-menu-item">
-        <a routerLink="/login">
-          <i class="fas fa-sign-in-alt icon-size" aria-hidden="true"></i>
-          <br>
-          <span class="small text-muted">Log in</span>
-        </a>
       </div>
-      <div class="login-registration-menu-item">
-        <a class="register-link mr-2" (click)='goToRegistrationPage()'>
-          <i class="fas fa-user-circle icon-size" aria-hidden="true"></i>
-          <br>
-          <span class="small text-muted">Register</span>
-        </a>
+      <div class="social-links btn-registration">
+          <a class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>Login </span></a>
+          <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>Registrer</span></a>
       </div>
-    </div>
   </div>
-</header>
-<!-- Header section end  -->
-<div class="border-animation"></div>
+</div>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+      <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+
+      <nav class="nav-menu d-none d-lg-block">
+          <ul>
+              <li class="active"><a routerLink="/">Home</a></li>
+          </ul>
+      </nav><!-- .nav-menu -->
+
+  </div>
+</header><!-- End Header -->
 
 <section class="clients-section spad">
   <div class="container">
     <div class="client-text">
       <h2>Farmers&amp;Advisors</h2>
-      Farmers & Advisors are invited to use IPM Decisions Platform and dashboards to support decisions for a specific
-      farm or crop. They will be able to access a wide range of pest DSS tools and have the ability to compare the
-      outputs of different DSS tools to aid them in selecting those of most relevance to their specific situation.
+      <img class="article-image" src="img/farming.png">
+      Farmers and Advisors are invited to use IPM Decisions Platform and dashboards to support decisions for a specific
+      farm or crop. Through a set of web pages, each with a user-friendly graphical interface, farmers and advisors will
+      be able to register their farm proving information on their crops and pests they want to monitor.
+      <br><br>
+      After registering their farm or farms, farmers and advisors will be able to access a wide range of pest DSS tools
+      and have the ability to compare the outputs of different DSS tools to aid them in selecting those of most
+      relevance to their specific situation.
+      <br><br>
+      Depending on the specific DSS being used, the inputs could include, for example, meteorological data, and
+      observations about the crop and pest density. IPM DECISIONS Platform will, for the first time, link existing DSS
+      and input data across European actors.
+      <br><br>
+      Dashboard design takes account of stakeholders needs that have been identified in IPM Decisions workshops through
+      the completion of user stories to prioritise core functionality requested by the users. Dashboards have been
+      designed to be simple and require minimal inputs from the user, and to be as intuitive as possible to minimise any
+      issues due to translation into different language
     </div>
   </div>
 </section>
+<footer id="footer">
 
-<app-footer></app-footer>
+  <div class="container py-4">
+      <div class="row">
+          <div class="col-lg-4 col-md-4 eu-flag">
+              <img src="img/logo-euro.jpg" style="float: left;
+display: inline-grid;
+margin-right: 5px;">
+              <p>Co-funded by the Horizon 2020<br>Framework Programme of the European Union<br>Under grant agreement No 817617</p>
+          </div>
+          <div class="col-lg-4 col-md-4 ">
+              <p>Project lead:<br>Neil Paveley (neil.paveley@adas.co.uk)</p>
+              <p>Technical contacts:<br>Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
+              <p>Tor-Einar Skog (tor-einar.skog@nibio.no)</p>
+              <p>General enquiries:<br>IPMDecisions@adas.co.uk</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 ">
+              <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+          </div>
+      </div>
+  </div>
+  <div class="copyright">
+      © 2020 <b>All Rights Reserved Engineering</b> <br>VAT: 05724831002
+  </div>
+</footer><!-- End Footer -->

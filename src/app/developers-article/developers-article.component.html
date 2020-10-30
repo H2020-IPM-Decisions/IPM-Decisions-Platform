@@ -1,35 +1,34 @@
-<header class="header-section clearfix">
+<div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+  <div class="container d-flex">
+      <div class="contact-info mr-auto">
 
-  <div class="site-navbar">
-    <!-- Logo -->
-    <a routerLink="/" class="site-logo">
-      <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions" title="Logo IPM" />
-    </a>
-    <div class="login-registration-menu">
-      <div class="login-registration-menu-item">
-        <a routerLink="/login">
-          <i class="fas fa-sign-in-alt icon-size" aria-hidden="true"></i>
-          <br>
-          <span class="small text-muted">Log in</span>
-        </a>
       </div>
-      <div class="login-registration-menu-item">
-        <a class="register-link mr-2" (click)='goToRegistrationPage()'>
-          <i class="fas fa-user-circle icon-size" aria-hidden="true"></i>
-          <br>
-          <span class="small text-muted">Register</span>
-        </a>
+      <div class="social-links btn-registration">
+          <a class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>Login </span></a>
+          <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>Registrer</span></a>
       </div>
-    </div>
   </div>
-</header>
-<!-- Header section end  -->
-<div class="border-animation"></div>
+</div>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+      <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+
+      <nav class="nav-menu d-none d-lg-block">
+          <ul>
+              <li class="active"><a routerLink="/">Home</a></li>
+          </ul>
+      </nav><!-- .nav-menu -->
+
+  </div>
+</header><!-- End Header -->
 
 <section class="clients-section spad">
   <div class="container">
     <div class="client-text">
       <h2>Developers</h2>
+      <img class="article-image" src="img/coding.png">
       DSS developers will benefit by the platform providing a ‘shop window’ to end users, and to access tools and resources to accelerate DSS innovation. They will be able to make use of the platform in one or more of the following ways depending on their willingness to engage with the Platform and commit resources to ensure that the DSS complies with the Platform data standards:
       <br>
       <ul>
@@ -42,4 +41,29 @@
   </div>
 </section>
 
-<app-footer></app-footer>
+<footer id="footer">
+
+  <div class="container py-4">
+      <div class="row">
+          <div class="col-lg-4 col-md-4 eu-flag">
+              <img src="img/logo-euro.jpg" style="float: left;
+display: inline-grid;
+margin-right: 5px;">
+              <p>Co-funded by the Horizon 2020<br>Framework Programme of the European Union<br>Under grant agreement No 817617</p>
+          </div>
+          <div class="col-lg-4 col-md-4 ">
+              <p>Project lead:<br>Neil Paveley (neil.paveley@adas.co.uk)</p>
+              <p>Technical contacts:<br>Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
+              <p>Tor-Einar Skog (tor-einar.skog@nibio.no)</p>
+              <p>General enquiries:<br>IPMDecisions@adas.co.uk</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 ">
+              <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+          </div>
+      </div>
+  </div>
+  <div class="copyright">
+      © 2020 <b>All Rights Reserved Engineering</b> <br>VAT: 05724831002
+  </div>
+</footer><!-- End Footer -->
