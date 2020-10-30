@@ -55,6 +55,8 @@ export class EditAccountComponent implements OnInit {
     );
   } // end ngOnInit
 
+  uploadProfileImage(x) {}
+
   private userAccountForm() {
     this.accountForm = this._fb.group({
       firstName: ["", Validators.required],
