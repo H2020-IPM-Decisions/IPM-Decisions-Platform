@@ -56,7 +56,7 @@ export class EditAccountComponent implements OnInit {
     );
   } // end ngOnInit
 
-  uploadProfileImage(x) {}
+  // uploadProfileImage(x) {}
 
   private userAccountForm() {
     this.accountForm = this._fb.group({
@@ -146,18 +146,18 @@ export class EditAccountComponent implements OnInit {
     }
   }
 
-  uploadProfileImage(files: FileList) {
-    const file = files.item(0);
-    console.log("file loaders", file);
+  // uploadProfileImage(files: FileList) {
+  //   const file = files.item(0);
+  //   console.log("file loaders", file);
 
-    let reader = new FileReader();
-    reader.addEventListener("load", (ev: any) => {
-      console.log("event", ev);
+  //   let reader = new FileReader();
+  //   reader.addEventListener("load", (ev: any) => {
+  //     console.log("event", ev);
 
-      let a = ev.target.result;
-      this.imageUrl = ev.target.result;
-      console.log('dddd', a);
-    });
-    reader.readAsDataURL(file);
-  }
+  //     let a = ev.target.result;
+  //     this.imageUrl = ev.target.result;
+  //     console.log('dddd', a);
+  //   });
+  //   reader.readAsDataURL(file);
+  // }
 }
