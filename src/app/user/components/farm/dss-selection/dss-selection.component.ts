@@ -40,7 +40,8 @@ export class DssSelectionComponent implements OnInit {
   crops: { value: string; label: string }[] = [];
   cropParameters: { value: string; label: string }[] = [];
   // end dropdowns
-  tblCropPestCombinations: { crop: string; pest: string; dss: string }[];
+  // tblCropPestCombinations: { crop: string; pest: string; dss: string }[];
+  tblCropPestCombinations: { crop: string; parameter: string; }[];
 
   cropTitle: string = "Wheat, Cabbage";
   cropTitle2: string = "Cabbage, Apple, Carrot";
@@ -63,6 +64,8 @@ export class DssSelectionComponent implements OnInit {
   <td>Aphid 2 co</td>  <td>Number per</td>  <td>Number of aphids</td>  <td>output</td>
   </tr>
   </table>`;
+  selectedPest: string;
+  selectedPestFromSearch: any;
 
   constructor(private _fb: FormBuilder) {}
 
@@ -77,13 +80,13 @@ export class DssSelectionComponent implements OnInit {
     ];
 
     this.cropParameters = [
-      { value: "temperature", label: "Temperature" },
-      { value: "aphid_count", label: "Aphid count" },
+      { value: "Temperature", label: "Temperature" },
+      { value: "Aphid count", label: "Aphid count" },
       { value: "Humidity", label: "Humidity" },
     ];
 
     this.tblCropPestCombinations = [
-      { crop: "Wheat", pest: "Aphids", dss: "Aphids DSS1" },
+      { crop: "Wheat", parameter: "Aphid count" },
       // { crop: "Cabbage", pest: "Cabbage moth", dss: "VIPS, Cabbage moth model" },
     ];
 
@@ -181,12 +184,18 @@ export class DssSelectionComponent implements OnInit {
     console.log("formddasffd", formValue);
 
     for (let i = 0; i < len; i++) {
+
+      console.log("jebem",formValues.cropsArray[i]);
       if (dssArr[i] === true) {
         let dssVal = this.user.skills[i].val;
+        this.selectedPest = dssVal;
+        this.selectedPestFromSearch = this.pestSearch.value;
         let cropPestCombinationRow = {
-          crop: this.cropSearch.value,
-          pest: this.pestSearch.value,
-          dss: dssVal,
+          crop: formValues.cropsArray[i],
+          // crop: this.cropSearch.value,
+          parameter: formValues.parameters[i]
+          // pest: this.pestSearch.value,
+          // dss: dssVal,
         };
         this.tblCropPestCombinations.push(cropPestCombinationRow);
       }
