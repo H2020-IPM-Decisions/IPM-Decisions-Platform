@@ -90,12 +90,22 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
   setMarkerLocation(map: any, form: FormGroup) {
     var marker;
     let farmLocation: FarmLocation;
+
+
+
+    const fontAwesomeIcon = L.divIcon({
+        html: '<i class="fa fa-map-marker fa-2x"></i>',
+        iconSize: [20, 20],
+        className: 'myDivIcon'
+    });
+
+    
     map.on("click", function (e) {
       if (marker) {
         map.removeLayer(marker);
       }
 
-      marker = L.marker(e.latlng).addTo(map);
+      marker = L.marker(e.latlng,{ icon:  fontAwesomeIcon}).addTo(map);
 
       farmLocation = {
         x: e.latlng.lat,
