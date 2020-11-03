@@ -14,7 +14,7 @@
 <header id="header" class="fixed-top">
   <div class="container d-flex align-items-center">
     <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
-    A “one-stop shop” for decision support in integrated pest management
+    <b [style.margin-left]="'10px'">A “one-stop shop” for decision support in integrated pest management</b>
     <nav class="nav-menu d-none d-lg-block">
     </nav><!-- .nav-menu -->
 
@@ -24,17 +24,22 @@
 
 
 <main id="main">
-  <div class="row">
-    <div class="col-md-6">
-      <ul class='legend-labels'
-        [ngStyle]="{'margin-top': '177px', 'padding': '20px 60px'}"
-      >
+  <div class="row no-gutters">
+    <div class="col-md-6" [ngStyle]="{'margin-top': '127px', 'padding': '20px 60px'}">
+      <h3>Risk Maps Information</h3>
+      <br>
+      <p style="line-height: 1.5;">The maps will show the risk for a range of key pests, weeds and diseases across Europe.<br>
+        Risk is represented as follows:</p>
+      <ul [style.margin-left]="'35px'" class='legend-labels'>
         <li><b [style.color]="'DarkGreen'">Dark Green</b> = very low risk</li>
         <li><b [style.color]="'LightGreen'">Light green</b> = low risk</li>
         <li><b [style.color]="'Yellow'">Yellow</b> = medium risk</li>
         <li><b [style.color]="'Orange'">Orange</b> = high risk</li>
         <li><b [style.color]="'Red'">Red</b> = very high risk</li>
-      </ul>
+      </ul><br>
+      <p style="line-height: 1.5;">The maps will have been produced by running the DSS for a fixed number of weather stations across each country
+        and then interpolating the results returned by the DSS for each location.</p>
+      <p>The current maps are example maps only and <b>do not</b> represent any specific pest risk.</p>
     </div>
     <div class="col-md-6">
       <!-- ======= Hero Section ======= -->
@@ -43,7 +48,6 @@
         <i class="fas fa-pause-circle" (click)="pause()"></i>
         <i class="fas fa-search-plus" (click)="zoomIn()"></i>
         <i class="fas fa-search-minus" (click)="zoomOut()"></i>
-        <h3 class="slider-text">BYDV Risk Forecast</h3>
         <div class="hero-slider owl-carousel">
           <ng-template ngFor let-picture [ngForOf]="homeSlideshow?.gallery">
             <div class="hero-item set-bg" [attr.data-setbg]="picture.path | cmsLink"
@@ -198,8 +202,8 @@
   <div class="container py-4">
     <div class="row">
       <div class="col-lg-4 col-md-4 eu-flag">
-        <p>Project lead:<br>Neil Paveley (neil.paveley@adas.co.uk)</p>
-        <p>Technical contacts:<br>Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
+        <p>Project lead: Neil Paveley (neil.paveley@adas.co.uk)</p>
+        <p>Technical contacts: Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
         <p>Tor-Einar Skog (tor-einar.skog@nibio.no)</p>
         <img src="img/logo-euro.jpg" style="float: left;
 display: inline-grid;

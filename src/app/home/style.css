@@ -1855,6 +1855,7 @@ section {
 
 .eu-flag p {
     font-size: 13px;
+    margin-bottom: 5px;
 }
 
 section#about p {
@@ -2053,7 +2054,7 @@ section#featured-services {
 }
 
 section#map-content {
-    margin-top: 77px;
+    margin-top: 107px;
     padding-bottom: 0;
 }
 
