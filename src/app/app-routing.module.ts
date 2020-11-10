@@ -73,7 +73,6 @@ import { LoginComponent } from "./core/auth/pages/login/login.component";
 import { FarmRequestComponent } from "./user/components/farm-request/farm-request.component";
 import { FarmDetailsComponent } from "./user/components/farm/farm-details/farm-details.component";
 import { DssSelectionComponent } from "./user/components/farm/dss-selection/dss-selection.component";
-import { CropPestCombinationComponent } from "./user/components/farm/advanced/crop-pest-combination.component";
 import { FieldAddComponent } from './user/components/field/field-add/field-add.component';
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
 
@@ -240,12 +239,6 @@ const appRoutes: Routes = [
   {
     path: "user/farm/add",
     component: AddFarmComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/farm/crop-pest-combination",
-    component: CropPestCombinationComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
   },
