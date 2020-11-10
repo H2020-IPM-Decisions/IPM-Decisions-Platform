@@ -1,5 +1,9 @@
+import { Route } from "@angular/compiler/src/core";
 import { Component, OnInit, TemplateRef } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
+import { FarmModel } from "@app/shared/models/farm.model";
+import { FarmService } from "@app/shared/services/upr/farm.service";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 
 @Component({
@@ -106,7 +110,12 @@ export class EditFarmComponent implements OnInit {
   modalRef: BsModalRef;
   selectedCrop: any;
 
-  constructor(private _fb: FormBuilder, private modalService: BsModalService) {}
+  constructor(
+    private _fb: FormBuilder,
+    private modalService: BsModalService,
+    private _farmService: FarmService,
+    private _route: ActivatedRoute
+  ) {}
 
   openModal(template: TemplateRef<any>, field: any) {
     this.modalRef = this.modalService.show(template);
@@ -123,38 +132,37 @@ export class EditFarmComponent implements OnInit {
     this.initEditFarmForm();
     this.initFieldDetailsForm();
 
-    // this.formInit();
-    // this.farmFormInit();
+    this.getFarmByParamId();
+  }
 
-    // this.elements.push({
-    //   field: "Big field",
-    //   type: "Oilseed",
-    //   variety: "KWS ",
-    //   sowing_date: "24/09/2020",
-    // });
-    // this.elements.push({
-    //   field: "Middle field",
-    //   type: "Wheat",
-    //   variety: "Leeds ",
-    //   sowing_date: "20/09/2020",
-    // });
-    // this.elements.push({
-    //   field: "Small field",
-    //   type: "Brassica",
-    //   variety: "Zulu ",
-    //   sowing_date: "24/07/2020",
-    // });
-    // for (let i = 1; i <= 7; i++) {
-    //   this.elements.push({ field: i, type: 'Crop Type ' + i, variety: 'Crop Variety ' + i, sowing_date: 'Sowing Date ' + i });
-    // }
+  getFarmByParamId(): void {
+    this._route.params.subscribe((params) => {
+      if (params) {
+        const farmId = params["id"];
+        if (farmId) {
+          this.getFarmById(farmId);
+        }
+      }
+    });
+  }
+
+  getFarmById(farmId: string) {
+    this._farmService.getFarmById(farmId).subscribe((farm: FarmModel) => {
+      this.editFarmForm.patchValue({
+        name: farm.name,
+        address: farm.location,
+        metStation: farm.inf1,
+        forecastService: farm.inf2,
+      });
+    });
   }
 
   initEditFarmForm() {
     this.editFarmForm = this._fb.group({
-      name: ["Heart and Soil Farm", Validators.required],
-      address: ["Address 1", Validators.required],
-      metStation: ["Met Station 2", Validators.required],
-      forecastService: ["forecast selection 2", Validators.required],
+      name: ["", Validators.required],
+      address: ["", Validators.required],
+      metStation: ["", Validators.required],
+      forecastService: ["", Validators.required],
     });
   }
 

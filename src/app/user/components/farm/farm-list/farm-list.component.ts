@@ -14,34 +14,26 @@ export class FarmListComponent implements OnInit {
 
   ngOnInit() {
     // get farms from api
-    // this.getFarms();
-
+    this.getFarms();
   }
 
   copyFarm() {
-
-    let farm  = {
+    let farm = {
       name: "Heart and Soil Farm [Copy]",
-      inf1: "Address 1" 
-    }
-    console.log('farm clicked', farm);
-    const modFarm = farm['id'] = undefined;
-    console.log('mdo', modFarm);
-    this.farmList.push(farm);
+      inf1: "Address 1",
+    };
+    console.log("farm clicked", farm);
+    const modFarm = (farm["id"] = undefined);
+    console.log("mdo", modFarm);
+    // this.farmList.push(farm);
   }
 
   getFarms() {
     this._farmService.getFarms().subscribe((farms: any) => {
       console.log("farms", farms);
-      if (farms && farms.value.length > 0) {
+      if (farms.status !== 404 && farms.value.length > 0) {
         this.farmList = farms.value;
       }
     });
   }
-}
-
-interface Farm {
-  id: string;
-  name: string;
-  location: string;
 }

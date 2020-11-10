@@ -44,4 +44,60 @@ export class FarmService {
         })
       );
   }
+  public getFarmById(farmId: string, fields?: string[]): Observable<FarmModel> {
+    let url = `${this.apiUrl}/api/upr/farms/${farmId}`;
+    if (fields) {
+      url += `?${fields}`;
+    }
+
+    console.log("url", url);
+
+    return this._http
+      .get(url, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/vnd.h2020ipmdecisions.hateoas+json",
+        },
+      })
+      .pipe(
+        catchError((error) => {
+          console.log("error", error);
+          return of(error);
+        })
+      );
+  }
+
+  public editFarmById(
+    farmId: string,
+    fields?: string[]
+  ): Observable<FarmModel[]> {
+    return this._http
+      .get(`${this.apiUrl}/api/upr/farms`, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/vnd.h2020ipmdecisions.hateoas+json",
+        },
+      })
+      .pipe(
+        catchError((error) => {
+          console.log("error", error);
+          return of(error);
+        })
+      );
+  }
+  public deleteFarmById(farmId: string): Observable<void> {
+    return this._http.delete(`${this.apiUrl}/api/upr/farms`, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .pipe(
+        catchError((error) => {
+          console.log("delete error", error);
+
+          return of(error);
+        })
+      );
+  }
 }

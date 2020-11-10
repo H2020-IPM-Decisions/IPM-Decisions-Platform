@@ -232,7 +232,7 @@ const appRoutes: Routes = [
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
   },
   {
-    path: "user/farm/edit",
+    path: "user/farm/edit/:id",
     component: EditFarmComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
