@@ -85,12 +85,13 @@ export class FarmService {
         })
       );
   }
-  public deleteFarmById(farmId: string): Observable<void> {
-    return this._http.delete(`${this.apiUrl}/api/upr/farms`, {
+  public deleteFarmById(farmId: string): Observable<HttpResponse<any>> {
+    return this._http.delete(`${this.apiUrl}/api/upr/farms/${farmId}`, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
+        observe: 'response'
       })
       .pipe(
         catchError((error) => {
