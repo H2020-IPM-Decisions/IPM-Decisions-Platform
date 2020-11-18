@@ -98,7 +98,6 @@ import { DssSelectionComponent } from './user/components/farm/dss-selection/dss-
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from "ngx-bootstrap/popover";
 import { ToastrModule } from "ngx-toastr";
-import { CropPestCombinationComponent } from './user/components/farm/advanced/crop-pest-combination.component';
 import { FieldAddComponent } from './user/components/field/field-add/field-add.component';
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
 
@@ -192,7 +191,6 @@ import { FieldEditComponent } from './user/components/field/field-edit/field-edi
     ResearchersArticleComponent,
     DevelopersArticleComponent,
     DssSelectionComponent,
-    CropPestCombinationComponent,
     FieldAddComponent,
     FieldEditComponent,
   ],

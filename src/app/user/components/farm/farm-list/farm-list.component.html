@@ -28,9 +28,6 @@
             <div class="col-lg-12 col-md-10 mx-auto">
               <div class="container">
                 <div class="row">
-                  <!-- <div class="col-sm">
-                    <h4>Farm list</h4>
-                  </div> -->
                   <div class="col-sm text-right">
                     <button type="button" rel="tooltip" class="btn btn-link" routerLink="/user/farm/add">
                       <i class="action-icon fas fa-plus-circle fa-2x"></i> Add Farm
@@ -48,29 +45,54 @@
                         <th class="text-center" scope="col">Actions</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <!-- <tr *ngFor="let farm of farmList">
-                        <td class="text-center"><a routerLink="/user/farm/crop-pest-combination">{{ farm.name }}</a></td>
+                    <tbody *ngIf="farmList.length > 0; else noRows">
+
+                      <tr *ngFor="let farm of farmList">
+                        <td class="text-center">
+                          <a routerLink="/user/farm/crop-pest-combination">{{ farm.name }}</a>
+                        </td>
                         <td class="text-center">{{ farm.inf1 }}</td>
                         <td class="td-actions text-center py-1">
 
-                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy" title="Copy"
-                            routerLink="/user/farm/list" (click)="copyFarm(farm)">
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy"
+                            title="Copy" routerLink="/user/farm/list" (click)="copyFarm(farm)">
                             <i class="action-icon size-11 fas fa-copy"></i>
                           </button>
 
-                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit" title="Edit"
-                            routerLink="/user/farm/edit">
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit"
+                            title="Edit" routerLink="/user/farm/edit/{{farm.id}}">
                             <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
                           </button>
 
-                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Details" title="Details"
-                            routerLink="/user/farm/details">
-                            <i class="action-icon light-blue-icon size-11 fas fa-eye"></i>
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Delete"
+                            title="Delete" (click)="openModal(template)">
+                            <i class="action-icon size-11 fas fa-trash"></i>
                           </button>
+
+                          <!-- delete farm modal -->
+                          <ng-template #template>
+                            <div class="modal-header">
+                              <h4 class="modal-title pull-left">Delete Farm</h4>
+                              <button type="button" class="close pull-right" aria-label="Close"
+                                (click)="modalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              You are about to delete a farm. Are you sure?
+                            </div>
+                            <div class="modal-footer pull-right">
+                              <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
+                              <button type="button" class="btn btn-primary"
+                                (click)="deleteFarmConfirm(farm.id)">Yes</button>
+                            </div>
+                          </ng-template>
+
                         </td>
-                      </tr> -->
-                      <tr>
+                      </tr>
+
+
+                      <!-- <tr>
                         <td class="text-center">Heart and Soil Farm</td>
                         <td class="text-center">Address 1</td>
                         <td class="td-actions text-center py-1">
@@ -85,10 +107,6 @@
                             <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
                           </button>
 
-                          <!-- <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Details"
-                            title="Details" routerLink="/user/farm/details">
-                            <i class="action-icon size-11 fas fa-eye"></i>
-                          </button> -->
                         </td>
                       </tr>
                       <tr>
@@ -105,10 +123,6 @@
                             <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
                           </button>
 
-                          <!-- <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Details"
-                            title="Details" routerLink="/user/farm/details">
-                            <i class="action-icon size-11 fas fa-eye"></i>
-                          </button> -->
                         </td>
                       </tr>
                       <tr>
@@ -125,19 +139,13 @@
                             <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
                           </button>
 
-                          <!-- <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Details"
-                            title="Details" routerLink="/user/farm/details">
-                            <i class="action-icon size-11 fas fa-eye"></i>
-
-                          </button>-->
                         </td>
-                      </tr>
+                      </tr> -->
 
 
 
-
+                      <!-- 
                       <tr *ngFor="let farm of farmList">
-                        <!-- <div *ngIf="farmList.length > 0"> -->
                         <td class="text-center">{{ farm.name }}</td>
                         <td class="text-center">{{ farm.inf1 }}</td>
                         <td class="td-actions text-center py-1">
@@ -151,19 +159,18 @@
                             title="Edit" routerLink="/user/farm/edit">
                             <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
                           </button>
-
-                          <!-- <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Details" title="Details"
-                            routerLink="/user/farm/details">
-                            <i class="action-icon light-blue-icon size-11 fas fa-eye"></i>
-                          </button> -->
                         </td>
-                        <!-- </div> -->
-                      </tr>
-
-
+                      </tr> -->
 
 
                     </tbody>
+                    <ng-template #noRows>
+                      <tbody>
+                        <tr>
+                          <td colspan="3" class="text-center">No farms available.</td>
+                        </tr>
+                      </tbody>
+                    </ng-template>
                   </table>
                 </div>
               </div>
