@@ -9,9 +9,13 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { FarmService } from "@app/shared/services/upr/farm.service";
 import { ToastrService } from "ngx-toastr";
 import * as L from "leaflet";
-import { FarmModel } from "@app/shared/models/farm.model";
-import { FarmLocation } from "@app/shared/models/farm-location.model";
+import * as esri from "esri-leaflet";
+import * as esriGeo from "esri-leaflet-geocoder";
+import { Farm } from "@app/shared/models/farm.model";
+import { Location } from "@app/shared/models/location.model";
 import { HttpResponse } from "@angular/common/http";
+import { WeatherService } from "@app/shared/services/wx/weather.service";
+import { WeatherDataSource } from '@app/shared/models/weather-data-source.model';
 
 @Component({
   selector: "app-add-farm",
@@ -20,18 +24,20 @@ import { HttpResponse } from "@angular/common/http";
 })
 export class AddFarmComponent implements OnInit, AfterViewInit {
   private map: L.Map;
-  @ViewChild("map", { static: false }) private mapContainer: ElementRef<
-    HTMLElement
-  >;
+  @ViewChild("map", { static: false })
+  private mapContainer: ElementRef<HTMLElement>;
   farmForm: FormGroup;
+  metStationList: WeatherDataSource[] = [];
   constructor(
     private _fb: FormBuilder,
     private _farmService: FarmService,
+    private _weatherService: WeatherService,
     private _toastr: ToastrService
   ) {}
 
   ngOnInit() {
     this.form();
+    this.getWeatherDataSourceLocation(25.566, 56.5555, 25);
   }
 
   ngAfterViewInit(): void {
@@ -43,8 +49,10 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     this.farmForm = this._fb.group({
       name: ["", Validators.required],
       location: ["", Validators.required],
-      metStation: ["", Validators.required],
-      forecast: ["", Validators.required],
+      inf1: ["", Validators.required],
+      inf2: ["", Validators.required],
+      // metStation: ["", Validators.required],
+      // forecast: ["", Validators.required],
     });
   }
 
@@ -87,49 +95,87 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     // console.log('nesto bla',  this.farmForm);
   }
 
+  getWeatherDataSourceLocation(lat: number, lng: number, tol: number) {
+    console.log("call weather bla bla");
+
+    this._weatherService
+      .weatherDataSourceLocationPoint(lat, lng, tol)
+      .subscribe((metStationData: WeatherDataSource[]) => {
+        console.log("weather metStationData", metStationData);
+        this.metStationList = metStationData;
+      });
+  }
   setMarkerLocation(map: any, form: FormGroup) {
     var marker;
-    let farmLocation: FarmLocation;
-
-
+    let farmLocation: Location;
 
     const fontAwesomeIcon = L.divIcon({
-        html: '<i class="fa fa-map-marker fa-2x"></i>',
-        iconSize: [20, 20],
-        className: 'myDivIcon'
+      html: '<i class="fa fa-map-marker fa-2x"></i>',
+      iconSize: [20, 20],
+      className: "myDivIcon",
     });
 
-    
-    map.on("click", function (e) {
+    const geocodeService = esriGeo.geocodeService();
+    var self = this;
+    map.on("click", (e) => {
       if (marker) {
         map.removeLayer(marker);
       }
 
-      marker = L.marker(e.latlng,{ icon:  fontAwesomeIcon}).addTo(map);
+      // marker = L.marker(e.latlng,{ icon:  fontAwesomeIcon}).addTo(map);
+      geocodeService
+        .reverse()
+        .latlng(e.latlng)
+        .run(function (error, result) {
+          if (error) {
+            return;
+          }
+          console.log("adresa mapa", self);
 
-      farmLocation = {
-        x: e.latlng.lat,
-        y: e.latlng.lng,
-        srid: 4326,
-      };
-      if (farmLocation) {
-        form.controls.location.setValue(farmLocation);
-      }
+          self.getWeatherDataSourceLocation(
+            result.latlng.lat,
+            result.latlng.lng,
+            0
+          );
+
+          // set farm marker
+          marker = L.marker(result.latlng)
+            .addTo(map)
+            .bindPopup(result.address.Match_addr)
+            .openPopup();
+
+          farmLocation = {
+            address: {
+              address: result.address.Address,
+              city: result.address.City,
+              postal: result.address.Postal,
+              countryCode: result.address.CountryCode,
+              region: result.address.region,
+              longLabel: result.address.LongLabel,
+              shortLabel: result.address.ShortLabel,
+            },
+            x: result.latlng.lat,
+            y: result.latlng.lng,
+            srid: 4326,
+          };
+          if (farmLocation) {
+            form.controls.location.setValue(farmLocation);
+          }
+        });
+
+      // { metStationName: "Met. Station_1", metStationCoords: { lat: 11.8166, lng: 122.0942 } },
+      // this.farm.metStationCoords = e.latlng;
+      // console.log(this.farm.metStationCoords); // e is an event object (MouseEvent in this case)
     });
-
-    // { metStationName: "Met. Station_1", metStationCoords: { lat: 11.8166, lng: 122.0942 } },
-    // this.farm.metStationCoords = e.latlng;
-    // console.log(this.farm.metStationCoords); // e is an event object (MouseEvent in this case)
-    // });
   }
 
   onFarmSubmit() {
     if (this.farmForm.invalid) return;
 
-    const formValues: FarmModel = this.farmForm.value;
+    const formValues: Farm = this.farmForm.value;
 
     this._farmService.createFarm(formValues).subscribe(
-      (addFarmResponse: HttpResponse<FarmModel>) => {
+      (addFarmResponse: HttpResponse<Farm>) => {
         console.log("response", addFarmResponse);
 
         if (addFarmResponse) {
