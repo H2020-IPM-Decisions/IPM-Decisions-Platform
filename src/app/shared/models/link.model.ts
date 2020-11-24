@@ -1,5 +1,5 @@
 export interface Link {
-    href: string,
-    rel: { self: string, next_page: string, previous_page: string },
-    method: string
+    href: string;
+    method: string;
+    rel: string | { self: string, next_page: string, previous_page: string };
 }
