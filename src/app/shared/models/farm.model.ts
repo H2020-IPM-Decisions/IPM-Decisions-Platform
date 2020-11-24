@@ -1,9 +1,11 @@
-import { FarmLocation } from "./farm-location.model";
+import { Link } from "./link.model";
+import { Location } from "./location.model";
 
-export interface FarmModel {
-  id: string,
+export interface Farm {
+  id: string;
   name: string;
   inf1: string;
-  inf2?: string;
-  location?: FarmLocation;
+  inf2: string;
+  location?: Location;
+  links?: Link[];
 }

@@ -1,8 +1,11 @@
 import { HttpResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { FarmModel } from "@app/shared/models/farm.model";
+import { Router } from "@angular/router";
+import { FarmResponseModel } from "@app/shared/models/farm-response.model";
+import { Farm } from "@app/shared/models/farm.model";
 import { FarmService } from "@app/shared/services/upr/farm.service";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+import * as esriGeo from "esri-leaflet-geocoder";
 
 @Component({
   selector: "app-farm-list",
@@ -10,51 +13,93 @@ import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
   styleUrls: ["./farm-list.component.css"],
 })
 export class FarmListComponent implements OnInit {
-  farmList: FarmModel[] = [];
+  farmList: Farm[] = [];
   modalRef: BsModalRef;
+  copiedFarm: boolean;
 
   constructor(
     private _farmService: FarmService,
-    private _modalService: BsModalService
+    private _modalService: BsModalService,
+    private _router: Router
   ) {}
 
   ngOnInit() {
-    // get farms from api
     this.getFarms();
   }
 
-  copyFarm() {
-    let farm = {
-      name: "Heart and Soil Farm [Copy]",
-      inf1: "Address 1",
-    };
+  onFarmCopy(farm: Farm) {
     console.log("farm clicked", farm);
-    const modFarm = (farm["id"] = undefined);
-    console.log("mdo", modFarm);
-    // this.farmList.push(farm);
+    this.copiedFarm = true;
+    var copyFarm = {} as Farm;
+    copyFarm.id = null;
+    copyFarm.name = farm.name + " [Copy]";
+    copyFarm.inf1 = farm.inf1;
+    copyFarm.inf2 = farm.inf2;
+    // copyFarm.location.address = farm.location.address;
+   
+    // copyFarm.location = {
+    //   x: farm.location.x,
+    //   y: farm.location.y
+    //   srid: 4326,
+    // };
+    this.farmList.push(copyFarm);
   }
 
   getFarms() {
-    this._farmService.getFarms().subscribe((farms: any) => {
-      console.log("farms", farms);
-      if (farms.status !== 404 && farms.value.length > 0) {
-        this.farmList = farms.value;
-      }
-    });
+    this._farmService
+      .getFarms()
+      .subscribe((farmResponse: FarmResponseModel) => {
+        if (farmResponse) {
+          if (farmResponse.value) {
+            const farms = farmResponse.value;
+            farms.forEach((item) => {
+              this.convertLatLngToAddress(item);
+            });
+            this.farmList = farms;
+          }
+        }
+      });
+  }
+
+  private convertLatLngToAddress(farm: Farm) {
+    esriGeo
+      .geocodeService()
+      .reverse()
+      .latlng({ lat: farm.location.x, lng: farm.location.y })
+      .run(function (error, result) {
+        if (error) {
+          return;
+        }
+        console.log("adresa mapa", result);
+        if (result) {
+          farm.location.address = {
+            address: result.address.Address,
+            city: result.address.City,
+            postal: result.address.Postal,
+            countryCode: result.address.CountryCode,
+            region: result.address.Region,
+            shortLabel: result.address.ShortLabel,
+            longLabel: result.address.LongLabel,
+          };
+        }
+      });
+  }
+
+  onEditFarm(selectedFarm) {
+    this._farmService.setCurrentFarm(selectedFarm);
+    this._router.navigate(["/user/farm/edit"]);
   }
 
   openModal(template) {
     this.modalRef = this._modalService.show(template);
   }
 
-  deleteFarmConfirm(farmId) {
+  onDeleteFarm(farmId) {
     if (farmId) {
       this._farmService
-        .deleteFarmById(farmId)
+        .deleteFarm(farmId)
         .subscribe((response: HttpResponse<any>) => {
           if (response.status === 204) {
-            this._modalService.hide(1);
-            
             const index: number = this.farmList.findIndex(
               (item) => item.id === farmId
             );
@@ -64,6 +109,9 @@ export class FarmListComponent implements OnInit {
             }
           }
         });
+    } else {
+      this.farmList.splice(this.farmList.length - 1, 1);
     }
+    this._modalService.hide(1);
   }
 }

@@ -1,3 +1,7 @@
 .button-custom {
   margin: 2px;
 }
+
+.hover-pointer:hover {
+  cursor: pointer;
+}
