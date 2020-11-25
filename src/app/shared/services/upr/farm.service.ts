@@ -26,7 +26,7 @@ export class FarmService {
     }
   }
 
-  public createFarm(farm: Farm): Observable<HttpResponse<Farm>> {
+  public createFarm(farm: Farm): Observable<any> {
     return this._http
       .post(`${this.apiUrl}/api/upr/farms`, farm, {
         headers: {
@@ -34,13 +34,7 @@ export class FarmService {
           Accept: "application/vnd.h2020ipmdecisions.hateoas+json",
         },
         observe: "response"
-      })
-      .pipe(
-        catchError((error) => {
-          console.log("error", error);
-          return of(error);
-        })
-      );
+      });
 
     // return this._http
     //   .post(`${this.apiUrl}/api/upr/farms`, farm, {
