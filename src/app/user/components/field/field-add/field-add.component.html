@@ -25,8 +25,6 @@
                     </div>
                 </div>
 
-
-
                 <div class="container my-5 p-5 page-box">
 
                     <div class="row mb-4">
@@ -34,109 +32,67 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <strong class="text-uppercase bold-600">Farm:</strong>
-                                    <span class="ml-2">Heart and Soil Farm</span>
+                                    <span class="ml-2">{{ farmName }}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- <div class="row">
-
-                        <div class="col-12">
-                            <div class="table-responsive">
-                                <h6 class="bold-600">Crop information table</h6>
-                                <table class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center" scope="col">Field</th>
-                                            <th class="text-center" scope="col">Crop</th>
-                                            <th class="text-center" scope="col">Pest/Desease</th>
-                                            <th class="text-center" scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <tr>
-                                            <td class="text-center">Field 1</td>
-                                            <td class="text-center">Cereal</td>
-                                            <td class="text-center">Aphids</td>
-                                            <td class="td-actions text-center">
-                                                <button type="button" rel="tooltip" class="btn btn-link"
-                                                    data-original-title="Copy" title="Copy"
-                                                    routerLink="/user/farm/list">
-                                                    <i class="action-icon size-11 fas fa-copy"></i>
-                                                </button>
-
-                                                <button type="button" rel="tooltip" class="btn btn-link"
-                                                    data-original-title="Update" title="Update"
-                                                    routerLink="/user/farm/manage">
-                                                    <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">Field 2</td>
-                                            <td class="text-center">Grapes</td>
-                                            <td class="text-center">Spetoria</td>
-                                            <td class="td-actions text-center">
-                                                <button type="button" rel="tooltip" class="btn btn-link"
-                                                    data-original-title="Copy" title="Copy"
-                                                    routerLink="/user/farm/list">
-                                                    <i class="action-icon size-11 fas fa-copy"></i>
-                                                </button>
-                                                <button type="button" rel="tooltip" class="btn btn-link"
-                                                    data-original-title="Update" title="Update"
-                                                    routerLink="/user/farm/manage">
-                                                    <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div> 
-
-                    </div>-->
-                    <!-- end table -->
                     <h6 class="bold-600 text-uppercase">Add crop/pest combination</h6>
 
                     <fieldset class="border p-2">
-                        <form [formGroup]="addFieldForm">
+                        <form [formGroup]="fieldForm">
                             <div class="row">
                                 <div class="col-12">
                                     <fieldset class="border p-3">
                                         <legend class="w-auto px-1 text-muted">Step 1: Select crop and pest</legend>
 
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="form-group row">
-                                                    <label for="field" class="col-sm-2 col-form-label">Crop</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="crop" formControlName="crop">
-                                                            <option value="Wheat">Wheat</option>
-                                                            <option value="Cabbage">Cabbage</option>
-                                                            <option value="Apple">Apple</option>
-                                                            <option value="Carrot">Carrot</option>
-                                                        </select>
+                                        <!-- add crop pest combination on button clicked -->
+                                        <div formArrayName="cropPests"
+                                            *ngFor="let item of fieldForm.get('cropPests')['controls']; let i = index;">
+                                            <div [formGroupName]="i">
+
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <div class="form-group row">
+                                                            <label for="field"
+                                                                class="col-sm-2 col-form-label">Crop</label>
+                                                            <div class="col-sm-10">
+                                                                <select class="form-control" id="crop"
+                                                                    formControlName="cropEppoCode">
+                                                                    <option value="3WHEC">Wheat</option>
+                                                                    <option value="BRSOX">Cabbage</option>
+                                                                    <option value="MABSD">Apple</option>
+                                                                    <option value="DAUCS">Carrot</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="form-group row">
-                                                    <label for="variety" class="col-sm-2 col-form-label">Pest</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="pest" formControlName="pest">
-                                                            <option value="Aphids">Aphids</option>
-                                                            <option value="Septoria">Septoria</option>
-                                                            <option value="Cabbage moth">Cabbage moth</option>
-                                                            <option value="Apple scab">Apple scab</option>
-                                                            <option value="Carrot rust fly">Carrot rust fly</option>
-                                                        </select>
+                                                    <div class="col-4">
+                                                        <div class="form-group row">
+                                                            <label for="variety"
+                                                                class="col-sm-2 col-form-label">Pest</label>
+                                                            <div class="col-sm-10">
+                                                                <select class="form-control" id="pest"
+                                                                    formControlName="pestEppoCode">
+                                                                    <option value="RHOPPA">Aphids</option>
+                                                                    <option value="SEPTAM">Septoria</option>
+                                                                    <option value="BARABR">Cabbage moth</option>
+                                                                    <option value="ASPV00">Apple stem</option>
+                                                                    <option value="PSILRO">Carrot rust fly
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    <!-- <div class="col-sm-1">
+                                                        <i class="fas fa-plus action-icon v-center pointer"
+                                                            (click)="addCropPestRow()"></i>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                         </div>
+
                                     </fieldset>
                                 </div>
 
@@ -150,7 +106,7 @@
                                                 <div class="form-group row">
                                                     <label for="field" class="col-sm-2 col-form-label">Field</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" id="field" formControlName="field" />
+                                                        <input class="form-control" id="field" formControlName="name" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,7 +115,7 @@
                                                     <label for="variety" class="col-sm-2 col-form-label">Variety</label>
                                                     <div class="col-sm-10">
                                                         <select class="form-control" id="variety"
-                                                            formControlName="variety">
+                                                            formControlName="inf1">
                                                             <option value="Variety_x">Variety_x</option>
                                                             <option value="Variety_y">Variety_y</option>
                                                             <option value="Variety_z">Variety_z</option>
@@ -173,8 +129,7 @@
                                                         date</label>
                                                     <div class="col-sm-8 input-group">
                                                         <input type="text" class="form-control" id="sowing-date"
-                                                            formControlName="sowingDate" bsDatepicker
-                                                            placeholder="dd/mm/yyyy"
+                                                            formControlName="inf2" bsDatepicker placeholder="dd/mm/yyyy"
                                                             [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}">
                                                         <div class=" input-group-append">
                                                             <div class="input-group-text">
@@ -191,26 +146,16 @@
                         </form>
 
                         <div class="row">
-
-
                             <div class="col-md-12 mt-3 d-flex justify-content-end">
 
-                                <button class="btn btn-success col-2 mr-2" routerLink="/user/farm/edit">
-                                    Back</button>
-                                <button class="btn btn-info col-2" (click)="onAddField()">
+                                <a class="btn btn-success col-2 mr-2" routerLink="/user/farm/edit">
+                                    Back</a>
+                                <button class="btn btn-info col-2" (click)="onCreateField()">
                                     Save</button>
                             </div>
                         </div>
 
                     </fieldset>
-
-                    <!-- <div class="row">
-                        <div class="col-md-12 mt-4 mr-0">
-                            <a routerLink="/user/farm/crop-pest-combination" class="btn btn-info pull-right">
-                                Go to DSS Selection</a>
-                        </div>
-                    </div> -->
-
                 </div>
             </div>
         </div>
