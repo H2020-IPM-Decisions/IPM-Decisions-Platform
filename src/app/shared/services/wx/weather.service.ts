@@ -26,12 +26,31 @@ export class WeatherService {
         `https://ipmdecisions.nibio.no/api/wx/rest/weatherdatasource/location/point`,
         {
           headers: {
-            Accept: "application/json",
+            "Content-Type": "*/*",
+            "Accept": "application/json"
           },
           params: {
             latitude: lat.toString(),
             longitude: lng.toString(),
             tolerance: tol.toString(),
+          },
+        }
+      )
+      .pipe(catchError(this.handleError));
+  }
+
+  weatherDataSource(
+    lat: number,
+    lng: number,
+    tol: number = 0
+  ): Observable<WeatherDataSource[]> {
+    return this.http
+      .get<WeatherDataSource[]>(
+        `https://ipmdecisions.nibio.no/api/wx/rest/weatherdatasource`,
+        {
+          headers: {
+            "Content-Type": "*/*",
+            "Accept": "application/json",
           },
         }
       )
