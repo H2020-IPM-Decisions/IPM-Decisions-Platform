@@ -35,14 +35,16 @@ export class FarmListComponent implements OnInit {
     copyFarm.name = farm.name + " [Copy]";
     copyFarm.inf1 = farm.inf1;
     copyFarm.inf2 = farm.inf2;
-    // copyFarm.location.address = farm.location.address;
-   
-    // copyFarm.location = {
-    //   x: farm.location.x,
-    //   y: farm.location.y
-    //   srid: 4326,
-    // };
-    this.farmList.push(copyFarm);
+    copyFarm.location = farm.location
+    this._farmService
+      .createFarm(copyFarm)
+      .subscribe(
+        (response) => {
+          alert(JSON.stringify(response));
+          this.farmList.push(copyFarm);
+        },
+        (error) => { alert(JSON.stringify(error))}
+      )
   }
 
   getFarms() {
