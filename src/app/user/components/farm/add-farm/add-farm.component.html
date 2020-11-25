@@ -45,7 +45,8 @@
                 <label for="met-station" class="col-sm-3 col-form-label">Nearest met. station</label>
                 <div class="col-sm-9">
                   <select class="form-control" id="met-station" formControlName="inf1">
-                    <option *ngFor="let metStation of metStationList" value="Met Station 1">Met. Station 1 (x KM)</option>     
+                    <option *ngFor="let metStation of metStationList" [value]="metStation.name">{{metStation.name}}
+                    </option>
                     <!-- <option value="Met Station 1">Met. Station 1 (x KM)</option>
                     <option value="Met Station 2">Met. Station 2 (x KM)</option>
                     <option value="Met Station 3">Met. Station 3 (x KM)</option> -->

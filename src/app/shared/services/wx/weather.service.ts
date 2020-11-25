@@ -39,11 +39,7 @@ export class WeatherService {
       .pipe(catchError(this.handleError));
   }
 
-  weatherDataSource(
-    lat: number,
-    lng: number,
-    tol: number = 0
-  ): Observable<WeatherDataSource[]> {
+  weatherDataSource(): Observable<WeatherDataSource[]> {
     return this.http
       .get<WeatherDataSource[]>(
         `https://ipmdecisions.nibio.no/api/wx/rest/weatherdatasource`,
