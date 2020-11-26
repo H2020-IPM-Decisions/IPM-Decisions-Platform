@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -6,6 +6,7 @@ import { UserForAuthentication } from '../../models/user-for-authentication.mode
 import { Authentication } from './../../models/authentication.model';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Role } from '../../enums/role.enum';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'login',
@@ -18,20 +19,24 @@ export class LoginComponent implements OnInit {
   forgotPass = false;
   loading = false;
   returnUrl: string;
-  errors: string[] = [];
+  errorMessage = "";
+  @ViewChild('loginModal', { static: false }) public loginModal: TemplateRef<any>;
+  modalRef: any;
 
   constructor(
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router, 
-    private authenticationService: AuthenticationService) {}
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private modalService: BsModalService
+  ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]],
         password: ['', [
-          Validators.required, 
+          Validators.required,
           Validators.minLength(6),
           Validators.pattern("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+])[A-Za-z\\d][A-Za-z\\d!@#$%^&*()_+]{6,}$")
         ]]
@@ -44,7 +49,7 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
   onLogin() {
-    this.submitted = true;            
+    this.submitted = true;
     if (this.loginForm.invalid) {
       return;
     }
@@ -57,29 +62,31 @@ export class LoginComponent implements OnInit {
     this.loading = true;
 
     const loginObsever = {
-      next: 
+      next:
         (res: Authentication) => {
           this.loading = false;
           const hasRoles = this.authenticationService.currentUserValue.roles;
-          if(hasRoles && hasRoles.includes(Role.Admin)) {
+          if (hasRoles && hasRoles.includes(Role.Admin)) {
             this.router.navigate(["/admin"]);
           } else {
             this.router.navigate(["/user/farm/list"]);
           }
         },
-      error: 
+      error:
         (errorMessages: any) => {
           this.loading = false;
-          this.errors = [errorMessages];
+          this.errorMessage = errorMessages;
+          this.modalRef = this.modalService.show(this.loginModal);
         }
     }
 
-    this.authenticationService.login(userForAuthentication)
-    .subscribe(loginObsever);
-    
+    this.authenticationService
+      .login(userForAuthentication)
+      .subscribe(loginObsever);
+
   }
 
-  forgotPassword(){
+  forgotPassword() {
     this.forgotPass = true;
   }
 }

@@ -69,3 +69,12 @@
     </div>
   </div>
 </div>
+
+<ng-template #loginModal>
+  <div class="modal-body">
+    <div class="alert alert-danger" *ngIf="true">
+      <p>{{errorMessage}}</p>
+    </div>
+    <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">OK</button>
+  </div>
+</ng-template>
