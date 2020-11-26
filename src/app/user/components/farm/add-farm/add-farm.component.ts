@@ -15,7 +15,7 @@ import { Farm } from "@app/shared/models/farm.model";
 import { Location } from "@app/shared/models/location.model";
 import { HttpResponse } from "@angular/common/http";
 import { WeatherService } from "@app/shared/services/wx/weather.service";
-import { WeatherDataSource } from '@app/shared/models/weather-data-source.model';
+import { WeatherDataSource } from "@app/shared/models/weather-data-source.model";
 
 @Component({
   selector: "app-add-farm",
@@ -37,7 +37,6 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.form();
-    this.getWeatherDataSourceLocation(25.566, 56.5555, 25);
   }
 
   ngAfterViewInit(): void {
@@ -99,7 +98,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     console.log("call weather bla bla");
 
     this._weatherService
-      .weatherDataSourceLocationPoint(lat, lng, tol)
+      .weatherDataSourceLocationPoint(lat, lng, 50000)
       .subscribe((metStationData: WeatherDataSource[]) => {
         console.log("weather metStationData", metStationData);
         this.metStationList = metStationData;
@@ -135,7 +134,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
           self.getWeatherDataSourceLocation(
             result.latlng.lat,
             result.latlng.lng,
-            0
+            2500
           );
 
           // set farm marker

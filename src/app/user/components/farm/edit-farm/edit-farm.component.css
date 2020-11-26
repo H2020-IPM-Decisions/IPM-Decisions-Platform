@@ -3,6 +3,10 @@
   font-weight: 400;
 }
 
+.map-container {
+  height: 20vw;
+}
+
 /* .details:hover i.icon-toggle {
   visibility: visible;
 }

@@ -1,10 +1,24 @@
-import { Route } from "@angular/compiler/src/core";
-import { Component, OnInit, TemplateRef } from "@angular/core";
+import { HttpErrorResponse, HttpResponse } from "@angular/common/http";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
-import { FarmModel } from "@app/shared/models/farm.model";
+import { Router } from "@angular/router";
+import { Farm } from "@app/shared/models/farm.model";
+import { Field } from "@app/shared/models/field.model";
 import { FarmService } from "@app/shared/services/upr/farm.service";
+import { FieldCropPestCombinationService } from "@app/shared/services/upr/field-crop-pest-combination.service";
+import { FieldService } from "@app/shared/services/upr/field.service";
+import { compare } from "fast-json-patch";
+import L from "leaflet";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+import { ToastrService } from "ngx-toastr";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-edit-farm",
@@ -12,22 +26,26 @@ import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
   styleUrls: ["./edit-farm.component.css"],
   providers: [BsModalRef],
 })
-export class EditFarmComponent implements OnInit {
-  // elements: any = [];
-  // headElements = ["field", "type", "variety", "sowing_date"];
-
-  // cropPestForm: FormGroup;
-  // farmForm: FormGroup;
-  // canEdit: boolean = false;
-
-  // new
+export class EditFarmComponent implements OnInit, AfterViewInit {
   editFarmForm: FormGroup;
   fieldDetailsForm: FormGroup;
-  fieldDetailsTbl: FieldModel[] = [];
+  currentFarmValues: Farm;
+  fieldList: any[] = [];
+  modalRef: BsModalRef;
+  selectedCrop: any;
+
+  // currentPage: number;
+  // numItemsPerPage: number = 3;
+  // totalItems: number;
+  // page: number = 1;
+
+  // pageChanged(event: any): void {
+  //   this.page = event.page;
+  // }
 
   mock = {
     name: "Heart and Soil Farm",
-    address: "15 street, England",
+    location: "15 street, England",
     nearestMetStation: "Met station 1",
     weatherForecast: "Forecast service",
     fields: [
@@ -85,11 +103,11 @@ export class EditFarmComponent implements OnInit {
       },
     ],
   };
+  currentState$: any;
 
-  // private map: L.Map;
-  // @ViewChild("map", { static: false }) private mapContainer: ElementRef<
-  //   HTMLElement
-  // >;
+  private map: L.Map;
+  @ViewChild("map", { static: false })
+  private mapContainer: ElementRef<HTMLElement>;
 
   // locations: any = [
   //   {
@@ -107,18 +125,235 @@ export class EditFarmComponent implements OnInit {
   //   farmCoords: { lat: 11.8804, lng: 121.9189 },
   //   name: "My Farm",
   // };
-  modalRef: BsModalRef;
-  selectedCrop: any;
 
   constructor(
     private _fb: FormBuilder,
-    private modalService: BsModalService,
+    private _modalService: BsModalService,
+    private _router: Router,
     private _farmService: FarmService,
-    private _route: ActivatedRoute
+    private _fieldService: FieldService,
+    private _fieldCropPestCombinationService: FieldCropPestCombinationService,
+    private _toastr: ToastrService
   ) {}
 
+  ngOnInit() {
+    this.initEditFarmForm();
+    // this.initFieldDetailsForm();
+
+    this._farmService.currentFarm.subscribe((farm: Farm) => {
+      console.log("faxxxxxxxxxxxrm", farm);
+
+      if (farm) {
+        this.editFarmForm.patchValue(farm);
+        this.currentFarmValues = farm;
+        if (farm.id) {
+          this.onGetFields();
+          this.onGetCropPestCombinationFromField(farm.id);
+        }
+      }
+    });
+  }
+  onGetCropPestCombinationFromField(id: string) {
+    this._fieldCropPestCombinationService.getCropPestFromField(id).subscribe(
+      (res) => {
+        console.log("_fieldCropPestCombinationService", res);
+      },
+      (error: HttpErrorResponse) => {
+        this._toastr.show(
+          "Error fetching crop pests combination",
+          "Error!",
+          null,
+          "toast-error"
+        );
+      }
+    );
+  }
+
+  ngAfterViewInit(): void {
+    this.showFarmLocationOnMap();
+  }
+
+  // getFarmById() {
+  //   // get farm id parameter from url
+  //   // this.getFarmByParamId();
+  //   // get selected farm
+  //   console.log("xxxxx", this.currentFarm);
+  //   const link = this.currentFarm.links.find((item) => item.rel === "self");
+
+  //   this._farmService.getFarmById(link.href).subscribe((farm: Farm) => {
+  //     // this._farmService.getFarmById(this.farmId).subscribe((farm: Farm) => {
+
+  //     const farmData: Farm = {
+  //       id: farm.id,
+  //       name: farm.name,
+  //       location: farm.location,
+  //       inf1: farm.inf1,
+  //       inf2: farm.inf2,
+  //     };
+  //     this.editFarmForm.patchValue(farmData);
+  //     this.currentFarmValues = farmData;
+  //   });
+  // }
+
+  initEditFarmForm() {
+    this.editFarmForm = this._fb.group({
+      id: [],
+      name: ["", Validators.required],
+      location: ["", Validators.required],
+      inf1: ["", Validators.required],
+      inf2: ["", Validators.required],
+    });
+  }
+
+  private showFarmLocationOnMap(): void {
+    const farmLocation = this.currentFarmValues.location
+      ? this.currentFarmValues.location
+      : null;
+
+    const initialState = {
+      lng: farmLocation.x,
+      lat: farmLocation.y,
+      zoom: 12,
+    };
+
+    const map = new L.Map(this.mapContainer.nativeElement).setView(
+      [initialState.lat, initialState.lng],
+      initialState.zoom
+    );
+
+    const tiles = L.tileLayer(
+      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }
+    );
+
+    tiles.addTo(map);
+
+    // one marker
+    L.marker([farmLocation.x, farmLocation.y])
+      .addTo(map)
+      .bindPopup(farmLocation.address.longLabel)
+      .openPopup();
+
+    // many markers
+    // this.locations.forEach((location) => {
+    //   L.marker([location[1], location[2]]).addTo(map).bindPopup(location[0]).openPopup();
+    // });
+    this.map = map;
+    // this.getMarkerLocation(map); // todo: create map service
+    // console.log('nesto bla',  this.farmForm);
+  }
+
+  get f() {
+    return this.editFarmForm.controls;
+  }
+
+  onFarmUpdate() {
+    const updatedFarmValues = this.editFarmForm.value;
+    updatedFarmValues.links = this.currentFarmValues.links;
+    let obs: Observable<any> = null;
+
+    if (!updatedFarmValues.id) {
+      obs = this._farmService.createFarm(updatedFarmValues);
+    } else {
+      const patch = compare(this.currentFarmValues, updatedFarmValues);
+      obs = this._farmService.updateFarm(patch);
+    }
+
+    obs.subscribe(
+      (result: HttpResponse<any>) => {
+        if (result.ok && (result.status === 204 || result.status === 201)) {
+          this._farmService.setCurrentFarm(result.body);
+
+          this._toastr.show(
+            "Farm details successfully updated!",
+            "Success!",
+            null,
+            "toast-success"
+          );
+        }
+      },
+      (error: HttpErrorResponse) => {
+        this._toastr.show(
+          "Error updating farm details!",
+          "Error!",
+          null,
+          "toast-error"
+        );
+      }
+    );
+  }
+
+  // FIELDS BELOW
+
+  onGetFields() {
+    this._fieldService.getFields().subscribe(
+      (fields: any) => {
+        console.log("odgovor response", fields);
+        if (fields.body && fields.body.value) {
+          this.fieldList = fields.body.value;
+        }
+      },
+      (error: HttpErrorResponse) => {
+        this._toastr.show(
+          "Error fetching field detail!",
+          "Error!",
+          null,
+          "toast-error"
+        );
+      }
+    );
+    // this._fieldService.getFields(this.farmId).subscribe(
+    //   (response: any) => {
+    //     console.log("odgovor response", response);
+
+    //     if (response.ok && response.status === 200) {
+    //       console.log("DOGOVOVOOODDO", response.value);
+
+    //       this.fieldList = response.body.value;
+    //     }
+    //   },
+    //   (error: HttpErrorResponse) => {
+    //     this._toastr.show(
+    //       "Error updating farm information!",
+    //       "Error!",
+    //       null,
+    //       "toast-error"
+    //     );
+    //   }
+    // );
+  }
+
+  onEditField(field: Field) {
+    this._fieldService.setCurrentField(field);
+    this._router.navigate(["/user/field/edit"]);
+  }
+
+  onFieldDelete(fieldId: string) {
+    if (fieldId) {
+      this._fieldService
+        .deleteFieldById(fieldId)
+        .subscribe((response: HttpResponse<any>) => {
+          if (response.status === 204) {
+            this._modalService.hide(1);
+
+            const index: number = this.fieldList.findIndex(
+              (item) => item.id === fieldId
+            );
+
+            if (index !== -1) {
+              this.fieldList.splice(index, 1);
+            }
+          }
+        });
+    }
+  }
+
   openModal(template: TemplateRef<any>, field: any) {
-    this.modalRef = this.modalService.show(template);
+    this.modalRef = this._modalService.show(template);
     this.showFieldDetails(field);
   }
 
@@ -127,102 +362,6 @@ export class EditFarmComponent implements OnInit {
     this.selectedCrop = field;
     // console.log("details field", field);
   }
-
-  ngOnInit() {
-    this.initEditFarmForm();
-    this.initFieldDetailsForm();
-
-    this.getFarmByParamId();
-  }
-
-  getFarmByParamId(): void {
-    this._route.params.subscribe((params) => {
-      if (params) {
-        const farmId = params["id"];
-        if (farmId) {
-          this.getFarmById(farmId);
-        }
-      }
-    });
-  }
-
-  getFarmById(farmId: string) {
-    this._farmService.getFarmById(farmId).subscribe((farm: FarmModel) => {
-      this.editFarmForm.patchValue({
-        name: farm.name,
-        address: farm.location,
-        metStation: farm.inf1,
-        forecastService: farm.inf2,
-      });
-    });
-  }
-
-  initEditFarmForm() {
-    this.editFarmForm = this._fb.group({
-      name: ["", Validators.required],
-      address: ["", Validators.required],
-      metStation: ["", Validators.required],
-      forecastService: ["", Validators.required],
-    });
-  }
-
-  initFieldDetailsForm() {
-    this.fieldDetailsForm = this._fb.group({
-      crop: ["", Validators.required],
-      pest: ["", Validators.required],
-      field: ["", Validators.required],
-      variety: ["", Validators.required],
-      sowingDate: ["", Validators.required],
-    });
-  }
-
-  get f() {
-    return this.editFarmForm.controls;
-  }
-
-  get fAdd() {
-    return this.fieldDetailsForm.controls;
-  }
-
-  onEditFarmSubmit() {
-    const changedValues = this.editFarmForm.value;
-
-    console.log("changed values from form", changedValues);
-
-    // call service and edit
-  }
-
-  onAddFieldDetails() {
-    const valuesToAdd: FieldModel = this.fieldDetailsForm.value;
-
-    console.log("changed values from form", valuesToAdd);
-
-    this.fieldDetailsTbl.push(valuesToAdd);
-    console.log("array filed", this.fieldDetailsTbl);
-
-    // call service and edit
-  }
-
-  // private formInit() {
-  //   this.cropPestForm = this.fb.group({
-  //     crop: ["", Validators.required],
-  //     pest: ["", Validators.required],
-  //     fieldName: ["", [Validators.required, Validators.minLength(3)]],
-  //     variety: ["", Validators.required],
-  //     sowingDate: ["", Validators.required],
-  //   });
-  // }
-
-  // private farmFormInit() {
-  //   this.farmForm = this.fb.group({
-  //     name: [this.farm.name, Validators.required],
-  //     // sowingDate: ['', Validators.required]
-  //   });
-  // }
-
-  // ngAfterViewInit(): void {
-  //   // this.initMap();
-  // }
 
   // private initMap(): void {
   //   const initialState = {
@@ -312,12 +451,4 @@ export class EditFarmComponent implements OnInit {
   //   this.farm.name = farmValues.name;
   //   console.log("va", this.farm.name);
   // }
-}
-
-interface FieldModel {
-  crop: string;
-  pest: string;
-  field: string;
-  variety?: string;
-  sowingDate?: string;
 }

@@ -2021,6 +2021,10 @@ a.disable-link {
   opacity: .5;
 }
 
+.map-container {
+  height: 20vw;
+}
+
 /* ----------------
 Responsive
  ---------------------*/
