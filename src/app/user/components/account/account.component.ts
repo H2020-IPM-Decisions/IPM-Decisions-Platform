@@ -10,10 +10,20 @@ import { UserProfile } from '@app/shared/models/user-profile.model';
 })
 export class AccountComponent implements OnInit {
   user: UserProfile;
+  userRole;
   constructor(
     private _userProfileService: UserProfileService,
     public authService: AuthenticationService
-  ) {}
+  ) {
+    var userAccessType = this.authService.currentUserValue.useraccesstype;
+    if (userAccessType.includes('farmer')) {
+      this.userRole = 'farmer';
+    } else if (userAccessType.includes('advisor')) {
+      this.userRole = 'advisor';
+    } else if (userAccessType.includes('developer')) {
+      this.userRole = 'developer';
+    }
+  }
 
   ngOnInit() {
     this._userProfileService.getUserProfile(true)
