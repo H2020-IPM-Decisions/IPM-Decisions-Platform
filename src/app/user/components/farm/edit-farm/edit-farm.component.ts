@@ -148,26 +148,26 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
         this.currentFarmValues = farm;
         if (farm.id) {
           this.onGetFields();
-          this.onGetCropPestCombinationFromField(farm.id);
+          // this.onGetCropPestCombinationFromField(farm.id);
         }
       }
     });
   }
-  onGetCropPestCombinationFromField(id: string) {
-    this._fieldCropPestCombinationService.getCropPestFromField(id).subscribe(
-      (res) => {
-        console.log("_fieldCropPestCombinationService", res);
-      },
-      (error: HttpErrorResponse) => {
-        this._toastr.show(
-          "Error fetching crop pests combination",
-          "Error!",
-          null,
-          "toast-error"
-        );
-      }
-    );
-  }
+  // onGetCropPestCombinationFromField(id: string) {
+  //   this._fieldCropPestCombinationService.getCropPestFromField(id).subscribe(
+  //     (res) => {
+  //       console.log("_fieldCropPestCombinationService", res);
+  //     },
+  //     (error: HttpErrorResponse) => {
+  //       this._toastr.show(
+  //         "Error fetching crop pests combination",
+  //         "Error!",
+  //         null,
+  //         "toast-error"
+  //       );
+  //     }
+  //   );
+  // }
 
   ngAfterViewInit(): void {
     this.showFarmLocationOnMap();
@@ -293,8 +293,8 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
     this._fieldService.getFields().subscribe(
       (fields: any) => {
         console.log("odgovor response", fields);
-        if (fields.body && fields.body.value) {
-          this.fieldList = fields.body.value;
+        if (fields && fields.value) {
+          this.fieldList = fields.value;
         }
       },
       (error: HttpErrorResponse) => {
@@ -330,6 +330,53 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
   onEditField(field: Field) {
     this._fieldService.setCurrentField(field);
     this._router.navigate(["/user/field/edit"]);
+  }
+
+  onFieldCopy(field) {
+    console.log("copy field", field);
+    const fieldToAdd:Field = this.fieldMapper(field);
+console.log('fieldToAdd', fieldToAdd);
+
+    if (field) {
+      this._fieldService.createField(fieldToAdd).subscribe(
+        (fieldResponse) => {
+          if (fieldResponse) {
+            this._toastr.show(
+              "Field successfully copied!",
+              "Success!",
+              null,
+              "toast-success"
+            );
+          }
+        },
+        (error: HttpErrorResponse) => {
+          console.log("field error", error);
+          this._toastr.show(
+            "Fail to copy field!",
+            "Error!",
+            null,
+            "toast-error"
+          );
+        }
+      );
+    }
+  }
+
+  fieldMapper(field): Field {
+    let cropPest: any[] = [];
+    field.fieldCropPestsDto.value.forEach((item) => {
+        cropPest.push({
+          cropEppoCode: item.cropPestDto.cropEppoCode,
+          pestEppoCode: item.cropPestDto.pestEppoCode,
+        });
+    });
+    return <Field>{
+      id: field.id,
+      name: field.name + " [Copy]",
+      inf1: field.inf1,
+      inf2: field.inf2,
+      cropPests: cropPest,
+    };
   }
 
   onFieldDelete(fieldId: string) {
