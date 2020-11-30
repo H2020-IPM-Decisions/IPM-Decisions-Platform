@@ -12,7 +12,6 @@ import { Router } from "@angular/router";
 import { Farm } from "@app/shared/models/farm.model";
 import { Field } from "@app/shared/models/field.model";
 import { FarmService } from "@app/shared/services/upr/farm.service";
-import { FieldCropPestCombinationService } from "@app/shared/services/upr/field-crop-pest-combination.service";
 import { FieldService } from "@app/shared/services/upr/field.service";
 import { compare } from "fast-json-patch";
 import L from "leaflet";
@@ -132,7 +131,6 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
     private _router: Router,
     private _farmService: FarmService,
     private _fieldService: FieldService,
-    private _fieldCropPestCombinationService: FieldCropPestCombinationService,
     private _toastr: ToastrService
   ) {}
 
