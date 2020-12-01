@@ -4,7 +4,7 @@ export interface WeatherDataSource {
   publicURL: string;
   endpoint: string;
   needsDataControl: string;
-  accessType: string;
+  access_type: string;
   spatial: Spatial;
   temporal: Temporal;
   parameters: Parameters;
