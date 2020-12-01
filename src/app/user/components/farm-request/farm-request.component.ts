@@ -6,7 +6,7 @@ import { TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-farm-request',
+  selector: 'farm-request',
   templateUrl: './farm-request.component.html',
   styleUrls: ['./farm-request.component.css']
 })
