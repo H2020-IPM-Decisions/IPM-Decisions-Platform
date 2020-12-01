@@ -28,6 +28,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
   private mapContainer: ElementRef<HTMLElement>;
   farmForm: FormGroup;
   metStationList: WeatherDataSource[] = [];
+  weatherForecastList: WeatherDataSource[] = [];
   constructor(
     private _fb: FormBuilder,
     private _farmService: FarmService,
@@ -37,6 +38,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.form();
+    this.getWeatherForecastServices();
   }
 
   ngAfterViewInit(): void {
@@ -50,8 +52,6 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       location: ["", Validators.required],
       inf1: ["", Validators.required],
       inf2: ["", Validators.required],
-      // metStation: ["", Validators.required],
-      // forecast: ["", Validators.required],
     });
   }
 
@@ -98,7 +98,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     console.log("call weather bla bla");
 
     this._weatherService
-      .weatherDataSourceLocationPoint(lat, lng, 50000)
+      .getWeatherDataSourceLocationPoint(lat, lng, 50000)
       .subscribe((metStationData: WeatherDataSource[]) => {
         console.log("weather metStationData", metStationData);
         this.metStationList = metStationData;
@@ -196,5 +196,11 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
         );
       }
     );
+  }
+
+  getWeatherForecastServices() {
+    this._weatherService.getForecastServices().subscribe((forecast) => {
+      this.weatherForecastList = forecast;
+    });
   }
 }
