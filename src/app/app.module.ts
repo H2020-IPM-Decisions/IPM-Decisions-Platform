@@ -102,6 +102,7 @@ import { ToastrModule } from "ngx-toastr";
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { FieldAddComponent } from './user/components/field/field-add/field-add.component';
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
+import { FarmShareComponent } from './user/components/farm-share/farm-share.component';
 
 @NgModule({
   declarations: [
@@ -195,6 +196,7 @@ import { FieldEditComponent } from './user/components/field/field-edit/field-edi
     DssSelectionComponent,
     FieldAddComponent,
     FieldEditComponent,
+    FarmShareComponent,
   ],
   imports: [
     BrowserModule,
