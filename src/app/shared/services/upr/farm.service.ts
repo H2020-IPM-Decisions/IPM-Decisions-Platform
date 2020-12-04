@@ -20,7 +20,6 @@ export class FarmService {
   constructor(private _http: HttpClient) {}
 
   get selectedFarm() {
-    console.log('this.farmSubject', this.farmSubject);
     if (this.farmSubject) {
       return this.farmSubject.getValue();
     }

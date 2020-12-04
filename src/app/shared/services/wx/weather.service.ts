@@ -1,8 +1,8 @@
 import { environment } from "@src/environments/environment";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Injectable, OnInit } from "@angular/core";
-import { catchError, tap } from "rxjs/operators";
-import { throwError, Subject, Observable } from "rxjs";
+import { Injectable } from "@angular/core";
+import { catchError, map, tap } from "rxjs/operators";
+import { throwError, Subject, Observable, BehaviorSubject } from "rxjs";
 import Ajv, { ErrorObject } from "ajv";
 import * as weatherDataSchema from "./schemas/weather-data-schema.json";
 import { WeatherDataSource } from "@app/shared/models/weather-data-source.model";
@@ -12,11 +12,13 @@ import { WeatherDataSource } from "@app/shared/models/weather-data-source.model"
 })
 export class WeatherService {
   weatherSchema: any = (weatherDataSchema as any).default;
+  private metStationSubject = new BehaviorSubject<WeatherDataSource[]>(null);
+  metStation = this.metStationSubject.asObservable();
   public errors$ = new Subject<ErrorObject[]>();
 
   constructor(private http: HttpClient) {}
 
-  weatherDataSourceLocationPoint(
+  getWeatherDataSourceLocationPoint(
     lat: number,
     lng: number,
     tol: number = 0
@@ -36,21 +38,46 @@ export class WeatherService {
           },
         }
       )
-      .pipe(catchError(this.handleError));
+      .pipe(
+        map((weatherMetStations) => {
+          this.metStationSubject.next(weatherMetStations);
+          return weatherMetStations;
+        }),
+        catchError(this.handleError)
+      );
   }
 
-  weatherDataSource(): Observable<WeatherDataSource[]> {
+  private getWeatherDataSource(): Observable<WeatherDataSource[]> {
     return this.http
       .get<WeatherDataSource[]>(
         `https://ipmdecisions.nibio.no/api/wx/rest/weatherdatasource`,
         {
           headers: {
             "Content-Type": "*/*",
-            "Accept": "application/json",
+            Accept: "application/json",
           },
         }
       )
       .pipe(catchError(this.handleError));
+  }
+
+  getMetStations(): Observable<WeatherDataSource[]> {
+    return this.getWeatherDataSource().pipe(
+      map((resp: WeatherDataSource[]) => {
+        return resp.filter(
+          (item: WeatherDataSource) => item.access_type === "location"
+        );
+      })
+    );
+  }
+  getForecastServices(): Observable<WeatherDataSource[]> {
+    return this.getWeatherDataSource().pipe(
+      map((resp: WeatherDataSource[]) => {
+        return resp.filter(
+          (item: WeatherDataSource) => item.access_type === "stations"
+        );
+      })
+    );
   }
 
   getWeatherData() {

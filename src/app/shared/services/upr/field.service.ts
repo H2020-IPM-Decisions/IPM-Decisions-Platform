@@ -4,7 +4,7 @@ import { Field } from "@app/shared/models/field.model";
 import { environment } from "@src/environments/environment";
 import { Operation } from "fast-json-patch";
 import { BehaviorSubject, Observable, of } from "rxjs";
-import { catchError, map } from "rxjs/operators";
+import { catchError } from "rxjs/operators";
 import { FarmService } from "./farm.service";
 
 @Injectable({
@@ -51,8 +51,7 @@ export class FieldService {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/vnd.h2020ipmdecisions.field.withchildren+json",
-        },
-        observe: "response",
+        }
       })
       .pipe(
         catchError((error) => {
@@ -84,8 +83,9 @@ export class FieldService {
   //     );
   // }
 
-  public getField(fields?: string[]): Observable<Field> {
-    let url = `${this.apiUrl}/api/upr/farms/${this.farmId}`;
+  public getField(fieldId?: string, fields?:string[]): Observable<Field> {
+    let url = `${this.apiUrl}/api/upr/farms/${this.farmId}/fields/${fieldId}`;
+   
     if (fields) {
       url += `?${fields}`;
     }
@@ -94,7 +94,7 @@ export class FieldService {
       .get(url, {
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/vnd.h2020ipmdecisions.hateoas+json",
+          Accept: "application/vnd.h2020ipmdecisions.field.withchildren+json",
         },
       })
       .pipe(
