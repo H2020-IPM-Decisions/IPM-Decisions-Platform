@@ -50,8 +50,8 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     this.farmForm = this._fb.group({
       name: ["", Validators.required],
       location: ["", Validators.required],
-      inf1: ["", Validators.required],
-      inf2: ["", Validators.required],
+      weatherDataSourceDto: ["", Validators.required],
+      weatherStationDto: ["", Validators.required],
     });
   }
 
@@ -171,12 +171,19 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
   onFarmSubmit() {
     if (this.farmForm.invalid) return;
 
-    const formValues: Farm = this.farmForm.value;
+    const formValues: any = this.farmForm.value;
+
+    formValues.weatherDataSourceDto = {
+      id: formValues.weatherDataSourceDto.toLowerCase(),
+      name: formValues.weatherDataSourceDto,
+    };
+    formValues.weatherStationDto = {
+      id: formValues.weatherStationDto.toLowerCase(),
+      name: formValues.weatherStationDto,
+    };
 
     this._farmService.createFarm(formValues).subscribe(
       (addFarmResponse: HttpResponse<Farm>) => {
-        console.log("response", addFarmResponse);
-
         if (addFarmResponse) {
           this._toastr.show(
             "Farm successfully created!",
