@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { environment } from './../../../../environments/environment';
@@ -26,10 +26,12 @@ export class FarmShareComponent implements OnInit {
 
   updateList() {
     return this.http.get(
-      `${environment.apiUrl}/api/upr/datashare`
+      `${environment.apiUrl}/api/upr/datashare`, {
+        observe: 'response'
+      }
     ).toPromise()
-      .then((x: any) => {
-        this.items = x.value;
+      .then((x: HttpResponse<any>) => {
+        this.items = x.body.value;
       })
       .catch((x) => {
         alert(JSON.stringify(x));
