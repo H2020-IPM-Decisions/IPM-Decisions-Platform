@@ -1,0 +1,39 @@
+<div class="main-card mb-3 card">
+  <div class="card-body">
+    <table class="mb-0 table table-cover">
+      <!-- requesterName requestStatus -->
+      <tr>
+        <th>Requester Name</th>
+        <th>Request Status</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let item of items">
+        <td>{{item.requesterName}}</td>
+        <td>{{item.requestStatus}}</td>
+        <td>
+          <button
+            _ngcontent-die-c6=""
+            class="mb-2 mr-2 btn btn-primary"
+            (click)="makeRequest(item.requesterId, 'Accepted')"
+          >Accept</button>
+          <button
+            _ngcontent-die-c6=""
+            class="mb-2 mr-2 btn btn-danger"
+            (click)="makeRequest(item.requesterId, 'Declined')"
+          >Decline</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<ng-template #farmShareModal>
+  <div class="modal-body">
+    <div class="alert">
+      <span>
+        {{message}}
+      </span>
+    </div>
+    <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">OK</button>
+  </div>
+</ng-template>
