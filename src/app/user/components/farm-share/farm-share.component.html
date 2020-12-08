@@ -10,18 +10,14 @@
       <tr *ngFor="let item of items">
         <td>{{item.requesterName}}</td>
         <td>{{item.requestStatus}}</td>
-        <td>
+        <td style="font-size: 20px; min-width: 70px;">
           <div *ngIf="item.requestStatus == 'Pending'">
-            <button
-              _ngcontent-die-c6=""
-              class="mb-2 mr-2 btn btn-primary"
+            <i class="fas fa-check-circle" style="color: green; cursor: pointer;"
               (click)="makeRequest(item.requesterId, 'Accepted')"
-            >Accept</button>
-            <button
-              _ngcontent-die-c6=""
-              class="mb-2 mr-2 btn btn-danger"
+            ></i>&nbsp;
+            <i class="fas fa-times-circle" style="color: red; cursor: pointer;"
               (click)="makeRequest(item.requesterId, 'Declined')"
-            >Decline</button>
+            ></i>
           </div>
         </td>
       </tr>
