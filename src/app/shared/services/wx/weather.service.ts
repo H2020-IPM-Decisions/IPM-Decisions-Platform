@@ -43,6 +43,12 @@ export class WeatherService {
           this.metStationSubject.next(weatherMetStations);
           return weatherMetStations;
         }),
+        map((data: WeatherDataSource[]) => {
+          return data.map((item: WeatherDataSource, index: number) => ({
+            ...item,
+            id: `${index}`,
+          }));
+        }),
         catchError(this.handleError)
       );
   }
@@ -61,21 +67,34 @@ export class WeatherService {
       .pipe(catchError(this.handleError));
   }
 
-  getMetStations(): Observable<WeatherDataSource[]> {
+  public getMetStations(): Observable<WeatherDataSource[]> {
     return this.getWeatherDataSource().pipe(
-      map((resp: WeatherDataSource[]) => {
-        return resp.filter(
+      map((data: WeatherDataSource[]) => {
+        return data.filter(
           (item: WeatherDataSource) => item.access_type === "location"
         );
+      }),
+      map((data: WeatherDataSource[]) => {
+        return data.map((item: WeatherDataSource, index: number) => ({
+          ...item,
+          id: `${index}`,
+        }));
       })
     );
   }
-  getForecastServices(): Observable<WeatherDataSource[]> {
+
+  public getForecastServices(): Observable<WeatherDataSource[]> {
     return this.getWeatherDataSource().pipe(
-      map((resp: WeatherDataSource[]) => {
-        return resp.filter(
+      map((data: WeatherDataSource[]) => {
+        return data.filter(
           (item: WeatherDataSource) => item.access_type === "stations"
         );
+      }),
+      map((data: WeatherDataSource[]) => {
+        return data.map((item: WeatherDataSource, index: number) => ({
+          ...item,
+          id: `${index}`,
+        }));
       })
     );
   }

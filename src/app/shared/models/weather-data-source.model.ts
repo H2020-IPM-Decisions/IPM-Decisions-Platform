@@ -1,4 +1,5 @@
 export interface WeatherDataSource {
+  id: string;
   name: string;
   description: string;
   publicURL: string;

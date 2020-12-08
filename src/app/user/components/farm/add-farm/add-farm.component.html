@@ -45,7 +45,7 @@
                 <label for="met-station" class="col-sm-3 col-form-label">Nearest met. station</label>
                 <div class="col-sm-9">
                   <select class="form-control" id="met-station" formControlName="weatherStationDto">
-                    <option *ngFor="let metStation of metStationList" [value]="metStation.name">{{metStation.name}}
+                    <option *ngFor="let metStation of metStationList" [ngValue]="metStation">{{metStation.name}}
                     </option>
                   </select>
                 </div>
@@ -54,7 +54,7 @@
                 <label for="forecast" class="col-sm-3 col-form-label">Weather forecast service</label>
                 <div class="col-sm-9">
                   <select class="form-control" id="forecast" formControlName="weatherDataSourceDto">
-                    <option *ngFor="let forecast of weatherForecastList" [value]="forecast.name">{{forecast.name}}
+                    <option *ngFor="let forecast of weatherForecastList" [ngValue]="forecast">{{forecast.name}}
                     </option>
                   </select>
                 </div>

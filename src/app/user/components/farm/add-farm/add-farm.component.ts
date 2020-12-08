@@ -94,16 +94,6 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     // console.log('nesto bla',  this.farmForm);
   }
 
-  getWeatherDataSourceLocation(lat: number, lng: number, tol: number) {
-    console.log("call weather bla bla");
-
-    this._weatherService
-      .getWeatherDataSourceLocationPoint(lat, lng, 50000)
-      .subscribe((metStationData: WeatherDataSource[]) => {
-        console.log("weather metStationData", metStationData);
-        this.metStationList = metStationData;
-      });
-  }
   setMarkerLocation(map: any, form: FormGroup) {
     var marker;
     let farmLocation: Location;
@@ -129,8 +119,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
           if (error) {
             return;
           }
-          console.log("adresa mapa", self);
-
+          
           self.getWeatherDataSourceLocation(
             result.latlng.lat,
             result.latlng.lng,
@@ -161,26 +150,16 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
             form.controls.location.setValue(farmLocation);
           }
         });
-
-      // { metStationName: "Met. Station_1", metStationCoords: { lat: 11.8166, lng: 122.0942 } },
-      // this.farm.metStationCoords = e.latlng;
-      // console.log(this.farm.metStationCoords); // e is an event object (MouseEvent in this case)
     });
   }
 
   onFarmSubmit() {
-    if (this.farmForm.invalid) return;
+    if (this.farmForm.invalid) {
+      this._toastr.show("Invalid form data!", "Error!", null, "toast-error");
+      return;
+    }
 
     const formValues: any = this.farmForm.value;
-
-    formValues.weatherDataSourceDto = {
-      id: formValues.weatherDataSourceDto.toLowerCase(),
-      name: formValues.weatherDataSourceDto,
-    };
-    formValues.weatherStationDto = {
-      id: formValues.weatherStationDto.toLowerCase(),
-      name: formValues.weatherStationDto,
-    };
 
     this._farmService.createFarm(formValues).subscribe(
       (addFarmResponse: HttpResponse<Farm>) => {
@@ -205,7 +184,19 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     );
   }
 
-  getWeatherForecastServices() {
+  private getWeatherDataSourceLocation(
+    lat: number,
+    lng: number,
+    tol: number = 50000
+  ) {
+    this._weatherService
+      .getWeatherDataSourceLocationPoint(lat, lng, tol)
+      .subscribe((metStationData: WeatherDataSource[]) => {
+        this.metStationList = metStationData;
+      });
+  }
+
+  private getWeatherForecastServices() {
     this._weatherService.getForecastServices().subscribe((forecast) => {
       this.weatherForecastList = forecast;
     });
