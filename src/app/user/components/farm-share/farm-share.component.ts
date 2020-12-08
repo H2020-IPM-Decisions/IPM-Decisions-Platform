@@ -17,6 +17,8 @@ export class FarmShareComponent implements OnInit {
 
   items;
   message = "";
+  pagination:any = {};
+  currentPage = 1;
   @ViewChild('farmShareModal', { static: false }) public farmShareModal: TemplateRef<any>;
   modalRef: any;
 
@@ -26,15 +28,13 @@ export class FarmShareComponent implements OnInit {
 
   updateList() {
     return this.http.get(
-      `${environment.apiUrl}/api/upr/datashare`, {
+      `${environment.apiUrl}/api/upr/datashare?pageSize=5&pageNumber=${this.currentPage}`, {
         observe: 'response'
       }
     ).toPromise()
       .then((x: HttpResponse<any>) => {
+        this.pagination = JSON.parse(x.headers.get('x-pagination'));
         this.items = x.body.value;
-      })
-      .catch((x) => {
-        alert(JSON.stringify(x));
       })
   }
 
@@ -52,14 +52,30 @@ export class FarmShareComponent implements OnInit {
       }
     ).toPromise()
       .then((response: any) => {
-        this.message = response.message;
         return this.updateList();
       })
       .catch((response: any) => {
         this.message = response.error.message;
-        return Promise.resolve();
+        this.modalRef = this.modalService.show(this.farmShareModal);
       })
-      .then(() => this.modalRef = this.modalService.show(this.farmShareModal))
+  }
+
+  getNextPage() {
+    this.currentPage++;
+    return this.updateList();
+  }
+
+  hasNextPage() {
+    return this.pagination["HasNext"];
+  }
+
+  getPreviousPage() {
+    this.currentPage--;
+    return this.updateList();
+  }
+
+  hasPreviousPage() {
+    return this.pagination["HasPrevious"];
   }
 
 }

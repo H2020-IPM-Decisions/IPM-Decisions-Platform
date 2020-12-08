@@ -11,19 +11,31 @@
         <td>{{item.requesterName}}</td>
         <td>{{item.requestStatus}}</td>
         <td>
-          <button
-            _ngcontent-die-c6=""
-            class="mb-2 mr-2 btn btn-primary"
-            (click)="makeRequest(item.requesterId, 'Accepted')"
-          >Accept</button>
-          <button
-            _ngcontent-die-c6=""
-            class="mb-2 mr-2 btn btn-danger"
-            (click)="makeRequest(item.requesterId, 'Declined')"
-          >Decline</button>
+          <div *ngIf="item.requestStatus == 'Pending'">
+            <button
+              _ngcontent-die-c6=""
+              class="mb-2 mr-2 btn btn-primary"
+              (click)="makeRequest(item.requesterId, 'Accepted')"
+            >Accept</button>
+            <button
+              _ngcontent-die-c6=""
+              class="mb-2 mr-2 btn btn-danger"
+              (click)="makeRequest(item.requesterId, 'Declined')"
+            >Decline</button>
+          </div>
         </td>
       </tr>
     </table>
+    <button
+      [disabled]="!hasPreviousPage()"
+      (click)="getPreviousPage()"
+      class="mb-2 mr-2 btn btn-primary previous"
+    >&lt;</button>
+    <button
+      [disabled]="!hasNextPage()"
+      (click)="getNextPage()"
+      class="mb-2 mr-2 btn btn-primary next"
+    >&gt;</button>
   </div>
 </div>
 
