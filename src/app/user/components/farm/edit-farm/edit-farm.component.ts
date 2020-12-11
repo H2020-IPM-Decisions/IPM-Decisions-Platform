@@ -138,7 +138,6 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
     this._weatherService
       .getWeatherDataSourceLocationPoint(lat, lng, tol)
       .subscribe((metStationData: WeatherDataSource[]) => {
-        console.log("LOCATION", metStationData);
         if (metStationData) {
           this.metStationList = metStationData;
         }
@@ -155,19 +154,18 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
     const updatedFarmValues = this.editFarmForm.value;
     updatedFarmValues.links = this.currentFarm.links;
     let obs: Observable<any> = null;
-    console.log("edit", updatedFarmValues);
+
     if (!updatedFarmValues.id) {
       obs = this._farmService.createFarm(updatedFarmValues);
     } else {
       const patch = compare(this.currentFarm, updatedFarmValues);
-      obs = this._farmService.updateFarm(patch);
+      const changedPatch = this.prepareForEditing(patch);
+      obs = this._farmService.updateFarm(changedPatch);
     }
 
     obs.subscribe(
       (result: HttpResponse<any>) => {
-        if (result.ok && (result.status === 204 || result.status === 201)) {
-          this._farmService.setCurrentFarm(result.body);
-
+        if (result.ok) {
           this._toastr.show(
             "Farm details successfully updated!",
             "Success!",
@@ -187,12 +185,48 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
     );
   }
 
+  private prepareForEditing(patch) {
+    let arr = [];
+    patch.forEach((item, index) => {
+      if (item["op"] === "replace") {
+        switch (item.path) {
+          case "/weatherDataSourceDto/id":
+          case "/weatherStationDto/id":
+          case "/location/x":
+            break;
+
+          case "/weatherDataSourceDto/name":
+            item["path"] = "/weatherDataSourceDto";
+            item["value"] = { name: item.value, id: patch[index + 1].value };
+            arr.push(item);
+            break;
+
+          case "/weatherStationDto/name":
+            item["path"] = "/weatherStationDto";
+            item["value"] = { name: item.value, id: patch[index + 1].value };
+            arr.push(item);
+            break;
+
+          case "/location/y":
+            item["path"] = "/location";
+            item["value"] = { y: item.value, x: patch[index + 1].value };
+            arr.push(item);
+            break;
+
+          default:
+            arr.push(item);
+        }
+      }
+    });
+    return arr;
+  }
+
   // FIELDS BELOW
 
   onGetFields() {
     this._fieldService.getFields().subscribe(
       (fields: any) => {
-        console.log("odgovor response", fields);
+        // console.log("odgovor response", fields);
         if (fields && fields.value) {
           this.fieldList = fields.value;
         }
