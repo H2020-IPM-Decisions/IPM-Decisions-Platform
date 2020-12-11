@@ -3,12 +3,12 @@ import * as L from "leaflet";
 import * as esriGeo from "esri-leaflet-geocoder";
 import { Location } from "@app/shared/models/location.model";
 import { Router } from "@angular/router";
-import { ReplaySubject, Observable, of, BehaviorSubject } from "rxjs";
+import { ReplaySubject, Observable, of, BehaviorSubject, Subject } from "rxjs";
 import { LeafletMouseEvent } from "leaflet";
 @Injectable({ providedIn: "root" })
 export class MaprisksService {
   private mapSubject = new ReplaySubject<L.Map>(); // Do not share subject directly, use asObservable instead
-  private locationSubject = new BehaviorSubject<any>(null);
+  private locationSubject = new Subject<any>();
   public mapObservable: Observable<L.Map>;
   public locationObservable: Observable<any>;
   constructor() {
