@@ -33,18 +33,19 @@ export class FarmListComponent implements OnInit {
     var copyFarm = {} as Farm;
     copyFarm.id = null;
     copyFarm.name = farm.name + " [Copy]";
-    copyFarm.inf1 = farm.inf1;
-    copyFarm.inf2 = farm.inf2;
-    copyFarm.location = farm.location
-    this._farmService
-      .createFarm(copyFarm)
-      .subscribe(
-        (response) => {
-          alert(JSON.stringify(response));
+    copyFarm.weatherStationDto = farm.weatherStationDto;
+    copyFarm.weatherDataSourceDto = farm.weatherDataSourceDto;
+    copyFarm.location = farm.location;
+    this._farmService.createFarm(copyFarm).subscribe(
+      (response) => {
+        if (response.ok) {
           this.farmList.push(copyFarm);
-        },
-        (error) => { alert(JSON.stringify(error))}
-      )
+        }
+      },
+      (error) => {
+        console.log("error", error);
+      }
+    );
   }
 
   getFarms() {
