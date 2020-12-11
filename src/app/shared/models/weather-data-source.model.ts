@@ -1,16 +1,16 @@
 export interface WeatherDataSource {
-  id: string;
+  id?: string;
   name: string;
-  description: string;
-  publicURL: string;
-  endpoint: string;
-  needsDataControl: string;
-  access_type: string;
-  spatial: Spatial;
-  temporal: Temporal;
-  parameters: Parameters;
-  organization: Organization;
-  authenticationRequired: string;
+  description?: string;
+  publicURL?: string;
+  endpoint?: string;
+  needsDataControl?: string;
+  access_type?: string;
+  spatial?: Spatial;
+  temporal?: Temporal;
+  parameters?: Parameters;
+  organization?: Organization;
+  authenticationRequired?: string;
 }
 
 interface Spatial {

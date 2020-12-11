@@ -24,7 +24,6 @@
             </div>
           </div>
         </div>
-
         <div class="container page-box p-5">
           <form [formGroup]="editFarmForm">
             <div class="row">
@@ -40,15 +39,15 @@
                   <label for="location" class="col-sm-4 col-form-label">Address:</label>
                   <div class="col-sm-8">
                     <div class="map-container" #map></div>
-                    <!-- <input type="text" class="form-control form-control-sm" id="location" formControlName="location"> -->
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="met-station" class="col-sm-4 col-form-label">Nearest met.
                     station:</label>
                   <div class="col-sm-8">
-                    <select class="form-control form-control-sm" id="met-station" formControlName="inf1">
-                      <option *ngFor="let station of metStationList" [value]="station.name">{{ station.name }}</option>
+                    <select class="form-control form-control-sm" id="met-station"
+                      formControlName="weatherStationDto" [compareWith]="compareByID">
+                      <option *ngFor="let station of metStationList" [ngValue]="station">{{ station.name }}</option>
                     </select>
                   </div>
                 </div>
@@ -56,9 +55,9 @@
                   <label for="forecast" class="col-sm-4 col-form-label">Weather forecasting
                     service:</label>
                   <div class="col-sm-8">
-                    
-                    <select class="form-control form-control-sm" id="forecast" formControlName="inf2">
-                      <option *ngFor="let forecast of weatherForecastList" [value]="forecast.name">{{ forecast.name }}</option>
+                    <select class="form-control form-control-sm" id="forecast" formControlName="weatherDataSourceDto" [compareWith]="compareByID">
+                      <option *ngFor="let forecast of weatherForecastList" [ngValue]="forecast">{{ forecast.name }}
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -102,10 +101,11 @@
                     <tbody *ngIf="fieldList.length > 0; else noRows">
 
                       <tr *ngFor="let field of fieldList">
-                        <!-- {{field | json}} -->
+                     
                         <td class="text-center">{{ field.name }}</td>
                         <td class="text-center">
-                          <a class="details" (click)="openModal(template, field)">{{ field.fieldCropPestsDto.value[0].cropPestDto.cropEppoCode }}
+                          <a class="details"
+                            (click)="openModal(template, field)">{{ field.fieldCropPestsDto.value[0].cropPestDto.cropEppoCode }}
                             <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
                           </a>
                         </td>
@@ -289,7 +289,7 @@
         </div>
       </div>
 
-      <div class="">
+      <div class="row">
         <button type="button" class="btn btn-info pull-right" (click)="modalRef.hide()">Close</button>
       </div>
     </div>
