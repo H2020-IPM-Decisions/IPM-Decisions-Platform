@@ -16,6 +16,7 @@ export class FieldEditComponent implements OnInit {
   cropPests: FormArray;
   farmName: string;
   formFieldValues;
+  currentField: any;
   constructor(
     private _fb: FormBuilder,
     private _toastr: ToastrService,
@@ -31,6 +32,7 @@ export class FieldEditComponent implements OnInit {
     this._fieldService.currentField.subscribe((field: any) => {
       console.log("FIELD CURRENT 2 ", field);
 
+      this.currentField = field;
       // fill form
       this.setFormValues(field);
 
@@ -44,7 +46,7 @@ export class FieldEditComponent implements OnInit {
     this.fieldForm.patchValue({
       name: field.name,
       inf1: field.inf1,
-      inf2: this.formatLocaleDateGB(field.inf2)
+      inf2: this.formatLocaleDateGB(field.inf2),
     });
 
     this.fieldForm.setControl(
@@ -59,7 +61,7 @@ export class FieldEditComponent implements OnInit {
       formArray.push(
         this._fb.group({
           cropEppoCode: item.cropPestDto.cropEppoCode,
-          pestEppoCode: item.cropPestDto.pestEppoCode
+          pestEppoCode: item.cropPestDto.pestEppoCode,
         })
       );
     });
@@ -95,16 +97,21 @@ export class FieldEditComponent implements OnInit {
 
   onEditFieldSubmit() {
     const updatedFieldValues = this.fieldForm.value;
-
-    console.log("edit values", updatedFieldValues);
+  
+    // console.log("edit values", updatedFieldValues);
+    // console.log("this.formFieldValues values", this.formFieldValues);
     const patch = compare(this.formFieldValues, updatedFieldValues);
 
-    this._fieldService.updateField(patch).subscribe(
-      (updatedField: any) => {
-        console.log(updatedField);
-        if (updatedField) {
+    // console.log("this.patch values", patch);
+
+    this.mapPatchArray(patch, updatedFieldValues.cropPests);
+    // console.log("PATHC CCC", patch)
+    this._fieldService.updateField(this.currentField.id, patch).subscribe(
+      (updateResponse: any) => {
+        console.log(updateResponse);
+        if (updateResponse.ok) {
           this._toastr.show(
-            "Farm details successfully updated!",
+            "Farm field details successfully updated!",
             "Success!",
             null,
             "toast-success"
@@ -122,4 +129,21 @@ export class FieldEditComponent implements OnInit {
     );
   }
 
+  private mapPatchArray(patchArr: any, formObj: any) {
+
+    formObj.forEach((item, index) => {
+      if (item.cropEppoCode) {
+        patchArr.splice(index+1, 1)
+        patchArr[index].value = [];
+
+        let cropPest = {
+          cropEppoCode: item.cropEppoCode,
+          pestEppoCode: item.pestEppoCode,
+        };
+
+        patchArr[index].value.push(cropPest);
+        patchArr[index].path = "/cropPests";
+      }
+    });
+  }
 }

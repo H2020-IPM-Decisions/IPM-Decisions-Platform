@@ -3,8 +3,8 @@ import { Injectable } from "@angular/core";
 import { Field } from "@app/shared/models/field.model";
 import { environment } from "@src/environments/environment";
 import { Operation } from "fast-json-patch";
-import { BehaviorSubject, Observable, of } from "rxjs";
-import { catchError } from "rxjs/operators";
+import { BehaviorSubject, Observable, of, Subject } from "rxjs";
+import { catchError, share, take } from "rxjs/operators";
 import { FarmService } from "./farm.service";
 
 @Injectable({
@@ -18,16 +18,8 @@ export class FieldService {
   );
   currentField = this._fieldSubject.asObservable();
 
-  get field() {
-    if (this._fieldSubject) return this._fieldSubject.getValue();
-  }
-
   constructor(private _http: HttpClient, private _farmService: FarmService) {
     if (this._farmService.selectedFarm && this._farmService.selectedFarm.id) {
-      console.log(
-        "farmId = this._farmService.selectedFarm.id",
-        this._farmService.selectedFarm.id
-      );
       this.farmId = this._farmService.selectedFarm.id;
     }
   }
@@ -45,21 +37,16 @@ export class FieldService {
     );
   }
 
-  public getFields(): Observable<any> {
+  public getFields(farmId: string): Observable<any> {
+    // console.log("yyyyyyyyyyyyyyyyyy farm id", farmId);
     return this._http
-      .get(`${this.apiUrl}/api/upr/farms/${this.farmId}/fields`, {
+      .get(`${this.apiUrl}/api/upr/farms/${farmId}/fields`, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/vnd.h2020ipmdecisions.field.withchildren+json",
-        }
+        },
       })
-      .pipe(
-        catchError((error) => {
-          console.log("error", error);
-
-          return of(error);
-        })
-      );
+      .pipe(share());
   }
 
   // HATEOAS
@@ -83,9 +70,9 @@ export class FieldService {
   //     );
   // }
 
-  public getField(fieldId?: string, fields?:string[]): Observable<Field> {
+  public getField(fieldId?: string, fields?: string[]): Observable<Field> {
     let url = `${this.apiUrl}/api/upr/farms/${this.farmId}/fields/${fieldId}`;
-   
+
     if (fields) {
       url += `?${fields}`;
     }
@@ -105,14 +92,18 @@ export class FieldService {
       );
   }
 
-  public updateField(operations: Operation[]): Observable<any> {   
+  public updateField(
+    fieldId: string,
+    operations: Operation[]
+  ): Observable<any> {
     return this._http.patch(
-      `${this.apiUrl}/api/upr/farms/${this.farmId}/fields/${this.field.id}`,
+      `${this.apiUrl}/api/upr/farms/${this.farmId}/fields/${fieldId}`,
       operations,
       {
         headers: {
           "Content-Type": "application/json-patch+json",
         },
+        observe: "response",
       }
     );
   }
@@ -139,8 +130,6 @@ export class FieldService {
 
   // helper field methods
   setCurrentField(field: Field) {
-    console.log("curerntf field", field);
-
     this._fieldSubject.next(field);
     window.sessionStorage.setItem("field", JSON.stringify(field));
   }
