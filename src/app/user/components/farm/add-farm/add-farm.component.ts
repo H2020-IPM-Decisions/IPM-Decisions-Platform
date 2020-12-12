@@ -128,7 +128,6 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       .getWeatherDataSourceLocationPoint(lat, lng, tol)
       .subscribe((metStationData: WeatherDataSource[]) => {
         if (metStationData) {
-          console.log("nesto", metStationData);
           this.metStationList = metStationData;
         }
       });

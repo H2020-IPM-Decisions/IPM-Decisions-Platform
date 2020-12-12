@@ -77,12 +77,11 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
 
     this._farmService.currentFarm.subscribe((farm: Farm) => {
       // console.log("faxxxxxxxxxxxrm", farm);
-
       if (farm) {
         this.editFarmForm.patchValue(farm);
         this.currentFarm = farm;
         if (farm.id) {
-          this.onGetFields();
+          this.onGetFields(farm.id);
         }
       }
     });
@@ -120,16 +119,6 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
     };
   }
 
-  initEditFarmForm() {
-    this.editFarmForm = this._fb.group({
-      id: [],
-      name: ["", Validators.required],
-      location: ["", Validators.required],
-      weatherStationDto: ["", Validators.required],
-      weatherDataSourceDto: ["", Validators.required],
-    });
-  }
-
   private getNearestWeatherDataSource(
     lat: number,
     lng: number,
@@ -142,6 +131,16 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
           this.metStationList = metStationData;
         }
       });
+  }
+
+  initEditFarmForm() {
+    this.editFarmForm = this._fb.group({
+      id: [],
+      name: ["", Validators.required],
+      location: ["", Validators.required],
+      weatherStationDto: ["", Validators.required],
+      weatherDataSourceDto: ["", Validators.required],
+    });
   }
 
   get f() {
@@ -223,21 +222,22 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
 
   // FIELDS BELOW
 
-  onGetFields() {
-    this._fieldService.getFields().subscribe(
+  onGetFields(farmId: string) {
+    this._fieldService.getFields(farmId).subscribe(
       (fields: any) => {
-        // console.log("odgovor response", fields);
         if (fields && fields.value) {
           this.fieldList = fields.value;
         }
       },
       (error: HttpErrorResponse) => {
-        this._toastr.show(
-          "Error fetching field detail!",
-          "Error!",
-          null,
-          "toast-error"
-        );
+        if (error.status !== 404) {
+          this._toastr.show(
+            "Error fetching field detail!",
+            "Error!",
+            null,
+            "toast-error"
+          );
+        }
       }
     );
   }

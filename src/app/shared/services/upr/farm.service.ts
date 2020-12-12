@@ -5,7 +5,7 @@ import { Farm } from "@app/shared/models/farm.model";
 import { environment } from "@src/environments/environment";
 import { Operation } from "fast-json-patch";
 import { BehaviorSubject, Observable, of } from "rxjs";
-import { catchError, map } from "rxjs/operators";
+import { catchError, share, shareReplay } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -25,34 +25,17 @@ export class FarmService {
     }
   }
 
-  public createFarm(farm: Farm): Observable<any> {
-    return this._http
-      .post(`${this.apiUrl}/api/upr/farms`, farm, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/vnd.h2020ipmdecisions.hateoas+json",
-        },
-        observe: "response"
-      });
-
-    // return this._http
-    //   .post(`${this.apiUrl}/api/upr/farms`, farm, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Accept: "application/vnd.h2020ipmdecisions.hateoas+json",
-    //     },
-    //   })
-    //   .pipe(
-    //     catchError((error) => {
-    //       console.log("error", error);
-    //       return of(error);
-    //     })
-    //   );
+  public createFarm(farm: any): Observable<any> {
+    return this._http.post(`${this.apiUrl}/api/upr/farms`, farm, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/vnd.h2020ipmdecisions.hateoas+json",
+      },
+      observe: "response",
+    });
   }
 
   public getFarms(params?: string[]): Observable<FarmResponseModel> {
-    console.log("OVO JE NOVA FARMA", this.selectedFarm);
-
     return this._http
       .get(`${this.apiUrl}/api/upr/farms`, {
         headers: {
@@ -60,13 +43,8 @@ export class FarmService {
         },
       })
       .pipe(
-        map((farmResponse: Farm) => {
-          this.setCurrentFarm(farmResponse);
-          return farmResponse;
-        }),
+        share(),
         catchError((error) => {
-          console.log("error", error);
-
           return of(error);
         })
       );
@@ -94,23 +72,16 @@ export class FarmService {
   // }
 
   public updateFarm(operations: Operation[]): Observable<HttpResponse<any>> {
-    return this._http
-      .patch(
-        `${this.apiUrl}/api/upr/farms/${this.selectedFarm.id}`,
-        operations,
-        {
-          headers: {
-            "Content-Type": "application/json-patch+json",
-          },
-          observe: "response",
-        }
-      )
-      .pipe(
-        catchError((error) => {
-          console.log("error", error);
-          return of(error);
-        })
-      );
+    return this._http.patch(
+      `${this.apiUrl}/api/upr/farms/${this.selectedFarm.id}`,
+      operations,
+      {
+        headers: {
+          "Content-Type": "application/json-patch+json",
+        },
+        observe: "response",
+      }
+    );
   }
 
   public deleteFarm(farmId: string): Observable<HttpResponse<any>> {
@@ -134,7 +105,6 @@ export class FarmService {
 
   setCurrentFarm(farm: Farm) {
     this.farmSubject.next(farm);
-    console.log("curent farm", this.farmSubject.getValue());
     window.sessionStorage.setItem("farm", JSON.stringify(farm));
   }
 }

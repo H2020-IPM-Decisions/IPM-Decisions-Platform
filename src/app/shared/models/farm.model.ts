@@ -5,8 +5,8 @@ import { WeatherStation } from "./weather-station.model";
 export interface Farm {
   id: string;
   name: string;
-  inf1: string;
-  inf2: string;
+  // inf1: string;
+  // inf2: string;
   weatherDataSourceDto?: WeatherDataSourceDto;
   weatherStationDto?: WeatherStation;
   location?: Location;

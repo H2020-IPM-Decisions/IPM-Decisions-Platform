@@ -28,9 +28,8 @@ export class FarmListComponent implements OnInit {
   }
 
   onFarmCopy(farm: Farm) {
-    console.log("farm clicked", farm);
     this.copiedFarm = true;
-    var copyFarm = {} as Farm;
+    let copyFarm = {} as Farm;
     copyFarm.id = null;
     copyFarm.name = farm.name + " [Copy]";
     copyFarm.weatherStationDto = farm.weatherStationDto;
@@ -49,19 +48,15 @@ export class FarmListComponent implements OnInit {
   }
 
   getFarms() {
-    this._farmService
-      .getFarms()
-      .subscribe((farmResponse: FarmResponseModel) => {
-        if (farmResponse) {
-          if (farmResponse.value) {
-            const farms = farmResponse.value;
-            farms.forEach((item) => {
-              this.convertLatLngToAddress(item);
-            });
-            this.farmList = farms;
-          }
-        }
-      });
+    this._farmService.getFarms().subscribe((response: FarmResponseModel) => {
+      if (response && response.value) {
+        const farms = response.value;
+        farms.forEach((farm) => {
+          this.convertLatLngToAddress(farm);
+        });
+        this.farmList = farms;
+      }
+    });
   }
 
   private convertLatLngToAddress(farm: Farm) {
@@ -73,7 +68,6 @@ export class FarmListComponent implements OnInit {
         if (error) {
           return;
         }
-        console.log("adresa mapa", result);
         if (result) {
           farm.location.address = {
             address: result.address.Address,
@@ -89,6 +83,7 @@ export class FarmListComponent implements OnInit {
   }
 
   onEditFarm(selectedFarm) {
+    console.log("seelected famr", selectedFarm);
     this._farmService.setCurrentFarm(selectedFarm);
     this._router.navigate(["/user/farm/edit"]);
   }
