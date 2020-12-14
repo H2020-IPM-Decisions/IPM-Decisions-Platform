@@ -331,4 +331,9 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
   compareByID(objOne: WeatherDataSource, objTwo: WeatherDataSource) {
     return objOne && objTwo && objOne.id == objTwo.id;
   }
+
+  //todo: duplicate method in field and farm edit component. put metod in service
+  public formatLocaleDateGB(unformatedDate: string) {
+    return new Date(unformatedDate).toLocaleDateString("en-GB");
+  }
 }
