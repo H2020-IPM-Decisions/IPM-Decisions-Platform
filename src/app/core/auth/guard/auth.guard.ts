@@ -1,47 +1,63 @@
-import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import {
+  Router,
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  UrlTree,
+} from "@angular/router";
+import { Observable } from "rxjs";
 
-import { AuthenticationService } from '../services/authentication.service';
-import { map, take } from 'rxjs/operators';
-import { toUnicode } from 'punycode';
+import { AuthenticationService } from "../services/authentication.service";
+import { map, take } from "rxjs/operators";
+import { toUnicode } from "punycode";
+import jwt_decode from "jwt-decode";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthGuard implements CanActivate {
-  constructor(private _authService: AuthenticationService, private _router: Router) { }
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree
-    | Promise<boolean | UrlTree> | Observable<boolean | UrlTree> {
-     
+  constructor(
+    private _authService: AuthenticationService,
+    private _router: Router
+  ) {}
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | boolean
+    | UrlTree
+    | Promise<boolean | UrlTree>
+    | Observable<boolean | UrlTree> {
     if (this._authService.isLoggedIn()) {
 
-      return this._authService.account$.pipe(
-        take(1),
-        map(acct => {
-          if (acct) {
-            if (acct.roles && acct.roles.length > 0) {
-              const roles: string[] = route.data.roles;
+      const acct: any = this._authService.setUserAccount(sessionStorage.getItem("token"));
 
-              if (roles && (roles.some((role: string) => acct.roles.includes(role)))) {
-                return true;
-              }
-            }
+      if (acct) {
 
-            if (acct.useraccesstype && acct.useraccesstype.length > 0) {
-              const claims: string[] = route.data.claims;
+        if (acct.roles && acct.roles.length > 0) {
+          const roles: string[] = route.data.roles;
 
-              if (claims && (claims.some((claim: string) => acct.useraccesstype.includes(claim)))) {
-                return true;
-              }
-            }
+          if (
+            roles &&
+            roles.some((role: string) => acct.roles.includes(role))
+          ) {
+            return true;
           }
+        }
 
-        })
-      );
+        if (acct.useraccesstype && acct.useraccesstype.length > 0) {
+          const claims: string[] = route.data.claims;
+
+          if (
+            claims &&
+            claims.some((claim: string) => acct.useraccesstype.includes(claim))
+          ) {
+            return true;
+          }
+        }
+      }
     }
-    return this._router.createUrlTree(['/']);
-
+    return this._router.createUrlTree(["/"]);
   }
 }
-
