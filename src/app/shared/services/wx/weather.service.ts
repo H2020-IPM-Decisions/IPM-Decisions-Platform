@@ -29,7 +29,7 @@ export class WeatherService {
         {
           headers: {
             "Content-Type": "*/*",
-            "Accept": "application/json"
+            Accept: "application/json",
           },
           params: {
             latitude: lat.toString(),
@@ -67,6 +67,9 @@ export class WeatherService {
       .pipe(catchError(this.handleError));
   }
 
+  /**
+   * FETCH MET. STATION LIST
+   */
   public getMetStations(): Observable<WeatherDataSource[]> {
     return this.getWeatherDataSource().pipe(
       map((data: WeatherDataSource[]) => {
@@ -83,6 +86,20 @@ export class WeatherService {
     );
   }
 
+  // objects in WeatherDataSource array reducted to show id and name
+  public getMeteorologicalStationIdName(): Observable<WeatherDataSource[]> {
+    return this.getMetStations().pipe(
+      map((data: WeatherDataSource[]) => {
+        return data.map((item: WeatherDataSource) => {
+          return { id: item["id"], name: item["name"] };
+        });
+      })
+    );
+  }
+
+  /**
+   * FETCH FORECAST SERVICE LIST
+   */
   public getForecastServices(): Observable<WeatherDataSource[]> {
     return this.getWeatherDataSource().pipe(
       map((data: WeatherDataSource[]) => {
@@ -95,6 +112,17 @@ export class WeatherService {
           ...item,
           id: `${index}`,
         }));
+      })
+    );
+  }
+
+  // objects in WeatherDataSource array reducted to show id and name
+  public getWeatherForecastIdName(): Observable<WeatherDataSource[]> {
+    return this.getForecastServices().pipe(
+      map((data: WeatherDataSource[]) => {
+        return data.map((item: WeatherDataSource) => {
+          return { id: item["id"], name: item["name"] };
+        });
       })
     );
   }

@@ -5,7 +5,7 @@ export class Account {
         public tokenInit: number,
         public tokenExpiration: number,
         public token: string,
-        public refreshToken: string,
+        public refreshToken?: string,
         public useraccesstype?: string[],
         public roles?: string[],
         public tokenType?: string,
