@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@ajsf/core": "^0.1.5",
     "@angular/animations": "~8.2.5",
     "@angular/cdk": "^6.4.7",
     "@angular/common": "~8.2.5",

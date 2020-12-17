@@ -103,6 +103,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { FieldAddComponent } from './user/components/field/field-add/field-add.component';
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
 import { FarmShareComponent } from './user/components/farm-share/farm-share.component';
+import { JsonFormDemoComponent } from './json-form-demo/json-form-demo.component';
+import { JsonSchemaFormModule } from '@ajsf/core';
 
 @NgModule({
   declarations: [
@@ -197,6 +199,7 @@ import { FarmShareComponent } from './user/components/farm-share/farm-share.comp
     FieldAddComponent,
     FieldEditComponent,
     FarmShareComponent,
+    JsonFormDemoComponent,
   ],
   imports: [
     BrowserModule,
@@ -215,6 +218,7 @@ import { FarmShareComponent } from './user/components/farm-share/farm-share.comp
     TooltipModule.forRoot(),
     AuthModule,
     ModalModule.forRoot(),
+    JsonSchemaFormModule
   ],
   providers: [],
   bootstrap: [AppComponent],

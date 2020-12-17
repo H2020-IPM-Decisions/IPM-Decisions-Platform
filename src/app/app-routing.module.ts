@@ -1,3 +1,4 @@
+import { JsonFormDemoComponent } from './json-form-demo/json-form-demo.component';
 import { DevelopersArticleComponent } from "./developers-article/developers-article.component";
 import { ResearchersArticleComponent } from "./researchers-article/researchers-article.component";
 import { FarmersAdvisorsArticleComponent } from "./farmers-advisors-article/farmers-advisors-article.component";
@@ -92,6 +93,7 @@ const appRoutes: Routes = [
   { path: "research-article", component: ResearchersArticleComponent },
   { path: "coding-article", component: DevelopersArticleComponent },
   { path: "confirmemail", component: ConfirmMailComponent },
+  { path: "json-schema-demo", component: JsonFormDemoComponent },
   {
     path: "admin/account",
     component: AdminAccountComponent,
