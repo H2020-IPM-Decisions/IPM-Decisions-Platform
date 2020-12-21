@@ -113,3 +113,7 @@
   justify-content: space-between;
   width: 100%;
 }
+
+.form-group.form-check {
+  margin-top: 5px;
+}

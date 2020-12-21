@@ -1,13 +1,10 @@
-<div *ngIf="isLoading" style="text-align: center;">
-  <app-loading-spinner></app-loading-spinner>
-</div>
 <div class="container page-box">
 <form [formGroup]="termsForm" (ngSubmit)="onRegister()">
   <div class="form-row">
       <div class="terms-and-conditions" [innerHtml]="termsAndConditions"></div>
 
 
-    <div class="checkbox-box">
+    <div *ngIf="!isLoading" class="checkbox-box">
       <div class="form-group form-check">
         <input
           type="checkbox"
@@ -26,9 +23,12 @@
 
       <div class="text-center col-6 float-right">
         <button [disabled]="!acceptTerms.checked"
-        class="btn btn-login btn-block float-right">Register</button>
+        class="btn btn-primary btn-block float-right">Register</button>
       </div>
     </div>
   </div>
 </form>
+<div *ngIf="isLoading" style="text-align: center;">
+  <app-loading-spinner></app-loading-spinner>
+</div>
 </div>
