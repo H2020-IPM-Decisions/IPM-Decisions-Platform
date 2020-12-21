@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+declare var JSONEditor;
+
 
 @Component({
   selector: 'app-json-form-demo',
@@ -7,48 +9,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JsonFormDemoComponent implements OnInit {
 
-  yourJsonSchema = {
-    "type": "object",
-    "properties": {
-      "modelId": {
-        "type": "string",
-        "pattern": "^PSILARTEMP$",
-        "title": "Model Id",
-        "default": "PSILARTEMP",
-        "description": "Must be PSILARTEMP"
-      },
-      "configParameters": {
-        "title": "Configuration parameters",
-        "type": "object",
-        "properties": {
-          "timeZone": {
-            "type": "string",
-            "title": "Time zone (e.g. Europe/Oslo)",
-            "default": "Europe/Oslo"
-          },
-          "timeStart": {
-            "type": "string",
-            "format": "date",
-            "title": "Start date of calculation (YYYY-MM-DD)"
-          },
-          "timeEnd": {
-            "type": "string",
-            "format": "date",
-            "title": "End date of calculation (YYYY-MM-DD)"
-          }
+
+  options = {
+    schema: {
+      "type": "object",
+      "properties": {
+        "modelId": {
+          "type": "string",
+          "pattern": "^PSILARTEMP$",
+          "title": "Model Id",
+          "default": "PSILARTEMP",
+          "description": "Must be PSILARTEMP"
         },
-        "required": ["timeZone", "timeStart", "timeEnd"]
+        "configParameters": {
+          "title": "Configuration parameters",
+          "type": "object",
+          "properties": {
+            "timeZone": {
+              "type": "string",
+              "title": "Time zone (e.g. Europe/Oslo)",
+              "default": "Europe/Oslo"
+            },
+            "timeStart": {
+              "type": "string",
+              "format": "date",
+              "title": "Start date of calculation (YYYY-MM-DD)"
+            },
+            "timeEnd": {
+              "type": "string",
+              "format": "date",
+              "title": "End date of calculation (YYYY-MM-DD)"
+            }
+          },
+          "required": ["timeZone", "timeStart", "timeEnd"]
+        },
+        "weatherData": {
+          "$ref": "https://ipmdecisions.nibio.no/api/wx/rest/schema/weatherdata"
+        }
       },
-      "weatherData": {
-        "$ref": "https://ipmdecisions.nibio.no/api/wx/rest/schema/weatherdata"
-      }
+      "required": ["modelId", "configParameters"]
     },
-    "required": ["modelId", "configParameters"]
+    ajax: true
   }
 
   constructor() { }
 
   ngOnInit() {
+    const element = document.getElementById('editor_holder');
+
+    const editor = new JSONEditor(element, this.options);
   }
 
   yourOnSubmitFn(x) {

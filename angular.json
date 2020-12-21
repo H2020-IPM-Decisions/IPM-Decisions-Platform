@@ -58,6 +58,7 @@
               "./node_modules/leaflet/dist/leaflet.js",
               "./node_modules/esri-leaflet/dist/esri-leaflet.js",
               "./node_modules/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js",
+              "./node_modules/@json-editor/json-editor/dist/jsoneditor.js",
               "src/js/main.js",
               "src/js/home.js"
             ]
