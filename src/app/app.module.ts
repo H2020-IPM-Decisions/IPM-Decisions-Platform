@@ -104,7 +104,6 @@ import { FieldAddComponent } from './user/components/field/field-add/field-add.c
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
 import { FarmShareComponent } from './user/components/farm-share/farm-share.component';
 import { JsonFormDemoComponent } from './json-form-demo/json-form-demo.component';
-import { JsonSchemaFormModule } from '@ajsf/core';
 
 @NgModule({
   declarations: [
@@ -217,8 +216,7 @@ import { JsonSchemaFormModule } from '@ajsf/core';
     PaginationModule.forRoot(),
     TooltipModule.forRoot(),
     AuthModule,
-    ModalModule.forRoot(),
-    JsonSchemaFormModule
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
