@@ -76,6 +76,7 @@ import { FarmDetailsComponent } from "./user/components/farm/farm-details/farm-d
 import { DssSelectionComponent } from "./user/components/farm/dss-selection/dss-selection.component";
 import { FieldAddComponent } from './user/components/field/field-add/field-add.component';
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
+import { SettingsComponent } from './user/components/settings/settings.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -217,6 +218,12 @@ const appRoutes: Routes = [
   {
     path: "user/account/edit",
     component: EditAccountComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+  },
+  {
+    path: "user/settings",
+    component: SettingsComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
   },

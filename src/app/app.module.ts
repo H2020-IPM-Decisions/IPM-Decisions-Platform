@@ -104,6 +104,7 @@ import { FieldAddComponent } from './user/components/field/field-add/field-add.c
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
 import { FarmShareComponent } from './user/components/farm-share/farm-share.component';
 import { JsonFormDemoComponent } from './json-form-demo/json-form-demo.component';
+import { SettingsComponent } from './user/components/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -199,6 +200,7 @@ import { JsonFormDemoComponent } from './json-form-demo/json-form-demo.component
     FieldEditComponent,
     FarmShareComponent,
     JsonFormDemoComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
