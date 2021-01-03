@@ -1,3 +1,6 @@
+import { CustomizeDashboardComponent } from './user/components/customize-dashboard/customize-dashboard.component';
+import { ManageAlertsComponent } from './user/components/manage-alerts/manage-alerts.component';
+import { ManageWeatherDataSourceComponent } from './user/components/manage-weather-data-source/manage-weather-data-source.component';
 import { JsonFormDemoComponent } from './json-form-demo/json-form-demo.component';
 import { DevelopersArticleComponent } from "./developers-article/developers-article.component";
 import { ResearchersArticleComponent } from "./researchers-article/researchers-article.component";
@@ -224,6 +227,24 @@ const appRoutes: Routes = [
   {
     path: "user/settings",
     component: SettingsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+  },
+  {
+    path: "user/settings/manage-weather",
+    component: ManageWeatherDataSourceComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+  },
+  {
+    path: "user/settings/manage-alerts",
+    component: ManageAlertsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+  },
+  {
+    path: "user/settings/customize-dashboard",
+    component: CustomizeDashboardComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
   },

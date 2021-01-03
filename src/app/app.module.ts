@@ -105,6 +105,9 @@ import { FieldEditComponent } from './user/components/field/field-edit/field-edi
 import { FarmShareComponent } from './user/components/farm-share/farm-share.component';
 import { JsonFormDemoComponent } from './json-form-demo/json-form-demo.component';
 import { SettingsComponent } from './user/components/settings/settings.component';
+import { ManageWeatherDataSourceComponent } from './user/components/manage-weather-data-source/manage-weather-data-source.component';
+import { ManageAlertsComponent } from './user/components/manage-alerts/manage-alerts.component';
+import { CustomizeDashboardComponent } from './user/components/customize-dashboard/customize-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -201,6 +204,9 @@ import { SettingsComponent } from './user/components/settings/settings.component
     FarmShareComponent,
     JsonFormDemoComponent,
     SettingsComponent,
+    ManageWeatherDataSourceComponent,
+    ManageAlertsComponent,
+    CustomizeDashboardComponent,
   ],
   imports: [
     BrowserModule,
