@@ -22,6 +22,7 @@ export class FieldService {
     if (this._farmService.selectedFarm && this._farmService.selectedFarm.id) {
       this.farmId = this._farmService.selectedFarm.id;
     }
+    this._farmService.currentFarm.subscribe((farm) => {this.farmId = farm.id})
   }
 
   public createField(field: Field): Observable<Field> {
