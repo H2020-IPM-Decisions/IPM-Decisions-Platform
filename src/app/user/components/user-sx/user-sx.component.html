@@ -1,56 +1,56 @@
 <ul class="vertical-nav-menu">
-    <li class="app-sidebar__heading">IPM Private</li>
-    <li routerLinkActive="mm-active" [routerLinkActiveOptions]="{exact:true}">
-        <a routerLink="/user"><i class="metismenu-icon pe-7s-home"></i> Home</a>
+  <li class="app-sidebar__heading">IPM Private</li>
+  <li routerLinkActive="mm-active" [routerLinkActiveOptions]="{exact:true}">
+    <a routerLink="/user"><i class="metismenu-icon pe-7s-home"></i> Home</a>
+  </li>
+  <li>
+    <a routerLink="/user/settings">
+      <i class="metismenu-icon pe-7s-config"></i>Settings</a>
+  </li>
+
+  <li class="app-sidebar__heading">Farm menu</li>
+
+  <div *ngIf="activeMenuItem ==='farm'">
+    <li>
+      <a routerLink="/user/farm/list" routerLinkActive="mm-active" [routerLinkActiveOptions]="{exact:true}">
+        <i class="metismenu-icon pe-7s-ribbon"></i>Farm List</a>
     </li>
+    <li>
+      <a routerLink="/user/dss/selection" routerLinkActive="mm-active" [routerLinkActiveOptions]="{exact:true}">
+        <i class="metismenu-icon pe-7s-note"></i>DSS Selection</a>
+    </li>
+  </div>
 
-    <li class="app-sidebar__heading">Farm menu</li>
-
-    <div *ngIf="activeMenuItem ==='farm'">
-        <li>
-            <a routerLink="/user/farm/list" routerLinkActive="mm-active" [routerLinkActiveOptions]="{exact:true}">
-                <i class="metismenu-icon pe-7s-ribbon"></i>Farm List</a>
-        </li>
-        <li>
-            <a routerLink="/user/dss/selection" routerLinkActive="mm-active" [routerLinkActiveOptions]="{exact:true}">
-                <i class="metismenu-icon pe-7s-note"></i>DSS Selection</a>
-        </li>
-        <li>
-            <a routerLink="/user/settings">
-                <i class="metismenu-icon pe-7s-config"></i>Settings</a>
-        </li>
-    </div>
-
-    <div *ngIf="activeMenuItem ==='dss'">
+  <div *ngIf="activeMenuItem ==='dss'">
 
 
-        <li>
-            <a routerLink="/user/dss/use-dashboard">
-                <i class="metismenu-icon pe-7s-display2"></i>DSS Use Dashboard</a>
-        </li>
-        <li>
-            <a routerLink="/user/dss/evaluation-dashboard">
-                <i class="metismenu-icon pe-7s-note2"></i>DSS Evaluation Dashboard</a>
-        </li>
-        <li>
-            <a routerLink="/user/dss/adaptation-dashboard">
-                <i class="metismenu-icon pe-7s-albums"></i>DSS Adaptation Dashboard</a>
-        </li>
-        <li>
-            <a routerLink="/user/dss/integration-display1">
-                <i class="metismenu-icon pe-7s-tools"></i>DSS Integration Dashboard</a>
-        </li>
-        <li>
-            <a routerLink="/user/dss/list">
-                <i class="metismenu-icon pe-7s-leaf"></i>DSS List</a>
-        </li>
-    </div>
-    <!-- <a href="#">
+    <li>
+      <a routerLink="/user/dss/use-dashboard">
+        <i class="metismenu-icon pe-7s-display2"></i>DSS Use Dashboard</a>
+    </li>
+    <li>
+      <a routerLink="/user/dss/evaluation-dashboard">
+        <i class="metismenu-icon pe-7s-note2"></i>DSS Evaluation Dashboard</a>
+    </li>
+    <li>
+      <a routerLink="/user/dss/adaptation-dashboard">
+        <i class="metismenu-icon pe-7s-albums"></i>DSS Adaptation Dashboard</a>
+    </li>
+    <li>
+      <a routerLink="/user/dss/integration-display1">
+        <i class="metismenu-icon pe-7s-tools"></i>DSS Integration Dashboard</a>
+    </li>
+    <li>
+      <a routerLink="/user/dss/list">
+        <i class="metismenu-icon pe-7s-leaf"></i>DSS List</a>
+    </li>
+  </div>
+  <!-- <a href="#">
             <i class="metismenu-icon pe-7s-diamond"></i>
             Elements
             <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
         </a> -->
-    <!-- <ul>
+  <!-- <ul>
             <li>
                 <a routerLink="./assets/dropdowns" target="_self">
                     <i class="metismenu-icon">
@@ -64,8 +64,8 @@
                 </a>
             </li>
         </ul> -->
-    <!-- </li> -->
-    <!-- <li>
+  <!-- </li> -->
+  <!-- <li>
         <a href="#">
             <i class="metismenu-icon pe-7s-car"></i>
             Components
