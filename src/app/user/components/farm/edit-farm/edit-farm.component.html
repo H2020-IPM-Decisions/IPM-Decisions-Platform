@@ -45,8 +45,8 @@
                   <label for="met-station" class="col-sm-4 col-form-label">Nearest met.
                     station:</label>
                   <div class="col-sm-8">
-                    <select class="form-control form-control-sm" id="met-station"
-                      formControlName="weatherStationDto" [compareWith]="compareByID">
+                    <select class="form-control form-control-sm" id="met-station" formControlName="weatherStationDto"
+                      [compareWith]="compareByID">
                       <option *ngFor="let station of metStationList" [ngValue]="station">{{ station.name }}</option>
                     </select>
                   </div>
@@ -55,7 +55,8 @@
                   <label for="forecast" class="col-sm-4 col-form-label">Weather forecasting
                     service:</label>
                   <div class="col-sm-8">
-                    <select class="form-control form-control-sm" id="forecast" formControlName="weatherDataSourceDto" [compareWith]="compareByID">
+                    <select class="form-control form-control-sm" id="forecast" formControlName="weatherDataSourceDto"
+                      [compareWith]="compareByID">
                       <option *ngFor="let forecast of weatherForecastList" [ngValue]="forecast">{{ forecast.name }}
                       </option>
                     </select>
@@ -101,11 +102,11 @@
                     <tbody *ngIf="fieldList.length > 0; else noRows">
 
                       <tr *ngFor="let field of fieldList">
-                     
+
                         <td class="text-center">{{ field.name }}</td>
                         <td class="text-center">
-                          <a class="details"
-                            (click)="openModal(template, field)">{{ field.fieldCropPestsDto.value[0].cropPestDto.cropEppoCode }}
+                          <a class="details" (click)="openModal(template, field)">{{
+                            field.fieldCropPestsDto.value[0].cropPestDto.cropEppoCode }}
                             <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
                           </a>
                         </td>
@@ -146,6 +147,96 @@
                             </div>
                           </ng-template>
 
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Add Observation"
+                            title="Add Observation"
+                            (click)="this.observationModalRef = this._modalService.show(addObservationTemplate);">
+                            <i class="action-icon size-11 fas fa-eye"></i>
+                          </button>
+
+                          <!-- add observation modal -->
+                          <ng-template #addObservationTemplate>
+                            <div class="modal-header">
+                              <h4 class="modal-title pull-left">Add Observation</h4>
+                              <button type="button" class="close pull-right" aria-label="Close"
+                                (click)="observationModalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="row">
+                                <div class="col-12">Date: <input></div>
+                                <div class="col-12 mt-4">Severity: <input>&nbsp; <i class="action-icon size-11 fas fa-plus-circle"></i></div>
+                                <div class="col-12 mt-4">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>Date</th>
+                                        <th>Severity</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>01/03/2019</td>
+                                        <td>1</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer pull-right">
+                              <button type="button" class="btn btn-primary">Save</button>
+                              <button type="button" class="btn btn-default"
+                                (click)="observationModalRef.hide()">Cancel</button>
+                            </div>
+                          </ng-template>
+
+                          <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Add Spray"
+                            title="Add Spray"
+                            (click)="this.sprayModalRef = this._modalService.show(addSprayTemplate);">
+                            <i class="action-icon size-11 fas fa-spray-can"></i>
+                          </button>
+
+                          <!-- add spray modal -->
+                          <ng-template #addSprayTemplate>
+                            <div class="modal-header">
+                              <h4 class="modal-title pull-left">Add Spray</h4>
+                              <button type="button" class="close pull-right" aria-label="Close"
+                                (click)="sprayModalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="row">
+                                <div class="col-12">Spray: <input></div>
+                                <div class="col-12 mt-4">Date: <input></div>
+                                <div class="col-12 mt-4">Rate: <input>&nbsp; <i class="action-icon size-11 fas fa-plus-circle"></i></div>
+                                <div class="col-12 mt-4">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>Spray</th>
+                                        <th>Date</th>
+                                        <th>Rate</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Mancozeb</td>
+                                        <td>Date</td>
+                                        <td>Rate(kg/ha)</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer pull-right">
+                              <button type="button" class="btn btn-primary">Save</button>
+                              <button type="button" class="btn btn-default"
+                                (click)="sprayModalRef.hide()">Cancel</button>
+                            </div>
+                          </ng-template>
                         </td>
                       </tr>
 
@@ -183,7 +274,8 @@
   <!-- field details modal -->
   <ng-template #template>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">{{ selectedCrop.fieldCropPestsDto.value[0].cropPestDto.cropEppoCode }} details</h4>
+      <h4 class="modal-title pull-left">{{ selectedCrop.fieldCropPestsDto.value[0].cropPestDto.cropEppoCode }} details
+      </h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>

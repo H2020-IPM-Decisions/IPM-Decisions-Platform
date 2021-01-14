@@ -41,13 +41,15 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
   weatherForecastList: WeatherDataSource[];
   modalRef: BsModalRef;
   selectedCrop: any;
+  observationModalRef: BsModalRef;
+  sprayModalRef: BsModalRef;
 
   metStationSelected = 0;
   weatherForecastSelected = 1;
 
   constructor(
     private _fb: FormBuilder,
-    private _modalService: BsModalService,
+    public _modalService: BsModalService,
     private _router: Router,
     private _farmService: FarmService,
     private _fieldService: FieldService,
