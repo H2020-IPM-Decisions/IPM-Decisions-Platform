@@ -1,3 +1,5 @@
+import { environment } from './../../../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from "@angular/core";
 import {
   FormArray,
@@ -6,204 +8,95 @@ import {
   FormGroup,
   Validators,
 } from "@angular/forms";
+import { setTime } from 'ngx-bootstrap/chronos/utils/date-setters';
+declare var JSONEditor;
 
-export interface exam {
-  key?: any[];
-  name: string;
-  units: string;
-  desc: string;
-  inout: string;
-}
 @Component({
   selector: "app-dss-selection",
   templateUrl: "./dss-selection.component.html",
   styleUrls: ["./dss-selection.component.css"],
 })
 export class DssSelectionComponent implements OnInit {
-  user = {
-    skills: [
-      { name: "Aphids DSS 1", selected: false, id: 1, val: "Aphids DSS 1" },
-      { name: "Aphids DSS 2", selected: false, id: 2, val: "Aphids DSS 2" },
-    ],
-  };
 
-  chkPestList: any[] = [];
-  dssSelectionForm: FormGroup;
-  cropSearch: FormControl = new FormControl();
-  pestSearch: FormControl = new FormControl();
-
-  parameters = new FormArray([]);
-  cropsArray = new FormArray([]);
-  dss = new FormArray([]);
-
-  // dropdowns
+  searchForm: FormGroup = this._fb.group({
+    cropSearch: [''],
+    pestSearch: ['']
+  })
   crops: { value: string; label: string }[] = [];
-  cropParameters: { value: string; label: string }[] = [];
-  // end dropdowns
-  // tblCropPestCombinations: { crop: string; pest: string; dss: string }[];
-  tblCropPestCombinations: { crop: string; parameter: string; }[];
+  pests: { value: string; label: string }[] = [];
+  models;
+  selectedModal = new FormControl('');
+  editor;
+  editorActivated = false;
 
-  cropTitle: string = "Wheat, Cabbage";
-  cropTitle2: string = "Cabbage, Apple, Carrot";
-  pestTableContent: string = `<table class="table table-sm table-responsive table-bordered">
-  <tr><th>Name</th><th>Units</th><th>Description</th><th>Input/Output</th></tr>
-  <tr>
-  <td>Temperature</td>  <td>degree</td>  <td>Average dolly temperature</td>  <td>input</td>
-  </tr>
-  <tr>
-  <td>Aphid co</td>  <td>Number per</td>  <td>Number of aphids</td>  <td>output</td>
-  </tr>
-  </table>`;
 
-  pestTableContent2: string = `<table class="table table-sm table-responsive table-bordered">
-  <tr><th>Name</th><th>Units</th><th>Description</th><th>Input/Output</th></tr>
-  <tr>
-  <td>Temperature</td>  <td>degree</td>  <td>Average dolly temperature</td>  <td>input</td>
-  </tr>
-  <tr>
-  <td>Aphid 2 co</td>  <td>Number per</td>  <td>Number of aphids</td>  <td>output</td>
-  </tr>
-  </table>`;
-  selectedPest: string;
-  selectedPestFromSearch: any;
-
-  constructor(private _fb: FormBuilder) {}
-
-  ngOnInit() {
-    this.initDssSelectionForm();
-
-    this.crops = [
-      { value: "Wheat", label: "Wheat" },
-      { value: "Cabbage", label: "Cabbage" },
-      { value: "Apple", label: "Apple" },
-      { value: "Carrot", label: "Carrot" },
-    ];
-
-    this.cropParameters = [
-      { value: "Temperature", label: "Temperature" },
-      { value: "Aphid count", label: "Aphid count" },
-      { value: "Humidity", label: "Humidity" },
-    ];
-
-    this.tblCropPestCombinations = [
-      { crop: "Wheat", parameter: "Aphid count" },
-      // { crop: "Cabbage", pest: "Cabbage moth", dss: "VIPS, Cabbage moth model" },
-    ];
-
-    this.chkPestList[0] = [
-      {
-        pest: "Astoria  1",
-        name: "Temperature",
-        units: "degree",
-        desc: "Average dolly temperature",
-        inout: "input",
-      },
-      {
-        name: "Aphid co",
-        units: "Number per",
-        desc: "Number of aphids",
-        inout: "output",
-      },
-    ];
-
-    this.chkPestList[1] = [
-      {
-        pest: "Astoria2",
-        name: "Temperature2",
-        units: "degree2",
-        desc: "Average dolly temperature",
-        inout: "input",
-      },
-      {
-        name: "Aphid 2 co",
-        units: "Number per 2",
-        desc: "Number of aphids",
-        inout: "output",
-      },
-    ];
+  updateModels() {
+    var { cropSearch, pestSearch } = this.searchForm.value;
+    var requestUrl = "";
+    this.purgeEditor();
+    if (cropSearch && pestSearch) {
+      requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crop/${cropSearch}/pest/${pestSearch}`
+    }
+    else if (cropSearch) {
+      requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crop/${cropSearch}`
+    }
+    else if (pestSearch) {
+      requestUrl = `${environment.apiUrl}/api/dss/rest/dss/pest/${pestSearch}`
+    }
+    else {
+      requestUrl = `${environment.apiUrl}/api/dss/rest/dss`
+    }
+    this.http
+      .get(requestUrl)
+      .subscribe((response: any) => {
+        try {
+          this.models = response[0].models;
+        } catch (e) {
+          this.models = null;
+        }
+      })
   }
 
-  initDssSelectionForm() {
-    this.dssSelectionForm = this._fb.group({
-      skills: this.buildSkills(),
-      // dss: this._fb.array([this.createPropertie()]),
-      cropsArray: this._fb.array([this.createPropertie()]),
-      parameters: this._fb.array([this.createPropertie()]),
-    });
+  updateForm() {
+    this.purgeEditor();
+    this.editorActivated = true;
+    setTimeout(() => {
+      let modelIndex = this.selectedModal.value;
+      let editorHolder = document.getElementById('editor_holder');
+      let schema = JSON.parse(this.models[modelIndex].execution.input_schema);
+      this.editor = new JSONEditor(editorHolder, {
+        schema,
+        ajax: true,
+        theme: 'bootstrap4'
+      });
+    }, 0);
   }
 
-  get f() {
-    return this.dssSelectionForm.controls;
-  }
-
-  get skills() {
-    return this.dssSelectionForm.get("skills");
-  }
-
-  buildSkills() {
-    const arr = this.user.skills.map((item) => {
-      return this._fb.control(item.selected);
-    });
-    return this._fb.array(arr);
-  }
-
-  addCrop(): void {
-    this.cropsArray = this.dssSelectionForm.get("cropsArray") as FormArray;
-    this.cropsArray.push(this.createPropertie());
-  }
-
-  addParameter(): void {
-    this.parameters = this.dssSelectionForm.get("parameters") as FormArray;
-    this.parameters.push(this.createPropertie());
-  }
-
-  private createPropertie(): FormControl {
-    return this._fb.control("", Validators.required);
-  }
-
-  onAddCombinationToTable(value) {
-    console.log("formmmmmmmmm", this.dssSelectionForm.value);
-    const formValues = this.dssSelectionForm.value;
-
-    const dssArr = formValues.skills;
-    const len = dssArr.length;
-
-    console.log("dddd", value);
-    const formValue = Object.assign(
-      {},
-      {
-        skills: value.skills.map((selected, i) => {
-          return {
-            id: this.user.skills[i].id,
-            selected,
-          };
-        }),
-      }
-    );
-
-    console.log("formddasffd", formValue);
-
-    for (let i = 0; i < len; i++) {
-
-      console.log("jebem",formValues.cropsArray[i]);
-      if (dssArr[i] === true) {
-        let dssVal = this.user.skills[i].val;
-        this.selectedPest = dssVal;
-        this.selectedPestFromSearch = this.pestSearch.value;
-        let cropPestCombinationRow = {
-          crop: formValues.cropsArray[i],
-          // crop: this.cropSearch.value,
-          parameter: formValues.parameters[i]
-          // pest: this.pestSearch.value,
-          // dss: dssVal,
-        };
-        this.tblCropPestCombinations.push(cropPestCombinationRow);
-      }
+  purgeEditor() {
+    if (this.editor instanceof JSONEditor) {
+      this.editor.destroy();
+      this.editorActivated = false;
     }
   }
-}
 
-interface CropPest {
-  crop: string;
-  parameters: string[];
+  constructor(
+    private _fb: FormBuilder,
+    private http: HttpClient
+  ) { }
+
+  ngOnInit() {
+    this.http
+      .get(`${environment.apiUrl}/api/dss/rest/crop`)
+      .subscribe((response: any[]) => {
+        this.crops = response.map((item) => ({ value: item, label: item }))
+      })
+
+    this.http
+      .get(`${environment.apiUrl}/api/dss/rest/pest`)
+      .subscribe((response: any[]) => {
+        this.pests = response.map((item) => ({ value: item, label: item }))
+      })
+
+  }
+
 }
