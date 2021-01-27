@@ -46,7 +46,7 @@
                     <div class="form-group col-md-4">
                       <label for="crops" class="col-md-2 col-form-label">Crop</label>
                       <select id="crops" class="col-md-10 form-control" formControlName="cropSearch">
-                        <option value="">NONE</option>
+                        <option value="">ALL</option>
                         <ng-template ngFor let-crop [ngForOf]="crops">
                           <option value="{{crop.value}}">{{crop.label}}</option>
                         </ng-template>
@@ -55,7 +55,7 @@
                     <div class="form-group col-md-4">
                       <label for="pests" class="col-md-2 col-form-label">Pest</label>
                       <select id="pests" class="col-md-10 form-control" formControlName="pestSearch">
-                        <option value="">NONE</option>
+                        <option value="">ALL</option>
                         <ng-template ngFor let-pest [ngForOf]="pests">
                           <option value="{{pest.value}}">{{pest.label}}</option>
                         </ng-template>
@@ -98,12 +98,12 @@
                       </div>
                     </div>
                   </div>
-                </fieldset>
 
-                <div class="col mt-3 text-right">
-                  <button class="btn btn-success ml-2">Go to DSS Use
-                    dashboard</button>
-                </div>
+                  <div class="col mt-3 text-right">
+                    <button class="btn btn-success ml-2" (click)="submit()">Go to DSS Use
+                      dashboard</button>
+                  </div>
+                </fieldset>
 
               </div>
             </div>

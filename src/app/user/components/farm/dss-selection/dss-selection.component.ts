@@ -64,6 +64,7 @@ export class DssSelectionComponent implements OnInit {
       let modelIndex = this.selectedModal.value;
       let editorHolder = document.getElementById('editor_holder');
       let schema = JSON.parse(this.models[modelIndex].execution.input_schema);
+      console.log(this.models[modelIndex]);
       this.editor = new JSONEditor(editorHolder, {
         schema,
         ajax: true,
@@ -76,6 +77,23 @@ export class DssSelectionComponent implements OnInit {
     if (this.editor instanceof JSONEditor) {
       this.editor.destroy();
       this.editorActivated = false;
+    }
+  }
+
+  submit() {
+    let editor = this.editor;
+    let modelIndex = this.selectedModal.value;
+    let currentModel = this.models[modelIndex];
+    let { endpoint, form_method } = currentModel.execution;
+    if (editor.validate().length == 0) {
+      console.log( endpoint, form_method)
+      if (form_method == 'post') {
+        this.http
+          .post(endpoint, this.editor.getValue())
+          .subscribe((x) => {alert(x)})
+      }
+    } else {
+      alert("Error");
     }
   }
 
