@@ -26,10 +26,10 @@ export class FieldAddComponent implements OnInit {
       (farm) => (this.farmName = farm.name)
     );
   }
-  
+
   addFieldFormInit() {
     this.fieldForm = this._fb.group({
-      cropPests: this._fb.array([this.createCropPest()]),
+      cropPest: this.createCropPest(),
       name: ["", Validators.required], //field name
       inf1: ["", Validators.required], //variety
       inf2: ["", Validators.required] //sowing date
@@ -52,7 +52,7 @@ export class FieldAddComponent implements OnInit {
     const fieldFormValues = this.fieldForm.value;
 
     console.log('test', fieldFormValues);
-    
+
     if (fieldFormValues) {
       this._fieldService.createField(fieldFormValues).subscribe(
         (fieldResponse) => {

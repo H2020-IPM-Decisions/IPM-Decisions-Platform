@@ -3,10 +3,10 @@ export interface Field {
   name: string;
   inf1: string;
   inf2: string;
-  // cropPests?: [
-  //   {
-  //     cropEppoCode: string;
-  //     pestEppoCode: string;
-  //   }
-  // ];
+  cropPest: [
+    {
+      cropEppoCode: string;
+      pestEppoCode: string;
+    }
+  ];
 }

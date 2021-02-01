@@ -78,7 +78,6 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
     this.editFarmForm.get("weatherStationDto").disable();
 
     this._farmService.currentFarm.subscribe((farm: Farm) => {
-      // console.log("faxxxxxxxxxxxrm", farm);
       if (farm) {
         this.editFarmForm.patchValue(farm);
         this.currentFarm = farm;
@@ -271,7 +270,6 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
             });
         },
         (error: HttpErrorResponse) => {
-          console.log("field error", error);
           this._toastr.show(
             "Field copy failed!",
             "Error!",
