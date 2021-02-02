@@ -92,7 +92,6 @@
                   <table class="table table-striped table-bordered">
                     <thead>
                       <tr>
-                        <th class="text-center" scope="col">Field</th>
                         <th class="text-center" scope="col">Crop</th>
                         <th class="text-center" scope="col">Pest/Desease</th>
                         <th class="text-center" scope="col">Action</th>
@@ -103,7 +102,6 @@
 
                       <tr *ngFor="let field of fieldList">
 
-                        <td class="text-center">{{ field.name }}</td>
                         <td class="text-center">
                           <a class="details" (click)="openModal(template, field)">{{
                             field.fieldCropPestsDto.value[0].cropPestDto.cropEppoCode }}
