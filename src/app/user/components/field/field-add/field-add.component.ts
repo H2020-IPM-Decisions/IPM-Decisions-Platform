@@ -30,7 +30,6 @@ export class FieldAddComponent implements OnInit {
   addFieldFormInit() {
     this.fieldForm = this._fb.group({
       cropPest: this.createCropPest(),
-      name: ["", Validators.required], //field name
       inf1: ["", Validators.required], //variety
       inf2: ["", Validators.required] //sowing date
     });
@@ -50,6 +49,7 @@ export class FieldAddComponent implements OnInit {
 
   onCreateField() {
     const fieldFormValues = this.fieldForm.value;
+    fieldFormValues.name = "none";
 
     console.log('test', fieldFormValues);
 
