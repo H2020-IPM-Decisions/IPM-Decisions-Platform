@@ -1,9 +1,10 @@
-import { HttpErrorResponse } from "@angular/common/http";
+import { HttpErrorResponse, HttpClient } from "@angular/common/http";
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { FarmService } from "@app/shared/services/upr/farm.service";
 import { FieldService } from "@app/shared/services/upr/field.service";
+import { environment } from './../../../../../environments/environment';
 @Component({
   selector: "app-field-add",
   templateUrl: "./field-add.component.html",
@@ -13,15 +14,29 @@ export class FieldAddComponent implements OnInit {
   fieldForm: FormGroup;
   cropPests: FormArray;
   farmName: string;
+  crops: { value: string; label: string }[] = [];
+  pests: { value: string; label: string }[] = [];
   constructor(
     private _fb: FormBuilder,
     private _fieldService: FieldService,
     private _toastr: ToastrService,
     private _farmService: FarmService,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
     this.addFieldFormInit();
+    this.http
+      .get(`${environment.apiUrl}/api/dss/rest/crop`)
+      .subscribe((response: any[]) => {
+        this.crops = response.map((item) => ({ value: item, label: item }))
+      })
+
+    this.http
+      .get(`${environment.apiUrl}/api/dss/rest/pest`)
+      .subscribe((response: any[]) => {
+        this.pests = response.map((item) => ({ value: item, label: item }))
+      })
     this._farmService.currentFarm.subscribe(
       (farm) => (this.farmName = farm.name)
     );

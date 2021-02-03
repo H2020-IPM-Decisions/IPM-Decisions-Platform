@@ -53,30 +53,26 @@
                       <div [formGroupName]="i">
 
                         <div class="row">
-                          <div class="col-4">
+                          <div class="col-6">
                             <div class="form-group row">
-                              <label for="field" class="col-sm-2 col-form-label">Crop</label>
-                              <div class="col-sm-10">
+                              <label for="field" class="col-sm-4 col-md-2 col-form-label">Crop</label>
+                              <div class="col-sm-8 col-md-10">
                                 <select class="form-control" id="crop" formControlName="cropEppoCode">
-                                  <option value="3WHEC">Wheat</option>
-                                  <option value="BRSOX">Cabbage</option>
-                                  <option value="MABSD">Apple</option>
-                                  <option value="DAUCS">Carrot</option>
+                                  <ng-template ngFor let-crop [ngForOf]="crops">
+                                    <option value="{{crop.value}}">{{crop.label}}</option>
+                                  </ng-template>
                                 </select>
                               </div>
                             </div>
                           </div>
-                          <div class="col-4">
+                          <div class="col-6">
                             <div class="form-group row">
-                              <label for="variety" class="col-sm-2 col-form-label">Pest</label>
-                              <div class="col-sm-10">
+                              <label for="variety" class="col-sm-4 col-md-2 col-form-label">Pest</label>
+                              <div class="col-sm-8 col-md-10">
                                 <select class="form-control" id="pest" formControlName="pestEppoCode">
-                                  <option value="RHOPPA">Aphids</option>
-                                  <option value="SEPTAM">Septoria</option>
-                                  <option value="BARABR">Cabbage moth</option>
-                                  <option value="ASPV00">Apple stem</option>
-                                  <option value="PSILRO">Carrot rust fly
-                                  </option>
+                                  <ng-template ngFor let-pest [ngForOf]="pests">
+                                    <option value="{{pest.value}}">{{pest.label}}</option>
+                                  </ng-template>
                                 </select>
                               </div>
                             </div>
@@ -89,22 +85,14 @@
 
                 <div class="col-12 mt-4">
                   <fieldset class="border p-3">
-                    <legend class="w-auto px-1 text-muted">Select field, wariety and sowing
+                    <legend class="w-auto px-1 text-muted">Select variety and sowing
                       date
                     </legend>
-                    <div class="form-row">
-                      <div class="col-4">
+                    <div class="row">
+                      <div class="col-6">
                         <div class="form-group row">
-                          <label for="name" class="col-sm-2 col-form-label">Field</label>
-                          <div class="col-sm-10">
-                            <input class="form-control" id="name" formControlName="name" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-4">
-                        <div class="form-group row">
-                          <label for="variety" class="col-sm-2 col-form-label">Variety</label>
-                          <div class="col-sm-10">
+                          <label for="variety" class="col-sm-4 col-md-2 col-form-label">Variety</label>
+                          <div class="col-sm-8 col-md-10">
                             <select class="form-control" id="variety" formControlName="inf1">
                               <option value="Variety_x">Variety_x</option>
                               <option value="Variety_y">Variety_y</option>
@@ -113,9 +101,9 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-4">
+                      <div class="col-6">
                         <div class="form-group row">
-                          <label for="sowing-date" class="col-auto pr-0 col-form-label">Sowing
+                          <label for="sowing-date" class="col-sm-4 col-form-label">Sowing
                             date</label>
                           <div class="col-sm-8 input-group">
                             <input type="text" class="form-control" id="sowing-date" formControlName="inf2" bsDatepicker

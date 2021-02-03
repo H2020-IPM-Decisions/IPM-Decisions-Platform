@@ -1,10 +1,11 @@
-import { HttpErrorResponse } from "@angular/common/http";
+import { HttpErrorResponse, HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { FarmService } from "@app/shared/services/upr/farm.service";
 import { FieldService } from "@app/shared/services/upr/field.service";
 import { compare } from "fast-json-patch";
 import { ToastrService } from "ngx-toastr";
+import { environment } from './../../../../../environments/environment';
 
 @Component({
   selector: "app-field-edit",
@@ -17,15 +18,29 @@ export class FieldEditComponent implements OnInit {
   farmName: string;
   formFieldValues;
   currentField: any;
+  crops: { value: string; label: string }[] = [];
+  pests: { value: string; label: string }[] = [];
   constructor(
     private _fb: FormBuilder,
     private _toastr: ToastrService,
     private _farmService: FarmService,
-    private _fieldService: FieldService
+    private _fieldService: FieldService,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
     this.fieldFormInit();
+    this.http
+      .get(`${environment.apiUrl}/api/dss/rest/crop`)
+      .subscribe((response: any[]) => {
+        this.crops = response.map((item) => ({ value: item, label: item }))
+      })
+
+    this.http
+      .get(`${environment.apiUrl}/api/dss/rest/pest`)
+      .subscribe((response: any[]) => {
+        this.pests = response.map((item) => ({ value: item, label: item }))
+      })
     this._farmService.currentFarm.subscribe(
       (farm) => (this.farmName = farm.name)
     );
@@ -97,7 +112,7 @@ export class FieldEditComponent implements OnInit {
 
   onEditFieldSubmit() {
     const updatedFieldValues = this.fieldForm.value;
-  
+
     // console.log("edit values", updatedFieldValues);
     // console.log("this.formFieldValues values", this.formFieldValues);
     const patch = compare(this.formFieldValues, updatedFieldValues);
