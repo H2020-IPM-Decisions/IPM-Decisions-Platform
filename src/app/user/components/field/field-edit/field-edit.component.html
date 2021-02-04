@@ -44,38 +44,31 @@
           <fieldset class="border p-2">
             <form [formGroup]="fieldForm">
               <div class="row">
-                <div class="col-12">
+                <div class="col-12" formGroupName="cropPests">
                   <fieldset class="border p-3">
                     <legend class="w-auto px-1 text-muted">Select crop and pest</legend>
-
-                    <div formArrayName="cropPests"
-                      *ngFor="let item of fieldForm.get('cropPests')['controls']; let i = index;">
-                      <div [formGroupName]="i">
-
-                        <div class="row">
-                          <div class="col-6">
-                            <div class="form-group row">
-                              <label for="field" class="col-sm-4 col-md-2 col-form-label">Crop</label>
-                              <div class="col-sm-8 col-md-10">
-                                <select class="form-control" id="crop" formControlName="cropEppoCode">
-                                  <ng-template ngFor let-crop [ngForOf]="crops">
-                                    <option value="{{crop.value}}">{{crop.label}}</option>
-                                  </ng-template>
-                                </select>
-                              </div>
-                            </div>
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group row">
+                          <label for="field" class="col-sm-4 col-md-2 col-form-label">Crop</label>
+                          <div class="col-sm-8 col-md-10">
+                            <select class="form-control" id="crop" formControlName="cropEppoCode">
+                              <ng-template ngFor let-crop [ngForOf]="crops">
+                                <option value="{{crop.value}}">{{crop.label}}</option>
+                              </ng-template>
+                            </select>
                           </div>
-                          <div class="col-6">
-                            <div class="form-group row">
-                              <label for="variety" class="col-sm-4 col-md-2 col-form-label">Pest</label>
-                              <div class="col-sm-8 col-md-10">
-                                <select class="form-control" id="pest" formControlName="pestEppoCode">
-                                  <ng-template ngFor let-pest [ngForOf]="pests">
-                                    <option value="{{pest.value}}">{{pest.label}}</option>
-                                  </ng-template>
-                                </select>
-                              </div>
-                            </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group row">
+                          <label for="variety" class="col-sm-4 col-md-2 col-form-label">Pest</label>
+                          <div class="col-sm-8 col-md-10">
+                            <select class="form-control" id="pest" formControlName="pestEppoCode">
+                              <ng-template ngFor let-pest [ngForOf]="pests">
+                                <option value="{{pest.value}}">{{pest.label}}</option>
+                              </ng-template>
+                            </select>
                           </div>
                         </div>
                       </div>

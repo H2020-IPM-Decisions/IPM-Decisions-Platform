@@ -57,17 +57,25 @@ export class FieldEditComponent implements OnInit {
     });
   }
 
+  fieldFormInit() {
+    this.fieldForm = this._fb.group({
+      cropPests: this.createCropPest(),
+      name: ["", Validators.required], //field name
+      inf1: ["", Validators.required], //variety
+      inf2: ["", Validators.required], //sowing date
+    });
+  }
+
   setFormValues(field: any) {
     this.fieldForm.patchValue({
+      cropPests: {
+        cropEppoCode: field.fieldCropDto.cropEppoCode,
+        pestEppoCode: field.fieldCropDto.fieldCropPestDto.value[0].pestEppoCode
+      },
       name: field.name,
       inf1: field.inf1,
       inf2: this.formatLocaleDateGB(field.inf2),
     });
-
-    this.fieldForm.setControl(
-      "cropPests",
-      this.setCropPestFormArray(field.fieldCropPestsDto.value)
-    );
   }
 
   setCropPestFormArray(cropPestArr): FormArray {
@@ -87,15 +95,6 @@ export class FieldEditComponent implements OnInit {
   //todo: helper
   private formatLocaleDateGB(unformatedDate: string) {
     return new Date(unformatedDate).toLocaleDateString("en-GB");
-  }
-
-  fieldFormInit() {
-    this.fieldForm = this._fb.group({
-      cropPests: this._fb.array([this.createCropPest()]),
-      name: ["", Validators.required], //field name
-      inf1: ["", Validators.required], //variety
-      inf2: ["", Validators.required], //sowing date
-    });
   }
 
   createCropPest(): FormGroup {
