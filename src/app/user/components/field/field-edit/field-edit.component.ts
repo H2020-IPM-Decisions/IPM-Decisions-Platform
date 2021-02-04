@@ -127,7 +127,7 @@ export class FieldEditComponent implements OnInit {
   private mapPatchArray(patchArr: any[]) {
     patchArr.forEach((patch) => {
       if (patch.path === "/cropPests/pestEppoCode")
-        patch.path = "/fieldCropPest/" + this.pestId;
+        patch.path = "/fieldCropDto/fieldCropPestDto/" + this.pestId;
     })
   }
 }
