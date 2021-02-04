@@ -20,6 +20,7 @@ export class FieldEditComponent implements OnInit {
   currentField: any;
   crops: { value: string; label: string }[] = [];
   pests: { value: string; label: string }[] = [];
+  pestId = "";
   constructor(
     private _fb: FormBuilder,
     private _toastr: ToastrService,
@@ -66,6 +67,13 @@ export class FieldEditComponent implements OnInit {
     });
   }
 
+  createCropPest(): FormGroup {
+    return this._fb.group({
+      cropEppoCode: [{value: "", disabled: true}, Validators.required],
+      pestEppoCode: ["", Validators.required],
+    });
+  }
+
   setFormValues(field: any) {
     this.fieldForm.patchValue({
       cropPests: {
@@ -76,32 +84,12 @@ export class FieldEditComponent implements OnInit {
       inf1: field.inf1,
       inf2: this.formatLocaleDateGB(field.inf2),
     });
-  }
-
-  setCropPestFormArray(cropPestArr): FormArray {
-    const formArray = new FormArray([]);
-    cropPestArr.forEach((item) => {
-      formArray.push(
-        this._fb.group({
-          cropEppoCode: item.cropPestDto.cropEppoCode,
-          pestEppoCode: item.cropPestDto.pestEppoCode,
-        })
-      );
-    });
-
-    return formArray;
+    this.pestId = field.fieldCropDto.fieldCropPestDto.value[0].id;
   }
 
   //todo: helper
   private formatLocaleDateGB(unformatedDate: string) {
     return new Date(unformatedDate).toLocaleDateString("en-GB");
-  }
-
-  createCropPest(): FormGroup {
-    return this._fb.group({
-      cropEppoCode: ["", Validators.required],
-      pestEppoCode: ["", Validators.required],
-    });
   }
 
   addCropPestRow(): void {
@@ -111,15 +99,8 @@ export class FieldEditComponent implements OnInit {
 
   onEditFieldSubmit() {
     const updatedFieldValues = this.fieldForm.value;
-
-    // console.log("edit values", updatedFieldValues);
-    // console.log("this.formFieldValues values", this.formFieldValues);
     const patch = compare(this.formFieldValues, updatedFieldValues);
-
-    // console.log("this.patch values", patch);
-
-    this.mapPatchArray(patch, updatedFieldValues.cropPests);
-    // console.log("PATHC CCC", patch)
+    this.mapPatchArray(patch);
     this._fieldService.updateField(this.currentField.id, patch).subscribe(
       (updateResponse: any) => {
         console.log(updateResponse);
@@ -143,21 +124,10 @@ export class FieldEditComponent implements OnInit {
     );
   }
 
-  private mapPatchArray(patchArr: any, formObj: any) {
-
-    formObj.forEach((item, index) => {
-      if (item.cropEppoCode) {
-        patchArr.splice(index+1, 1)
-        patchArr[index].value = [];
-
-        let cropPest = {
-          cropEppoCode: item.cropEppoCode,
-          pestEppoCode: item.pestEppoCode,
-        };
-
-        patchArr[index].value.push(cropPest);
-        patchArr[index].path = "/cropPests";
-      }
-    });
+  private mapPatchArray(patchArr: any[]) {
+    patchArr.forEach((patch) => {
+      if (patch.path === "/cropPests/pestEppoCode")
+        patch.path = "/fieldCropPest/" + this.pestId;
+    })
   }
 }
