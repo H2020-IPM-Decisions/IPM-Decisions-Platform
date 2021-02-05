@@ -1,4 +1,5 @@
-import { HttpErrorResponse, HttpResponse } from "@angular/common/http";
+import { environment } from './../../../../../environments/environment';
+import { HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/http";
 import {
   AfterViewInit,
   Component,
@@ -42,7 +43,20 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
   modalRef: BsModalRef;
   selectedCrop: any;
   observationModalRef: BsModalRef;
+
   sprayModalRef: BsModalRef;
+  sprayModalForm = this._fb.group({
+    name: [""],
+    time: [""],
+    rate: [""]
+  })
+  addSpray(field) {
+    let requestBody = this.sprayModalForm.value;
+    requestBody.fieldCropPestId = field.fieldCropDto.fieldCropPestDto.value[0].id;
+    this.http
+      .post(`${environment.apiUrl}/api/upr/fields/${field.id}/sprayapplications`, requestBody)
+      .subscribe((x)=>x)
+  }
 
   metStationSelected = 0;
   weatherForecastSelected = 1;
@@ -55,7 +69,8 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
     private _fieldService: FieldService,
     private _weatherService: WeatherService,
     public _maprisksService: MaprisksService,
-    private _toastr: ToastrService
+    private _toastr: ToastrService,
+    private http: HttpClient
   ) {}
   ngOnInit() {
     this.initEditFarmForm();

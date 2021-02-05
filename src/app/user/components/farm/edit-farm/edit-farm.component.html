@@ -103,12 +103,11 @@
                       <tr *ngFor="let field of fieldList">
 
                         <td class="text-center">
-                          <a class="details" (click)="openModal(template, field)">{{
-                            field.fieldCropPestsDto.value[0].cropPestDto.cropEppoCode }}
+                          <a class="details" (click)="openModal(template, field)">{{field.fieldCropDto.cropEppoCode }}
                             <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
                           </a>
                         </td>
-                        <td class="text-center">{{ field.fieldCropPestsDto.value[0].cropPestDto.pestEppoCode }}</td>
+                        <td class="text-center">{{ field.fieldCropDto.fieldCropPestDto.value[0].cropPestDto.pestEppoCode }}</td>
                         <td class="td-actions text-center py-1">
 
                           <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy"
@@ -163,7 +162,8 @@
                             <div class="modal-body">
                               <div class="row">
                                 <div class="col-12">Date: <input></div>
-                                <div class="col-12 mt-4">Severity: <input>&nbsp; <i class="action-icon size-11 fas fa-plus-circle"></i></div>
+                                <div class="col-12 mt-4">Severity: <input>&nbsp; <i
+                                    class="action-icon size-11 fas fa-plus-circle"></i></div>
                                 <div class="col-12 mt-4">
                                   <table class="table table-striped">
                                     <thead>
@@ -190,8 +190,7 @@
                           </ng-template>
 
                           <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Add Spray"
-                            title="Add Spray"
-                            (click)="this.sprayModalRef = this._modalService.show(addSprayTemplate);">
+                            title="Add Spray" (click)="this.sprayModalRef = this._modalService.show(addSprayTemplate);">
                             <i class="action-icon size-11 fas fa-spray-can"></i>
                           </button>
 
@@ -204,11 +203,19 @@
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" [formGroup]="sprayModalForm">
                               <div class="row">
-                                <div class="col-12">Spray: <input></div>
-                                <div class="col-12 mt-4">Date: <input></div>
-                                <div class="col-12 mt-4">Rate: <input>&nbsp; <i class="action-icon size-11 fas fa-plus-circle"></i></div>
+                                <div class="col-2">Spray:</div><div class="col-10"><input formControlName="name"></div>
+                                <div class="col-2 mt-4">Date:</div>
+                                <div class="col-10 mt-4">
+                                  <input type="text" formControlName="time"
+                                    bsDatepicker placeholder="dd/mm/yyyy" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}">
+                                </div>
+                                <div class="col-2 mt-4">Rate:</div>
+                                <div class="col-10 mt-4">
+                                  <input formControlName="rate">&nbsp;
+                                  <i class="action-icon size-11 fas fa-plus-circle" (click)="addSpray(field)"></i>
+                                </div>
                                 <div class="col-12 mt-4">
                                   <table class="table table-striped">
                                     <thead>
