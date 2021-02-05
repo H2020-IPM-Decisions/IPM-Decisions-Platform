@@ -50,12 +50,15 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
     time: [""],
     rate: [""]
   })
+
   addSpray(field) {
     let requestBody = this.sprayModalForm.value;
     requestBody.fieldCropPestId = field.fieldCropDto.fieldCropPestDto.value[0].id;
     this.http
       .post(`${environment.apiUrl}/api/upr/fields/${field.id}/sprayapplications`, requestBody)
-      .subscribe((x)=>x)
+      .subscribe((x) => {
+        this.onGetFields(this.currentFarm.id);
+      })
   }
 
   metStationSelected = 0;
@@ -243,6 +246,7 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
       (fields: any) => {
         if (fields && fields.value) {
           this.fieldList = fields.value;
+          console.log(this.fieldList);
         }
       },
       (error: HttpErrorResponse) => {

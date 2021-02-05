@@ -226,10 +226,10 @@
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      <tr>
-                                        <td>Mancozeb</td>
-                                        <td>Date</td>
-                                        <td>Rate(kg/ha)</td>
+                                      <tr *ngFor="let spray of field.fieldCropDto.fieldCropPestDto.value[0].fieldSprayApplicationDto.value">
+                                        <td>{{spray.name}}</td>
+                                        <td>{{spray.time}}</td>
+                                        <td>{{spray.rate}}</td>
                                       </tr>
                                     </tbody>
                                   </table>
