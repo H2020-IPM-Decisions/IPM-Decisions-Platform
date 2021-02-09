@@ -159,11 +159,18 @@
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" [formGroup]="observationModalForm">
                               <div class="row">
-                                <div class="col-12">Date: <input></div>
-                                <div class="col-12 mt-4">Severity: <input>&nbsp; <i
-                                    class="action-icon size-11 fas fa-plus-circle"></i></div>
+                                <div class="col-2">Date:</div>
+                                <div class="col-10">
+                                  <input type="text" formControlName="time"
+                                    bsDatepicker placeholder="dd/mm/yyyy" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}">
+                                </div>
+                                <div class="col-2 mt-4">Severity:</div>
+                                <div class="col-10 mt-4">
+                                  <input formControlName="severity">&nbsp;
+                                  <i class="action-icon size-11 fas fa-plus-circle" (click)="addObservation(field)"></i>
+                                </div>
                                 <div class="col-12 mt-4">
                                   <table class="table table-striped">
                                     <thead>
@@ -174,9 +181,10 @@
                                     </thead>
                                     <tbody>
                                       <tr>
-                                        <td>01/03/2019</td>
-                                        <td>1</td>
-                                      </tr>
+                                        <tr *ngFor="let observation of field.fieldCropDto.fieldCropPestDto.value[0].fieldObservationDto.value">
+                                          <td>{{observation.time}}</td>
+                                          <td>{{observation.severity}}</td>
+                                        </tr>
                                     </tbody>
                                   </table>
                                 </div>

@@ -42,7 +42,23 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
   weatherForecastList: WeatherDataSource[];
   modalRef: BsModalRef;
   selectedCrop: any;
+
+
   observationModalRef: BsModalRef;
+  observationModalForm = this._fb.group({
+    time: [""],
+    severity: [""]
+  })
+  addObservation(field) {
+    let requestBody = this.observationModalForm.value;
+    requestBody.fieldCropPestId = field.fieldCropDto.fieldCropPestDto.value[0].id;
+    requestBody.location = { x: 0, y: 0, srid: 4236};
+    this.http
+      .post(`${environment.apiUrl}/api/upr/fields/${field.id}/observations`, requestBody)
+      .subscribe((x) => {
+        this.onGetFields(this.currentFarm.id);
+      })
+  }
 
   sprayModalRef: BsModalRef;
   sprayModalForm = this._fb.group({
@@ -50,7 +66,6 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
     time: [""],
     rate: [""]
   })
-
   addSpray(field) {
     let requestBody = this.sprayModalForm.value;
     requestBody.fieldCropPestId = field.fieldCropDto.fieldCropPestDto.value[0].id;
