@@ -43,7 +43,7 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
   modalRef: BsModalRef;
   selectedCrop: any;
 
-
+  @ViewChild('addObservationTemplate', {static: false}) public addObservationTemplate: TemplateRef<any>;
   observationModalRef: BsModalRef;
   observationModalForm = this._fb.group({
     time: [""],
@@ -56,10 +56,16 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
     this.http
       .post(`${environment.apiUrl}/api/upr/fields/${field.id}/observations`, requestBody)
       .subscribe((x) => {
-        this.onGetFields(this.currentFarm.id);
+        this.onGetFields(
+          this.currentFarm.id,
+          () => {
+            this.observationModalRef.hide();
+          }
+        );
       })
   }
 
+  @ViewChild('addSprayTemplate', {static: false}) public addSprayTemplate: TemplateRef<any>;
   sprayModalRef: BsModalRef;
   sprayModalForm = this._fb.group({
     name: [""],
@@ -256,12 +262,12 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
 
   // FIELDS BELOW
 
-  onGetFields(farmId: string) {
+  onGetFields(farmId: string, onFieldUpdateFunc = () => {}) {
     this._fieldService.getFields(farmId).subscribe(
       (fields: any) => {
         if (fields && fields.value) {
           this.fieldList = fields.value;
-          console.log(this.fieldList);
+          onFieldUpdateFunc()
         }
       },
       (error: HttpErrorResponse) => {

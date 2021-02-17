@@ -287,7 +287,7 @@
   <!-- field details modal -->
   <ng-template #template>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">{{ selectedCrop.fieldCropPestsDto.value[0].cropPestDto.cropEppoCode }} details
+      <h4 class="modal-title pull-left">{{ selectedCrop.fieldCropDto.cropEppoCode }} details
       </h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
@@ -301,7 +301,7 @@
             <div class="col-6">
               <div class="row">
                 <div class="col-md-6 details-text">Variety:</div>
-                <div class="col-md-6">{{ selectedCrop.cropEppoCode }}</div>
+                <div class="col-md-6">{{ selectedCrop.inf1 }}</div>
               </div>
               <div class="row">
                 <div class="col-md-6 details-text">Sowing date:</div>
@@ -325,9 +325,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let spray of selectedCrop.spraysApplied">
-                      <td class="text-center">{{ spray.spray }}</td>
-                      <td class="text-center">{{ spray.date }}</td>
+                    <tr *ngFor="let spray of selectedCrop.fieldCropDto.fieldCropPestDto.value[0].fieldSprayApplicationDto.value">
+                      <td class="text-center">{{ spray.name }}</td>
+                      <td class="text-center">{{ spray.time }}</td>
                       <td class="text-center">{{ spray.rate }}</td>
                     </tr>
                   </tbody>
@@ -352,9 +352,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let dss of selectedCrop.listDss">
-                      <td class="text-center">{{ dss.name }}</td>
-                      <td class="text-center">{{ dss.parameter }}</td>
+                    <tr *ngFor="let dss of selectedCrop.fieldCropDto.fieldCropPestDto.value[0].fieldCropPestDssDto.value">
+                      <td class="text-center">{{ dss.dssId }}</td>
+                      <td class="text-center">{{ dss.dssParameters }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -379,9 +379,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let observation of selectedCrop.pestObservation">
-                      <td class="text-center">{{ observation.pest }}</td>
-                      <td class="text-center">{{ observation.date }}</td>
+                    <tr *ngFor="let observation of selectedCrop.fieldCropDto.fieldCropPestDto.value[0].fieldObservationDto.value">
+                      <td class="text-center">{{ selectedCrop.fieldCropDto.fieldCropPestDto.value[0].pestEppoCode }}</td>
+                      <td class="text-center">{{ observation.time }}</td>
                       <td class="text-center">{{ observation.severity }}</td>
                     </tr>
                   </tbody>
