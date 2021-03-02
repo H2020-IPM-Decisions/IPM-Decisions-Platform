@@ -1,3 +1,4 @@
+import { DssDisplayComponent } from './user/components/dss/dss-display/dss-display.component';
 import { CustomizeDashboardComponent } from './user/components/customize-dashboard/customize-dashboard.component';
 import { ManageAlertsComponent } from './user/components/manage-alerts/manage-alerts.component';
 import { ManageWeatherDataSourceComponent } from './user/components/manage-weather-data-source/manage-weather-data-source.component';
@@ -305,6 +306,12 @@ const appRoutes: Routes = [
   {
     path: "user/dss/selection",
     component: DssSelectionComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+  },
+  {
+    path: "user/dss/display",
+    component: DssDisplayComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
   },

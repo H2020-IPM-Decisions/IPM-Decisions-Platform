@@ -108,6 +108,7 @@ import { SettingsComponent } from './user/components/settings/settings.component
 import { ManageWeatherDataSourceComponent } from './user/components/manage-weather-data-source/manage-weather-data-source.component';
 import { ManageAlertsComponent } from './user/components/manage-alerts/manage-alerts.component';
 import { CustomizeDashboardComponent } from './user/components/customize-dashboard/customize-dashboard.component';
+import { DssDisplayComponent } from './user/components/dss/dss-display/dss-display.component';
 
 @NgModule({
   declarations: [
@@ -207,6 +208,7 @@ import { CustomizeDashboardComponent } from './user/components/customize-dashboa
     ManageWeatherDataSourceComponent,
     ManageAlertsComponent,
     CustomizeDashboardComponent,
+    DssDisplayComponent,
   ],
   imports: [
     BrowserModule,

@@ -117,6 +117,14 @@ ol {
 Helper CSS
  -----------------------*/
 
+.vertical-center {
+  position: relative;
+  display: block;
+  top: 50%;
+  transform: translateY(-50%);
+
+}
+
 .icon-size {
   font-size: 1.5rem;
 }
