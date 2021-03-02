@@ -76,7 +76,7 @@ import { AdminFooterComponent } from "./admin/admin-footer/admin-footer.componen
 import { LoginComponent } from "./core/auth/pages/login/login.component";
 import { FarmRequestComponent } from "./user/components/farm-request/farm-request.component";
 import { FarmDetailsComponent } from "./user/components/farm/farm-details/farm-details.component";
-import { DssSelectionComponent } from "./user/components/farm/dss-selection/dss-selection.component";
+import { DssSelectionComponent } from "@app/user/components/dss/dss-selection/dss-selection.component";
 import { FieldAddComponent } from './user/components/field/field-add/field-add.component';
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
 import { SettingsComponent } from './user/components/settings/settings.component';

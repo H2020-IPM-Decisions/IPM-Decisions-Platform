@@ -43,7 +43,7 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
   modalRef: BsModalRef;
   selectedCrop: any;
 
-  @ViewChild('addObservationTemplate', {static: false}) public addObservationTemplate: TemplateRef<any>;
+  @ViewChild('addObservationTemplate', { static: false }) public addObservationTemplate: TemplateRef<any>;
   observationModalRef: BsModalRef;
   observationModalForm = this._fb.group({
     time: [""],
@@ -52,7 +52,7 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
   addObservation(field) {
     let requestBody = this.observationModalForm.value;
     requestBody.fieldCropPestId = field.fieldCropDto.fieldCropPestDto.value[0].id;
-    requestBody.location = { x: 0, y: 0, srid: 4236};
+    requestBody.location = { x: 0, y: 0, srid: 4236 };
     this.http
       .post(`${environment.apiUrl}/api/upr/fields/${field.id}/observations`, requestBody)
       .subscribe((x) => {
@@ -65,7 +65,7 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
       })
   }
 
-  @ViewChild('addSprayTemplate', {static: false}) public addSprayTemplate: TemplateRef<any>;
+  @ViewChild('addSprayTemplate', { static: false }) public addSprayTemplate: TemplateRef<any>;
   sprayModalRef: BsModalRef;
   sprayModalForm = this._fb.group({
     name: [""],
@@ -78,7 +78,12 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
     this.http
       .post(`${environment.apiUrl}/api/upr/fields/${field.id}/sprayapplications`, requestBody)
       .subscribe((x) => {
-        this.onGetFields(this.currentFarm.id);
+        this.onGetFields(
+          this.currentFarm.id,
+          () => {
+            this.sprayModalRef.hide();
+          }
+        );
       })
   }
 
@@ -95,7 +100,7 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
     public _maprisksService: MaprisksService,
     private _toastr: ToastrService,
     private http: HttpClient
-  ) {}
+  ) { }
   ngOnInit() {
     this.initEditFarmForm();
 
@@ -262,7 +267,7 @@ export class EditFarmComponent implements OnInit, AfterViewInit {
 
   // FIELDS BELOW
 
-  onGetFields(farmId: string, onFieldUpdateFunc = () => {}) {
+  onGetFields(farmId: string, onFieldUpdateFunc = () => { }) {
     this._fieldService.getFields(farmId).subscribe(
       (fields: any) => {
         if (fields && fields.value) {
