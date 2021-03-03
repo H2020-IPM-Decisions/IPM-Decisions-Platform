@@ -48,13 +48,15 @@ export class DssSelectionComponent implements OnInit {
     }
     this.http
       .get(requestUrl)
-      .subscribe((response: any) => {
-        try {
+      .subscribe(
+        (response: any) => {
           this.models = response[0].models;
-        } catch (e) {
+        },
+        (err) => {
           this.models = null;
+          alert("We couldn't find any models matching the given criteria")
         }
-      })
+      )
   }
 
   updateForm() {
@@ -88,7 +90,7 @@ export class DssSelectionComponent implements OnInit {
       if (form_method == 'post') {
         this.http
           .post(endpoint, this.editor.getValue())
-          .subscribe((x) => {alert(x)})
+          .subscribe((x) => { alert(x) })
       }
     } else {
       alert("Error");
