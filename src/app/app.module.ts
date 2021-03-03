@@ -4,10 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DssParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-detail/dss-parameters-detail.component';
-import { EditDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/edit-dss-observation/edit-dss-observation.component';
-import { DssObservationListComponent } from './user/components/dss/dss-detail/dss-observation-list/dss-observation-list.component';
-import { AddDssObservationComponent } from './user/components/dss/dss-detail/dss-observation-list/add-dss-observation/add-dss-observation.component';
 import { DssDetailComponent } from './user/components/dss/dss-detail/dss-detail.component';
 import { EditFarmComponent } from './user/components/farm/edit-farm/edit-farm.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
@@ -61,13 +57,6 @@ import { DssAdaptationDashboardComponent } from './user/components/dss/dss-adapt
 import { DssIntegrationDashboardComponent } from './user/components/dss/dss-integration-dashboard/dss-integration-dashboard.component';
 import { DatasourceRepositoryComponent } from './admin/datasource-repository/datasource-repository.component';
 import { HomeComponent } from './home/home.component';
-import { DssParametersDescriptionComponent } from './user/components/dss/dss-detail/dss-parameters-description/dss-parameters-description.component';
-import { WeatherParametersDetailComponent } from './user/components/dss/dss-detail/dss-parameters-description/weather-parameters-detail/weather-parameters-detail.component';
-import { DssInputsDescriptionComponent } from './user/components/dss/dss-detail/dss-inputs-description/dss-inputs-description.component';
-import { DssOutputsDescriptionComponent } from './user/components/dss/dss-detail/dss-outputs-description/dss-outputs-description.component';
-import { DssPlatformStatusComponent } from './user/components/dss/dss-detail/dss-platform-status/dss-platform-status.component';
-import { UpdateParametersComponent } from './user/components/dss/dss-detail/update-parameters/update-parameters.component';
-import { DssStatusDetailComponent } from './user/components/dss/dss-detail/dss-platform-status/dss-status-detail/dss-status-detail.component';
 import { DssUseDashboardEditComponent } from './user/components/dss/dss-use-dashboard/dss-use-dashboard-edit/dss-use-dashboard-edit.component';
 import { SourceRepoComponent } from './admin/source-repo/source-repo.component';
 import { AdminAccountComponent } from './admin/admin-account/admin-account.component';
@@ -165,17 +154,6 @@ import { DssDisplayComponent } from './user/components/dss/dss-display/dss-displ
     DatasourceRepositoryComponent,
     HomeComponent,
     DssDetailComponent,
-    AddDssObservationComponent,
-    EditDssObservationComponent,
-    DssObservationListComponent,
-    DssParametersDescriptionComponent,
-    WeatherParametersDetailComponent,
-    DssInputsDescriptionComponent,
-    DssOutputsDescriptionComponent,
-    DssPlatformStatusComponent,
-    UpdateParametersComponent,
-    DssStatusDetailComponent,
-    DssParametersDetailComponent,
     DssUseDashboardEditComponent,
     SourceRepoComponent,
     AdminAccountComponent,

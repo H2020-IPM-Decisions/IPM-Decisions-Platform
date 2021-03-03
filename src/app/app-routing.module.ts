@@ -11,17 +11,6 @@ import { AdminAccountEditComponent } from "./admin/admin-account/admin-account-e
 import { AdminAccountComponent } from "./admin/admin-account/admin-account.component";
 import { SourceRepoComponent } from "./admin/source-repo/source-repo.component";
 import { DssUseDashboardEditComponent } from "./user/components/dss/dss-use-dashboard/dss-use-dashboard-edit/dss-use-dashboard-edit.component";
-import { DssStatusDetailComponent } from "./user/components/dss/dss-detail/dss-platform-status/dss-status-detail/dss-status-detail.component";
-import { WeatherParametersDetailComponent } from "./user/components/dss/dss-detail/dss-parameters-description/weather-parameters-detail/weather-parameters-detail.component";
-import { UpdateParametersComponent } from "./user/components/dss/dss-detail/update-parameters/update-parameters.component";
-import { DssPlatformStatusComponent } from "./user/components/dss/dss-detail/dss-platform-status/dss-platform-status.component";
-import { DssParametersDetailComponent } from "./user/components/dss/dss-detail/dss-parameters-detail/dss-parameters-detail.component";
-import { DssOutputsDescriptionComponent } from "./user/components/dss/dss-detail/dss-outputs-description/dss-outputs-description.component";
-import { DssInputsDescriptionComponent } from "./user/components/dss/dss-detail/dss-inputs-description/dss-inputs-description.component";
-import { DssParametersDescriptionComponent } from "./user/components/dss/dss-detail/dss-parameters-description/dss-parameters-description.component";
-import { EditDssObservationComponent } from "./user/components/dss/dss-detail/dss-observation-list/edit-dss-observation/edit-dss-observation.component";
-import { AddDssObservationComponent } from "./user/components/dss/dss-detail/dss-observation-list/add-dss-observation/add-dss-observation.component";
-import { DssObservationListComponent } from "./user/components/dss/dss-detail/dss-observation-list/dss-observation-list.component";
 import { DssDetailComponent } from "./user/components/dss/dss-detail/dss-detail.component";
 import { HomeComponent } from "./home/home.component";
 import { AddObservationComponent } from "./user/components/pest-disease/observation-list/add-observation/add-observation.component";
@@ -456,72 +445,6 @@ const appRoutes: Routes = [
   {
     path: "user/dss/details",
     component: DssDetailComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/details/observation-list",
-    component: DssObservationListComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/details/observation-list/add",
-    component: AddDssObservationComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/details/observation-list/edit",
-    component: EditDssObservationComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/details/parameters-description",
-    component: DssParametersDescriptionComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/details/parameters-description/weather-parameters-detail",
-    component: WeatherParametersDetailComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/details/inputs-description",
-    component: DssInputsDescriptionComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/details/outputs-description",
-    component: DssOutputsDescriptionComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/details/parameters-detail",
-    component: DssParametersDetailComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/details/platform-status/dss-status-detail",
-    component: DssStatusDetailComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/details/platform-status",
-    component: DssPlatformStatusComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/details/update-parameters",
-    component: UpdateParametersComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
   },
