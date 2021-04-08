@@ -72,6 +72,6 @@
     "typescript": "~3.5.3"
   },
   "browser": {
-      "crypto": false
+    "crypto": false
   }
 }

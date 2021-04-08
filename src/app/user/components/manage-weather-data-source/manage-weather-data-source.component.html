@@ -1,62 +1,39 @@
-<div class="app-container app-theme-white fixed-sidebar fixed-header body-tabs-shadow fixed-footer">
-  <user-header></user-header>
-  <div class="app-main">
-    <sidebar></sidebar>
-    <div class="app-main__outer">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
-          <li class="breadcrumb-item"><a routerLink="/user/settings">Settings</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Manage weather data source</li>
-        </ol>
-      </nav>
-      <div class="app-main__inner">
+<main role="main" class="container">
+    <div class="my-3 p-3 bg-white rounded shadow-sm" *ngIf="dataSources">
+        <h2 class="border-bottom border-gray pb-2 mb-2">
+            <span>Manage Weather Data Source</span>
+            <button id="create-entity" class="btn btn-primary float-right" [routerLink]="['new']">
+                <i class="fas fa-plus"></i>
+                <span class="hidden-sm-down">
+                    Create a new Data Source Setting
+                </span>
+            </button>
+        </h2>
+        <div class="media text-muted pt-3" *ngFor="let setting of dataSources">
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray" *ngIf="setting">
+                <a [routerLink]="[setting.id, 'view']">
+                    <strong class="text-gray-dark">{{ setting.label }}</strong>
+                </a>
+                <span class="text-right float-right ">
+                    <div class="btn-group">
+                        <button type="submit" [routerLink]="[setting.id, 'view']"
+                            class="btn btn-info btn-sm">
+                            <i class="fas fa-eye"></i>&nbsp;
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit" [routerLink]="[setting.id, 'edit']"
+                            class="btn btn-primary btn-sm">
+                            <i class="fas fa-pencil-alt"></i>&nbsp;
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
 
-        <div class="app-page-title">
-          <div class="page-title-wrapper">
-            <div class="page-title-heading">
-              <div class="page-title-icon">
-                <i class="pe-7s-config icon-gradient bg-mean-fruit">
-                </i>
-              </div>
-              <div>Settings</div>
-            </div>
-          </div>
+                        <button type="submit" (click)="delete(setting)" class="btn btn-danger btn-sm">
+                            <i class="fas fa-times"></i>&nbsp;
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </span>
+            </p>                    
         </div>
-
-        <div class="container my-5 page-box">
-          <div class="row">
-            <form class="col-12 col-md-6">
-              <fieldset class="border p-3">
-                <legend>Manage weather data source</legend>
-                Select a source <select>
-                  <option>Weather data source</option>
-                </select>
-                <br><br>
-                data source <select>
-                  <option>data source 1</option>
-                </select>
-                <br><br>
-                <button class="float-right btn btn-primary" [style.margin-left]="'5px'">Cancel</button>
-                <button class="float-right btn btn-primary">OK</button>
-              </fieldset>
-            </form>
-            <form class="col-12 col-md-6">
-              <fieldset class="border p-3">
-                <legend>Manage weather data source</legend>
-                Select a source <select>
-                  <option>Weather data source</option>
-                </select>
-                <br><br>
-                Upload weather data
-                <i class="fas fa-upload"></i>
-                <br><br>
-                <button class="float-right btn btn-primary" [style.margin-left]="'5px'">Cancel</button>
-                <button class="float-right btn btn-primary">OK</button>
-              </fieldset>
-            </form>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+</main>

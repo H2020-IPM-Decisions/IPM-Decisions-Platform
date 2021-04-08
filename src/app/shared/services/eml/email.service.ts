@@ -24,7 +24,7 @@ export class EmailService {
 
   forgotPasswort(email: any): Observable<any> {
 
-    return this.http.post<any>(environment.apiUrl + '/api/eml/accounts/forgotpassword', email, {
+    return this.http.post<any>(environment.apiUrl + '/api/idp/accounts/forgotpassword', email, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'

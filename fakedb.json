@@ -1,0 +1,11 @@
+{
+  "settings": [
+    {
+      "id": 1,
+      "url": "https://ipmdecisions.nibio.no/api/wx/rest/weatheradapter/fmi/",
+      "label": "Finnish Meteorological Institute measured data",
+      "username": "usernametestw",
+      "password": "passwordtest"
+    }
+  ]
+}

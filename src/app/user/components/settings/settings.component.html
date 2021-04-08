@@ -13,47 +13,31 @@
 
         <div class="app-page-title">
           <div class="page-title-wrapper">
-            <div class="page-title-heading">
+            <div class="page-title-heading pr-4">
               <div class="page-title-icon">
                 <i class="pe-7s-config icon-gradient bg-mean-fruit">
                 </i>
               </div>
               <div>Settings</div>
             </div>
-          </div>
-        </div>
-
-        <div class="container my-5 page-box">
-          <div class="row">
-            <div class="col-md-4 text-center">
-              <a routerLink="./manage-weather" class="text-dark">
-                <div>
-                  <i class="fas fa-cloud-sun-rain icon"></i>
-                  <br>
-                  Manage Weather Data Source
-                </div>
-              </a>
+            <div class="page-title-heading pr-4">
+              <button type="button" [routerLink]="['./manage-weather']" class="btn btn-info">
+                <i class="fas fa-cloud-sun-rain icon-gradient bg-mean-fruit"></i>&nbsp;Manage Weather Data Source
+              </button>
             </div>
-            <div class="col-md-4 text-center">
-              <a routerLink="./manage-alerts" class="text-dark">
-                <div>
-                  <i class="fas fa-bell icon"></i>
-                  <br>
-                  Manage Alerts
-                </div>
-              </a>
+            <div class="page-title-heading pr-4">
+              <button type="button" [routerLink]="['./manage-alerts']" class="btn btn-info">
+                <i class="fas fa-cloud-sun-rain icon-gradient bg-mean-fruit"></i>&nbsp;Manage Alerts
+              </button>
             </div>
-            <div class="col-md-4 text-center">
-              <a routerLink="./customize-dashboard" class="text-dark">
-                <div>
-                  <i class="fas fa-columns icon"></i>
-                  <br>
-                  Customize Dashboard
-                </div>
-              </a>
+            <div class="page-title-heading pr-4">
+              <button type="button" [routerLink]="['./customize-dashboard']" class="btn btn-info">
+                <i class="fas fa-cloud-sun-rain icon-gradient bg-mean-fruit"></i>&nbsp;Manage Weather Data Source
+              </button>
             </div>
           </div>
         </div>
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>

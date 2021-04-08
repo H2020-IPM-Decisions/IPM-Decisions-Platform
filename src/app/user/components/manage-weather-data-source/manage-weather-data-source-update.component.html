@@ -1,0 +1,62 @@
+<main role="main" class="container">
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <div class="box">
+            <div class="box-head box-head-secondary">
+                <form autocomplete="off" name="editForm" role="form" novalidate (ngSubmit)="save()"
+                    [formGroup]="editForm">
+                    <div class="box-block box-bx">
+                        <h3 class="mb-4">Edit or Create a Data Source Setting</h3>
+                        <div class="form-group">
+                            <label class="col-form-label" for="input-label">Label</label>
+                            <input type="text" placeholder="Label" class="form-control" id="input-label" required="" autofocus="" formControlName="label">
+                            <div *ngIf="editForm.get('label')!.invalid && (editForm.get('label')!.dirty || editForm.get('label')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('label')?.errors?.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label" for="input-url">URL</label>
+                            <input type="text" placeholder="URL" class="form-control" id="input-url" required="" autofocus="" formControlName="url">
+                            <div *ngIf="editForm.get('url')!.invalid && (editForm.get('url')!.dirty || editForm.get('url')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('url')?.errors?.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label" for="input-username">Username</label>
+                            <input type="text" placeholder="Username" class="form-control" id="input-username" required="" autofocus="" formControlName="username" autocomplete="nickname">
+                            <div *ngIf="editForm.get('username')!.invalid && (editForm.get('username')!.dirty || editForm.get('username')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('username')?.errors?.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label" for="input-password">Password</label>
+                            <input type="text" placeholder="Password" class="form-control" id="input-password" required="" autofocus="" formControlName="password" autocomplete="new-password">
+                            <div *ngIf="editForm.get('password')!.invalid && (editForm.get('password')!.dirty || editForm.get('password')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('password')?.errors?.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-block">
+                        <div class="btn-group text-right">
+                            <button type="button" (click)="previousState()" class="btn btn-md btn-info">
+                                <i class="fas fa-arrow-left"></i>&nbsp;
+                                <span>Back</span>
+                            </button>
+                            <button type="submit" class="btn btn-md btn-primary" [disabled]="editForm.invalid || isSaving">
+                                <i class="fas fa-save"></i>&nbsp;
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

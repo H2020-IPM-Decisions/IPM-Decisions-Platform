@@ -34,7 +34,8 @@
           <div *ngIf="f.password.errors?.required">Password is required</div>
           <div *ngIf="f.password.errors?.minlength">Password must be at least 6 characters</div>
           <div *ngIf="f.password.errors?.pattern">Passwords must have at least one non alphanumeric character.</div>
-          <div *ngIf="f.password.errors?.pattern">Passwords must have at least one digit ('0'-'9').</div>
+          <div *ngIf="f.password.errors?.pattern">Passwords must have at least one number ('0'-'9').</div>
+          <div *ngIf="f.password.errors?.pattern">Passwords must have at least one digit ('!@#$%^&*()_+').</div>
         </div>
       </div>
       <div class="form-group col">
