@@ -9,6 +9,7 @@ import { manageWeatherDataSourceRoute } from './manage-weather-data-source.route
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   imports: [ 
@@ -16,7 +17,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ModalModule.forRoot(),
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BsDropdownModule.forRoot()
   ],
   declarations: [
     ManageWeatherDataSourceComponent, 

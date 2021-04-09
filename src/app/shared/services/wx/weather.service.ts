@@ -86,6 +86,18 @@ export class WeatherService {
     );
   }
 
+  public getWeatherDataSourceWithAuthentication(): Observable<WeatherDataSource[]> {
+    return this.getWeatherDataSource().pipe(
+      map((data: WeatherDataSource[]) => {
+        return data.filter(
+          (item: WeatherDataSource) => {
+            return item.authentication_required === "true"
+          }
+        );
+      })
+    );
+  }
+
   // objects in WeatherDataSource array reducted to show id and name
   public getMeteorologicalStationIdName(): Observable<WeatherDataSource[]> {
     return this.getMetStations().pipe(

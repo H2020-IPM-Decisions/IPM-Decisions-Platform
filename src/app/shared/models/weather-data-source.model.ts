@@ -10,7 +10,7 @@ export interface WeatherDataSource {
   temporal?: Temporal;
   parameters?: Parameters;
   organization?: Organization;
-  authenticationRequired?: string;
+  authentication_required?: string;
 }
 
 interface Spatial {

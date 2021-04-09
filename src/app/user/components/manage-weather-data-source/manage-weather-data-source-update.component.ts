@@ -2,8 +2,11 @@ import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { WeatherDataSource } from '@app/shared/models/weather-data-source.model';
+import { WeatherService } from '@app/shared/services/wx/weather.service';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subscription } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 import { IManageWeatherDataSource, ManageWeatherDataSource } from './manage-weather-data-source.model';
 import { ManageWeatherDataSourceService } from './manage-weather-data-source.service';
 
@@ -14,11 +17,13 @@ import { ManageWeatherDataSourceService } from './manage-weather-data-source.ser
 })
 export class ManageWeatherDataSourceUpdateComponent implements OnInit {
   isSaving = false;
+  sourceToSelect = false;
   suscription$?: Subscription;
+  dataSources = [];
   editForm = this.formBuilder.group({
     id: [],
-    label: [null, [Validators.required]],
-    url: [null, [Validators.required]],
+    label: [{value: '', disabled: true}, Validators.required],
+    url: [{value: '', disabled: true}, Validators.required],
     username: [null, [Validators.required]],
     password: [null, [Validators.required]]
   });
@@ -26,19 +31,26 @@ export class ManageWeatherDataSourceUpdateComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               protected activatedRoute: ActivatedRoute,
               protected toastrService: ToastrService,
-              protected service: ManageWeatherDataSourceService) { }
+              protected service: ManageWeatherDataSourceService,
+              protected weatherService: WeatherService) { }
 
   ngOnInit() {
     this.suscription$ = this.activatedRoute.data
-      .subscribe( ({setting}) => {
+      .pipe(
+        mergeMap( ({setting}) => {
           this.updateForm(setting);
-        }
-      );
+          return this.weatherService.getWeatherDataSourceWithAuthentication();
+        })
+      ).subscribe( (data: WeatherDataSource[]) => {
+          this.dataSources=data;
+      })
+    
   }
 
   updateForm(setting: IManageWeatherDataSource):void {
     if(!setting){
       setting = new ManageWeatherDataSource();
+      this.sourceToSelect = true;
     }
     this.editForm.patchValue({
       id: setting.id,
@@ -92,6 +104,14 @@ export class ManageWeatherDataSourceUpdateComponent implements OnInit {
     );
   }
   
+  selectSource(source:WeatherDataSource):void{
+    this.editForm.patchValue({
+      label: source.name,
+      url: source.endpoint
+    });
+    this.sourceToSelect = false;
+  }
+
   ngOnDestroy(): void {
     if (this.suscription$) {
       this.suscription$.unsubscribe();

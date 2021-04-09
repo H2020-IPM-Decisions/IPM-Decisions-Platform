@@ -6,6 +6,19 @@
                     [formGroup]="editForm">
                     <div class="box-block box-bx">
                         <h3 class="mb-4">Edit or Create a Data Source Setting</h3>
+                        <span *ngIf="sourceToSelect">
+                        <div class="btn-group pb-4" dropdown>
+                            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                    aria-controls="dropdown-basic">
+                              Select a Source <span class="caret"></span>
+                            </button>
+                            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                                role="menu" aria-labelledby="button-basic">
+                              <li *ngFor="let source of dataSources" role="menuitem"><a class="dropdown-item" (click)="selectSource(source)">{{source.name}}</a></li>
+                            </ul>
+                        </div>
+                        </span>
+                        <span *ngIf="!sourceToSelect">
                         <div class="form-group">
                             <label class="col-form-label" for="input-label">Label</label>
                             <input type="text" placeholder="Label" class="form-control" id="input-label" required="" autofocus="" formControlName="label">
@@ -42,6 +55,7 @@
                                 </small>
                             </div>
                         </div>
+                        </span>
                     </div>
                     <div class="box-block">
                         <div class="btn-group text-right">
