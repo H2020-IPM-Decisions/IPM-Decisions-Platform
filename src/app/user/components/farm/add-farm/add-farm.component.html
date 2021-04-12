@@ -62,7 +62,7 @@
             </fieldset>
             <div class="row">
               <div class="col-md-12">
-                <button class="btn btn-info pull-right col-2">
+                <button class="btn btn-info pull-right col-2" type="submit" [disabled]="farmForm.invalid || isSaving">
                   Save</button>
               </div>
             </div>

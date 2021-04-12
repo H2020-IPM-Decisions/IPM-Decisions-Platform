@@ -14,8 +14,10 @@ import { Location } from "@app/shared/models/location.model";
 import { HttpResponse } from "@angular/common/http";
 import { WeatherService } from "@app/shared/services/wx/weather.service";
 import { WeatherDataSource } from "@app/shared/models/weather-data-source.model";
+import { WeatherDataSourceDto } from "@app/shared/models/weather-data-source-dto.model";
 import { MapSettings } from "@app/shared/constants/map-settings.constant";
 import { MaprisksService } from "@app/shared/services/maprisks.service";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "app-add-farm",
@@ -24,11 +26,12 @@ import { MaprisksService } from "@app/shared/services/maprisks.service";
 })
 export class AddFarmComponent implements OnInit, AfterViewInit {
   private map: L.Map;
+  isSaving = false;
   @ViewChild("map", { static: false })
   private mapContainer: ElementRef<HTMLElement>;
   farmForm: FormGroup;
   metStationList: WeatherDataSource[] = [];
-  weatherForecastList: WeatherDataSource[] = [];
+  weatherForecastList: WeatherDataSourceDto[] = [];
   constructor(
     private _fb: FormBuilder,
     private _farmService: FarmService,
@@ -93,11 +96,11 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       this._toastr.show("Invalid form data!", "Error!", null, "toast-error");
       return;
     }
-
+    this.isSaving = true;
     const formValues: any = this.farmForm.value;
-
     this._farmService.createFarm(formValues).subscribe(
       (addFarmResponse: HttpResponse<Farm>) => {
+        this.isSaving = false;
         if (addFarmResponse) {
           this._toastr.show(
             "Farm successfully created!",
@@ -105,10 +108,12 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
             null,
             "toast-success"
           );
+          window.history.back();
         }
       },
       (error) => {
         console.log("catched error show msg", error);
+        this.isSaving = false;
         this._toastr.show(
           "Unable to create farm!",
           "Error!",
@@ -129,13 +134,34 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       .subscribe((metStationData: WeatherDataSource[]) => {
         if (metStationData) {
           this.metStationList = metStationData;
+          if(this.metStationList.length>0){
+            this.farmForm.patchValue({
+              weatherStationDto: this.metStationList[0]
+            });
+          }
         }
       });
   }
 
   private getWeatherForecastList() {
-    this._weatherService.getWeatherForecastIdName().subscribe((forecast) => {
-      this.weatherForecastList = forecast;
-    });
+    this._weatherService.getForecastServices().subscribe((data: WeatherDataSource[]) => {
+        this.weatherForecastList = data.filter((item: WeatherDataSource) => {
+          return item.access_type === "stations" && item.authentication_required === "false";
+        }).map((item: WeatherDataSource)=>{          
+          const dto = new WeatherDataSourceDto(item.id, item.name, item.temporal.forecast==0, item.authentication_required==='true', item.endpoint);
+          return dto;
+        });
+
+        if(this.weatherForecastList && this.weatherForecastList.length>0){
+          this.farmForm.patchValue({
+            weatherDataSourceDto: this.weatherForecastList[0]
+          });
+        }
+      });
   }
+
+  /* TODO
+          "isForecast": true,    temporal-> forecast==0
+          "authenticationRequired": true, 
+  */
 }

@@ -52,7 +52,11 @@ export class MaprisksService {
     let marker = null;
 
     if (location) {
-      marker = new L.Marker([location.x, location.y]);
+      marker = new L.Marker([location.x, location.y], { icon: L.icon({
+        iconSize: [28,34],
+        iconAnchor: [14, 17],
+        iconUrl: 'img/icons/map-marker.png'
+      })});
       marker.bindPopup(location.address.longLabel);
       marker.addTo(map).openPopup();
     }
@@ -75,7 +79,11 @@ export class MaprisksService {
           // get location object
           self.locationSubject.next(result);
 
-          marker = L.marker(result.latlng)
+          marker = L.marker(result.latlng, { icon: L.icon({
+            iconSize: [28,34],
+            iconAnchor: [14, 17],
+            iconUrl: 'img/icons/map-marker.png'
+          })})
             .addTo(map)
             .bindPopup(result.address.Match_addr)
             .openPopup();
