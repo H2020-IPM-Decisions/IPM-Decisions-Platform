@@ -85,7 +85,7 @@ export class FarmListComponent implements OnInit {
   onEditFarm(selectedFarm) {
     console.log("seelected famr", selectedFarm);
     this._farmService.setCurrentFarm(selectedFarm);
-    this._router.navigate(["/user/farm/edit"]);
+    this._router.navigate(["edit"]);
   }
 
   openModal(template) {

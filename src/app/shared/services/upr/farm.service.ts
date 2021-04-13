@@ -7,6 +7,7 @@ import { Operation } from "fast-json-patch";
 import { BehaviorSubject, Observable, of } from "rxjs";
 import { catchError, share, shareReplay } from "rxjs/operators";
 
+type EntityResponseType = HttpResponse<FarmResponseModel>;
 @Injectable({
   providedIn: "root",
 })
@@ -49,6 +50,11 @@ export class FarmService {
         })
       );
   }
+
+  public find(id: string): Observable<EntityResponseType> {
+    return this._http.get<FarmResponseModel>(`${this.apiUrl}/api/upr/farms/${id}`, { observe: 'response' });
+  }
+
 
   // public getFarmById(url: string, fields?: string[]): Observable<Farm> {
   //   // let url = `${this.apiUrl}/api/upr/farms/${farmId}`;

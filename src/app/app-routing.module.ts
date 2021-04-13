@@ -69,6 +69,7 @@ import { DssSelectionComponent } from "@app/user/components/dss/dss-selection/ds
 import { FieldAddComponent } from './user/components/field/field-add/field-add.component';
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
 import { SettingsComponent } from './user/components/settings/settings.component';
+import { UserComponent } from './user/user.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -237,7 +238,7 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
   },
-  {
+  /*{
     path: "user/farm",
     component: FarmComponent,
     canActivate: [AuthGuard],
@@ -260,14 +261,20 @@ const appRoutes: Routes = [
     component: AddFarmComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
+  },*/
   {
-    path: "user/farm/list",
-    component: FarmListComponent,
+    path: "user",
+    component: UserComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    children:[
+      {
+        path: 'farm',
+        loadChildren: () => import('./user/components/farm/farm.module').then(m => m.FarmModule)
+      }
+    ]
   },
-  {
+  /*{
     path: "user/farm/manage",
     component: ManageFarmComponent,
     canActivate: [AuthGuard],
@@ -278,7 +285,7 @@ const appRoutes: Routes = [
     component: FarmDetailsComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
+  },*/
   {
     path: "user/field/add",
     component: FieldAddComponent,
