@@ -5,7 +5,6 @@ import { Farm } from "@app/shared/models/farm.model";
 import { FarmService } from "@app/shared/services/upr/farm.service";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import * as esriGeo from "esri-leaflet-geocoder";
-import { Router } from "@angular/router";
 
 @Component({
   selector: "app-farm-list",
@@ -19,21 +18,11 @@ export class FarmListComponent implements OnInit {
 
   constructor(
     private _farmService: FarmService,
-    private _modalService: BsModalService,
-    private _router: Router
+    private _modalService: BsModalService
   ) {}
 
   ngOnInit() {
     this.getFarms();
-  }
-
-  test():void {
-    console.log('test')
-    this._router.navigate(["/user/farm/new"]).then(data => {
-      console.log('Route exists, redirection is done');
-    }).catch(e => {
-      console.log('Route not found, redirection stopped with no error raised');
-  });
   }
 
   onFarmCopy(farm: Farm) {

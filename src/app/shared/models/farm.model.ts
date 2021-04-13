@@ -12,3 +12,14 @@ export interface Farm {
   location?: Location;
   links?: Link[];
 }
+
+
+export class FarmImpl {
+  constructor(
+    public id?: string,
+    public name?: string,
+    public weatherDataSourceDto?: WeatherDataSourceDto,
+    public weatherStationDto?: WeatherStation,
+    public location?: Location,
+    public links?: Link[]){}
+}

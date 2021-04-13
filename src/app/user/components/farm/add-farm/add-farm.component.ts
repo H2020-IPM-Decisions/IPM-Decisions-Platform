@@ -17,7 +17,9 @@ import { WeatherDataSource } from "@app/shared/models/weather-data-source.model"
 import { WeatherDataSourceDto } from "@app/shared/models/weather-data-source-dto.model";
 import { MapSettings } from "@app/shared/constants/map-settings.constant";
 import { MaprisksService } from "@app/shared/services/maprisks.service";
-import { map } from "rxjs/operators";
+import { map, mergeMap } from "rxjs/operators";
+import { Subscription } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-add-farm",
@@ -27,8 +29,11 @@ import { map } from "rxjs/operators";
 export class AddFarmComponent implements OnInit, AfterViewInit {
   private map: L.Map;
   isSaving = false;
+  suscription$?: Subscription;
+
   @ViewChild("map", { static: false })
   private mapContainer: ElementRef<HTMLElement>;
+  farm?: Farm;
   farmForm: FormGroup;
   metStationList: WeatherDataSource[] = [];
   weatherForecastList: WeatherDataSourceDto[] = [];
@@ -37,23 +42,42 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     private _farmService: FarmService,
     private _weatherService: WeatherService,
     private _toastr: ToastrService,
-    private _maprisksService: MaprisksService
+    private _maprisksService: MaprisksService,
+    private _activatedRoute: ActivatedRoute,
   ) {}
 
   ngOnInit() {
-    this.form();
-    this.getWeatherForecastList();
-    this.farmForm.get("weatherStationDto").disable();
+    this.suscription$ = this._activatedRoute.data
+      .pipe(
+        mergeMap( ({farm}) => {
+          this.updateForm(farm);
+          return this._weatherService.getForecastServices();
+        })
+      ).subscribe( (data: WeatherDataSource[]) => { 
+          this.weatherForecastList = data.filter((item: WeatherDataSource) => {
+            return item.access_type === "stations" && item.authentication_required === "false";
+          }).map((item: WeatherDataSource)=>{          
+            const dto = new WeatherDataSourceDto(item.id, item.name, item.temporal.forecast==0, item.authentication_required==='true', item.endpoint);
+            return dto;
+          });
+
+          if(!this.farm && this.weatherForecastList && this.weatherForecastList.length>0){
+            this.farmForm.patchValue({
+              weatherDataSourceDto: this.weatherForecastList[0]
+            });
+          }
+        });
   }
 
   ngAfterViewInit(): void {
+    const initFarmLocation = (this.farm && this.farm.location)?this.farm.location:undefined;
     this._maprisksService
-      .initialize(this.mapContainer.nativeElement)
+      .initialize(this.mapContainer.nativeElement, initFarmLocation)
       .subscribe((initMap) => {
         this.map = initMap;
       });
 
-    this._maprisksService.addMarker(this.map);
+    this._maprisksService.addMarker(this.map, initFarmLocation);
 
     this._maprisksService.locationObservable.subscribe((locPoint) => {
       if (locPoint) {
@@ -78,13 +102,32 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     };
   }
 
-  form() {
+  updateForm(data: Farm) {
     this.farmForm = this._fb.group({
       name: ["", Validators.required],
       location: ["", Validators.required],
       weatherDataSourceDto: ["", Validators.required],
       weatherStationDto: ["", Validators.required],
     });
+    this.farmForm.get("weatherStationDto").disable();
+    if(data){
+      this.farm = data;
+      if(this.weatherForecastList.length==0){
+        this.weatherForecastList.push(data.weatherDataSourceDto);
+      }
+      if(this.metStationList.length==0){
+        this.metStationList.push(data.weatherStationDto);
+      }
+      this.farmForm.patchValue({
+        name: data.name,
+        location: data.location,
+        weatherDataSourceDto: data.weatherDataSourceDto,
+        weatherStationDto: data.weatherStationDto
+      });      
+      this.farmForm.get('weatherDataSourceDto').updateValueAndValidity();
+      this.farmForm.get('weatherStationDto').updateValueAndValidity();
+      this.farmForm.get("weatherStationDto").enable();
+    }
   }
 
   get f() {
@@ -98,29 +141,43 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     }
     this.isSaving = true;
     const formValues: any = this.farmForm.value;
-    this._farmService.createFarm(formValues).subscribe(
-      (addFarmResponse: HttpResponse<Farm>) => {
-        this.isSaving = false;
-        if (addFarmResponse) {
-          this._toastr.show(
-            "Farm successfully created!",
-            "Success!",
-            null,
-            "toast-success"
-          );
-          window.history.back();
+    let observable: any;
+    if(this.farm && this.farm.id){
+      observable = this._farmService.updateFarm(formValues);
+    } else {
+      observable = this._farmService.createFarm(formValues)
+    }
+    observable.subscribe(
+        (addFarmResponse: HttpResponse<Farm>) => {
+          this.submitSuccess(addFarmResponse);
+        },
+        (error) => {
+          this.submitError(error);
         }
-      },
-      (error) => {
-        console.log("catched error show msg", error);
-        this.isSaving = false;
-        this._toastr.show(
-          "Unable to create farm!",
-          "Error!",
-          null,
-          "toast-error"
-        );
-      }
+    );
+  }
+
+  submitSuccess(data:any):void{
+    this.isSaving = false;
+    if (data) {
+      this._toastr.show(
+        "Farm successfully created!",
+        "Success!",
+        null,
+        "toast-success"
+      );
+      window.history.back();
+    }
+  }
+
+  submitError(error):void{
+    console.log("catched error show msg", error);
+    this.isSaving = false;
+    this._toastr.show(
+      "Unable to create farm!",
+      "Error!",
+      null,
+      "toast-error"
     );
   }
 
@@ -143,25 +200,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       });
   }
 
-  private getWeatherForecastList() {
-    this._weatherService.getForecastServices().subscribe((data: WeatherDataSource[]) => {
-        this.weatherForecastList = data.filter((item: WeatherDataSource) => {
-          return item.access_type === "stations" && item.authentication_required === "false";
-        }).map((item: WeatherDataSource)=>{          
-          const dto = new WeatherDataSourceDto(item.id, item.name, item.temporal.forecast==0, item.authentication_required==='true', item.endpoint);
-          return dto;
-        });
-
-        if(this.weatherForecastList && this.weatherForecastList.length>0){
-          this.farmForm.patchValue({
-            weatherDataSourceDto: this.weatherForecastList[0]
-          });
-        }
-      });
+  goBack():void{
+    window.history.back();
   }
-
-  /* TODO
-          "isForecast": true,    temporal-> forecast==0
-          "authenticationRequired": true, 
-  */
 }

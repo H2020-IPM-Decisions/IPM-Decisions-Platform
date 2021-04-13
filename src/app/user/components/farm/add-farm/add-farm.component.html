@@ -1,73 +1,61 @@
-<div class="app-container app-theme-white fixed-sidebar fixed-header body-tabs-shadow fixed-footer">
-  <user-header></user-header>
-  <div class="app-main">
-    <sidebar></sidebar>
-    <div class="app-main__outer">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
-          <li class="breadcrumb-item"><a routerLink="/user/farm">Farm List</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Add Farm</li>
-        </ol>
-      </nav>
-      <div class="app-main__inner">
+<div class="app-main__inner">
 
-        <div class="app-page-title">
-          <div class="page-title-wrapper">
-            <div class="page-title-heading">
-              <div class="page-title-icon">
-                <i class="pe-7s-leaf icon-gradient bg-mean-fruit">
-                </i>
-              </div>
-              <div>Add Farm</div>
-            </div>
-          </div>
+  <div class="app-page-title">
+    <div class="page-title-wrapper">
+      <div class="page-title-heading">
+        <div class="page-title-icon">
+          <i class="pe-7s-leaf icon-gradient bg-mean-fruit">
+          </i>
         </div>
-
-        <div class="container mx-auto my-5 page-box">
-          <form [formGroup]="farmForm" (ngSubmit)="onFarmSubmit()">
-            <fieldset class="border p-3 col-8">
-              <legend class="w-auto px-1 text-muted">Farm creation</legend>
-
-              <div class="form-group row">
-                <label for="farm-name" class="col-sm-3 col-form-label">Farm name</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="farm-name" formControlName="name">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="map" class="col-sm-3 col-form-label">Select farm location</label>
-                <div class="col-sm-9">
-                  <div class="map-container" #map></div>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="met-station" class="col-sm-3 col-form-label">Nearest met. station</label>
-                <div class="col-sm-9">
-                  <select class="form-control" id="met-station" formControlName="weatherStationDto">
-                    <option *ngFor="let metStation of metStationList" [ngValue]="metStation">{{metStation.name}}
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="forecast" class="col-sm-3 col-form-label">Weather forecast service</label>
-                <div class="col-sm-9">
-                  <select class="form-control" id="forecast" formControlName="weatherDataSourceDto">
-                    <option *ngFor="let forecast of weatherForecastList" [ngValue]="forecast">{{forecast.name}}
-                    </option>
-                  </select>
-                </div>
-              </div>
-            </fieldset>
-            <div class="row">
-              <div class="col-md-12">
-                <button class="btn btn-info pull-right col-2" type="submit" [disabled]="farmForm.invalid || isSaving">
-                  Save</button>
-              </div>
-            </div>
-          </form>
-        </div>
+        <div>Add Farm</div>
       </div>
     </div>
   </div>
+
+  <div class="container mx-auto my-5 page-box">
+    <form [formGroup]="farmForm" (ngSubmit)="onFarmSubmit()">
+      <fieldset class="border p-3">
+        <legend class="w-auto px-1 text-muted">Farm creation</legend>
+
+        <div class="form-group row">
+          <label for="farm-name" class="col-sm-3 col-form-label">Farm name</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="farm-name" formControlName="name">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="map" class="col-sm-3 col-form-label">Select farm location</label>
+          <div class="col-sm-9">
+            <div class="map-container" #map></div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="met-station" class="col-sm-3 col-form-label">Nearest met. station</label>
+          <div class="col-sm-9">
+            <select class="form-control" id="met-station" formControlName="weatherStationDto">
+              <option *ngFor="let metStation of metStationList">{{metStation.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="forecast" class="col-sm-3 col-form-label">Weather forecast service</label>
+          <div class="col-sm-9">
+            <select class="form-control" id="forecast" formControlName="weatherDataSourceDto">
+              <option *ngFor="let forecast of weatherForecastList">{{forecast.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+      <div class="row pt-3">
+        <div class="col-md-12">
+          <button class="btn btn-primary pull-right col-2" type="submit" [disabled]="farmForm.invalid || isSaving">
+            Save</button>
+          <button class="btn btn-info pull-right col-2" type="button" (click)="goBack()">
+            Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

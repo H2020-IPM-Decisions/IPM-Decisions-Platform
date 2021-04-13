@@ -18,11 +18,8 @@
         <div class="container">
           <div class="row">
             <div class="col-sm text-right">
-              <button rel="tooltip" class="btn btn-link" (click)="test()">
+              <button rel="tooltip" class="btn btn-link" [routerLink]="['new']">
                 <i class="action-icon fas fa-plus-circle fa-2x"></i> Add Farm
-              </button>
-              <button rel="tooltip" class="btn btn-link"  [routerLink]="['test']">
-                <i class="action-icon fas fa-plus-circle fa-2x"></i> Test C
               </button>
             </div>
           </div>
@@ -55,8 +52,7 @@
                       <i class="action-icon size-11 fas fa-copy"></i>
                     </button>
 
-                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit" title="Edit"
-                      (click)="onEditFarm(farm)">
+                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit" title="Edit" [routerLink]="[farm.id,'edit']">
                       <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
                     </button>
 

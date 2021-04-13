@@ -6,11 +6,12 @@ import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
 import { AuthGuard } from '@app/core/auth/guard/auth.guard';
-import { FarmResponseModel, FarmResponseModelImpl } from '@app/shared/models/farm-response.model';
+import { FarmResponseModel } from '@app/shared/models/farm-response.model';
 import { FarmService } from '@app/shared/services/upr/farm.service';
 import { FarmListComponent } from './farm-list/farm-list.component';
 import { FarmDetailsComponent } from './farm-details/farm-details.component';
 import { EditFarmComponent } from './edit-farm/edit-farm.component';
+import { AddFarmComponent } from './add-farm/add-farm.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -31,7 +32,7 @@ export class FarmResponseModelResolve implements Resolve<FarmResponseModel> {
         })
       );
     }
-    return of(new FarmResponseModelImpl());
+    return of();
   }
 }
 
@@ -48,7 +49,7 @@ export const farmRoute: Routes = [
     path: ':id/view',
     component: FarmDetailsComponent,
     resolve: {
-      setting: FarmResponseModelResolve
+      farm: FarmResponseModelResolve
     },
     data: {
         roles: [], claims: ["developer", "farmer", "advisor"]
@@ -57,7 +58,7 @@ export const farmRoute: Routes = [
   },
   {
     path: 'new',
-    component: EditFarmComponent,
+    component: AddFarmComponent,
     resolve: {
     },
     data: {
@@ -67,9 +68,9 @@ export const farmRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: EditFarmComponent,
+    component: AddFarmComponent,
     resolve: {
-      setting: FarmResponseModelResolve
+      farm: FarmResponseModelResolve
     },
     data: {
         roles: [], claims: ["developer", "farmer", "advisor"]

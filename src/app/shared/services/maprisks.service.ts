@@ -57,7 +57,9 @@ export class MaprisksService {
         iconAnchor: [14, 17],
         iconUrl: 'img/icons/map-marker.png'
       })});
-      marker.bindPopup(location.address.longLabel);
+      if(location.address){
+        marker.bindPopup(location.address.longLabel);
+      }
       marker.addTo(map).openPopup();
     }
 

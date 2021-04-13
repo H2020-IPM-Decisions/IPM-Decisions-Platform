@@ -52,7 +52,7 @@ export class FarmService {
   }
 
   public find(id: string): Observable<EntityResponseType> {
-    return this._http.get<FarmResponseModel>(`${this.apiUrl}/api/upr/farms/${id}`, { observe: 'response' });
+    return this._http.get<FarmResponseModel>(`${this.apiUrl}/api/upr/farms/${id}`, { headers:{Accept: "application/vnd.h2020ipmdecisions.hateoas+json"}, observe: 'response' });
   }
 
 
