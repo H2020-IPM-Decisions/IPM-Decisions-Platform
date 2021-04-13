@@ -1,11 +1,11 @@
 import { HttpResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
 import { FarmResponseModel } from "@app/shared/models/farm-response.model";
 import { Farm } from "@app/shared/models/farm.model";
 import { FarmService } from "@app/shared/services/upr/farm.service";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import * as esriGeo from "esri-leaflet-geocoder";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-farm-list",
@@ -25,6 +25,15 @@ export class FarmListComponent implements OnInit {
 
   ngOnInit() {
     this.getFarms();
+  }
+
+  test():void {
+    console.log('test')
+    this._router.navigate(["/user/farm/new"]).then(data => {
+      console.log('Route exists, redirection is done');
+    }).catch(e => {
+      console.log('Route not found, redirection stopped with no error raised');
+  });
   }
 
   onFarmCopy(farm: Farm) {
@@ -80,12 +89,6 @@ export class FarmListComponent implements OnInit {
           };
         }
       });
-  }
-
-  onEditFarm(selectedFarm) {
-    console.log("seelected famr", selectedFarm);
-    this._farmService.setCurrentFarm(selectedFarm);
-    this._router.navigate(["edit"]);
   }
 
   openModal(template) {

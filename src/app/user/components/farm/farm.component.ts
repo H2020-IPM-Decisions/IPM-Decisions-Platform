@@ -15,7 +15,7 @@ export class FarmComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.canRequestFarm = this.authService.currentUserValue.useraccesstype.includes("advisor");
+    // this.canRequestFarm = this.authService.currentUserValue.useraccesstype.includes("advisor");
   }
 
 }

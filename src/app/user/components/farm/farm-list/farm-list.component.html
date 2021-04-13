@@ -18,8 +18,11 @@
         <div class="container">
           <div class="row">
             <div class="col-sm text-right">
-              <button type="submit" rel="tooltip" class="btn btn-link" [routerLink]="['/user/farm/new']">
+              <button rel="tooltip" class="btn btn-link" (click)="test()">
                 <i class="action-icon fas fa-plus-circle fa-2x"></i> Add Farm
+              </button>
+              <button rel="tooltip" class="btn btn-link"  [routerLink]="['test']">
+                <i class="action-icon fas fa-plus-circle fa-2x"></i> Test C
               </button>
             </div>
           </div>
@@ -48,7 +51,7 @@
                   <td class="td-actions text-center py-1">
 
                     <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy" title="Copy"
-                      routerLink="/user/farm/list" (click)="onFarmCopy(farm)">
+                      routerLink="/user/farm/" (click)="onFarmCopy(farm)">
                       <i class="action-icon size-11 fas fa-copy"></i>
                     </button>
 

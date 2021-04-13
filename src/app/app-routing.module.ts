@@ -215,18 +215,6 @@ const appRoutes: Routes = [
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
   },
   {
-    path: "user/settings",
-    component: SettingsComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-    children:[
-      {   
-        path: 'manage-weather',
-        loadChildren: () => import('./user/components/manage-weather-data-source/manage-weather-data-source.module').then(m => m.EffectorManageWeatherDataSourceModule)
-      }
-    ]
-  },
-  {
     path: "user/settings/manage-alerts",
     component: ManageAlertsComponent,
     canActivate: [AuthGuard],
@@ -271,6 +259,18 @@ const appRoutes: Routes = [
       {
         path: 'farm',
         loadChildren: () => import('./user/components/farm/farm.module').then(m => m.FarmModule)
+      }
+    ]
+  },
+  {
+    path: "user/settings",
+    component: SettingsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    children:[
+      {   
+        path: 'manage-weather',
+        loadChildren: () => import('./user/components/manage-weather-data-source/manage-weather-data-source.module').then(m => m.EffectorManageWeatherDataSourceModule)
       }
     ]
   },

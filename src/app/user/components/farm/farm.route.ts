@@ -6,7 +6,7 @@ import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
 import { AuthGuard } from '@app/core/auth/guard/auth.guard';
-import { FarmResponseModel } from '@app/shared/models/farm-response.model';
+import { FarmResponseModel, FarmResponseModelImpl } from '@app/shared/models/farm-response.model';
 import { FarmService } from '@app/shared/services/upr/farm.service';
 import { FarmListComponent } from './farm-list/farm-list.component';
 import { FarmDetailsComponent } from './farm-details/farm-details.component';
@@ -31,7 +31,7 @@ export class FarmResponseModelResolve implements Resolve<FarmResponseModel> {
         })
       );
     }
-    return EMPTY;
+    return of(new FarmResponseModelImpl());
   }
 }
 
@@ -59,7 +59,6 @@ export const farmRoute: Routes = [
     path: 'new',
     component: EditFarmComponent,
     resolve: {
-      ManageWeatherData: FarmResponseModelResolve
     },
     data: {
         roles: [], claims: ["developer", "farmer", "advisor"]
