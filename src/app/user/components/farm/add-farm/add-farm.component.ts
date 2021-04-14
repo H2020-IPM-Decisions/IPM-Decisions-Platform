@@ -10,6 +10,7 @@ import { FarmService } from "@app/shared/services/upr/farm.service";
 import { ToastrService } from "ngx-toastr";
 import * as L from "leaflet";
 import { Farm } from "@app/shared/models/farm.model";
+import { compare } from "fast-json-patch";
 import { Location } from "@app/shared/models/location.model";
 import { HttpResponse } from "@angular/common/http";
 import { WeatherService } from "@app/shared/services/wx/weather.service";
@@ -104,6 +105,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
 
   updateForm(data: Farm) {
     this.farmForm = this._fb.group({
+      id: [null],
       name: ["", Validators.required],
       location: ["", Validators.required],
       weatherDataSourceDto: ["", Validators.required],
@@ -119,6 +121,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
         this.metStationList.push(data.weatherStationDto);
       }
       this.farmForm.patchValue({
+        id: data.id,
         name: data.name,
         location: data.location,
         weatherDataSourceDto: data.weatherDataSourceDto,
@@ -143,7 +146,10 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     const formValues: any = this.farmForm.value;
     let observable: any;
     if(this.farm && this.farm.id){
-      observable = this._farmService.updateFarm(formValues);
+      const patch = compare(this.farm, formValues);
+      const changedPatch = this.prepareForEditing(patch);
+      observable = this._farmService.updateFarmByFarm(changedPatch, this.farm);
+      // observable = this._farmService.updateFarm(formValues);
     } else {
       observable = this._farmService.createFarm(formValues)
     }
@@ -202,5 +208,41 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
 
   goBack():void{
     window.history.back();
+  }
+
+  private prepareForEditing(patch) {
+    let arr = [];
+    patch.forEach((item, index) => {
+      if (item["op"] === "replace") {
+        switch (item.path) {
+          case "/weatherDataSourceDto/id":
+          case "/weatherStationDto/id":
+          case "/location/x":
+            break;
+
+          case "/weatherDataSourceDto/name":
+            item["path"] = "/weatherDataSourceDto";
+            item["value"] = { name: item.value, id: patch[index + 1].value };
+            arr.push(item);
+            break;
+
+          case "/weatherStationDto/name":
+            item["path"] = "/weatherStationDto";
+            item["value"] = { name: item.value, id: patch[index + 1].value };
+            arr.push(item);
+            break;
+
+          case "/location/y":
+            item["path"] = "/location";
+            item["value"] = { y: item.value, x: patch[index + 1].value };
+            arr.push(item);
+            break;
+
+          default:
+            arr.push(item);
+        }
+      }
+    });
+    return arr;
   }
 }

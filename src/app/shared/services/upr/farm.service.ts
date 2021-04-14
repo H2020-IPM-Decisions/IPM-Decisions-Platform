@@ -90,6 +90,19 @@ export class FarmService {
     );
   }
 
+  public updateFarmByFarm(operations: Operation[], farm: Farm): Observable<HttpResponse<any>> {
+    return this._http.patch(
+      `${this.apiUrl}/api/upr/farms/${farm.id}`,
+      operations,
+      {
+        headers: {
+          "Content-Type": "application/json-patch+json",
+        },
+        observe: "response",
+      }
+    );
+  }
+
   public deleteFarm(farmId: string): Observable<HttpResponse<any>> {
     return this._http
       .delete(`${this.apiUrl}/api/upr/farms/${farmId}`, {
