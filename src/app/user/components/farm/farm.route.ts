@@ -11,6 +11,7 @@ import { FarmService } from '@app/shared/services/upr/farm.service';
 import { FarmListComponent } from './farm-list/farm-list.component';
 import { FarmDetailsComponent } from './farm-details/farm-details.component';
 import { AddFarmComponent } from './add-farm/add-farm.component';
+import { FieldAddComponent } from '../field/field-add/field-add.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -75,5 +76,13 @@ export const farmRoute: Routes = [
         roles: [], claims: ["developer", "farmer", "advisor"]
     },
     canActivate: [AuthGuard]
+    /*children: [
+      {
+        path: "field/add",
+        component: FieldAddComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+      }
+    ]*/
   }
 ];

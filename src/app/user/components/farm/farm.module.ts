@@ -11,6 +11,8 @@ import { FarmDetailsComponent } from './farm-details/farm-details.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AddFarmComponent } from './add-farm/add-farm.component';
+import { EditFarmComponent } from './edit-farm/edit-farm.component';
+import { FieldAddComponent } from '../field/field-add/field-add.component';
 
 @NgModule({
   imports: [ 
@@ -26,8 +28,10 @@ import { AddFarmComponent } from './add-farm/add-farm.component';
   declarations: [
     AddFarmComponent,
     FarmListComponent, 
-    FarmDetailsComponent
+    FarmDetailsComponent,
+    EditFarmComponent,
+    FieldAddComponent
   ],
-  entryComponents: []
+  entryComponents: [FieldAddComponent]
 })
 export class FarmModule {}

@@ -101,7 +101,7 @@ export class FieldEditComponent implements OnInit {
     const updatedFieldValues = this.fieldForm.value;
     const patch = compare(this.formFieldValues, updatedFieldValues);
     this.mapPatchArray(patch);
-    this._fieldService.updateField(this.currentField.id, patch).subscribe(
+    this._fieldService.updateField(this._farmService.selectedFarm.id, this.currentField.id, patch).subscribe(
       (updateResponse: any) => {
         console.log(updateResponse);
         if (updateResponse.ok) {

@@ -83,8 +83,6 @@ import { PopoverModule } from "ngx-bootstrap/popover";
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ToastrModule } from "ngx-toastr";
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { FieldAddComponent } from './user/components/field/field-add/field-add.component';
-import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
 import { FarmShareComponent } from './user/components/farm-share/farm-share.component';
 import { JsonFormDemoComponent } from './json-form-demo/json-form-demo.component';
 import { SettingsComponent } from './user/components/settings/settings.component';
@@ -92,7 +90,6 @@ import { ManageAlertsComponent } from './user/components/manage-alerts/manage-al
 import { CustomizeDashboardComponent } from './user/components/customize-dashboard/customize-dashboard.component';
 import { DssDisplayComponent } from './user/components/dss/dss-display/dss-display.component';
 import { FarmComponent } from './user/components/farm/farm.component';
-import { EditFarmComponent } from './user/components/farm/edit-farm/edit-farm.component';
 import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-farm.component';
 
 @NgModule({
@@ -168,8 +165,6 @@ import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-f
     ResearchersArticleComponent,
     DevelopersArticleComponent,
     DssSelectionComponent,
-    FieldAddComponent,
-    FieldEditComponent,
     FarmShareComponent,
     JsonFormDemoComponent,
     SettingsComponent,
@@ -177,7 +172,6 @@ import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-f
     CustomizeDashboardComponent,
     DssDisplayComponent,
     FarmComponent,
-    EditFarmComponent,
     ManageFarmComponent
   ],
   imports: [

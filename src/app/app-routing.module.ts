@@ -59,8 +59,6 @@ import { ModalComponent } from "./admin/assets/modal.component";
 import { AdminFooterComponent } from "./admin/admin-footer/admin-footer.component";
 import { LoginComponent } from "./core/auth/pages/login/login.component";
 import { DssSelectionComponent } from "@app/user/components/dss/dss-selection/dss-selection.component";
-import { FieldAddComponent } from './user/components/field/field-add/field-add.component';
-import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
 import { SettingsComponent } from './user/components/settings/settings.component';
 import { UserComponent } from './user/user.component';
 
@@ -226,6 +224,11 @@ const appRoutes: Routes = [
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
     children:[
       {
+        path: '',
+        redirectTo: 'farm',
+        pathMatch: 'prefix'
+      },
+      {
         path: 'farm',
         loadChildren: () => import('./user/components/farm/farm.module').then(m => m.FarmModule)
       }
@@ -243,7 +246,7 @@ const appRoutes: Routes = [
       }
     ]
   },
-  {
+  /*{
     path: "user/field/add",
     component: FieldAddComponent,
     canActivate: [AuthGuard],
@@ -254,7 +257,7 @@ const appRoutes: Routes = [
     component: FieldEditComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
+  },*/
   {
     path: "user/dss/selection",
     component: DssSelectionComponent,

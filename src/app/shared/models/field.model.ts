@@ -9,4 +9,5 @@ export interface Field {
       pestEppoCode: string;
     }
   ];
+  fieldCropDto?:any;
 }

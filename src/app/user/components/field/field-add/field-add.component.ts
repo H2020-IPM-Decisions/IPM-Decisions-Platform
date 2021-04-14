@@ -4,7 +4,11 @@ import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { FarmService } from "@app/shared/services/upr/farm.service";
 import { FieldService } from "@app/shared/services/upr/field.service";
+import { compare } from "fast-json-patch";
 import { environment } from './../../../../../environments/environment';
+import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+import { Farm } from "@app/shared/models/farm.model";
+import { Field } from "@app/shared/models/field.model";
 @Component({
   selector: "app-field-add",
   templateUrl: "./field-add.component.html",
@@ -12,17 +16,24 @@ import { environment } from './../../../../../environments/environment';
 })
 export class FieldAddComponent implements OnInit {
   fieldForm: FormGroup;
+  formFieldValues: FormGroup;
   cropPests: FormArray;
-  farmName: string;
+  farm: Farm;
+  field: Field;
+  pestId = '';
   crops: { value: string; label: string }[] = [];
   pests: { value: string; label: string }[] = [];
   constructor(
     private _fb: FormBuilder,
     private _fieldService: FieldService,
     private _toastr: ToastrService,
-    private _farmService: FarmService,
-    private http: HttpClient
-  ) {}
+    private http: HttpClient,
+    private modalService: BsModalService,
+    public bsModalRef: BsModalRef
+  ) {
+    this.farm = this.modalService.config.initialState['farm'];
+    this.field = this.modalService.config.initialState['field'];
+  }
 
   ngOnInit() {
     this.addFieldFormInit();
@@ -37,9 +48,6 @@ export class FieldAddComponent implements OnInit {
       .subscribe((response: any[]) => {
         this.pests = response.map((item) => ({ value: item, label: item }))
       })
-    this._farmService.currentFarm.subscribe(
-      (farm) => (this.farmName = farm.name)
-    );
   }
 
   addFieldFormInit() {
@@ -48,6 +56,23 @@ export class FieldAddComponent implements OnInit {
       inf1: ["", Validators.required], //variety
       inf2: ["", Validators.required] //sowing date
     });
+    if(this.field){
+      this.fieldForm.patchValue({
+        cropPest: {
+          cropEppoCode: this.field.fieldCropDto.cropEppoCode,
+          pestEppoCode: this.field.fieldCropDto.fieldCropPestDto.value[0].pestEppoCode
+        },
+        name: this.field.name,
+        inf1: this.field.inf1,
+        inf2: this.formatLocaleDateGB(this.field.inf2),
+      });
+      this.formFieldValues = this.fieldForm.value;
+      this.pestId = this.field.fieldCropDto.fieldCropPestDto.value[0].id;
+    }
+  }
+
+  private formatLocaleDateGB(unformatedDate: string) {
+    return new Date(unformatedDate).toLocaleDateString("en-GB");
   }
 
   createCropPest(): FormGroup {
@@ -66,10 +91,8 @@ export class FieldAddComponent implements OnInit {
     const fieldFormValues = this.fieldForm.value;
     fieldFormValues.name = "none";
 
-    console.log('test', fieldFormValues);
-
     if (fieldFormValues) {
-      this._fieldService.createField(fieldFormValues).subscribe(
+      this._fieldService.createField(fieldFormValues,this.farm.id).subscribe(
         (fieldResponse) => {
           if (fieldResponse) {
             this._toastr.show(
@@ -78,6 +101,7 @@ export class FieldAddComponent implements OnInit {
               null,
               "toast-success"
             );
+            this.close();
           }
         },
         (error: HttpErrorResponse) => {
@@ -91,5 +115,44 @@ export class FieldAddComponent implements OnInit {
         }
       );
     }
+  }
+
+  onEditFieldSubmit() {
+    const updatedFieldValues = this.fieldForm.value;
+    const patch = compare(this.formFieldValues, updatedFieldValues);
+    this.mapPatchArray(patch);
+    this._fieldService.updateField(this.farm.id, this.field.id, patch).subscribe(
+      (updateResponse: any) => {
+        console.log(updateResponse);
+        if (updateResponse.ok) {
+          this._toastr.show(
+            "Farm field details successfully updated!",
+            "Success!",
+            null,
+            "toast-success"
+          );
+        }
+        this.close();
+      },
+      (error: HttpErrorResponse) => {
+        this._toastr.show(
+          "Error updating field details!",
+          "Error!",
+          null,
+          "toast-error"
+        );
+      }
+    );
+  }
+
+  close():void{
+    this.bsModalRef.hide();
+  }
+  
+  private mapPatchArray(patchArr: any[]) {
+    patchArr.forEach((patch) => {
+      if (patch.path === "/cropPests/pestEppoCode")
+        patch.path = "/fieldCropDto/fieldCropPestDto/" + this.pestId;
+    })
   }
 }
