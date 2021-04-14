@@ -34,11 +34,6 @@ import { CropListComponent } from "./user/components/crop/crop-list/crop-list.co
 import { ManageCropComponent } from "./user/components/crop/manage-crop/manage-crop.component";
 import { EditCropComponent } from "./user/components/crop/edit-crop/edit-crop.component";
 import { AddCropComponent } from "./user/components/crop/add-crop/add-crop.component";
-import { ManageFarmComponent } from "./user/components/farm/manage-farm/manage-farm.component";
-import { FarmListComponent } from "./user/components/farm/farm-list/farm-list.component";
-import { AddFarmComponent } from "./user/components/farm/add-farm/add-farm.component";
-import { EditFarmComponent } from "./user/components/farm/edit-farm/edit-farm.component";
-import { FarmComponent } from "./user/components/farm/farm.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AdminComponent } from "./admin/admin.component";
@@ -63,8 +58,6 @@ import { TabsComponent } from "./admin/assets/tabs.component";
 import { ModalComponent } from "./admin/assets/modal.component";
 import { AdminFooterComponent } from "./admin/admin-footer/admin-footer.component";
 import { LoginComponent } from "./core/auth/pages/login/login.component";
-import { FarmRequestComponent } from "./user/components/farm-request/farm-request.component";
-import { FarmDetailsComponent } from "./user/components/farm/farm-details/farm-details.component";
 import { DssSelectionComponent } from "@app/user/components/dss/dss-selection/dss-selection.component";
 import { FieldAddComponent } from './user/components/field/field-add/field-add.component';
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
@@ -226,30 +219,6 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
   },
-  /*{
-    path: "user/farm",
-    component: FarmComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/farm-request",
-    component: FarmRequestComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/farm/edit",
-    component: EditFarmComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/farm/add",
-    component: AddFarmComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },*/
   {
     path: "user",
     component: UserComponent,
@@ -274,18 +243,6 @@ const appRoutes: Routes = [
       }
     ]
   },
-  /*{
-    path: "user/farm/manage",
-    component: ManageFarmComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/farm/details",
-    component: FarmDetailsComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },*/
   {
     path: "user/field/add",
     component: FieldAddComponent,

@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DssDetailComponent } from './user/components/dss/dss-detail/dss-detail.component';
-import { EditFarmComponent } from './user/components/farm/edit-farm/edit-farm.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
 import { AccountComponent } from './user/components/account/account.component';
 import { CookieModule } from 'ngx-cookie';
@@ -29,10 +28,6 @@ import { UserListComponent } from './admin/user-list/user-list.component';
 import { UserProfileComponent } from './admin/user-profile/user-profile.component';
 import { ManageMetadataComponent } from './admin/manage-metadata/manage-metadata.component';
 import { ManageCatalogueComponent } from './admin/manage-catalogue/manage-catalogue.component';
-import { FarmComponent } from './user/components/farm/farm.component';
-import { FarmListComponent } from './user/components/farm/farm-list/farm-list.component';
-import { AddFarmComponent } from './user/components/farm/add-farm/add-farm.component';
-import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-farm.component';
 import { CropListComponent } from './user/components/crop/crop-list/crop-list.component';
 import { AddCropComponent } from './user/components/crop/add-crop/add-crop.component';
 import { ManageCropComponent } from './user/components/crop/manage-crop/manage-crop.component';
@@ -77,7 +72,6 @@ import { SidebarComponent } from './core/components/sidebar/sidebar.component';
 import { ConfirmMailComponent } from './core/components/confirm-mail/confirm-mail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { FarmDetailsComponent } from './user/components/farm/farm-details/farm-details.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { UserSxComponent } from './user/components/user-sx/user-sx.component';
 import { FarmersAdvisorsArticleComponent } from './farmers-advisors-article/farmers-advisors-article.component';
@@ -97,6 +91,9 @@ import { SettingsComponent } from './user/components/settings/settings.component
 import { ManageAlertsComponent } from './user/components/manage-alerts/manage-alerts.component';
 import { CustomizeDashboardComponent } from './user/components/customize-dashboard/customize-dashboard.component';
 import { DssDisplayComponent } from './user/components/dss/dss-display/dss-display.component';
+import { FarmComponent } from './user/components/farm/farm.component';
+import { EditFarmComponent } from './user/components/farm/edit-farm/edit-farm.component';
+import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-farm.component';
 
 @NgModule({
   declarations: [
@@ -122,11 +119,6 @@ import { DssDisplayComponent } from './user/components/dss/dss-display/dss-displ
     ManageCatalogueComponent,
     AccountComponent,
     EditAccountComponent,
-    // FarmComponent,
-    // FarmListComponent,
-    // AddFarmComponent,
-    // ManageFarmComponent,
-    // EditFarmComponent,
     CropListComponent,
     AddCropComponent,
     ManageCropComponent,
@@ -171,7 +163,6 @@ import { DssDisplayComponent } from './user/components/dss/dss-display/dss-displ
     UserComponent,
     SidebarComponent,
     ConfirmMailComponent,
-    // FarmDetailsComponent,
     UserSxComponent,
     FarmersAdvisorsArticleComponent,
     ResearchersArticleComponent,
@@ -185,6 +176,9 @@ import { DssDisplayComponent } from './user/components/dss/dss-display/dss-displ
     ManageAlertsComponent,
     CustomizeDashboardComponent,
     DssDisplayComponent,
+    FarmComponent,
+    EditFarmComponent,
+    ManageFarmComponent
   ],
   imports: [
     BrowserModule,

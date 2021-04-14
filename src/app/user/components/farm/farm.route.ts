@@ -10,7 +10,6 @@ import { FarmResponseModel } from '@app/shared/models/farm-response.model';
 import { FarmService } from '@app/shared/services/upr/farm.service';
 import { FarmListComponent } from './farm-list/farm-list.component';
 import { FarmDetailsComponent } from './farm-details/farm-details.component';
-import { EditFarmComponent } from './edit-farm/edit-farm.component';
 import { AddFarmComponent } from './add-farm/add-farm.component';
 
 

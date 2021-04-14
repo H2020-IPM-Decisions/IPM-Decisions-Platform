@@ -89,7 +89,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
 
         if (location) {
           this.farmForm.controls.location.setValue(location);
-          this.farmForm.get("weatherStationDto").enable();
+          // this.farmForm.get("weatherStationDto").enable();
         }
       }
     });
@@ -111,7 +111,6 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       weatherDataSourceDto: ["", Validators.required],
       weatherStationDto: ["", Validators.required],
     });
-    this.farmForm.get("weatherStationDto").disable();
     if(data){
       this.farm = data;
       if(this.weatherForecastList.length==0){
@@ -129,7 +128,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       });      
       this.farmForm.get('weatherDataSourceDto').updateValueAndValidity();
       this.farmForm.get('weatherStationDto').updateValueAndValidity();
-      this.farmForm.get("weatherStationDto").enable();
+      this.farmForm.get("weatherStationDto").disable();
     }
   }
 
