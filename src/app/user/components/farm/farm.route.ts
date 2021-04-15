@@ -76,13 +76,5 @@ export const farmRoute: Routes = [
         roles: [], claims: ["developer", "farmer", "advisor"]
     },
     canActivate: [AuthGuard]
-    /*children: [
-      {
-        path: "field/add",
-        component: FieldAddComponent,
-        canActivate: [AuthGuard],
-        data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-      }
-    ]*/
   }
 ];

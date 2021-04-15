@@ -91,6 +91,7 @@ import { CustomizeDashboardComponent } from './user/components/customize-dashboa
 import { DssDisplayComponent } from './user/components/dss/dss-display/dss-display.component';
 import { FarmComponent } from './user/components/farm/farm.component';
 import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-farm.component';
+import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
 
 @NgModule({
   declarations: [
@@ -172,7 +173,8 @@ import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-f
     CustomizeDashboardComponent,
     DssDisplayComponent,
     FarmComponent,
-    ManageFarmComponent
+    ManageFarmComponent,
+    FieldEditComponent
   ],
   imports: [
     BrowserModule,
@@ -196,3 +198,4 @@ import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-f
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+// TODO https://pumpingco.de/blog/environment-variables-angular-docker/

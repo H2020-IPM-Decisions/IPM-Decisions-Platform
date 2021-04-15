@@ -1,113 +1,85 @@
-<div class="app-container app-theme-white fixed-sidebar fixed-header body-tabs-shadow fixed-footer">
-  <user-header></user-header>
-  <div class="app-main">
-    <sidebar></sidebar>
-    <div class="app-main__outer">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">DSS Selection</li>
-        </ol>
-      </nav>
-      <div class="app-main__inner">
+<div class="app-main__inner">
 
-        <div class="app-page-title">
-          <div class="page-title-wrapper">
-            <div class="page-title-heading">
-              <div class="page-title-icon">
-                <i class="pe-7s-note icon-gradient bg-mean-fruit">
-                </i>
-              </div>
-              <div>DSS Selection</div>
-            </div>
-          </div>
+  <div class="app-page-title">
+    <div class="page-title-wrapper">
+      <div class="page-title-heading">
+        <div class="page-title-icon">
+          <i class="pe-7s-note icon-gradient bg-mean-fruit">
+          </i>
         </div>
+        <div>DSS Selection</div>
+      </div>
+    </div>
+  </div>
 
-        <div class="container mx-auto my-5 page-box">
-          <div class="row">
-            <div class="col-lg-12 col-md-10 ml-auto mr-auto">
-              <div class="container">
-                <!-- <div class="row"> -->
-                <!-- <div class="col-sm">
-                      <h4>Farm list</h4>
-                    </div> -->
-                <!-- <div class="col-sm text-right add-farm">
-                      <button type="button" rel="tooltip" class="btn btn-info btn" data-original-title="" title=""
-                        routerLink="/user/farm/add">
-                        + Add Farm
-                      </button> </div>
-                  </div> -->
-
-
-                <fieldset class="border p-3" [formGroup]="searchForm">
-                  <legend class="w-auto px-1 text-muted"><span class="text-primary">Step 1: Search DSS using
-                      crop and pest combinations</span></legend>
-                  <div class="form-inline row">
-                    <div class="form-group col-md-4">
-                      <label for="crops" class="col-md-2 col-form-label">Crop</label>
-                      <select id="crops" class="col-md-10 form-control" formControlName="cropSearch">
-                        <option value="">ALL</option>
-                        <ng-template ngFor let-crop [ngForOf]="crops">
-                          <option value="{{crop.value}}">{{crop.label}}</option>
-                        </ng-template>
-                      </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label for="pests" class="col-md-2 col-form-label">Pest</label>
-                      <select id="pests" class="col-md-10 form-control" formControlName="pestSearch">
-                        <option value="">ALL</option>
-                        <ng-template ngFor let-pest [ngForOf]="pests">
-                          <option value="{{pest.value}}">{{pest.label}}</option>
-                        </ng-template>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-md-4">
-                      <div class="input-group col-md-12">
-                        <button class="btn btn-info col-5" (click)="updateModels()">Search</button>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-                <!-- end search -->
-
-                <fieldset *ngIf="models" class="border p-3 col-12 my-4">
-                  <legend class="w-auto px-1 text-muted"><span class="text-success">Step 2: Select DSS</span></legend>
-
-                  <div class="row">
-                    <ng-template ngFor let-model [ngForOf]="models" let-index="index">
-                      <div class="col-12">
-                        <input type="radio" value="{{index}}" name="model" [formControl]="selectedModal">
-                        &nbsp;
-                        <label for="{{index}}">{{model.name}}</label>
-                      </div>
-                    </ng-template>
-                    <div class="form-group col-md-4">
-                      <div class="input-group col-md-12">
-                        <button class="btn btn-info col-5" (click)="updateForm()">Select</button>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-
-                <fieldset *ngIf="editorActivated" class="border p-3 col-12 my-4">
-                  <legend class="w-auto px-1 text-muted"><span class="text-success">Step 3: DSS Setup</span></legend>
-                  <div class="row">
-                    <div class="col-12">
-                      <div id="editor_holder">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col mt-3 text-right">
-                    <button class="btn btn-success ml-2" (click)="submit()">Go to DSS Use
-                      dashboard</button>
-                  </div>
-                </fieldset>
-
+  <div class="page-box">
+    <div class="row">
+      <div class="col-lg-12 col-md-10 ml-auto mr-auto">
+        <div class="container">
+          <fieldset class="border p-3" [formGroup]="searchForm">
+            <legend class="w-auto px-1 text-muted"><span class="text-primary">Step 1: Search DSS using crop and pest combinations</span></legend>
+            <div class="form-inline row">
+              <div class="form-group col-md-4">
+                <label for="crops" class="col-md-2 col-form-label">Crop</label>
+                <select id="crops" class="col-md-10 form-control" formControlName="cropSearch">
+                  <option value="">ALL</option>
+                  <ng-template ngFor let-crop [ngForOf]="crops">
+                    <option value="{{crop.value}}">{{crop.label}}</option>
+                  </ng-template>
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="pests" class="col-md-2 col-form-label">Pest</label>
+                <select id="pests" class="col-md-10 form-control" formControlName="pestSearch">
+                  <option value="">ALL</option>
+                  <ng-template ngFor let-pest [ngForOf]="pests">
+                    <option value="{{pest.value}}">{{pest.label}}</option>
+                  </ng-template>
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <div class="input-group col-md-12">
+                  <button class="btn btn-info col-5" (click)="updateModels()">Search</button>
+                </div>
               </div>
             </div>
-          </div>
+          </fieldset>
+          <!-- end search -->
+
+          <fieldset *ngIf="models" class="border p-3 col-12 my-4">
+            <legend class="w-auto px-1 text-muted"><span class="text-success">Step 2: Select DSS</span></legend>
+
+            <div class="row">
+              <ng-template ngFor let-model [ngForOf]="models" let-index="index">
+                <div class="col-12">
+                  <input type="radio" value="{{index}}" name="model" [formControl]="selectedModal">
+                  &nbsp;
+                  <label for="{{index}}">{{model.name}}</label>
+                </div>
+              </ng-template>
+              <div class="form-group col-md-4">
+                <div class="input-group col-md-12">
+                  <button class="btn btn-info col-5" (click)="updateForm()">Select</button>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset *ngIf="editorActivated" class="border p-3 col-12 my-4">
+            <legend class="w-auto px-1 text-muted"><span class="text-success">Step 3: DSS Setup</span></legend>
+            <div class="row">
+              <div class="col-12">
+                <div id="editor_holder">
+                </div>
+              </div>
+            </div>
+
+            <div class="col mt-3 text-right">
+              <button class="btn btn-success ml-2" (click)="submit()">Go to DSS Use
+                dashboard</button>
+            </div>
+          </fieldset>
+
         </div>
       </div>
     </div>

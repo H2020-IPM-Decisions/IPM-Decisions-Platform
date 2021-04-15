@@ -6,6 +6,13 @@
       "label": "Finnish Meteorological Institute measured data",
       "username": "usernametestw",
       "password": "passwordtest"
+    },
+    {
+      "url": "https://ipmdecisions.nibio.no/api/wx/rest/weatheradapter/meteobot/",
+      "label": "MeteoBot API",
+      "username": "USername",
+      "password": "passwordinchiaro",
+      "id": 2
     }
   ]
 }

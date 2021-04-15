@@ -231,6 +231,12 @@ const appRoutes: Routes = [
       {
         path: 'farm',
         loadChildren: () => import('./user/components/farm/farm.module').then(m => m.FarmModule)
+      },
+      {
+        path: "dss/selection",
+        component: DssSelectionComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [], claims: ["developer", "farmer", "advisor"] },
       }
     ]
   },
@@ -245,24 +251,6 @@ const appRoutes: Routes = [
         loadChildren: () => import('./user/components/manage-weather-data-source/manage-weather-data-source.module').then(m => m.EffectorManageWeatherDataSourceModule)
       }
     ]
-  },
-  /*{
-    path: "user/field/add",
-    component: FieldAddComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/field/edit",
-    component: FieldEditComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },*/
-  {
-    path: "user/dss/selection",
-    component: DssSelectionComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
   },
   {
     path: "user/dss/display",

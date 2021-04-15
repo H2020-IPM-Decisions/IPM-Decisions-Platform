@@ -1,14 +1,16 @@
 import { environment } from '@src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from "@angular/core";
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import {
-  FormArray,
   FormBuilder,
   FormControl,
-  FormGroup,
-  Validators,
+  FormGroup
 } from "@angular/forms";
-import { setTime } from 'ngx-bootstrap/chronos/utils/date-setters';
+import { DssSelectionService } from './dss-selection.service';
+import { Subscription } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
+import { DssSelection } from './dss-selection.model';
+
 declare var JSONEditor;
 
 @Component({
@@ -16,41 +18,59 @@ declare var JSONEditor;
   templateUrl: "./dss-selection.component.html",
   styleUrls: ["./dss-selection.component.css"],
 })
-export class DssSelectionComponent implements OnInit {
-
-  searchForm: FormGroup = this._fb.group({
-    cropSearch: [''],
-    pestSearch: ['']
-  })
+export class DssSelectionComponent implements OnInit, OnDestroy {
+  
+  searchForm: FormGroup;
   crops: { value: string; label: string }[] = [];
   pests: { value: string; label: string }[] = [];
   models;
   selectedModal = new FormControl('');
   editor;
   editorActivated = false;
+  $subscriptionS1: Subscription;
+  $subscriptionS2: Subscription;
 
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private dssSelectionService: DssSelectionService
+  ) { }
+
+
+  ngOnInit() {
+    this.searchForm = this.formBuilder.group({
+      cropSearch: [''],
+      pestSearch: ['']
+    })
+    this.$subscriptionS1 = this.dssSelectionService.getCrops()
+      .pipe(
+        mergeMap( (response: HttpResponse<string[]>) => {
+          this.crops = response.body.map((item) => ({ value: item, label: item }));
+          return this.dssSelectionService.getPests();
+        })
+      ).subscribe(
+        (response: HttpResponse<string[]>) => {
+          this.pests = response.body.map((item) => ({ value: item, label: item }))
+        }
+      );
+  }
+
+  ngOnDestroy() {
+    if(this.$subscriptionS1){
+      this.$subscriptionS1.unsubscribe();
+    }
+    if(this.$subscriptionS2){
+      this.$subscriptionS2.unsubscribe();
+    }
+  }
 
   updateModels() {
     var { cropSearch, pestSearch } = this.searchForm.value;
-    var requestUrl = "";
     this.purgeEditor();
-    if (cropSearch && pestSearch) {
-      requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crop/${cropSearch}/pest/${pestSearch}`
-    }
-    else if (cropSearch) {
-      requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crop/${cropSearch}`
-    }
-    else if (pestSearch) {
-      requestUrl = `${environment.apiUrl}/api/dss/rest/dss/pest/${pestSearch}`
-    }
-    else {
-      requestUrl = `${environment.apiUrl}/api/dss/rest/dss`
-    }
-    this.http
-      .get(requestUrl)
+    this.$subscriptionS2 = this.dssSelectionService.getModels(cropSearch,pestSearch)
       .subscribe(
-        (response: any) => {
-          this.models = response[0].models;
+        (response: HttpResponse<DssSelection[]>) => {
+          this.models = response.body[0].models;
         },
         (err) => {
           this.models = null;
@@ -95,26 +115,6 @@ export class DssSelectionComponent implements OnInit {
     } else {
       alert("Error");
     }
-  }
-
-  constructor(
-    private _fb: FormBuilder,
-    private http: HttpClient
-  ) { }
-
-  ngOnInit() {
-    this.http
-      .get(`${environment.apiUrl}/api/dss/rest/crop`)
-      .subscribe((response: any[]) => {
-        this.crops = response.map((item) => ({ value: item, label: item }))
-      })
-
-    this.http
-      .get(`${environment.apiUrl}/api/dss/rest/pest`)
-      .subscribe((response: any[]) => {
-        this.pests = response.map((item) => ({ value: item, label: item }))
-      })
-
-  }
+  }  
 
 }
