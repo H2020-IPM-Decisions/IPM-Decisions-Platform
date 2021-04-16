@@ -5,11 +5,12 @@ export interface Location {
   y: number;
   z: number;
   srid: number;
+  address?: any;
 }
 export interface Farm {
   id: string;
   name: string;
-  location: Location;
+  location?: Location;
   weatherForecastDto: WeatherDataSourceDto;
   weatherHistoricalDto: WeatherDataSourceDto;
 }

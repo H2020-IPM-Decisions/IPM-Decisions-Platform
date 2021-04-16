@@ -4,7 +4,7 @@ import { FarmResponseModel } from "@app/shared/models/farm-response.model";
 import { Farm } from "@app/shared/models/farm.model";
 import { FarmService } from "@app/shared/services/upr/farm.service";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
-import * as esriGeo from "esri-leaflet-geocoder";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-farm-list",
@@ -14,29 +14,26 @@ import * as esriGeo from "esri-leaflet-geocoder";
 export class FarmListComponent implements OnInit {
   farmList: Farm[] = [];
   modalRef: BsModalRef;
-  copiedFarm: boolean;
 
   constructor(
     private _farmService: FarmService,
-    private _modalService: BsModalService
+    private _modalService: BsModalService,
+    private _toastr: ToastrService
   ) {}
 
   ngOnInit() {
     this.getFarms();
   }
-
+  
   onFarmCopy(farm: Farm) {
-    this.copiedFarm = true;
-    let copyFarm = {} as Farm;
+    let copyFarm = {...farm};
     copyFarm.id = null;
     copyFarm.name = farm.name + " [Copy]";
-    //copyFarm.weatherStationDto = farm.weatherStationDto;
-    //copyFarm.weatherDataSourceDto = farm.weatherDataSourceDto;
-    copyFarm.location = farm.location;
     this._farmService.createFarm(copyFarm).subscribe(
       (response) => {
         if (response.ok) {
           this.farmList.push(copyFarm);
+          this._toastr.show("Farm successfully copied!", "Success!", null, "toast-success");
         }
       },
       (error) => {
@@ -50,34 +47,11 @@ export class FarmListComponent implements OnInit {
       if (response && response.value) {
         const farms = response.value;
         farms.forEach((farm) => {
-          this.convertLatLngToAddress(farm);
+          this._farmService.getAddressFromCoordinates(farm.location.x, farm.location.y).subscribe( (data) => farm.location.address = data);
         });
         this.farmList = farms;
       }
     });
-  }
-
-  private convertLatLngToAddress(farm: Farm) {
-    esriGeo
-      .geocodeService()
-      .reverse()
-      .latlng({ lat: farm.location.x, lng: farm.location.y })
-      .run(function (error, result) {
-        if (error) {
-          return;
-        }
-        if (result) {
-          /*farm.location.address = {
-            address: result.address.Address,
-            city: result.address.City,
-            postal: result.address.Postal,
-            countryCode: result.address.CountryCode,
-            region: result.address.Region,
-            shortLabel: result.address.ShortLabel,
-            longLabel: result.address.LongLabel,
-          };*/
-        }
-      });
   }
 
   openModal(template) {

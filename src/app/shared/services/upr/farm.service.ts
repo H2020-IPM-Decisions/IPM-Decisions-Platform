@@ -4,14 +4,16 @@ import { FarmResponseModel } from "@app/shared/models/farm-response.model";
 import { Farm } from "@app/shared/models/farm.model";
 import { environment } from "@src/environments/environment";
 import { Operation } from "fast-json-patch";
-import { BehaviorSubject, Observable, of } from "rxjs";
-import { catchError, share, shareReplay } from "rxjs/operators";
+import { BehaviorSubject, Observable, of, Subscriber } from "rxjs";
+import { catchError, share } from "rxjs/operators";
+import * as esriGeo from "esri-leaflet-geocoder";
 
 type EntityResponseType = HttpResponse<FarmResponseModel>;
 @Injectable({
   providedIn: "root",
 })
 export class FarmService {
+  private geocodeLocationMap = new Map();
   private apiUrl = environment.apiUrl;
   private farmSubject = new BehaviorSubject<Farm>(
     JSON.parse(window.sessionStorage.getItem("farm"))
@@ -96,6 +98,29 @@ export class FarmService {
           return of(error);
         })
       );
+  }
+
+  public getAddressFromCoordinates(latitude: number, longitude: number):Observable<any>{
+    return new Observable( (observer:Subscriber<any>)=>{
+      const key = latitude+"-"+longitude;
+      const previousVal = this.geocodeLocationMap.get(key);
+      if(previousVal){
+        observer.next(previousVal);
+        observer.complete();
+        return;
+      }
+      esriGeo
+        .geocodeService()
+        .reverse()
+        .latlng({ lat: latitude, lng: longitude })
+        .run(function (error, result) {
+          if (result) {
+            this.geocodeLocationMap.set(key,result.address);
+            observer.next(result.address);
+          }
+          observer.complete();
+        }.bind(this))
+    })
   }
 
 }
