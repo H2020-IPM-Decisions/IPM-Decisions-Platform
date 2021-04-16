@@ -20,7 +20,7 @@
         <div class="form-group row">
           <label for="farm-name" class="col-sm-3 col-form-label">Farm name</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="farm-name" formControlName="name">
+            <input type="text" class="form-control" id="farm-name" formControlName="name" autocomplete="off">
           </div>
         </div>
         <div class="form-group row">
@@ -32,8 +32,9 @@
         <div class="form-group row">
           <label for="met-station" class="col-sm-3 col-form-label">Nearest met. station</label>
           <div class="col-sm-9">
-            <select class="form-control" id="met-station" formControlName="weatherStationDto">
-              <option *ngFor="let metStation of metStationList">{{metStation.name}}
+            <select class="form-control" id="met-station" formControlName="weatherHistoricalDto">
+              <!--<option value="" disabled selected>Place a marker into map</option>-->
+              <option *ngFor="let item of weatherHistoricalDtoList">{{item.name}}
               </option>
             </select>
           </div>
@@ -41,8 +42,8 @@
         <div class="form-group row">
           <label for="forecast" class="col-sm-3 col-form-label">Weather forecast service</label>
           <div class="col-sm-9">
-            <select class="form-control" id="forecast" formControlName="weatherDataSourceDto">
-              <option *ngFor="let forecast of weatherForecastList">{{forecast.name}}
+            <select class="form-control" id="forecast" formControlName="weatherForecastDto">
+              <option *ngFor="let item of weatherForecastDtoList">{{item.name}}
               </option>
             </select>
           </div>

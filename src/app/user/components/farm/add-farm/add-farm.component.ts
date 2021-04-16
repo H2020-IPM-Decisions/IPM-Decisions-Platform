@@ -14,11 +14,10 @@ import { compare } from "fast-json-patch";
 import { Location } from "@app/shared/models/location.model";
 import { HttpResponse } from "@angular/common/http";
 import { WeatherService } from "@app/shared/services/wx/weather.service";
-import { WeatherDataSource } from "@app/shared/models/weather-data-source.model";
-import { WeatherDataSourceDto } from "@app/shared/models/weather-data-source-dto.model";
+import { WeatherDataSourceDto } from "@app/shared/models/weather-data-source.model";
 import { MapSettings } from "@app/shared/constants/map-settings.constant";
 import { MaprisksService } from "@app/shared/services/maprisks.service";
-import { map, mergeMap } from "rxjs/operators";
+import {  mergeMap } from "rxjs/operators";
 import { Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 
@@ -36,8 +35,8 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
   private mapContainer: ElementRef<HTMLElement>;
   farm?: Farm;
   farmForm: FormGroup;
-  metStationList: WeatherDataSource[] = [];
-  weatherForecastList: WeatherDataSourceDto[] = [];
+  weatherHistoricalDtoList: WeatherDataSourceDto[] = [];
+  weatherForecastDtoList: WeatherDataSourceDto[] = [];
   constructor(
     private _fb: FormBuilder,
     private _farmService: FarmService,
@@ -52,22 +51,19 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       .pipe(
         mergeMap( ({farm}) => {
           this.updateForm(farm);
-          return this._weatherService.getForecastServices();
+          return this._weatherService.getWeatherForecastDto();
         })
-      ).subscribe( (data: WeatherDataSource[]) => { 
-          this.weatherForecastList = data.filter((item: WeatherDataSource) => {
-            return item.access_type === "stations" && item.authentication_required === "false";
-          }).map((item: WeatherDataSource)=>{          
-            const dto = new WeatherDataSourceDto(item.id, item.name, item.temporal.forecast==0, item.authentication_required==='true', item.endpoint);
-            return dto;
-          });
-
-          if(!this.farm && this.weatherForecastList && this.weatherForecastList.length>0){
+      ).subscribe( (weatherDataSourceDtoList: WeatherDataSourceDto[]) => { 
+          this.weatherForecastDtoList = weatherDataSourceDtoList;
+          // If it's creation set (no giving farm as input) and
+          // If we get an array of values 
+          // Set a default from the received list
+          if(!this.farm && weatherDataSourceDtoList.length>0){
             this.farmForm.patchValue({
-              weatherDataSourceDto: this.weatherForecastList[0]
+              weatherForecastDto: weatherDataSourceDtoList[0]
             });
           }
-        });
+      });
   }
 
   ngAfterViewInit(): void {
@@ -77,19 +73,15 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       .subscribe((initMap) => {
         this.map = initMap;
       });
-
     this._maprisksService.addMarker(this.map, initFarmLocation);
-
     this._maprisksService.locationObservable.subscribe((locPoint) => {
       if (locPoint) {
         const location = this.mapLocationCoordinates(locPoint.latlng);
-
         // populate met. station dropdown with nearest weather stations
         this.getNearestWeatherDataSource(location.x, location.y);
-
-        if (location) {
+        if (location && !this.farm) {
           this.farmForm.controls.location.setValue(location);
-          // this.farmForm.get("weatherStationDto").enable();
+          this.farmForm.get("weatherHistoricalDto").enable();
         }
       }
     });
@@ -108,27 +100,25 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       id: [null],
       name: ["", Validators.required],
       location: ["", Validators.required],
-      weatherDataSourceDto: ["", Validators.required],
-      weatherStationDto: ["", Validators.required],
+      weatherForecastDto: ["", Validators.required],
+      weatherHistoricalDto: ["", Validators.required],
     });
     if(data){
       this.farm = data;
-      if(this.weatherForecastList.length==0){
-        this.weatherForecastList.push(data.weatherDataSourceDto);
-      }
-      if(this.metStationList.length==0){
-        this.metStationList.push(data.weatherStationDto);
-      }
+      // when a farm is giving weatherHistoricalDtoList is still empty
+      this.weatherHistoricalDtoList.push(this.farm.weatherHistoricalDto);
+      this.weatherForecastDtoList.push(this.farm.weatherForecastDto);
       this.farmForm.patchValue({
         id: data.id,
         name: data.name,
         location: data.location,
-        weatherDataSourceDto: data.weatherDataSourceDto,
-        weatherStationDto: data.weatherStationDto
+        weatherForecastDto: data.weatherForecastDto,
+        weatherHistoricalDto: data.weatherHistoricalDto
       });      
-      this.farmForm.get('weatherDataSourceDto').updateValueAndValidity();
-      this.farmForm.get('weatherStationDto').updateValueAndValidity();
-      this.farmForm.get("weatherStationDto").disable();
+      this.farmForm.get('weatherForecastDto').updateValueAndValidity();
+      this.farmForm.get('weatherHistoricalDto').updateValueAndValidity();
+    } else {
+      this.farmForm.get("weatherHistoricalDto").disable();
     }
   }
 
@@ -148,7 +138,6 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       const patch = compare(this.farm, formValues);
       const changedPatch = this.prepareForEditing(patch);
       observable = this._farmService.updateFarmByFarm(changedPatch, this.farm);
-      // observable = this._farmService.updateFarm(formValues);
     } else {
       observable = this._farmService.createFarm(formValues)
     }
@@ -192,15 +181,17 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     tol: number = 50000
   ) {
     this._weatherService
-      .getWeatherDataSourceLocationPoint(lat, lng, tol)
-      .subscribe((metStationData: WeatherDataSource[]) => {
-        if (metStationData) {
-          this.metStationList = metStationData;
-          if(this.metStationList.length>0){
-            this.farmForm.patchValue({
-              weatherStationDto: this.metStationList[0]
-            });
-          }
+      .getWeatherForecastDto({'latitude':lat.toString(),'longitude':lng.toString(),'tolerance':tol.toString()})
+      .subscribe((weatherDataSourceDtoList: WeatherDataSourceDto[]) => {
+        this.weatherHistoricalDtoList = weatherDataSourceDtoList;
+        // If it's creation set (no giving farm as input) and
+        // If we get an array of values and
+        // This select hasn't been touched
+        // Set a default from the received list
+        if(!this.farm && weatherDataSourceDtoList.length>0 && !this.farmForm.controls.weatherHistoricalDto.touched){
+          this.farmForm.patchValue({
+            weatherHistoricalDto: weatherDataSourceDtoList[0]
+          });
         }
       });
   }

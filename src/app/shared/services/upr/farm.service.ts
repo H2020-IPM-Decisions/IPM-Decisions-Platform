@@ -55,28 +55,6 @@ export class FarmService {
     return this._http.get<FarmResponseModel>(`${this.apiUrl}/api/upr/farms/${id}`, { headers:{Accept: "application/vnd.h2020ipmdecisions.hateoas+json"}, observe: 'response' });
   }
 
-
-  // public getFarmById(url: string, fields?: string[]): Observable<Farm> {
-  //   // let url = `${this.apiUrl}/api/upr/farms/${farmId}`;
-  //   if (fields) {
-  //     url += `?${fields}`;
-  //   }
-
-  //   return this._http
-  //     .get(url, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Accept: "application/vnd.h2020ipmdecisions.hateoas+json",
-  //       },
-  //     })
-  //     .pipe(
-  //       catchError((error) => {
-  //         console.log("error", error);
-  //         return of(error);
-  //       })
-  //     );
-  // }
-
   public updateFarm(operations: Operation[]): Observable<HttpResponse<any>> {
     return this._http.patch(
       `${this.apiUrl}/api/upr/farms/${this.selectedFarm.id}`,
@@ -120,10 +98,4 @@ export class FarmService {
       );
   }
 
-  // Get Farm By Id and Associated Data
-
-  setCurrentFarm(farm: Farm) {
-    this.farmSubject.next(farm);
-    window.sessionStorage.setItem("farm", JSON.stringify(farm));
-  }
 }

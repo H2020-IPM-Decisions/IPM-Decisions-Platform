@@ -30,8 +30,8 @@ export class FarmListComponent implements OnInit {
     let copyFarm = {} as Farm;
     copyFarm.id = null;
     copyFarm.name = farm.name + " [Copy]";
-    copyFarm.weatherStationDto = farm.weatherStationDto;
-    copyFarm.weatherDataSourceDto = farm.weatherDataSourceDto;
+    //copyFarm.weatherStationDto = farm.weatherStationDto;
+    //copyFarm.weatherDataSourceDto = farm.weatherDataSourceDto;
     copyFarm.location = farm.location;
     this._farmService.createFarm(copyFarm).subscribe(
       (response) => {
@@ -67,7 +67,7 @@ export class FarmListComponent implements OnInit {
           return;
         }
         if (result) {
-          farm.location.address = {
+          /*farm.location.address = {
             address: result.address.Address,
             city: result.address.City,
             postal: result.address.Postal,
@@ -75,7 +75,7 @@ export class FarmListComponent implements OnInit {
             region: result.address.Region,
             shortLabel: result.address.ShortLabel,
             longLabel: result.address.LongLabel,
-          };
+          };*/
         }
       });
   }

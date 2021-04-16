@@ -1,35 +1,24 @@
-export interface WeatherDataSource {
-  id?: string;
-  name: string;
-  description?: string;
-  publicURL?: string;
-  endpoint?: string;
-  needsDataControl?: string;
-  access_type?: string;
-  spatial?: Spatial;
-  temporal?: Temporal;
-  parameters?: Parameters;
-  organization?: Organization;
-  authentication_required?: string;
+export interface Historic {
+  start: string;
+  end?: any;
 }
 
-interface Spatial {
-  countries: string[];
-  geoJSON: string;
-}
-interface Temporal {
+export interface Temporal {
   forecast: number;
   historic: Historic;
 }
-interface Parameters {
+
+export interface Parameters {
   common: number[];
   optional: number[];
 }
-interface Historic {
-  start: string;
-  end: string;
+
+export interface Spatial {
+  countries: string[];
+  geoJSON: string;
 }
-interface Organization {
+
+export interface Organization {
   name: string;
   country: string;
   address: string;
@@ -37,4 +26,29 @@ interface Organization {
   city: string;
   email: string;
   url: string;
+}
+
+export interface WeatherDataSource {
+  id: string;
+  name: string;
+  description: string;
+  public_URL: string;
+  endpoint: string;
+  authentication_required: string;
+  needs_data_control: string;
+  access_type: string;
+  temporal: Temporal;
+  parameters: Parameters;
+  spatial: Spatial;
+  organization: Organization;
+}
+
+// UPS RELEASE 0.2.2.1 WeahterDataSourceDto changes to WeatherForecastDto
+export class WeatherDataSourceDto {
+  constructor(
+    public weatherId: string,
+    public name: string,
+    public url: string,
+    public id?: string
+  ){}
 }
