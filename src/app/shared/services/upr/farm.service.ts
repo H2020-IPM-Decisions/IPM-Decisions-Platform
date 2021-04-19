@@ -57,30 +57,14 @@ export class FarmService {
     return this._http.get<FarmResponseModel>(`${this.apiUrl}/api/upr/farms/${id}`, { headers:{Accept: "application/vnd.h2020ipmdecisions.hateoas+json"}, observe: 'response' });
   }
 
-  public updateFarm(operations: Operation[]): Observable<HttpResponse<any>> {
-    return this._http.patch(
-      `${this.apiUrl}/api/upr/farms/${this.selectedFarm.id}`,
-      operations,
-      {
-        headers: {
-          "Content-Type": "application/json-patch+json",
-        },
-        observe: "response",
-      }
-    );
-  }
-
-  public updateFarmByFarm(operations: Operation[], farm: Farm): Observable<HttpResponse<any>> {
-    return this._http.patch(
-      `${this.apiUrl}/api/upr/farms/${farm.id}`,
-      operations,
-      {
-        headers: {
-          "Content-Type": "application/json-patch+json",
-        },
-        observe: "response",
-      }
-    );
+  public updateFarm(farm: any): Observable<any> {
+    return this._http.put(`${this.apiUrl}/api/upr/farms/${farm.id}`, farm, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/vnd.h2020ipmdecisions.hateoas+json",
+      },
+      observe: "response",
+    });
   }
 
   public deleteFarm(farmId: string): Observable<HttpResponse<any>> {

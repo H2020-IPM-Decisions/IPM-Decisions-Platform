@@ -79,8 +79,10 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
         const location = this.mapLocationCoordinates(locPoint.latlng);
         // populate met. station dropdown with nearest weather stations
         this.getNearestWeatherDataSource(location.x, location.y);
-        if (location && !this.farm) {
+        if (location) {
           this.farmForm.controls.location.setValue(location);
+        }
+        if(!this.farm){
           this.farmForm.get("weatherHistoricalDto").enable();
         }
       }
@@ -135,9 +137,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     const formValues: any = this.farmForm.value;
     let observable: any;
     if(this.farm && this.farm.id){
-      const patch = compare(this.farm, formValues);
-      const changedPatch = this.prepareForEditing(patch);
-      observable = this._farmService.updateFarmByFarm(changedPatch, this.farm);
+      observable = this._farmService.updateFarm(formValues);
     } else {
       observable = this._farmService.createFarm(formValues)
     }
