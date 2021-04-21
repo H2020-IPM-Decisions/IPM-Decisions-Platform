@@ -25724,3 +25724,12 @@ a.fc-more:hover {
 footer.footer-section.spad {
     display: none;
 }
+
+#json-editor-form .card {
+    background: #fff !important;
+    box-shadow: none;
+}
+
+#json-editor-form > .bg-light{
+    box-shadow: none !important;
+}

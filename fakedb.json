@@ -14,5 +14,364 @@
       "password": "passwordinchiaro",
       "id": 2
     }
+  ],
+  "dssdata": [
+    {
+      "schema": {
+        "title": "PSILARTEMP",
+        "description": "A description of PSILARTEMP",
+        "type": "object",
+        "properties": {
+          "timeZone": {
+            "type": "string",
+            "title": "Time zone (e.g. Europe/Oslo)",
+            "default": "Europe/Oslo"
+          },
+          "timeStart": {
+            "type": "string",
+            "format": "date",
+            "title": "Start date of calculation (YYYY-MM-DD)",
+            "description": "Start date of calculation (YYYY-MM-DD)",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "timeEnd": {
+            "type": "string",
+            "format": "date",
+            "title": "End date of calculation (YYYY-MM-DD)",
+            "description": "End date of calculation (YYYY-MM-DD)"
+          }
+        },
+        "required": [
+          "timeZone",
+          "timeStart",
+          "timeEnd"
+        ]
+      },
+      "model": {
+        "timeZone": "Europe/Oslo",
+        "timeStart": "2021-04-01",
+        "timeEnd": "2021-04-21"
+      },
+      "id": 1
+    },
+    {
+      "schema": {
+        "title": "PSILARTEMP",
+        "description": "A description of PSILARTEMP",
+        "type": "object",
+        "properties": {
+          "timeZone": {
+            "type": "string",
+            "title": "Time zone (e.g. Europe/Oslo)",
+            "default": "Europe/Oslo"
+          },
+          "timeStart": {
+            "type": "string",
+            "format": "date",
+            "title": "Start date of calculation (YYYY-MM-DD)",
+            "description": "Start date of calculation (YYYY-MM-DD)",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "timeEnd": {
+            "type": "string",
+            "format": "date",
+            "title": "End date of calculation (YYYY-MM-DD)",
+            "description": "End date of calculation (YYYY-MM-DD)"
+          }
+        },
+        "required": [
+          "timeZone",
+          "timeStart",
+          "timeEnd"
+        ]
+      },
+      "model": {
+        "timeZone": "Europe/Oslo",
+        "timeStart": "2021-04-01",
+        "timeEnd": "2021-04-21"
+      },
+      "id": 2
+    },
+    {
+      "schema": {
+        "title": "PSILARTEMP",
+        "description": "A description of PSILARTEMP",
+        "type": "object",
+        "properties": {
+          "timeZone": {
+            "type": "string",
+            "title": "Time zone (e.g. Europe/Oslo)",
+            "default": "Europe/Oslo"
+          },
+          "timeStart": {
+            "type": "string",
+            "format": "date",
+            "title": "Start date of calculation (YYYY-MM-DD)",
+            "description": "Start date of calculation (YYYY-MM-DD)",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "timeEnd": {
+            "type": "string",
+            "format": "date",
+            "title": "End date of calculation (YYYY-MM-DD)",
+            "description": "End date of calculation (YYYY-MM-DD)"
+          }
+        },
+        "required": [
+          "timeZone",
+          "timeStart",
+          "timeEnd"
+        ]
+      },
+      "model": {
+        "timeZone": "Europe/Oslo",
+        "timeStart": "2021-04-01",
+        "timeEnd": "2021-04-21"
+      },
+      "id": 3
+    }
+  ],
+  "dss": [
+    {
+      "title": "PSILARTEMP",
+      "description": "A description of PSILARTEMP",
+      "type": "object",
+      "properties": {
+        "timeZone": {
+          "type": "string",
+          "title": "Time zone (e.g. Europe/Oslo)",
+          "default": "Europe/Oslo"
+        },
+        "timeStart": {
+          "type": "string",
+          "format": "date",
+          "title": "Start date of calculation (YYYY-MM-DD)",
+          "description": "Start date of calculation (YYYY-MM-DD)",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "timeEnd": {
+          "type": "string",
+          "format": "date",
+          "title": "End date of calculation (YYYY-MM-DD)",
+          "description": "End date of calculation (YYYY-MM-DD)"
+        }
+      },
+      "required": [
+        "timeZone",
+        "timeStart",
+        "timeEnd"
+      ]
+    },
+    {
+      "title": "SEPTORIAHU",
+      "description": "A description of SEPTORIAHU",
+      "type": "object",
+      "properties": {
+        "timeZone": {
+          "type": "string",
+          "title": "Time zone (e.g. Europe/Oslo)",
+          "default": "Europe/Oslo"
+        },
+        "dateGs31": {
+          "type": "string",
+          "format": "date",
+          "title": "Date of growth stage 31 (YYYY-MM-DD)"
+        },
+        "date3rdUpperLeafEmerging": {
+          "type": "string",
+          "format": "date",
+          "title": "Date of 3rd upper leaf emerging (GS32) (YYYY-MM-DD)"
+        },
+        "date2ndUpperLeafEmerging": {
+          "type": "string",
+          "format": "date",
+          "title": "Date of 2nd upper leaf emerging (GS33) (YYYY-MM-DD)"
+        },
+        "dateUpperLeafEmerging": {
+          "type": "string",
+          "format": "date",
+          "title": "Date of upper leaf emerging (GS37-39) (YYYY-MM-DD)"
+        },
+        "dateGs75": {
+          "type": "string",
+          "format": "date",
+          "title": "Date of all kernels fully developed (GS75) (YYYY-MM-DD)"
+        },
+        "dateSpraying1": {
+          "type": "string",
+          "format": "date",
+          "title": "Date of first spraying"
+        },
+        "dateSpraying2": {
+          "type": "string",
+          "format": "date",
+          "title": "Date of second spraying"
+        },
+        "sprayingProtectionDays": {
+          "type": "integer",
+          "title": "Number of days the crop is protected",
+          "default": 10,
+          "minimum": 0
+        },
+        "thresholdRelativeHumidity": {
+          "type": "number",
+          "title": "Threshold RH for wet hour",
+          "default": 85,
+          "minimum": 0
+        },
+        "thresholdLeafWetness": {
+          "type": "number",
+          "title": "Threshold Leaf wetness for wet hour",
+          "default": 30,
+          "minimum": 0
+        },
+        "thresholdPrecipitation": {
+          "type": "number",
+          "title": "Threshold precipitation for wet hour",
+          "default": 0.2,
+          "minimum": 0
+        },
+        "slidingHoursPast": {
+          "type": "integer",
+          "title": "Number of hours to consider before current hour",
+          "default": 36,
+          "minimum": 1
+        },
+        "slidingHoursAhead": {
+          "type": "integer",
+          "title": "Number of hours to consider after current hour",
+          "default": 36,
+          "minimum": 1
+        },
+        "thresholdHumidPeriodHours": {
+          "type": "integer",
+          "title": "Threshold number of hours for a 'wet period'",
+          "default": 19,
+          "minimum": 1
+        },
+        "leafLifeTime": {
+          "type": "integer",
+          "title": "Expected life time of a leaf (in days)",
+          "default": 75,
+          "minimum": 1
+        }
+      },
+      "required": [
+        "timeZone",
+        "dateGs31",
+        "date3rdUpperLeafEmerging",
+        "date2ndUpperLeafEmerging",
+        "dateUpperLeafEmerging",
+        "dateGs75",
+        "sprayingProtectionDays",
+        "thresholdRelativeHumidity",
+        "thresholdLeafWetness",
+        "thresholdPrecipitation",
+        "slidingHoursPast",
+        "slidingHoursAhead",
+        "thresholdHumidPeriodHours",
+        "leafLifeTime"
+      ]
+    },
+    {
+      "title": "PSILRO",
+      "description": "A description of PSILRO",
+      "type": "object",
+      "properties": {
+        "timeZone": {
+          "type": "string",
+          "title": "Time zone (e.g. Europe/Oslo)",
+          "default": "Europe/Oslo"
+        },
+        "startDateCalculation": {
+          "type": "string",
+          "format": "date",
+          "title": "Start date of calculation (YYYY-MM-DD)"
+        },
+        "endDateCalculation": {
+          "type": "string",
+          "format": "date",
+          "title": "End date of calculation (YYYY-MM-DD)"
+        },
+        "fieldObservations": {
+          "title": "Field observations",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/fieldobservation"
+          }
+        },
+        "fieldObservationQuantifications": {
+          "title": "Field observation quantifications",
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/fieldObs_PSILRO"
+              }
+            ]
+          }
+        }
+      },
+      "required": [
+        "timeZone",
+        "startDateCalculation",
+        "endDateCalculation"
+      ],
+      "definitions": {
+        "fieldObs_PSILRO": {
+          "title": "Psila rosae quantification",
+          "properties": {
+            "trapCountCropEdge": {
+              "title": "Insect trap count at the edge of the field",
+              "type": "integer"
+            },
+            "trapCountCropInside": {
+              "title": "Insect trap count inside the field",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "trapCountCropEdge",
+            "trapCountCropInside"
+          ]
+        },
+        "fieldobservation": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "title": "Field observation",
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Version 0.1. The schema describes the field observation format for the IPM Decisions platform. See an example here: TODO",
+          "$id": "https://ipmdecisions.nibio.no/api/dss/rest/schema/fieldobservation",
+          "properties": {
+            "location": {
+              "title": "Location  of the observation. In GeoJson format.",
+              "$ref": "https://ipmdecisions.nibio.no/schemas/geojson.json"
+            },
+            "time": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The timestamp of the field observation. Format: \"yyyy-MM-dd'T'HH:mm:ssXXX\", e.g. 2020-04-09T18:00:00+02:00",
+              "title": "Time (yyyy-MM-dd'T'HH:mm:ssXXX)"
+            },
+            "pestEPPOCode": {
+              "type": "string",
+              "description": "The EPPO code for the observed pest. See https://www.eppo.int/RESOURCES/eppo_databases/eppo_codes",
+              "title": "Pest"
+            },
+            "cropEPPOCode": {
+              "type": "string",
+              "description": "The EPPO code for the crop in which the pest was observed. See https://www.eppo.int/RESOURCES/eppo_databases/eppo_codes",
+              "title": "Pest"
+            }
+          },
+          "required": [
+            "location",
+            "time",
+            "pestEPPOCode",
+            "cropEPPOCode"
+          ]
+        }
+      }
+    }
   ]
 }

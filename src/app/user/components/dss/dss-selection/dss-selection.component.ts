@@ -1,72 +1,76 @@
-import { environment } from '@src/environments/environment';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup
-} from "@angular/forms";
+import { FormGroup } from "@angular/forms";
 import { DssSelectionService } from './dss-selection.service';
 import { Subscription } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
-import { DssSelection } from './dss-selection.model';
-
-declare var JSONEditor;
-
+import { DssFormData, DssJSONSchema } from './dss-selection.model';
+import { JsonEditorService } from './json-editor/json-editor.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: "app-dss-selection",
   templateUrl: "./dss-selection.component.html",
   styleUrls: ["./dss-selection.component.css"],
 })
 export class DssSelectionComponent implements OnInit, OnDestroy {
-  
-  searchForm: FormGroup;
+  dssForm: FormGroup;
+  editor: any;
+  editorValid = false;
+  dssModel: DssJSONSchema;
+  selectedDss: any;
+  model: any = {};
+  selectedCrop = '';
+  selectedPest = '';
   crops: { value: string; label: string }[] = [];
   pests: { value: string; label: string }[] = [];
-  models;
-  selectedModal = new FormControl('');
-  editor;
-  editorActivated = false;
-  $subscriptionS1: Subscription;
+  newState = false;
+  selectedOption = -1;
+  models: DssJSONSchema[];
+  
+  $subscriptionStartup: Subscription;
+  $subscriptionEditor: Subscription;
   $subscriptionS2: Subscription;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private http: HttpClient,
-    private dssSelectionService: DssSelectionService
+    private dssSelectionService: DssSelectionService,
+    private jsonEditorService: JsonEditorService,
+    private toastrService: ToastrService
   ) { }
-
-
+    
   ngOnInit() {
-    this.searchForm = this.formBuilder.group({
-      cropSearch: [''],
-      pestSearch: ['']
-    })
-    this.$subscriptionS1 = this.dssSelectionService.getCrops()
+    this.$subscriptionStartup = this.dssSelectionService.getCrops()
       .pipe(
         mergeMap( (response: HttpResponse<string[]>) => {
           this.crops = response.body.map((item) => ({ value: item, label: item }));
           return this.dssSelectionService.getPests();
         })
-      ).subscribe(
-        (response: HttpResponse<string[]>) => {
+      )
+      .pipe(
+        mergeMap( (response: HttpResponse<string[]>) => {
           this.pests = response.body.map((item) => ({ value: item, label: item }))
-        }
+          return this.dssSelectionService.getFakeModels(this.selectedCrop);
+        })
+      ).subscribe(
+        (response: HttpResponse<DssJSONSchema[]>) => {
+          this.models = response.body;
+        }, () => this.toastrService.error("Unable to load initial data","Loading Error")
       );
   }
 
   ngOnDestroy() {
-    if(this.$subscriptionS1){
-      this.$subscriptionS1.unsubscribe();
+    if(this.$subscriptionStartup){
+      this.$subscriptionStartup.unsubscribe();
     }
     if(this.$subscriptionS2){
       this.$subscriptionS2.unsubscribe();
     }
+    if(this.$subscriptionEditor){
+      this.$subscriptionEditor.unsubscribe();
+    }
   }
 
-  updateModels() {
-    var { cropSearch, pestSearch } = this.searchForm.value;
-    this.purgeEditor();
+  searchByCropAndPest() {
+    /*let { cropSearch, pestSearch } = this.searchForm.value;
     this.$subscriptionS2 = this.dssSelectionService.getModels(cropSearch,pestSearch)
       .subscribe(
         (response: HttpResponse<DssSelection[]>) => {
@@ -76,45 +80,69 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
           this.models = null;
           alert("We couldn't find any models matching the given criteria")
         }
+      );*/
+    this.$subscriptionS2 = this.dssSelectionService.getFakeModels()
+      .subscribe(
+        (response: HttpResponse<DssJSONSchema[]>) => {
+          this.models = response.body;
+        },
+        (err) => {
+          this.models = null;
+          alert("We couldn't find any models matching the given criteria")
+        }
       )
   }
 
-  updateForm() {
-    this.purgeEditor();
-    this.editorActivated = true;
-    setTimeout(() => {
-      let modelIndex = this.selectedModal.value;
-      let editorHolder = document.getElementById('editor_holder');
-      let schema = JSON.parse(this.models[modelIndex].execution.input_schema);
-      this.editor = new JSONEditor(editorHolder, {
-        schema,
-        ajax: true,
-        theme: 'bootstrap4'
-      });
-    }, 0);
-  }
-
-  purgeEditor() {
-    if (this.editor instanceof JSONEditor) {
-      this.editor.destroy();
-      this.editorActivated = false;
-    }
-  }
-
   submit() {
-    let editor = this.editor;
-    let modelIndex = this.selectedModal.value;
-    let currentModel = this.models[modelIndex];
-    let { endpoint, form_method } = currentModel.execution;
-    if (editor.validate().length == 0) {
-      if (form_method == 'post') {
-        this.http
-          .post(endpoint, this.editor.getValue())
-          .subscribe((x) => { alert(x) })
+    if(this.editor && this.editorValid) {
+      const formData: DssFormData = {
+        'schema': this.dssModel,
+        'model': this.jsonEditorService.getValues(this.editor) 
       }
-    } else {
-      alert("Error");
+      this.dssSelectionService.submitDss(formData).subscribe(
+        () => this.toastrService.success("Operation Success","DSS Submitted with data"),
+        () => this.toastrService.error("Operation Failed","No DSS Submitted, an error occurs"),
+      )
     }
-  }  
+  } 
+
+  selectChanged(event: { target: HTMLInputElement }, type:string){
+    this.newState = false;
+    this.selectedOption = -1;
+    if(type === 'crop'){
+      this.selectedCrop = event.target.value;
+    } else if(type === 'pest'){
+      this.selectedPest = event.target.value;
+    }
+    if (this.editor) {
+      this.jsonEditorService.reset(this.editor);
+    }
+    this.dssSelectionService.getFakeModels(this.selectedCrop, this.selectedPest)
+      .subscribe(
+        (response: HttpResponse<DssJSONSchema[]>) => {
+          this.models = response.body;
+        }
+      );
+  }
+
+  selectDssChanged($event: { target: HTMLInputElement }){
+    this.newState = true;
+    this.selectedOption = parseInt($event.target.value);
+    this.dssModel = this.models[$event.target.value];
+    if (this.editor) {
+      this.jsonEditorService.reset(this.editor);
+    }
+    if (this.$subscriptionEditor) {
+      this.$subscriptionEditor.unsubscribe();
+    }
+    this.editor = this.jsonEditorService.createJsonEditor('json-editor-form', this.dssModel);
+    this.$subscriptionEditor = this.jsonEditorService.listenChanges(this.editor).subscribe(() => this.editorChanges());
+  }
+
+  editorChanges(){
+    if(this.editor){
+      this.editorValid = this.jsonEditorService.isValid(this.editor);
+    }
+  }
 
 }

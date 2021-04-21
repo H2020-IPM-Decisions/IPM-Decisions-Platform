@@ -20,7 +20,7 @@
     "@angular/platform-browser": "~8.2.5",
     "@angular/platform-browser-dynamic": "~8.2.5",
     "@angular/router": "~8.2.5",
-    "@json-editor/json-editor": "^2.5.1",
+    "@json-editor/json-editor": "^2.5.3",
     "@types/bcryptjs": "^2.4.2",
     "@types/chart.js": "^2.9.24",
     "@types/jwt-decode": "^2.2.1",

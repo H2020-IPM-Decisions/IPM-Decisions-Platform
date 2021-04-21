@@ -3,7 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from "@src/environments/environment";
-import { DssSelection } from './dss-selection.model';
+import { DssFormData, DssJSONSchema, DssSelection } from './dss-selection.model';
 
 type CropListEntityResponseType = HttpResponse<string[]>;
 type PestListEntityResponseType = HttpResponse<string[]>;
@@ -31,6 +31,16 @@ export class DssSelectionService {
         requestUrl += `/pest/${pest}`;
     }
     return this.http.get<DssSelection[]>(requestUrl, { observe: 'response' });
+  }
+
+  getFakeModels(crop?:string, pest?:string): Observable<HttpResponse<DssJSONSchema[]>> {
+    let requestUrl = `http://localhost:8888/dss`;
+    return this.http.get<DssJSONSchema[]>(requestUrl, { observe: 'response' });
+  }
+
+  submitDss(data: DssFormData): Observable<HttpResponse<DssFormData>> {
+    let requestUrl = `http://localhost:8888/dssdata`;
+    return this.http.post<DssFormData>(requestUrl, data, { observe: 'response' });
   }
 
 }

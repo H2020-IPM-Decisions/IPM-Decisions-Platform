@@ -77,7 +77,6 @@ import { UserSxComponent } from './user/components/user-sx/user-sx.component';
 import { FarmersAdvisorsArticleComponent } from './farmers-advisors-article/farmers-advisors-article.component';
 import { ResearchersArticleComponent } from './researchers-article/researchers-article.component';
 import { DevelopersArticleComponent } from './developers-article/developers-article.component';
-import { DssSelectionComponent } from '@app/user/components/dss/dss-selection/dss-selection.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from "ngx-bootstrap/popover";
 import { PaginationModule } from 'ngx-bootstrap/pagination';
@@ -165,7 +164,6 @@ import { FieldEditComponent } from './user/components/field/field-edit/field-edi
     FarmersAdvisorsArticleComponent,
     ResearchersArticleComponent,
     DevelopersArticleComponent,
-    DssSelectionComponent,
     FarmShareComponent,
     JsonFormDemoComponent,
     SettingsComponent,

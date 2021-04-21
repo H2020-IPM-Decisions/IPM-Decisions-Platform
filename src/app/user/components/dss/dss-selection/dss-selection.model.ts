@@ -80,3 +80,19 @@ export interface DssSelection {
     languages: string[];
     organization: Organization;
 }
+
+
+export interface DssJSONSchema {
+    title?: string;
+    description?: string;
+    type?: string;
+    properties?: any;
+    required?: string[];
+    definitions?: any;
+}
+
+export interface DssFormData {
+    id?:any;
+    schema: DssJSONSchema;
+    model: any;
+}

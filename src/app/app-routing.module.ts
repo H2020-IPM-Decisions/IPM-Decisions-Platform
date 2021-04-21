@@ -58,7 +58,6 @@ import { TabsComponent } from "./admin/assets/tabs.component";
 import { ModalComponent } from "./admin/assets/modal.component";
 import { AdminFooterComponent } from "./admin/admin-footer/admin-footer.component";
 import { LoginComponent } from "./core/auth/pages/login/login.component";
-import { DssSelectionComponent } from "@app/user/components/dss/dss-selection/dss-selection.component";
 import { SettingsComponent } from './user/components/settings/settings.component';
 import { UserComponent } from './user/user.component';
 
@@ -233,10 +232,8 @@ const appRoutes: Routes = [
         loadChildren: () => import('./user/components/farm/farm.module').then(m => m.FarmModule)
       },
       {
-        path: "dss/selection",
-        component: DssSelectionComponent,
-        canActivate: [AuthGuard],
-        data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+        path: 'dss',
+        loadChildren: () => import('./user/components/dss/dss-selection/dss-selection.module').then(m => m.DssSelectionModule)
       }
     ]
   },
