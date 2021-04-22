@@ -38,7 +38,7 @@ export class FarmService {
     });
   }
 
-  public getFarms(params?: string[]): Observable<FarmResponseModel> {
+  public getFarms(): Observable<FarmResponseModel> {
     return this._http
       .get(`${this.apiUrl}/api/upr/farms`, {
         headers: {

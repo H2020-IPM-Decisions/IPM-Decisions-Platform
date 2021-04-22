@@ -17,42 +17,42 @@
       <div class="col-lg-12 col-md-10 ml-auto mr-auto">
         <div class="container">
           <fieldset class="border p-3">
-            <legend class="w-auto px-1 text-muted"><span class="text-primary">Step 1: Search DSS using crop and pest combinations</span></legend>
+            <legend class="w-auto px-1 text-muted"><span class="text-primary">Step 1: Search DSS using farm's crop and pest combinations</span></legend>
             <div class="form-inline row">
               <div class="form-group col-md-4">
-                <label for="crops" class="col-md-2 col-form-label">Crop</label>
-                <select id="crops" class="col-md-10 form-control" (change)="selectChanged($event,'crop')">
-                  <option value="" selected>All</option>
-                  <ng-template ngFor let-crop [ngForOf]="crops">
-                    <option value="{{crop.value}}">{{crop.label}}</option>
-                  </ng-template>
+                <label for="crops" class="col-md-2 col-form-label">Farm</label>
+                <select id="crops" class="col-md-10 form-control" (change)="farmSelectChanged($event)">
+                  <option value="" disabled [selected]='!farmSelectIsNewState'>Select a Farm</option>
+                  <option *ngFor="let farm of farms;let i = index" [value]="i" [selected]="i == farmSelectedOption">{{farm.name}}</option>
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="pests" class="col-md-2 col-form-label">Pest</label>
-                <select id="pests" class="col-md-10 form-control" (change)="selectChanged($event,'pest')">
-                  <option value="" selected>All</option>
-                  <ng-template ngFor let-pest [ngForOf]="pests">
-                    <option value="{{pest.value}}">{{pest.label}}</option>
-                  </ng-template>
+                <label for="pests" class="col-md-2 col-form-label">Fields</label>
+                <select id="pests" class="col-md-10 form-control" (change)="fieldSelectChanged($event)">
+                  <option value="" disabled [selected]='!fieldSelectIsNewState'>Select a Crop / Pest</option>
+                  <option *ngFor="let field of fields;let i = index" [value]="i" [selected]="i == fieldSelectedOption">
+                    {{field.fieldCropDto.cropEppoCode}} - {{field.fieldCropDto.fieldCropPestDto.value[0].pestEppoCode}}
+                  </option>
                 </select>
               </div>
               <div class="form-group col-md-4">
                 <label for="dsss" class="col-md-2 col-form-label">DSS</label>
-                <select id="dsss" class="col-md-10 form-control" (change)="selectDssChanged($event)">
-                  <option value="" disabled [selected]='!newState'>Select a DSS</option>
-                  <option *ngFor="let dssModel of models;let i = index" [value]="i" [selected]="i == selectedOption">{{dssModel.title}}</option>
+                <select id="dsss" class="col-md-10 form-control" (change)="dssSelectChanged($event)">
+                  <option value="" disabled [selected]='!dssSelectIsNewState'>Select a DSS</option>
+                  <option *ngFor="let dssModel of dssList;let i = index" [value]="i" [selected]="i == dssSelectedOption">
+                    {{dssModel.name}}
+                  </option>
                 </select>
               </div>
             </div>
           </fieldset>
           
 
-          <fieldset class="border p-3 col-12 my-4" [ngStyle]="{'display':selectedOption>=0 ? 'block' : 'none' }">
+          <fieldset class="border p-3 col-12 my-4" [ngStyle]="{'display':dssSelectedOption>=0 ? 'block' : 'none' }">
             <legend class="w-auto px-1 text-muted"><span class="text-success">Step 2: Fill form inputs</span></legend>
             <div id="json-editor-form"></div>
             <div class="box-block">
-              <div class="btn-group text-right" *ngIf="selectedOption>=0">
+              <div class="btn-group text-right" *ngIf="dssSelectedOption>=0">
                   <button type="submit" class="btn btn-md btn-primary" (click)="submit()" [disabled]="!editorValid">
                       <i class="fas fa-save"></i>&nbsp;
                       Save

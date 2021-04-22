@@ -3,10 +3,14 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { DssSelectionService } from './dss-selection.service';
 import { Subscription } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
-import { DssFormData, DssJSONSchema } from './dss-selection.model';
+import { FarmResponseModel } from "@app/shared/models/farm-response.model";
+import { DssFormData, DssJSONSchema, DssModel, DssSelection } from './dss-selection.model';
 import { JsonEditorService } from './json-editor/json-editor.service';
 import { ToastrService } from 'ngx-toastr';
+import { Farm } from '@app/shared/models/farm.model';
+import { FarmService } from '@app/shared/services/upr/farm.service';
+import { Field } from '@app/shared/models/field.model';
+import { FieldService } from '@app/shared/services/upr/field.service';
 @Component({
   selector: "app-dss-selection",
   templateUrl: "./dss-selection.component.html",
@@ -17,126 +21,127 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
   editor: any;
   editorValid = false;
   dssModel: DssJSONSchema;
-  selectedDss: any;
   model: any = {};
+
   selectedCrop = '';
   selectedPest = '';
-  crops: { value: string; label: string }[] = [];
-  pests: { value: string; label: string }[] = [];
-  newState = false;
-  selectedOption = -1;
-  models: DssJSONSchema[];
+  
+  farmSelectIsNewState = false;
+  farmSelectedOption = -1;
+  farms: Farm[] = [];
+  selectedFarm: Farm;
+  fieldSelectIsNewState = false;
+  fieldSelectedOption = -1;
+  fields: Field[] = [];
+  selectedField: Field;
+  dssSelectIsNewState = false;
+  dssSelectedOption = -1;
+  dssSelection: DssSelection;
+  dssList: DssModel[];
+  dssSelected: DssModel;
   
   $subscriptionStartup: Subscription;
+  $subscriptionSubmit: Subscription;
+  $subscriptionFields: Subscription;
+  $subscriptionDssList: Subscription;
   $subscriptionEditor: Subscription;
-  $subscriptionS2: Subscription;
+  $subscriptionDssSelection: Subscription;
 
   constructor(
     private dssSelectionService: DssSelectionService,
     private jsonEditorService: JsonEditorService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private farmService: FarmService,
+    private fieldService: FieldService
   ) { }
     
   ngOnInit() {
-    this.$subscriptionStartup = this.dssSelectionService.getCrops()
-      .pipe(
-        mergeMap( (response: HttpResponse<string[]>) => {
-          this.crops = response.body.map((item) => ({ value: item, label: item }));
-          return this.dssSelectionService.getPests();
-        })
-      )
-      .pipe(
-        mergeMap( (response: HttpResponse<string[]>) => {
-          this.pests = response.body.map((item) => ({ value: item, label: item }))
-          return this.dssSelectionService.getFakeModels(this.selectedCrop);
-        })
-      ).subscribe(
-        (response: HttpResponse<DssJSONSchema[]>) => {
-          this.models = response.body;
-        }, () => this.toastrService.error("Unable to load initial data","Loading Error")
-      );
+    this.$subscriptionStartup = this.farmService.getFarms().subscribe((response: FarmResponseModel) => {
+      if (response && response.value) {
+        this.farms = response.value;
+      }
+    });
   }
 
   ngOnDestroy() {
     if(this.$subscriptionStartup){
       this.$subscriptionStartup.unsubscribe();
     }
-    if(this.$subscriptionS2){
-      this.$subscriptionS2.unsubscribe();
+    if(this.$subscriptionSubmit){
+      this.$subscriptionSubmit.unsubscribe();
+    }
+    if(this.$subscriptionFields){
+      this.$subscriptionFields.unsubscribe();
+    }
+    if(this.$subscriptionDssList){
+      this.$subscriptionDssList.unsubscribe();
     }
     if(this.$subscriptionEditor){
       this.$subscriptionEditor.unsubscribe();
     }
+    if(this.$subscriptionDssSelection){
+      this.$subscriptionDssSelection.unsubscribe();
+    }
   }
 
-  searchByCropAndPest() {
-    /*let { cropSearch, pestSearch } = this.searchForm.value;
-    this.$subscriptionS2 = this.dssSelectionService.getModels(cropSearch,pestSearch)
+  farmSelectChanged(event: { target: HTMLInputElement }){
+    // reset fields
+    this.fieldSelectIsNewState = false;
+    this.fieldSelectedOption = -1;
+    this.fields = [];
+    // reset dss
+    this.dssSelectIsNewState = false;
+    this.dssSelectedOption = -1;
+    this.dssList = [];
+    // set farm values
+    this.farmSelectIsNewState = true;
+    this.farmSelectedOption = parseInt(event.target.value);
+    this.selectedFarm = this.farms[this.farmSelectedOption];
+    // load remote field fetching by farm id
+    this.$subscriptionFields = this.fieldService.getFields(this.selectedFarm.id).subscribe(
+      (data: {links:any,value:Field[]}) => {
+        this.fields = data.value;
+      });
+  }
+
+  fieldSelectChanged(event: { target: HTMLInputElement }){
+    // reset dss
+    this.dssSelectIsNewState = false;
+    this.dssSelectedOption = -1;
+    this.dssList = [];
+    this.dssSelection = {};
+    // set field values
+    this.fieldSelectIsNewState = true;
+    this.fieldSelectedOption = parseInt(event.target.value);
+    this.selectedField = this.fields[this.fieldSelectedOption];
+    // load remote DSS fetching by crop and pest
+    this.selectedCrop = this.selectedField.fieldCropDto.cropEppoCode;
+    this.selectedPest = this.selectedField.fieldCropDto.fieldCropPestDto.value[0].pestEppoCode;
+    // Fetch DSS by farm's crop and pest
+    this.$subscriptionDssList = this.dssSelectionService.getDssByCropAndPest(this.selectedCrop,this.selectedPest)
       .subscribe(
         (response: HttpResponse<DssSelection[]>) => {
-          this.models = response.body[0].models;
-        },
-        (err) => {
-          this.models = null;
-          alert("We couldn't find any models matching the given criteria")
-        }
-      );*/
-    this.$subscriptionS2 = this.dssSelectionService.getFakeModels()
-      .subscribe(
-        (response: HttpResponse<DssJSONSchema[]>) => {
-          this.models = response.body;
-        },
-        (err) => {
-          this.models = null;
-          alert("We couldn't find any models matching the given criteria")
-        }
-      )
-  }
-
-  submit() {
-    if(this.editor && this.editorValid) {
-      const formData: DssFormData = {
-        'schema': this.dssModel,
-        'model': this.jsonEditorService.getValues(this.editor) 
-      }
-      this.dssSelectionService.submitDss(formData).subscribe(
-        () => this.toastrService.success("Operation Success","DSS Submitted with data"),
-        () => this.toastrService.error("Operation Failed","No DSS Submitted, an error occurs"),
-      )
-    }
-  } 
-
-  selectChanged(event: { target: HTMLInputElement }, type:string){
-    this.newState = false;
-    this.selectedOption = -1;
-    if(type === 'crop'){
-      this.selectedCrop = event.target.value;
-    } else if(type === 'pest'){
-      this.selectedPest = event.target.value;
-    }
-    if (this.editor) {
-      this.jsonEditorService.reset(this.editor);
-    }
-    this.dssSelectionService.getFakeModels(this.selectedCrop, this.selectedPest)
-      .subscribe(
-        (response: HttpResponse<DssJSONSchema[]>) => {
-          this.models = response.body;
+          this.dssSelection = response.body[0];
+          this.dssList = this.dssSelection.models;
         }
       );
   }
 
-  selectDssChanged($event: { target: HTMLInputElement }){
-    this.newState = true;
-    this.selectedOption = parseInt($event.target.value);
-    this.dssModel = this.models[$event.target.value];
-    if (this.editor) {
-      this.jsonEditorService.reset(this.editor);
-    }
-    if (this.$subscriptionEditor) {
-      this.$subscriptionEditor.unsubscribe();
-    }
-    this.editor = this.jsonEditorService.createJsonEditor('json-editor-form', this.dssModel);
-    this.$subscriptionEditor = this.jsonEditorService.listenChanges(this.editor).subscribe(() => this.editorChanges());
+  dssSelectChanged($event: { target: HTMLInputElement }){
+    this.dssSelectIsNewState = true;
+    this.dssSelectedOption = parseInt($event.target.value);
+    // Take JSON Schema remotely
+    this.dssModel = this.dssList[$event.target.value];
+    this.$subscriptionDssSelection = this.dssSelectionService.getSchemaByDssAndModel(this.dssSelection, this.dssModel).subscribe( (data) => {
+      if (this.editor) {
+        this.jsonEditorService.reset(this.editor);
+      }
+      if (this.$subscriptionEditor) {
+        this.$subscriptionEditor.unsubscribe();
+      }
+      this.editor = this.jsonEditorService.createJsonEditor('json-editor-form', data.body);
+      this.$subscriptionEditor = this.jsonEditorService.listenChanges(this.editor).subscribe(() => this.editorChanges());
+    })
   }
 
   editorChanges(){
@@ -144,5 +149,22 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
       this.editorValid = this.jsonEditorService.isValid(this.editor);
     }
   }
+
+  submit() {
+    if(this.editor && this.editorValid) {
+      const formData: DssFormData = this.dssSelectionService.getFormData(
+                                      this.selectedField,
+                                      this.selectedCrop,
+                                      this.selectedPest,
+                                      this.dssSelection,
+                                      this.dssModel,
+                                      this.jsonEditorService.getValues(this.editor)
+                                    );
+      this.$subscriptionSubmit = this.dssSelectionService.submitDss(formData, this.selectedFarm).subscribe(
+        () => this.toastrService.success("Operation Success","DSS Submitted with data"),
+        () => this.toastrService.error("Operation Failed","No DSS Submitted, an error occurs"),
+      )
+    }
+  } 
 
 }

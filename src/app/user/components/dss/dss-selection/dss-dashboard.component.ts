@@ -9,6 +9,10 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+
+    // CALL  api/dss  fetch user's DSS list
+    // detail /api/dss/{id}
+
   }
 
   ngOnDestroy() {

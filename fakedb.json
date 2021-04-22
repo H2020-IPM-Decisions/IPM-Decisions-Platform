@@ -17,118 +17,37 @@
   ],
   "dssdata": [
     {
-      "schema": {
-        "title": "PSILARTEMP",
-        "description": "A description of PSILARTEMP",
-        "type": "object",
-        "properties": {
-          "timeZone": {
-            "type": "string",
-            "title": "Time zone (e.g. Europe/Oslo)",
-            "default": "Europe/Oslo"
-          },
-          "timeStart": {
-            "type": "string",
-            "format": "date",
-            "title": "Start date of calculation (YYYY-MM-DD)",
-            "description": "Start date of calculation (YYYY-MM-DD)",
-            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
-          },
-          "timeEnd": {
-            "type": "string",
-            "format": "date",
-            "title": "End date of calculation (YYYY-MM-DD)",
-            "description": "End date of calculation (YYYY-MM-DD)"
-          }
-        },
-        "required": [
-          "timeZone",
-          "timeStart",
-          "timeEnd"
-        ]
+      "fieldId": "26e79097-0b75-4969-aa5e-671b0caf4a3d",
+      "fieldName": "none",
+      "dssId": "dk.seges",
+      "DssModelId": "SEPTORIAHU",
+      "DssVersion": "1.0",
+      "DssExecutionType": "ONTHEFLY",
+      "CropPest": {
+        "cropEppoCode": "3WHEC",
+        "pestEppoCode": "SEPTTR"
       },
-      "model": {
-        "timeZone": "Europe/Oslo",
-        "timeStart": "2021-04-01",
-        "timeEnd": "2021-04-21"
+      "DssParameters": {
+        "configParameters": {
+          "timeZone": "Europe/Oslo",
+          "dateGs31": "",
+          "date3rdUpperLeafEmerging": "",
+          "date2ndUpperLeafEmerging": "",
+          "dateUpperLeafEmerging": "",
+          "dateGs75": "",
+          "dateSpraying1": "",
+          "dateSpraying2": "",
+          "sprayingProtectionDays": 10,
+          "thresholdRelativeHumidity": 85,
+          "thresholdLeafWetness": 30,
+          "thresholdPrecipitation": 0.2,
+          "slidingHoursPast": 36,
+          "slidingHoursAhead": 36,
+          "thresholdHumidPeriodHours": 19,
+          "leafLifeTime": 75
+        }
       },
       "id": 1
-    },
-    {
-      "schema": {
-        "title": "PSILARTEMP",
-        "description": "A description of PSILARTEMP",
-        "type": "object",
-        "properties": {
-          "timeZone": {
-            "type": "string",
-            "title": "Time zone (e.g. Europe/Oslo)",
-            "default": "Europe/Oslo"
-          },
-          "timeStart": {
-            "type": "string",
-            "format": "date",
-            "title": "Start date of calculation (YYYY-MM-DD)",
-            "description": "Start date of calculation (YYYY-MM-DD)",
-            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
-          },
-          "timeEnd": {
-            "type": "string",
-            "format": "date",
-            "title": "End date of calculation (YYYY-MM-DD)",
-            "description": "End date of calculation (YYYY-MM-DD)"
-          }
-        },
-        "required": [
-          "timeZone",
-          "timeStart",
-          "timeEnd"
-        ]
-      },
-      "model": {
-        "timeZone": "Europe/Oslo",
-        "timeStart": "2021-04-01",
-        "timeEnd": "2021-04-21"
-      },
-      "id": 2
-    },
-    {
-      "schema": {
-        "title": "PSILARTEMP",
-        "description": "A description of PSILARTEMP",
-        "type": "object",
-        "properties": {
-          "timeZone": {
-            "type": "string",
-            "title": "Time zone (e.g. Europe/Oslo)",
-            "default": "Europe/Oslo"
-          },
-          "timeStart": {
-            "type": "string",
-            "format": "date",
-            "title": "Start date of calculation (YYYY-MM-DD)",
-            "description": "Start date of calculation (YYYY-MM-DD)",
-            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
-          },
-          "timeEnd": {
-            "type": "string",
-            "format": "date",
-            "title": "End date of calculation (YYYY-MM-DD)",
-            "description": "End date of calculation (YYYY-MM-DD)"
-          }
-        },
-        "required": [
-          "timeZone",
-          "timeStart",
-          "timeEnd"
-        ]
-      },
-      "model": {
-        "timeZone": "Europe/Oslo",
-        "timeStart": "2021-04-01",
-        "timeEnd": "2021-04-21"
-      },
-      "id": 3
     }
   ],
   "dss": [
@@ -137,29 +56,26 @@
       "description": "A description of PSILARTEMP",
       "type": "object",
       "properties": {
-        "timeZone": {
+        "configParameters.timeZone": {
           "type": "string",
           "title": "Time zone (e.g. Europe/Oslo)",
           "default": "Europe/Oslo"
         },
-        "timeStart": {
+        "configParameters.timeStart": {
           "type": "string",
-          "format": "date",
-          "title": "Start date of calculation (YYYY-MM-DD)",
-          "description": "Start date of calculation (YYYY-MM-DD)",
-          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          "format": "hidden",
+          "title": "Start date of calculation (YYYY-MM-DD)"
         },
-        "timeEnd": {
+        "configParameters.timeEnd": {
           "type": "string",
           "format": "date",
-          "title": "End date of calculation (YYYY-MM-DD)",
-          "description": "End date of calculation (YYYY-MM-DD)"
+          "title": "End date of calculation (YYYY-MM-DD)"
         }
       },
       "required": [
-        "timeZone",
-        "timeStart",
-        "timeEnd"
+        "configParameters.timeZone",
+        "configParameters.timeStart",
+        "configParameters.timeEnd"
       ]
     },
     {
