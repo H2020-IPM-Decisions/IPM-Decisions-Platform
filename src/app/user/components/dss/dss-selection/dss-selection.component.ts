@@ -25,19 +25,24 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
 
   selectedCrop = '';
   selectedPest = '';
+
+  remoteCallLoading = false;
   
   farmSelectIsNewState = false;
   farmSelectedOption = -1;
   farms: Farm[] = [];
+  farmsLoaded = false;
   selectedFarm: Farm;
   fieldSelectIsNewState = false;
   fieldSelectedOption = -1;
   fields: Field[] = [];
+  fieldsLoaded = false;
   selectedField: Field;
   dssSelectIsNewState = false;
   dssSelectedOption = -1;
   dssSelection: DssSelection;
   dssList: DssModel[];
+  dssLoaded = false;
   dssSelected: DssModel;
   
   $subscriptionStartup: Subscription;
@@ -56,11 +61,14 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
   ) { }
     
   ngOnInit() {
+    this.remoteCallLoading = true;
     this.$subscriptionStartup = this.farmService.getFarms().subscribe((response: FarmResponseModel) => {
+      this.farmsLoaded = true;
+      this.remoteCallLoading = false;
       if (response && response.value) {
         this.farms = response.value;
       }
-    });
+    },()=>this.remoteCallLoading = false);
   }
 
   ngOnDestroy() {
@@ -89,18 +97,29 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
     this.fieldSelectIsNewState = false;
     this.fieldSelectedOption = -1;
     this.fields = [];
+    this.fieldsLoaded = false;
     // reset dss
     this.dssSelectIsNewState = false;
     this.dssSelectedOption = -1;
     this.dssList = [];
+    this.dssLoaded = false;
     // set farm values
     this.farmSelectIsNewState = true;
     this.farmSelectedOption = parseInt(event.target.value);
     this.selectedFarm = this.farms[this.farmSelectedOption];
+    // Enable spinner
+    this.remoteCallLoading = true;
     // load remote field fetching by farm id
     this.$subscriptionFields = this.fieldService.getFields(this.selectedFarm.id).subscribe(
       (data: {links:any,value:Field[]}) => {
+        this.remoteCallLoading = false;
         this.fields = data.value;
+        this.fieldsLoaded = true;
+      },
+      ()=>{
+        // There was an error
+        this.fieldsLoaded = true;
+        this.remoteCallLoading = false;
       });
   }
 
@@ -110,6 +129,7 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
     this.dssSelectedOption = -1;
     this.dssList = [];
     this.dssSelection = {};
+    this.dssLoaded = false;
     // set field values
     this.fieldSelectIsNewState = true;
     this.fieldSelectedOption = parseInt(event.target.value);
@@ -117,12 +137,21 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
     // load remote DSS fetching by crop and pest
     this.selectedCrop = this.selectedField.fieldCropDto.cropEppoCode;
     this.selectedPest = this.selectedField.fieldCropDto.fieldCropPestDto.value[0].pestEppoCode;
+    // Enable spinner
+    this.remoteCallLoading = true;
     // Fetch DSS by farm's crop and pest
     this.$subscriptionDssList = this.dssSelectionService.getDssByCropAndPest(this.selectedCrop,this.selectedPest)
       .subscribe(
         (response: HttpResponse<DssSelection[]>) => {
-          this.dssSelection = response.body[0];
-          this.dssList = this.dssSelection.models;
+          if(response.body && response.body.length > 0 && response.body[0] && response.body[0].models){
+            this.dssSelection = response.body[0];
+            this.dssList = this.dssSelection.models;
+          }
+          this.dssLoaded = true;
+          this.remoteCallLoading = false;
+        },
+        ()=>{
+          this.remoteCallLoading = false;
         }
       );
   }
@@ -130,6 +159,8 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
   dssSelectChanged($event: { target: HTMLInputElement }){
     this.dssSelectIsNewState = true;
     this.dssSelectedOption = parseInt($event.target.value);
+    // Enable spinner
+    this.remoteCallLoading = true;
     // Take JSON Schema remotely
     this.dssModel = this.dssList[$event.target.value];
     this.$subscriptionDssSelection = this.dssSelectionService.getSchemaByDssAndModel(this.dssSelection, this.dssModel).subscribe( (data) => {
@@ -139,8 +170,11 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
       if (this.$subscriptionEditor) {
         this.$subscriptionEditor.unsubscribe();
       }
+      this.remoteCallLoading = false;
       this.editor = this.jsonEditorService.createJsonEditor('json-editor-form', data.body);
       this.$subscriptionEditor = this.jsonEditorService.listenChanges(this.editor).subscribe(() => this.editorChanges());
+    },()=>{
+      this.remoteCallLoading = false;
     })
   }
 
@@ -166,5 +200,22 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
       )
     }
   } 
+
+  reset():void {
+    // reset fields
+    this.fieldSelectIsNewState = false;
+    this.fieldSelectedOption = -1;
+    this.fields = [];
+    this.fieldsLoaded = false;
+    // reset dss
+    this.dssSelectIsNewState = false;
+    this.dssSelectedOption = -1;
+    this.dssList = [];
+    this.dssLoaded = false;
+    // set farm none
+    this.farmSelectIsNewState = false;
+    this.farmSelectedOption = -1;
+    this.selectedFarm = null;
+  }
 
 }

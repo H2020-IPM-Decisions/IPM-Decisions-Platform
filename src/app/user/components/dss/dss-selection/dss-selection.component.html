@@ -18,6 +18,12 @@
         <div class="container">
           <fieldset class="border p-3">
             <legend class="w-auto px-1 text-muted"><span class="text-primary">Step 1: Search DSS using farm's crop and pest combinations</span></legend>
+            <div class="row pull-right pl-4 pr-4">
+              <button type="button" class="pull-right btn btn-md btn-outline-info" (click)="reset()">
+                <i class="fas fa-sync"></i>&nbsp;
+                Reset
+              </button>
+            </div>
             <div class="form-inline row">
               <div class="form-group col-md-4">
                 <label for="crops" class="col-md-2 col-form-label">Farm</label>
@@ -43,6 +49,32 @@
                     {{dssModel.name}}
                   </option>
                 </select>
+              </div>
+            </div>
+            
+            <div class="progress m-3" *ngIf="remoteCallLoading">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%">
+                Loading...
+              </div>
+            </div>
+
+            <div class="form-inline row">
+              <div class="form-group col-md pt-4" *ngIf="farmsLoaded && farms.length==0">
+                <h5 class="pr-3">No farms available!</h5>
+                <button type="button" class="pull-right btn btn-md btn-primary" [routerLink]="['/user/farm/new']">
+                  <i class="fas fa-plus"></i>&nbsp;
+                  Create Farm
+                </button>
+              </div>
+              <div class="form-group col-md pt-4" *ngIf="fieldsLoaded && fields.length==0">
+                <h5 class="pr-3">No fields available!</h5>
+                <button type="button" class="pull-right btn btn-md btn-primary" [routerLink]="['/user/farm',selectedFarm.id,'edit']">
+                  <i class="fas fa-plus"></i>&nbsp;
+                  Create Fields
+                </button>
+              </div>
+              <div class="form-group col-md pt-4" *ngIf="dssLoaded && dssList.length==0">
+                <h5 class="pr-3">No DSS available!</h5>
               </div>
             </div>
           </fieldset>
