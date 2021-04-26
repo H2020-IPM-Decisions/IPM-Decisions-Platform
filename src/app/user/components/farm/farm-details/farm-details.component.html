@@ -1,1 +1,50 @@
-<h1> TODO DETAL</h1>
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-leaf icon-gradient bg-mean-fruit">
+                    </i>
+                </div>
+                <div>{{farm.name}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto my-5 page-box">
+        <fieldset class="border p-3">
+            <legend class="w-auto px-1 text-muted">Farm details</legend>
+
+            <div class="form-group row">
+                <label for="map" class="col-sm-3 col-form-label">Farm location</label>
+                <div class="col-sm-9">
+                    <div class="map-container" #map></div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="met-station" class="col-sm-3 col-form-label">Farm Address</label>
+                <div class="col-sm-9">
+                    <p>{{farmAddress}}</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="met-station" class="col-sm-3 col-form-label">Met. station</label>
+                <div class="col-sm-9">
+                    <p>{{farm.weatherHistoricalDto.name}}</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="forecast" class="col-sm-3 col-form-label">Weather forecast service</label>
+                <div class="col-sm-9">
+                    <p>{{farm.weatherForecastDto.name}}</p>
+                </div>
+            </div>
+        </fieldset>
+        <div class="row pt-3">
+            <div class="col-md-12">
+                <button class="btn btn-info pull-right col-2" type="button" (click)="goBack()">
+                    Back</button>
+            </div>
+        </div>
+    </div>
+    <app-edit-farm [farm]="farm" *ngIf="farm && farm.id"></app-edit-farm>
+</div>

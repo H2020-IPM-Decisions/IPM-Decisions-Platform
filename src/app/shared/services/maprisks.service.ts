@@ -48,7 +48,7 @@ export class MaprisksService {
     });
   }
 
-  addMarker(map: L.Map, location?: Location): L.Marker {
+  addMarker(map: L.Map, location?: Location, editable = true): L.Marker {
     let marker = null;
 
     if (location) {
@@ -65,6 +65,9 @@ export class MaprisksService {
 
     var self = this;
     map.on("click", (e: LeafletMouseEvent) => {
+      if(!editable) {
+        return;
+      }
       if (marker) {
         map.removeLayer(marker);
       }
