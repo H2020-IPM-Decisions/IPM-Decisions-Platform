@@ -53,8 +53,8 @@ export class FieldAddComponent implements OnInit {
   addFieldFormInit() {
     this.fieldForm = this._fb.group({
       cropPest: this.createCropPest(),
-      inf1: ["", Validators.required], //variety
-      inf2: ["", Validators.required] //sowing date
+      variety: ["", Validators.required], //variety
+      sowingDate: ["", Validators.required] //sowing date
     });
     if(this.field){
       this.fieldForm.patchValue({
@@ -63,8 +63,8 @@ export class FieldAddComponent implements OnInit {
           pestEppoCode: this.field.fieldCropDto.fieldCropPestDto.value[0].pestEppoCode
         },
         name: this.field.name,
-        inf1: this.field.inf1,
-        inf2: this.formatLocaleDateGB(this.field.inf2),
+        variety: this.field.variety,
+        sowingDate: this.formatLocaleDateGB(this.field.sowingDate),
       });
       this.formFieldValues = this.fieldForm.value;
       this.pestId = this.field.fieldCropDto.fieldCropPestDto.value[0].id;

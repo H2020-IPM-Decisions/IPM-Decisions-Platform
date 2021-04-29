@@ -62,8 +62,8 @@ export class FieldEditComponent implements OnInit {
     this.fieldForm = this._fb.group({
       cropPests: this.createCropPest(),
       name: ["", Validators.required], //field name
-      inf1: ["", Validators.required], //variety
-      inf2: ["", Validators.required], //sowing date
+      variety: ["", Validators.required], //variety
+      sowingDate: ["", Validators.required], //sowing date
     });
   }
 
@@ -81,8 +81,8 @@ export class FieldEditComponent implements OnInit {
         pestEppoCode: field.fieldCropDto.fieldCropPestDto.value[0].pestEppoCode
       },
       name: field.name,
-      inf1: field.inf1,
-      inf2: this.formatLocaleDateGB(field.inf2),
+      variety: field.variety,
+      sowingDate: this.formatLocaleDateGB(field.sowingDate),
     });
     this.pestId = field.fieldCropDto.fieldCropPestDto.value[0].id;
   }

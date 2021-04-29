@@ -83,7 +83,6 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ToastrModule } from "ngx-toastr";
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { FarmShareComponent } from './user/components/farm-share/farm-share.component';
-import { JsonFormDemoComponent } from './json-form-demo/json-form-demo.component';
 import { SettingsComponent } from './user/components/settings/settings.component';
 import { ManageAlertsComponent } from './user/components/manage-alerts/manage-alerts.component';
 import { CustomizeDashboardComponent } from './user/components/customize-dashboard/customize-dashboard.component';
@@ -165,7 +164,6 @@ import { FieldEditComponent } from './user/components/field/field-edit/field-edi
     ResearchersArticleComponent,
     DevelopersArticleComponent,
     FarmShareComponent,
-    JsonFormDemoComponent,
     SettingsComponent,
     ManageAlertsComponent,
     CustomizeDashboardComponent,

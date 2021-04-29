@@ -155,8 +155,8 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
       return;
     }
     const fieldToCopy:any = {
-      inf1: field.inf1,
-      inf2: field.inf2,
+      variety: field.variety,
+      sowingDate: field.sowingDate,
       name: 'none',
       cropPest:cropPest
     }

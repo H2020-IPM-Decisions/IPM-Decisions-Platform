@@ -26,7 +26,7 @@ export class WeatherService {
   ): Observable<WeatherDataSource[]> {
     return this.http
       .get<WeatherDataSource[]>(
-        `https://ipmdecisions.nibio.no/api/wx/rest/weatherdatasource/location/point`,
+        `${environment.apiUrl}/api/wx/rest/weatherdatasource/location/point`,
         {
           headers: {
             "Content-Type": "*/*",
@@ -56,7 +56,7 @@ export class WeatherService {
 
   private getWeatherDataSource(): Observable<WeatherDataSource[]> {
     return this.http.get<WeatherDataSource[]>(
-        `https://ipmdecisions.nibio.no/api/wx/rest/weatherdatasource`,
+        `${environment.apiUrl}/api/wx/rest/weatherdatasource`,
         {
           headers: {
             "Content-Type": "*/*",

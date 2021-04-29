@@ -1,8 +1,8 @@
 export interface Field {
   id: string;
   name: string;
-  inf1: string;
-  inf2: string;
+  variety: string;
+  sowingDate: string;
   cropPest: [
     {
       cropEppoCode: string;
