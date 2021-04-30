@@ -1,0 +1,7 @@
+<span>
+    <span class="badge" [ngClass]="{'badge-secondary':!status, 'badge-info': status==1, 'badge-success': status==2, 'badge-warning':status==3, 'badge-danger': status==4}">
+        <h5>{{code}}</h5>
+        <small>{{description}}</small>
+    </span>
+    <span *ngIf="dss" class="dss badge badge-primary">{{dss}}</span>
+</span>

@@ -7,6 +7,7 @@ import { dssSelectionRoute } from './dss-selection.route';
 import { DssSelectionComponent } from './dss-selection.component';
 import { DssDashboardComponent } from './dss-dashboard.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { EppoCodeBadgeComponent } from '../eppo-code-evaluator/eppo-code-badge.component';
 
 @NgModule({
   imports: [ 
@@ -14,12 +15,12 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    BsDropdownModule.forRoot(),
-    
+    BsDropdownModule.forRoot()
   ],
   declarations: [
     DssSelectionComponent,
-    DssDashboardComponent
+    DssDashboardComponent,
+    EppoCodeBadgeComponent
   ],
   entryComponents: []
 })
