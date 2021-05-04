@@ -20,11 +20,15 @@
         <tbody *ngIf="fieldList.length > 0; else noRows">
           <tr *ngFor="let field of fieldList">
             <td class="text-center">
-              <a class="details" (click)="openModal(template, field)">{{field.fieldCropDto.cropEppoCode }}
+              <a class="details" (click)="openModal(template, field)">
+                {{field.fieldCropDto.cropEppoCode}}
+                <small>({{field.fieldCropDto.cropEppoCode | eppoCode | uppercase}})</small>
                 <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
               </a>
             </td>
-            <td class="text-center">{{ field.fieldCropDto.fieldCropPestDto.value[0].cropPestDto.pestEppoCode }}</td>
+            <td class="text-center">{{ field.fieldCropDto.fieldCropPestDto.value[0].cropPestDto.pestEppoCode }}
+              <small>({{field.fieldCropDto.fieldCropPestDto.value[0].cropPestDto.pestEppoCode | eppoCode | uppercase}})</small>
+            </td>
             <td class="td-actions text-center py-1">
 
               <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy" title="Copy"

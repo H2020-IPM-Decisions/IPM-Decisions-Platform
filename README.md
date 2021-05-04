@@ -27,6 +27,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 
+## API links
+http://localhost:5000/api/dss/apidocs/#resources
+http://localhost:5000/api/wx/apidocs/#resources
+http://localhost:5000/api/upr/swagger/index.html --> https://github.com/H2020-IPM-Decisions/UserProvisionService/tree/develop/Docker (docker help)
+
 npm run build
 docker build . -t ipmdecisions/ipm-decisions-platform:dev
 docker push ipmdecisions/ipm-decisions-platform:dev

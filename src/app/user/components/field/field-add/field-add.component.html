@@ -25,7 +25,7 @@
                   <div class="col-sm-8 col-md-10">
                     <select class="form-control" id="crop" formControlName="cropEppoCode">
                       <ng-template ngFor let-crop [ngForOf]="crops">
-                        <option value="{{crop.value}}">{{crop.label}}</option>
+                        <option value="{{crop.value}}">{{crop.label}} - {{crop.label | eppoCode}}</option>
                       </ng-template>
                     </select>
                   </div>
@@ -35,7 +35,7 @@
                   <div class="col-sm-8 col-md-10">
                     <select class="form-control" id="pest" formControlName="pestEppoCode">
                       <ng-template ngFor let-pest [ngForOf]="pests">
-                        <option value="{{pest.value}}">{{pest.label}}</option>
+                        <option value="{{pest.value}}">{{pest.label}} | {{pest.label | eppoCode}} </option>
                       </ng-template>
                     </select>
                   </div>

@@ -3,7 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from "@src/environments/environment";
-import { DssFormData, DssJSONSchema, DssModel, DssSelection } from './dss-selection.model';
+import { DssFlat, DssFormData, DssJSONSchema, DssModel, DssSelection } from './dss-selection.model';
 import { Field } from '@app/shared/models/field.model';
 import { Farm } from '@app/shared/models/farm.model';
 
@@ -25,6 +25,30 @@ export class DssSelectionService {
     const requestUrl = `${environment.apiUrl}/api/dss/rest/model/${dss.id}/${model.id}/input_schema/ui_form`;
     return this.http.get<DssJSONSchema>(requestUrl, { observe: 'response' });
   }
+
+  getDssList():Observable<HttpResponse<DssFlat[]>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/dss`;
+    return this.http.get<DssFlat[]>(requestUrl, { 
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: 'response' 
+    });
+  }
+
+  getDssMap(dssList: DssFlat[]):Map<string, DssFlat[]>{
+    let dssMap: Map<string, DssFlat[]> = new Map<string, DssFlat[]>();
+    for (const element of dssList) {
+      let array: DssFlat[] = [];
+      if(dssMap[element.cropEppoCode]){
+        array = dssMap[element.cropEppoCode];
+      } 
+      array.push(element);
+      dssMap.set(element.cropEppoCode, array);
+    }
+    return dssMap;
+  };
 
   submitDss(data: DssFormData, farm: Farm): Observable<HttpResponse<DssFormData>> {
     let requestUrl = `${environment.apiUrl}/api/upr/farms/${farm.id}/dss`;

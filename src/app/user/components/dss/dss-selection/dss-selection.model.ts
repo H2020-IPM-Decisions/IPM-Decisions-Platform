@@ -48,3 +48,18 @@ export class DssCropPest {
     ){}
 }
 
+export class DssFlat {
+    constructor(
+        public id: string,
+        public creationDate: string,
+        public cropEppoCode: string,
+        public pestEppoCode: string,
+        public dssId:  string,
+        public dssModelId:  string,
+        public isValid: boolean,
+        public dssExecutionType?:  string,
+        public dssFullResult?:  string,
+        public warningMessage?: any,
+        public warningStatus?: number
+    ){}
+}

@@ -1,5 +1,12 @@
-.dss{
-    left: -10px;
-    position: relative;
-    top: 10px;
+.dss {
+  display: block;
+  font-size: 80%;
+  color: #6c757d;
+  width: 120px;
+}
+
+.dss-badge {
+  display: inline-block;
+  width: 120px;
+  height: 52px;
 }

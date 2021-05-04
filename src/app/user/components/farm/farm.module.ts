@@ -13,6 +13,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AddFarmComponent } from './add-farm/add-farm.component';
 import { EditFarmComponent } from './edit-farm/edit-farm.component';
 import { FieldAddComponent } from '../field/field-add/field-add.component';
+import { EppoCodePipe } from '../dss/eppo-code-evaluator/eppo-code.pipe';
 
 @NgModule({
   imports: [ 
@@ -30,7 +31,8 @@ import { FieldAddComponent } from '../field/field-add/field-add.component';
     FarmListComponent, 
     FarmDetailsComponent,
     EditFarmComponent,
-    FieldAddComponent
+    FieldAddComponent,
+    EppoCodePipe
   ],
   entryComponents: [FieldAddComponent]
 })

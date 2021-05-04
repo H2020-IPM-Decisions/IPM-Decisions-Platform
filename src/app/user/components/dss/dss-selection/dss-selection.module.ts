@@ -8,6 +8,7 @@ import { DssSelectionComponent } from './dss-selection.component';
 import { DssDashboardComponent } from './dss-dashboard.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { EppoCodeBadgeComponent } from '../eppo-code-evaluator/eppo-code-badge.component';
+import { EppoCodePipe } from '../eppo-code-evaluator/eppo-code.pipe';
 
 @NgModule({
   imports: [ 
@@ -20,7 +21,8 @@ import { EppoCodeBadgeComponent } from '../eppo-code-evaluator/eppo-code-badge.c
   declarations: [
     DssSelectionComponent,
     DssDashboardComponent,
-    EppoCodeBadgeComponent
+    EppoCodeBadgeComponent,
+    EppoCodePipe
   ],
   entryComponents: []
 })
