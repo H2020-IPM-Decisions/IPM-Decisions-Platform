@@ -1,6 +1,9 @@
 import { AfterViewInit } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import Chart from 'chart.js';
+import { Subscription } from 'rxjs';
+import { IDssFlat } from './dss-selection.model';
 
 @Component({
   selector: 'app-dss-detail',
@@ -9,9 +12,16 @@ import Chart from 'chart.js';
 })
 export class DssDetailComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  $subscription: Subscription;
+  dssDetail: IDssFlat;
+
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.$subscription = this.activatedRoute.data.subscribe(({ dssDetail }) => {
+      this.dssDetail = dssDetail;
+      //this._farmService.getAddressFromCoordinates()
+    });
   }
 
   ngAfterViewInit(): void {
@@ -92,4 +102,7 @@ export class DssDetailComponent implements OnInit, AfterViewInit {
     });
   }
 
+  goBack(): void {
+    window.history.back();
+  }
 }

@@ -1,7 +1,7 @@
 import { HttpResponse } from "@angular/common/http";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
-import { DssFlat } from "./dss-selection.model";
+import { IDssFlat } from "./dss-selection.model";
 import { DssSelectionService } from "./dss-selection.service";
 @Component({
   selector: "app-dss-selection",
@@ -9,7 +9,7 @@ import { DssSelectionService } from "./dss-selection.service";
   styleUrls: ["./dss-dashboard.component.css"]
 })
 export class DssDashboardComponent implements OnInit, OnDestroy {
-  dssMap: Map<string, DssFlat[]> = new Map<string, DssFlat[]>();
+  dssMap: Map<string, IDssFlat[]> = new Map<string, IDssFlat[]>();
   $startSubscription: Subscription;
 
   constructor(protected service: DssSelectionService 
@@ -18,7 +18,7 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     // CALL  api/dss  fetch user's DSS list
-    this.$startSubscription = this.service.getDssList().subscribe((data: HttpResponse<DssFlat[]>)=>{
+    this.$startSubscription = this.service.getDssList().subscribe((data: HttpResponse<IDssFlat[]>)=>{
       this.dssMap = this.service.getDssMap(data.body);
     });
     // detail /api/dss/{id}

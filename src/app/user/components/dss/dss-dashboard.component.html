@@ -22,7 +22,9 @@
         </div>
         <div class="d-flex col-10 text-center">
           <div class="p-2 mx-1" *ngFor="let item of cropEppoCode.value">
-            <eppo-code-badge [code]="item.pestEppoCode" [dss]="item.dssId+' - '+item.dssModelId" [status]="item.warningStatus"></eppo-code-badge>
+            <a [routerLink]="[item.id,'view']">
+              <eppo-code-badge [code]="item.pestEppoCode" [dss]="item.dssId+' - '+item.dssModelId" [status]="item.warningStatus"></eppo-code-badge>
+            </a>
           </div>
         </div>
       </div>

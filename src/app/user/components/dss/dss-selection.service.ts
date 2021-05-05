@@ -3,7 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from "@src/environments/environment";
-import { DssFlat, DssFormData, DssJSONSchema, DssModel, DssSelection } from './dss-selection.model';
+import { IDssFlat, IDssFormData, DssJSONSchema, DssModel, DssSelection } from './dss-selection.model';
 import { Field } from '@app/shared/models/field.model';
 import { Farm } from '@app/shared/models/farm.model';
 
@@ -26,9 +26,9 @@ export class DssSelectionService {
     return this.http.get<DssJSONSchema>(requestUrl, { observe: 'response' });
   }
 
-  getDssList():Observable<HttpResponse<DssFlat[]>> {
-    let requestUrl = `${environment.apiUrl}/api/upr/dss`;
-    return this.http.get<DssFlat[]>(requestUrl, { 
+  get(id: string):Observable<HttpResponse<IDssFlat>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/dss/${id}`;
+    return this.http.get<IDssFlat>(requestUrl, { 
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -37,10 +37,21 @@ export class DssSelectionService {
     });
   }
 
-  getDssMap(dssList: DssFlat[]):Map<string, DssFlat[]>{
-    let dssMap: Map<string, DssFlat[]> = new Map<string, DssFlat[]>();
+  getDssList():Observable<HttpResponse<IDssFlat[]>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/dss`;
+    return this.http.get<IDssFlat[]>(requestUrl, { 
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: 'response' 
+    });
+  }
+
+  getDssMap(dssList: IDssFlat[]):Map<string, IDssFlat[]>{
+    let dssMap: Map<string, IDssFlat[]> = new Map<string, IDssFlat[]>();
     for (const element of dssList) {
-      let array: DssFlat[] = [];
+      let array: IDssFlat[] = [];
       if(dssMap[element.cropEppoCode]){
         array = dssMap[element.cropEppoCode];
       } 
@@ -50,9 +61,9 @@ export class DssSelectionService {
     return dssMap;
   };
 
-  submitDss(data: DssFormData, farm: Farm): Observable<HttpResponse<DssFormData>> {
+  submitDss(data: IDssFormData, farm: Farm): Observable<HttpResponse<IDssFormData>> {
     let requestUrl = `${environment.apiUrl}/api/upr/farms/${farm.id}/dss`;
-    return this.http.post<DssFormData>(requestUrl, data, {
+    return this.http.post<IDssFormData>(requestUrl, data, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -61,7 +72,7 @@ export class DssSelectionService {
     });
   }
 
-  getFormData(field: Field, selectedCrop: string, selectedPest: string, dss: DssSelection, model: DssModel, jsonSchemaForm: any): DssFormData {
+  getFormData(field: Field, selectedCrop: string, selectedPest: string, dss: DssSelection, model: DssModel, jsonSchemaForm: any): IDssFormData {
     return {
       fieldId: field.id,
       fieldName: field.name,

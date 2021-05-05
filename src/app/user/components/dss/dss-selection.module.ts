@@ -9,6 +9,7 @@ import { DssDashboardComponent } from './dss-dashboard.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { EppoCodeBadgeComponent } from '../eppo-code-evaluator/eppo-code-badge.component';
 import { ApplicationPipesModule } from '@app/shared/pipes/application-pipes.module';
+import { DssDetailComponent } from './dss-detail.component';
 
 @NgModule({
   imports: [ 
@@ -22,7 +23,8 @@ import { ApplicationPipesModule } from '@app/shared/pipes/application-pipes.modu
   declarations: [
     DssSelectionComponent,
     DssDashboardComponent,
-    EppoCodeBadgeComponent
+    EppoCodeBadgeComponent,
+    DssDetailComponent
   ],
   entryComponents: []
 })

@@ -4,7 +4,7 @@ import { FormGroup } from "@angular/forms";
 import { DssSelectionService } from './dss-selection.service';
 import { Subscription } from 'rxjs';
 import { FarmResponseModel } from "@app/shared/models/farm-response.model";
-import { DssFormData, DssJSONSchema, DssModel, DssSelection } from './dss-selection.model';
+import { IDssFormData, DssJSONSchema, DssModel, DssSelection } from './dss-selection.model';
 import { JsonEditorService } from './json-editor/json-editor.service';
 import { ToastrService } from 'ngx-toastr';
 import { Farm } from '@app/shared/models/farm.model';
@@ -186,7 +186,7 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
 
   submit() {
     if(this.editor && this.editorValid) {
-      const formData: DssFormData = this.dssSelectionService.getFormData(
+      const formData: IDssFormData = this.dssSelectionService.getFormData(
                                       this.selectedField,
                                       this.selectedCrop,
                                       this.selectedPest,

@@ -29,7 +29,7 @@ export interface DssJSONSchema {
     definitions?: any;
 }
 
-export interface DssFormData {
+export interface IDssFormData {
     id?:string;
     fieldId?: string;
     fieldName?: string;
@@ -48,18 +48,17 @@ export class DssCropPest {
     ){}
 }
 
-export class DssFlat {
-    constructor(
-        public id: string,
-        public creationDate: string,
-        public cropEppoCode: string,
-        public pestEppoCode: string,
-        public dssId:  string,
-        public dssModelId:  string,
-        public isValid: boolean,
-        public dssExecutionType?:  string,
-        public dssFullResult?:  string,
-        public warningMessage?: any,
-        public warningStatus?: number
-    ){}
+export interface IDssFlat {
+    id?: string;
+    creationDate?: string;
+    cropEppoCode?: string;
+    pestEppoCode?: string;
+    dssId?:  string;
+    dssModelId?:  string;
+    isValid?: boolean;
+    dssExecutionType?:  string;
+    dssFullResult?:  string;
+    warningMessage?: any;
+    warningStatus?: number;
+    resultParameters?: any;
 }
