@@ -57,7 +57,6 @@ import { SourceRepoComponent } from './admin/source-repo/source-repo.component';
 import { AdminAccountComponent } from './admin/admin-account/admin-account.component';
 import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
 import { AuthModule } from './core/auth/auth.module';
-import { CmsLinkPipe } from './shared/pipes/cms-link.pipe';
 import { HeaderComponent } from './core/components/header/header.component';
 import { SiteLogoComponent } from './core/components/header/site-logo/site-logo.component';
 import { SiteCorouselComponent } from './core/components/site-corousel/site-corousel.component';
@@ -90,6 +89,7 @@ import { DssDisplayComponent } from './user/components/dss/dss-display/dss-displ
 import { FarmComponent } from './user/components/farm/farm.component';
 import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-farm.component';
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
+import { ApplicationPipesModule } from './shared/pipes/application-pipes.module';
 
 @NgModule({
   declarations: [
@@ -145,7 +145,6 @@ import { FieldEditComponent } from './user/components/field/field-edit/field-edi
     SourceRepoComponent,
     AdminAccountComponent,
     AdminAccountEditComponent,
-    CmsLinkPipe,
     HeaderComponent,
     HomeMenuComponent,
     AdminAccountMenuComponent,
@@ -188,7 +187,8 @@ import { FieldEditComponent } from './user/components/field/field-edit/field-edi
     PaginationModule.forRoot(),
     TooltipModule.forRoot(),
     AuthModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ApplicationPipesModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
