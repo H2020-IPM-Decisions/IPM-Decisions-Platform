@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DssDetailComponent } from './user/components/dss/dss-detail/dss-detail.component';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
 import { AccountComponent } from './user/components/account/account.component';
 import { CookieModule } from 'ngx-cookie';
@@ -45,14 +44,8 @@ import { AlertComponent } from './user/components/pest-disease/alert/alert.compo
 import { DashboardManagerComponent } from './user/components/dashboard-manager/dashboard-manager.component';
 import { AddDashboardComponent } from './user/components/dashboard-manager/add-dashboard/add-dashboard.component';
 import { EditDashboardComponent } from './user/components/dashboard-manager/edit-dashboard/edit-dashboard.component';
-import { DssListComponent } from './user/components/dss/dss-list/dss-list.component';
-import { DssUseDashboardComponent } from './user/components/dss/dss-use-dashboard/dss-use-dashboard.component';
-import { DssEvaluationDashboardComponent } from './user/components/dss/dss-evaluation-dashboard/dss-evaluation-dashboard.component';
-import { DssAdaptationDashboardComponent } from './user/components/dss/dss-adaptation-dashboard/dss-adaptation-dashboard.component';
-import { DssIntegrationDashboardComponent } from './user/components/dss/dss-integration-dashboard/dss-integration-dashboard.component';
 import { DatasourceRepositoryComponent } from './admin/datasource-repository/datasource-repository.component';
 import { HomeComponent } from './home/home.component';
-import { DssUseDashboardEditComponent } from './user/components/dss/dss-use-dashboard/dss-use-dashboard-edit/dss-use-dashboard-edit.component';
 import { SourceRepoComponent } from './admin/source-repo/source-repo.component';
 import { AdminAccountComponent } from './admin/admin-account/admin-account.component';
 import { AdminAccountEditComponent } from './admin/admin-account/admin-account-edit/admin-account-edit.component';
@@ -85,7 +78,6 @@ import { FarmShareComponent } from './user/components/farm-share/farm-share.comp
 import { SettingsComponent } from './user/components/settings/settings.component';
 import { ManageAlertsComponent } from './user/components/manage-alerts/manage-alerts.component';
 import { CustomizeDashboardComponent } from './user/components/customize-dashboard/customize-dashboard.component';
-import { DssDisplayComponent } from './user/components/dss/dss-display/dss-display.component';
 import { FarmComponent } from './user/components/farm/farm.component';
 import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-farm.component';
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
@@ -133,15 +125,8 @@ import { ApplicationPipesModule } from './shared/pipes/application-pipes.module'
     DashboardManagerComponent,
     AddDashboardComponent,
     EditDashboardComponent,
-    DssListComponent,
-    DssUseDashboardComponent,
-    DssEvaluationDashboardComponent,
-    DssAdaptationDashboardComponent,
-    DssIntegrationDashboardComponent,
     DatasourceRepositoryComponent,
     HomeComponent,
-    DssDetailComponent,
-    DssUseDashboardEditComponent,
     SourceRepoComponent,
     AdminAccountComponent,
     AdminAccountEditComponent,
@@ -166,7 +151,6 @@ import { ApplicationPipesModule } from './shared/pipes/application-pipes.module'
     SettingsComponent,
     ManageAlertsComponent,
     CustomizeDashboardComponent,
-    DssDisplayComponent,
     FarmComponent,
     ManageFarmComponent,
     FieldEditComponent

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import CodesJson from '../../user/components/dss/eppo-code-evaluator/vocabulary.json';
+import CodesJson from '../../user/components/eppo-code-evaluator/vocabulary.json';
 
 @Pipe({name: 'eppoCode'})
 export class EppoCodePipe implements PipeTransform {

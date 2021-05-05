@@ -1,4 +1,3 @@
-import { DssDisplayComponent } from './user/components/dss/dss-display/dss-display.component';
 import { CustomizeDashboardComponent } from './user/components/customize-dashboard/customize-dashboard.component';
 import { ManageAlertsComponent } from './user/components/manage-alerts/manage-alerts.component';
 import { DevelopersArticleComponent } from "./developers-article/developers-article.component";
@@ -8,18 +7,11 @@ import { ConfirmMailComponent } from "./core/components/confirm-mail/confirm-mai
 import { AdminAccountEditComponent } from "./admin/admin-account/admin-account-edit/admin-account-edit.component";
 import { AdminAccountComponent } from "./admin/admin-account/admin-account.component";
 import { SourceRepoComponent } from "./admin/source-repo/source-repo.component";
-import { DssUseDashboardEditComponent } from "./user/components/dss/dss-use-dashboard/dss-use-dashboard-edit/dss-use-dashboard-edit.component";
-import { DssDetailComponent } from "./user/components/dss/dss-detail/dss-detail.component";
 import { HomeComponent } from "./home/home.component";
 import { AddObservationComponent } from "./user/components/pest-disease/observation-list/add-observation/add-observation.component";
 import { EditObservationComponent } from "./user/components/pest-disease/observation-list/edit-observation/edit-observation.component";
 import { EditActionComponent } from "./user/components/pest-disease/action-list/edit-action/edit-action.component";
 import { AddActionComponent } from "./user/components/pest-disease/action-list/add-action/add-action.component";
-import { DssListComponent } from "./user/components/dss/dss-list/dss-list.component";
-import { DssIntegrationDashboardComponent } from "./user/components/dss/dss-integration-dashboard/dss-integration-dashboard.component";
-import { DssAdaptationDashboardComponent } from "./user/components/dss/dss-adaptation-dashboard/dss-adaptation-dashboard.component";
-import { DssEvaluationDashboardComponent } from "./user/components/dss/dss-evaluation-dashboard/dss-evaluation-dashboard.component";
-import { DssUseDashboardComponent } from "./user/components/dss/dss-use-dashboard/dss-use-dashboard.component";
 import { EditDashboardComponent } from "./user/components/dashboard-manager/edit-dashboard/edit-dashboard.component";
 import { AddDashboardComponent } from "./user/components/dashboard-manager/add-dashboard/add-dashboard.component";
 import { DashboardManagerComponent } from "./user/components/dashboard-manager/dashboard-manager.component";
@@ -231,7 +223,7 @@ const appRoutes: Routes = [
       },
       {
         path: 'dss',
-        loadChildren: () => import('./user/components/dss/dss-selection/dss-selection.module').then(m => m.DssSelectionModule)
+        loadChildren: () => import('./user/components/dss/dss-selection.module').then(m => m.DssSelectionModule)
       }
     ]
   },
@@ -246,12 +238,6 @@ const appRoutes: Routes = [
         loadChildren: () => import('./user/components/manage-weather-data-source/manage-weather-data-source.module').then(m => m.EffectorManageWeatherDataSourceModule)
       }
     ]
-  },
-  {
-    path: "user/dss/display",
-    component: DssDisplayComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
   },
   {
     path: "user/crop/add",
@@ -354,49 +340,7 @@ const appRoutes: Routes = [
     component: EditDashboardComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/use-dashboard",
-    component: DssUseDashboardComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/use-dashboard/edit",
-    component: DssUseDashboardEditComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/evaluation-dashboard",
-    component: DssEvaluationDashboardComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/adaptation-dashboard",
-    component: DssAdaptationDashboardComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/integration-dashboard",
-    component: DssIntegrationDashboardComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/list",
-    component: DssListComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
-  {
-    path: "user/dss/details",
-    component: DssDetailComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
-  },
+  }
 ];
 
 @NgModule({
