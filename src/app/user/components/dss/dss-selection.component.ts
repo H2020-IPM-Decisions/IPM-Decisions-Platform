@@ -195,7 +195,10 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
                                       this.jsonEditorService.getValues(this.editor)
                                     );
       this.$subscriptionSubmit = this.dssSelectionService.submitDss(formData, this.selectedFarm).subscribe(
-        () => this.toastrService.success("Operation Success","DSS Submitted with data"),
+        () => {
+          this.toastrService.success("Operation Success","DSS Submitted with data");
+          this.reset();
+        },
         () => this.toastrService.error("Operation Failed","No DSS Submitted, an error occurs"),
       )
     }

@@ -34,7 +34,7 @@
           <div class="col-sm-9">
             <select class="form-control" id="met-station" formControlName="weatherHistoricalDto">
               <!--<option value="" disabled selected>Place a marker into map</option>-->
-              <option *ngFor="let item of weatherHistoricalDtoList">{{item.name}}
+              <option *ngFor="let item of weatherHistoricalDtoList" [ngValue]="item">{{item.name}}
               </option>
             </select>
           </div>
@@ -43,7 +43,7 @@
           <label for="forecast" class="col-sm-3 col-form-label">Weather forecast service</label>
           <div class="col-sm-9">
             <select class="form-control" id="forecast" formControlName="weatherForecastDto">
-              <option *ngFor="let item of weatherForecastDtoList">{{item.name}}
+              <option *ngFor="let item of weatherForecastDtoList" [ngValue]="item">{{item.name}}
               </option>
             </select>
           </div>

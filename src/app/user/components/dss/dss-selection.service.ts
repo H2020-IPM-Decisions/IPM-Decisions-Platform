@@ -52,8 +52,8 @@ export class DssSelectionService {
     let dssMap: Map<string, IDssFlat[]> = new Map<string, IDssFlat[]>();
     for (const element of dssList) {
       let array: IDssFlat[] = [];
-      if(dssMap[element.cropEppoCode]){
-        array = dssMap[element.cropEppoCode];
+      if(dssMap.has(element.cropEppoCode)){
+        array = dssMap.get(element.cropEppoCode);
       } 
       array.push(element);
       dssMap.set(element.cropEppoCode, array);
