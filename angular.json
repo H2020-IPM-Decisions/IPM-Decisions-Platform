@@ -53,7 +53,6 @@
               "src/js/circle-progress.min.js",
               "src/js/aos.js",
               "src/js/venobox.min.js",
-              "node_modules/chart.js/dist/Chart.js",
               "node_modules/hammerjs/hammer.min.js",
               "./node_modules/leaflet/dist/leaflet.js",
               "./node_modules/esri-leaflet/dist/esri-leaflet.js",

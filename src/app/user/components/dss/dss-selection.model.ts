@@ -48,6 +48,15 @@ export class DssCropPest {
     ){}
 }
 
+export interface IDssResultFlat {
+    code?: string;
+    title?: string;
+    description?: string;
+    chartType?: string;
+    data?: number[];
+    labels?: string[];
+}
+
 export interface IDssFlat {
     id?: string;
     creationDate?: string;
@@ -60,5 +69,16 @@ export interface IDssFlat {
     dssFullResult?:  string;
     warningMessage?: any;
     warningStatus?: number;
-    resultParameters?: any;
+    resultParameters?: IDssResultFlat[];
+    interval?: string;
+    dssDescription?: string;
+    dssTypeOfOutput?: string;
+    dssTypeOfDecision?: string;
+    dssDescriptionUrl?: string;
+    farmId?: string;
+    fieldId?: string;
+    warningStatusRepresentation?: string;
+    outputTimeStart?: string;
+    outputTimeEnd?: string;
+    warningStatusPerDay?: number[];   
 }

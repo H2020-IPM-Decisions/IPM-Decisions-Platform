@@ -11,6 +11,7 @@ import { EppoCodeBadgeComponent } from '../eppo-code-evaluator/eppo-code-badge.c
 import { ApplicationPipesModule } from '@app/shared/pipes/application-pipes.module';
 import { DssDetailComponent } from './dss-detail.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { CustomChartComponent } from './custom-chart/custom-chart.component';
 
 @NgModule({
   imports: [ 
@@ -26,7 +27,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     DssSelectionComponent,
     DssDashboardComponent,
     EppoCodeBadgeComponent,
-    DssDetailComponent
+    DssDetailComponent,
+    CustomChartComponent
   ],
   entryComponents: []
 })

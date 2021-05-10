@@ -1,5 +1,5 @@
 <div class="app-main__inner">
-  
+
   <div class="app-page-title">
     <div class="page-title-wrapper">
       <div class="page-title-heading">
@@ -15,21 +15,82 @@
   <div class="container mx-auto my-5 page-box">
     <div class="row pt-3">
       <div class="col-md-12">
-          <button class="btn btn-info pull-right col-2" type="button" (click)="goBack()">
-              Back</button>
+        <button class="btn btn-info pull-right col-2" type="button" (click)="goBack()">
+          Back</button>
       </div>
-  </div>
-    <div class="row">
-      <div class="col-12">
-        <h2><i class="fab fa-pagelines dss-icon text-danger"></i>&nbsp;Winter Wheat</h2>
+    </div>
+    <fieldset class="border p-3">
+      <legend class="w-auto px-1 text-muted">DSS Result</legend>
+
+      <div class="form-group row">
+        <label for="met-station" class="col-sm-3 col-form-label">Crop / Pest Combination</label>
+        <div class="col-sm-9">
+          <p>{{dssDetail.cropEppoCode}} - {{dssDetail.cropEppoCode  | eppoCode}} | {{dssDetail.pestEppoCode}} - {{dssDetail.pestEppoCode  | eppoCode}}</p>
+        </div>
       </div>
-      <div class="col-12 d-flex">
-        <div class="p-2 mx-3">
-          <canvas id="barChart" width="300" height="150"></canvas>
+
+      <div class="form-group row">
+        <label for="met-station" class="col-sm-3 col-form-label">Type of the output</label>
+        <div class="col-sm-9">
+          <p>{{dssDetail.dssTypeOfOutput}}</p>
         </div>
-        <div class="p-2 mx-3">
-          <canvas id="barChart2" width="300" height="150"></canvas>
+      </div>
+
+      <div class="form-group row">
+        <label for="met-station" class="col-sm-3 col-form-label">Description</label>
+        <div class="col-sm-9">
+          <p>{{dssDetail.dssDescription}}</p>
         </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="met-station" class="col-sm-3 col-form-label">Creation Date</label>
+        <div class="col-sm-9">
+          <p>{{dssDetail.creationDate | date}}</p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="met-station" class="col-sm-3 col-form-label">DSS ID</label>
+        <div class="col-sm-9">
+          <p>{{dssDetail.dssId}}</p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="met-station" class="col-sm-3 col-form-label">DSS Model ID</label>
+        <div class="col-sm-9">
+          <p>{{dssDetail.dssModelId}}</p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="met-station" class="col-sm-3 col-form-label">Warning Status Representation</label>
+        <div class="col-sm-9">
+          <p>{{dssDetail.warningStatusRepresentation}}</p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="met-station" class="col-sm-3 col-form-label">Warning Message</label>
+        <div class="col-sm-9">
+          <p>{{dssDetail.warningMessage}}</p>
+        </div>
+      </div>
+
+      <div class="form-group row" *ngFor="let result of dssDetail.resultParameters">
+        <label for="met-station" class="col-sm-4 col-form-label">{{result.title}}</label>
+        <div class="col-sm-8">
+          <custom-chart [data]="result.data" [labels]="result.labels" [header]="result.description"></custom-chart>
+        </div>
+      </div>
+      
+
+    </fieldset>
+    <div class="row pt-3">
+      <div class="col-md-12">
+        <button class="btn btn-info pull-right col-2" type="button" (click)="goBack()">
+          Back</button>
       </div>
     </div>
   </div>
