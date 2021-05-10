@@ -5,5 +5,6 @@
         <h5>{{code}}</h5>
         <small>{{description}}</small>
     </span>
-    <span *ngIf="dss" class="dss text-truncate">{{dss}}</span>
+    <ng-template #tolTemplate>{{dss}}</ng-template>
+    <span *ngIf="dss" class="dss text-truncate" [tooltip]="tolTemplate" placement="bottom">{{dss}}</span>
 </span>

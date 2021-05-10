@@ -10,6 +10,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { EppoCodeBadgeComponent } from '../eppo-code-evaluator/eppo-code-badge.component';
 import { ApplicationPipesModule } from '@app/shared/pipes/application-pipes.module';
 import { DssDetailComponent } from './dss-detail.component';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   imports: [ 
@@ -18,7 +19,8 @@ import { DssDetailComponent } from './dss-detail.component';
     FormsModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
-    ApplicationPipesModule.forRoot()
+    ApplicationPipesModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   declarations: [
     DssSelectionComponent,
