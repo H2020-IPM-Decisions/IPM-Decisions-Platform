@@ -13,22 +13,13 @@
   </div>
 
   <div class="container mx-auto my-5 page-box">
-    <div class="row pt-3">
-      <div class="col-md-12">
-        <button class="btn btn-info pull-right col-2" type="button" (click)="goBack()">
-          Back</button>
-
-          <button class="btn btn-danger pl-2 pull-right col-2" type="button" (click)="delete()">
-            delete</button>
-      </div>
-    </div>
     <fieldset class="border p-3">
       <legend class="w-auto px-1 text-muted">DSS Result</legend>
 
       <div class="form-group row">
         <label for="met-station" class="col-sm-3 col-form-label">Crop / Pest Combination</label>
         <div class="col-sm-9">
-          <p>{{dssDetail.cropEppoCode}} - {{dssDetail.cropEppoCode  | eppoCode}} | {{dssDetail.pestEppoCode}} - {{dssDetail.pestEppoCode  | eppoCode}}</p>
+          <p><strong>{{dssDetail.cropEppoCode}}</strong> - {{dssDetail.cropEppoCode  | eppoCode}} | <strong>{{dssDetail.pestEppoCode}}</strong> - {{dssDetail.pestEppoCode  | eppoCode}}</p>
         </div>
       </div>
 
@@ -94,6 +85,9 @@
       <div class="col-md-12">
         <button class="btn btn-info pull-right col-2" type="button" (click)="goBack()">
           Back</button>
+
+          <button class="btn btn-danger pl-2 pull-right col-2" type="button" (click)="delete()">
+            delete</button>
       </div>
     </div>
   </div>

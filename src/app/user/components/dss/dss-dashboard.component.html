@@ -31,32 +31,45 @@
       </div>
       <br><br><br><br><br><br>
       <div>
-        <div class="row">
-          <div class="col-2 text-center">
-            <div class="p-2">
-              <b class="">CropEppoCode</b>
-              <br>
-              <small>Code description</small>
+        <fieldset class="border p-3">
+          <legend class="w-auto px-1 text-muted">Legend / Example</legend>
+          <div class="row">
+            <div class="col-2 text-center">
+              <div class="p-2">
+                <b class="">Crop EPPO Code</b>
+                <br>
+                <ng-template #tolTemplate>Latin name of the plants cultivated and wild) getted by the European and Mediterranean Plant Protection Organization (EPPO) code.</ng-template>
+                <small class="d-inline-block text-truncate" style="width: 100%;" [tooltip]="tolTemplate" placement="bottom">
+                  Latin name of the plants cultivated and wild) getted by the European and Mediterranean Plant Protection Organization (EPPO) code
+                </small>
+              </div>
+            </div>
+            <div class="d-flex col-10 text-center">
+              <div class="p-2 mx-1">
+                <!--
+                  0 = Status gives no meaning (e.g. outside of season or before biofix), GREY
+                  1 = Cannot give status due to error, e.g. missing data,  GREY
+                  2 = No risk of infection,  GREEN
+                  3 = Medium risk of infection, ORANGE
+                  4 = High risk of infection. RED
+                -->
+                <eppo-code-badge [code]="'SEPTTR'" [dss]="'No meaning status'" [status]="0"></eppo-code-badge>
+              </div>
+              <div class="p-2 mx-1">
+                <eppo-code-badge [code]="'PSILRO'" [dss]="'Cannot give status'" [status]="1"></eppo-code-badge>
+              </div>
+              <div class="p-2 mx-1">
+                <eppo-code-badge [code]="'DAUCS'" [dss]="'No risk of infection'" [status]="2"></eppo-code-badge>
+              </div>
+              <div class="p-2 mx-1">
+                <eppo-code-badge [code]="'3RYEC'" [dss]="'Medium risk'" [status]="3"></eppo-code-badge>
+              </div>
+              <div class="p-2 mx-1">
+                <eppo-code-badge [code]="'1BRSG'" [dss]="'High risk'" [status]="4"></eppo-code-badge>
+              </div>
             </div>
           </div>
-          <div class="d-flex col-10 text-center">
-            <div class="p-2 mx-1">
-              <eppo-code-badge [code]="'SEPTTR'" [dss]="'DSS - test 0'" [status]="0"></eppo-code-badge>
-            </div>
-            <div class="p-2 mx-1">
-              <eppo-code-badge [code]="'PSILRO'" [dss]="'DSS - test 1'" [status]="1"></eppo-code-badge>
-            </div>
-            <div class="p-2 mx-1">
-              <eppo-code-badge [code]="'DAUCS'" [dss]="'DSS - test 2'" [status]="2"></eppo-code-badge>
-            </div>
-            <div class="p-2 mx-1">
-              <eppo-code-badge [code]="'3RYEC'" [dss]="'DSS - test 3'" [status]="3"></eppo-code-badge>
-            </div>
-            <div class="p-2 mx-1">
-              <eppo-code-badge [code]="'CUSTM2'" [dss]="'DSS - test 4'" [status]="4"></eppo-code-badge>
-            </div>
-          </div>
-        </div>
+        </fieldset>
       </div>
     </div>
   </div>
