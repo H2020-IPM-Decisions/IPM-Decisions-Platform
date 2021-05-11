@@ -1,4 +1,4 @@
-import { HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { DssSelectionService } from './dss-selection.service';
@@ -202,7 +202,14 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
           this.toastrService.success("Operation Success","DSS Submitted with data");
           this.reset();
         },
-        () => this.toastrService.error("Operation Failed","No DSS Submitted, an error occurs"),
+        (err: HttpErrorResponse) => {
+          if(err.status===409){
+            this.toastrService.error("Combination Exists","No DSS Submitted, a DSS with selected Crop/Pest combination already exists");
+          }else{
+            this.toastrService.error("Operation Failed","No DSS Submitted, an error occurs");
+          }
+          
+        },
       )
     }
   } 

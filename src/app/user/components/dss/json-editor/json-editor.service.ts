@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import * as JE from '@json-editor/json-editor';
-import * as jp from 'jsonpath';
 import * as Ajv from 'ajv';
 const ajv = new Ajv();
 import { Observable } from "rxjs";
