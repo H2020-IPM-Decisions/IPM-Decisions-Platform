@@ -1,5 +1,8 @@
 import { Injectable } from "@angular/core";
 import * as JE from '@json-editor/json-editor';
+import * as jp from 'jsonpath';
+import * as Ajv from 'ajv';
+const ajv = new Ajv();
 import { Observable } from "rxjs";
 // https://json-editor.github.io/json-editor/
 // https://github.com/json-editor/json-editor
@@ -30,8 +33,14 @@ export class JsonEditorService {
         });
     }
     isValid(editor: JE.JSONEditor) : boolean{
-        const errors = editor.validate();
-        return !(typeof errors.length == 'number' && errors.length > 0);
+        // BE AWARE! JSONEditor validation lacks! I'm using AVJ below
+        // const errors = editor.validate();
+        // return !(typeof errors.length == 'number' && errors.length > 0);
+        const validate = ajv.compile(editor.schema);
+        if(validate(editor.getValue())){
+            return true;
+        }
+        return false;
     }
     getValues(editor: JE.JSONEditor){
         return editor.getValue();

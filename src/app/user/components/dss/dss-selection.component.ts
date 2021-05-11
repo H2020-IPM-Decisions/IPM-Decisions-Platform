@@ -11,6 +11,8 @@ import { Farm } from '@app/shared/models/farm.model';
 import { FarmService } from '@app/shared/services/upr/farm.service';
 import { Field } from '@app/shared/models/field.model';
 import { FieldService } from '@app/shared/services/upr/field.service';
+import * as $ from 'jquery';
+
 @Component({
   selector: "app-dss-selection",
   templateUrl: "./dss-selection.component.html",
@@ -172,6 +174,7 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
       }
       this.remoteCallLoading = false;
       this.editor = this.jsonEditorService.createJsonEditor('json-editor-form', data.body);
+      $('#json-editor-form label').filter(function(){ return $(this).text() === 'root';}).css("display","none");
       this.$subscriptionEditor = this.jsonEditorService.listenChanges(this.editor).subscribe(() => this.editorChanges());
     },()=>{
       this.remoteCallLoading = false;
