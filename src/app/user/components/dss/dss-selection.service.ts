@@ -37,6 +37,17 @@ export class DssSelectionService {
     });
   }
 
+  del(id: string):Observable<HttpResponse<IDssFlat>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/dss/${id}`;
+    return this.http.delete<IDssFlat>(requestUrl, { 
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: 'response' 
+    });
+  }
+
   getDssList():Observable<HttpResponse<IDssFlat[]>> {
     let requestUrl = `${environment.apiUrl}/api/upr/dss`;
     return this.http.get<IDssFlat[]>(requestUrl, { 
@@ -77,6 +88,8 @@ export class DssSelectionService {
       fieldId: field.id,
       fieldName: field.name,
       dssId: dss.id,
+      dssName: dss.name,
+      dssModelName: model.name,
       dssModelId: model.id,
       dssVersion: model.version,
       dssExecutionType: model.execution.type,

@@ -159,6 +159,16 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
   }
 
   dssSelectChanged($event: { target: HTMLInputElement }){
+    /*
+    [11:52 AM] Antonio Calatayud
+    dssName
+    ​[11:52 AM] Antonio Calatayud
+    dssModelName
+    ​[11:52 AM] Antonio Calatayud
+    so ddsName is VIPS
+    ​[11:52 AM] Antonio Calatayud
+    dssModelName is Fly carrot whatever
+    */
     this.dssSelectIsNewState = true;
     this.dssSelectedOption = parseInt($event.target.value);
     // Enable spinner
