@@ -83,11 +83,28 @@
     </fieldset>
     <div class="row pt-3">
       <div class="col-md-12">
-        <button class="btn btn-info pull-right col-2" type="button" (click)="goBack()">
-          Back</button>
+        <button class="btn btn-info pull-right" type="button" (click)="goBack()">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
 
-          <button class="btn btn-danger pl-2 pull-right col-2" type="button" (click)="delete()">
-            delete</button>
+        <button type="button" class="btn btn-danger mr-2 pull-right" (click)="openModal(deletedsstemplate)">
+          <i class="fas fa-trash"></i> Delete
+        </button>
+        <ng-template #deletedsstemplate>
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Delete DSS Result</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="deleteDssModalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            You are about to delete DSS Result. Are you sure?
+          </div>
+          <div class="modal-footer pull-right">
+            <button type="button" class="btn btn-default" (click)="deleteDssModalRef.hide()">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="delete()">Yes</button>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>

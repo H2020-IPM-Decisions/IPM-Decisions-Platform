@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { IDssFlat } from './dss-selection.model';
@@ -16,9 +17,11 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   $delSubscription: Subscription;
   dssDetail: IDssFlat;
   dssDetailOriginal: IDssFlat;
+  deleteDssModalRef: BsModalRef;
   
   constructor(
     private activatedRoute: ActivatedRoute, 
+    private modalService: BsModalService,
     private service: DssSelectionService,
     private toastrService: ToastrService) { }
   
@@ -34,10 +37,15 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     window.history.back();
   }
 
+  openModal(template) {
+    this.deleteDssModalRef = this.modalService.show(template);
+  }
+
   delete(): void{
     if(!this.dssDetailOriginal) return;
     this.$delSubscription = this.service.del(this.dssDetailOriginal.id).subscribe(()=>{
       this.toastrService.success("Operation Success","DSS Deleted");
+      this.deleteDssModalRef.hide();
       window.history.back();
     },()=>{
       this.toastrService.error("Operation Failed","No DSS deleted");
