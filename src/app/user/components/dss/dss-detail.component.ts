@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { IDssFlat } from './dss-selection.model';
 import { DssSelectionService } from './dss-selection.service';
-import dssFakeJson from './fake/dss-result.json';
 @Component({
   selector: 'app-dss-detail',
   templateUrl: './dss-detail.component.html',
@@ -16,7 +15,6 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   $subscription: Subscription;
   $delSubscription: Subscription;
   dssDetail: IDssFlat;
-  dssDetailOriginal: IDssFlat;
   deleteDssModalRef: BsModalRef;
   
   constructor(
@@ -27,9 +25,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   
   ngOnInit() {
     this.$subscription = this.activatedRoute.data.subscribe(({ dssDetail }) => {
-      // TODO remove when get real data
-      this.dssDetailOriginal = dssDetail;
-      this.dssDetail = dssFakeJson;
+      this.dssDetail = dssDetail;
     });
   }
 
@@ -42,8 +38,8 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   }
 
   delete(): void{
-    if(!this.dssDetailOriginal) return;
-    this.$delSubscription = this.service.del(this.dssDetailOriginal.id).subscribe(()=>{
+    if(!this.dssDetail) return;
+    this.$delSubscription = this.service.del(this.dssDetail.id).subscribe(()=>{
       this.toastrService.success("Operation Success","DSS Deleted");
       this.deleteDssModalRef.hide();
       window.history.back();

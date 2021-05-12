@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild } from "@angular/core";
-import Chart from 'chart.js/auto';
+import { IChartConfig } from "./custom-chart.model";
+import { CustomChartService } from "./custom-chart.service";
 
 @Component({
     selector: "custom-chart",
@@ -13,40 +14,38 @@ export class CustomChartComponent implements AfterViewInit {
     @Input()
     labels: string[];
     @Input()
-    header: string;
+    config: IChartConfig;
     
     @ViewChild('chart', {static: false}) 
     el:ElementRef;
 
     errorMessage: string;
-    chartElement: Chart;
+    chartElement: any;
     borderColors: string[] = [];
 
-    constructor(){
-        
-    }
+    constructor(private customChartService: CustomChartService){}
     
     ngAfterViewInit(): void {
+        if(this.config && !this.config.defaultVisible){
+            return;
+        }
         if(this.data.length != this.labels.length){
             this.errorMessage = 'Error with graph data and labels (length different)';
             return;
         }
-        for(let i=0;i<this.data.length;i++){
-            this.borderColors.push('rgb('+Math.floor(Math.random()*255)+', '+Math.floor(Math.random()*255)+', '+Math.floor(Math.random()*255)+')');
+        let color = '';
+        if(this.config && this.config.color){
+            color = this.config.color;
         }
-        this.chartElement = new Chart(this.el.nativeElement, {
-            type: 'line',
-            data: {
-                labels: this.labels,
-                datasets: [{
-                    label: this.header,
-                    data: this.data,
-                    borderColor: this.borderColors,
-                    tension: 0.1,
-                    fill: false
-                }]
-            }
-        });
+        let legend = '';
+        if(this.config && this.config.unit){
+            legend = this.config.unit;
+        }
+        let type = '';
+        if(this.config && this.config.chartType){
+            type = this.config.chartType;
+        }
+        this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color);
     }
 
 }
