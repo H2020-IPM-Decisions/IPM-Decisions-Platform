@@ -4,7 +4,12 @@
             "code": "TMDD5C",
             "title": "Accumulated day degrees",
             "description": "The accumulated day degrees with a base temperature of 5 degrees celcius",
-            "chartType": "line",
+            "chartInformation": {
+                "defaultVisible": true,
+                "unit": "Liter",
+                "chartType": "line",
+                "color": "red"
+            },
             "data": [
                 1.53,
                 1.53
@@ -18,7 +23,12 @@
             "code": "THRESHOLD_1",
             "title": "24-hour threshold for low swarm risk",
             "description": "24-hour threshold for low swarm risk",
-            "chartType": "line",
+            "chartInformation": {
+                "defaultVisible": true,
+                "unit": "Liter",
+                "chartType": "line",
+                "color": "red"
+            },
             "data": [
                 260.0,
                 260.0
@@ -32,7 +42,12 @@
             "code": "THRESHOLD_2",
             "title": "24-hour threshold for high swarm risk",
             "description": "24-hour threshold for high swarm risk",
-            "chartType": "line",
+            "chartInformation": {
+                "defaultVisible": true,
+                "unit": "Liter",
+                "chartType": "bar",
+                "color": "red"
+            },
             "data": [
                 360.0,
                 360.0
@@ -46,7 +61,12 @@
             "code": "TMD5C",
             "title": "Daily degree",
             "description": "Daily degrees base temp 5 degrees Celsius",
-            "chartType": "line",
+            "chartInformation": {
+                "defaultVisible": true,
+                "unit": "Celsius Average",
+                "chartType": "line",
+                "color": "red"
+            },
             "data": [
                 1.53,
                 0.0
@@ -60,7 +80,12 @@
             "code": "TMD",
             "title": "Average temperature, daily value",
             "description": "Average temperature, daily value",
-            "chartType": "line",
+            "chartInformation": {
+                "defaultVisible": true,
+                "unit": "Celsius",
+                "chartType": "line",
+                "color": "red"
+            },
             "data": [
                 6.53,
                 4.84
@@ -74,7 +99,12 @@
             "code": "THRESHOLD_3",
             "title": "Threshold swarming ended",
             "description": "24-hour threshold swarming ended",
-            "chartType": "line",
+            "chartInformation": {
+                "defaultVisible": true,
+                "unit": "Liter",
+                "chartType": "line",
+                "color": "red"
+            },
             "data": [
                 560.0,
                 560.0

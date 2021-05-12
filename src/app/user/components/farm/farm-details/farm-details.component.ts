@@ -5,7 +5,6 @@ import { Farm } from "@app/shared/models/farm.model";
 import { MaprisksService } from "@app/shared/services/maprisks.service";
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subscription } from "rxjs";
-import { FarmService } from "@app/shared/services/upr/farm.service";
 
 @Component({
   selector: "app-farm-details",
@@ -23,14 +22,12 @@ export class FarmDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _maprisksService: MaprisksService,
-    private _farmService: FarmService
+    private _maprisksService: MaprisksService
   ) { }
 
   ngOnInit() {
     this.$subscription = this._activatedRoute.data.subscribe(({ farm }) => {
       this.farm = farm;
-      //this._farmService.getAddressFromCoordinates()
     });
   }
 

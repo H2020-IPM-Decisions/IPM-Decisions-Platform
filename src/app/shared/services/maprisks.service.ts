@@ -38,7 +38,7 @@ export class MaprisksService {
           location.zoom = 5;
         }
 
-        m.setView(new L.LatLng(location.x, location.y), location.zoom);
+        m.setView(new L.LatLng(location.y, location.x), location.zoom);
 
         m.whenReady(() => {
           observer.next(m);
@@ -52,7 +52,7 @@ export class MaprisksService {
     let marker = null;
 
     if (location) {
-      marker = new L.Marker([location.x, location.y], { icon: L.icon({
+      marker = new L.Marker([location.y, location.x], { icon: L.icon({
         iconSize: [28,34],
         iconAnchor: [14, 17],
         iconUrl: 'img/icons/map-marker.png'
@@ -103,60 +103,4 @@ export class MaprisksService {
     return L.featureGroup([]).addTo(map);
   }
 
-  //   getLocationAddress(map: any) {
-
-  //       if (marker) {
-  //         map.removeLayer(marker);
-  //       }
-
-  //       esriGeo
-  //         .geocodeService()
-  //         .reverse()
-  //         .latlng(e.latlng)
-  //         .run(function (error, result) {
-  //           if (error) {
-  //             return;
-  //           }
-
-  //           // self.getWeatherDataSourceLocation(
-  //           //   result.latlng.lat,
-  //           //   result.latlng.lng,
-  //           //   2500
-  //           // );
-
-  //           // set farm marker
-  //           if(marker) {
-  //   this.marker = L.marker(result.latlng)
-  //             .addTo(map)
-  //             .bindPopup(result.address.Match_addr)
-  //             .openPopup();
-  //           }
-
-  //           // farmLocation = {
-  //           //   x: result.latlng.lat,
-  //           //   y: result.latlng.lng,
-  //           //   srid: 4326,
-  //           // };
-  //           // if (farmLocation) {
-  //           //   form.controls.location.setValue(farmLocation);
-  //           // }
-  //         });
-  //     });
-  //   }
-  // }
-
-  //var myIcon = L.icon({
-  //  iconUrl: 'pin-mappa-green40.png',
-  //iconSize: [38, 95],
-  //iconAnchor: [22, 94],
-  //popupAnchor: [-3, -76],
-  //shadowUrl: 'my-icon-shadow.png',
-  //shadowSize: [68, 95],
-  //shadowAnchor: [22, 94]
-  //{icon: myIcon}
-  //});
-
-  // var popup = L.popup({
-  //     maxWidth:400
-  // });
 }

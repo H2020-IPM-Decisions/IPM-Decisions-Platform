@@ -50,11 +50,18 @@ export class DssCropPest {
     ){}
 }
 
+export interface IDssResultChart{
+    defaultVisible?: boolean;
+    unit?: string;
+    chartType?: string;
+    color?: string;
+}
+
 export interface IDssResultFlat {
     code?: string;
     title?: string;
     description?: string;
-    chartType?: string;
+    chartType?: IDssResultChart;
     data?: number[];
     labels?: string[];
 }

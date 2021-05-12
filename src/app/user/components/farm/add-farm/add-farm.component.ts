@@ -77,7 +77,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       if (locPoint) {
         const location = this.mapLocationCoordinates(locPoint.latlng);
         // populate met. station dropdown with nearest weather stations
-        this.getNearestWeatherDataSource(location.x, location.y);
+        this.getNearestWeatherDataSource(location.y, location.x);
         if (location) {
           this.farmForm.controls.location.setValue(location);
         }
@@ -90,8 +90,8 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
 
   private mapLocationCoordinates(rawObj: any) {
     return <Location>{
-      x: rawObj.lat,
-      y: rawObj.lng,
+      x: rawObj.lng,
+      y: rawObj.lat,
       srid: MapSettings.SRID,
     };
   }

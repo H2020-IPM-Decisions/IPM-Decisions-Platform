@@ -47,7 +47,7 @@ export class FarmListComponent implements OnInit {
       if (response && response.value) {
         const farms = response.value;
         farms.forEach((farm) => {
-          this._farmService.getAddressFromCoordinates(farm.location.x, farm.location.y).subscribe( (data) => farm.location.address = data);
+          this._farmService.getAddressFromCoordinates(farm.location.y, farm.location.x).subscribe( (data) => farm.location.address = data);
         });
         this.farmList = farms;
       }
