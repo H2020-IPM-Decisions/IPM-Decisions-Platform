@@ -33,12 +33,12 @@ export class FieldEditComponent implements OnInit {
 
   ngOnInit() {
     this.fieldFormInit();
-    this.customFieldService.getCrops().subscribe((data:{ value: any, label: any }[])=>{
+    this.customFieldService.cachedRefreshableCrops$.subscribe((data:{ value: any, label: any }[])=>{
       this.crops = data;
     });
-    this.customFieldService.getPests().subscribe((data:{ value: any, label: any }[])=>{
+    this.customFieldService.cachedRefreshablePests$.subscribe((data:{ value: any, label: any }[])=>{
       this.pests = data;
-    })
+    });
     this._farmService.currentFarm.subscribe(
       (farm) => (this.farmName = farm.name)
     );
