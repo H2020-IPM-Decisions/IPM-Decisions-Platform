@@ -5,6 +5,7 @@ import { FarmService } from "@app/shared/services/upr/farm.service";
 import { FieldService } from "@app/shared/services/upr/field.service";
 import { compare } from "fast-json-patch";
 import { ToastrService } from "ngx-toastr";
+import { CustomFieldService } from "../custom-field.service";
 import { environment } from './../../../../../environments/environment';
 
 @Component({
@@ -26,22 +27,18 @@ export class FieldEditComponent implements OnInit {
     private _toastr: ToastrService,
     private _farmService: FarmService,
     private _fieldService: FieldService,
+    private customFieldService: CustomFieldService,
     private http: HttpClient
   ) {}
 
   ngOnInit() {
     this.fieldFormInit();
-    this.http
-      .get(`${environment.apiUrl}/api/dss/rest/crop`)
-      .subscribe((response: any[]) => {
-        this.crops = response.map((item) => ({ value: item, label: item }))
-      })
-
-    this.http
-      .get(`${environment.apiUrl}/api/dss/rest/pest`)
-      .subscribe((response: any[]) => {
-        this.pests = response.map((item) => ({ value: item, label: item }))
-      })
+    this.customFieldService.getCrops().subscribe((data:{ value: any, label: any }[])=>{
+      this.crops = data;
+    });
+    this.customFieldService.getPests().subscribe((data:{ value: any, label: any }[])=>{
+      this.pests = data;
+    })
     this._farmService.currentFarm.subscribe(
       (farm) => (this.farmName = farm.name)
     );

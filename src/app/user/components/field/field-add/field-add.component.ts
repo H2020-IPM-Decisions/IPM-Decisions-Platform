@@ -9,6 +9,7 @@ import { environment } from './../../../../../environments/environment';
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { Farm } from "@app/shared/models/farm.model";
 import { Field } from "@app/shared/models/field.model";
+import { CustomFieldService } from "../custom-field.service";
 @Component({
   selector: "app-field-add",
   templateUrl: "./field-add.component.html",
@@ -26,6 +27,7 @@ export class FieldAddComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _fieldService: FieldService,
+    private customFieldService: CustomFieldService,
     private _toastr: ToastrService,
     private http: HttpClient,
     private modalService: BsModalService,
@@ -37,19 +39,12 @@ export class FieldAddComponent implements OnInit {
 
   ngOnInit() {
     this.addFieldFormInit();
-    this.http
-      .get(`${environment.apiUrl}/api/dss/rest/crop`)
-      .subscribe((response: any[]) => {
-        const filtered = response.filter((value, index)=> response.indexOf(value)===index).sort();
-        this.crops = filtered.map((item) => ({ value: item, label: item }));
-      })
-
-    this.http
-      .get(`${environment.apiUrl}/api/dss/rest/pest`)
-      .subscribe((response: any[]) => {
-        const filtered = response.filter((value, index)=> response.indexOf(value)===index).sort();
-        this.pests = filtered.map((item) => ({ value: item, label: item }))
-      })
+    this.customFieldService.getCrops().subscribe((data:{ value: any, label: any }[])=>{
+      this.crops = data;
+    });
+    this.customFieldService.getPests().subscribe((data:{ value: any, label: any }[])=>{
+      this.pests = data;
+    })
   }
 
   addFieldFormInit() {
