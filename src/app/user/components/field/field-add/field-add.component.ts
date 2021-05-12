@@ -40,13 +40,15 @@ export class FieldAddComponent implements OnInit {
     this.http
       .get(`${environment.apiUrl}/api/dss/rest/crop`)
       .subscribe((response: any[]) => {
-        this.crops = response.map((item) => ({ value: item, label: item }))
+        const filtered = response.filter((value, index)=> response.indexOf(value)===index).sort();
+        this.crops = filtered.map((item) => ({ value: item, label: item }));
       })
 
     this.http
       .get(`${environment.apiUrl}/api/dss/rest/pest`)
       .subscribe((response: any[]) => {
-        this.pests = response.map((item) => ({ value: item, label: item }))
+        const filtered = response.filter((value, index)=> response.indexOf(value)===index).sort();
+        this.pests = filtered.map((item) => ({ value: item, label: item }))
       })
   }
 

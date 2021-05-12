@@ -211,7 +211,8 @@ export class WeatherService {
                 if(reqParams){
                   return item.access_type === "location";
                 }
-                return item.access_type === "stations" && item.authentication_required === "false";
+                // return item.access_type === "stations" && item.authentication_required === "false";
+                return item.authentication_required === "false";
               }
             )
             .map( 
