@@ -231,9 +231,6 @@ export class AuthenticationService {
     const decoded = jwt_decode(token);
 
     if (decoded) {
-      const userAccessType = decoded["UserAccessType"]
-        ? [decoded["UserAccessType"]]
-        : null;
       const role = decoded[
         "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
       ]
@@ -252,7 +249,7 @@ export class AuthenticationService {
         tokenInit: decoded["iat"],
         tokenExpiration: decoded["exp"],
         refreshToken: sessionStorage.getItem("refresh_token"),
-        useraccesstype: userAccessType,
+        useraccesstype: decoded["useraccesstype"],
         roles: role,
       };
       if (account) {
