@@ -41,15 +41,10 @@
                 <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
               </button>
 
-              <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Delete" title="Delete"
-                (click)="openModal(deleteTemplate, null)">
-                <i class="action-icon size-11 fas fa-trash"></i>
-              </button>
-
               <!-- delete field modal -->
               <ng-template #deleteTemplate>
                 <div class="modal-header">
-                  <h4 class="modal-title pull-left">Delete Field</h4>
+                  <h4 class="modal-title pull-left">Delete Crop / Pest combination</h4>
                   <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -66,7 +61,7 @@
               <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Add Observation"
                 title="Add Observation"
                 (click)="this.observationModalRef = this._modalService.show(addObservationTemplate);">
-                <i class="action-icon size-11 fas fa-eye"></i>
+                <i class="action-icon size-11 fas fa-binoculars"></i>
               </button>
 
               <!-- add observation modal -->
@@ -117,7 +112,7 @@
 
               <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Add Spray" title="Add Spray"
                 (click)="this.sprayModalRef = this._modalService.show(addSprayTemplate);">
-                <i class="action-icon size-11 fas fa-spray-can"></i>
+                <i class="action-icon size-11 light-blue-icon fas fa-spray-can"></i>
               </button>
 
               <!-- add spray modal -->
@@ -167,13 +162,18 @@
                   <button type="button" class="btn btn-default" (click)="sprayModalRef.hide()">Cancel</button>
                 </div>
               </ng-template>
+
+              <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Delete" title="Delete"
+                (click)="openModal(deleteTemplate, null)">
+                <i class="action-icon size-11 fas fa-trash"></i>
+              </button>
             </td>
           </tr>
         </tbody>
         <ng-template #noRows>
           <tbody>
             <tr>
-              <td colspan="4" class="text-center">No fields available.</td>
+              <td colspan="4" class="text-center">No Crop and Pest Combination available.</td>
             </tr>
           </tbody>
         </ng-template>

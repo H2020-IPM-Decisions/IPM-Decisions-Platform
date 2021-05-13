@@ -35,7 +35,7 @@
         </li>
 
         <li *ngIf="isFarmer || isAdvisor || isDeveloper" routerLinkActive="active">
-            <a [routerLink]="['/user/farm']">Farm List</a>
+            <a [routerLink]="['/user/farm']">Farm Management</a>
             <ul class="sub-menu">
                 <li *ngIf="isFarmer || isAdvisor || isDeveloper" routerLinkActive="active">
                     <a [routerLink]="['/user/farm/add']">Add Farm</a>

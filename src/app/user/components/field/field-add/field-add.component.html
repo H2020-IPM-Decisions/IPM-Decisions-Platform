@@ -1,5 +1,6 @@
 <div class="modal-header">
-  <h4 class="modal-title pull-left">Add Field: Add crop/pest combination</h4>
+  <h4 class="modal-title pull-left" *ngIf="!field">Add crop/pest combination</h4>
+  <h4 class="modal-title pull-left" *ngIf="field">Edit crop/pest combination</h4>
   <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -46,7 +47,7 @@
 
           <div class="col-12 mt-4">
             <fieldset class="border p-3">
-              <legend class="w-auto px-1 text-muted">Select variety and sowingdate</legend>
+              <legend class="w-auto px-1 text-muted">Select variety and sowing date</legend>
 
               <div class="form-group row">
                 <label for="variety" class="col-sm-4 col-md-2 col-form-label">Variety</label>

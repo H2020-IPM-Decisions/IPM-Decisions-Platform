@@ -71,10 +71,10 @@
                 </button>
               </div>
               <div class="form-group col-md pt-4" *ngIf="fieldsLoaded && fields.length==0">
-                <h5 class="pr-3">No fields available!</h5>
+                <h5 class="pr-3">No Crop and Pest Combination available!</h5>
                 <button type="button" class="pull-right btn btn-md btn-primary" [routerLink]="['/user/farm',selectedFarm.id,'edit']">
                   <i class="fas fa-plus"></i>&nbsp;
-                  Create Fields
+                  Create Crop and Pest Combination
                 </button>
               </div>
               <div class="form-group col-md pt-4" *ngIf="dssLoaded && dssList.length==0">

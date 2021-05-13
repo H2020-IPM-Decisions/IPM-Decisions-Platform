@@ -7,7 +7,8 @@
           <i class="pe-7s-leaf icon-gradient bg-mean-fruit">
           </i>
         </div>
-        <div>Add Farm</div>
+        <div *ngIf="!farm">Add Farm</div>
+        <div *ngIf="farm">Edit Farm</div>
       </div>
     </div>
   </div>
