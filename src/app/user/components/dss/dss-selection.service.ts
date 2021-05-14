@@ -3,12 +3,9 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from "@src/environments/environment";
-import { IDssFlat, IDssFormData, DssJSONSchema, DssModel, DssSelection } from './dss-selection.model';
+import { IDssFlat, IDssFormData, DssJSONSchema, DssModel, DssSelection, IDssResultChart } from './dss-selection.model';
 import { Field } from '@app/shared/models/field.model';
 import { Farm } from '@app/shared/models/farm.model';
-
-type CropListEntityResponseType = HttpResponse<string[]>;
-type PestListEntityResponseType = HttpResponse<string[]>;
 
 @Injectable({ providedIn: 'root' })
 export class DssSelectionService {
@@ -99,6 +96,33 @@ export class DssSelectionService {
       },
       dssParameters: JSON.stringify(jsonSchemaForm)
     }
+  }
+
+  getDssWarningChart(data: number[], startDateStr: string): {data:number[],labels:string[],chartInformation:IDssResultChart} { 
+    //                        'no-info'  'no-stat'  'no risk'  'med ris'  'hi risk'
+    //                        'grey'     'blue'     'green'    'orange'   'red'
+    const colors: string[] = ['#6c757d', '#16aaff', '#3ac47d', '#f7b924', '#d92550'];
+    let startDate: Date = new Date(startDateStr);
+    let dateStrArr: string[] = [];
+    let colorStrArr: string[] = [];
+    for(let i=0; i<data.length; i++){
+      if(i!=0){
+        startDate.setDate(startDate.getDate() + 1);
+      }
+      dateStrArr.push(startDate.toISOString().substr(0,10))
+      colorStrArr.push(colors[data[i]]);
+    }
+    return {
+      data: data,
+      labels: dateStrArr,
+      chartInformation:{
+        chartType: 'bar',
+        color: colorStrArr,
+        unit: 'warning level',
+        defaultVisible: true,
+        maxDataValue: 4
+      }
+    };
   }
 
 }

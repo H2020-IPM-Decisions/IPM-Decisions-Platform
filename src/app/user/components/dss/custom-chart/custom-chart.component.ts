@@ -39,13 +39,20 @@ export class CustomChartComponent implements AfterViewInit {
         }
         let legend = '';
         if(this.config && this.config.unit){
-            legend = this.config.unit;
+            var element = document.createElement('div');
+            element.innerHTML = this.config.unit;
+            const str = element.textContent;
+            legend = str;
         }
         let type = '';
         if(this.config && this.config.chartType){
             type = this.config.chartType;
         }
-        this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color);
+        let maxDataValue;
+        if(this.config && this.config.maxDataValue){
+            maxDataValue = this.config.maxDataValue;
+        }
+        this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color, maxDataValue);
     }
 
 }

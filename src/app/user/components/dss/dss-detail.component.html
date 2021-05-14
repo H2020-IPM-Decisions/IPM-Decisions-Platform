@@ -72,6 +72,15 @@
         </div>
       </div>
 
+      <div class="row" *ngIf="warning">
+        <div class="col-md-3">
+          Warning Status Per Day
+        </div>
+        <div class="col-md-9 pb-5">
+          <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation"></custom-chart>
+        </div>
+      </div>
+
       <div class="row" *ngFor="let result of dssDetail.resultParameters">
         <div class="col-md-3">
           {{result.title}}

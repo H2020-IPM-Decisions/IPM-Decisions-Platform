@@ -3,4 +3,5 @@ export interface IChartConfig{
     unit?: string;
     chartType?: string;
     color?: string;
+    maxDataValue?:number;
 }

@@ -54,7 +54,8 @@ export interface IDssResultChart{
     defaultVisible?: boolean;
     unit?: string;
     chartType?: string;
-    color?: string;
+    color?: string|string[];
+    maxDataValue?:number;
 }
 
 export interface IDssResultFlat {

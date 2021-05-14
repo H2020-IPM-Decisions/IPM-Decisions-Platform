@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { IDssFlat } from './dss-selection.model';
+import { IDssFlat, IDssResultChart} from './dss-selection.model';
 import { DssSelectionService } from './dss-selection.service';
 @Component({
   selector: 'app-dss-detail',
@@ -16,6 +16,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   $delSubscription: Subscription;
   dssDetail: IDssFlat;
   deleteDssModalRef: BsModalRef;
+  warning: {data:number[],labels:string[],chartInformation:IDssResultChart};
   
   constructor(
     private activatedRoute: ActivatedRoute, 
@@ -26,6 +27,12 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.$subscription = this.activatedRoute.data.subscribe(({ dssDetail }) => {
       this.dssDetail = dssDetail;
+      
+      let labels = [];
+      for(let i=0; i<this.dssDetail.warningStatusPerDay.length; i++){
+        labels.push(this.dssDetail.outputTimeStart);
+      }
+      this.warning = this.service.getDssWarningChart(this.dssDetail.warningStatusPerDay, this.dssDetail.outputTimeStart);
     });
   }
 

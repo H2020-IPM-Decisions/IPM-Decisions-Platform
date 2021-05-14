@@ -147,7 +147,10 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
         (response: HttpResponse<DssSelection[]>) => {
           if(response.body && response.body.length > 0 && response.body[0] && response.body[0].models){
             this.dssSelection = response.body[0];
-            this.dssList = this.dssSelection.models;
+            // Hardcoded change requested by Dave!!! TODO to change
+            // this.dssList = this.dssSelection.models; 
+            this.dssList = this.dssSelection.models.filter( (item) => item.id === "PSILARTEMP")
+            // Hardcoded change requested by Dave!!! TODO to change
           }
           this.dssLoaded = true;
           this.remoteCallLoading = false;
@@ -159,16 +162,6 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
   }
 
   dssSelectChanged($event: { target: HTMLInputElement }){
-    /*
-    [11:52 AM] Antonio Calatayud
-    dssName
-    ​[11:52 AM] Antonio Calatayud
-    dssModelName
-    ​[11:52 AM] Antonio Calatayud
-    so ddsName is VIPS
-    ​[11:52 AM] Antonio Calatayud
-    dssModelName is Fly carrot whatever
-    */
     this.dssSelectIsNewState = true;
     this.dssSelectedOption = parseInt($event.target.value);
     // Enable spinner
