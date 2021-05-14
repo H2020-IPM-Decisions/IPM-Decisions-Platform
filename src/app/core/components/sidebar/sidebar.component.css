@@ -1,0 +1,11 @@
+.footer{
+    bottom: 0px;
+    position: inherit;
+    color: #fff !important;
+    width: 280px;
+    font-size: smaller;
+}
+
+img {
+    max-width: 64px;
+}
