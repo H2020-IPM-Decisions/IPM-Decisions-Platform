@@ -120,7 +120,17 @@ export class DssSelectionService {
         color: colorStrArr,
         unit: 'warning level',
         defaultVisible: true,
-        maxDataValue: 4
+        options: {
+          scales: {
+              y: {
+                  max: 4,
+                  min: 0,
+                  ticks: {
+                      stepSize: 1
+                  }
+              }
+          }
+        }
       }
     };
   }

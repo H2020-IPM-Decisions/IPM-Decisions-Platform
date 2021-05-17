@@ -55,7 +55,7 @@ export interface IDssResultChart{
     unit?: string;
     chartType?: string;
     color?: string|string[];
-    maxDataValue?:number;
+    options?:any;
 }
 
 export interface IDssResultFlat {

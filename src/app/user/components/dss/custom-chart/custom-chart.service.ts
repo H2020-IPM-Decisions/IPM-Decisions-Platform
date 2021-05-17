@@ -4,10 +4,9 @@ import Chart from 'chart.js/auto';
 @Injectable({ providedIn: 'root' })
 export class CustomChartService {
     constructor(){}
-    public drawChart(element: any, labels: string[], data: number[], type: string, legend: string, color: string|string[], maxDataValue?: number): any{
+    public drawChart(element: any, labels: string[], data: number[], type: string, legend: string, color: string|string[], options?: any): any{
         const colors = typeof color === 'string' ? this.getChartJsColorArray(data.length, color) : color;
         const backgroundColors = type === 'bar' ? colors : 'white';
-        const options = maxDataValue ? {scales: { y: { max: maxDataValue } } } : {};
 
         return new Chart(element, {
             type: this.getChartJsType(type),
