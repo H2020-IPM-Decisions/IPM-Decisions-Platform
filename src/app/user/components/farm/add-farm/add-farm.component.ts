@@ -61,6 +61,13 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
             this.farmForm.patchValue({
               weatherForecastDto: weatherDataSourceDtoList[0]
             });
+          } else if(this.farm && weatherDataSourceDtoList.length>0){
+            const filteredArray = this.weatherForecastDtoList.filter(item=>this.farm.weatherForecastDto.weatherId === item.weatherId);
+            if(filteredArray.length==1){
+              this.farmForm.patchValue({
+                weatherForecastDto: filteredArray[0]
+              });
+            }
           }
       });
   }
