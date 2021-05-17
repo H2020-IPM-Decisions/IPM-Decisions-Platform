@@ -18,7 +18,7 @@ import { throwError } from "rxjs";
 })
 export class EditAccountComponent implements OnInit {
   accountForm: FormGroup;
-  countries = ["GB", "Norway", "France", "Serbia"];
+  countries = ["Austria", "Belgium", "Bulgaria", "Croatia", "Republic of Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "GB", "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Norway", "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden"];
   private id: string;
   submitted;
   errors: string[] = [];
@@ -133,6 +133,7 @@ export class EditAccountComponent implements OnInit {
             null,
             "toast-success"
           );
+          window.history.back();
         },
         (error: HttpErrorResponse) => {
           this._toastr.show(

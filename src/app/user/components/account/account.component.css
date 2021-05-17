@@ -90,3 +90,12 @@
   font-weight: 600;
   color: #249fa5;
 }
+
+.user-role-badge{
+  background-color: #249fa5;
+  color: white;
+}
+
+ul li a.nav-link{
+  color: #249fa5;
+}

@@ -29,7 +29,6 @@ export class AccountComponent implements OnInit {
     this._userProfileService.getUserProfile(true)
       .subscribe((userFriendly: UserProfile) => {
         this.user = userFriendly;
-        console.log(this.user);
       });
   }
 
