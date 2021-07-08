@@ -55,7 +55,8 @@ export class MaprisksService {
       marker = new L.Marker([location.y, location.x], { icon: L.icon({
         iconSize: [28,34],
         iconAnchor: [14, 17],
-        iconUrl: 'img/icons/map-marker.png'
+        iconUrl: 'img/icons/marker-icon.png',
+        shadowUrl: 'img/icons/marker-shadow.png'
       })});
       if(location.address){
         marker.bindPopup(location.address.longLabel);
@@ -87,7 +88,8 @@ export class MaprisksService {
           marker = L.marker(result.latlng, { icon: L.icon({
             iconSize: [28,34],
             iconAnchor: [14, 17],
-            iconUrl: 'img/icons/map-marker.png'
+            iconUrl: 'img/icons/marker-icon.png',
+            shadowUrl: 'img/icons/marker-shadow.png'
           })})
             .addTo(map)
             .bindPopup(result.address.Match_addr)

@@ -49,7 +49,7 @@
                 <label for="dsss" class="col-md-3 col-form-label">DSS</label>
                 <select id="dsss" class="col-md-9 form-control" (change)="dssSelectChanged($event)">
                   <option value="" disabled [selected]='!dssSelectIsNewState'>Select a DSS</option>
-                  <option *ngFor="let dssModel of dssList;let i = index" [value]="i" [selected]="i == dssSelectedOption">
+                  <option *ngFor="let dssModel of dssList;let i = index" [value]="i" [selected]="i == dssSelectedOption" [title]="dssModel.description">
                     {{dssModel.name}}
                   </option>
                 </select>

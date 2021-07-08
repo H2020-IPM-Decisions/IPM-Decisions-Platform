@@ -30,7 +30,7 @@
             <div class="map-container" #map></div>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" *ngIf="farm && farm.id">
           <label for="met-station" class="col-sm-3 col-form-label">Nearest met. station</label>
           <div class="col-sm-9">
             <select class="form-control" id="met-station" formControlName="weatherHistoricalDto">
@@ -40,7 +40,7 @@
             </select>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" *ngIf="farm && farm.id">
           <label for="forecast" class="col-sm-3 col-form-label">Weather forecast service</label>
           <div class="col-sm-9">
             <select class="form-control" id="forecast" formControlName="weatherForecastDto">
