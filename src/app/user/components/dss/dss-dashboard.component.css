@@ -1,4 +1,12 @@
 .dss-icon {
     font-size: 45px;
 }
-  
+
+.info-icon {
+    position: absolute;
+    border-radius: 50%;
+    background-color: white;
+    top: 10px;
+    right: 10px;
+    height: 15px;
+}

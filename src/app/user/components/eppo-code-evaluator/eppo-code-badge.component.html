@@ -1,5 +1,7 @@
 <span>
+    <ng-template #tolTemplateStatusRep>{{statusRepresentation}}</ng-template>
     <span class="text-truncate badge dss-badge"
+        [tooltip]="tolTemplateStatusRep"
         [ngClass]="{'badge-secondary':!status, 'badge-info': status==1, 'badge-success': status==2, 'badge-warning':status==3, 'badge-danger': status==4}">
         <span class="label label-danger label-as-badge"></span>
         <h5>{{code}}</h5>

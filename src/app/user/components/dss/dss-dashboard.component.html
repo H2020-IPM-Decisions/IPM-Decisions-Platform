@@ -22,10 +22,16 @@
           </div>
         </div>
         <div class="d-flex col-10 text-center">
-          <div class="p-2 mx-1" *ngFor="let item of cropEppoCode.value">
-            <a [routerLink]="[item.id,'view']" [title]="item.warningStatusRepresentation">
-              <eppo-code-badge [code]="item.pestEppoCode" [dss]="item.dssId+' - '+item.dssModelId" [status]="item.warningStatus"></eppo-code-badge>
+          <div class="d-flex p-2 mx-1" *ngFor="let item of cropEppoCode.value" style="position:relative">
+            <a [routerLink]="[item.id,'view']" style="position:relative">
+              <eppo-code-badge [code]="item.pestEppoCode" [statusRepresentation]="item.warningStatusRepresentation" [dss]="item.dssId+' - '+item.dssModelId" [status]="item.warningStatus"></eppo-code-badge>
             </a>
+            <i class="fas fa-info-circle light-blue-icon ml-1 info-icon"
+                popover="{{item.dssModelName}}" 
+                popoverTitle="{{item.warningStatusRepresentation}}"  
+                placement="auto"
+                [outsideClick]="true">
+            </i>
           </div>
         </div>
       </div>
@@ -53,19 +59,19 @@
                   3 = Medium risk of infection, ORANGE
                   4 = High risk of infection. RED
                 -->
-                <eppo-code-badge [code]="'PEST'" [dss]="'No meaning status'" [status]="0"></eppo-code-badge>
+                <eppo-code-badge [code]="'PEST'" [dss]="'No meaning status'" [status]="0" [statusRepresentation]="'No meaning status'"></eppo-code-badge>
               </div>
               <div class="p-2 mx-1">
-                <eppo-code-badge [code]="'PSILRO'" [dss]="'Cannot give status'" [status]="1"></eppo-code-badge>
+                <eppo-code-badge [code]="'PSILRO'" [dss]="'Cannot give status'" [status]="1" [statusRepresentation]="'Cannot give status'"></eppo-code-badge>
               </div>
               <div class="p-2 mx-1">
-                <eppo-code-badge [code]="'SEPTAP'" [dss]="'No risk of infection'" [status]="2"></eppo-code-badge>
+                <eppo-code-badge [code]="'SEPTAP'" [dss]="'No risk of infection'" [status]="2" [statusRepresentation]="'No risk of infection'"></eppo-code-badge>
               </div>
               <div class="p-2 mx-1">
-                <eppo-code-badge [code]="'TRFPR'" [dss]="'Medium risk'" [status]="3"></eppo-code-badge>
+                <eppo-code-badge [code]="'TRFPR'" [dss]="'Medium risk'" [status]="3" [statusRepresentation]="'Medium risk'"></eppo-code-badge>
               </div>
               <div class="p-2 mx-1">
-                <eppo-code-badge [code]="'VERAR'" [dss]="'High risk'" [status]="4"></eppo-code-badge>
+                <eppo-code-badge [code]="'VERAR'" [dss]="'High risk'" [status]="4" [statusRepresentation]="'High risk'"></eppo-code-badge>
               </div>
             </div>
           </div>

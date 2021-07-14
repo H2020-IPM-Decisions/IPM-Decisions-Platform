@@ -25,6 +25,8 @@ export class EppoCodeBadgeComponent implements OnInit {
     dss: string;
     @Input()
     status: number;
+    @Input()
+    statusRepresentation: string;
     description: string = '';
 
     constructor( ) { }

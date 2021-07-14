@@ -108,8 +108,8 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       id: [null],
       name: ["", Validators.required],
       location: ["", Validators.required],
-      weatherForecastDto: ["", Validators.required],
-      weatherHistoricalDto: ["", Validators.required],
+      weatherForecastDto: [""],
+      weatherHistoricalDto: [""],
     });
     if(data){
       this.farm = data;
@@ -140,11 +140,13 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       return;
     }
     this.isSaving = true;
-    const formValues: any = this.farmForm.value;
+    let formValues: any = this.farmForm.value;
     let observable: any;
     if(this.farm && this.farm.id){
       observable = this._farmService.updateFarm(formValues);
     } else {
+      delete formValues.weatherHistoricalDto;
+      delete formValues.weatherForecastDto;
       observable = this._farmService.createFarm(formValues)
     }
     observable.subscribe(

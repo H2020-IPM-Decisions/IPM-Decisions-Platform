@@ -12,6 +12,7 @@ import { ApplicationPipesModule } from '@app/shared/pipes/application-pipes.modu
 import { DssDetailComponent } from './dss-detail.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { CustomChartComponent } from './custom-chart/custom-chart.component';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 @NgModule({
   imports: [ 
@@ -21,7 +22,8 @@ import { CustomChartComponent } from './custom-chart/custom-chart.component';
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     ApplicationPipesModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    PopoverModule.forRoot(),
   ],
   declarations: [
     DssSelectionComponent,
