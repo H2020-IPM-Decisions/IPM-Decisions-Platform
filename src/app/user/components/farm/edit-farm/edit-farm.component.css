@@ -7,6 +7,24 @@
   height: 20vw;
 }
 
+.scrollable{
+    height: 70vh;
+    overflow-y: auto;
+}
+
+::ng-deep div.panel-heading.card-header.panel-enabled {
+  background-color: #f8f9fa !important;
+  color: rgb(43, 41, 41) !important;
+  position:relative;
+ 
+}
+::ng-deep div.panel-heading.card-header.panel-enabled:hover{
+  background-color: #c9c9c9 !important;
+  color: rgb(43, 41, 41) !important;
+  position:relative;
+ 
+}
+
 /* .details:hover i.icon-toggle {
   visibility: visible;
 }

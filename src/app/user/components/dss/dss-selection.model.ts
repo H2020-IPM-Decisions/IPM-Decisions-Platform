@@ -37,7 +37,7 @@ export interface IDssFormData {
     dssName?: string;
     dssModelName?: string;
     dssModelId?: string;
-    dssVersion?: string;
+    dssModelVersion?: string;
     cropPest?: DssCropPest;
     dssParameters?: string;
     dssExecutionType?: string;

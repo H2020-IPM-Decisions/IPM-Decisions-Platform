@@ -88,7 +88,7 @@ export class DssSelectionService {
       dssName: dss.name,
       dssModelName: model.name,
       dssModelId: model.id,
-      dssVersion: model.version,
+      dssModelVersion: model.version,
       dssExecutionType: model.execution.type,
       cropPest: {
         cropEppoCode: selectedCrop,

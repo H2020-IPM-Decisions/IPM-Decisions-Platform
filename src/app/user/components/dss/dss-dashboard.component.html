@@ -27,10 +27,11 @@
               <eppo-code-badge [code]="item.pestEppoCode" [statusRepresentation]="item.warningStatusRepresentation" [dss]="item.dssId+' - '+item.dssModelId" [status]="item.warningStatus"></eppo-code-badge>
             </a>
             <i class="fas fa-info-circle light-blue-icon ml-1 info-icon"
-                popover="{{item.dssModelName}}" 
+                popover="{{item.dssDescription}}"
                 popoverTitle="{{item.warningStatusRepresentation}}"  
                 placement="auto"
-                [outsideClick]="true">
+                [outsideClick]="true"
+                container='body'>
             </i>
           </div>
         </div>

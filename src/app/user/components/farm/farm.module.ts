@@ -15,6 +15,10 @@ import { EditFarmComponent } from './edit-farm/edit-farm.component';
 import { FieldAddComponent } from '../field/field-add/field-add.component';
 import { ApplicationPipesModule } from '@app/shared/pipes/application-pipes.module';
 
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { EppoCodePipe } from '../../../shared/pipes/eppo-code.pipe';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+
 @NgModule({
   imports: [ 
     RouterModule.forChild(farmRoute),
@@ -25,7 +29,9 @@ import { ApplicationPipesModule } from '@app/shared/pipes/application-pipes.modu
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TooltipModule.forRoot(),
-    ApplicationPipesModule.forRoot()
+    ApplicationPipesModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot(),
+    AccordionModule.forRoot()
   ],
   declarations: [
     AddFarmComponent,
@@ -34,6 +40,7 @@ import { ApplicationPipesModule } from '@app/shared/pipes/application-pipes.modu
     EditFarmComponent,
     FieldAddComponent
   ],
-  entryComponents: [FieldAddComponent]
+  entryComponents: [FieldAddComponent],
+  providers: [EppoCodePipe]
 })
 export class FarmModule {}

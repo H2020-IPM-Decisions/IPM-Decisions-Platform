@@ -155,7 +155,6 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
       return;
     }
     const fieldToCopy:any = {
-      variety: field.variety,
       sowingDate: field.sowingDate,
       name: 'none',
       cropPest:cropPest
@@ -206,8 +205,8 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  openModal(template: TemplateRef<any>, field: any) {
-    this.modalRef = this._modalService.show(template);
+  openModal(template: TemplateRef<any>, field: any, size?: string) {
+    this.modalRef = this._modalService.show(template, {class: size});
     this.showFieldDetails(field);
   }
 
@@ -233,4 +232,9 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
   public formatLocaleDateGB(unformatedDate: string) {
     return new Date(unformatedDate).toLocaleDateString("en-GB");
   }
+
+  public isObject(val: any): boolean {
+    if (!val) { return false;}
+    return ((typeof val === 'function') || (typeof val === 'object'));
+  };
 }
