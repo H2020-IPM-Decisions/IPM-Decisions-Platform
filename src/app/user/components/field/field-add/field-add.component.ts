@@ -1,15 +1,14 @@
-import { HttpErrorResponse, HttpClient } from "@angular/common/http";
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
+import { HttpErrorResponse, HttpResponse } from "@angular/common/http";
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
-import { FarmService } from "@app/shared/services/upr/farm.service";
-import { FieldService } from "@app/shared/services/upr/field.service";
-import { compare } from "fast-json-patch";
-import { environment } from './../../../../../environments/environment';
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { Farm } from "@app/shared/models/farm.model";
 import { Field } from "@app/shared/models/field.model";
 import { CustomFieldService } from "../custom-field.service";
+import { IDssFormData, DssSelection } from "../../dss/dss-selection.model";
+import { DssSelectionService } from "../../dss/dss-selection.service";
+
 @Component({
   selector: "app-field-add",
   templateUrl: "./field-add.component.html",
@@ -24,12 +23,15 @@ export class FieldAddComponent implements OnInit {
   pestId = '';
   crops: { value: string; label: string }[] = [];
   pests: { value: string; label: string }[] = [];
+  areCropsSelected: boolean = false;
+  selectedDss: IDssFormData[] = [];
+  data: DssSelection[] = [];
+
   constructor(
     private _fb: FormBuilder,
-    private _fieldService: FieldService,
     private customFieldService: CustomFieldService,
     private _toastr: ToastrService,
-    private http: HttpClient,
+    private dssSelectionService: DssSelectionService,
     private modalService: BsModalService,
     public bsModalRef: BsModalRef
   ) {
@@ -42,56 +44,75 @@ export class FieldAddComponent implements OnInit {
     this.customFieldService.cachedRefreshableCrops$.subscribe((data:{ value: any, label: any }[])=>{
       this.crops = data;
     });
-    this.customFieldService.cachedRefreshablePests$.subscribe((data:{ value: any, label: any }[])=>{
-      this.pests = data;
-    });
   }
 
   addFieldFormInit() {
     this.fieldForm = this._fb.group({
-      cropPest: this.createCropPest(),
-      sowingDate: ["", Validators.required] //sowing date
+      cropSelection: this.createCropSelection()
     });
-    if(this.field){
-      this.fieldForm.patchValue({
-        cropPest: {
-          cropEppoCode: this.field.fieldCropDto.cropEppoCode,
-          pestEppoCode: this.field.fieldCropDto.fieldCropPestDto.value[0].pestEppoCode
-        },
-        name: this.field.name,
-        sowingDate: this.formatLocaleDateGB(this.field.sowingDate),
-      });
-      this.formFieldValues = this.fieldForm.value;
-      this.pestId = this.field.fieldCropDto.fieldCropPestDto.value[0].id;
+  }
+
+  createCropSelection(): FormGroup {
+    return this._fb.group({
+      cropEppoCode: ["", Validators.required]
+    });
+  }
+
+  private getSelectedDssIndex(selectedDss: IDssFormData): number {
+    const index: number = this.selectedDss.findIndex((element)=>{
+      if((element.dssModelId === selectedDss.dssModelId)&&
+      (element.cropEppoCode === selectedDss.cropEppoCode)&&
+      (element.pestEppoCode === selectedDss.pestEppoCode))
+      {return true}
+    });
+    return index;
+  }
+
+  onSelectDSS(dssModelSelected: IDssFormData): void {
+    const index = this.getSelectedDssIndex(dssModelSelected);
+    if (index < 0){
+      this.selectedDss.push(dssModelSelected);
     }
   }
 
-  private formatLocaleDateGB(unformatedDate: string) {
-    return new Date(unformatedDate).toLocaleDateString("en-GB");
+  onDeselectDSS(dssModelSelected: IDssFormData): void {
+    const index = this.getSelectedDssIndex(dssModelSelected);
+    this.selectedDss.splice(index,1);
+  }
+  
+  onConfirmSelectedCrops(): void {
+    let cropsSelectedArray: string[] = this.fieldForm.get('cropSelection').get('cropEppoCode').value;
+    const crops: string = cropsSelectedArray.join('%2C')
+    this.dssSelectionService.getDssByMultipleCrops(crops).subscribe(
+      (response: HttpResponse<DssSelection[]>) => {
+        this.data = response.body;
+        this.areCropsSelected = true;
+        this._toastr.show(
+          "DSS Models retrivied successfully!",
+          "Success!",
+          null,
+          "toast-success"
+        );
+      },
+      (error: HttpErrorResponse) => {
+        console.log("Get DSS Models error", error);
+        this._toastr.show(
+          "Fail to get the requested models for selected crops!",
+          "Error!",
+          null,
+          "toast-error"
+        );
+      }
+    );
   }
 
-  createCropPest(): FormGroup {
-    return this._fb.group({
-      cropEppoCode: ["", Validators.required],
-      pestEppoCode: ["", Validators.required],
-    });
-  }
-
-  addCropPestRow(): void {
-    this.cropPests = this.fieldForm.get("cropPests") as FormArray;
-    this.cropPests.push(this.createCropPest());
-  }
-
-  onCreateField() {
-    const fieldFormValues = this.fieldForm.value;
-    fieldFormValues.name = "none";
-
-    if (fieldFormValues) {
-      this._fieldService.createField(fieldFormValues,this.farm.id).subscribe(
-        (fieldResponse) => {
-          if (fieldResponse) {
+  onSave() {
+    if (this.selectedDss.length > 0) {
+      this.dssSelectionService.submitDss(this.selectedDss,this.farm).subscribe(
+        (response) => {
+          if (response) {
             this._toastr.show(
-              "Field added successfully!",
+              "DSS Models added successfully!",
               "Success!",
               null,
               "toast-success"
@@ -100,9 +121,9 @@ export class FieldAddComponent implements OnInit {
           }
         },
         (error: HttpErrorResponse) => {
-          console.log("field error", error);
+          console.log("Dss models selection error", error);
           this._toastr.show(
-            "Fail to create new field!",
+            "Fail to submit the selected models!",
             "Error!",
             null,
             "toast-error"
@@ -112,42 +133,7 @@ export class FieldAddComponent implements OnInit {
     }
   }
 
-  onEditFieldSubmit() {
-    const updatedFieldValues = this.fieldForm.value;
-    const patch = compare(this.formFieldValues, updatedFieldValues);
-    this.mapPatchArray(patch);
-    this._fieldService.updateField(this.farm.id, this.field.id, patch).subscribe(
-      (updateResponse: any) => {
-        console.log(updateResponse);
-        if (updateResponse.ok) {
-          this._toastr.show(
-            "Farm field details successfully updated!",
-            "Success!",
-            null,
-            "toast-success"
-          );
-        }
-        this.close();
-      },
-      (error: HttpErrorResponse) => {
-        this._toastr.show(
-          "Error updating field details!",
-          "Error!",
-          null,
-          "toast-error"
-        );
-      }
-    );
-  }
-
   close():void{
     this.bsModalRef.hide();
-  }
-  
-  private mapPatchArray(patchArr: any[]) {
-    patchArr.forEach((patch) => {
-      if (patch.path === "/cropPests/pestEppoCode")
-        patch.path = "/fieldCropDto/fieldCropPestDto/" + this.pestId;
-    })
   }
 }

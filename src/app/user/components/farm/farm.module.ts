@@ -18,6 +18,7 @@ import { ApplicationPipesModule } from '@app/shared/pipes/application-pipes.modu
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { EppoCodePipe } from '../../../shared/pipes/eppo-code.pipe';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { DssModelRowComponent } from '../dss/dss-model-row.component';
 
 @NgModule({
   imports: [ 
@@ -38,9 +39,12 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     FarmListComponent, 
     FarmDetailsComponent,
     EditFarmComponent,
+    FieldAddComponent,
+    DssModelRowComponent
+  ],
+  entryComponents: [
     FieldAddComponent
   ],
-  entryComponents: [FieldAddComponent],
   providers: [EppoCodePipe]
 })
 export class FarmModule {}

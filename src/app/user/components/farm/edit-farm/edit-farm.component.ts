@@ -213,9 +213,9 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
   openModalField(field?:Field):void{
     const initialState:any={
       farm:this.farm,
-      field: field
+      field: field      
     };
-    this._modalService.show(FieldAddComponent,{initialState}).content;
+    this._modalService.show(FieldAddComponent,{initialState, class: 'modal-lg'}).content;
   }
 
 

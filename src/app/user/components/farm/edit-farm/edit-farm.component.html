@@ -4,7 +4,7 @@
   </div>
   <div class="col">
     <button type="button" rel="tooltip" class="btn btn-link pull-right" (click)="openModalField()">
-      <i class="action-icon fas fa-plus-circle fa-2x"></i> Add Crop / Pest combination
+      <i class="action-icon fas fa-plus-circle fa-2x"></i> Add DSS
     </button>
   </div>
   <div class="col-12">
@@ -16,7 +16,7 @@
             <th class="text-center" scope="col">Crop</th>
             <th class="text-center" scope="col">Pest/Desease</th>
             <th class="text-center" scope="col">DSS Model Name</th>
-            <!--<th class="text-center" scope="col">Validity status</th>-->
+            <!--<th class="text-center" scope="col">DSS Suitability</th>-->
             <th class="text-center" scope="col">Action</th>
           </tr>
         </thead>
@@ -47,7 +47,7 @@
             <!-- Actions -->
             <td class="td-actions text-center py-1">
 
-              <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy" title="Copy"
+              <!--<button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy" title="Copy"
                 (click)="onFieldCopy(field)">
                 <i class="action-icon size-11 fas fa-copy"></i>
               </button>
@@ -55,7 +55,7 @@
               <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit" title="Edit"
                 (click)="openModalField(field)">
                 <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
-              </button>
+              </button>-->
 
               <!-- delete field modal -->
               <ng-template #deleteTemplate>

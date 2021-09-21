@@ -18,6 +18,11 @@ export class DssSelectionService {
     return this.http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 
+  getDssByMultipleCrops(crops: string): Observable<HttpResponse<DssSelection[]>> {
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`
+    return this.http.get<DssSelection[]>(requestUrl, { observe: 'response' });
+  }
+
   getSchemaByDssAndModel(dss: DssSelection, model: DssModel): Observable<HttpResponse<DssJSONSchema>> {
     const requestUrl = `${environment.apiUrl}/api/dss/rest/model/${dss.id}/${model.id}/input_schema/ui_form`;
     return this.http.get<DssJSONSchema>(requestUrl, { observe: 'response' });
@@ -69,9 +74,9 @@ export class DssSelectionService {
     return dssMap;
   };
 
-  submitDss(data: IDssFormData, farm: Farm): Observable<HttpResponse<IDssFormData>> {
+  submitDss(data: IDssFormData[], farm: Farm): Observable<HttpResponse<IDssFormData[]>> {
     let requestUrl = `${environment.apiUrl}/api/upr/farms/${farm.id}/dss`;
-    return this.http.post<IDssFormData>(requestUrl, data, {
+    return this.http.post<IDssFormData[]>(requestUrl, data, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -90,10 +95,32 @@ export class DssSelectionService {
       dssModelId: model.id,
       dssModelVersion: model.version,
       dssExecutionType: model.execution.type,
-      cropPest: {
+      /*cropPest: {
         cropEppoCode: selectedCrop,
         pestEppoCode: selectedPest
-      },
+      },*/
+      dssParameters: JSON.stringify(jsonSchemaForm),
+      cropEppoCode: selectedCrop,
+      pestEppoCode: selectedPest,
+      sowingDate: field.sowingDate
+    }
+  }
+
+  getDssData(selectedCrop: string, selectedPest: string, dss: DssSelection, model: DssModel, jsonSchemaForm?: any): IDssFormData {
+    let endpoint: string = "";
+    if(model.execution.type === "LINK"){
+      endpoint = model.execution.endpoint;
+    }
+    return{
+      dssId: dss.id,
+      dssName: dss.name,
+      dssModelName: model.name,
+      dssModelId: model.id,
+      dssModelVersion: model.version,
+      dssExecutionType: model.execution.type,
+      dssEndPoint: endpoint,
+      cropEppoCode: selectedCrop,
+      pestEppoCode: selectedPest,
       dssParameters: JSON.stringify(jsonSchemaForm)
     }
   }

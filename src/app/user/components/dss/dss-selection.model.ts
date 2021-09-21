@@ -7,6 +7,8 @@ export interface DssModel {
     name?:string;
     id?:string;
     version?:string;
+    pests?:string[];
+    crops?:string[];
     type_of_decision?:string;
     type_of_output?:string;
     description?:string;
@@ -38,10 +40,14 @@ export interface IDssFormData {
     dssModelName?: string;
     dssModelId?: string;
     dssModelVersion?: string;
-    cropPest?: DssCropPest;
+    //cropPest?: DssCropPest;
     dssParameters?: string;
     dssExecutionType?: string;
-} 
+    cropEppoCode?: string;
+    pestEppoCode?: string;
+    sowingDate?: string;
+    dssEndPoint?: string; //REQUIRED WHEN dssExecutionType = "link"
+}
 
 export class DssCropPest {
     constructor(

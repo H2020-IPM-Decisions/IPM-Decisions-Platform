@@ -216,7 +216,7 @@ export class WeatherService {
               }
             )
             .map( 
-              (weatherDataSource:WeatherDataSource) => new WeatherDataSourceDto(weatherDataSource.name, weatherDataSource.name, weatherDataSource.endpoint)
+              (weatherDataSource:WeatherDataSource) => new WeatherDataSourceDto(weatherDataSource.id, weatherDataSource.name, weatherDataSource.endpoint)
             )
         );
         observer.complete();

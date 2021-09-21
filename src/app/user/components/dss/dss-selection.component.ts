@@ -148,8 +148,8 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
           if(response.body && response.body.length > 0 && response.body[0] && response.body[0].models){
             this.dssSelection = response.body[0];
             // Hardcoded change requested by Dave!!! TODO to change
-            // this.dssList = this.dssSelection.models; 
-            this.dssList = this.dssSelection.models.filter( (item) => item.id === "PSILARTEMP")
+             this.dssList = this.dssSelection.models; 
+            //this.dssList = this.dssSelection.models.filter( (item) => item.id === "PSILARTEMP")
             // Hardcoded change requested by Dave!!! TODO to change
           }
           this.dssLoaded = true;
@@ -190,16 +190,19 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
     }
   }
 
+  // TO BE EDITED, FOR WORK WITH MULTIPLE DSS SELECTION
   submit() {
     if(this.editor && this.editorValid) {
-      const formData: IDssFormData = this.dssSelectionService.getFormData(
-                                      this.selectedField,
-                                      this.selectedCrop,
-                                      this.selectedPest,
-                                      this.dssSelection,
-                                      this.dssModel,
-                                      this.jsonEditorService.getValues(this.editor)
-                                    );
+      let currentDSSFormData: IDssFormData = this.dssSelectionService.getFormData(
+        this.selectedField,
+        this.selectedCrop,
+        this.selectedPest,
+        this.dssSelection,
+        this.dssModel,
+        this.jsonEditorService.getValues(this.editor)
+      );
+      let formData: IDssFormData[] = [];
+      formData.push(currentDSSFormData);
       this.$subscriptionSubmit = this.dssSelectionService.submitDss(formData, this.selectedFarm).subscribe(
         () => {
           this.toastrService.success("Operation Success","DSS Submitted with data");

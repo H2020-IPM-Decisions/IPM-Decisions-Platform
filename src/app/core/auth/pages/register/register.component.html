@@ -33,9 +33,8 @@
         <div *ngIf="f.password.errors && f.password.touched" class="invalid-feedback">
           <div *ngIf="f.password.errors?.required">Password is required</div>
           <div *ngIf="f.password.errors?.minlength">Password must be at least 6 characters</div>
-          <div *ngIf="f.password.errors?.pattern">Passwords must have at least one non alphanumeric character.</div>
           <div *ngIf="f.password.errors?.pattern">Passwords must have at least one number ('0'-'9').</div>
-          <div *ngIf="f.password.errors?.pattern">Passwords must have at least one digit ('!@#$%^&*()_+').</div>
+          <div *ngIf="f.password.errors?.pattern">Passwords must have at least one non alphanumeric character ('!@#$%^&*()_+').</div>
         </div>
       </div>
       <div class="form-group col">
@@ -70,10 +69,23 @@
           <p *ngFor="let error of errors">{{ error?.description }}</p>
         </div>
         <div class="alert alert-success" *ngIf="isSuccess">
-          <strong>Verify your email address</strong>
+          <strong>Registration Confirmation</strong>
           <br>
-          <span>Please click on the link that has just been sent to your email account to complete the registration
-            process</span>
+          <span>
+            Thank you for choosing to register with the IPM Decisions Platform. 
+            You should shortly receive an email with a link that you need to click on to confirm 
+            your email address. 
+            Once you have done this the registration process will be complete.<br>
+            If you do not receive the email then please check your junk folder or with your 
+            IT department to ensure that it has not been placed in a spam folder.  
+            <br><br>
+            If you do not confirm your email within 48 hours then your details will be removed 
+            from the platform. 
+            <br><br>
+            Regards, 
+            <br><br>
+            IPM Decisions Platform
+          </span>
         </div>
         <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">OK</button>
       </div>
