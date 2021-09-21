@@ -87,6 +87,6 @@
 <div class="modal-footer">
   <button class="btn btn-info col-2 mr-2" (click)="close()">
     Back</button>
-  <button class="btn btn-info col-2" (click)="onSave()" [disabled]="!selectedDss.length > 0">
+  <button class="btn btn-info col-2" (click)="onSave()" [disabled]="!selectedDss || selectedDss.length ==0">
     Save</button>
 </div>

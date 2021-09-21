@@ -15,9 +15,9 @@ export class DssModelRowComponent implements OnInit {
   @Input() public dssSelection!: DssSelection;
   @Output() public select: EventEmitter<IDssFormData> = new EventEmitter();
   @Output() public deselect: EventEmitter<IDssFormData> = new EventEmitter();
-  private selectedDss: boolean = false;
-  private selectedCrop: string = "";
-  private selectedPest: string = "";
+  public selectedDss: boolean = false;
+  public selectedCrop: string = "";
+  public selectedPest: string = "";
 
   constructor (
     private dssSelectionService: DssSelectionService
