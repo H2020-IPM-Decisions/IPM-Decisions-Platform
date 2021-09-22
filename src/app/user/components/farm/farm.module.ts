@@ -15,7 +15,6 @@ import { EditFarmComponent } from './edit-farm/edit-farm.component';
 import { FieldAddComponent } from '../field/field-add/field-add.component';
 import { ApplicationPipesModule } from '@app/shared/pipes/application-pipes.module';
 
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { EppoCodePipe } from '../../../shared/pipes/eppo-code.pipe';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { DssModelRowComponent } from '../dss/dss-model-row.component';
@@ -31,7 +30,6 @@ import { DssModelRowComponent } from '../dss/dss-model-row.component';
     BsDatepickerModule.forRoot(),
     TooltipModule.forRoot(),
     ApplicationPipesModule.forRoot(),
-    NgMultiSelectDropDownModule.forRoot(),
     AccordionModule.forRoot()
   ],
   declarations: [
