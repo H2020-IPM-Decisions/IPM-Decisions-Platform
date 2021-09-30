@@ -1,3 +1,4 @@
+import { EppoCodeService } from '@app/shared/services/upr/eppo-code.service';
 import { MenuComponent } from './core/components/header/menu/menu.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -174,7 +175,7 @@ import { ApplicationPipesModule } from './shared/pipes/application-pipes.module'
     ModalModule.forRoot(),
     ApplicationPipesModule.forRoot()
   ],
-  providers: [],
+  providers: [EppoCodeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -48,11 +48,7 @@ export class CustomChartComponent implements AfterViewInit {
         if(this.config && this.config.chartType){
             type = this.config.chartType;
         }
-        let options = {};
-        if(this.config && this.config.options){
-            options = this.config.options;
-        }
-        this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color, options);
+        this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color);
     }
 
 }

@@ -1,12 +1,14 @@
-import { Component, Input, Output, OnInit} from '@angular/core';
+import { Component, Input, Output, OnInit, TemplateRef} from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { DssModel, IDssFormData, DssSelection } from '../dss/dss-selection.model';
 import { DssSelectionService } from './dss-selection.service';
+import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 
 @Component({
     selector: '[app-dss-model-row]',
     templateUrl: './dss-model-row.component.html',
-    styleUrls: ['./dss-model-row.component.css']
+    styleUrls: ['./dss-model-row.component.css'],
+    providers: [BsModalRef]
   })
 export class DssModelRowComponent implements OnInit {
 
@@ -18,34 +20,12 @@ export class DssModelRowComponent implements OnInit {
   public selectedDss: boolean = false;
   public selectedCrop: string = "";
   public selectedPest: string = "";
+  modalRef: BsModalRef;
 
   constructor (
-    private dssSelectionService: DssSelectionService
+    private dssSelectionService: DssSelectionService,
+    public _modalService: BsModalService
     ) {}
-
-  cropSelectChanged(event: { target: HTMLInputElement }){
-    this.selectedCrop = event.target.value
-    console.log(event.target.value)
-  }
-  
-  pestSelectChanged(event: { target: HTMLInputElement }){
-    this.selectedPest = event.target.value
-    console.log(event.target.value)
-  }
-
-  onSelect(){
-    this.selectedDss = !this.selectedDss;
-    const dssFormData: IDssFormData = this.dssSelectionService.getDssData(this.selectedCrop, this.selectedPest,this.dssSelection,this.model);
-    console.log(dssFormData);
-    this.select.emit(dssFormData);
-  }
-
-  onDeselect(){
-    this.selectedDss = !this.selectedDss;
-    const dssFormData: IDssFormData = this.dssSelectionService.getDssData(this.selectedCrop, this.selectedPest,this.dssSelection,this.model);
-    console.log(dssFormData);
-    this.deselect.emit(dssFormData);
-  }
 
   ngOnInit(): void {
     if(this.model){
@@ -59,6 +39,33 @@ export class DssModelRowComponent implements OnInit {
         }
       }
     }
+  }
+  cropSelectChanged(event: { target: HTMLInputElement }){
+    this.selectedCrop = event.target.value
+    //console.log(event.target.value)
+  }
+  
+  pestSelectChanged(event: { target: HTMLInputElement }){
+    this.selectedPest = event.target.value
+    //console.log(event.target.value)
+  }
+
+  onSelect(){
+    this.selectedDss = !this.selectedDss;
+    const dssFormData: IDssFormData = this.dssSelectionService.getDssData(this.selectedCrop, this.selectedPest,this.dssSelection,this.model);
+    //console.log(dssFormData);
+    this.select.emit(dssFormData);
+  }
+
+  onDeselect(){
+    this.selectedDss = !this.selectedDss;
+    const dssFormData: IDssFormData = this.dssSelectionService.getDssData(this.selectedCrop, this.selectedPest,this.dssSelection,this.model);
+    //console.log(dssFormData);
+    this.deselect.emit(dssFormData);
+  }
+
+  openModal(template: TemplateRef<any>, size?: string) {
+    this.modalRef = this._modalService.show(template, {class: size});
   }
 
 }

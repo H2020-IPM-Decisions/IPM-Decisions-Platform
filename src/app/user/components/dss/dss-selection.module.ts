@@ -13,6 +13,8 @@ import { DssDetailComponent } from './dss-detail.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { CustomChartComponent } from './custom-chart/custom-chart.component';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { CustomGroupChartComponent } from './custom-chart/custom-group-chart.component';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 @NgModule({
   imports: [ 
@@ -24,13 +26,15 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     ApplicationPipesModule.forRoot(),
     TooltipModule.forRoot(),
     PopoverModule.forRoot(),
+    AccordionModule.forRoot()
   ],
   declarations: [
     DssSelectionComponent,
     DssDashboardComponent,
     EppoCodeBadgeComponent,
     DssDetailComponent,
-    CustomChartComponent
+    CustomChartComponent,
+    CustomGroupChartComponent
   ],
   entryComponents: []
 })

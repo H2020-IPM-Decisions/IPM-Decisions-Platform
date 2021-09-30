@@ -1,0 +1,95 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">DSS Selection</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  
+    <div class="container">
+      <div class="row mb-1">
+        <strong class="text-uppercase bold-600">Farm:</strong>
+        <span class="ml-2">{{ farm.name }}</span>
+      </div>
+      <fieldset class="border p-2">
+        <form [formGroup]="selCropForm">
+          <div class="row">
+            <div class="col-12">
+              <fieldset class="border p-3">
+                <legend class="w-auto px-1 text-muted">Crops Selection</legend>
+  
+                <!-- add crop pest combination on button clicked -->
+                <div formGroupName="cropSelection">
+                  <div class="form-group row">
+                    <div class="col-sm-1 align-self-center">
+                      <label for="crops">
+                        Crops
+                      </label>
+                    </div>
+                    <div class="col-sm">
+                      <select multiple class="form-control" id="crops" formControlName="cropEppoCode">
+                        <ng-template ngFor let-crop [ngForOf]="cropsEppoCodes">
+                          <option value="{{crop.code}}">{{crop.code}} - {{crop.code | eppoCode}}</option>
+                        </ng-template>
+                      </select>
+                      <span><small>Use <b>CTRL</b> + <b>Click</b> to select multiple crops</small></span>
+                    </div>
+                    <div class="col-sm-2 align-self-center">
+                      <button class="btn btn-info" 
+                        (click)="onConfirmSelectedCrops()" 
+                        [disabled]="!selCropForm.get('cropSelection').get('cropEppoCode').valid">
+                        Show DSS
+                      </button>
+                    </div>  
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+  
+            <div *ngIf="areCropsSelected" class="col-12 mt-4">
+              <fieldset class="border p-3">
+                <legend class="w-auto px-1 text-muted">Select DSS</legend>
+                  <div class="row">
+                    <accordion class="col" [isAnimated]="true">
+                      <accordion-group *ngFor="let dssSel of data">
+                        <span accordion-heading tooltip="Click to show">
+                          {{dssSel.name}}
+                          <i class="fas fa-bars" style="position:absolute; top: 40%; right: 2%;"></i>
+                        </span>
+                        <div class="col">
+                          <table class="table table-striped table-bordered">
+                            <thead>
+                              <tr>
+                                <th class="text-center col-3">CROP NAME</th>
+                                <th class="text-center col-3">PEST NAME</th>
+                                <th class="text-center">DSS NAME</th>
+                                <th class="text-center"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr app-dss-model-row 
+                              *ngFor="let model of dssSel.models; index as i" 
+                              [model]="model"
+                              [selectedCrops]="selCropForm.get('cropSelection').get('cropEppoCode').value"
+                              [dssSelection]="dssSel"
+                              (select)="onSelectDSS($event)"
+                              (deselect)="onDeselectDSS($event)"></tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </accordion-group>
+                    </accordion>
+                  </div>
+              </fieldset>
+            </div>
+          </div>
+        </form>
+      </fieldset>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-info col-2 mr-2" (click)="close()">
+      Back</button>
+    <button class="btn btn-info col-2" (click)="onSave()" [disabled]="!selectedDss || selectedDss.length ==0">
+      Save</button>
+  </div>

@@ -6,6 +6,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { farmRoute } from './farm.route';
+import { EppoCodePipe } from '../../../shared/pipes/eppo-code.pipe';
 import { FarmListComponent } from './farm-list/farm-list.component';
 import { FarmDetailsComponent } from './farm-details/farm-details.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -14,9 +15,8 @@ import { AddFarmComponent } from './add-farm/add-farm.component';
 import { EditFarmComponent } from './edit-farm/edit-farm.component';
 import { FieldAddComponent } from '../field/field-add/field-add.component';
 import { ApplicationPipesModule } from '@app/shared/pipes/application-pipes.module';
-
-import { EppoCodePipe } from '../../../shared/pipes/eppo-code.pipe';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { DssModelAddComponent } from '../dss/dss-model-add.component';
 import { DssModelRowComponent } from '../dss/dss-model-row.component';
 
 @NgModule({
@@ -38,10 +38,12 @@ import { DssModelRowComponent } from '../dss/dss-model-row.component';
     FarmDetailsComponent,
     EditFarmComponent,
     FieldAddComponent,
+    DssModelAddComponent,
     DssModelRowComponent
   ],
   entryComponents: [
-    FieldAddComponent
+    FieldAddComponent,
+    DssModelAddComponent
   ],
   providers: [EppoCodePipe]
 })

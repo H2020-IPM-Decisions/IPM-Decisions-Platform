@@ -10,3 +10,14 @@
   width: 120px;
   height: 52px;
 }
+
+.exeLink {
+  display: inline-block;;
+  font-size: 80%;
+  color: #6c757d;
+  width: 120px;
+}
+
+.fa-link {
+  font-size: 125%;
+}

@@ -24,7 +24,13 @@
         <div class="d-flex col-10 text-center">
           <div class="d-flex p-2 mx-1" *ngFor="let item of cropEppoCode.value" style="position:relative">
             <a [routerLink]="[item.id,'view']" style="position:relative">
-              <eppo-code-badge [code]="item.pestEppoCode" [statusRepresentation]="item.warningStatusRepresentation" [dss]="item.dssId+' - '+item.dssModelId" [status]="item.warningStatus"></eppo-code-badge>
+              <eppo-code-badge 
+                [code]="item.pestEppoCode" 
+                [statusRepresentation]="item.warningStatusRepresentation" 
+                [dss]="item.dssName+' - '+item.dssModelId" 
+                [status]="item.warningStatus"
+                [executionType]="item.dssExecutionType">
+              </eppo-code-badge>
             </a>
             <i class="fas fa-info-circle light-blue-icon ml-1 info-icon"
                 popover="{{item.dssDescription}}"

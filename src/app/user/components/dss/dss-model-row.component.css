@@ -1,10 +1,14 @@
 .data-selected{
     background-color: #ff0000;
-  }
+}
 .data-notSelected{
   display: none;
 }
 .btn.btn-info:disabled{
   background: #dddddd;
   border-color: #dddddd;
+}
+.scrollable{
+  height: 70vh;
+  overflow-y: auto;
 }

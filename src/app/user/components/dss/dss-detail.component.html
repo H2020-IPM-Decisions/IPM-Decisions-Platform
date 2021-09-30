@@ -13,84 +13,80 @@
   </div>
 
   <div class="container mx-auto my-5 page-box">
-    <fieldset class="border p-3">
-      <legend class="w-auto px-1 text-muted">DSS Result</legend>
+    <fieldset class="border p-3"  *ngIf="dssDetail && warning; else noData">
+      <legend class="w-auto px-1 text-muted h3">
+        <b>{{ dssDetail.cropEppoCode  | eppoCode }}</b>
+      </legend>
 
-      <div class="form-group row">
-        <label for="met-station" class="col-sm-3 col-form-label">Crop / Pest Combination</label>
-        <div class="col-sm-9">
-          <p><strong>{{dssDetail.cropEppoCode}}</strong> - {{dssDetail.cropEppoCode  | eppoCode}} | <strong>{{dssDetail.pestEppoCode}}</strong> - {{dssDetail.pestEppoCode  | eppoCode}}</p>
+      <div class="form-group d-flex pl-5 text-muted">
+        <div class="mr-auto p-2">
+          <label class="h4">
+            <b>{{ dssDetail.pestEppoCode  | eppoCode }}</b> 
+            <i [tooltip]="tolStatus" [ngStyle]="{ 'color': warning.chartInformation?.color[0],'margin-right':'5px'}" class="fas fa-circle pl-3"></i>
+          </label>
+        </div>
+        <div class="p-2">
+          <label class="h4">
+            <b>{{ dssDetail.dssModelId }}</b><a class="details" (click)="openModal(dssDetails,'modal-lg')">
+              <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
+            </a>
+          </label>
         </div>
       </div>
 
-      <div class="form-group row">
-        <label for="met-station" class="col-sm-3 col-form-label">Type of the output</label>
-        <div class="col-sm-9">
-          <p>{{dssDetail.dssTypeOfOutput}}</p>
-        </div>
+      <div class="card">
+        <table class="table table-borderless text-muted">
+          <thead class="tableHeader">
+            <tr>
+              <th class="text-center" style="width: 33.33%">
+                <label>Risk score</label>
+              </th>
+              <th class="text-center" style="width: 33.34%">
+                <label>Disease incidence</label>
+              </th>
+              <th class="text-center" style="width: 33.33%">
+                <label>Reccomended actions</label>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation"></custom-chart></td>
+              <td>
+                <div class="row" *ngFor="let chartGroup of dssChartGroups">
+                  <div class="col" *ngIf="selectedDssChartGroup.id === chartGroup.id">
+                    <custom-group-chart [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <accordion class="col" [isAnimated]="true">
+                  <accordion-group>
+                    <span accordion-heading tooltip="Click to show">
+                      Show data legend
+                    </span>
+                    <div class="row" *ngFor="let result of selectedDssChartGroup.resultParameters">
+                      <i [ngStyle]="{ 'color': result.chartInformation?.color,'margin-right':'5px'}" class="fas fa-square"></i>
+                      <small class="d-flex justify-content-center"><b>  {{result.title}}  </b></small>        
+                    </div>
+                  </accordion-group>
+                </accordion>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <select class="form-control" [ngModel]="selectedDssChartGroup" (ngModelChange)="onChangeChartGroup($event)">
+                  <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-
-      <div class="form-group row">
-        <label for="met-station" class="col-sm-3 col-form-label">Description</label>
-        <div class="col-sm-9">
-          <p>{{dssDetail.dssDescription}}</p>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="met-station" class="col-sm-3 col-form-label">Creation Date</label>
-        <div class="col-sm-9">
-          <p>{{dssDetail.creationDate | date}}</p>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="met-station" class="col-sm-3 col-form-label">DSS ID</label>
-        <div class="col-sm-9">
-          <p>{{dssDetail.dssId}}</p>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="met-station" class="col-sm-3 col-form-label">DSS Model ID</label>
-        <div class="col-sm-9">
-          <p>{{dssDetail.dssModelId}}</p>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="met-station" class="col-sm-3 col-form-label">Warning Status Representation</label>
-        <div class="col-sm-9">
-          <p>{{dssDetail.warningStatusRepresentation}}</p>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="met-station" class="col-sm-3 col-form-label">Warning Message</label>
-        <div class="col-sm-9">
-          <p>{{dssDetail.warningMessage}}</p>
-        </div>
-      </div>
-
-      <div class="row" *ngIf="warning">
-        <div class="col-md-3">
-          Warning Status Per Day
-        </div>
-        <div class="col-md-9 pb-5">
-          <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation"></custom-chart>
-        </div>
-      </div>
-
-      <div class="row" *ngFor="let result of dssDetail.resultParameters">
-        <div class="col-md-3">
-          {{result.title}}
-        </div>
-        <div class="col-md-9 pb-5">
-          <custom-chart [data]="result.data" [labels]="result.labels" [config]="result.chartInformation"></custom-chart>
-          <small class="d-flex justify-content-center">{{result.description}}</small>
-        </div>
-      </div>
-      
 
     </fieldset>
     <div class="row pt-3">
@@ -105,7 +101,7 @@
         <ng-template #deletedsstemplate>
           <div class="modal-header">
             <h4 class="modal-title pull-left">Delete DSS Result</h4>
-            <button type="button" class="close pull-right" aria-label="Close" (click)="deleteDssModalRef.hide()">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -113,7 +109,7 @@
             You are about to delete DSS Result. Are you sure?
           </div>
           <div class="modal-footer pull-right">
-            <button type="button" class="btn btn-default" (click)="deleteDssModalRef.hide()">Cancel</button>
+            <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
             <button type="button" class="btn btn-primary" (click)="delete()">Yes</button>
           </div>
         </ng-template>
@@ -121,3 +117,86 @@
     </div>
   </div>
 </div>
+
+<ng-template #dssDetails>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      Dss Informations
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body scrollable">
+    <div class="form-group row">
+      <label for="met-station" class="col-sm-3 col-form-label">Crop / Pest Combination</label>
+      <div class="col-sm-9">
+        <p><strong>{{dssDetail.cropEppoCode}}</strong> - {{dssDetail.cropEppoCode  | eppoCode}} | <strong>{{dssDetail.pestEppoCode}}</strong> - {{dssDetail.pestEppoCode  | eppoCode}}</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="met-station" class="col-sm-3 col-form-label">Type of the output</label>
+      <div class="col-sm-9">
+        <p>{{dssDetail.dssTypeOfOutput}}</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="met-station" class="col-sm-3 col-form-label">Description</label>
+      <div class="col-sm-9">
+        <p>{{dssDetail.dssDescription}}</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="met-station" class="col-sm-3 col-form-label">Creation Date</label>
+      <div class="col-sm-9">
+        <p>{{dssDetail.creationDate | date}}</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="met-station" class="col-sm-3 col-form-label">DSS ID</label>
+      <div class="col-sm-9">
+        <p>{{dssDetail.dssId}}</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="met-station" class="col-sm-3 col-form-label">DSS Model ID</label>
+      <div class="col-sm-9">
+        <p>{{dssDetail.dssModelId}}</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="met-station" class="col-sm-3 col-form-label">Warning Status Representation</label>
+      <div class="col-sm-9">
+        <p>{{dssDetail.warningStatusRepresentation}}</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="met-station" class="col-sm-3 col-form-label">Warning Message</label>
+      <div class="col-sm-9">
+        <p>{{dssDetail.warningMessage}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer pull-right">
+    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">Close</button>
+  </div>
+</ng-template>
+
+<ng-template #noData>
+  <div class="card">
+    <div class="d-flex justify-content-center p-3 text-muted">
+      <strong>
+        No data avaiable for the selected DSS, please verify the input parameters.
+      </strong>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #tolStatus>{{ dssDetail.warningStatusRepresentation }}</ng-template>

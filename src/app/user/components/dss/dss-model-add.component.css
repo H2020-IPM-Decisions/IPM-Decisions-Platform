@@ -1,0 +1,4 @@
+.btn.btn-info:disabled{
+    background: #dddddd;
+    border-color: #dddddd;
+}

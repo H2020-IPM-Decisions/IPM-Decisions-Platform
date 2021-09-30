@@ -1,12 +1,11 @@
-import { Component, Input, OnInit } from "@angular/core";
-import CodesJson from './vocabulary.json';
+import { Component, Input } from "@angular/core";
 
 @Component({
     selector: "eppo-code-badge",
     templateUrl: "./eppo-code-badge.component.html",
     styleUrls: ["./eppo-code-badge.component.css"]
 })
-export class EppoCodeBadgeComponent implements OnInit {
+export class EppoCodeBadgeComponent {
 
     /*
     Traffic light' status of the model prediction. 
@@ -27,14 +26,9 @@ export class EppoCodeBadgeComponent implements OnInit {
     status: number;
     @Input()
     statusRepresentation: string;
-    description: string = '';
-
+    @Input()
+    executionType: string;
+    
     constructor( ) { }
-
-    ngOnInit(): void {
-        if(CodesJson.cropEppoCode[this.code]){
-            this.description = CodesJson.cropEppoCode[this.code];
-        }
-    }
 
 }

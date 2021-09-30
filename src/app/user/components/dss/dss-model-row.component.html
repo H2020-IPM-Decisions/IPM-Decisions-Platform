@@ -1,18 +1,63 @@
 <td class="text-center">
     <span *ngIf="model.crops.length === 1">{{ model.crops[0] | eppoCode }}</span>
     <select  *ngIf="model.crops.length > 1" class="form-control" id="crop" [disabled]="selectedDss" (change)="cropSelectChanged($event)">
+        <option value="">Select Crop</option>
         <option *ngFor="let crop of model.crops; index as j;" value="{{ crop }}">{{ crop | eppoCode }}</option>
     </select>
 </td>
 <td class="text-center">
     <span *ngIf="model.pests.length === 1">{{ model.pests[0] | eppoCode }}</span>
     <select *ngIf="model.pests.length > 1" class="form-control" id="pest" [disabled]="selectedDss" (change)="pestSelectChanged($event)">
-        <option value="">Select a Pest</option>
+        <option value="">Select Pest</option>
         <option *ngFor="let pest of model.pests; index as x;" value="{{ pest }}">{{ pest | eppoCode }}</option>
     </select>
 </td>
-<td class="text-center">{{ model.name }}</td>
 <td class="text-center">
-    <button class="btn btn-info" (click)="onSelect()" [ngClass]="{'data-notSelected': selectedDss === true}" [disabled]="selectedPest === ''">Select</button>
+    {{ model.name }} 
+    <a class="details" (click)="openModal(dssModelDetails,'modal-lg')">
+        <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
+    </a>
+</td>
+<td class="text-center">
+    <button class="btn btn-info" (click)="onSelect()" [ngClass]="{'data-notSelected': selectedDss === true}" [disabled]="selectedPest === '' || selectedCrop === ''">Select</button>
     <button class="btn btn-info" (click)="onDeselect()" [ngClass]="{'data-selected': selectedDss === true, 'data-notSelected': selectedDss === false}">Deselect</button>
 </td>
+
+<ng-template #dssModelDetails>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{ dssSelection.name }} - {{ model.name }}
+      </h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body scrollable">
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><b>DSS ID</b></label>
+            <div class="col-sm-9">
+                <p>{{ dssSelection.id }}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><b>MODEL ID</b></label>
+            <div class="col-sm-9">
+                <p>{{ model.id }}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><b>DESCRIPTION</b></label>
+            <div class="col-sm-9">
+                <p>{{ model.description }}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><b>WARNING STATUS INTERPRETATION</b></label>
+            <div class="col-sm-9">
+                <p *ngIf="model.output?.warning_status_interpretation">{{ model.output.warning_status_interpretation }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer pull-right">
+      <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">Close</button>
+    </div>
+  </ng-template>

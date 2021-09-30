@@ -13,6 +13,11 @@ export interface DssModel {
     type_of_output?:string;
     description?:string;
     execution?:DssModelExecution;
+    output?:DssModelOutput;
+}
+
+export interface DssModelOutput {
+    warning_status_interpretation?:string;
 }
 
 export interface DssSelection {
@@ -68,7 +73,7 @@ export interface IDssResultFlat {
     code?: string;
     title?: string;
     description?: string;
-    chartType?: IDssResultChart;
+    chartInformation?: IDssResultChart;
     data?: number[];
     labels?: string[];
 }
@@ -96,5 +101,13 @@ export interface IDssFlat {
     warningStatusRepresentation?: string;
     outputTimeStart?: string;
     outputTimeEnd?: string;
-    warningStatusPerDay?: number[];   
+    warningStatusPerDay?: number[];
+    chartGroups?: IDssChartGroup[];
+}
+
+export interface IDssChartGroup {
+    id?: string;
+    title?: string;
+    resultParameterIds?: string[];
+    resultParameters?: IDssResultFlat[];
 }

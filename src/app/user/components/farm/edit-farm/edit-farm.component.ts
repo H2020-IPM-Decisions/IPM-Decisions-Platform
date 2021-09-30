@@ -17,7 +17,7 @@ import { WeatherDataSource } from "@app/shared/models/weather-data-source.model"
 import { FieldService } from "@app/shared/services/upr/field.service";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { ToastrService } from "ngx-toastr";
-import { FieldAddComponent } from '../../field/field-add/field-add.component';
+import { DssModelAddComponent } from '../../dss/dss-model-add.component';
 import { Subscription } from 'rxjs';
 import { FieldEditComponent } from '../../field/field-edit/field-edit.component';
 @Component({
@@ -172,7 +172,7 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       },
       (error: HttpErrorResponse) => {
-        console.log("field error", error);
+        //console.log("field error", error);
         this._toastr.show(
           "Fail to create new field!",
           "Error!",
@@ -210,12 +210,12 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     this.showFieldDetails(field);
   }
 
-  openModalField(field?:Field):void{
+  openModalDssModelAdd(field?:Field):void{
     const initialState:any={
       farm:this.farm,
       field: field      
     };
-    this._modalService.show(FieldAddComponent,{initialState, class: 'modal-lg'}).content;
+    this._modalService.show(DssModelAddComponent,{initialState, class: 'modal-lg'}).content;
   }
 
 

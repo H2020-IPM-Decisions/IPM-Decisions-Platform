@@ -1,4 +1,12 @@
 .dss-icon {
     font-size: 45px;
   }
-  
+
+.tableHeader {
+  font-size: 20px;
+}
+
+.scrollable{
+  height: 70vh;
+  overflow-y: auto;
+}
