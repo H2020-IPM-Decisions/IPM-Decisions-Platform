@@ -45,13 +45,13 @@ export interface IDssFormData {
     dssModelName?: string;
     dssModelId?: string;
     dssModelVersion?: string;
-    //cropPest?: DssCropPest;
     dssParameters?: string;
     dssExecutionType?: string;
     cropEppoCode?: string;
     pestEppoCode?: string;
     sowingDate?: string;
     dssEndPoint?: string; //REQUIRED WHEN dssExecutionType = "link"
+    dssVersion?: string;
 }
 
 export class DssCropPest {
@@ -97,6 +97,7 @@ export interface IDssFlat {
     dssTypeOfDecision?: string;
     dssDescriptionUrl?: string;
     farmId?: string;
+    farmName?: string;
     fieldId?: string;
     warningStatusRepresentation?: string;
     outputTimeStart?: string;

@@ -11,78 +11,90 @@
       </div>
     </div>
   </div>
-  <div class="page-box">  
-      <div class="row pb-3" *ngFor="let cropEppoCode of dssMap | keyvalue">
+  <div class="page-box">
+    <div *ngFor="let farm of farmsDssMap">
+      <div class="farm-box">
+        <h3 class="text-muted">
+          <strong>
+            {{ farm.farmName }}
+          </strong>
+        </h3>
+      </div>
+      <div class="row pb-3" *ngFor="let crop of farm.groupedByCrops">
         <div class="col-2 text-center">
           <div class="p-2">
-            <b class="">{{cropEppoCode.key}}</b>
+            <b class="">{{ crop.eppoCode | eppoCode }}</b>
             <br>
-            <ng-template #tolTemplate>{{cropEppoCode.key | eppoCode | uppercase}}</ng-template>
-            <small class="d-inline-block text-truncate" style="width: 100%;" [tooltip]="tolTemplate" placement="bottom">{{cropEppoCode.key | eppoCode | uppercase}}</small>
+            <ng-template #tolTemplate>{{crop.eppoCode | eppoCode | uppercase}}</ng-template>
+            <small class="d-inline-block text-truncate" style="width: 100%;" [tooltip]="tolTemplate"
+              placement="bottom">{{crop.eppoCode}}</small>
           </div>
         </div>
         <div class="d-flex col-10 text-center">
-          <div class="d-flex p-2 mx-1" *ngFor="let item of cropEppoCode.value" style="position:relative">
+          <div class="d-flex p-2 mx-1" *ngFor="let item of crop.dssModels" style="position:relative">
             <a [routerLink]="[item.id,'view']" style="position:relative">
-              <eppo-code-badge 
-                [code]="item.pestEppoCode" 
-                [statusRepresentation]="item.warningStatusRepresentation" 
-                [dss]="item.dssName+' - '+item.dssModelId" 
-                [status]="item.warningStatus"
+              <eppo-code-badge [code]="item.pestEppoCode" [statusRepresentation]="item.warningStatusRepresentation"
+                [dss]="item.dssModelName + ' (' + item.dssModelId +')'" [status]="item.warningStatus"
                 [executionType]="item.dssExecutionType">
               </eppo-code-badge>
             </a>
-            <i class="fas fa-info-circle light-blue-icon ml-1 info-icon"
-                popover="{{item.dssDescription}}"
-                popoverTitle="{{item.warningStatusRepresentation}}"  
-                placement="auto"
-                [outsideClick]="true"
-                container='body'>
+            <i class="fas fa-info-circle light-blue-icon ml-1 info-icon" popover="{{item.dssDescription}}"
+              popoverTitle="{{item.warningStatusRepresentation}}" placement="auto" [outsideClick]="true"
+              container='body'>
             </i>
           </div>
         </div>
       </div>
-      <br><br><br><br><br><br>
-      <div>
-        <fieldset class="border p-3">
-          <legend class="w-auto px-1 text-muted">Legend / Example</legend>
-          <div class="row">
-            <div class="col-2 text-center">
-              <div class="p-2">
-                <b class="">Crop EPPO Code</b>
-                <br>
-                <ng-template #tolTemplate>Latin name of the plants cultivated and wild) getted by the European and Mediterranean Plant Protection Organization (EPPO) code.</ng-template>
-                <small class="d-inline-block text-truncate" style="width: 100%;" [tooltip]="tolTemplate" placement="bottom">
-                  Latin name of the plants cultivated and wild) getted by the European and Mediterranean Plant Protection Organization (EPPO) code
-                </small>
-              </div>
+    </div>
+    <br><br><br><br><br><br>
+    <div>
+      <fieldset class="border p-3">
+        <legend class="w-auto px-1 text-muted">Legend / Example</legend>
+        <div class="row">
+          <div class="col-2 text-center">
+            <div class="p-2">
+              <b class="">Crop EPPO Code</b>
+              <br>
+              <ng-template #tolTemplate>Latin name of the plants cultivated and wild) getted by the European and
+                Mediterranean Plant Protection Organization (EPPO) code.</ng-template>
+              <small class="d-inline-block text-truncate" style="width: 100%;" [tooltip]="tolTemplate"
+                placement="bottom">
+                Latin name of the plants cultivated and wild) getted by the European and Mediterranean Plant Protection
+                Organization (EPPO) code
+              </small>
             </div>
-            <div class="d-flex col-10 text-center">
-              <div class="p-2 mx-1">
-                <!--
+          </div>
+          <div class="d-flex col-10 text-center">
+            <div class="p-2 mx-1">
+              <!--
                   0 = Status gives no meaning (e.g. outside of season or before biofix), GREY
                   1 = Cannot give status due to error, e.g. missing data,  GREY
                   2 = No risk of infection,  GREEN
                   3 = Medium risk of infection, ORANGE
                   4 = High risk of infection. RED
                 -->
-                <eppo-code-badge [code]="'PEST'" [dss]="'No meaning status'" [status]="0" [statusRepresentation]="'No meaning status'"></eppo-code-badge>
-              </div>
-              <div class="p-2 mx-1">
-                <eppo-code-badge [code]="'PSILRO'" [dss]="'Cannot give status'" [status]="1" [statusRepresentation]="'Cannot give status'"></eppo-code-badge>
-              </div>
-              <div class="p-2 mx-1">
-                <eppo-code-badge [code]="'SEPTAP'" [dss]="'No risk of infection'" [status]="2" [statusRepresentation]="'No risk of infection'"></eppo-code-badge>
-              </div>
-              <div class="p-2 mx-1">
-                <eppo-code-badge [code]="'TRFPR'" [dss]="'Medium risk'" [status]="3" [statusRepresentation]="'Medium risk'"></eppo-code-badge>
-              </div>
-              <div class="p-2 mx-1">
-                <eppo-code-badge [code]="'VERAR'" [dss]="'High risk'" [status]="4" [statusRepresentation]="'High risk'"></eppo-code-badge>
-              </div>
+              <eppo-code-badge [code]="'PEST'" [dss]="'No meaning status'" [status]="0"
+                [statusRepresentation]="'No meaning status'"></eppo-code-badge>
+            </div>
+            <div class="p-2 mx-1">
+              <eppo-code-badge [code]="'PSILRO'" [dss]="'Cannot give status'" [status]="1"
+                [statusRepresentation]="'Cannot give status'"></eppo-code-badge>
+            </div>
+            <div class="p-2 mx-1">
+              <eppo-code-badge [code]="'SEPTAP'" [dss]="'No risk of infection'" [status]="2"
+                [statusRepresentation]="'No risk of infection'"></eppo-code-badge>
+            </div>
+            <div class="p-2 mx-1">
+              <eppo-code-badge [code]="'TRFPR'" [dss]="'Medium risk'" [status]="3"
+                [statusRepresentation]="'Medium risk'"></eppo-code-badge>
+            </div>
+            <div class="p-2 mx-1">
+              <eppo-code-badge [code]="'VERAR'" [dss]="'High risk'" [status]="4" [statusRepresentation]="'High risk'">
+              </eppo-code-badge>
             </div>
           </div>
-        </fieldset>
-      </div>
+        </div>
+      </fieldset>
     </div>
   </div>
+</div>

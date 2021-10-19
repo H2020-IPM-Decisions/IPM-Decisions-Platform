@@ -3,10 +3,16 @@
   }
 
 .tableHeader {
-  font-size: 20px;
+  font-size: 18px;
 }
 
-.scrollable{
+.scrollable {
   height: 70vh;
   overflow-y: auto;
+}
+
+.selItem {
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
 }

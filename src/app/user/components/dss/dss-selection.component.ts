@@ -190,7 +190,6 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
     }
   }
 
-  // TO BE EDITED, FOR WORK WITH MULTIPLE DSS SELECTION
   submit() {
     if(this.editor && this.editorValid) {
       let currentDSSFormData: IDssFormData = this.dssSelectionService.getFormData(

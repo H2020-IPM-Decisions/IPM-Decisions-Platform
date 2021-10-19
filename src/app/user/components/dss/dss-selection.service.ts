@@ -1,3 +1,4 @@
+import { DssGroupedByFarm, DssGroupedByCrops } from './../../../shared/models/dssGroupedByFarm.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -74,6 +75,45 @@ export class DssSelectionService {
     return dssMap;
   };
 
+  getDssGroupedByFarms(dssList: IDssFlat[]): DssGroupedByFarm[] {
+    let groupedDssModels: DssGroupedByFarm[] = [];
+
+    let farmMap: Map<string, IDssFlat[]> = new Map<string, IDssFlat[]>();
+    let result: Map<string, Map<string, IDssFlat[]>> = new Map<string, Map<string, IDssFlat[]>>();
+
+    for (const element of dssList) {
+      let array: IDssFlat[] = [];
+      if(farmMap.has(element.farmId)){
+        array = farmMap.get(element.farmId);
+      } 
+      array.push(element);
+      farmMap.set(element.farmId, array);
+    }
+
+    for (let [farmId, dssModels] of farmMap) {
+      let farmName: string;
+      let dssMap: Map<string, IDssFlat[]> = new Map<string, IDssFlat[]>();
+      
+      for (let dss of dssModels) {
+        farmName = dss.farmName;
+        let cropDssModels: IDssFlat[] = [];
+        if(dssMap.has(dss.cropEppoCode)){
+          cropDssModels = dssMap.get(dss.cropEppoCode);
+        }
+        cropDssModels.push(dss);
+        dssMap.set(dss.cropEppoCode, cropDssModels);
+      }
+
+      let cropsDss: DssGroupedByCrops[] = [];
+      for (let [crop, dssArray] of dssMap) {
+        cropsDss.push(new DssGroupedByCrops(crop,dssArray));
+      }
+
+      groupedDssModels.push(new DssGroupedByFarm(farmId, farmName, cropsDss)); 
+    }
+    return groupedDssModels;
+  };
+
   submitDss(data: IDssFormData[], farm: Farm): Observable<HttpResponse<IDssFormData[]>> {
     let requestUrl = `${environment.apiUrl}/api/upr/farms/${farm.id}/dss`;
     return this.http.post<IDssFormData[]>(requestUrl, data, {
@@ -121,7 +161,8 @@ export class DssSelectionService {
       dssEndPoint: endpoint,
       cropEppoCode: selectedCrop,
       pestEppoCode: selectedPest,
-      dssParameters: JSON.stringify(jsonSchemaForm)
+      dssParameters: JSON.stringify(jsonSchemaForm),
+      dssVersion: dss.version
     }
   }
 

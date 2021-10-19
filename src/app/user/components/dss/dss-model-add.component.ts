@@ -2,14 +2,15 @@ import { HttpErrorResponse, HttpResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
-import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { Farm } from "@app/shared/models/farm.model";
 import { Field } from "@app/shared/models/field.model";
 import { IDssFormData, DssSelection } from "./dss-selection.model";
 import { DssSelectionService } from "./dss-selection.service";
-
 import { EppoCodeService } from "@app/shared/services/upr/eppo-code.service";
 import { EppoCode } from "@app/shared/models/eppo-code.model";
+import { Subscription } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
+import { NGXLogger } from "ngx-logger";
 
 @Component({
   selector: "app-dss-model-add",
@@ -24,23 +25,24 @@ export class DssModelAddComponent implements OnInit {
   selectedDss: IDssFormData[] = [];
   data: DssSelection[] = [];
   cropsEppoCodes: EppoCode[] = [];
+  $subscription?: Subscription;
 
   constructor(
     private _fb: FormBuilder,
     private _toastr: ToastrService,
     private dssSelectionService: DssSelectionService,
-    private modalService: BsModalService,
-    public bsModalRef: BsModalRef,
-    private _eppoCodeService: EppoCodeService
-  ) {
-    this.farm = this.modalService.config.initialState['farm'];
-    this.field = this.modalService.config.initialState['field'];
-  }
+    private _eppoCodeService: EppoCodeService,
+    private _activatedRoute: ActivatedRoute,
+    private logger: NGXLogger
+  ) {}
 
   ngOnInit() {
     this.formInit();
     this._eppoCodeService.cachedRefreshableCrops$.subscribe(data=>{
       this.cropsEppoCodes=data
+    });
+    this.$subscription = this._activatedRoute.data.subscribe(({ farm }) => {
+      this.farm = farm;
     });
     
   }
@@ -94,7 +96,7 @@ export class DssModelAddComponent implements OnInit {
         );
       },
       (error: HttpErrorResponse) => {
-        //console.log("Get DSS Models error", error);
+        this.logger.error("Dss models selection error",error);
         this._toastr.show(
           "Fail to get the requested models for selected crops!",
           "Error!",
@@ -116,11 +118,11 @@ export class DssModelAddComponent implements OnInit {
               null,
               "toast-success"
             );
-            this.close();
+            this.goBack();
           }
         },
         (error: HttpErrorResponse) => {
-          //console.log("Dss models selection error", error);
+          this.logger.error("Dss models selection error",error);
           this._toastr.show(
             "Fail to submit the selected models!",
             "Error!",
@@ -132,7 +134,13 @@ export class DssModelAddComponent implements OnInit {
     }
   }
 
-  close():void{
-    this.bsModalRef.hide();
+  ngOnDestroy() {
+    if (this.$subscription) {
+      this.$subscription.unsubscribe();
+    }
+  }
+
+  goBack(): void {
+    window.history.back();
   }
 }

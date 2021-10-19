@@ -1,21 +1,20 @@
 <span>
     <ng-template #tolTemplateStatusRep>{{statusRepresentation}}</ng-template>
-    <span class="text-truncate badge dss-badge"
+    <span class="badge dss-badge"
         [tooltip]="tolTemplateStatusRep"
         [ngClass]="{'badge-secondary':!status, 'badge-info': status==1, 'badge-success': status==2, 'badge-warning':status==3, 'badge-danger': status==4}"
         *ngIf="!(executionType==='link')">
         <i class="fas fa-link" *ngIf="executionType==='link'"></i>
         <span class="label label-danger label-as-badge"></span>
-        <h5>{{code}}</h5>
-        <small>{{ code | eppoCode }}</small>
+        <h6><b>{{code | eppoCode }}</b></h6>
+        <small>({{ code }})</small>
     </span>
-    <span class="text-truncate exeLink"
+    <span class="exeLink"
         *ngIf="executionType==='link'">
         <i class="fas fa-link"></i>
         <span class="label label-danger label-as-badge"></span>
-        <h5>{{code}}</h5>
-        <small>{{ code | eppoCode }}</small>
+        <h6><b>{{code | eppoCode }}</b></h6>
+        <small>({{ code }})</small>
     </span>
-    <ng-template #tolTemplate>{{dss}}</ng-template>
-    <span *ngIf="dss" class="dss text-truncate" [tooltip]="tolTemplate" placement="bottom">{{dss}}</span>
+    <span *ngIf="dss" class="dss text-truncate" placement="bottom">{{dss}}</span>
 </span>

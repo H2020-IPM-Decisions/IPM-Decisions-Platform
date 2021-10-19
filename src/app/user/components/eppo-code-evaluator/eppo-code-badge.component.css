@@ -1,14 +1,19 @@
+/*Remove white-space: normal; to allow the text-truncate class*/
+
 .dss {
   display: block;
   font-size: 80%;
   color: #6c757d;
   width: 120px;
+  height: auto;
+  white-space: normal;
 }
 
 .dss-badge {
   display: inline-block;
   width: 120px;
-  height: 52px;
+  height: auto;
+  white-space: normal;
 }
 
 .exeLink {
@@ -16,6 +21,8 @@
   font-size: 80%;
   color: #6c757d;
   width: 120px;
+  height: auto;
+  white-space: normal;
 }
 
 .fa-link {

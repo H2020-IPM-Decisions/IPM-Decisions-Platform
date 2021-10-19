@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { IDssFlat, IDssResultChart, IDssChartGroup, IDssResultFlat} from './dss-selection.model';
 import { DssSelectionService } from './dss-selection.service';
+import { NGXLogger } from "ngx-logger";
 
 @Component({
   selector: 'app-dss-detail',
@@ -25,20 +26,22 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute, 
     private _modalService: BsModalService,
     private service: DssSelectionService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService,
+	private logger: NGXLogger
+	) { }
   
   ngOnInit() {
     this.$subscription = this.activatedRoute.data.subscribe(({ dssDetail }) => {
-      this.dssDetail = dssDetail;
-	  this.dssChartGroups = this.dssDetail.chartGroups;
-	  this.selectedDssChartGroup = this.dssChartGroups[0];
+      	this.dssDetail = dssDetail;
+		this.dssChartGroups = this.dssDetail.chartGroups;
+	    this.selectedDssChartGroup = this.dssChartGroups[0];
       if(this.dssDetail.warningStatusPerDay){
-		let labels = [];
-		for(let i=0; i<this.dssDetail.warningStatusPerDay.length; i++){
-		  labels.push(this.dssDetail.outputTimeStart);
-		}
-		this.warning = this.service.getDssWarningChart(this.dssDetail.warningStatusPerDay, this.dssDetail.outputTimeStart);
-	  }
+		    let labels = [];
+        for(let i=0; i<this.dssDetail.warningStatusPerDay.length; i++){
+          labels.push(this.dssDetail.outputTimeStart);
+        }
+		    this.warning = this.service.getDssWarningChart(this.dssDetail.warningStatusPerDay, this.dssDetail.outputTimeStart);
+	    }
     });
   }
 

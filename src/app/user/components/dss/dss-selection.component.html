@@ -39,7 +39,7 @@
                 <select id="pests" class="col-md-9 form-control" (change)="fieldSelectChanged($event)">
                   <option value="" disabled [selected]='!fieldSelectIsNewState'>Crop / Pest</option>
                   <option *ngFor="let field of fields;let i = index" [value]="i" [selected]="i == fieldSelectedOption">
-                    <b>{{field.fieldCropDto.cropEppoCode}}</b> {{field.fieldCropDto.cropEppoCode | eppoCode}} - <strong>{{field.fieldCropDto.fieldCropPestDto.value[0].pestEppoCode}}</strong> {{field.fieldCropDto.fieldCropPestDto.value[0].pestEppoCode | eppoCode}}
+                    {{field.fieldCropDto.cropEppoCode | eppoCode}} - {{field.fieldCropDto.fieldCropPestDto.value[0].pestEppoCode | eppoCode}}
                   </option>
                 </select>
               </div>

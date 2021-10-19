@@ -1,3 +1,4 @@
+import { DssGroupedByFarm } from './../../../shared/models/dssGroupedByFarm.model';
 import { HttpResponse } from "@angular/common/http";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
@@ -9,7 +10,7 @@ import { DssSelectionService } from "./dss-selection.service";
   styleUrls: ["./dss-dashboard.component.css"]
 })
 export class DssDashboardComponent implements OnInit, OnDestroy {
-  dssMap: Map<string, IDssFlat[]> = new Map<string, IDssFlat[]>();
+  farmsDssMap: DssGroupedByFarm[] = [];
   $startSubscription: Subscription;
 
   constructor(protected service: DssSelectionService 
@@ -19,7 +20,7 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
 
     // CALL  api/dss  fetch user's DSS list
     this.$startSubscription = this.service.getDssList().subscribe((data: HttpResponse<IDssFlat[]>)=>{
-      this.dssMap = this.service.getDssMap(data.body);
+      this.farmsDssMap = this.service.getDssGroupedByFarms(data.body);
     });
     // detail /api/dss/{id}
 

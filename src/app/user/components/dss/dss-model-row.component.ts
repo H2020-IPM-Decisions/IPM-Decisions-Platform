@@ -42,25 +42,21 @@ export class DssModelRowComponent implements OnInit {
   }
   cropSelectChanged(event: { target: HTMLInputElement }){
     this.selectedCrop = event.target.value
-    //console.log(event.target.value)
   }
   
   pestSelectChanged(event: { target: HTMLInputElement }){
     this.selectedPest = event.target.value
-    //console.log(event.target.value)
   }
 
   onSelect(){
     this.selectedDss = !this.selectedDss;
     const dssFormData: IDssFormData = this.dssSelectionService.getDssData(this.selectedCrop, this.selectedPest,this.dssSelection,this.model);
-    //console.log(dssFormData);
     this.select.emit(dssFormData);
   }
 
   onDeselect(){
     this.selectedDss = !this.selectedDss;
     const dssFormData: IDssFormData = this.dssSelectionService.getDssData(this.selectedCrop, this.selectedPest,this.dssSelection,this.model);
-    //console.log(dssFormData);
     this.deselect.emit(dssFormData);
   }
 

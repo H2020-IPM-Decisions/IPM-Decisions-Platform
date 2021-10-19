@@ -1,3 +1,4 @@
+import { DssSelectionService } from './../../dss/dss-selection.service';
 import { environment } from './../../../../../environments/environment';
 import { HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/http";
 import {
@@ -87,7 +88,8 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     private _router: Router,
     private _fieldService: FieldService,
     private _toastr: ToastrService,
-    private http: HttpClient
+    private http: HttpClient,
+    private _dssSelectionService: DssSelectionService
   ) { }
 
   ngOnInit() {
@@ -185,13 +187,25 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     
   }
 
+  onDssModelDelete(dssModelId: string): void{
+    if(!dssModelId) {
+      return;
+    }
+    this._dssSelectionService.del(dssModelId).subscribe(()=>{
+      this._toastr.success("Operation Success","DSS Deleted");
+      this.modalRef.hide();
+    },()=>{
+      this._toastr.error("Operation Failed","No DSS deleted");
+    });
+  }
+
   onFieldDelete(fieldId: string) {
     if (fieldId) {
       this._fieldService
         .deleteFieldById(this.farm.id, fieldId)
         .subscribe((response: HttpResponse<any>) => {
           if (response.status === 204) {
-            this._modalService.hide(1);
+            this.modalRef.hide();
 
             const index: number = this.fieldList.findIndex(
               (item) => item.id === fieldId

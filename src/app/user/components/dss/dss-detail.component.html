@@ -42,7 +42,9 @@
                 <label>Risk score</label>
               </th>
               <th class="text-center" style="width: 33.34%">
-                <label>Disease incidence</label>
+                <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup" (ngModelChange)="onChangeChartGroup($event)">
+                  <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}</option>
+                </select>
               </th>
               <th class="text-center" style="width: 33.33%">
                 <label>Reccomended actions</label>
@@ -74,14 +76,6 @@
                     </div>
                   </accordion-group>
                 </accordion>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>
-                <select class="form-control" [ngModel]="selectedDssChartGroup" (ngModelChange)="onChangeChartGroup($event)">
-                  <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}</option>
-                </select>
               </td>
             </tr>
           </tbody>

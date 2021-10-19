@@ -83,6 +83,7 @@ import { FarmComponent } from './user/components/farm/farm.component';
 import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-farm.component';
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
 import { ApplicationPipesModule } from './shared/pipes/application-pipes.module';
+import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
 
 @NgModule({
   declarations: [
@@ -173,7 +174,8 @@ import { ApplicationPipesModule } from './shared/pipes/application-pipes.module'
     TooltipModule.forRoot(),
     AuthModule,
     ModalModule.forRoot(),
-    ApplicationPipesModule.forRoot()
+    ApplicationPipesModule.forRoot(),
+    LoggerModule.forRoot({level: NgxLoggerLevel.ERROR, serverLogLevel: NgxLoggerLevel.OFF})
   ],
   providers: [EppoCodeService],
   bootstrap: [AppComponent],
