@@ -30,10 +30,10 @@ export class DssModelAddComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _toastr: ToastrService,
-    private dssSelectionService: DssSelectionService,
+    private _dssSelectionService: DssSelectionService,
     private _eppoCodeService: EppoCodeService,
     private _activatedRoute: ActivatedRoute,
-    private logger: NGXLogger
+    private _logger: NGXLogger
   ) {}
 
   ngOnInit() {
@@ -84,7 +84,7 @@ export class DssModelAddComponent implements OnInit {
   onConfirmSelectedCrops(): void {
     let cropsSelectedArray: string[] = this.selCropForm.get('cropSelection').get('cropEppoCode').value;
     const crops: string = cropsSelectedArray.join('%2C')
-    this.dssSelectionService.getDssByMultipleCrops(crops).subscribe(
+    this._dssSelectionService.getDssByMultipleCrops(crops).subscribe(
       (response: HttpResponse<DssSelection[]>) => {
         this.data = response.body;
         this.areCropsSelected = true;
@@ -96,7 +96,7 @@ export class DssModelAddComponent implements OnInit {
         );
       },
       (error: HttpErrorResponse) => {
-        this.logger.error("Dss models selection error",error);
+        this._logger.error("Dss models selection error",error);
         this._toastr.show(
           "Fail to get the requested models for selected crops!",
           "Error!",
@@ -109,7 +109,7 @@ export class DssModelAddComponent implements OnInit {
 
   onSave() {
     if (this.selectedDss.length > 0) {
-      this.dssSelectionService.submitDss(this.selectedDss,this.farm).subscribe(
+      this._dssSelectionService.submitDss(this.selectedDss,this.farm).subscribe(
         (response) => {
           if (response) {
             this._toastr.show(
@@ -122,7 +122,7 @@ export class DssModelAddComponent implements OnInit {
           }
         },
         (error: HttpErrorResponse) => {
-          this.logger.error("Dss models selection error",error);
+          this._logger.error("Dss models selection error",error);
           this._toastr.show(
             "Fail to submit the selected models!",
             "Error!",

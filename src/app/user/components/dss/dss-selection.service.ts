@@ -1,74 +1,84 @@
 import { DssGroupedByFarm, DssGroupedByCrops } from './../../../shared/models/dssGroupedByFarm.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { environment } from "@src/environments/environment";
-import { IDssFlat, IDssFormData, DssJSONSchema, DssModel, DssSelection, IDssResultChart } from './dss-selection.model';
+import { IDssFlat, IDssFormData, DssJSONSchema, DssModel, DssSelection, IDssResultChart, DssParameters } from './dss-selection.model';
 import { Field } from '@app/shared/models/field.model';
 import { Farm } from '@app/shared/models/farm.model';
+import { catchError } from "rxjs/operators";
+import { NGXLogger } from "ngx-logger";
 
 @Injectable({ providedIn: 'root' })
 export class DssSelectionService {
-  constructor(protected http: HttpClient) { }
+  constructor(
+    protected _http: HttpClient,
+    private _logger: NGXLogger
+  ) { }
 
   // https://ipmdecisions.nibio.no/api/dss/apidocs/resource_DSSService.html#resource_DSSService_getDSSModelUIFormSchema_GET
 
   getDssByCropAndPest(crop: string, pest: string): Observable<HttpResponse<DssSelection[]>> {
     const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crop/${crop}/pest/${pest}`
-    return this.http.get<DssSelection[]>(requestUrl, { observe: 'response' });
+    return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 
   getDssByMultipleCrops(crops: string): Observable<HttpResponse<DssSelection[]>> {
     const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`
-    return this.http.get<DssSelection[]>(requestUrl, { observe: 'response' });
+    return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 
   getSchemaByDssAndModel(dss: DssSelection, model: DssModel): Observable<HttpResponse<DssJSONSchema>> {
     const requestUrl = `${environment.apiUrl}/api/dss/rest/model/${dss.id}/${model.id}/input_schema/ui_form`;
-    return this.http.get<DssJSONSchema>(requestUrl, { observe: 'response' });
+    return this._http.get<DssJSONSchema>(requestUrl, { observe: 'response' });
   }
 
-  get(id: string):Observable<HttpResponse<IDssFlat>> {
+  getSchemaByDssIdAndModelId(dssId: string, modelId: string): Observable<HttpResponse<DssJSONSchema>> {
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/model/${dssId}/${modelId}/input_schema/ui_form`;
+    return this._http.get<DssJSONSchema>(requestUrl, { observe: 'response' });
+  }
+
+  get(id: string): Observable<HttpResponse<IDssFlat>> {
     let requestUrl = `${environment.apiUrl}/api/upr/dss/${id}`;
-    return this.http.get<IDssFlat>(requestUrl, { 
+    return this._http.get<IDssFlat>(requestUrl, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      observe: 'response' 
+      observe: 'response'
     });
   }
 
-  del(id: string):Observable<HttpResponse<IDssFlat>> {
+  del(id: string): Observable<HttpResponse<IDssFlat>> {
     let requestUrl = `${environment.apiUrl}/api/upr/dss/${id}`;
-    return this.http.delete<IDssFlat>(requestUrl, { 
+    return this._http.delete<IDssFlat>(requestUrl, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      observe: 'response' 
+      observe: 'response'
     });
   }
 
-  getDssList():Observable<HttpResponse<IDssFlat[]>> {
+  getDssList(): Observable<HttpResponse<IDssFlat[]>> {
     let requestUrl = `${environment.apiUrl}/api/upr/dss`;
-    return this.http.get<IDssFlat[]>(requestUrl, { 
+    return this._http.get<IDssFlat[]>(requestUrl, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      observe: 'response' 
+      observe: 'response'
     });
   }
 
-  getDssMap(dssList: IDssFlat[]):Map<string, IDssFlat[]>{
+  getDssMap(dssList: IDssFlat[]): Map<string, IDssFlat[]> {
     let dssMap: Map<string, IDssFlat[]> = new Map<string, IDssFlat[]>();
     for (const element of dssList) {
       let array: IDssFlat[] = [];
-      if(dssMap.has(element.cropEppoCode)){
+      if (dssMap.has(element.cropEppoCode)) {
         array = dssMap.get(element.cropEppoCode);
-      } 
+      }
       array.push(element);
       dssMap.set(element.cropEppoCode, array);
     }
@@ -83,9 +93,9 @@ export class DssSelectionService {
 
     for (const element of dssList) {
       let array: IDssFlat[] = [];
-      if(farmMap.has(element.farmId)){
+      if (farmMap.has(element.farmId)) {
         array = farmMap.get(element.farmId);
-      } 
+      }
       array.push(element);
       farmMap.set(element.farmId, array);
     }
@@ -93,11 +103,11 @@ export class DssSelectionService {
     for (let [farmId, dssModels] of farmMap) {
       let farmName: string;
       let dssMap: Map<string, IDssFlat[]> = new Map<string, IDssFlat[]>();
-      
+
       for (let dss of dssModels) {
         farmName = dss.farmName;
         let cropDssModels: IDssFlat[] = [];
-        if(dssMap.has(dss.cropEppoCode)){
+        if (dssMap.has(dss.cropEppoCode)) {
           cropDssModels = dssMap.get(dss.cropEppoCode);
         }
         cropDssModels.push(dss);
@@ -106,17 +116,17 @@ export class DssSelectionService {
 
       let cropsDss: DssGroupedByCrops[] = [];
       for (let [crop, dssArray] of dssMap) {
-        cropsDss.push(new DssGroupedByCrops(crop,dssArray));
+        cropsDss.push(new DssGroupedByCrops(crop, dssArray));
       }
 
-      groupedDssModels.push(new DssGroupedByFarm(farmId, farmName, cropsDss)); 
+      groupedDssModels.push(new DssGroupedByFarm(farmId, farmName, cropsDss));
     }
     return groupedDssModels;
   };
 
   submitDss(data: IDssFormData[], farm: Farm): Observable<HttpResponse<IDssFormData[]>> {
     let requestUrl = `${environment.apiUrl}/api/upr/farms/${farm.id}/dss`;
-    return this.http.post<IDssFormData[]>(requestUrl, data, {
+    return this._http.post<IDssFormData[]>(requestUrl, data, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -148,10 +158,10 @@ export class DssSelectionService {
 
   getDssData(selectedCrop: string, selectedPest: string, dss: DssSelection, model: DssModel, jsonSchemaForm?: any): IDssFormData {
     let endpoint: string = "";
-    if(model.execution.type === "LINK"){
+    if (model.execution.type === "LINK") {
       endpoint = model.execution.endpoint;
     }
-    return{
+    return {
       dssId: dss.id,
       dssName: dss.name,
       dssModelName: model.name,
@@ -166,41 +176,52 @@ export class DssSelectionService {
     }
   }
 
-  getDssWarningChart(data: number[], startDateStr: string): {data:number[],labels:string[],chartInformation:IDssResultChart} { 
+  getDssWarningChart(data: number[], startDateStr: string): { data: number[], labels: string[], chartInformation: IDssResultChart } {
     //                        'no-info'  'no-stat'  'no risk'  'med ris'  'hi risk'
     //                        'grey'     'blue'     'green'    'orange'   'red'
     const colors: string[] = ['#6c757d', '#16aaff', '#3ac47d', '#f7b924', '#d92550'];
     let startDate: Date = new Date(startDateStr);
     let dateStrArr: string[] = [];
     let colorStrArr: string[] = [];
-    for(let i=0; i<data.length; i++){
-      if(i!=0){
+    for (let i = 0; i < data.length; i++) {
+      if (i != 0) {
         startDate.setDate(startDate.getDate() + 1);
       }
-      dateStrArr.push(startDate.toISOString().substr(0,10))
+      dateStrArr.push(startDate.toISOString().substr(0, 10))
       colorStrArr.push(colors[data[i]]);
     }
     return {
       data: data,
       labels: dateStrArr,
-      chartInformation:{
+      chartInformation: {
         chartType: 'bar',
         color: colorStrArr,
         unit: 'warning level',
         defaultVisible: true,
         options: {
           scales: {
-              y: {
-                  max: 4,
-                  min: 0,
-                  ticks: {
-                      stepSize: 1
-                  }
+            y: {
+              max: 4,
+              min: 0,
+              ticks: {
+                stepSize: 1
               }
+            }
           }
         }
       }
     };
   }
-  
+
+  public updateDssParameters(dssId: string, dssParameters: DssParameters): Observable<HttpResponse<any>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/dss/${dssId}`;
+    return this._http.put(requestUrl, dssParameters, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: "response",
+    });
+  }
+
 }

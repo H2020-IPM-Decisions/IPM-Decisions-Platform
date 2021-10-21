@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -27,7 +27,8 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     private _modalService: BsModalService,
     private service: DssSelectionService,
     private toastrService: ToastrService,
-	private logger: NGXLogger
+    private _router: Router,
+	  private logger: NGXLogger
 	) { }
   
   ngOnInit() {
@@ -72,5 +73,10 @@ export class DssDetailComponent implements OnInit, OnDestroy {
 
   openModal(template: TemplateRef<any>, size?: string) {
     this.modalRef = this._modalService.show(template, {class: size});
+  }
+
+  goToModelParametrisation(): void {
+    const navigationExtras: NavigationExtras = {state: { data: {dssId: this.dssDetail.dssId, dssModelId: this.dssDetail.dssModelId, dssDetailPage: true}}};
+    this._router.navigate(['/user/farm',this.dssDetail.farmId,'edit','dss',this.dssDetail.id,'parametrisation'], navigationExtras);
   }
 }

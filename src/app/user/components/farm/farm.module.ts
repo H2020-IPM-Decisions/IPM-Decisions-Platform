@@ -18,6 +18,7 @@ import { ApplicationPipesModule } from '@app/shared/pipes/application-pipes.modu
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { DssModelAddComponent } from '../dss/dss-model-add.component';
 import { DssModelRowComponent } from '../dss/dss-model-row.component';
+import { DssModelParametrisationComponent } from '../dss/dss-model-parametrisation.component';
 
 @NgModule({
   imports: [ 
@@ -39,11 +40,13 @@ import { DssModelRowComponent } from '../dss/dss-model-row.component';
     EditFarmComponent,
     FieldAddComponent,
     DssModelAddComponent,
-    DssModelRowComponent
+    DssModelRowComponent,
+    DssModelParametrisationComponent
   ],
   entryComponents: [
     FieldAddComponent,
-    DssModelAddComponent
+    DssModelAddComponent,
+    DssModelParametrisationComponent
   ],
   providers: [EppoCodePipe]
 })

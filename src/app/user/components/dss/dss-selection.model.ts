@@ -112,3 +112,9 @@ export interface IDssChartGroup {
     resultParameterIds?: string[];
     resultParameters?: IDssResultFlat[];
 }
+
+// Interface for update dss parameters function on dss-selection service
+export class DssParameters {
+    constructor( public dssParameters: string){}
+} 
+    

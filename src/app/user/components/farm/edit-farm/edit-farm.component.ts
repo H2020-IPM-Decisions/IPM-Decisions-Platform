@@ -1,15 +1,7 @@
 import { DssSelectionService } from './../../dss/dss-selection.service';
 import { environment } from './../../../../../environments/environment';
 import { HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/http";
-import {
-  AfterViewInit,
-  Component,
-  Input,
-  OnDestroy,
-  OnInit,
-  TemplateRef,
-  ViewChild,
-} from "@angular/core";
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, TemplateRef, ViewChild } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Farm } from "@app/shared/models/farm.model";
@@ -21,12 +13,15 @@ import { ToastrService } from "ngx-toastr";
 import { DssModelAddComponent } from '../../dss/dss-model-add.component';
 import { Subscription } from 'rxjs';
 import { FieldEditComponent } from '../../field/field-edit/field-edit.component';
+import { NGXLogger } from 'ngx-logger';
+
 @Component({
   selector: "app-edit-farm",
   templateUrl: "./edit-farm.component.html",
   styleUrls: ["./edit-farm.component.css"],
   providers: [BsModalRef],
 })
+
 export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input()
   farm: Farm;
@@ -89,24 +84,25 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     private _fieldService: FieldService,
     private _toastr: ToastrService,
     private http: HttpClient,
-    private _dssSelectionService: DssSelectionService
+    private _dssSelectionService: DssSelectionService,
+    private _logger: NGXLogger
   ) { }
 
   ngOnInit() {
     if (this.farm.id) {
       this.onGetFields(this.farm.id);
     }
-    this.$subscription = this._modalService.onHide.subscribe((data)=>{
+    this.$subscription = this._modalService.onHide.subscribe((data) => {
       this.onGetFields(this.farm.id);
     })
   }
 
   ngAfterViewInit(): void {
-    
+
   }
 
-  ngOnDestroy(){
-    if(this.$subscription){
+  ngOnDestroy() {
+    if (this.$subscription) {
       this.$subscription.unsubscribe();
     }
   }
@@ -132,16 +128,16 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  openModalEditField(field: Field):void{
-    const initialState:any={
-      farm:this.farm,
+  openModalEditField(field: Field): void {
+    const initialState: any = {
+      farm: this.farm,
       field: field
     };
-    this._modalService.show(FieldEditComponent,{initialState}).content;
+    this._modalService.show(FieldEditComponent, { initialState }).content;
   }
 
   onFieldCopy(field: any) {
-    let cropPest ={};
+    let cropPest = {};
     try {
       cropPest = {
         cropEppoCode: field.fieldCropDto.cropEppoCode,
@@ -156,12 +152,12 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
       );
       return;
     }
-    const fieldToCopy:any = {
+    const fieldToCopy: any = {
       sowingDate: field.sowingDate,
       name: 'none',
-      cropPest:cropPest
+      cropPest: cropPest
     }
-    this._fieldService.createField(fieldToCopy,this.farm.id).subscribe(
+    this._fieldService.createField(fieldToCopy, this.farm.id).subscribe(
       (fieldResponse) => {
         if (fieldResponse) {
           this._toastr.show(
@@ -183,20 +179,36 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
         );
       }
     );
-  
-    
+
+
   }
 
-  onDssModelDelete(dssModelId: string): void{
-    if(!dssModelId) {
+  onDssModelDelete(fieldId: string, cropPestComboId: string, dssModelId: string): void {
+    if (!dssModelId) {
       return;
     }
-    this._dssSelectionService.del(dssModelId).subscribe(()=>{
-      this._toastr.success("Operation Success","DSS Deleted");
+    this._dssSelectionService.del(dssModelId).subscribe(() => {
+      this._toastr.success("Operation Success", "DSS Deleted");
       this.modalRef.hide();
-    },()=>{
-      this._toastr.error("Operation Failed","No DSS deleted");
+      this.checkAndCleanFieldArray(fieldId, cropPestComboId);
+    }, () => {
+      this._toastr.error("Operation Failed", "No DSS deleted");
     });
+  }
+
+  checkAndCleanFieldArray(fieldId: string, cropPestComboId: string): void {
+    const fieldIndex: number = this.fieldList.findIndex(
+      (item) => item.id === fieldId
+    );
+    if (fieldIndex !== -1) {
+      const cropPestComboIndex: number = this.fieldList[fieldIndex].fieldCropDto.fieldCropPestDto.value.findIndex(
+        (cpcItem) => cpcItem.id === cropPestComboId
+      );
+      if ((cropPestComboIndex !== -1) && this.fieldList[fieldIndex].fieldCropDto.fieldCropPestDto.value[cropPestComboIndex].fieldCropPestDssDto.value.length == 1) {
+        this._logger.debug("Last DSS Model was deleted from the field, removing the field from the array");
+        this.fieldList.splice(fieldIndex, 1);
+      }
+    }
   }
 
   onFieldDelete(fieldId: string) {
@@ -220,16 +232,16 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   openModal(template: TemplateRef<any>, field: any, size?: string) {
-    this.modalRef = this._modalService.show(template, {class: size});
+    this.modalRef = this._modalService.show(template, { class: size });
     this.showFieldDetails(field);
   }
 
-  openModalDssModelAdd(field?:Field):void{
-    const initialState:any={
-      farm:this.farm,
-      field: field      
+  openModalDssModelAdd(field?: Field): void {
+    const initialState: any = {
+      farm: this.farm,
+      field: field
     };
-    this._modalService.show(DssModelAddComponent,{initialState, class: 'modal-lg'}).content;
+    this._modalService.show(DssModelAddComponent, { initialState, class: 'modal-lg' }).content;
   }
 
 
@@ -248,7 +260,7 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public isObject(val: any): boolean {
-    if (!val) { return false;}
+    if (!val) { return false; }
     return ((typeof val === 'function') || (typeof val === 'object'));
   };
 }

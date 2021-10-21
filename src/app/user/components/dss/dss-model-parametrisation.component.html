@@ -1,0 +1,34 @@
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-note icon-gradient bg-mean-fruit">
+                    </i>
+                </div>
+                <div>DSS Model Parametrisation</div>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto my-5 page-box">
+        <div class="progress m-3" *ngIf="remoteCallLoading">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%">
+                Loading...
+            </div>
+        </div>
+        <div id="json-editor-form"></div>
+        
+        <div class="row pt-3">
+            <div class="col-md-12">
+              <button class="btn btn-primary col-2 pull-right ml-1" (click)="onSubmit()"
+                [disabled]="!editorValid">
+                <i class="fas fa-save"></i>&nbsp;
+                Save
+              </button>
+              <button class="btn btn-info col-2 pull-right" type="button" (click)="goBack()">
+                Cancel
+              </button>
+            </div>
+          </div>
+    </div>
+</div>

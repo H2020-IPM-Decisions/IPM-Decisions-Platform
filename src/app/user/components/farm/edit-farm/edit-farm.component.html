@@ -59,37 +59,16 @@
                     <!--<button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy" title="Copy"
                     (click)="onFieldCopy(field)">
                     <i class="action-icon size-11 fas fa-copy"></i>
-                  </button>
-    
-                  <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit" title="Edit"
-                    (click)="openModalDssModelAdd(field)">
-                    <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
                   </button>-->
+    
+                    <a class="btn btn-link" 
+                    tooltip="Model Parameters" 
+                    [routerLink]="['dss',model.id,'parametrisation']" 
+                    [state]="{ data: {dssId: model.cropPestDssDto.dssId, dssModelId: model.cropPestDssDto.dssModelId}}">
+                      <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
+                    </a>
 
-                    <!-- delete field modal -->
-                    <ng-template #deleteTemplate>
-                      <div class="modal-header">
-                        <h4 class="modal-title pull-left">Delete Crop / Pest combination</h4>
-                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        You are about to delete a field. Are you sure?
-                      </div>
-                      <div class="modal-footer pull-right">
-                        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
-                        <button type="button" class="btn btn-primary" (click)="onDssModelDelete(model.id)">Yes</button>
-                      </div>
-                    </ng-template>
-
-                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Add Observation"
-                      title="Add Observation"
-                      (click)="this.observationModalRef = this._modalService.show(addObservationTemplate);">
-                      <i class="action-icon size-11 fas fa-binoculars"></i>
-                    </button>
-
-                    <!-- add observation modal -->
+                    <!-- add observation modal 
                     <ng-template #addObservationTemplate>
                       <div class="modal-header">
                         <h4 class="modal-title pull-left">Add Observation</h4>
@@ -135,13 +114,13 @@
                           (click)="observationModalRef.hide()">Cancel</button>
                       </div>
                     </ng-template>
+                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Add Observation"
+                      tooltip="Add Observation"
+                      (click)="this.observationModalRef = this._modalService.show(addObservationTemplate);">
+                      <i class="action-icon size-11 fas fa-binoculars"></i>
+                    </button>-->
 
-                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Add Spray"
-                      title="Add Spray" (click)="this.sprayModalRef = this._modalService.show(addSprayTemplate);">
-                      <i class="action-icon size-11 light-blue-icon fas fa-spray-can"></i>
-                    </button>
-
-                    <!-- add spray modal -->
+                    <!-- add spray modal 
                     <ng-template #addSprayTemplate>
                       <div class="modal-header">
                         <h4 class="modal-title pull-left">Add Spray</h4>
@@ -189,11 +168,33 @@
                         <button type="button" class="btn btn-default" (click)="sprayModalRef.hide()">Cancel</button>
                       </div>
                     </ng-template>
+                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Add Spray"
+                      title="Add Spray" (click)="this.sprayModalRef = this._modalService.show(addSprayTemplate);">
+                      <i class="action-icon size-11 light-blue-icon fas fa-spray-can"></i>
+                    </button>-->
 
-                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Delete" title="Delete"
+                    <!-- delete field modal -->
+                    <ng-template #deleteTemplate>
+                      <div class="modal-header">
+                        <h4 class="modal-title pull-left">Delete Model</h4>
+                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        You are about to delete 
+                        <b>{{ model.cropPestDssDto.dssName }} - {{model.cropPestDssDto.dssModelName}}</b>. Are you sure?
+                      </div>
+                      <div class="modal-footer pull-right">
+                        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
+                        <button type="button" class="btn btn-primary" (click)="onDssModelDelete(field.id,cropPestCombo.id,model.id)">Yes</button>
+                      </div>
+                    </ng-template>
+                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Delete" tooltip="Delete"
                       (click)="openModal(deleteTemplate, null)">
                       <i class="action-icon size-11 fas fa-trash"></i>
                     </button>
+                    
                   </td>
                 </tr>
               </ng-template>

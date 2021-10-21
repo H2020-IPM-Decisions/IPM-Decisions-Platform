@@ -39,14 +39,14 @@ export const dssSelectionRoute: Routes = [
     redirectTo: 'selection',
     pathMatch: 'prefix'
   },
-  {
+  /*{
     path: 'selection',
     component: DssSelectionComponent,
     data: {
         roles: [], claims: ["developer", "farmer", "advisor"]
     },
     canActivate: [AuthGuard]
-  },
+  },*/
   {
     path: 'dashboard',
     children:[
