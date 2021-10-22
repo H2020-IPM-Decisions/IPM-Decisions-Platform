@@ -64,7 +64,14 @@
                     <a class="btn btn-link" 
                     tooltip="Model Parameters" 
                     [routerLink]="['dss',model.id,'parametrisation']" 
-                    [state]="{ data: {dssId: model.cropPestDssDto.dssId, dssModelId: model.cropPestDssDto.dssModelId}}">
+                    [state]="{ 
+                      data: {
+                        dssId: model.cropPestDssDto.dssId, 
+                        dssModelId: model.cropPestDssDto.dssModelId, 
+                        dssModelName: model.cropPestDssDto.dssModelName,
+                        farmName: farm.name
+                      }
+                    }">
                       <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
                     </a>
 
@@ -183,7 +190,8 @@
                       </div>
                       <div class="modal-body">
                         You are about to delete 
-                        <b>{{ model.cropPestDssDto.dssName }} - {{model.cropPestDssDto.dssModelName}}</b>. Are you sure?
+                        <b>{{ model.cropPestDssDto.dssName }} - {{model.cropPestDssDto.dssModelName}}</b>. 
+                        <br>Are you sure?
                       </div>
                       <div class="modal-footer pull-right">
                         <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>

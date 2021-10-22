@@ -26,6 +26,13 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
 
   }
 
+  public gotData(): boolean {
+    if(this.farmsDssMap.length > 0){
+      return true;
+    }
+    return false;
+  }
+
   ngOnDestroy() {
     if(this.$startSubscription){
       this.$startSubscription.unsubscribe();

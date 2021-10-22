@@ -76,7 +76,17 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   }
 
   goToModelParametrisation(): void {
-    const navigationExtras: NavigationExtras = {state: { data: {dssId: this.dssDetail.dssId, dssModelId: this.dssDetail.dssModelId, dssDetailPage: true}}};
+    const navigationExtras: NavigationExtras = { 
+      state: { 
+        data: {
+          dssId: this.dssDetail.dssId, 
+          dssModelId: this.dssDetail.dssModelId,
+          dssModelName: this.dssDetail.dssModelName,
+          farmName: this.dssDetail.farmName,
+          dssDetailPage: true
+        }
+      }
+    };
     this._router.navigate(['/user/farm',this.dssDetail.farmId,'edit','dss',this.dssDetail.id,'parametrisation'], navigationExtras);
   }
 }

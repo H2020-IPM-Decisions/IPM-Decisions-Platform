@@ -11,7 +11,7 @@
       </div>
     </div>
   </div>
-  <div class="page-box">
+  <div class="page-box" *ngIf="gotData(); else noData">
     <div *ngFor="let farm of farmsDssMap">
       <div class="farm-box">
         <h3 class="text-muted">
@@ -98,3 +98,13 @@
     </div>
   </div>
 </div>
+
+<ng-template #noData>
+  <div class="card">
+    <div class="d-flex justify-content-center p-3 text-muted">
+      <strong>
+        No DSS avaiable, please add DSS Models into a Farm using Farm Management.
+      </strong>
+    </div>
+  </div>
+</ng-template>

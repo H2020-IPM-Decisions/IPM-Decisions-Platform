@@ -11,12 +11,26 @@
         </div>
     </div>
     <div class="container mx-auto my-5 page-box">
+        <fieldset class="border p-2">
+            <legend class="w-auto px-1 text-muted h3">
+              <strong class="bold-600">
+                {{ farmName }}
+              </strong>
+            </legend>
+        
         <div class="progress m-3" *ngIf="remoteCallLoading">
             <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%">
                 Loading...
             </div>
         </div>
+        <legend class="w-auto px-1 text-muted h6">
+          <strong class="bold-600">
+            {{ dssModelName }} ({{ dssModelId }})
+          </strong>
+        </legend>
+        
         <div id="json-editor-form"></div>
+    </fieldset>
         
         <div class="row pt-3">
             <div class="col-md-12">

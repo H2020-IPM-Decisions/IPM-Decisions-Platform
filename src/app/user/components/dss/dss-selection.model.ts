@@ -11,9 +11,17 @@ export interface DssModel {
     crops?:string[];
     type_of_decision?:string;
     type_of_output?:string;
-    description?:string;
+    description?:DssModelDescription;
     execution?:DssModelExecution;
     output?:DssModelOutput;
+}
+
+export interface DssModelDescription {
+    age?: string;
+    case_studies?: string;
+    created_by?: string;
+    other?: string;
+    peer_review?: string;
 }
 
 export interface DssModelOutput {
@@ -93,6 +101,7 @@ export interface IDssFlat {
     resultParameters?: IDssResultFlat[];
     interval?: string;
     dssDescription?: string;
+    dssModelName?: string;
     dssTypeOfOutput?: string;
     dssTypeOfDecision?: string;
     dssDescriptionUrl?: string;

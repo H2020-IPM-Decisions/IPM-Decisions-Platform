@@ -18,6 +18,8 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
 
   public dssId: string; // Dss Owner Id (i.e no.nibio.vips)
   public dssModelId: string; // Model Id (i.e PSILARTEMP)
+  public dssModelName: string; // Model Name (i.e. carrots rust fly model)
+  public farmName: string;
   public dssDetailPage?: boolean; // Redirect from dss details view component?
   public id: string; // Id of the selected Dss from farm edit (dssId from url)
   public editor: any;
@@ -41,9 +43,11 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
       this.remoteCallLoading = true;
       this.dssId = history.state.data.dssId;
       this.dssModelId = history.state.data.dssModelId;
+      this.dssModelName = history.state.data.dssModelName;
+      this.farmName = history.state.data.farmName;
       this.dssDetailPage = history.state.data.dssDetailPage;
       this._route.paramMap.subscribe(params => this.id = params.get('dssId'));
-      this._logger.debug("Data Fetch:", this.dssId, this.dssModelId, this.id);
+      this._logger.debug("Data Fetch:", this.dssId, this.dssModelId, this.dssModelName, this.farmName, this.id, this.dssDetailPage);
       this._dssSelectionService.getSchemaByDssIdAndModelId(this.dssId, this.dssModelId).subscribe((data) => {
         if (this.editor) {
           this._jsonEditorService.reset(this.editor);
@@ -86,7 +90,7 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
         (response) => {
           if (response) {
             this._toastrService.success("Operation Success","DSS parameters updated!");
-            setTimeout(() => this.goBack(), 1000);
+            setTimeout(() => this.goBack(), 3000);
           }
           
           

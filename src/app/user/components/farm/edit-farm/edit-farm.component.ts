@@ -190,13 +190,13 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     this._dssSelectionService.del(dssModelId).subscribe(() => {
       this._toastr.success("Operation Success", "DSS Deleted");
       this.modalRef.hide();
-      this.checkAndCleanFieldArray(fieldId, cropPestComboId);
+      this.checkAndCleanFieldArray(fieldId, cropPestComboId, dssModelId);
     }, () => {
       this._toastr.error("Operation Failed", "No DSS deleted");
     });
   }
 
-  checkAndCleanFieldArray(fieldId: string, cropPestComboId: string): void {
+  checkAndCleanFieldArray(fieldId: string, cropPestComboId: string, dssModelId: string): void {
     const fieldIndex: number = this.fieldList.findIndex(
       (item) => item.id === fieldId
     );
@@ -205,8 +205,21 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
         (cpcItem) => cpcItem.id === cropPestComboId
       );
       if ((cropPestComboIndex !== -1) && this.fieldList[fieldIndex].fieldCropDto.fieldCropPestDto.value[cropPestComboIndex].fieldCropPestDssDto.value.length == 1) {
-        this._logger.debug("Last DSS Model was deleted from the field, removing the field from the array");
-        this.fieldList.splice(fieldIndex, 1);
+        let allCropPestDssDtoArraysAreClean: boolean = true;
+        let cropPestDtoArray = this.fieldList[fieldIndex].fieldCropDto.fieldCropPestDto.value;
+        for (let i = 0; i < cropPestDtoArray.length; i++) {
+          if (i == cropPestComboIndex) {
+            continue;
+          }
+          if (cropPestDtoArray[i].fieldCropPestDssDto.value.length > 0) {
+            allCropPestDssDtoArraysAreClean = false;
+            break;
+          }
+        }
+        if (allCropPestDssDtoArraysAreClean) {
+          this._logger.debug("Last DSS Model was deleted from the field, removing the field from the array");
+          this.fieldList.splice(fieldIndex, 1);
+        }
       }
     }
   }

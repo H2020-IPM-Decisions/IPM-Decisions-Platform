@@ -22,7 +22,7 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
   dssForm: FormGroup;
   editor: any;
   editorValid = false;
-  dssModel: DssJSONSchema;
+  dssModel: DssModel;
   model: any = {};
 
   selectedCrop = '';

@@ -122,13 +122,18 @@ export class DssModelAddComponent implements OnInit {
           }
         },
         (error: HttpErrorResponse) => {
-          this._logger.error("Dss models selection error",error);
-          this._toastr.show(
-            "Fail to submit the selected models!",
-            "Error!",
-            null,
-            "toast-error"
-          );
+          if(error.status===409){
+            this._logger.error("Combination Exists","No DSS Submitted, a DSS with selected Crop/Pest combination already exists");
+            this._toastr.error("Combination Exists","No DSS Submitted, a DSS with selected Crop/Pest combination already exists");
+          }else{
+            this._logger.error("Dss models selection error",error);
+            this._toastr.show(
+              "Fail to submit the selected models!",
+              "Error!",
+              null,
+              "toast-error"
+            );
+          }
         }
       );
     }
