@@ -17,7 +17,6 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-
     // CALL  api/dss  fetch user's DSS list
     this.$startSubscription = this.service.getDssList().subscribe((data: HttpResponse<IDssFlat[]>)=>{
       this.farmsDssMap = this.service.getDssGroupedByFarms(data.body);

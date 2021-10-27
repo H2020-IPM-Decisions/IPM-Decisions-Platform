@@ -4,6 +4,7 @@ import {
   ViewChild,
   ElementRef,
   AfterViewInit,
+  OnDestroy
 } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { FarmService } from "@app/shared/services/upr/farm.service";
@@ -19,16 +20,21 @@ import { MaprisksService } from "@app/shared/services/maprisks.service";
 import {  mergeMap } from "rxjs/operators";
 import { Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
+import { NGXLogger } from "ngx-logger";
 
 @Component({
   selector: "app-add-farm",
   templateUrl: "./add-farm.component.html",
   styleUrls: ["./add-farm.component.css"],
 })
-export class AddFarmComponent implements OnInit, AfterViewInit {
+export class AddFarmComponent implements OnInit, AfterViewInit, OnDestroy {
   private map: L.Map;
   isSaving = false;
-  suscription$?: Subscription;
+  $farmWeatherSubscription: Subscription;
+  $farmAddressSubscription: Subscription;
+  $mapInitializeSubscription: Subscription;
+  $locationSubscription: Subscription;
+  $farmSubmitSubscription: Subscription;
 
   @ViewChild("map", { static: false })
   private mapContainer: ElementRef<HTMLElement>;
@@ -36,6 +42,8 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
   farmForm: FormGroup;
   weatherHistoricalDtoList: WeatherDataSourceDto[] = [];
   weatherForecastDtoList: WeatherDataSourceDto[] = [];
+  private browserLocation: Location;
+
   constructor(
     private _fb: FormBuilder,
     private _farmService: FarmService,
@@ -43,10 +51,14 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
     private _toastr: ToastrService,
     private _maprisksService: MaprisksService,
     private _activatedRoute: ActivatedRoute,
+    private _logger: NGXLogger
   ) {}
 
   ngOnInit() {
-    this.suscription$ = this._activatedRoute.data
+    if (this.$farmWeatherSubscription) {
+      this.$farmWeatherSubscription.unsubscribe();
+    }
+    this.$farmWeatherSubscription = this._activatedRoute.data
       .pipe(
         mergeMap( ({farm}) => {
           this.updateForm(farm);
@@ -69,18 +81,41 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
               });
             }
           }
-      });
+      });    
   }
 
   ngAfterViewInit(): void {
     const initFarmLocation = (this.farm && this.farm.location)?this.farm.location:undefined;
-    this._maprisksService
-      .initialize(this.mapContainer.nativeElement, initFarmLocation)
-      .subscribe((initMap) => {
-        this.map = initMap;
+    this.$mapInitializeSubscription = this._maprisksService.initialize(this.mapContainer.nativeElement, initFarmLocation).pipe(
+      mergeMap((initMap) => {
+          this.map = initMap;
+          return this._maprisksService.getBrowserLocation();
+        }
+      )
+    ).subscribe((location) => {
+        this.browserLocation = location;
+        if(!initFarmLocation){
+          this._logger.info("Browser Location",this.browserLocation);
+          this._maprisksService.flyToLocation(this.map,this.browserLocation);
+        }
+        return this._maprisksService.locationObservable;
+      }
+    );
+
+    if(this.farm) {
+      if (this.$farmAddressSubscription) {
+        this.$farmAddressSubscription.unsubscribe();
+      }
+      this.$farmAddressSubscription = this._farmService.getAddressFromCoordinates(this.farm.location.y, this.farm.location.x)
+      .subscribe((data) => {
+        this.farm.location.address = data
+        this._maprisksService.addMarker(this.map, initFarmLocation);
       });
-    this._maprisksService.addMarker(this.map, initFarmLocation);
-    this._maprisksService.locationObservable.subscribe((locPoint) => {
+    } else {
+      this._maprisksService.addMarker(this.map, initFarmLocation);
+    }
+
+    this.$locationSubscription = this._maprisksService.locationObservable.subscribe((locPoint) => {
       if (locPoint) {
         const location = this.mapLocationCoordinates(locPoint.latlng);
         // populate met. station dropdown with nearest weather stations
@@ -92,7 +127,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
           this.farmForm.get("weatherHistoricalDto").enable();
         }
       }
-    });
+    });;
   }
 
   private mapLocationCoordinates(rawObj: any) {
@@ -149,7 +184,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
       delete formValues.weatherForecastDto;
       observable = this._farmService.createFarm(formValues)
     }
-    observable.subscribe(
+    this.$farmSubmitSubscription = observable.subscribe(
         (addFarmResponse: HttpResponse<Farm>) => {
           this.submitSuccess(addFarmResponse);
         },
@@ -206,6 +241,24 @@ export class AddFarmComponent implements OnInit, AfterViewInit {
 
   goBack():void{
     window.history.back();
+  }
+
+  public ngOnDestroy(): void {
+    if (this.$farmWeatherSubscription) {
+      this.$farmWeatherSubscription.unsubscribe();
+    }
+    if (this.$farmAddressSubscription) {
+      this.$farmAddressSubscription.unsubscribe();
+    }
+    if (this.$mapInitializeSubscription) {
+      this.$mapInitializeSubscription.unsubscribe();
+    }
+    if (this.$locationSubscription) {
+      this.$locationSubscription.unsubscribe();
+    }
+    if (this.$farmSubmitSubscription) {
+      this.$farmSubmitSubscription.unsubscribe();
+    }
   }
 
 }

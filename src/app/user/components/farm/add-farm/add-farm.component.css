@@ -1,6 +1,8 @@
 .map-container {
   height: 20vw;
+  cursor: crosshair !important;
 }
+
 /* 
 .centered-btn-icon {
   font-size: 1.2rem;

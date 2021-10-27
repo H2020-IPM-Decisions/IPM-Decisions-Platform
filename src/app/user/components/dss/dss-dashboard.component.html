@@ -32,7 +32,13 @@
         </div>
         <div class="d-flex col-10 text-center">
           <div class="d-flex p-2 mx-1" *ngFor="let item of crop.dssModels" style="position:relative">
-            <a [routerLink]="[item.id,'view']" style="position:relative">
+            <a *ngIf="item.dssExecutionType !== 'link'" [routerLink]="[item.id,'view']" style="position:relative">
+              <eppo-code-badge [code]="item.pestEppoCode" [statusRepresentation]="item.warningStatusRepresentation"
+                [dss]="item.dssModelName + ' (' + item.dssModelId +')'" [status]="item.warningStatus"
+                [executionType]="item.dssExecutionType">
+              </eppo-code-badge>
+            </a>
+            <a *ngIf="item.dssExecutionType === 'link'" [href]="item.dssEndPoint" target="_blank" style="position:relative">
               <eppo-code-badge [code]="item.pestEppoCode" [statusRepresentation]="item.warningStatusRepresentation"
                 [dss]="item.dssModelName + ' (' + item.dssModelId +')'" [status]="item.warningStatus"
                 [executionType]="item.dssExecutionType">

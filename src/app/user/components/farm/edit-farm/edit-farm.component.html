@@ -62,7 +62,8 @@
                   </button>-->
     
                     <a class="btn btn-link" 
-                    tooltip="Model Parameters" 
+                    tooltip="Model Parameters"
+                    *ngIf="model.cropPestDssDto.dssExecutionType !== 'link'"
                     [routerLink]="['dss',model.id,'parametrisation']" 
                     [state]="{ 
                       data: {

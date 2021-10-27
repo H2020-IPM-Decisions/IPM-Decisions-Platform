@@ -175,7 +175,7 @@ import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
     AuthModule,
     ModalModule.forRoot(),
     ApplicationPipesModule.forRoot(),
-    LoggerModule.forRoot({level: NgxLoggerLevel.ERROR, serverLogLevel: NgxLoggerLevel.OFF})
+    LoggerModule.forRoot({level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.OFF})
   ],
   providers: [EppoCodeService],
   bootstrap: [AppComponent],

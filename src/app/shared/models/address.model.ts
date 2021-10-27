@@ -1,9 +1,9 @@
 export interface Address {
-  address: string;
-  city: string;
-  postal: string;
-  countryCode: string;
-  region: string;
-  shortLabel: string;
-  longLabel: string;
+  Address?: string;
+  City?: string;
+  Postal?: string;
+  CountryCode?: string;
+  Region?: string;
+  ShortLabel?: string;
+  LongLabel?: string;
 }

@@ -46,7 +46,7 @@ export const farmRoute: Routes = [
     },
     canActivate: [AuthGuard]
   },
-  {
+ /*{
     path: ':id/view',
     component: FarmDetailsComponent,
     resolve: {
@@ -56,7 +56,7 @@ export const farmRoute: Routes = [
         roles: [], claims: ["developer", "farmer", "advisor"]
     },
     canActivate: [AuthGuard]
-  },
+  },*/
   {
     path: 'new',
     component: AddFarmComponent,

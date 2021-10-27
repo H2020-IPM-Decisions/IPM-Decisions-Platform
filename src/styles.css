@@ -2364,3 +2364,15 @@ Additional
     transform: rotate(360deg);
   }
 }
+
+/* Leaflet */
+
+.leaflet-popup-tip {
+  background: #1b3f96;
+}
+
+.leaflet-popup-content-wrapper {
+  border: solid 2px #1b3f96;
+  font-weight: bold;
+  color: rgb(68, 68, 68);
+}

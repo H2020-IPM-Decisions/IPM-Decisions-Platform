@@ -104,7 +104,7 @@ export interface IDssFlat {
     dssModelName?: string;
     dssTypeOfOutput?: string;
     dssTypeOfDecision?: string;
-    dssDescriptionUrl?: string;
+    dssEndPoint?: string;
     farmId?: string;
     farmName?: string;
     fieldId?: string;
