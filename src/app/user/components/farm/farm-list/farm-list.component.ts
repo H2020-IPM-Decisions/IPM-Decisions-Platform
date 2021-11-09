@@ -76,6 +76,6 @@ export class FarmListComponent implements OnInit {
     } else {
       this.farmList.splice(this.farmList.length - 1, 1);
     }
-    this._modalService.hide(1);
+    this.modalRef.hide();
   }
 }

@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import * as L from "leaflet";
+import 'leaflet-fullscreen';
 import * as esriGeo from "esri-leaflet-geocoder";
 import { Location } from "@app/shared/models/location.model";
 import { ReplaySubject, Observable, of, BehaviorSubject, Subject } from "rxjs";
 import { LeafletMouseEvent } from "leaflet";
 import { NGXLogger } from "ngx-logger";
-import * as $ from 'jquery';
 
 @Injectable({ providedIn: "root" })
 export class MaprisksService {
@@ -43,7 +43,7 @@ export class MaprisksService {
         }
 
         m.setView(new L.LatLng(location.y, location.x), location.zoom);
-        
+        m.addControl(new (L.Control as any).Fullscreen({position: 'bottomright'}));
         m.whenReady(() => {
           m.openPopup
           observer.next(m);
