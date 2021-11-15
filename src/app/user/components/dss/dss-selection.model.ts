@@ -122,7 +122,11 @@ export interface IDssChartGroup {
     resultParameters?: IDssResultFlat[];
 }
 
-// Interface for update dss parameters function on dss-selection service
+
+export interface IDssParameters {
+    dssParameters?: any; //Can contains dynamic object depends on dss Model.
+}
+
 export class DssParameters {
     constructor( public dssParameters: string){}
 } 

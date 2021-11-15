@@ -4,7 +4,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import { environment } from "@src/environments/environment";
-import { IDssFlat, IDssFormData, DssJSONSchema, DssModel, DssSelection, IDssResultChart, DssParameters } from './dss-selection.model';
+import { IDssFlat, IDssFormData, DssJSONSchema, DssModel, DssSelection, IDssResultChart, DssParameters, IDssParameters } from './dss-selection.model';
 import { Field } from '@app/shared/models/field.model';
 import { Farm } from '@app/shared/models/farm.model';
 import { catchError } from "rxjs/operators";
@@ -89,7 +89,7 @@ export class DssSelectionService {
     let groupedDssModels: DssGroupedByFarm[] = [];
 
     let farmMap: Map<string, IDssFlat[]> = new Map<string, IDssFlat[]>();
-    let result: Map<string, Map<string, IDssFlat[]>> = new Map<string, Map<string, IDssFlat[]>>();
+    //let result: Map<string, Map<string, IDssFlat[]>> = new Map<string, Map<string, IDssFlat[]>>();
 
     for (const element of dssList) {
       let array: IDssFlat[] = [];
@@ -221,6 +221,16 @@ export class DssSelectionService {
         Accept: "application/json",
       },
       observe: "response",
+    });
+  }
+
+  public getDssParameters(dssId: string): Observable<IDssParameters> {
+    let requestUrl = `${environment.apiUrl}/api/upr/dss/${dssId}/parameters`;
+    return this._http.get<IDssParameters>(requestUrl, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      }
     });
   }
 

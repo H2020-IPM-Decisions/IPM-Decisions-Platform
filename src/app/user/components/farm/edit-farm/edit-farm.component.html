@@ -287,17 +287,27 @@
                         </thead>
                         <tbody>
                           <ng-container *ngFor="let param of dss.dssParameters | keyvalue">
-                            <ng-container *ngIf="isObject(param.value); else paramIsNotAnObject">
-                              <tr class="text-center" scope="col" *ngFor="let nestedParam of param.value | keyvalue">
-                                <td class="text-center"><b>{{nestedParam.key}}</b></td>
-                                <td class="text-center">{{nestedParam.value}}</td>
-                              </tr>
+                            <ng-container 
+                              [ngTemplateOutlet]="isObject(param.value)? paramIsAnObject : paramIsNotAnObject"
+                              [ngTemplateOutletContext]="{param:param}">
                             </ng-container>
-                            <ng-template #paramIsNotAnObject>
-                              <tr class="text-center" scope="col">
+  
+                            <ng-template #paramIsNotAnObject let-param='param'>
+                              <tr class="text-left" scope="col">
                                 <td class="text-center"><b>{{param.key}}</b></td>
                                 <td class="text-center">{{param.value}}</td>
                               </tr>
+                            </ng-template>
+                            <ng-template #paramIsAnObject let-param='param'>
+                              <!--<tr class="text-center" scope="col">
+                              <td class="text-center" colspan="2"><b>{{param.key}}</b></td>
+                            </tr>-->
+                              <ng-container *ngFor="let nestedParam of param.value | keyvalue">
+                                <ng-container
+                                  [ngTemplateOutlet]="isObject(nestedParam.value)? paramIsAnObject : paramIsNotAnObject"
+                                  [ngTemplateOutletContext]="{param:nestedParam}">
+                                </ng-container>
+                              </ng-container>
                             </ng-template>
                           </ng-container>
                         </tbody>

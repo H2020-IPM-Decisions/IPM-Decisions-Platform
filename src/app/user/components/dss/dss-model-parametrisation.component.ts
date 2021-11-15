@@ -1,4 +1,4 @@
-import { DssParameters } from './dss-selection.model';
+import { DssParameters, IDssParameters } from './dss-selection.model';
 import { DssSelectionService } from './dss-selection.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from "@angular/core";
@@ -15,7 +15,7 @@ import * as $ from 'jquery';
 })
 
 export class DssModelParametrisationComponent implements OnInit, OnDestroy {
-
+  private historyStateData: any;
   public dssId: string; // Dss Owner Id (i.e no.nibio.vips)
   public dssModelId: string; // Model Id (i.e PSILARTEMP)
   public dssModelName: string; // Model Name (i.e. carrots rust fly model)
@@ -25,9 +25,11 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
   public editor: any;
   public editorValid: boolean = false;
   public remoteCallLoading: boolean = false;
+  public dssParameters: any;
 
   public $subscriptionEditor: Subscription;
   public $subscriptionSubmit: Subscription;
+  public $subscriptionParameters: Subscription;
 
   constructor(
     private _logger: NGXLogger,
@@ -39,14 +41,14 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit(): void {
+    this.remoteCallLoading = true;
     try {
-      this.remoteCallLoading = true;
-      this.dssId = history.state.data.dssId;
-      this.dssModelId = history.state.data.dssModelId;
-      this.dssModelName = history.state.data.dssModelName;
-      this.farmName = history.state.data.farmName;
-      this.dssDetailPage = history.state.data.dssDetailPage;
-      this._route.paramMap.subscribe(params => this.id = params.get('dssId'));
+      if(window.location.href == sessionStorage.getItem("origin")){
+          this.loadSessionStorageItems();
+        } else {
+          this.deleteSessionStorageItems();
+          this.setHistoryData();
+      }
       this._logger.debug("Data Fetch:", this.dssId, this.dssModelId, this.dssModelName, this.farmName, this.id, this.dssDetailPage);
       this._dssSelectionService.getSchemaByDssIdAndModelId(this.dssId, this.dssModelId).subscribe((data) => {
         if (this.editor) {
@@ -66,6 +68,15 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
       this._logger.error('Unable to fetch data:', error);
       throw new Error('Unable to fetch data');
     }
+
+    if (this.$subscriptionParameters) {
+      this.$subscriptionParameters.unsubscribe();
+    }
+
+    this.$subscriptionParameters = this._dssSelectionService.getDssParameters(this.id).subscribe((parameters: IDssParameters) => {
+      this.dssParameters = parameters.dssParameters;
+      this._logger.debug(this.dssParameters);
+    })
   }
 
   public ngOnDestroy(): void {
@@ -75,6 +86,10 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
     if (this.$subscriptionSubmit) {
       this.$subscriptionSubmit.unsubscribe();
     }
+    if (this.$subscriptionParameters) {
+      this.$subscriptionParameters.unsubscribe();
+    }
+    this.deleteSessionStorageItems();
   }
 
   public editorChanges(): void {
@@ -105,9 +120,44 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
 
   goBack(): void {
     if(!this.dssDetailPage){
+      this.deleteSessionStorageItems();
       window.history.back();
     } else {
       this._router.navigateByUrl('/user/dss/dashboard');
+    }
+  }
+
+  public isObject(val: any): boolean {
+    if (!val) { return false; }
+    return ((typeof val === 'function') || (typeof val === 'object'));
+  };
+  private fillDataProperties(): void {
+    this.dssId = this.historyStateData.dssId;
+    this.dssModelId = this.historyStateData.dssModelId;
+    this.dssModelName = this.historyStateData.dssModelName;
+    this.farmName = this.historyStateData.farmName;
+    this.dssDetailPage = this.historyStateData.dssDetailPage;
+  }
+  private setHistoryData(): void {
+    this.historyStateData = history.state.data;
+    this._route.paramMap.subscribe(params => this.id = params.get('dssId'));
+    this.fillDataProperties();
+    sessionStorage.setItem("ParametrisationData",JSON.stringify(this.historyStateData));
+    sessionStorage.setItem("ParametrisationId", this.id);
+    window.onbeforeunload = function(){
+      sessionStorage.setItem("origin", window.location.href);
+    }
+  }
+  private loadSessionStorageItems(): void {
+    this.historyStateData = JSON.parse(sessionStorage.getItem("ParametrisationData"));
+    this.id = sessionStorage.getItem("ParametrisationId");
+    this.fillDataProperties();
+  }
+  private deleteSessionStorageItems(): void {
+    sessionStorage.removeItem("ParametrisationId");
+    sessionStorage.removeItem("ParametrisationData");
+    if (sessionStorage.getItem("origin")) {
+      sessionStorage.removeItem("origin");
     }
   }
 }
