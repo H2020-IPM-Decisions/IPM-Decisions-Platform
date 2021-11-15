@@ -6,6 +6,7 @@ import { IChartDataset } from "./custom-chart.model";
 export class CustomChartService {
     constructor(){}
     public drawChart(element: any, labels: string[], data: number[], type: string, legend: string, color: string|string[]): any{
+        Chart.defaults.font.size = 14;
         const colors = typeof color === 'string' ? this.getChartJsColorArray(data.length, color) : color;
         const backgroundColors = type === 'bar' ? colors : 'white';
 

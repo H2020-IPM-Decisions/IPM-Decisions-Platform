@@ -113,6 +113,7 @@ export interface IDssFlat {
     outputTimeEnd?: string;
     warningStatusPerDay?: number[];
     chartGroups?: IDssChartGroup[];
+    warningStatusLabels?: string[];
 }
 
 export interface IDssChartGroup {

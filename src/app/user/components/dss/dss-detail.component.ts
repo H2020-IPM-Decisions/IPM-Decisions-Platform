@@ -28,7 +28,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     private service: DssSelectionService,
     private toastrService: ToastrService,
     private _router: Router,
-	  private logger: NGXLogger
+	  private _logger: NGXLogger
 	) { }
   
   ngOnInit() {
@@ -37,11 +37,11 @@ export class DssDetailComponent implements OnInit, OnDestroy {
 		this.dssChartGroups = this.dssDetail.chartGroups;
 	    this.selectedDssChartGroup = this.dssChartGroups[0];
       if(this.dssDetail.warningStatusPerDay){
-		    let labels = [];
+		    /*let labels = [];
         for(let i=0; i<this.dssDetail.warningStatusPerDay.length; i++){
           labels.push(this.dssDetail.outputTimeStart);
-        }
-		    this.warning = this.service.getDssWarningChart(this.dssDetail.warningStatusPerDay, this.dssDetail.outputTimeStart);
+        }*/
+		    this.warning = this.service.getDssWarningChart(this.dssDetail.warningStatusPerDay, this.dssDetail.warningStatusLabels);
 	    }
     });
   }

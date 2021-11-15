@@ -176,7 +176,7 @@ export class DssSelectionService {
     }
   }
 
-  getDssWarningChart(data: number[], startDateStr: string): { data: number[], labels: string[], chartInformation: IDssResultChart } {
+  /*getDssWarningChart(data: number[], startDateStr: string): { data: number[], labels: string[], chartInformation: IDssResultChart } {
     //                        'no-info'  'no-stat'  'no risk'  'med ris'  'hi risk'
     //                        'grey'     'blue'     'green'    'orange'   'red'
     const colors: string[] = ['#6c757d', '#16aaff', '#3ac47d', '#f7b924', '#d92550'];
@@ -193,6 +193,37 @@ export class DssSelectionService {
     return {
       data: data,
       labels: dateStrArr,
+      chartInformation: {
+        chartType: 'bar',
+        color: colorStrArr,
+        unit: 'warning level',
+        defaultVisible: true,
+        options: {
+          scales: {
+            y: {
+              max: 4,
+              min: 0,
+              ticks: {
+                stepSize: 1
+              }
+            }
+          }
+        }
+      }
+    };
+  }*/
+
+  getDssWarningChart(data: number[], dateLabels: string[]): { data: number[], labels: string[], chartInformation: IDssResultChart } {
+    //                        'no-info'  'no-stat'  'no risk'  'med ris'  'hi risk'
+    //                        'grey'     'blue'     'green'    'orange'   'red'
+    const colors: string[] = ['#6c757d', '#16aaff', '#3ac47d', '#f7b924', '#d92550'];
+    let colorStrArr: string[] = [];
+    for (let i = 0; i < data.length; i++) {
+      colorStrArr.push(colors[data[i]]);
+    }
+    return {
+      data: data,
+      labels: dateLabels,
       chartInformation: {
         chartType: 'bar',
         color: colorStrArr,

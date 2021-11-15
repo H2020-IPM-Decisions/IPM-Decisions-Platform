@@ -53,7 +53,9 @@
           </thead>
           <tbody>
             <tr>
-              <td><custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation"></custom-chart></td>
+              <td>
+                <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation"></custom-chart>
+              </td>
               <td>
                 <div class="row" *ngFor="let chartGroup of dssChartGroups">
                   <div class="col" *ngIf="selectedDssChartGroup.id === chartGroup.id">
