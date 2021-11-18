@@ -13,16 +13,17 @@
   </div>
 
   <div class="container mx-auto my-5 page-box">
-    <fieldset class="border p-3"  *ngIf="dssDetail && warning; else noData">
+    <fieldset class="border p-3" *ngIf="!resultMessageType; else showError">
       <legend class="w-auto px-1 text-muted h3">
-        <b>{{ dssDetail.cropEppoCode  | eppoCode }}</b>
+        <b>{{ dssDetail.cropEppoCode | eppoCode }}</b>
       </legend>
 
       <div class="form-group d-flex pl-5 text-muted">
         <div class="mr-auto p-2">
           <label class="h4">
-            <b>{{ dssDetail.pestEppoCode  | eppoCode }}</b> 
-            <i [tooltip]="tolStatus" [ngStyle]="{ 'color': warning.chartInformation?.color[0],'margin-right':'5px'}" class="fas fa-circle pl-3"></i>
+            <b>{{ dssDetail.pestEppoCode | eppoCode }}</b>
+            <i [tooltip]="tolStatus" [ngStyle]="{ 'color': warning.chartInformation?.color[0],'margin-right':'5px'}"
+              class="fas fa-circle pl-3"></i>
           </label>
         </div>
         <div class="p-2">
@@ -42,8 +43,10 @@
                 <label>Risk score</label>
               </th>
               <th class="text-center" style="width: 33.34%">
-                <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup" (ngModelChange)="onChangeChartGroup($event)">
-                  <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}</option>
+                <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
+                  (ngModelChange)="onChangeChartGroup($event)">
+                  <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}
+                  </option>
                 </select>
               </th>
               <th class="text-center" style="width: 33.33%">
@@ -54,7 +57,8 @@
           <tbody>
             <tr>
               <td>
-                <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation"></custom-chart>
+                <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation">
+                </custom-chart>
               </td>
               <td>
                 <div class="row" *ngFor="let chartGroup of dssChartGroups">
@@ -73,8 +77,9 @@
                       Show data legend
                     </span>
                     <div class="row" *ngFor="let result of selectedDssChartGroup.resultParameters">
-                      <i [ngStyle]="{ 'color': result.chartInformation?.color,'margin-right':'5px'}" class="fas fa-square"></i>
-                      <small class="d-flex justify-content-center"><b>  {{result.title}}  </b></small>        
+                      <i [ngStyle]="{ 'color': result.chartInformation?.color,'margin-right':'5px'}"
+                        class="fas fa-square"></i>
+                      <small class="d-flex justify-content-center"><b> {{result.title}} </b></small>
                     </div>
                   </accordion-group>
                 </accordion>
@@ -89,6 +94,11 @@
       <div class="col-md-12">
         <button class="btn btn-info pull-right" type="button" (click)="goBack()">
           <i class="fas fa-arrow-left"></i> Back
+        </button>
+
+        <button type="button" class="btn btn-md btn-primary" (click)="goToModelParametrisation()">
+          <i class="fas fa-edit"></i>&nbsp;
+          Edit Parameters
         </button>
 
         <button type="button" class="btn btn-danger mr-2 pull-right" (click)="openModal(deletedsstemplate)">
@@ -127,7 +137,8 @@
     <div class="form-group row">
       <label for="met-station" class="col-sm-3 col-form-label">Crop / Pest Combination</label>
       <div class="col-sm-9">
-        <p><strong>{{dssDetail.cropEppoCode}}</strong> - {{dssDetail.cropEppoCode  | eppoCode}} | <strong>{{dssDetail.pestEppoCode}}</strong> - {{dssDetail.pestEppoCode  | eppoCode}}</p>
+        <p><strong>{{dssDetail.cropEppoCode}}</strong> - {{dssDetail.cropEppoCode | eppoCode}} |
+          <strong>{{dssDetail.pestEppoCode}}</strong> - {{dssDetail.pestEppoCode | eppoCode}}</p>
       </div>
     </div>
 
@@ -185,22 +196,21 @@
   </div>
 </ng-template>
 
-<ng-template #noData>
-  <div class="card">
-    <div class="d-flex justify-content-center p-3 text-muted">
-      <strong>
-        No data avaiable for the selected DSS, please verify the input parameters.
-      </strong>
-    </div>
-    <div class="d-flex justify-content-center p-3 text-muted">
+<ng-template #showError>
+  <div class="alert alert-danger d-flex justify-content-center p-3 text-muted">
+    <strong>
+      The DSS can't be run because an error occured:
+      {{ resultMessage }}
+    </strong>
+  </div>
+  <!-- <div class="d-flex justify-content-center p-3 text-muted">
       <button type="button" 
         class="btn btn-md btn-primary" 
         (click)="goToModelParametrisation()">
           <i class="fas fa-plus"></i>&nbsp;
           Add Parameters
         </button>
-    </div>
-  </div>
+    </div>-->
 </ng-template>
 
 <ng-template #tolStatus>{{ dssDetail.warningStatusRepresentation }}</ng-template>

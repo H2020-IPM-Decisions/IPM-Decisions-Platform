@@ -11,6 +11,7 @@ import { DssSelectionService } from "./dss-selection.service";
 })
 export class DssDashboardComponent implements OnInit, OnDestroy {
   farmsDssMap: DssGroupedByFarm[] = [];
+  remoteCallLoading: boolean = false;
   $startSubscription: Subscription;
 
   constructor(protected service: DssSelectionService 
@@ -18,8 +19,10 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // CALL  api/dss  fetch user's DSS list
+    this.remoteCallLoading = true;
     this.$startSubscription = this.service.getDssList().subscribe((data: HttpResponse<IDssFlat[]>)=>{
       this.farmsDssMap = this.service.getDssGroupedByFarms(data.body);
+      this.remoteCallLoading = false;
     });
     // detail /api/dss/{id}
 

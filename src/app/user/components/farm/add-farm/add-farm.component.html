@@ -50,9 +50,11 @@
           </div>
         </div>
       </fieldset>
+      <app-edit-farm [farm]="farm" *ngIf="farm && farm.id"></app-edit-farm>
       <div class="row pt-3">
         <div class="col-md-12">
           <button class="btn btn-primary pull-right col-2" type="submit" [disabled]="farmForm.invalid || isSaving">
+            <i class="fas fa-save"></i>&nbsp;
             Save</button>
           <button class="btn btn-info pull-right col-2" type="button" (click)="goBack()">
             Cancel</button>
@@ -60,5 +62,4 @@
       </div>
     </form>
   </div>
-  <app-edit-farm [farm]="farm" *ngIf="farm && farm.id"></app-edit-farm>
 </div>

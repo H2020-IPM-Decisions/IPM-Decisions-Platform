@@ -21,6 +21,8 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   warning: {data:number[],labels:string[],chartInformation:IDssResultChart};
   dssChartGroups: IDssChartGroup[] = [];
   selectedDssChartGroup: IDssChartGroup;
+  resultMessageType: string;
+  resultMessage: string;
   
   constructor(
     private activatedRoute: ActivatedRoute, 
@@ -44,6 +46,8 @@ export class DssDetailComponent implements OnInit, OnDestroy {
 		    this.warning = this.service.getDssWarningChart(this.dssDetail.warningStatusPerDay, this.dssDetail.warningStatusLabels);
 	    }
     });
+    this.resultMessageType = this.dssDetail.resultMessageType;
+    this.resultMessage = this.dssDetail.resultMessage;
   }
 
   goBack(): void {

@@ -114,6 +114,8 @@ export interface IDssFlat {
     warningStatusPerDay?: number[];
     chartGroups?: IDssChartGroup[];
     warningStatusLabels?: string[];
+    resultMessage?: string;
+    resultMessageType?: string;
 }
 
 export interface IDssChartGroup {
