@@ -18,7 +18,11 @@ export class EppoCodeBadgeComponent {
         How to interpret these risks is unique to each model, and must be explained in the DSS catalogue metadata property output.
     */
 
-    @Input() 
+    @Input()
+    itemId: string;
+    @Input()
+    endpoint: string;
+    @Input()
     code: string;
     @Input() 
     dss: string;
@@ -28,6 +32,10 @@ export class EppoCodeBadgeComponent {
     statusRepresentation: string;
     @Input()
     executionType: string;
+    @Input()
+    dssDescription: string;
+    @Input()
+    isValid: boolean;
     
     constructor( ) { }
 

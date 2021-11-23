@@ -1,20 +1,50 @@
 <span>
     <ng-template #tolTemplateStatusRep>{{statusRepresentation}}</ng-template>
-    <span class="badge dss-badge"
+    <span class="badge dss-badge containerBox"
         [tooltip]="tolTemplateStatusRep"
         [ngClass]="{'badge-secondary':!status, 'badge-info': status==1, 'badge-success': status==2, 'badge-warning':status==3, 'badge-danger': status==4}"
         *ngIf="!(executionType==='link')">
-        <i class="fas fa-link" *ngIf="executionType==='link'"></i>
-        <span class="label label-danger label-as-badge"></span>
-        <h6><b>{{code | eppoCode }}</b></h6>
-        <small>({{ code }})</small>
+        <span *ngIf="dssDescription"
+            class="infoIcon fa-stack" 
+            popover="{{dssDescription}}" 
+            popoverTitle="{{statusRepresentation}}" 
+            placement="auto" 
+            [outsideClick]="true"
+            container='body'>
+            <i class="fas fa-circle fa-stack-1x"></i>
+            <i class="fas fa-info-circle fa-stack-1x"></i>
+        </span>
+        <span *ngIf="!isValid" class="errorIcon fa-stack">
+            <i class="fas fa-circle fa-stack-1x"></i>
+            <i class="fas fa-times-circle fa-stack-1x"></i>
+        </span>
+        <a *ngIf="itemId; else notClickable"[routerLink]="[itemId,'view']" style="color: white">
+            <h6><b>{{code | eppoCode }}</b></h6>
+            <small>({{ code }})</small>
+        </a>
+        <ng-template #notClickable>
+            <h6><b>{{code | eppoCode }}</b></h6>
+            <small>({{ code }})</small>
+        </ng-template>
     </span>
+    <!-- Template for External DSS Badge -->
     <span class="exeLink"
         *ngIf="executionType==='link'">
+        <span class="infoIcon fa-stack" 
+            popover="{{dssDescription}}" 
+            popoverTitle="{{statusRepresentation}}" 
+            placement="auto" 
+            [outsideClick]="true"
+            container='body'>
+            <i class="fas fa-circle fa-stack-1x"></i>
+            <i class="fas fa-info-circle fa-stack-1x"></i>
+        </span>
         <i class="fas fa-link"></i>
         <span class="label label-danger label-as-badge"></span>
-        <h6><b>{{code | eppoCode }}</b></h6>
-        <small>({{ code }})</small>
+        <a [href]="endpoint" target="_blank" style="color: #6c757d">
+            <h6><b>{{code | eppoCode }}</b></h6>
+            <small>({{ code }})</small>
+        </a>
     </span>
     <span *ngIf="dss" class="dss text-truncate" placement="bottom">{{dss}}</span>
 </span>

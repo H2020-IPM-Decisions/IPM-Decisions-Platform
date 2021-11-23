@@ -1,5 +1,7 @@
 /*Remove white-space: normal; to allow the text-truncate class*/
-
+.containerBox{
+  position: relative;
+}
 .dss {
   display: block;
   font-size: 80%;
@@ -28,3 +30,21 @@
 .fa-link {
   font-size: 125%;
 }
+.fa-circle {
+  color: white;
+}
+.infoIcon {
+  font-size: 125%;
+  color: rgb(0, 140, 255);
+  position: absolute;
+  top: -3px;
+  right: -6px;
+}
+.errorIcon {
+  font-size: 125%;
+  color: red;
+  position: absolute;
+  bottom: -3px;
+  right: -6px;
+}
+

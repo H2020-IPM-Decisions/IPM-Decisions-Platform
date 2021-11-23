@@ -23,6 +23,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   selectedDssChartGroup: IDssChartGroup;
   resultMessageType: string;
   resultMessage: string;
+  dssIsValid: boolean;
   
   constructor(
     private activatedRoute: ActivatedRoute, 
@@ -48,6 +49,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     });
     this.resultMessageType = this.dssDetail.resultMessageType;
     this.resultMessage = this.dssDetail.resultMessage;
+    this.dssIsValid = this.dssDetail.isValid;
   }
 
   goBack(): void {
