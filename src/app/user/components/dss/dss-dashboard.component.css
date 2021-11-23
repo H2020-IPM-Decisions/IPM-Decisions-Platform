@@ -16,3 +16,13 @@
     margin-bottom:20px;
     border-image: linear-gradient(45deg, rgb(16,169,139), rgb(150,201,61)) 1;
 }
+
+.dss-legend {
+    white-space:normal;
+    font-size:120%;
+    font-weight:600;
+}
+
+fieldset {
+    border-radius: 8px;
+}

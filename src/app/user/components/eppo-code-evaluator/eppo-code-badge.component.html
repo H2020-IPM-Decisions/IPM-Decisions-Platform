@@ -15,22 +15,25 @@
             <i class="fas fa-info-circle fa-stack-1x"></i>
         </span>
         <span *ngIf="!isValid" class="errorIcon fa-stack">
-            <i class="fas fa-circle fa-stack-1x"></i>
-            <i class="fas fa-times-circle fa-stack-1x"></i>
+            <a class="details" (click)="openModal(errorModal,'modal-lg')">
+                <i class="fas fa-circle fa-stack-1x"></i>
+                <i class="fas fa-times-circle fa-stack-1x"></i>
+            </a>
         </span>
         <a *ngIf="itemId; else notClickable"[routerLink]="[itemId,'view']" style="color: white">
-            <h6><b>{{code | eppoCode }}</b></h6>
-            <small>({{ code }})</small>
+            <h6  *ngIf="!isLegend"><b>{{code | eppoCode }}</b></h6>
+            <small  *ngIf="!isLegend">({{ code }})</small>
         </a>
         <ng-template #notClickable>
-            <h6><b>{{code | eppoCode }}</b></h6>
-            <small>({{ code }})</small>
+            <h6  *ngIf="!isLegend"><b>{{code | eppoCode }}</b></h6>
+            <small  *ngIf="!isLegend">({{ code }})</small>
         </ng-template>
     </span>
     <!-- Template for External DSS Badge -->
     <span class="exeLink"
         *ngIf="executionType==='link'">
-        <span class="infoIcon fa-stack" 
+        <span *ngIf="dssDescription"
+            class="infoIcon fa-stack" 
             popover="{{dssDescription}}" 
             popoverTitle="{{statusRepresentation}}" 
             placement="auto" 
@@ -46,5 +49,35 @@
             <small>({{ code }})</small>
         </a>
     </span>
-    <span *ngIf="dss" class="dss text-truncate" placement="bottom">{{dss}}</span>
+    <span *ngIf="dss && !isLegend" class="dss text-truncate" placement="bottom">{{dss}}</span>
+    <span *ngIf="isLegend" class="dss-legend text-truncate" placement="bottom"><b>{{dss}}</b></span>
 </span>
+
+<!-- ERROR MODAL -->
+<ng-template #errorModal>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">
+        <span class="modalErrorIcon fa-stack">
+                <i class="fas fa-circle fa-stack-1x"></i>
+                <i class="fas fa-times-circle fa-stack-1x"></i>
+        </span> <b>Error</b>
+      </h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body scrollable m-2">
+      <div class="form-group row">
+        <div class="col-md justify-content-center">
+            <div class="alert alert-danger text-muted">
+                <strong>The DSS can't be run because an error occured:</strong>
+                <br>
+                {{ errorMessage }}
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer pull-right">
+      <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">Close</button>
+    </div>
+  </ng-template>

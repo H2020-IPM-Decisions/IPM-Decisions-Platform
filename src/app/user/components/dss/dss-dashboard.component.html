@@ -41,7 +41,8 @@
                 [status]="item.warningStatus"
                 [executionType]="item.dssExecutionType"
                 [dssDescription]="item.dssDescription"
-                [isValid]="item.isValid">
+                [isValid]="item.isValid"
+                [errorMessage]="item.resultMessage">
               </eppo-code-badge>
             </span>
             <span *ngIf="item.dssExecutionType === 'link'" style="position:relative">
@@ -52,8 +53,7 @@
                 [dss]="item.dssModelName + ' (' + item.dssModelId +')'" 
                 [status]="item.warningStatus"
                 [executionType]="item.dssExecutionType"
-                [dssDescription]="item.dssDescription"
-                [isValid]="item.isValid">
+                [dssDescription]="item.dssDescription">
               </eppo-code-badge>
             </span>
           </div>
@@ -63,9 +63,9 @@
     <br><br><br><br><br><br>
     <div>
       <fieldset class="border p-3">
-        <legend class="w-auto px-1 text-muted">Legend / Example</legend>
+        <legend class="w-auto px-1 text-muted dss-legend">&nbsp;&nbsp; Legend &nbsp;&nbsp;</legend>
         <div class="row">
-          <div class="col-2 text-center">
+          <!--<div class="col-2 text-center">
             <div class="p-2">
               <b class="">Crop EPPO Code</b>
               <br>
@@ -77,9 +77,9 @@
                 Organization (EPPO) code
               </small>
             </div>
-          </div>
+          </div>-->
           <div class="d-flex col-10 text-center">
-            <div class="p-2 mx-1">
+            <div class="p-2 mx-3 ml-4">
               <!--
                   0 = Status gives no meaning (e.g. outside of season or before biofix), GREY
                   1 = Cannot give status due to error, e.g. missing data,  GREY
@@ -88,43 +88,52 @@
                   4 = High risk of infection. RED
                 -->
               <eppo-code-badge 
-                [code]="'PEST'" 
+                [code]="" 
                 [dss]="'No meaning status'" 
                 [status]="0"
                 [statusRepresentation]="'No meaning status'"
-                [isValid]="true"></eppo-code-badge>
+                [isValid]="true"
+                [isLegend]="true">
+              </eppo-code-badge>
             </div>
-            <div class="p-2 mx-1">
+            <div class="p-2 mx-3">
               <eppo-code-badge 
-                [code]="'PSILRO'" 
+                [code]="" 
                 [dss]="'Cannot give status'" 
                 [status]="1"
                 [statusRepresentation]="'Cannot give status'"
-                [isValid]="true"></eppo-code-badge>
+                [isValid]="true"
+                [isLegend]="true">
+              </eppo-code-badge>
             </div>
-            <div class="p-2 mx-1">
+            <div class="p-2 mx-3">
               <eppo-code-badge 
-                [code]="'SEPTAP'" 
+                [code]="" 
                 [dss]="'No risk of infection'" 
                 [status]="2"
                 [statusRepresentation]="'No risk of infection'"
-                [isValid]="true"></eppo-code-badge>
+                [isValid]="true"
+                [isLegend]="true">
+              </eppo-code-badge>
             </div>
-            <div class="p-2 mx-1">
+            <div class="p-2 mx-3">
               <eppo-code-badge 
-                [code]="'TRFPR'" 
+                [code]="" 
                 [dss]="'Medium risk'" 
                 [status]="3"
                 [statusRepresentation]="'Medium risk'"
-                [isValid]="true"></eppo-code-badge>
+                [isValid]="true"
+                [isLegend]="true">
+              </eppo-code-badge>
             </div>
-            <div class="p-2 mx-1">
+            <div class="p-2 mx-3">
               <eppo-code-badge 
-                [code]="'VERAR'" 
+                [code]="" 
                 [dss]="'High risk'" 
                 [status]="4" 
                 [statusRepresentation]="'High risk'"
-                [isValid]="true">
+                [isValid]="true"
+                [isLegend]="true">
               </eppo-code-badge>
             </div>
           </div>

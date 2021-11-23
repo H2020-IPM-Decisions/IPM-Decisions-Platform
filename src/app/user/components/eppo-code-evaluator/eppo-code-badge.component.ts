@@ -1,4 +1,5 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, TemplateRef } from "@angular/core";
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
     selector: "eppo-code-badge",
@@ -36,7 +37,16 @@ export class EppoCodeBadgeComponent {
     dssDescription: string;
     @Input()
     isValid: boolean;
-    
-    constructor( ) { }
+    @Input()
+    errorMessage: string;
+    @Input()
+    isLegend: boolean;
 
+    modalRef: BsModalRef;
+    
+    constructor(private _modalService: BsModalService) { }
+
+    openModal(template: TemplateRef<any>, size?: string) {
+        this.modalRef = this._modalService.show(template, {class: size});
+    }
 }

@@ -11,9 +11,19 @@
   white-space: normal;
 }
 
+.dss-legend {
+  display: block;
+  font-size: 90%;
+  color: #2e3133;
+  width: 120px;
+  height: auto;
+  white-space: normal;
+}
+
 .dss-badge {
   display: inline-block;
   width: 120px;
+  min-height: 50px;
   height: auto;
   white-space: normal;
 }
@@ -30,9 +40,11 @@
 .fa-link {
   font-size: 125%;
 }
+
 .fa-circle {
   color: white;
 }
+
 .infoIcon {
   font-size: 125%;
   color: rgb(0, 140, 255);
@@ -40,11 +52,25 @@
   top: -3px;
   right: -6px;
 }
+
 .errorIcon {
   font-size: 125%;
   color: red;
   position: absolute;
   bottom: -3px;
   right: -6px;
+}
+
+.scrollable {
+  height: auto;
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  word-wrap: break-word;
+}
+
+.modalErrorIcon {
+  font-size: 150%;
+  color: red;
 }
 
