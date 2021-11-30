@@ -34,7 +34,7 @@ export interface WeatherDataSource {
   description: string;
   public_URL: string;
   endpoint: string;
-  authentication_required: string;
+  authentication_type: string;
   needs_data_control: string;
   access_type: string;
   temporal: Temporal;

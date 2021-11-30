@@ -91,7 +91,9 @@ export class WeatherService {
       map((data: WeatherDataSource[]) => {
         return data.filter(
           (item: WeatherDataSource) => {
-            return item.authentication_required === "true"
+            return item.authentication_type === "CREDENTIALS" || 
+              item.authentication_type === "BEARER_TOKEN" || 
+              item.authentication_type === "true";
           }
         );
       })
@@ -212,7 +214,8 @@ export class WeatherService {
                   return item.access_type === "location";
                 }
                 // return item.access_type === "stations" && item.authentication_required === "false";
-                return item.authentication_required === "false";
+                return item.authentication_type === "false" || 
+                  item.authentication_type === "NONE";
               }
             )
             .map( 
