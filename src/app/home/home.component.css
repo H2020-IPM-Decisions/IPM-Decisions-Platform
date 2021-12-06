@@ -62,3 +62,7 @@
   bottom: 10px;
   left: 5%;
 }
+
+.increaseSize{
+  font-size: large;
+}
