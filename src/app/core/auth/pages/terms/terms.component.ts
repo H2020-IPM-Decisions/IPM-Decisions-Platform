@@ -7,6 +7,7 @@ import { CMSService } from 'src/app/shared/services/cms.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { UserForRegistration } from '../../models/user-for-registration.model';
 import { User } from '@app/core/auth/models/user.model';
+import { DomSanitizer } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-terms',
@@ -16,7 +17,7 @@ import { User } from '@app/core/auth/models/user.model';
 export class TermsComponent implements OnInit {
   termsForm: FormGroup;
   submitted = false;
-  termsAndConditions = '';
+  termsAndConditions:any;
   isLoading: boolean = false;
   @Input() registrationData: UserForRegistration;
   @Output() termsAccepted = new EventEmitter<boolean>();
@@ -25,10 +26,29 @@ export class TermsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private cmsService: CMSService,
-    private _authService: AuthenticationService
+    private _authService: AuthenticationService,
+    private _sanitizer: DomSanitizer
   ) {
-    cmsService.getTermsAndConditions()
-      .then((terms: any) => { this.termsAndConditions = terms.content });
+    /*cmsService.getTermsAndConditions()
+      .then((terms: any) => { this.termsAndConditions = terms.content });*/
+
+    cmsService.getTermsConditions()
+      .then((content: any) => {
+        let languageFound: boolean = false;
+        for (let key in content) {
+          if(key === sessionStorage.getItem("selectedLanguage"))
+          {
+            this.termsAndConditions = this._sanitizer.bypassSecurityTrustHtml(content[key]);
+            languageFound = true;
+            if (content[key]==="") {
+              this.termsAndConditions = this._sanitizer.bypassSecurityTrustHtml(content["en"]);
+            }
+          }
+        }
+        if(!languageFound) {
+          this.termsAndConditions = this._sanitizer.bypassSecurityTrustHtml(content["en"]);
+        }
+      })
   }
 
   ngOnInit() {
@@ -64,6 +84,7 @@ export class TermsComponent implements OnInit {
       errorRes => {
         this.isLoading = false;
         this.termsAccepted.emit(false);
+        this.message.emit(false);
         document.getElementById('login-box').classList.remove("with-terms");
         document.getElementById('login-register-nav').hidden = false;
       }

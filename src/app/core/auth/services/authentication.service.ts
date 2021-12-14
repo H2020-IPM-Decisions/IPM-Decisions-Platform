@@ -31,7 +31,7 @@ export class AuthenticationService {
   account: Account;
   private currentAccountSubject = new BehaviorSubject<Account>(null);
   public account$: Observable<Account> = this.currentAccountSubject.asObservable();
-  public errors = new Subject<string[]>();
+  private errors = new Subject<any[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -45,7 +45,7 @@ export class AuthenticationService {
 
     return this.http.post<User>(url, registrationData).pipe(
       catchError((errorRes) => {
-        let errorMessage = "An unknown error occured!";
+        let errorMessage = {"code":"UnknownError","description":"Error_messages.An_unknown_error_occured"};
         if (!errorRes.error || !errorRes.error.errors) {
           this.errors.next([errorMessage]);
         }
@@ -259,7 +259,7 @@ export class AuthenticationService {
   }
 
   private handleError(errorRes: HttpErrorResponse) {
-    let errorMessage = "Services not responding!";
+    let errorMessage = "Error_messages.Services_not_responding";
 
     if (!errorRes.error || !errorRes.error.message) {
       return throwError(errorMessage);
@@ -272,5 +272,9 @@ export class AuthenticationService {
     if (this.currentUserValue.roles && this.currentUserValue.roles.length > 0) {
       return this.currentUserValue.roles.includes("Admin");
     }
+  }
+
+  public getErrors(): Observable<any> {
+    return this.errors.asObservable();
   }
 }

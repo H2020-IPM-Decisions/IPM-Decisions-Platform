@@ -3,9 +3,10 @@
       <div class="contact-info mr-auto">
 
       </div>
+      <app-language-selector></app-language-selector>
       <div class="social-links btn-registration">
-          <a class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>Login </span></a>
-          <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>Register</span></a>
+          <a class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>{{ 'Common_labels.Login' | translate }}</span></a>
+          <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>{{ 'Common_labels.Register' | translate }}</span></a>
       </div>
   </div>
 </div>
@@ -17,7 +18,7 @@
 
       <nav class="nav-menu d-none d-lg-block">
           <ul>
-              <li class="active"><a routerLink="/">Home</a></li>
+              <li class="active"><a routerLink="/">{{ 'Common_labels.Home' | translate }}</a></li>
           </ul>
       </nav><!-- .nav-menu -->
 
@@ -26,17 +27,18 @@
 
 <section class="clients-section spad">
   <div class="container">
-    <div class="client-text">
-      <h2>Developers</h2>
+    <div class="client-text text-muted">
+      <h2>{{ 'Common_labels.Developers' | translate }}</h2>
       <img class="article-image" src="img/coding.png">
-      DSS developers will benefit by the platform providing a ‘shop window’ to end users, and to access tools and resources to accelerate DSS innovation. They will be able to make use of the platform in one or more of the following ways depending on their willingness to engage with the Platform and commit resources to ensure that the DSS complies with the Platform data standards:
+      <span [innerHtml]="articleContent"></span>
+      <!--DSS developers will benefit by the platform providing a ‘shop window’ to end users, and to access tools and resources to accelerate DSS innovation. They will be able to make use of the platform in one or more of the following ways depending on their willingness to engage with the Platform and commit resources to ensure that the DSS complies with the Platform data standards:
       <br>
       <ul>
         <li>Full integration - owners or developers would make their DSS fully compliant with the IPM Decisions platform data standards and the DSS would be integrated into the Platform so that the Platform would be the only means by which the DSS would be accessed by end-users. </li>
         <li>Partial integration – owners or developers will provide limited access to their DSS (e.g. region level risk assessments) through the Platform. Platform users will be redirected to the DSS owners own website (via a link) to access the full functionality of the DSS and obtain specific recommendations for their individual circumstances.</li>
         <li>Service Consumer – owners or developers who have an established interface and user base could gain access to the Platform via the API gateway. These users will be solely accessing the underpinning functionality of the platform via an API or web service (Use access level) to allow remote running of the DSS and return of results (minimum) and supply of input data from the Platform or through a link to the DSS existing website, without using a dashboard. </li>
         <li>‘Click through’ link – this is the minimum option as it does not require the DSS to conform to the Platform data standards. For this option, a link that users can click on to access the DSS would be provided </li>
-      </ul>
+      </ul>-->
     </div>
   </div>
 </section>
@@ -47,13 +49,16 @@
   <div class="container py-4">
     <div class="row">
       <div class="col-lg-4 col-md-4 eu-flag">
-        <p>Project lead: Neil Paveley (neil.paveley@adas.co.uk)</p>
-        <p>Technical contacts: Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
+        <p>{{ 'Common_labels.Project_lead' | translate }}: Neil Paveley (neil.paveley@adas.co.uk)</p>
+        <p>{{ 'Common_labels.Technical_contacts' | translate }}: Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
         <p>Tor-Einar Skog (tor-einar.skog@nibio.no)</p>
         <img src="img/logo-euro.jpg" style="float: left;
 display: inline-grid;
 margin-right: 5px;">
-        <p>Co-funded by the Horizon 2020<br>Framework Programme of the European Union<br>Under grant agreement No 817617
+        <p>
+          {{ 'Common_labels.Cofundend_by_the_Horizon_2020' | translate }}
+          <br>{{ 'Common_labels.Framework_programme' | translate }}
+          <br>{{ 'Common_labels.Under_grant_agreement' | translate }} No 817617
         </p>
       </div>
       <div class="col-lg-4 col-md-4 ">
@@ -65,7 +70,7 @@ margin-right: 5px;">
     </div>
   </div>
   <div class="copyright">
-    © 2020 <b>All Rights Reserved Engineering</b> <br>VAT: 05724831002
+    © 2022 <b>{{ 'Common_labels.All_rights_reserved' | translate }} Engineering</b> <br>VAT: 05724831002
   </div>
 </footer><!-- End Footer -->
 <div>

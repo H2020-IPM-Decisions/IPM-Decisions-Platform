@@ -3,7 +3,6 @@
   <div class="form-row">
       <div class="terms-and-conditions" [innerHtml]="termsAndConditions"></div>
 
-
     <div *ngIf="!isLoading" class="checkbox-box">
       <div class="form-group form-check">
         <input
@@ -14,16 +13,16 @@
           #acceptTerms
           [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
 
-        <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+        <label for="acceptTerms" class="form-check-label">{{ 'Terms_and_conditions.Accept_terms_and_conditions' | translate }}</label>
 
         <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">
-          Accept Ts & Cs is required
+          {{ 'Error_messages.Accept_terms_and_conditions_required' | translate }}
         </div>
       </div>
 
       <div class="text-center col-6 float-right">
         <button [disabled]="!acceptTerms.checked"
-        class="btn btn-primary btn-block float-right">Register</button>
+        class="btn btn-primary btn-block float-right">{{ 'Common_labels.Register' | translate }}</button>
       </div>
     </div>
   </div>

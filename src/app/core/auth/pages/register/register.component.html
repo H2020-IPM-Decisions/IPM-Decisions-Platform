@@ -2,58 +2,58 @@
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="registrazione">
     <div class="form-row">
       <div class="form-group col-12">
-        <label>User Type</label>
+        <label>{{ 'Register.User_type' | translate }}</label>
         <select formControlName="userType" class="form-control"
           [ngClass]="{ 'is-invalid': f.userType.errors && f.userType.touched }">
-          <option [label]="userType" *ngFor="let userType of userTypes" [value]="userType">
-            {{ userType }}</option>
+          <option *ngFor="let userType of userTypes" [value]="userType.value">
+            {{ userType.description | translate }}</option>
         </select>
         <div *ngIf="f.userType.errors && f.userType.touched" class="invalid-feedback">
-          <div *ngIf="f.userType.errors.required">User Type is required</div>
+          <div *ngIf="f.userType.errors.required">{{ 'Error_messages.User_type_required' | translate }}</div>
         </div>
       </div>
     </div>
 
     <div class="form-group">
-      <label>Email</label>
+      <label>{{ 'Common_labels.Email' | translate }}</label>
       <input type="text" formControlName="email" class="form-control"
         [ngClass]="{ 'is-invalid': f.email.errors && f.email.touched }" />
       <div *ngIf="f.email.errors && f.email.touched" class="invalid-feedback">
-        <div *ngIf="f.email.errors.required">Email is required</div>
-        <div *ngIf="f.email.errors.pattern">Email must be a valid email address</div>
+        <div *ngIf="f.email.errors.required">{{ 'Error_messages.Email_required' | translate }}</div>
+        <div *ngIf="f.email.errors.pattern">{{ 'Error_messages.Email_must_be_valid' | translate }}</div>
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col">
-        <label>Password</label>
+        <label>{{ 'Common_labels.Password' | translate }}</label>
         <input type="password" formControlName="password" class="form-control"
           [ngClass]="{ 'is-invalid': f.password.errors && f.password.touched }" />
 
         <div *ngIf="f.password.errors && f.password.touched" class="invalid-feedback">
-          <div *ngIf="f.password.errors?.required">Password is required</div>
-          <div *ngIf="f.password.errors?.minlength">Password must be at least 6 characters</div>
-          <div *ngIf="f.password.errors?.pattern">Passwords must have at least one number ('0'-'9').</div>
-          <div *ngIf="f.password.errors?.pattern">Passwords must have at least one non alphanumeric character ('!@#$%^&*()_+').</div>
+          <div *ngIf="f.password.errors?.required">{{ 'Error_messages.Password_required' | translate }}</div>
+          <div *ngIf="f.password.errors?.minlength">{{ 'Error_messages.Password_must_be_at_least_6_characters_lenght' | translate }}</div>
+          <div *ngIf="f.password.errors?.pattern">{{ 'Error_messages.Password_must_have_at_least_one_digit' | translate }}</div>
+          <div *ngIf="f.password.errors?.pattern">{{ 'Error_messages.Password_must_have_at_least_one_non_alphanumeric_character' | translate }}</div>
         </div>
       </div>
       <div class="form-group col">
-        <label>Confirm Password</label>
+        <label>{{ 'Register.Confirm_password' | translate }}</label>
         <input type="password" formControlName="confirmPassword" class="form-control"
           [ngClass]="{ 'is-invalid': f.confirmPassword.errors && f.confirmPassword.touched }" />
         <div *ngIf="f.confirmPassword.errors && f.confirmPassword.touched" class="invalid-feedback">
           <div *ngIf="f.confirmPassword.errors.required">
-            Confirm Password is required
+            {{ 'Error_messages.Confirm_password_required' | translate }}
           </div>
           <div *ngIf="f.confirmPassword.errors.mustMatch">
-            Passwords must match
+            {{ 'Error_messages.Passwords_must_match' | translate }}
           </div>
         </div>
       </div>
     </div>
 
     <div class="text-center">
-      <button [disabled]="!registerForm.valid" class="btn btn-login btn-block">Register</button>
+      <button [disabled]="!registerForm.valid" class="btn btn-login btn-block">{{ 'Common_labels.Register' | translate }}</button>
     </div>
   </form>
 </div>
@@ -65,29 +65,17 @@
 
 <ng-template #registrationModal>
       <div class="modal-body">
-        <div class="alert alert-danger" *ngIf="errors?.length">
-          <p *ngFor="let error of errors">{{ error?.description }}</p>
+        <div class="alert alert-danger" *ngIf="errors.length > 0">
+          <div *ngFor="let error of errors">
+            <p *ngFor="let errDetail of error">{{ errDetail?.description | translate }}</p>
+          </div>
         </div>
         <div class="alert alert-success" *ngIf="isSuccess">
-          <strong>Registration Confirmation</strong>
+          <strong>{{ 'Register.Registration_confirmation' | translate }}</strong>
           <br>
-          <span>
-            Thank you for choosing to register with the IPM Decisions Platform. 
-            You should shortly receive an email with a link that you need to click on to confirm 
-            your email address. 
-            Once you have done this the registration process will be complete.<br>
-            If you do not receive the email then please check your junk folder or with your 
-            IT department to ensure that it has not been placed in a spam folder.  
-            <br><br>
-            If you do not confirm your email within 48 hours then your details will be removed 
-            from the platform. 
-            <br><br>
-            Regards, 
-            <br><br>
-            IPM Decisions Platform
-          </span>
+          <span [innerHtml]="confirmationMessage"></span>
         </div>
-        <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">OK</button>
+        <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">{{ 'Common_labels.Ok' | translate }}</button>
       </div>
 </ng-template>
 

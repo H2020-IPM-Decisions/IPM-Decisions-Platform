@@ -4,6 +4,8 @@ import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@ang
 import { CMSService } from '../shared/services/cms.service';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { DomSanitizer } from '@angular/platform-browser'
 import * as L from 'leaflet';
 import * as esri_geo from "esri-leaflet-geocoder";
 declare var init: any;
@@ -17,7 +19,6 @@ declare var $;
 })
 export class HomeComponent implements OnInit {
   active: string = "home";
-
   map;
   cmsUrl;
   cmsPath = "";
@@ -37,6 +38,29 @@ export class HomeComponent implements OnInit {
   isLoggedIn: boolean;
   state$: Observable<object>;
   collapseDiv: boolean;
+  testNews = [];
+  homeIntro: any;
+  homeTitle: string;
+  customOptions: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    center: true,
+    dots: false,
+    autoHeight: true,
+    autoWidth: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 1,
+      },
+      1000: {
+        items: 1,
+      }
+    }
+  }
+
   @Output() verified: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
@@ -44,7 +68,8 @@ export class HomeComponent implements OnInit {
     private _authService: AuthenticationService,
     private router: Router,
     public _activatedRoute: ActivatedRoute,
-    private maprisksService: MaprisksService
+    private maprisksService: MaprisksService,
+    private _sanitizer: DomSanitizer
   ) {
     this.cmsUrl = cmsService.getUrl();
     this.cmsPath = cmsService.getUrl();
@@ -99,14 +124,52 @@ export class HomeComponent implements OnInit {
       cmsService.getHomeSlideshow().then((response: any) => {
         this.homeSlideshow = response;
       }),
-      cmsService.getNews().then((response: any) => {
+      cmsService.getHomeIntroduction()
+      .then((hIntro: any) => {
+        let languageFound: boolean = false;
+        for (let key in hIntro) {
+          if(key === sessionStorage.getItem("selectedLanguage"))
+          {
+            this.homeIntro = this._sanitizer.bypassSecurityTrustHtml(hIntro[key]);
+            languageFound = true;
+            if (hIntro[key]==="") {
+              this.homeIntro = this._sanitizer.bypassSecurityTrustHtml(hIntro["en"]);
+            }
+          }
+        }
+        if(!languageFound) {
+          this.homeIntro = this._sanitizer.bypassSecurityTrustHtml(hIntro["en"]);
+        }
+      }),
+      /*cmsService.getNews().then((response: any) => {
         this.news = response;
+      }),*/
+      //cmsService.getTestNews(this.currentLanguage)
+      cmsService.getNews(sessionStorage.getItem("selectedLanguage"))
+      .then((tnews: any) => { 
+        this.testNews = tnews.entries
+      }),
+      cmsService.getHomeTitle()
+      .then((hTitle: any) => {
+        let languageFound: boolean = false;
+        for (let key in hTitle) {
+          if(key === sessionStorage.getItem("selectedLanguage"))
+          {
+            this.homeTitle = hTitle[key];
+            languageFound = true;
+            if (hTitle[key]==="") {
+              this.homeTitle = hTitle["en"];
+            }
+          }
+        }
+        if(!languageFound) {
+          this.homeTitle = hTitle["en"];
+        }
       }),
     ];
     Promise.all(promises).then(() => {
       setTimeout(() => init(), 0);
     });
-
     this.isLoggedIn = this._authService.isLoggedIn();
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '@app/shared/services/idp/admin/user.service';
+import { TranslationService } from '@app/shared/services/translation.service';
 
 @Component({
   selector: 'confirm-mail',
@@ -14,8 +15,10 @@ export class ConfirmMailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private _translationService: TranslationService,
   ) {
+    this._translationService.initLanguageFromBrowser();
   }
 
   ngOnInit() {

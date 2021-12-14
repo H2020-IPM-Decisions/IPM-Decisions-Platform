@@ -1,0 +1,115 @@
+{
+    "Common_labels": {
+        "Home":"Home",
+        "Login":"Login",
+        "Register":"Register",
+        "Farmers_and_Advisors":"Farmers & Advisors",
+        "Researchers":"Researchers",
+        "Developers":"Developers",
+        "Project_lead":"Project lead",
+        "Technical_contacts":"Technical contacts",
+        "Cofundend_by_the_Horizon_2020":"Co-funded by the Horizon 2020",
+        "Framework_programme":"Framework Programme of the European Union",
+        "Under_grant_agreement":"Under grant agreement ",
+        "All_rights_reserved":"All Rights Reserved",
+        "Email":"E-mail",
+        "Password":"Password",
+        "Forgot_password":"Forgot password",
+        "Ok":"Ok",
+        "Confirm":"Confirm",
+        "Farmer":"Farmer",
+        "Developer":"Developer",
+        "Advisor":"Advisor",
+        "Wait":"Wait",
+        "Success":"Success",
+        "Cancel":"Cancel",
+        "Yes":"Yes",
+        "Delete":"Delete",
+        "Edit":"Edit",
+        "Copy":"Copy",
+        "Logout":"Logout",
+        "Account":"Account",
+        "Settings":"Settings",
+        "About":"About",
+        "Contact_name":"Contact name",
+        "Phone":"Phone",
+        "Mobile":"Mobile",
+        "Address":"Address",
+        "Send":"Send"
+    },
+    "Error_messages": {
+        "An_unknown_error_occured":"An unknown error occured!",
+        "Services_not_responding":"Services not responding!",
+        "Email_required":"E-mail is required",
+        "Email_must_be_valid":"E-mail must be a valid email address",
+        "Password_required":"Password is required",
+        "Password_must_be_at_least_6_characters_lenght":"Password must be at least 6 characters.",
+        "Password_must_have_at_least_one_non_alphanumeric_character":"Password must have at least one non alphanumeric character ('!@#$%^&*()_+').",
+        "Password_must_have_at_least_one_digit":"Password must have at least one digit ('0'-'9').",
+        "User_type_required":"User Type is required",
+        "Confirm_password_required":"Confirm Password is required",
+        "Passwords_must_match":"Passwords must match",
+        "Accept_terms_and_conditions_required":"Accept Ts & Cs is required"
+    },
+    "Information_messages":{
+        "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
+        "No_farms_avaiable":"No farms available.",
+        "Farm_copy_success":"Farm successfully copied!"
+    },
+    "Language_Selector":{
+        "Language":"Language",
+        "English":"English",
+        "Italian":"Italian"
+    },
+    "Home": {
+        "Contacts":"Contacts",
+        "Email_us":"Email Us",
+        "Web_Site":"Web Site",
+        "Social":"Social"
+    },
+    "Register": {
+        "User_type":"User Type",
+        "Confirm_password":"Confirm Password",
+        "Registration_confirmation":"Registration Confirmation"
+    },
+    "Terms_and_conditions": {
+        "Accept_terms_and_conditions":"Accept Terms & Conditions"
+    },
+    "Forgot_password": {
+        "Insert_email_for_reset_password":"Insert your email to get instructions for reset password"
+    },
+    "User_header":{
+        "Account_manager":"Account Manager",
+        "Farm":"Farm"
+    },
+    "User_menu": {
+        "IPM_private":"IPM Private",
+        "Farm_menu":"Farm menu"
+    },
+    "User_account": {
+        "Title":"User Account",
+        "User_role":"User Role",
+        "Edit_profile":"Edit profile",
+        "Request_farm_control":"Request Farm Control",
+        "Check_farm_control":"Check Farm Control"
+    },
+    "Farm_share": {
+        "Requester_name":"Requester Name",
+        "Request_status":"Request Status"
+    },
+    "Farm_request": {
+        "Insert_the_email":"Insert the email of a farmer of your choosing"
+    },
+    "Farm_list": {
+        "Title":"Farm Management",
+        "Add_farm":"Add Farm",
+        "Farm_information_table":"Farm Information Table",
+        "Name":"Name",
+        "Farm_location":"Farm location",
+        "Actions":"Actions",
+        "Delete_farm":"Delete Farm"
+    },
+    "DSS_use_dashboard": {
+        "Title":"DSS Use Dashboard"
+    }
+}

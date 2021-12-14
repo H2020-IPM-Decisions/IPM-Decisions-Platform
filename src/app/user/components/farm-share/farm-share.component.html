@@ -3,8 +3,8 @@
     <table class="mb-0 table table-cover">
       <!-- requesterName requestStatus -->
       <tr>
-        <th>Requester Name</th>
-        <th>Request Status</th>
+        <th>{{ 'Farm_share.Requester_name' | translate }}</th>
+        <th>{{ 'Farm_share.Request_status' | translate }}</th>
         <th></th>
       </tr>
       <tr *ngFor="let item of items">
@@ -42,6 +42,6 @@
         {{message}}
       </span>
     </div>
-    <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">OK</button>
+    <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">{{ 'Common_labels.Ok' | translate }}</button>
   </div>
 </ng-template>

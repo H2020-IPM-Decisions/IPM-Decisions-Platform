@@ -90,7 +90,7 @@ export class CMSService {
       .toPromise();
   }
 
-  getNews() {
+  getNews_OLD() {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/news?token=${this.key}`)
       .toPromise();
@@ -99,6 +99,96 @@ export class CMSService {
   getTermsAndConditions() {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/termsnconditions`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getNews(language: string) {
+    return this.http
+      .get(`${this.cmsUrl}/api/collections/get/news_`+language, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getHomeIntroduction() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/homeintroduction`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getHomeTitle() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/hometitle`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getFarmersAdvisorsArticle() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/farmersadvisorsarticle`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getResearchersArticle() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/researchersarticle`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getDevelopersArticle() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/developersarticle`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getForgotPasswordConfirmationMessage() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/forgotpasswordconfirmation`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getRegistrationConfirmationMessage() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/registrationconfirmation`, {
+        headers: {
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getTermsConditions() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/termsandconditions`, {
         headers: {
           'Cockpit-Token': `${this.key}`
         }

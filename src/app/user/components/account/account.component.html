@@ -5,8 +5,8 @@
     <div class="app-main__outer">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a routerLink="/admin">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Account</li>
+          <li class="breadcrumb-item"><a routerLink="/admin">{{ 'Common_labels.Home' | translate }}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ 'Common_labels.Account' | translate }}</li>
         </ol>
       </nav>
       <div class="app-main__inner">
@@ -17,7 +17,7 @@
                 <em class="pe-7s-user icon-gradient bg-mean-fruit">
                 </em>
               </div>
-              <div>User Account</div>
+              <div>{{ 'User_account.Title' | translate }}</div>
             </div>
           </div>
         </div>
@@ -38,17 +38,17 @@
                       <!-- {{ user?.fullName | titlecase }} -->
                     </h5>
                     <h6>
-                      <small>User Role:&nbsp;</small><span class="badge user-role-badge">{{ userRole | titlecase }}</span>
+                      <small>{{ 'User_account.User_role' | translate }}:&nbsp;</small><span class="badge user-role-badge">{{ userRole.description | translate | titlecase }}</span>
                     </h6>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                       <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                          aria-controls="home" aria-selected="true">About</a>
+                          aria-controls="home" aria-selected="true">{{ 'Common_labels.About' | translate }}</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" id="functionalities-tab" data-toggle="tab" href="#functionalities" role="tab"
                           aria-controls="functionalities" aria-selected="true">
-                          {{ userRole == 'farmer' ? 'Check Farm Control' : userRole == 'advisor' ? 'Request Farm Control' : ''}}
+                          {{ userRole.value == 'farmer' ? ('User_account.Check_farm_control' | translate) : userRole.value == 'advisor' ? ('User_account.Request_farm_control' | translate) : ''}}
                         </a>
                       </li>
                       <!--<li class="nav-item">
@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-md-2">
                   <button type="button" class="profile-edit-btn" [routerLink]="['/user/account/edit']">
-                    <i class="fas fa-edit"></i> Edit Profile
+                    <i class="fas fa-edit"></i> {{ 'User_account.Edit_profile' | translate }}
                   </button>
                     
                 </div>
@@ -72,7 +72,7 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                       <div class="row">
                         <div class="col-md-6">
-                          <label>Contact Name</label>
+                          <label>{{ 'Common_labels.Contact_name' | translate }}</label>
                         </div>
                         <div class="col-md-6">
                           <p>{{ user?.fullName | titlecase }}</p>
@@ -80,7 +80,7 @@
                       </div>
                       <div class="row">
                         <div class="col-md-6">
-                          <label>Email</label>
+                          <label>{{ 'Common_labels.Email' | translate }}</label>
                         </div>
                         <div class="col-md-6">
                           <p>{{ authService.currentUserValue.email }}</p>
@@ -88,7 +88,7 @@
                       </div>
                       <div class="row">
                         <div class="col-md-6">
-                          <label>Phone</label>
+                          <label>{{ 'Common_labels.Phone' | translate }}</label>
                         </div>
                         <div class="col-md-6">
                           <p>{{ user?.phoneNumber }}</p>
@@ -96,7 +96,7 @@
                       </div>
                       <div class="row">
                         <div class="col-md-6">
-                          <label>Mobile</label>
+                          <label>{{ 'Common_labels.Mobile' | translate }}</label>
                         </div>
                         <div class="col-md-6">
                           <p>{{ user?.mobileNumber }}</p>
@@ -104,7 +104,7 @@
                       </div>
                       <div class="row">
                         <div class="col-md-6">
-                          <label>Address</label>
+                          <label>{{ 'Common_labels.Address' | translate }}</label>
                         </div>
                         <div class="col-md-6">
                           <p>{{ user?.fullAddress }}</p>
@@ -112,10 +112,10 @@
                       </div>
                     </div>
                     <div class="tab-pane fade" id="functionalities" role="tabpanel" aria-labelledby="functionalities-tab">
-                      <div *ngIf="userRole == 'advisor'">
+                      <div *ngIf="userRole.value == 'advisor'">
                         <farm-request></farm-request>
                       </div>
-                      <div *ngIf="userRole == 'farmer'">
+                      <div *ngIf="userRole.value == 'farmer'">
                         <farm-share></farm-share>
                       </div>
                     </div>

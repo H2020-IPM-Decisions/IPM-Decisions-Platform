@@ -3,7 +3,9 @@ import { IForgetPassword } from '../../models/forget-password.model';
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
-
+import { CMSService } from '@app/shared/services/cms.service';
+import { DomSanitizer } from '@angular/platform-browser';
+declare var init: any;
 @Component({
   selector: 'forget-password',
   templateUrl: './forget-password.component.html',
@@ -15,10 +17,13 @@ export class ForgetPasswordComponent implements OnInit {
   modalRef: any;
   resetForm: FormGroup;
   submitted = false;
+  confirmationMessage: any;
   constructor(
     private formBuilder: FormBuilder, 
     private _emailService: EmailService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private _cmsService: CMSService,
+    private _sanitizer: DomSanitizer,
   ) {}
 
   ngOnInit() {
@@ -26,7 +31,29 @@ export class ForgetPasswordComponent implements OnInit {
       {
         email: ['', [Validators.required, Validators.email]],
       },
-    );    
+    );
+    let promises = [
+      this._cmsService.getForgotPasswordConfirmationMessage()
+        .then((fpMessage: any) => {
+          let languageFound: boolean = false;
+          for (let key in fpMessage) {
+            if(key === sessionStorage.getItem("selectedLanguage"))
+            {
+              this.confirmationMessage = this._sanitizer.bypassSecurityTrustHtml(fpMessage[key]);
+              languageFound = true;
+              if (fpMessage[key]==="") {
+                this.confirmationMessage = this._sanitizer.bypassSecurityTrustHtml(fpMessage["en"]);
+              }
+            }
+          }
+          if(!languageFound) {
+            this.confirmationMessage = this._sanitizer.bypassSecurityTrustHtml(fpMessage["en"]);
+          }
+        }),
+    ];
+    Promise.all(promises).then(() => {
+      setTimeout(() => init(), 0)
+    })    
   }
 
   get f() {

@@ -3,9 +3,10 @@
       <div class="contact-info mr-auto">
 
       </div>
+      <app-language-selector></app-language-selector>
       <div class="social-links btn-registration">
-          <a class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>Login </span></a>
-          <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>Register</span></a>
+          <a class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>{{ 'Common_labels.Login' | translate }}</span></a>
+          <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>{{ 'Common_labels.Register' | translate }}</span></a>
       </div>
   </div>
 </div>
@@ -17,7 +18,7 @@
 
       <nav class="nav-menu d-none d-lg-block">
           <ul>
-              <li class="active"><a routerLink="/">Home</a></li>
+              <li class="active"><a routerLink="/">{{ 'Common_labels.Home' | translate }}</a></li>
           </ul>
       </nav><!-- .nav-menu -->
 
@@ -27,24 +28,9 @@
 <section class="clients-section spad">
   <div class="container">
     <div class="client-text">
-      <h2>Farmers&amp;Advisors</h2>
+      <h2>{{ 'Common_labels.Farmers_and_Advisors' | translate }}</h2>
       <img class="article-image" src="img/farming.png">
-      Farmers and Advisors are invited to use IPM Decisions Platform and dashboards to support decisions for a specific
-      farm or crop. Through a set of web pages, each with a user-friendly graphical interface, farmers and advisors will
-      be able to register their farm proving information on their crops and pests they want to monitor.
-      <br><br>
-      After registering their farm or farms, farmers and advisors will be able to access a wide range of pest DSS tools
-      and have the ability to compare the outputs of different DSS tools to aid them in selecting those of most
-      relevance to their specific situation.
-      <br><br>
-      Depending on the specific DSS being used, the inputs could include, for example, meteorological data, and
-      observations about the crop and pest density. IPM DECISIONS Platform will, for the first time, link existing DSS
-      and input data across European actors.
-      <br><br>
-      Dashboard design takes account of stakeholders needs that have been identified in IPM Decisions workshops through
-      the completion of user stories to prioritise core functionality requested by the users. Dashboards have been
-      designed to be simple and require minimal inputs from the user, and to be as intuitive as possible to minimise any
-      issues due to translation into different language
+      <span [innerHtml]="articleContent"></span>
     </div>
   </div>
 </section>
@@ -54,13 +40,16 @@
   <div class="container py-4">
     <div class="row">
       <div class="col-lg-4 col-md-4 eu-flag">
-        <p>Project lead: Neil Paveley (neil.paveley@adas.co.uk)</p>
-        <p>Technical contacts: Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
+        <p>{{ 'Common_labels.Project_lead' | translate }}: Neil Paveley (neil.paveley@adas.co.uk)</p>
+        <p>{{ 'Common_labels.Technical_contacts' | translate }}: Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
         <p>Tor-Einar Skog (tor-einar.skog@nibio.no)</p>
         <img src="img/logo-euro.jpg" style="float: left;
 display: inline-grid;
 margin-right: 5px;">
-        <p>Co-funded by the Horizon 2020<br>Framework Programme of the European Union<br>Under grant agreement No 817617
+        <p>
+          {{ 'Common_labels.Cofundend_by_the_Horizon_2020' | translate }}
+          <br>{{ 'Common_labels.Framework_programme' | translate }}
+          <br>{{ 'Common_labels.Under_grant_agreement' | translate }} No 817617
         </p>
       </div>
       <div class="col-lg-4 col-md-4 ">
@@ -72,7 +61,7 @@ margin-right: 5px;">
     </div>
   </div>
   <div class="copyright">
-    © 2020 <b>All Rights Reserved Engineering</b> <br>VAT: 05724831002
+    © 2022 <b>{{ 'Common_labels.All_rights_reserved' | translate }} Engineering</b> <br>VAT: 05724831002
   </div>
 </footer><!-- End Footer -->
 <div>

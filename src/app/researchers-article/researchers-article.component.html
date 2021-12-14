@@ -3,9 +3,10 @@
       <div class="contact-info mr-auto">
 
       </div>
+      <app-language-selector></app-language-selector>
       <div class="social-links btn-registration">
-          <a class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>Login </span></a>
-          <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>Register</span></a>
+          <a class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>{{ 'Common_labels.Login' | translate }}</span></a>
+          <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>{{ 'Common_labels.Register' | translate }}</span></a>
       </div>
   </div>
 </div>
@@ -17,7 +18,7 @@
 
       <nav class="nav-menu d-none d-lg-block">
           <ul>
-              <li class="active"><a routerLink="/">Home</a></li>
+              <li class="active"><a routerLink="/">{{ 'Common_labels.Home' | translate }}</a></li>
           </ul>
       </nav><!-- .nav-menu -->
 
@@ -27,25 +28,9 @@
 <section class="clients-section spad">
   <div class="container">
     <div class="client-text">
-      <h2>Researchers</h2>
+      <h2>{{ 'Common_labels.Researchers' | translate }}</h2>
       <img class="article-image" src="img/research.png">
-      Researchers are invited to use IPM Decisions Platform and dashboards to improve existing pest DSS tools by
-      adapting existing models from other regions/countries to suit the situation in their region/country by modifying
-      the internal parameters of models underpinning the DSS tools without the need for programming skills (where these
-      parameters have been made accessible).
-      <br><br>
-      They will be able to rapidly test and evaluate these novel DSS combinations against current DSS tools using the
-      data sources and data manipulation algorithms available through Platform.
-      <br><br>
-      This online Platform will, for the first time, link existing DSS and input data across European actors. The
-      Platform will consist of a central web server and a set of web services (dashboard manager, DSS manager and Data
-      manager). The central server will act as a repository containing DSS information, data information, application
-      programming interfaces (APIs), and source code. This will include web services used to manage the Dashboards and
-      their information requirements, widgets and snippets (small pieces of computer code that provide core
-      functionality such as visualisation via maps, graphs and tables, or forms for user input) used in the Dashboards,
-      Dashboard web page designs and tools for DSS evaluation, adaptation and development. Generic enablers from the
-      Open Source FIWARE catalogue will be selected, integrated and customized, as building blocks to create
-      applications.
+      <span [innerHtml]="articleContent"></span>
     </div>
   </div>
 </section>
@@ -56,13 +41,16 @@
   <div class="container py-4">
     <div class="row">
       <div class="col-lg-4 col-md-4 eu-flag">
-        <p>Project lead: Neil Paveley (neil.paveley@adas.co.uk)</p>
-        <p>Technical contacts: Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
+        <p>{{ 'Common_labels.Project_lead' | translate }}: Neil Paveley (neil.paveley@adas.co.uk)</p>
+        <p>{{ 'Common_labels.Technical_contacts' | translate }}: Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
         <p>Tor-Einar Skog (tor-einar.skog@nibio.no)</p>
         <img src="img/logo-euro.jpg" style="float: left;
 display: inline-grid;
 margin-right: 5px;">
-        <p>Co-funded by the Horizon 2020<br>Framework Programme of the European Union<br>Under grant agreement No 817617
+        <p>
+          {{ 'Common_labels.Cofundend_by_the_Horizon_2020' | translate }}
+          <br>{{ 'Common_labels.Framework_programme' | translate }}
+          <br>{{ 'Common_labels.Under_grant_agreement' | translate }} No 817617
         </p>
       </div>
       <div class="col-lg-4 col-md-4 ">
@@ -74,7 +62,7 @@ margin-right: 5px;">
     </div>
   </div>
   <div class="copyright">
-    © 2020 <b>All Rights Reserved Engineering</b> <br>VAT: 05724831002
+    © 2022 <b>{{ 'Common_labels.All_rights_reserved' | translate }} Engineering</b> <br>VAT: 05724831002
   </div>
 </footer><!-- End Footer -->
 <div>

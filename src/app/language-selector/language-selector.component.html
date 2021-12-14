@@ -1,0 +1,14 @@
+<div class="d-flex">
+    <i class='bx bxs-flag-alt'></i><span>{{ 'Language_Selector.Language' | translate }}:</span>
+    <div class="selectWrapper">
+        <ngx-flag-picker class="selectBox"
+            [selectedCountryCode]="selectedCountryCode"
+            [countryCodes]="countryCodes"
+            [customLabels]="customLabels"
+            (changedCountryCode)="changeSelectedCountryCode($event)">
+        </ngx-flag-picker>
+        <!--<select class="selectBox" #langSelect (change)="setLanguage(langSelect.value)">
+            <option *ngFor="let lang of languages" [value]="lang.id" [selected]="lang.id === currentLanguage">{{ lang.description | translate }}</option>
+        </select>--> 
+    </div>
+</div>

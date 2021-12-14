@@ -10,18 +10,21 @@ import { UserProfile } from '@app/shared/models/user-profile.model';
 })
 export class AccountComponent implements OnInit {
   user: UserProfile;
-  userRole;
+  userRole = {description: "", value: ""};
   constructor(
     private _userProfileService: UserProfileService,
     public authService: AuthenticationService
   ) {
     var userAccessType = this.authService.currentUserValue.useraccesstype;
     if (userAccessType.includes('farmer')) {
-      this.userRole = 'farmer';
+      this.userRole.description = 'Common_labels.Farmer';
+      this.userRole.value = 'farmer';
     } else if (userAccessType.includes('advisor')) {
-      this.userRole = 'advisor';
+      this.userRole.description = 'Common_labels.Advisor';
+      this.userRole.value = 'advisor';
     } else if (userAccessType.includes('developer')) {
-      this.userRole = 'developer';
+      this.userRole.description = 'Common_labels.Developer';
+      this.userRole.value = 'developer';
     }
   }
 

@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guard/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
@@ -36,7 +38,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     RegisterComponent,
     ForgetPasswordComponent,
     TermsComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    TranslateModule
 
   ]
 })

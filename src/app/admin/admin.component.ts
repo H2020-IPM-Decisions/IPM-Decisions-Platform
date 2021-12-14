@@ -59,7 +59,7 @@ export class AdminComponent implements OnInit {
         .then((response: any) => { this.homeArticle2 = response }),
       cmsService.getHomeGrid()
         .then((response: any) => { this.homeGrid = response }),   
-      cmsService.getNews()
+      cmsService.getNews_OLD()
         .then((response: any) => { this.news = response; }),
     ];
    

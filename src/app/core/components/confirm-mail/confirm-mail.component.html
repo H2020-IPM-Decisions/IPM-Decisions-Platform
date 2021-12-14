@@ -4,13 +4,13 @@
     <div id="login-row" class="row justify-content-center align-items-center">
       <div id="login-column">
         <div [ngSwitch]="success" id="login-box" class="col-md-12 text-center">
-          <h3 *ngSwitchCase="undefined" class="content-center">Wait</h3>
+          <h3 *ngSwitchCase="undefined" class="content-center">{{ 'Common_labels.Wait' | translate }}</h3>
           <div *ngSwitchCase="true" class="content-center">
-            <h3>Success</h3><br>
+            <h3>{{ 'Common_labels.Success' | translate }}</h3><br>
             <a routerLink="/login">
               <i class="fas fa-sign-in-alt icon-size"></i>
               <br>
-              <span>Log in</span>
+              <span>{{ 'Common_labels.Login' | translate }}</span>
             </a>
           </div>
           <div *ngSwitchCase="false" class="overflow-auto">

@@ -5,6 +5,10 @@ import { Farm } from "@app/shared/models/farm.model";
 import { FarmService } from "@app/shared/services/upr/farm.service";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { ToastrService } from "ngx-toastr";
+import { NGXLogger } from "ngx-logger";
+import {TranslateService} from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: "app-farm-list",
@@ -14,12 +18,22 @@ import { ToastrService } from "ngx-toastr";
 export class FarmListComponent implements OnInit {
   farmList: Farm[] = [];
   modalRef: BsModalRef;
+  public tooltipCopy = "Common_labels.Copy"
+  public tooltipEdit = "Common_labels.Edit"
+  public tooltipDelete = "Common_labels.Delete"
+  public subscriptionLanguage: Subscription;
+  public copySuccessMsg: any;
+  public copySuccessTitle: any;
 
   constructor(
     private _farmService: FarmService,
     private _modalService: BsModalService,
-    private _toastr: ToastrService
-  ) {}
+    private _toastr: ToastrService,
+    private _logger: NGXLogger,
+    private _translate: TranslateService
+  ) {
+    this.initLanguageLabels();
+  }
 
   ngOnInit() {
     this.getFarms();
@@ -33,11 +47,11 @@ export class FarmListComponent implements OnInit {
       (response) => {
         if (response.ok) {
           this.farmList.push(copyFarm);
-          this._toastr.show("Farm successfully copied!", "Success!", null, "toast-success");
+          this._toastr.show(this.copySuccessMsg, this.copySuccessTitle, null, "toast-success");
         }
       },
       (error) => {
-        console.log("error", error);
+        this._logger.error("Farm copy error:",error);
       }
     );
   }
@@ -77,5 +91,15 @@ export class FarmListComponent implements OnInit {
       this.farmList.splice(this.farmList.length - 1, 1);
     }
     this.modalRef.hide();
+  }
+
+  initLanguageLabels(): void {
+    this.subscriptionLanguage = this._translate.get('Information_messages.Farm_copy_success').pipe(
+      switchMap((copyMsgContent) => {
+        this.copySuccessMsg = copyMsgContent;
+        return this._translate.get('Common_labels.Success')})
+    ).subscribe((copyMsgTitle)=> {
+      this.copySuccessTitle = copyMsgTitle;
+    });      
   }
 }

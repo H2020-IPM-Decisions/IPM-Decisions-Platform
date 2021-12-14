@@ -29,7 +29,7 @@ export class FarmRequestComponent implements OnInit {
         "email": this.email
       }
     ).toPromise()
-      .then(response => this.message = "Success!")
+      .then(response => this.message = "Common_labels.Success")
       .catch(response => this.message = response.error.message)
       .then(() => this.modalRef = this.modalService.show(this.farmRequestModal))
   }

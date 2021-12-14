@@ -3,18 +3,19 @@
     <div class="contact-info mr-auto">
 
     </div>
+      <app-language-selector></app-language-selector>
     <div class="social-links btn-registration">
-      <a id="home-anchor-login" class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>Login </span></a>
-      <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>Register</span></a>
+      <a id="home-anchor-login" class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>{{ 'Common_labels.Login' | translate }}</span></a>
+      <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>{{ 'Common_labels.Register' | translate }}</span></a>
     </div>
   </div>
 </div>
 
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
-  <div class="container d-flex align-items-center increaseSize">
+  <div class="container d-flex align-items-center">
     <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
-    <b [style.margin-left]="'10px'">A “one-stop shop” for decision support in integrated pest management</b>
+    <b [style.margin-left]="'10px'">{{ homeTitle }}</b>
     <nav class="nav-menu d-none d-lg-block">
     </nav><!-- .nav-menu -->
 
@@ -23,26 +24,11 @@
 
 
 
-<main class="increaseSize" id="main">
+<main id="main">
   <div class="row no-gutters">
-    <div class="col-md-6" [ngStyle]="{'margin-top': '127px', 'padding': '20px 60px'}">
-      <h2>Risk Maps Information</h2>
-      <br>
-      <p style="line-height: 1.5;" class="increaseSize">The maps will show the risk for a range of key pests, weeds and diseases across Europe.<br>
-        Risk is represented as follows:</p>
-      <ul [style.margin-left]="'35px'" class='legend-labels'>
-        <li><b [style.color]="'DarkGreen'">Dark Green</b> = very low risk</li>
-        <li><b [style.color]="'LightGreen'">Light green</b> = low risk</li>
-        <li><b [style.color]="'Yellow'">Yellow</b> = medium risk</li>
-        <li><b [style.color]="'Orange'">Orange</b> = high risk</li>
-        <li><b [style.color]="'Red'">Red</b> = very high risk</li>
-      </ul><br>
-      <p style="line-height: 1.5;" class="increaseSize">The maps will have been produced by running the DSS for a fixed number of weather stations across each country
-        and then interpolating the results returned by the DSS for each location.</p>
-      <p class="increaseSize">The current maps are example maps only and <b>do not</b> represent any specific pest risk.</p>
-    </div>
+    <div class="col-md-6" [ngStyle]="{'margin-top': '127px', 'padding': '20px 60px'}" [innerHtml]="homeIntro"></div>
     <div class="col-md-6">
-      <!-- ======= Hero Section ======= -->
+      <!-- ======= Hero Section ======= 
       <section id="map-content" class="hero-section d-flex align-items-center">
         <i class="fas fa-play-circle" (click)="play()"></i>
         <i class="fas fa-pause-circle" (click)="pause()"></i>
@@ -55,7 +41,7 @@
             </div>
           </ng-template>
         </div>
-      </section>
+      </section>-->
     </div>
   </div>
 
@@ -68,18 +54,21 @@
           <div class="section-title">
             <h3><b>IPM Decisions</b> News </h3>
           </div>
-          <div id="news-slider8" class="owl-carousel">
-            <div class="post-slide8">
-              <div class="post-content">
-                <h3 class="post-title">
-                  2nd December 2021
-                </h3>
-                <p class="post-description">
-                  Join an IPM Decisions workshop to try out the Platform: see <a href="https://www.ipmdecisions.net/" target="_blank">www.IPMDecisions.net</a>
-                </p>
-              </div>
-            </div>
-          </div>
+          <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let n of testNews">
+              <ng-template class="slide" carouselSlide>
+                <div class="post-slide8">
+                  <div class="post-content">
+                    <h3 class="post-title">
+                      {{ n.title }}
+                    </h3>
+                    <p class="post-description" [innerHtml]="n.content">
+                    </p>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>  
         </div>
         <div class="col-md-6 no-padd">
           <div class="container" data-aos="fade-up" [style.padding-top]="'47px'">
@@ -90,7 +79,7 @@
                     <div class="icon">
                       <img src="img/farming.png">
                     </div>
-                    <h4 class="title">Farmers&amp;Advisors</h4>
+                    <h4 class="title">{{ 'Common_labels.Farmers_and_Advisors' | translate }}</h4>
                   </div>
                 </a>
               </div>
@@ -101,7 +90,7 @@
                     <div class="icon">
                       <img src="img/research.png">
                     </div>
-                    <h4 class="title">Researchers</h4>
+                    <h4 class="title">{{ 'Common_labels.Researchers' | translate }}</h4>
                   </div>
                 </a>
               </div>
@@ -110,7 +99,7 @@
                 <a routerLink="/coding-article">
                   <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                     <div class="icon"><img src="img/coding.png"></div>
-                    <h4 class="title">Developers</h4>
+                    <h4 class="title">{{ 'Common_labels.Developers' | translate }}</h4>
                   </div>
                 </a>
               </div>
@@ -133,7 +122,7 @@
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <h3><span>Contacts</span></h3>
+        <h3><span>{{ 'Home.Contacts' | translate }}</span></h3>
       </div>
 
       <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -141,7 +130,7 @@
 
         <div class="col-lg-4 col-md-6">
           <div class="info-box  mb-4">
-            <h3>Email Us</h3>
+            <h3>{{ 'Home.Email_us' | translate }}</h3>
             <p>IPMDecisions@adas.co.uk</p>
             <br>
           </div>
@@ -149,7 +138,7 @@
 
         <div class="col-lg-4 col-md-6">
           <div class="info-box  mb-4">
-            <h3>Web Site</h3>
+            <h3>{{ 'Home.Web_Site' | translate }}</h3>
             <p>https://www.ipmdecisions.net</p>
             <br>
           </div>
@@ -157,7 +146,7 @@
 
         <div class="col-lg-4">
           <div class="info-box mb-4">
-            <h3>Social</h3>
+            <h3>{{ 'Home.Social' | translate }}</h3>
             <a href="https://www.facebook.com/IPM-Decisions-113070703594951" class="icoFacebook" title="Facebook"><i
                 class='bx bxl-facebook-square'></i></a>
             <a href="https://twitter.com/intent/follow?source=followbutton&variant=1.0&screen_name=IpmDecisions"
@@ -178,13 +167,16 @@
   <div class="container py-4">
     <div class="row">
       <div class="col-lg-4 col-md-4 eu-flag">
-        <p>Project lead: Neil Paveley (neil.paveley@adas.co.uk)</p>
-        <p>Technical contacts: Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
+        <p>{{ 'Common_labels.Project_lead' | translate }}: Neil Paveley (neil.paveley@adas.co.uk)</p>
+        <p>{{ 'Common_labels.Technical_contacts' | translate }}: Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
         <p>Tor-Einar Skog (tor-einar.skog@nibio.no)</p>
         <img src="img/logo-euro.jpg" style="float: left;
 display: inline-grid;
 margin-right: 5px;">
-        <p>Co-funded by the Horizon 2020<br>Framework Programme of the European Union<br>Under grant agreement No 817617
+        <p>
+          {{ 'Common_labels.Cofundend_by_the_Horizon_2020' | translate }}
+          <br>{{ 'Common_labels.Framework_programme' | translate }}
+          <br>{{ 'Common_labels.Under_grant_agreement' | translate }} No 817617
         </p>
       </div>
       <div class="col-lg-4 col-md-4 ">
@@ -196,7 +188,7 @@ margin-right: 5px;">
     </div>
   </div>
   <div class="copyright">
-    © 2022 <b>All Rights Reserved Engineering</b> <br>VAT: 05724831002
+    © 2022 <b>{{ 'Common_labels.All_rights_reserved' | translate }} Engineering</b> <br>VAT: 05724831002
   </div>
 </footer><!-- End Footer -->
 <div>

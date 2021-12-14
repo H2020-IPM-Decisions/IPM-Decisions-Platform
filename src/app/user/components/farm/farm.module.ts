@@ -19,6 +19,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { DssModelAddComponent } from '../dss/dss-model-add.component';
 import { DssModelRowComponent } from '../dss/dss-model-row.component';
 import { DssModelParametrisationComponent } from '../dss/dss-model-parametrisation.component';
+import { TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [ 
@@ -31,7 +32,8 @@ import { DssModelParametrisationComponent } from '../dss/dss-model-parametrisati
     BsDatepickerModule.forRoot(),
     TooltipModule.forRoot(),
     ApplicationPipesModule.forRoot(),
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    TranslateModule
   ],
   declarations: [
     AddFarmComponent,

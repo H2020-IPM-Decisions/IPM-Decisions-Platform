@@ -1,19 +1,19 @@
 <ul class="vertical-nav-menu">
-  <li class="app-sidebar__heading">IPM Private</li>
+  <li class="app-sidebar__heading">{{ 'User_menu.IPM_private' | translate }}</li>
   <li routerLinkActive="mm-active" [routerLinkActiveOptions]="{exact:true}">
-    <a routerLink="/user"><i class="metismenu-icon pe-7s-home"></i> Home</a>
+    <a routerLink="/user"><i class="metismenu-icon pe-7s-home"></i> {{ 'Common_labels.Home' | translate }}</a>
   </li>
   <li>
     <a routerLink="/user/settings">
-      <i class="metismenu-icon pe-7s-config"></i>Settings</a>
+      <i class="metismenu-icon pe-7s-config"></i>{{ 'Common_labels.Settings' | translate }}</a>
   </li>
 
-  <li class="app-sidebar__heading">Farm menu</li>
+  <li class="app-sidebar__heading">{{ 'User_menu.Farm_menu' | translate }}</li>
 
   <div *ngIf="activeMenuItem ==='farm'">
     <li>
       <a routerLink="/user/farm" routerLinkActive="mm-active" [routerLinkActiveOptions]="{exact:true}">
-        <i class="metismenu-icon pe-7s-ribbon"></i>Farm Management</a>
+        <i class="metismenu-icon pe-7s-ribbon"></i>{{ 'Farm_list.Title' | translate }}</a>
     </li>
     <!--<li>
       <a routerLink="/user/dss/selection" routerLinkActive="mm-active" [routerLinkActiveOptions]="{exact:true}">
@@ -21,7 +21,7 @@
     </li>-->
     <li>
       <a routerLink="/user/dss/dashboard" routerLinkActive="mm-active" [routerLinkActiveOptions]="{exact:true}">
-        <i class="metismenu-icon pe-7s-graph2"></i>DSS USE Dashboard</a>
+        <i class="metismenu-icon pe-7s-graph2"></i>{{ 'DSS_use_dashboard.Title' | translate }}</a>
     </li>
   </div>
 

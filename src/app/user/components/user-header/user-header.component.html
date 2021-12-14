@@ -30,7 +30,7 @@
             <ul class="header-menu nav">
                 <li class="btn-group nav-item">
                     <a aria-haspopup="true" aria-expanded="false" class="nav-link" (click)="showFarmActions('farm')">
-                        <i class="nav-link-icon fas fa-tractor"></i> Farm
+                        <i class="nav-link-icon fas fa-tractor"></i> {{ 'User_header.Farm' | translate }}
                     </a>
                     <!-- <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
                         Farm <i class="fa fa-angle-down ml-2 opacity-8"></i>
@@ -58,6 +58,7 @@
             </ul>
         </div>
         <div class="app-header-right">
+            <app-language-selector></app-language-selector>
             <div class="header-btn-lg pr-0">
                 <div class="widget-content p-0">
                     <div class="widget-content-wrapper">
@@ -67,7 +68,7 @@
                                 {{username}}
                             </div>
                             <div class="widget-subheading">
-                                Account Manager
+                                {{ 'User_header.Account_manager' | translate }}
                             </div>
                         </div>
                         <div class="widget-content-left">
@@ -76,8 +77,8 @@
                                     <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                 </a>
                                 <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" [routerLink]="['/user/account']">Account</a>
-                                    <a class="dropdown-item" (click)="logout()" [routerLink]="['/']">Logout</a>
+                                    <a class="dropdown-item" [routerLink]="['/user/account']">{{ 'Common_labels.Account' | translate }}</a>
+                                    <a class="dropdown-item" (click)="logout()" [routerLink]="['/']">{{ 'Common_labels.Logout' | translate }}</a>
                                 </div>
                             </div>
                         </div>

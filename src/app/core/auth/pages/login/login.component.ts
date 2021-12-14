@@ -7,6 +7,7 @@ import { Authentication } from './../../models/authentication.model';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Role } from '../../enums/role.enum';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { TranslationService } from '@app/shared/services/translation.service';
 
 @Component({
   selector: 'login',
@@ -28,10 +29,12 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private _translationService: TranslationService
   ) { }
 
   ngOnInit() {
+    this._translationService.initLanguage();
     this.loginForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]],

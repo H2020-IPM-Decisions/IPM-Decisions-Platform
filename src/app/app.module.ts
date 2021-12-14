@@ -3,7 +3,7 @@ import { MenuComponent } from './core/components/header/menu/menu.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditAccountComponent } from './user/components/account/edit-account/edit-account.component';
 import { AccountComponent } from './user/components/account/account.component';
@@ -84,6 +84,11 @@ import { ManageFarmComponent } from './user/components/farm/manage-farm/manage-f
 import { FieldEditComponent } from './user/components/field/field-edit/field-edit.component';
 import { ApplicationPipesModule } from './shared/pipes/application-pipes.module';
 import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { LanguageSelectorComponent } from './language-selector/language-selector.component';
+import { NgxFlagPickerModule } from 'ngx-flag-picker';
 
 @NgModule({
   declarations: [
@@ -155,7 +160,8 @@ import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
     CustomizeDashboardComponent,
     FarmComponent,
     ManageFarmComponent,
-    FieldEditComponent
+    FieldEditComponent,
+    LanguageSelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -175,10 +181,27 @@ import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
     AuthModule,
     ModalModule.forRoot(),
     ApplicationPipesModule.forRoot(),
-    LoggerModule.forRoot({level: NgxLoggerLevel.ERROR, serverLogLevel: NgxLoggerLevel.OFF})
+    LoggerModule.forRoot({level: NgxLoggerLevel.ERROR, serverLogLevel: NgxLoggerLevel.OFF}),
+    // ngx-translate and the loader module
+    HttpClientModule,
+    TranslateModule.forRoot({
+        defaultLanguage: 'en',
+        loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+        }
+    }),
+    CarouselModule,
+    NgxFlagPickerModule
   ],
   providers: [EppoCodeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
 // TODO https://pumpingco.de/blog/environment-variables-angular-docker/
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient,"/i18n/",".json");
+}

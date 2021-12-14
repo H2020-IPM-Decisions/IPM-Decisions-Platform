@@ -1,0 +1,19 @@
+.selectWrapper{
+    margin-left: 6px;
+    border-radius:36px;
+    /*display:inline-block;
+    overflow:hidden;*/
+    background:#ffffff;
+    border:1px solid #cccccc;
+}
+
+.selectBox{
+    margin-left: 6px;
+    border:0px;
+    outline:none;
+}
+
+.bxs-flag-alt{
+    padding-top: 3px;
+    margin-right: 2px;
+}
