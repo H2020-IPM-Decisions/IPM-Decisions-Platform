@@ -2,14 +2,14 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { compare } from "fast-json-patch";
 import { HttpErrorResponse } from "@angular/common/http";
-import { IndividualConfig, ToastrService } from "ngx-toastr";
 
 import { UserProfile } from "./../../../../shared/models/user-profile.model";
 import { UserProfileForCreation } from "./../../../../shared/models/user-profile-for-creation.model";
 import { UserProfileService } from "@app/shared/services/upr/user-profile.service";
 import { AuthenticationService } from "@app/core/auth/services/authentication.service";
 import { UserProfileForUpdate } from "@app/shared/models/user-profile-for-update.model";
-import { throwError } from "rxjs";
+import { NGXLogger } from "ngx-logger";
+import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
 
 @Component({
   selector: "app-edit-account",
@@ -18,7 +18,36 @@ import { throwError } from "rxjs";
 })
 export class EditAccountComponent implements OnInit {
   accountForm: FormGroup;
-  countries = ["Austria", "Belgium", "Bulgaria", "Croatia", "Republic of Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "GB", "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Norway", "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden"];
+  countries = [
+    {label:"Countries.Austria",value:"Austria"}, 
+    {label:"Countries.Belgium",value:"Belgium"},
+    {label:"Countries.Bulgaria",value:"Bulgaria"},
+    {label:"Countries.Croatia",value:"Croatia"},
+    {label:"Countries.Republic_of_Cyprus",value:"Republic of Cyprus"}, 
+    {label:"Countries.Czech_Republic",value:"Czech Republic"},
+    {label:"Countries.Denmark",value:"Denmark"},
+    {label:"Countries.Estonia",value:"Estonia"}, 
+    {label:"Countries.Finland",value:"Finland"},
+    {label:"Countries.France",value:"France"},
+    {label:"Countries.Great_Britain",value:"Great Britain"}, 
+    {label:"Countries.Germany",value:"Germany"}, 
+    {label:"Countries.Greece",value:"Greece"},
+    {label:"Countries.Hungary",value:"Hungary"},
+    {label:"Countries.Ireland",value:"Ireland"}, 
+    {label:"Countries.Italy",value:"Italy"},
+    {label:"Countries.Latvia",value:"Latvia"},
+    {label:"Countries.Lithuania",value:"Lithuania"}, 
+    {label:"Countries.Luxembourg",value:"Luxembourg"}, 
+    {label:"Countries.Malta",value:"Malta"},
+    {label:"Countries.Netherlands",value:"Netherlands"},
+    {label:"Countries.Norway",value:"Norway"}, 
+    {label:"Countries.Poland",value:"Poland"}, 
+    {label:"Countries.Portugal",value:"Portugal"},
+    {label:"Countries.Romania",value:"Romania"}, 
+    {label:"Countries.Slovakia",value:"Slovakia"},
+    {label:"Countries.Slovenia",value:"Slovenia"}, 
+    {label:"Countries.Spain",value:"Spain"},
+    {label:"Countries.Sweden",value:"Sweden"}];
   private id: string;
   submitted;
   errors: string[] = [];
@@ -31,30 +60,25 @@ export class EditAccountComponent implements OnInit {
     private _fb: FormBuilder,
     private _authService: AuthenticationService,
     private _userProfileService: UserProfileService,
-    private _toastr: ToastrService
+    private _logger: NGXLogger,
+    private _toastrTranslated: ToastrTranslationService
   ) {}
 
   ngOnInit() {
     // initialize form
     this.userAccountForm();
-
+    //this.initToastMessageTranslated();
     // retreive current user
     this._userProfileService.getUserProfile(false).subscribe(
       (user: UserProfileForUpdate) => {
-        // console.log('user Pro', user);
         this.updateUserProfile(user);
       },
       (err: any) => {
-        console.log("greska", err);
-        this._toastr.show(
-          "Error fetching user account!",
-          "Error!",
-          null,
-          "toast-error"
-        );
+        this._logger.error("Error:",err);
+        this._toastrTranslated.showTranslatedToastr("Error_messages.User_account_fetching_error","Common_labels.Error","toast-error");
       }
     );
-  } // end ngOnInit
+  }
 
   // uploadProfileImage(x) {}
 
@@ -126,22 +150,12 @@ export class EditAccountComponent implements OnInit {
 
       this._userProfileService.updateUserProfile(patch).subscribe(
         (result) => {
-          // this.isUpdated = true;
-          this._toastr.show(
-            "User account successfully updated!",
-            "Success!",
-            null,
-            "toast-success"
-          );
+          this._toastrTranslated.showTranslatedToastr("Information_messages.User_account_updated","Common_labels.Success","toast-success");
           window.history.back();
         },
         (error: HttpErrorResponse) => {
-          this._toastr.show(
-            "Error updating user account!",
-            "Error!",
-            null,
-            "toast-error"
-          );
+          this._logger.error("Error:",error);
+          this._toastrTranslated.showTranslatedToastr("Error_messages.User_account_updating_error","Common_labels.Error","toast-error");
         }
       );
     }
@@ -149,15 +163,12 @@ export class EditAccountComponent implements OnInit {
 
   // uploadProfileImage(files: FileList) {
   //   const file = files.item(0);
-  //   console.log("file loaders", file);
 
   //   let reader = new FileReader();
   //   reader.addEventListener("load", (ev: any) => {
-  //     console.log("event", ev);
 
   //     let a = ev.target.result;
   //     this.imageUrl = ev.target.result;
-  //     console.log('dddd', a);
   //   });
   //   reader.readAsDataURL(file);
   // }

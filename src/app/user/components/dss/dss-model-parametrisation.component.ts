@@ -6,6 +6,7 @@ import { NGXLogger } from 'ngx-logger';
 import { JsonEditorService } from './json-editor/json-editor.service';
 import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
 import * as $ from 'jquery';
 
 @Component({
@@ -38,6 +39,7 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
     private _dssSelectionService: DssSelectionService,
     private _jsonEditorService: JsonEditorService,
     private _toastrService: ToastrService,
+    private _toastrTranslated: ToastrTranslationService
   ) { }
 
   public ngOnInit(): void {
@@ -65,6 +67,7 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
         this.remoteCallLoading = false;
       })
     } catch (error) {
+      this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_parameters_fetching_error","Common_labels.Error","toast-error");
       this._logger.error('Unable to fetch data:', error);
       throw new Error('Unable to fetch data');
     }
@@ -104,14 +107,14 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
       this.$subscriptionSubmit = this._dssSelectionService.updateDssParameters(this.id, inputParams).subscribe(
         (response) => {
           if (response) {
-            this._toastrService.success("Operation Success","DSS parameters updated!");
-            setTimeout(() => this.goBack(), 3000);
+            this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_parameters_updated","Common_labels.Success","toast-success");
+            setTimeout(() => this.goBack(), 5000);
           }
           
           
         },
         (error) => {
-          this._toastrService.error("Operation Failed","Dss parameters update failed, an error occurs");
+          this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_parameters_update_error","Common_labels.Error","toast-error");
           this._logger.error("Operation Failed:",error);
         },
       )

@@ -60,7 +60,7 @@
         <span class="modalErrorIcon fa-stack">
                 <i class="fas fa-circle fa-stack-1x"></i>
                 <i class="fas fa-times-circle fa-stack-1x"></i>
-        </span> <b>Error</b>
+        </span> <b>{{ 'Common_labels.Error' | translate }}</b>
       </h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
@@ -70,7 +70,7 @@
       <div class="form-group row">
         <div class="col-md justify-content-center">
             <div class="alert alert-danger text-muted">
-                <strong>The DSS can't be run because an error occured:</strong>
+                <strong>{{ 'Error_messages.DSS_an_error_occured' | translate }}:</strong>
                 <br>
                 {{ errorMessage }}
             </div>
@@ -78,6 +78,6 @@
       </div>
     </div>
     <div class="modal-footer pull-right">
-      <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">Close</button>
+      <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
     </div>
   </ng-template>

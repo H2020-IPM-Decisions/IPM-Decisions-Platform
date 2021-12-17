@@ -1,7 +1,6 @@
 import { HttpErrorResponse, HttpResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { ToastrService } from "ngx-toastr";
 import { Farm } from "@app/shared/models/farm.model";
 import { Field } from "@app/shared/models/field.model";
 import { IDssFormData, DssSelection } from "./dss-selection.model";
@@ -11,6 +10,7 @@ import { EppoCode } from "@app/shared/models/eppo-code.model";
 import { Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { NGXLogger } from "ngx-logger";
+import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
 
 @Component({
   selector: "app-dss-model-add",
@@ -29,11 +29,11 @@ export class DssModelAddComponent implements OnInit {
 
   constructor(
     private _fb: FormBuilder,
-    private _toastr: ToastrService,
     private _dssSelectionService: DssSelectionService,
     private _eppoCodeService: EppoCodeService,
     private _activatedRoute: ActivatedRoute,
-    private _logger: NGXLogger
+    private _logger: NGXLogger,
+    private _toastrTranslated: ToastrTranslationService
   ) {}
 
   ngOnInit() {
@@ -88,21 +88,11 @@ export class DssModelAddComponent implements OnInit {
       (response: HttpResponse<DssSelection[]>) => {
         this.data = response.body;
         this.areCropsSelected = true;
-        this._toastr.show(
-          "DSS Models retrivied successfully!",
-          "Success!",
-          null,
-          "toast-success"
-        );
+        this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
       },
       (error: HttpErrorResponse) => {
         this._logger.error("Dss models selection error",error);
-        this._toastr.show(
-          "Fail to get the requested models for selected crops!",
-          "Error!",
-          null,
-          "toast-error"
-        );
+        this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_retrived_error","Common_labels.Error","toast-error");
       }
     );
   }
@@ -112,27 +102,17 @@ export class DssModelAddComponent implements OnInit {
       this._dssSelectionService.submitDss(this.selectedDss,this.farm).subscribe(
         (response) => {
           if (response) {
-            this._toastr.show(
-              "DSS Models added successfully!",
-              "Success!",
-              null,
-              "toast-success"
-            );
+            this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_added","Common_labels.Success","toast-success");
             this.goBack();
           }
         },
         (error: HttpErrorResponse) => {
           if(error.status===409){
             this._logger.error("Combination Exists","No DSS Submitted, a DSS with selected Crop/Pest combination already exists");
-            this._toastr.error("Combination Exists","No DSS Submitted, a DSS with selected Crop/Pest combination already exists");
+            this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_combination_error","Common_labels.Error","toast-error");
           }else{
             this._logger.error("Dss models selection error",error);
-            this._toastr.show(
-              "Fail to submit the selected models!",
-              "Error!",
-              null,
-              "toast-error"
-            );
+            this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_add_error","Common_labels.Error","toast-error");
           }
         }
       );

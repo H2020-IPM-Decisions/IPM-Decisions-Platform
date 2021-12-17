@@ -21,9 +21,10 @@ export class TranslationService {
           this.currentLanguage = sessionStorage.getItem("selectedLanguage");
           this._translate.use(this.currentLanguage);
         } else {
-          this.currentLanguage = "en"
+          /*this.currentLanguage = "en"
           sessionStorage.setItem("selectedLanguage",this.currentLanguage)
-          this._translate.use(this.currentLanguage);
+          this._translate.use(this.currentLanguage);  */
+          this.initLanguageFromBrowser();
         }
     }
 

@@ -8,7 +8,6 @@ import {
 } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { FarmService } from "@app/shared/services/upr/farm.service";
-import { ToastrService } from "ngx-toastr";
 import * as L from "leaflet";
 import { Farm } from "@app/shared/models/farm.model";
 import { Location } from "@app/shared/models/location.model";
@@ -21,6 +20,7 @@ import {  mergeMap } from "rxjs/operators";
 import { Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { NGXLogger } from "ngx-logger";
+import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
 
 @Component({
   selector: "app-add-farm",
@@ -48,10 +48,10 @@ export class AddFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     private _fb: FormBuilder,
     private _farmService: FarmService,
     private _weatherService: WeatherService,
-    private _toastr: ToastrService,
     private _maprisksService: MaprisksService,
     private _activatedRoute: ActivatedRoute,
-    private _logger: NGXLogger
+    private _logger: NGXLogger,
+    private _toastrTranslated: ToastrTranslationService
   ) {}
 
   ngOnInit() {
@@ -171,7 +171,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onFarmSubmit() {
     if (this.farmForm.invalid) {
-      this._toastr.show("Invalid form data!", "Error!", null, "toast-error");
+      this._toastrTranslated.showTranslatedToastr("Error_messages.Invalid_form_data","Common_labels.Error","toast-error");
       return;
     }
     this.isSaving = true;
@@ -197,12 +197,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit, OnDestroy {
   submitSuccess(data:any):void{
     this.isSaving = false;
     if (data) {
-      this._toastr.show(
-        "Farm successfully created!",
-        "Success!",
-        null,
-        "toast-success"
-      );
+      this._toastrTranslated.showTranslatedToastr("Information_messages.Farm_created","Common_labels.Success","toast-success");
       window.history.back();
     }
   }
@@ -210,12 +205,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit, OnDestroy {
   submitError(error):void{
     console.log("catched error show msg", error);
     this.isSaving = false;
-    this._toastr.show(
-      "Unable to create farm!",
-      "Error!",
-      null,
-      "toast-error"
-    );
+    this._toastrTranslated.showTranslatedToastr("Error_messages.Unable_to_create_farm","Common_labels.Error","toast-error");
   }
 
   private getNearestWeatherDataSource(

@@ -15,6 +15,7 @@ import { CustomChartComponent } from './custom-chart/custom-chart.component';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { CustomGroupChartComponent } from './custom-chart/custom-group-chart.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [ 
@@ -26,7 +27,8 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     ApplicationPipesModule.forRoot(),
     TooltipModule.forRoot(),
     PopoverModule.forRoot(),
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    TranslateModule
   ],
   declarations: [
     DssSelectionComponent,

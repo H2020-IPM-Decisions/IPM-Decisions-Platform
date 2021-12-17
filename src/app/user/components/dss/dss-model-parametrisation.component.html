@@ -6,7 +6,7 @@
           <i class="pe-7s-note icon-gradient bg-mean-fruit">
           </i>
         </div>
-        <div>DSS Model Parametrisation</div>
+        <div>{{ 'DSS_model_parametrisation.Title' | translate }}</div>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
 
       <div class="progress m-3" *ngIf="remoteCallLoading">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%">
-          Loading...
+          {{ 'Common_labels.Loading' | translate }}
         </div>
       </div>
       <legend class="w-auto px-1 text-muted h6">
@@ -35,8 +35,8 @@
               <accordion [isAnimated]="true">
                 <accordion-group>
                   <span accordion-heading tooltip="Click to show">
-                    Saved parameters
-                    <i class="fas fa-bars" style="position:absolute; top: 40%; right: 2%;"></i>
+                    {{ 'DSS_model_parametrisation.Saved_parameters' | translate }}
+                    <i class="fas fa-bars" style="position:absolute; top: 20px; right: 2%;"></i>
                   </span>
                   <div>
                     <table class="table table-bordered">
@@ -81,10 +81,10 @@
       <div class="col-md-12">
         <button class="btn btn-primary col-2 pull-right ml-1" (click)="onSubmit()" [disabled]="!editorValid">
           <i class="fas fa-save"></i>&nbsp;
-          Save
+          {{ 'Common_labels.Save' | translate }}
         </button>
         <button class="btn btn-info col-2 pull-right" type="button" (click)="goBack()">
-          Cancel
+          {{ 'Common_labels.Cancel' | translate }}
         </button>
       </div>
     </div>

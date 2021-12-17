@@ -1,14 +1,14 @@
 <td class="text-center">
     <span *ngIf="model.crops.length === 1">{{ model.crops[0] | eppoCode }}</span>
     <select  *ngIf="model.crops.length > 1" class="form-control" id="crop" [disabled]="selectedDss" (change)="cropSelectChanged($event)">
-        <option value="">Select Crop</option>
+        <option value="">{{ 'DSS_model_selection.Select_crop' | translate }}</option>
         <option *ngFor="let crop of model.crops; index as j;" value="{{ crop }}">{{ crop | eppoCode }}</option>
     </select>
 </td>
 <td class="text-center">
     <span *ngIf="model.pests.length === 1">{{ model.pests[0] | eppoCode }}</span>
     <select *ngIf="model.pests.length > 1" class="form-control" id="pest" [disabled]="selectedDss" (change)="pestSelectChanged($event)">
-        <option value="">Select Pest</option>
+        <option value="">{{ 'DSS_model_selection.Select_pest' | translate }}</option>
         <option *ngFor="let pest of model.pests; index as x;" value="{{ pest }}">{{ pest | eppoCode }}</option>
     </select>
 </td>
@@ -19,8 +19,8 @@
     </a>
 </td>
 <td class="text-center">
-    <button class="btn btn-info" (click)="onSelect()" [ngClass]="{'data-notSelected': selectedDss === true}" [disabled]="selectedPest === '' || selectedCrop === ''">Select</button>
-    <button class="btn btn-info" (click)="onDeselect()" [ngClass]="{'data-selected': selectedDss === true, 'data-notSelected': selectedDss === false}">Deselect</button>
+    <button class="btn btn-info" (click)="onSelect()" [ngClass]="{'data-notSelected': selectedDss === true}" [disabled]="selectedPest === '' || selectedCrop === ''">{{ 'Common_labels.Select' | translate }}</button>
+    <button class="btn btn-info" (click)="onDeselect()" [ngClass]="{'data-selected': selectedDss === true, 'data-notSelected': selectedDss === false}">{{ 'Common_labels.Deselect' | translate }}</button>
 </td>
 
 <ng-template #dssModelDetails>
@@ -33,31 +33,31 @@
     </div>
     <div class="modal-body scrollable">
         <div class="form-group row">
-            <label class="col-sm-3 col-form-label"><b>DSS ID</b></label>
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_model_selection.DSS_id' | translate }}</b></label>
             <div class="col-sm-9">
                 <p>{{ dssSelection.id }}</p>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-3 col-form-label"><b>MODEL ID</b></label>
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_model_selection.Model_id' | translate }}</b></label>
             <div class="col-sm-9">
                 <p>{{ model.id }}</p>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-3 col-form-label"><b>DESCRIPTION</b></label>
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_model_selection.Description' | translate }}</b></label>
             <div class="col-sm-9">
                 <p>{{ model.description.other }}</p>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-3 col-form-label"><b>WARNING STATUS INTERPRETATION</b></label>
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_model_selection.Warning_status_interpretation' | translate }}</b></label>
             <div class="col-sm-9">
                 <p *ngIf="model.output?.warning_status_interpretation">{{ model.output.warning_status_interpretation }}</p>
             </div>
         </div>
     </div>
     <div class="modal-footer pull-right">
-      <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">Close</button>
+      <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
     </div>
   </ng-template>

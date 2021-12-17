@@ -1,19 +1,15 @@
 import { DssSelectionService } from './../../dss/dss-selection.service';
-import { environment } from './../../../../../environments/environment';
-import { HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/http";
-import { AfterViewInit, Component, Input, OnDestroy, OnInit, TemplateRef, ViewChild } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
-import { Router } from "@angular/router";
+import { HttpErrorResponse } from "@angular/common/http";
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, TemplateRef } from "@angular/core";
 import { Farm } from "@app/shared/models/farm.model";
 import { Field } from "@app/shared/models/field.model";
 import { WeatherDataSource } from "@app/shared/models/weather-data-source.model";
 import { FieldService } from "@app/shared/services/upr/field.service";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
-import { ToastrService } from "ngx-toastr";
 import { DssModelAddComponent } from '../../dss/dss-model-add.component';
 import { Subscription } from 'rxjs';
-import { FieldEditComponent } from '../../field/field-edit/field-edit.component';
 import { NGXLogger } from 'ngx-logger';
+import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
 
 @Component({
   selector: "app-edit-farm",
@@ -29,63 +25,15 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
   modalRef: BsModalRef;
   selectedCrop: any;
   $subscription: Subscription;
-
-  @ViewChild('addObservationTemplate', { static: false }) public addObservationTemplate: TemplateRef<any>;
-  observationModalRef: BsModalRef;
-  observationModalForm = this._fb.group({
-    time: [""],
-    severity: [""]
-  })
-  addObservation(field) {
-    let requestBody = this.observationModalForm.value;
-    requestBody.fieldCropPestId = field.fieldCropDto.fieldCropPestDto.value[0].id;
-    requestBody.location = { x: 0, y: 0, srid: 4236 };
-    this.http
-      .post(`${environment.apiUrl}/api/upr/fields/${field.id}/observations`, requestBody)
-      .subscribe((x) => {
-        this.onGetFields(
-          this.farm.id,
-          () => {
-            this.observationModalRef.hide();
-          }
-        );
-      })
-  }
-
-  @ViewChild('addSprayTemplate', { static: false }) public addSprayTemplate: TemplateRef<any>;
-  sprayModalRef: BsModalRef;
-  sprayModalForm = this._fb.group({
-    name: [""],
-    time: [""],
-    rate: [""]
-  })
-  addSpray(field) {
-    let requestBody = this.sprayModalForm.value;
-    requestBody.fieldCropPestId = field.fieldCropDto.fieldCropPestDto.value[0].id;
-    this.http
-      .post(`${environment.apiUrl}/api/upr/fields/${field.id}/sprayapplications`, requestBody)
-      .subscribe((x) => {
-        this.onGetFields(
-          this.farm.id,
-          () => {
-            this.sprayModalRef.hide();
-          }
-        );
-      })
-  }
-
   metStationSelected = 0;
   weatherForecastSelected = 1;
 
   constructor(
-    private _fb: FormBuilder,
     public _modalService: BsModalService,
-    private _router: Router,
     private _fieldService: FieldService,
-    private _toastr: ToastrService,
-    private http: HttpClient,
     private _dssSelectionService: DssSelectionService,
-    private _logger: NGXLogger
+    private _logger: NGXLogger,
+    private _toastrTranslated: ToastrTranslationService
   ) { }
 
   ngOnInit() {
@@ -117,70 +65,10 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
       },
       (error: HttpErrorResponse) => {
         if (error.status !== 404) {
-          this._toastr.show(
-            "Error fetching field detail!",
-            "Error!",
-            null,
-            "toast-error"
-          );
+          this._toastrTranslated.showTranslatedToastr("Error_messages.Field_detail_fetching_error","Common_labels.Error","toast-error");
         }
       }
     );
-  }
-
-  openModalEditField(field: Field): void {
-    const initialState: any = {
-      farm: this.farm,
-      field: field
-    };
-    this._modalService.show(FieldEditComponent, { initialState }).content;
-  }
-
-  onFieldCopy(field: any) {
-    let cropPest = {};
-    try {
-      cropPest = {
-        cropEppoCode: field.fieldCropDto.cropEppoCode,
-        pestEppoCode: field.fieldCropDto.fieldCropPestDto.value[0].pestEppoCode
-      }
-    } catch (error) {
-      this._toastr.show(
-        "Fail to copy field!",
-        "Error!",
-        null,
-        "toast-error"
-      );
-      return;
-    }
-    const fieldToCopy: any = {
-      sowingDate: field.sowingDate,
-      name: 'none',
-      cropPest: cropPest
-    }
-    this._fieldService.createField(fieldToCopy, this.farm.id).subscribe(
-      (fieldResponse) => {
-        if (fieldResponse) {
-          this._toastr.show(
-            "Field added successfully!",
-            "Success!",
-            null,
-            "toast-success"
-          );
-          this.onGetFields(this.farm.id);
-        }
-      },
-      (error: HttpErrorResponse) => {
-        //console.log("field error", error);
-        this._toastr.show(
-          "Fail to create new field!",
-          "Error!",
-          null,
-          "toast-error"
-        );
-      }
-    );
-
-
   }
 
   onDssModelDelete(fieldId: string, cropPestComboId: string, dssModelId: string): void {
@@ -188,11 +76,11 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
       return;
     }
     this._dssSelectionService.del(dssModelId).subscribe(() => {
-      this._toastr.success("Operation Success", "DSS Deleted");
+      this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_deletion","Common_labels.Success","toast-success");
       this.modalRef.hide();
       this.checkAndCleanFieldArray(fieldId, cropPestComboId, dssModelId);
     }, () => {
-      this._toastr.error("Operation Failed", "No DSS deleted");
+      this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_deletion_error","Common_labels.Error","toast-error");
     });
   }
 
@@ -224,26 +112,6 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  onFieldDelete(fieldId: string) {
-    if (fieldId) {
-      this._fieldService
-        .deleteFieldById(this.farm.id, fieldId)
-        .subscribe((response: HttpResponse<any>) => {
-          if (response.status === 204) {
-            this.modalRef.hide();
-
-            const index: number = this.fieldList.findIndex(
-              (item) => item.id === fieldId
-            );
-
-            if (index !== -1) {
-              this.fieldList.splice(index, 1);
-            }
-          }
-        });
-    }
-  }
-
   openModal(template: TemplateRef<any>, field: any, size?: string) {
     this.modalRef = this._modalService.show(template, { class: size });
     this.showFieldDetails(field);
@@ -256,8 +124,6 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     };
     this._modalService.show(DssModelAddComponent, { initialState, class: 'modal-lg' }).content;
   }
-
-
 
   showFieldDetails(field: any) {
     this.selectedCrop = field;

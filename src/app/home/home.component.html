@@ -26,9 +26,9 @@
 
 <main id="main">
   <div class="row no-gutters">
-    <div class="col-md-6" [ngStyle]="{'margin-top': '127px', 'padding': '20px 60px'}" [innerHtml]="homeIntro"></div>
-    <div class="col-md-6">
-      <!-- ======= Hero Section ======= 
+    <div [ngStyle]="{'margin-top': '127px', 'padding': '20px 60px'}" [innerHtml]="homeIntro"></div>
+    <!--<div class="col-md-6">
+       ======= Hero Section ======= 
       <section id="map-content" class="hero-section d-flex align-items-center">
         <i class="fas fa-play-circle" (click)="play()"></i>
         <i class="fas fa-pause-circle" (click)="pause()"></i>
@@ -41,8 +41,8 @@
             </div>
           </ng-template>
         </div>
-      </section>-->
-    </div>
+      </section>
+    </div>-->
   </div>
 
   <!-- ======= Featured Services Section ======= -->
@@ -116,7 +116,6 @@
 
   </section><!-- End Featured Services Section -->
 
-
   <!-- ======= Contact Section ======= -->
   <section id="contact" class="contact">
     <div class="container" data-aos="fade-up">
@@ -128,7 +127,7 @@
       <div class="row" data-aos="fade-up" data-aos-delay="100">
 
 
-        <div class="col-lg-4 col-md-6">
+        <div class="col-md-4 col-md-6">
           <div class="info-box  mb-4">
             <h3>{{ 'Home.Email_us' | translate }}</h3>
             <p>IPMDecisions@adas.co.uk</p>
@@ -136,15 +135,31 @@
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6">
+        <div class="col-md-4 col-md-6">
           <div class="info-box  mb-4">
             <h3>{{ 'Home.Web_Site' | translate }}</h3>
-            <p>https://www.ipmdecisions.net</p>
+            <a href="https://www.ipmdecisions.net" target="_blank">https://www.ipmdecisions.net</a>
+            <!--<p>https://www.ipmdecisions.net</p>-->
             <br>
           </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-md-4 col-md-6">
+          <div class="info-box  mb-4">
+            <h3>{{ 'Home.Useful_links' | translate }}</h3>
+            <a href="https://bdspublishing.com/resources/ipm-decisions/" target="_blank">https://bdspublishing.com/resources/ipm-decisions/</a>
+            <br>
+            <a href="https://ipmworks.net/" target="_blank">https://ipmworks.net/</a>
+            <br>
+            <a href="https://platform.smartprotect-h2020.eu/" target="_blank">https://platform.smartprotect-h2020.eu/</a>
+            <!--<p>https://bdspublishing.com/resources/ipm-decisions/</p>
+            <p>https://ipmworks.net/</p>
+            <p>https://platform.smartprotect-h2020.eu/</p>-->
+            <br>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-md-6">
           <div class="info-box mb-4">
             <h3>{{ 'Home.Social' | translate }}</h3>
             <a href="https://www.facebook.com/IPM-Decisions-113070703594951" class="icoFacebook" title="Facebook"><i

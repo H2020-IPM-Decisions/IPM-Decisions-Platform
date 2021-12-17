@@ -6,7 +6,7 @@
           <i class="pe-7s-note icon-gradient bg-mean-fruit">
           </i>
         </div>
-        <div>DSS Model Selection</div>
+        <div>{{ 'DSS_model_selection.Title' | translate }}</div>
       </div>
     </div>
   </div>
@@ -22,16 +22,11 @@
           <div class="col-6">
             <fieldset class="border p-3 m-3">
               <legend class="w-auto px-1 text-muted h5">
-                <b>Crops selection</b>
+                <b>{{ 'DSS_model_selection.Crops_selection' | translate }}</b>
               </legend>
 
               <div formGroupName="cropSelection">
                 <div class="form-group row">
-                 <!-- <div class="col-sm-1 align-self-center text-muted h6">
-                    <label for="crops">
-                      <b>Crops</b>
-                    </label>
-                  </div>-->
                   <div class="col-sm-11">
                     <select multiple class="form-control" id="crops" formControlName="cropEppoCode">
                       <ng-template ngFor let-crop [ngForOf]="cropsEppoCodes">
@@ -39,19 +34,13 @@
                       </ng-template>
                     </select>
                     <span>
-                      <small class="col-2 pull-left mt-2">Use <b>CTRL</b> + <b>Click</b> to select multiple crops</small>
+                      <small class="col-2 pull-left mt-2" [innerHtml]="( 'DSS_model_selection.Multiselect_tip' | translate )"></small>
                       <button class="btn btn-info btn-sm pull-right mt-2 col-3" (click)="onConfirmSelectedCrops()"
                       [disabled]="!selCropForm.get('cropSelection').get('cropEppoCode').valid">
-                      Show DSS
+                      {{ 'DSS_model_selection.Show_DSS' | translate }}
                     </button>
                     </span>
                   </div>
-                  <!--<div class="col-sm-2 align-self-center">
-                    <button class="btn btn-info btn-sm" (click)="onConfirmSelectedCrops()"
-                      [disabled]="!selCropForm.get('cropSelection').get('cropEppoCode').valid">
-                      Show DSS
-                    </button>
-                  </div>-->
                 </div>
               </div>
             </fieldset>
@@ -60,22 +49,22 @@
           <div *ngIf="areCropsSelected" class="col-12 mt-4">
             <fieldset class="border p-3 ml-3 mr-3 mb-3">
               <legend class="w-auto px-1 text-muted h5">
-                <b>DSS models selection</b>
+                <b>{{ 'DSS_model_selection.DSS_models_selection' | translate }}</b>
               </legend>
               <div class="row">
                 <accordion class="col" [isAnimated]="true">
                   <accordion-group *ngFor="let dssSel of data">
                     <span accordion-heading tooltip="Click to show">
                       {{dssSel.name}}
-                      <i class="fas fa-bars" style="position:absolute; top: 40%; right: 2%;"></i>
+                      <i class="fas fa-bars" style="position:absolute; top: 20px; right: 2%;"></i>
                     </span>
                     <div class="col">
                       <table class="table table-striped table-bordered">
                         <thead>
                           <tr>
-                            <th class="text-center col-3">CROP NAME</th>
-                            <th class="text-center col-3">PEST NAME</th>
-                            <th class="text-center">DSS NAME</th>
+                            <th class="text-center col-3">{{ 'DSS_model_selection.Crop_name' | translate }}</th>
+                            <th class="text-center col-3">{{ 'DSS_model_selection.Pest_name' | translate }}</th>
+                            <th class="text-center">{{ 'DSS_model_selection.DSS_name' | translate }}</th>
                             <th class="text-center"></th>
                           </tr>
                         </thead>
@@ -100,10 +89,10 @@
         <button class="btn btn-primary col-2 pull-right ml-1" (click)="onSave()"
           [disabled]="!selectedDss || selectedDss.length ==0">
           <i class="fas fa-save"></i>&nbsp;
-          Save
+          {{ 'Common_labels.Save' | translate }}
         </button>
         <button class="btn btn-info col-2 pull-right" type="button" (click)="goBack()">
-          Cancel
+          {{ 'Common_labels.Cancel' | translate }}
         </button>
       </div>
     </div>

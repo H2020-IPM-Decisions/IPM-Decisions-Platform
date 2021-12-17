@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { IDssFlat, IDssResultChart, IDssChartGroup, IDssResultFlat} from './dss-selection.model';
 import { DssSelectionService } from './dss-selection.service';
 import { NGXLogger } from "ngx-logger";
+import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
 
 @Component({
   selector: 'app-dss-detail',
@@ -29,9 +29,9 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute, 
     private _modalService: BsModalService,
     private service: DssSelectionService,
-    private toastrService: ToastrService,
     private _router: Router,
-	  private _logger: NGXLogger
+	  private _logger: NGXLogger,
+    private _toastrTranslated: ToastrTranslationService
 	) { }
   
   ngOnInit() {
@@ -59,11 +59,11 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   delete(): void{
     if(!this.dssDetail) return;
     this.$delSubscription = this.service.del(this.dssDetail.id).subscribe(()=>{
-      this.toastrService.success("Operation Success","DSS Deleted");
+      this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_deletion","Common_labels.Success","toast-success");
       this.modalRef.hide();
       window.history.back();
     },()=>{
-      this.toastrService.error("Operation Failed","No DSS deleted");
+      this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_deletion_error","Common_labels.Error","toast-error");
     });
   }
 

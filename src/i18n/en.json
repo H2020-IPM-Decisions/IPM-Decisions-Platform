@@ -35,7 +35,18 @@
         "Phone":"Phone",
         "Mobile":"Mobile",
         "Address":"Address",
-        "Send":"Send"
+        "Send":"Send",
+        "Save_changes":"Save Changes",
+        "Error":"Error",
+        "Save":"Save",
+        "Details":"Details",
+        "Spray":"Spray",
+        "Date":"Date",
+        "Close":"Close",
+        "Loading":"Loading...",
+        "Back":"Back",
+        "Select":"Select",
+        "Deselect":"Deselect"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -49,23 +60,92 @@
         "User_type_required":"User Type is required",
         "Confirm_password_required":"Confirm Password is required",
         "Passwords_must_match":"Passwords must match",
-        "Accept_terms_and_conditions_required":"Accept Ts & Cs is required"
+        "Accept_terms_and_conditions_required":"Accept Ts & Cs is required",
+        "First_name_required":"First name is required",
+        "Last_name_required":"Last name is required",
+        "Phone_number_required":"Phone number is required",
+        "Mobile_number_required":"Mobile number is required",
+        "Street_required":"Street is required",
+        "City_required":"City is required",
+        "Post_code_required":"Post code is required",
+        "Country_required":"Country is required",
+        "User_account_updating_error":"Error updating user account!",
+        "User_account_fetching_error":"Error fetching user account!",
+        "Invalid_form_data":"Invalid form data!",
+        "Unable_to_create_farm":"Unable to create farm!",
+        "Field_detail_fetching_error":"Error fetching field detail!",
+        "DSS_deletion_error":"Unable to delete DSS",
+        "DSS_an_error_occured":"The DSS can't be run because an error occured",
+        "DSS_model_retrived_error":"Fail to get the requested models for selected crops!",
+        "DSS_model_add_error":"Fail to submit the selected models!",
+        "DSS_model_combination_error":"No DSS model Submitted, a DSS with selected Crop/Pest combination already exists",
+        "DSS_parameters_update_error":"Dss parameters update failed, an error occurs",
+        "DSS_parameters_fetching_error":"Unable to fetch parameters data"
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
         "No_farms_avaiable":"No farms available.",
-        "Farm_copy_success":"Farm successfully copied!"
+        "Farm_copy_success":"Farm successfully copied!",
+        "User_account_updated":"User account successfully updated!",
+        "Farm_created":"Farm successfully created!",
+        "You_are_about_to_delete":"You are about to delete",
+        "Are_you_sure":"Are you sure?",
+        "No_model_available":"No model available.",
+        "No_DSS_available":"No DSS available.",
+        "DSS_deletion":"DSS successfully deleted!",
+        "No_DSS_available_please_add":"No DSS avaiable, please add DSS Models into a Farm using Farm Management.",
+        "DSS_delete":"You are about to delete the DSS. Are you sure?",
+        "DSS_models_retrived":"DSS Models retrivied successfully!",
+        "DSS_models_added":"DSS Models added successfully!",
+        "DSS_parameters_updated":"DSS parameters updated!"
+    },
+    "Countries": {
+        "Austria":"Austria", 
+        "Belgium":"Belgium",
+        "Bulgaria":"Bulgaria",
+        "Croatia":"Croatia",
+        "Republic_of_Cyprus":"Republic of Cyprus", 
+        "Czech_Republic":"Czech Republic",
+        "Denmark":"Denmark",
+        "Estonia":"Estonia", 
+        "Finland":"Finland",
+        "France":"France",
+        "Great_Britain":"Great Britain", 
+        "Germany":"Germany", 
+        "Greece":"Greece",
+        "Hungary":"Hungary",
+        "Ireland":"Ireland", 
+        "Italy":"Italy",
+        "Latvia":"Latvia",
+        "Lithuania":"Lithuania", 
+        "Luxembourg":"Luxembourg", 
+        "Malta":"Malta",
+        "Netherlands":"Netherlands",
+        "Norway":"Norway", 
+        "Poland":"Poland", 
+        "Portugal":"Portugal",
+        "Romania":"Romania", 
+        "Slovakia":"Slovakia",
+        "Slovenia":"Slovenia", 
+        "Spain":"Spain",
+        "Sweden":"Sweden"
     },
     "Language_Selector":{
         "Language":"Language",
         "English":"English",
-        "Italian":"Italian"
+        "Italian":"Italian",
+        "German":"German",
+        "Dutch":"Dutch",
+        "Slovenian":"Slovenian",
+        "Lithuanian":"Lithuanian",
+        "Swedish":"Swedish"
     },
     "Home": {
         "Contacts":"Contacts",
         "Email_us":"Email Us",
         "Web_Site":"Web Site",
-        "Social":"Social"
+        "Social":"Social",
+        "Useful_links":"Useful Links"
     },
     "Register": {
         "User_type":"User Type",
@@ -78,7 +158,7 @@
     "Forgot_password": {
         "Insert_email_for_reset_password":"Insert your email to get instructions for reset password"
     },
-    "User_header":{
+    "User_header": {
         "Account_manager":"Account Manager",
         "Farm":"Farm"
     },
@@ -86,12 +166,29 @@
         "IPM_private":"IPM Private",
         "Farm_menu":"Farm menu"
     },
+    "User_menu_footer": {
+        "Content":"This project receives funding from the European Union's Horizon 2020 research and innovation programme. Learn more at"
+    },
     "User_account": {
         "Title":"User Account",
         "User_role":"User Role",
         "Edit_profile":"Edit profile",
         "Request_farm_control":"Request Farm Control",
         "Check_farm_control":"Check Farm Control"
+    },
+    "Edit_user_account": {
+        "Title":"Edit User Account",
+        "User_account_created":"User account successfully created!",
+        "User_account_updated":"User account successfully updated!",
+        "Personal_info":"Personal Info",
+        "First_name":"First name",
+        "Last_name":"Last name",
+        "Phone_number":"Phone number",
+        "Mobile_number":"Mobile number",
+        "Street":"Street",
+        "City":"City",
+        "Post_code":"Post Code",
+        "Country":"Country"
     },
     "Farm_share": {
         "Requester_name":"Requester Name",
@@ -109,7 +206,79 @@
         "Actions":"Actions",
         "Delete_farm":"Delete Farm"
     },
+    "Add_Edit_farm":{
+        "Add_title":"Add Farm",
+        "Edit_title":"Edit Farm",
+        "Farm_creation":"Farm creation",
+        "Farm_name":"Farm name",
+        "Farm_location":"Select farm location",
+        "Nearest_met_station":"Nearest met. station",
+        "Weather_forecast_service":"Weather forecast service"
+    },
+    "DSS_information_table": {
+        "Title":"DSS Information Table",
+        "Add_dss_model":"Add DSS Model",
+        "Model_name":"Model Name",
+        "Crop":"Crop",
+        "Pest_disease":"Pest/Disease",
+        "DSS_name":"DSS Name",
+        "DSS_suitability":"DSS Suitability",
+        "Actions":"Actions",
+        "Model_parameters":"Model Parameters",
+        "Delete_model":"Delete Model",
+        "Sowing_date":"Sowing date",
+        "Sprays_applied":"Sprays applied",
+        "Rate":"Rate (kg/ha)",
+        "List_of_DSS":"List of DSS",
+        "Parameters":"Parameters",
+        "Pest_observations":"Pest Observations",
+        "Pest":"Pest",
+        "Severity":"Severity (%)"
+    },
     "DSS_use_dashboard": {
-        "Title":"DSS Use Dashboard"
+        "Title":"DSS Use Dashboard",
+        "Legend":"Legend",
+        "Grey_box":"DSS currently inactive",
+        "White_box":"Insufficient data: check DSS parameters",
+        "Green_box":"DSS active, Low risk",
+        "Yellow_box":"DSS active, Medium risk",
+        "Red_box":"DSS active, High risk"
+    },
+    "DSS_details": {
+        "Title":"DSS Details",
+        "Risk_score":"Risk score",
+        "Recommended_actions":"Recommended actions",
+        "Show_data_legend":"Show data legend",
+        "Edit_parameters":"Edit Parameters",
+        "Delete_DSS":"Delete DSS",
+        "Dss_informations":"Dss Informations",
+        "Crop_pest_combination":"Crop / Pest Combination",
+        "Type_of_the_output":"Type of the output",
+        "Description":"Description",
+        "Creation_date":"Creation Date",
+        "DSS_id":"DSS ID",
+        "DSS_model_id":"DSS Model ID",
+        "Warning_status_representation":"Warning Status Representation",
+        "Warning_message":"Warning Message"
+    },
+    "DSS_model_selection": {
+        "Title":"DSS Model Selection",
+        "Crops_selection":"Crops selection",
+        "Multiselect_tip":"Use <b>CTRL</b> + <b>Click</b> to select multiple crops",
+        "Show_DSS":"Show DSS",
+        "DSS_models_selection":"DSS models selection",
+        "Crop_name":"CROP NAME",
+        "Pest_name":"PEST NAME",
+        "DSS_name":"DSS NAME",
+        "Select_crop":"Select Crop",
+        "Select_pest":"Select Pest",
+        "DSS_id":"DSS ID",
+        "Model_id":"MODEL ID",
+        "Description":"DESCRIPTION",
+        "Warning_status_interpretation":"WARNING STATUS INTERPRETATION"
+    },
+    "DSS_model_parametrisation": {
+        "Title":"DSS Model Parametrisation",
+        "Saved_parameters":"Saved parameters"
     }
 }

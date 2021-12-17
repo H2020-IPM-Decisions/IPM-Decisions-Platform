@@ -27,6 +27,7 @@ export class TokenInterceptorService implements HttpInterceptor {
     }
 
     request = this.addToken(request, token);
+    request = this.addContentLanguage(request);
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -35,6 +36,7 @@ export class TokenInterceptorService implements HttpInterceptor {
           return this.handle401Error(request, next).pipe(
             switchMap((res) => {
               request = this.addToken(request, res.body.token);
+              request = this.addContentLanguage(request);
               return next.handle(request);
             }),
             catchError((err: any) => {
@@ -67,6 +69,15 @@ export class TokenInterceptorService implements HttpInterceptor {
     return request.clone({
       setHeaders: {
         'Authorization': `Bearer ${token}`
+      }
+    });
+  }
+
+  // Add Translation Header to all requests
+  private addContentLanguage(request: HttpRequest<any>) {
+    return request.clone({
+      setHeaders: {
+        'Accept-Language':sessionStorage.getItem('selectedLanguage')
       }
     });
   }

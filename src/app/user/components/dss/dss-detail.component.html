@@ -7,7 +7,7 @@
           <i class="pe-7s-note icon-gradient bg-mean-fruit">
           </i>
         </div>
-        <div>DSS Details</div>
+        <div>{{ 'DSS_details.Title' | translate }}</div>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@
           <thead class="tableHeader">
             <tr>
               <th class="text-center" style="width: 33.33%">
-                <label>Risk score</label>
+                <label>{{ 'DSS_details.Risk_score' | translate }}</label>
               </th>
               <th class="text-center" style="width: 33.34%">
                 <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
@@ -50,7 +50,7 @@
                 </select>
               </th>
               <th class="text-center" style="width: 33.33%">
-                <label>Reccomended actions</label>
+                <label>{{ 'DSS_details.Recommended_actions' | translate }}</label>
               </th>
             </tr>
           </thead>
@@ -67,6 +67,13 @@
                   </div>
                 </div>
               </td>
+              <td class="align-top">
+                <ul class="ml-3" *ngIf="dssDetail.warningMessage !==''">
+                  <li>
+                    {{dssDetail.warningMessage}}
+                  </li>
+                </ul>
+              </td>
             </tr>
             <tr>
               <td></td>
@@ -74,7 +81,7 @@
                 <accordion class="col" [isAnimated]="true">
                   <accordion-group>
                     <span accordion-heading tooltip="Click to show">
-                      Show data legend
+                      {{ 'DSS_details.Show_data_legend' | translate }}
                     </span>
                     <div class="row" *ngFor="let result of selectedDssChartGroup.resultParameters">
                       <i [ngStyle]="{ 'color': result.chartInformation?.color,'margin-right':'5px'}"
@@ -93,30 +100,30 @@
     <div class="form-group row pt-3">
       <div class="col-md-12">
         <button class="btn btn-info pull-right" type="button" (click)="goBack()">
-          <i class="fas fa-arrow-left"></i> Back
+          <i class="fas fa-arrow-left"></i> {{ 'Common_labels.Back' | translate }}
         </button>
 
         <button type="button" class="btn btn-md btn-primary" (click)="goToModelParametrisation()">
           <i class="fas fa-edit"></i>&nbsp;
-          Edit Parameters
+          {{ 'DSS_details.Edit_parameters' | translate }}
         </button>
 
         <button type="button" class="btn btn-danger mr-2 pull-right" (click)="openModal(deletedsstemplate)">
-          <i class="fas fa-trash"></i> Delete
+          <i class="fas fa-trash"></i> {{ 'Common_labels.Delete' | translate }}
         </button>
         <ng-template #deletedsstemplate>
           <div class="modal-header">
-            <h4 class="modal-title pull-left">Delete DSS Result</h4>
+            <h4 class="modal-title pull-left">{{ 'DSS_details.Delete_DSS' | translate }}</h4>
             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            You are about to delete DSS Result. Are you sure?
+          <div class="modal-body"> 
+            {{ 'Information_messages.DSS_delete' | translate }}
           </div>
           <div class="modal-footer pull-right">
-            <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
-            <button type="button" class="btn btn-primary" (click)="delete()">Yes</button>
+            <button type="button" class="btn btn-default" (click)="modalRef.hide()">{{ 'Common_labels.Cancel' | translate }}</button>
+            <button type="button" class="btn btn-primary" (click)="delete()">{{ 'Common_labels.Yes' | translate }}</button>
           </div>
         </ng-template>
       </div>
@@ -127,7 +134,7 @@
 <ng-template #dssDetails>
   <div class="modal-header">
     <h4 class="modal-title pull-left">
-      Dss Informations
+      {{ 'DSS_details.Dss_informations' | translate }}
     </h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
@@ -135,7 +142,7 @@
   </div>
   <div class="modal-body scrollable">
     <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">Crop / Pest Combination</label>
+      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.Crop_pest_combination' | translate }}</label>
       <div class="col-sm-9">
         <p><strong>{{dssDetail.cropEppoCode}}</strong> - {{dssDetail.cropEppoCode | eppoCode}} |
           <strong>{{dssDetail.pestEppoCode}}</strong> - {{dssDetail.pestEppoCode | eppoCode}}</p>
@@ -143,56 +150,56 @@
     </div>
 
     <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">Type of the output</label>
+      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.Type_of_the_output' | translate }}</label>
       <div class="col-sm-9">
         <p>{{dssDetail.dssTypeOfOutput}}</p>
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">Description</label>
+      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.Description' | translate }}</label>
       <div class="col-sm-9">
         <p>{{dssDetail.dssDescription}}</p>
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">Creation Date</label>
+      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.Creation_date' | translate }}</label>
       <div class="col-sm-9">
         <p>{{dssDetail.creationDate | date}}</p>
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">DSS ID</label>
+      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.DSS_id' | translate }}</label>
       <div class="col-sm-9">
         <p>{{dssDetail.dssId}}</p>
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">DSS Model ID</label>
+      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.DSS_model_id' | translate }}</label>
       <div class="col-sm-9">
         <p>{{dssDetail.dssModelId}}</p>
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">Warning Status Representation</label>
+      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.Warning_status_representation' | translate }}</label>
       <div class="col-sm-9">
         <p>{{dssDetail.warningStatusRepresentation}}</p>
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">Warning Message</label>
+      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.Warning_message' | translate }}</label>
       <div class="col-sm-9">
         <p>{{dssDetail.warningMessage}}</p>
       </div>
     </div>
   </div>
   <div class="modal-footer pull-right">
-    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">Close</button>
+    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
   </div>
 </ng-template>
 
@@ -201,7 +208,7 @@
     <div class="col-md-12 justify-content-center">
       <div class="alert alert-danger text-muted errorTextWrap">
         <strong>
-          The DSS can't be run because an error occured:
+          {{ 'Error_messages.DSS_an_error_occured' | translate }}:
         </strong>
         <br>
         {{ resultMessage }}

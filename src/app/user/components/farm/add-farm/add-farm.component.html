@@ -7,8 +7,8 @@
           <i class="pe-7s-leaf icon-gradient bg-mean-fruit">
           </i>
         </div>
-        <div *ngIf="!farm">Add Farm</div>
-        <div *ngIf="farm">Edit Farm</div>
+        <div *ngIf="!farm">{{ 'Add_Edit_farm.Add_title' | translate }}</div>
+        <div *ngIf="farm">{{ 'Add_Edit_farm.Edit_title' | translate }}</div>
       </div>
     </div>
   </div>
@@ -16,22 +16,22 @@
   <div class="container mx-auto my-5 page-box">
     <form [formGroup]="farmForm" (ngSubmit)="onFarmSubmit()">
       <fieldset class="border p-3">
-        <legend class="w-auto px-1 text-muted">Farm creation</legend>
+        <legend class="w-auto px-1 text-muted">{{ 'Add_Edit_farm.Farm_creation' | translate }}</legend>
 
         <div class="form-group row">
-          <label for="farm-name" class="col-sm-3 col-form-label">Farm name</label>
+          <label for="farm-name" class="col-sm-3 col-form-label">{{ 'Add_Edit_farm.Farm_name' | translate }}</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" id="farm-name" formControlName="name" autocomplete="off">
           </div>
         </div>
         <div class="form-group row">
-          <label for="map" class="col-sm-3 col-form-label">Select farm location</label>
+          <label for="map" class="col-sm-3 col-form-label">{{ 'Add_Edit_farm.Farm_location' | translate }}</label>
           <div class="col-sm-9">
             <div class="map-container" #map></div>
           </div>
         </div>
         <div class="form-group row" *ngIf="farm && farm.id">
-          <label for="met-station" class="col-sm-3 col-form-label">Nearest met. station</label>
+          <label for="met-station" class="col-sm-3 col-form-label">{{ 'Add_Edit_farm.Nearest_met_station' | translate }}</label>
           <div class="col-sm-9">
             <select class="form-control" id="met-station" formControlName="weatherHistoricalDto">
               <!--<option value="" disabled selected>Place a marker into map</option>-->
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="form-group row" *ngIf="farm && farm.id">
-          <label for="forecast" class="col-sm-3 col-form-label">Weather forecast service</label>
+          <label for="forecast" class="col-sm-3 col-form-label">{{ 'Add_Edit_farm.Weather_forecast_service' | translate }}</label>
           <div class="col-sm-9">
             <select class="form-control" id="forecast" formControlName="weatherForecastDto">
               <option *ngFor="let item of weatherForecastDtoList" [ngValue]="item">{{item.name}}
@@ -55,9 +55,9 @@
         <div class="col-md-12">
           <button class="btn btn-primary pull-right col-2" type="submit" [disabled]="farmForm.invalid || isSaving">
             <i class="fas fa-save"></i>&nbsp;
-            Save</button>
+            {{ 'Common_labels.Save' | translate }}</button>
           <button class="btn btn-info pull-right col-2" type="button" (click)="goBack()">
-            Cancel</button>
+            {{ 'Common_labels.Cancel' | translate }}</button>
         </div>
       </div>
     </form>

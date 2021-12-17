@@ -5,9 +5,9 @@
     <div class="app-main__outer">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a routerLink="/user/farm">Home</a></li>
-          <li class="breadcrumb-item"><a routerLink="/user/account">Account</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Edit User Account</li>
+          <li class="breadcrumb-item"><a routerLink="/user/farm">{{ 'Common_labels.Home' | translate }}</a></li>
+          <li class="breadcrumb-item"><a routerLink="/user/account">{{ 'Common_labels.Account' | translate }}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ 'Edit_user_account.Title' | translate }}</li>
         </ol>
       </nav>
       <div class="app-main__inner">
@@ -18,7 +18,7 @@
                 <em class="pe-7s-user icon-gradient bg-mean-fruit">
                 </em>
               </div>
-              <div>Edit User Account</div>
+              <div>{{ 'Edit_user_account.Title' | translate }}</div>
             </div>
           </div>
         </div>
@@ -44,108 +44,108 @@
                   <!-- <p *ngFor="let error of errors">{{ error.description }}</p> -->
                 </div>
                 <div class="alert alert-success" *ngIf="isCreated">
-                  <span>User account successfully created!</span>
+                  <span>{{ 'Edit_user_account.User_account_created' | translate }}</span>
                 </div>
                 <div class="alert alert-success" *ngIf="isUpdated">
-                  <span>User account successfully updated!</span>
+                  <span>{{ 'Edit_user_account.User_account_updated' | translate }}</span>
                 </div>
 
-                <h3>Personal info</h3>
+                <h3>{{ 'Edit_user_account.Personal_info' | translate }}</h3>
                 
                 <form [formGroup]="accountForm" (ngSubmit)="onSubmit()" class="form-horizontal" role="form">
                   <div class="form-group">
-                    <label class="col-lg-3 control-label">First name</label>
+                    <label class="col-lg-3 control-label">{{ 'Edit_user_account.First_name' | translate }}</label>
                     <div class="col-lg-8">
                       <input formControlName="firstName" class="form-control"
                         [ngClass]="{ 'is-invalid': f.firstName.errors && f.firstName.touched }" />
                       <div *ngIf="f.firstName.errors && f.firstName.touched" class="invalid-feedback">
-                        <div *ngIf="f.firstName.errors.required">First name is required</div>
+                        <div *ngIf="f.firstName.errors.required">{{ 'Error_messages.First_name_required' | translate }}</div>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-lg-3 control-label">Last name</label>
+                    <label class="col-lg-3 control-label">{{ 'Edit_user_account.Last_name' | translate }}</label>
                     <div class="col-lg-8">
                       <input formControlName="lastName" class="form-control"
                         [ngClass]="{ 'is-invalid': f.lastName.errors && f.lastName.touched }" />
 
                       <div *ngIf="f.lastName.errors && f.lastName.touched" class="invalid-feedback">
-                        <div *ngIf="f.lastName.errors.required">Last name is required</div>
+                        <div *ngIf="f.lastName.errors.required">{{ 'Error_messages.Last_name_required' | translate }}</div>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-lg-3 control-label">Email</label>
+                    <label class="col-lg-3 control-label">{{ 'Common_labels.Email' | translate }}</label>
                     <div class="col-lg-8">
                       <input formControlName="email" class="form-control" readonly />
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-3 control-label">Phone number</label>
+                    <label class="col-md-3 control-label">{{ 'Edit_user_account.Phone_number' | translate }}</label>
                     <div class="col-md-8">
                       <input type="number" formControlName="phoneNumber" class="form-control"
                         [ngClass]="{'is-invalid': f.phoneNumber.errors && f.phoneNumber.touched}" />
 
                       <div *ngIf="f.phoneNumber.errors && f.phoneNumber.touched" class="invalid-feedback">
-                        <div *ngIf="f.phoneNumber.errors.required">Phone number is required</div>
+                        <div *ngIf="f.phoneNumber.errors.required">{{ 'Error_messages.Phone_number_required' | translate }}</div>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-3 control-label">Mobile number</label>
+                    <label class="col-md-3 control-label">{{ 'Edit_user_account.Mobile_number' | translate }}</label>
                     <div class="col-md-8">
                       <input type="number" formControlName="mobileNumber" class="form-control"
                         [ngClass]="{'is-invalid': f.mobileNumber.errors && f.mobileNumber.touched}" />
 
                       <div *ngIf="f.mobileNumber.errors && f.mobileNumber.touched" class="invalid-feedback">
-                        <div *ngIf="f.mobileNumber.errors.required">Mobile number is required</div>
+                        <div *ngIf="f.mobileNumber.errors.required">{{ 'Error_messages.Mobile_number_required' | translate }}</div>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-3 control-label">Street</label>
+                    <label class="col-md-3 control-label">{{ 'Edit_user_account.Street' | translate }}</label>
                     <div class="col-md-8">
                       <input type="text" formControlName="street" class="form-control"
                         [ngClass]="{'is-invalid': f.street.errors && f.street.touched}" />
 
                       <div *ngIf="f.street.errors && f.street.touched" class="invalid-feedback">
-                        <div *ngIf="f.street.errors.required">Street is required</div>
+                        <div *ngIf="f.street.errors.required">{{ 'Error_messages.Street_required' | translate }}</div>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-3 control-label">City</label>
+                    <label class="col-md-3 control-label">{{ 'Edit_user_account.City' | translate }}</label>
                     <div class="col-md-8">
                       <input type="text" formControlName="city" class="form-control"
                         [ngClass]="{'is-invalid': f.city.errors && f.city.touched}" />
                       
                       <div *ngIf="f.city.errors && f.city.touched" class="invalid-feedback">
-                        <div *ngIf="f.city.errors.required">City is required</div>
+                        <div *ngIf="f.city.errors.required">{{ 'Error_messages.City_required' | translate }}</div>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-3 control-label">Post Code</label>
+                    <label class="col-md-3 control-label">{{ 'Edit_user_account.Post_code' | translate }}</label>
                     <div class="col-md-8">
                       <input type="text" formControlName="postcode" class="form-control"
                         [ngClass]="{'is-invalid': f.postcode.errors && f.postcode.touched}" />
                       <div *ngIf="f.postcode.errors && f.postcode.touched" class="invalid-feedback">
-                        <div *ngIf="f.postcode.errors.required">Post code is required</div>
+                        <div *ngIf="f.postcode.errors.required">{{ 'Error_messages.Post_code_required' | translate }}</div>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-3 control-label">Country</label>
+                    <label class="col-md-3 control-label">{{ 'Edit_user_account.Country' | translate }}</label>
                     <div class="col-md-8">
                       <select formControlName="country" class="form-control"
                         [ngClass]="{ 'is-invalid': f.country.errors && f.country.touched }">
-                        <option [label]="country" *ngFor="let country of countries" [value]="country">{{
-                          country
-                        }}</option>
+                        <option *ngFor="let country of countries" [value]="country.value">
+                          {{ country.label | translate }}
+                        </option>
                       </select>
 
                       <div *ngIf="f.country.errors && f.country.touched" class="invalid-feedback">
-                        <div *ngIf="f.country.errors.required">Country is required</div>
+                        <div *ngIf="f.country.errors.required">{{ 'Error_messages.Country_required' | translate }}</div>
                       </div>
                     </div>
                   </div>
@@ -153,9 +153,9 @@
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
                       <button class="btn btn-primary" [disabled]="accountForm.invalid || false"
-                        style=" background-color:#249fa5 !important">Save Changes</button>
+                        style=" background-color:#249fa5 !important">{{ 'Common_labels.Save_changes' | translate }}</button>
                       <span></span>
-                      <input type="reset" class="btn btn-default" value="Cancel" [routerLink]="['/user/account']"
+                      <input type="reset" class="btn btn-default" [value]="('Common_labels.Cancel' | translate)" [routerLink]="['/user/account']"
                         routerLinkActive="router-link-active" />
                     </div>
                   </div>

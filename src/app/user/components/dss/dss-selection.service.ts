@@ -25,7 +25,7 @@ export class DssSelectionService {
   }
 
   getDssByMultipleCrops(crops: string): Observable<HttpResponse<DssSelection[]>> {
-    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`+"/platform_validated/true"
     return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 

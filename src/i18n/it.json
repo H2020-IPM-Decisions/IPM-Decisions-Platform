@@ -35,7 +35,18 @@
         "Phone":"Telefono",
         "Mobile":"Cellulare",
         "Address":"Indirizzo",
-        "Send":"Invia"
+        "Send":"Invia",
+        "Save_changes":"Salva Modifiche",
+        "Error":"Errore",
+        "Save":"Salva",
+        "Details":"Dettagli",
+        "Spray":"Spray",
+        "Date":"Data",
+        "Close":"Chiudi",
+        "Loading":"Caricamento...",
+        "Back":"Indietro",
+        "Select":"Seleziona",
+        "Deselect":"Deseleziona"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
@@ -49,23 +60,92 @@
         "User_type_required":"Il tipo di utente è obbligatorio",
         "Confirm_password_required":"La password di conferma è obbligatoria",
         "Passwords_must_match":"Le password devono essere identiche",
-        "Accept_terms_and_conditions_required":"Accettare termini e condizioni è obbligatorio"
+        "Accept_terms_and_conditions_required":"Accettare termini e condizioni è obbligatorio",
+        "First_name_required":"Il nome è obbligatorio",
+        "Last_name_required":"Il cognome è obbligatorio",
+        "Phone_number_required":"Il numero di telefono è obbligatorio",
+        "Mobile_number_required":"Il numero di cellulare è obbligatorio",
+        "Street_required":"Via obbligatoria",
+        "City_required":"La città è obbligatoria",
+        "Post_code_required":"Il codice postale è obbligatorio",
+        "Country_required":"Paese obbligatorio",
+        "User_account_updating_error":"Errore durante l'aggiornamento del profilo utente!",
+        "User_account_fetching_error":"Errore durante il recupero del profilo utente!",
+        "Invalid_form_data":"Dati del modulo non validi!",
+        "Unable_to_create_farm":"Impossibile creare la fattoria!",
+        "Field_detail_fetching_error":"Errore durante il recupero dei dettagli del campo!",
+        "DSS_deletion_error":"Impossibile cancellare il DSS",
+        "DSS_an_error_occured":"Il DSS non può essere eseguito poichè si è verifato un errore",
+        "DSS_model_retrived_error":"Impossibile ottenere i modelli richiesti per le colture selezionate!",
+        "DSS_model_add_error":"Impossibile inviare i modelli selezionati!",
+        "DSS_model_combination_error":"Nessun modello DSS inviato, esiste già un DSS con la combinazione coltura/parassita selezionata",
+        "DSS_parameters_update_error":"Aggiornamento dei parametri del DSS fallito a causa di un errore",
+        "DSS_parameters_fetching_error":"Impossibile recuperare i dati dei parametri"
     },
     "Information_messages":{
-        "Farm_deletion_message":"Stai per eliminare un'azienda agricola. Sei sicuro?",
-        "No_farms_avaiable":"Nessuna azienda agricola disponibile.",
-        "Farm_copy_success":"Azienda agricola copiata!"
+        "Farm_deletion_message":"Stai per eliminare una fattoria. Vuoi procedere?",
+        "No_farms_avaiable":"Nessuna fattoria disponibile.",
+        "Farm_copy_success":"Fattoria copiata!",
+        "User_account_updated":"Profilo utente aggiornato correttamente!",
+        "Farm_created":"Fattoria creata!",
+        "You_are_about_to_delete":"Stai per eliminare",
+        "Are_you_sure":"Vuoi procedere?",
+        "No_model_available":"Nessun modello disponibile.",
+        "No_DSS_available":"Nessun DSS disponibile.",
+        "DSS_deletion":"DSS eliminato!",
+        "No_DSS_available_please_add":"Nessun DSS disponibile, si prega di aggiungere dei modelli DSS in una fattoria utilizzando Gestione Fattoria",
+        "DSS_delete":"Stai per eliminare il DSS. Vuoi procedere?",
+        "DSS_models_retrived":"Modelli DSS ottenuti!",
+        "DSS_models_added":"Modelli DSS aggiunti!",
+        "DSS_parameters_updated":"Parametri del DSS aggiornati!"
+    },
+    "Countries": {
+        "Austria":"Austria", 
+        "Belgium":"Belgio",
+        "Bulgaria":"Bulgaria",
+        "Croatia":"Croazia",
+        "Republic_of_Cyprus":"Republica di Cipro", 
+        "Czech_Republic":"Republica Ceca",
+        "Denmark":"Danimarca",
+        "Estonia":"Estonia", 
+        "Finland":"Finlandia",
+        "France":"Francia",
+        "Great_Britain":"Gran Bretagna", 
+        "Germany":"Germania", 
+        "Greece":"Grecia",
+        "Hungary":"Ungheria",
+        "Ireland":"Irlanda", 
+        "Italy":"Italia",
+        "Latvia":"Lettonia",
+        "Lithuania":"Lituania", 
+        "Luxembourg":"Lussemburgo", 
+        "Malta":"Malta",
+        "Netherlands":"Paesi Bassi",
+        "Norway":"Norvegia", 
+        "Poland":"Polonia", 
+        "Portugal":"Portogallo",
+        "Romania":"Romania", 
+        "Slovakia":"Slovacchia",
+        "Slovenia":"Slovenia", 
+        "Spain":"Spagna",
+        "Sweden":"Svezia"
     },
     "Language_Selector": {
         "Language":"Lingua",
         "English":"Inglese",
-        "Italian":"Italiano"
+        "Italian":"Italiano",
+        "German":"Tedesco",
+        "Dutch":"Olandese",
+        "Slovenian":"Sloveno",
+        "Lithuanian":"Lituano",
+        "Swedish":"Svedese"
     },
     "Home": {
         "Contacts":"Contatti",
         "Email_us":"Email",
         "Web_Site":"Sito Web",
-        "Social":"Social"    
+        "Social":"Social",
+        "Useful_links":"Link Utili"    
     },
     "Register": {
         "User_type":"Tipo di utente",
@@ -84,7 +164,10 @@
     },
     "User_menu": {
         "IPM_private":"IPM Privato",
-        "Farm_menu":"Menù Azienda Agricola"
+        "Farm_menu":"Menù Fattoria"
+    },
+    "User_menu_footer": {
+        "Content":"Questo progetto riceve finanziamenti dal programma di ricerca e innovazione Horizon 2020 dell'Unione europea. Scopri di più su"
     },
     "User_account": {
         "Title":"Profilo Utente",
@@ -92,6 +175,20 @@
         "Edit_profile":"Modifica profilo",
         "Request_farm_control":"Richiedi Controllo Fattoria",
         "Check_farm_control":"Verifica Controllo Fattoria"
+    },
+    "Edit_user_account": {
+        "Title":"Modifica Profilo Utente",
+        "User_account_created":"Profilo Utente creato con successo!",
+        "User_account_updated":"Profilo Utente aggiornato con successo!",
+        "Personal_info":"Informazioni Personali",
+        "First_name":"Nome",
+        "Last_name":"Cognome",
+        "Phone_number":"Numero di telefono",
+        "Mobile_number":"Numero di cellulare",
+        "Street":"Via",
+        "City":"Città",
+        "Post_code":"Codice Postale",
+        "Country":"Paese"
     },
     "Farm_share": {
         "Requester_name":"Nome del Richiedente",
@@ -101,15 +198,87 @@
         "Insert_the_email":"Inserisci l'e-mail di un agricoltore a tua scelta"
     },
     "Farm_list": {
-        "Title":"Gestione Azienda Agricola",
-        "Add_farm":"Aggiungi Azienda Agricola",
-        "Farm_information_table":"Tabella delle informazioni sull'azienda agricola",
+        "Title":"Gestione Fattoria",
+        "Add_farm":"Aggiungi Fattoria",
+        "Farm_information_table":"Tabella delle informazioni sulla fattoria",
         "Name":"Nome",
-        "Farm_location":"Posizione dell'azienda agricola",
+        "Farm_location":"Posizione della fattoria",
         "Actions":"Azioni",
-        "Delete_farm":"Cancellazione Azienda Agricola"
+        "Delete_farm":"Cancellazione Fattoria"
+    },
+    "Add_Edit_farm":{
+        "Add_title":"Aggiungi Fattoria",
+        "Edit_title":"Modifica Fattoria",
+        "Farm_creation":"Creazione Fattoria",
+        "Farm_name":"Nome Fattoria",
+        "Farm_location":"Seleziona la posizione della fattoria",
+        "Nearest_met_station":"Stazione meteo più vicina",
+        "Weather_forecast_service":"Servizio di previsioni del tempo"
+    },
+    "DSS_information_table": {
+        "Title":"Tabella delle informazioni su DSS",
+        "Add_dss_model":"Aggiungi Modello DSS",
+        "Model_name":"Nome Modello",
+        "Crop":"Coltura",
+        "Pest_disease":"Parassita/Malattia",
+        "DSS_name":"Nome DSS",
+        "DSS_suitability":"Idoneità DSS",
+        "Actions":"Azioni",
+        "Model_parameters":"Parametri del Modello",
+        "Delete_model":"Elimina Modello",
+        "Sowing_date":"Data di semina",
+        "Sprays_applied":"Spray applicati",
+        "Rate":"Tasso (kg/ha)",
+        "List_of_DSS":"Lista DSS",
+        "Parameters":"Parametri",
+        "Pest_observations":"Osservazioni sui parassiti",
+        "Pest":"Parassita",
+        "Severity":"Gravità (%)"
     },
     "DSS_use_dashboard": {
-        "Title":"DSS Use Dashboard"
+        "Title":"Dashboard d'uso dei DSS",
+        "Legend":"Leggenda",
+        "Grey_box":"DSS attualmente inattivo",
+        "White_box":"Dati insufficienti: verifica i parametri DSS",
+        "Green_box":"DSS attivo, Basso rischio",
+        "Yellow_box":"DSS attivo, Medio rischio",
+        "Red_box":"DSS attivo, Alto rischio"
+    },
+    "DSS_details": {
+        "Title":"Dettagli del DSS",
+        "Risk_score":"Punteggio di rischio",
+        "Recommended_actions":"Azioni consigliate",
+        "Show_data_legend":"Mostra leggenda",
+        "Edit_parameters":"Modifica parametri",
+        "Delete_DSS":"Eliminazione del DSS",
+        "Dss_informations":"Informazioni del DSS",
+        "Crop_pest_combination":"Combinazione Coltura / Parassita",
+        "Type_of_the_output":"Tipo di uscita",
+        "Description":"Descrizione",
+        "Creation_date":"Data di creazione",
+        "DSS_id":"ID del DSS",
+        "DSS_model_id":"ID del Modello del DSS",
+        "Warning_status_representation":"Rappresentazione dello stato di avviso",
+        "Warning_message":"Messaggio di avviso"
+    },
+    "DSS_model_selection": {
+        "Title":"Selezione Modello DSS",
+        "Crops_selection":"Selezione della Coltura",
+        "Multiselect_tip":"Utilizza <b>CTRL</b> + <b>Click</b> per selezionare più colture",
+        "Show_DSS":"Mostra DSS",
+        "DSS_models_selection":"Selezione Modelli DSS",
+        "Crop_name":"NOME COLTURA",
+        "Pest_name":"NOME PARASSITA",
+        "DSS_name":"NOME DSS",
+        "Select_crop":"Seleziona Coltura",
+        "Select_pest":"Seleziona Parassita",
+        "DSS_id":"ID DSS",
+        "Model_id":"ID MODELLO",
+        "Description":"DESCRIZIONE",
+        "Warning_status_interpretation":"INTERPRETAZIONE DELLO STATO DI AVVISO"
+    },
+    "DSS_model_parametrisation": {
+        "Title":"Parametrizzazione del modello DSS",
+        "Saved_parameters":"Parametri Salvati"
     }
 }

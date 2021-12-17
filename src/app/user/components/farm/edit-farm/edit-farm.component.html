@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col d-flex flex-column justify-content-end">
-    <h6 class="bold-600 text-uppercase">DSS Information Table</h6>
+    <h6 class="bold-600 text-uppercase">{{ 'DSS_information_table.Title' | translate }}</h6>
   </div>
   <div class="col">
     <button type="button" rel="tooltip" class="btn btn-link pull-right" [routerLink]="['dss/add']">
-      <i class="action-icon fas fa-plus-circle fa-2x"></i> Add DSS Model
+      <i class="action-icon fas fa-plus-circle fa-2x"></i> {{ 'DSS_information_table.Add_dss_model' | translate }}
     </button>
   </div>
   <div class="col-12">
@@ -12,12 +12,12 @@
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th class="text-center" scope="col">Model Name</th>
-            <th class="text-center" scope="col">Crop</th>
-            <th class="text-center" scope="col">Pest/Disease</th>
-            <th class="text-center" scope="col">DSS Name</th>
-            <!--<th class="text-center" scope="col">DSS Suitability</th>-->
-            <th class="text-center" scope="col" style="width: 13%">Action</th>
+            <th class="text-center" scope="col">{{ 'DSS_information_table.Model_name' | translate }}</th>
+            <th class="text-center" scope="col">{{ 'DSS_information_table.Crop' | translate }}</th>
+            <th class="text-center" scope="col">{{ 'DSS_information_table.Pest_disease' | translate }}</th>
+            <th class="text-center" scope="col">{{ 'DSS_information_table.DSS_name' | translate }}</th>
+            <!--<th class="text-center" scope="col">{{ 'DSS_information_table.DSS_suitability' | translate }}</th>-->
+            <th class="text-center" scope="col" style="width: 13%">{{ 'DSS_information_table.Actions' | translate }}</th>
           </tr>
         </thead>
         <tbody *ngIf="fieldList.length > 0; else noRows">
@@ -55,14 +55,9 @@
                 <td class="text-center"></td>-->
                   <!-- Actions -->
                   <td class="td-actions text-center py-1">
-
-                    <!--<button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy" title="Copy"
-                    (click)="onFieldCopy(field)">
-                    <i class="action-icon size-11 fas fa-copy"></i>
-                  </button>-->
     
                     <a class="btn btn-link" 
-                    tooltip="Model Parameters"
+                    [tooltip]="('DSS_information_table.Model_parameters' | translate)"
                     *ngIf="model.cropPestDssDto.dssExecutionType !== 'link'"
                     [routerLink]="['dss',model.id,'parametrisation']" 
                     [state]="{ 
@@ -76,130 +71,25 @@
                       <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
                     </a>
 
-                    <!-- add observation modal 
-                    <ng-template #addObservationTemplate>
-                      <div class="modal-header">
-                        <h4 class="modal-title pull-left">Add Observation</h4>
-                        <button type="button" class="close pull-right" aria-label="Close"
-                          (click)="observationModalRef.hide()">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body" [formGroup]="observationModalForm">
-                        <div class="row">
-                          <div class="col-2">Date:</div>
-                          <div class="col-10">
-                            <input type="text" formControlName="time" bsDatepicker placeholder="dd/mm/yyyy"
-                              [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}">
-                          </div>
-                          <div class="col-2 mt-4">Severity:</div>
-                          <div class="col-10 mt-4">
-                            <input formControlName="severity">&nbsp;
-                            <i class="action-icon size-11 fas fa-plus-circle" (click)="addObservation(field)"></i>
-                          </div>
-                          <div class="col-12 mt-4">
-                            <table class="table table-striped">
-                              <thead>
-                                <tr>
-                                  <th>Date</th>
-                                  <th>Severity</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                <tr
-                                  *ngFor="let observation of field.fieldCropDto.fieldCropPestDto.value[0].fieldObservationDto.value">
-                                  <td>{{observation.time}}</td>
-                                  <td>{{observation.severity}}</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="modal-footer pull-right">
-                        <button type="button" class="btn btn-default"
-                          (click)="observationModalRef.hide()">Cancel</button>
-                      </div>
-                    </ng-template>
-                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Add Observation"
-                      tooltip="Add Observation"
-                      (click)="this.observationModalRef = this._modalService.show(addObservationTemplate);">
-                      <i class="action-icon size-11 fas fa-binoculars"></i>
-                    </button>-->
-
-                    <!-- add spray modal 
-                    <ng-template #addSprayTemplate>
-                      <div class="modal-header">
-                        <h4 class="modal-title pull-left">Add Spray</h4>
-                        <button type="button" class="close pull-right" aria-label="Close"
-                          (click)="sprayModalRef.hide()">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body" [formGroup]="sprayModalForm">
-                        <div class="row">
-                          <div class="col-2">Spray:</div>
-                          <div class="col-10"><input formControlName="name"></div>
-                          <div class="col-2 mt-4">Date:</div>
-                          <div class="col-10 mt-4">
-                            <input type="text" formControlName="time" bsDatepicker placeholder="dd/mm/yyyy"
-                              [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}">
-                          </div>
-                          <div class="col-2 mt-4">Rate:</div>
-                          <div class="col-10 mt-4">
-                            <input formControlName="rate">&nbsp;
-                            <i class="action-icon size-11 fas fa-plus-circle" (click)="addSpray(field)"></i>
-                          </div>
-                          <div class="col-12 mt-4">
-                            <table class="table table-striped">
-                              <thead>
-                                <tr>
-                                  <th>Spray</th>
-                                  <th>Date</th>
-                                  <th>Rate</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr
-                                  *ngFor="let spray of field.fieldCropDto.fieldCropPestDto.value[0].fieldSprayApplicationDto.value">
-                                  <td>{{spray.name}}</td>
-                                  <td>{{spray.time}}</td>
-                                  <td>{{spray.rate}}</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="modal-footer pull-right">
-                        <button type="button" class="btn btn-default" (click)="sprayModalRef.hide()">Cancel</button>
-                      </div>
-                    </ng-template>
-                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Add Spray"
-                      title="Add Spray" (click)="this.sprayModalRef = this._modalService.show(addSprayTemplate);">
-                      <i class="action-icon size-11 light-blue-icon fas fa-spray-can"></i>
-                    </button>-->
-
                     <!-- delete field modal -->
                     <ng-template #deleteTemplate>
                       <div class="modal-header">
-                        <h4 class="modal-title pull-left">Delete Model</h4>
+                        <h4 class="modal-title pull-left">{{ 'DSS_information_table.Delete_model' | translate }}</h4>
                         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                        You are about to delete 
+                        {{ 'Information_messages.You_are_about_to_delete' | translate }} 
                         <b>{{ model.cropPestDssDto.dssName }} - {{model.cropPestDssDto.dssModelName}}</b>. 
-                        <br>Are you sure?
+                        <br>{{ 'Information_messages.Are_you_sure' | translate }}
                       </div>
                       <div class="modal-footer pull-right">
-                        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
-                        <button type="button" class="btn btn-primary" (click)="onDssModelDelete(field.id,cropPestCombo.id,model.id)">Yes</button>
+                        <button type="button" class="btn btn-default" (click)="modalRef.hide()">{{'Common_labels.Cancel' | translate}}</button>
+                        <button type="button" class="btn btn-primary" (click)="onDssModelDelete(field.id,cropPestCombo.id,model.id)">{{'Common_labels.Yes' | translate}}</button>
                       </div>
                     </ng-template>
-                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Delete" tooltip="Delete"
+                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Delete" [tooltip]="('Common_labels.Delete' | translate)"
                       (click)="openModal(deleteTemplate, null)">
                       <i class="action-icon size-11 fas fa-trash"></i>
                     </button>
@@ -213,7 +103,7 @@
         <ng-template #noRows>
           <tbody>
             <tr>
-              <td colspan="5" class="text-center">No Crop and Pest Combination available.</td>
+              <td colspan="5" class="text-center">{{ 'Information_messages.No_model_available' | translate }}</td>
             </tr>
           </tbody>
         </ng-template>
@@ -224,7 +114,7 @@
 
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">{{ selectedCrop.fieldCropDto.cropEppoCode }} details
+    <h4 class="modal-title pull-left">{{ selectedCrop.fieldCropDto.cropEppoCode }} {{ 'Common_labels.Details' | translate }}
     </h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
@@ -236,7 +126,7 @@
         <div class="row mb-4">
           <div class="col-6">
             <div class="row">
-              <div class="col-md-6 details-text">Sowing date:</div>
+              <div class="col-md-6 details-text">{{ 'DSS_information_table.Sowing_date' | translate }}:</div>
               <div class="col-md-6">{{ formatLocaleDateGB(selectedCrop.sowingDate) }}</div>
             </div>
           </div>
@@ -244,13 +134,13 @@
         <div class="row">
           <div class="col-12">
             <div class="table-responsive">
-              <h6 class="text-muted size-09">Sprays applied:</h6>
+              <h6 class="text-muted size-09">{{ 'DSS_information_table.Sprays_applied' | translate }}:</h6>
               <table class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <th class="text-center" scope="col">Spray</th>
-                    <th class="text-center" scope="col">Date</th>
-                    <th class="text-center" scope="col">Rate (kg/ha)</th>
+                    <th class="text-center" scope="col">{{ 'Common_labels.Spray' | translate }}</th>
+                    <th class="text-center" scope="col">{{ 'Common_labels.Date' | translate }}</th>
+                    <th class="text-center" scope="col">{{ 'DSS_information_table.Rate' | translate }}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -268,7 +158,7 @@
         <div class="row">
           <div class="col-12">
             <div class="table-responsive">
-              <h6 class="text-muted size-09">List of DSS:</h6>
+              <h6 class="text-muted size-09">{{ 'DSS_information_table.List_of_DSS' | translate }}:</h6>
               <div>
                 <accordion [isAnimated]="true"
                   *ngIf="selectedCrop.fieldCropDto.fieldCropPestDto.value[0].fieldCropPestDssDto.value != 0; else noDssList">
@@ -282,7 +172,7 @@
                       <table class="table table-striped table-bordered">
                         <thead>
                           <tr>
-                            <th class="text-center" scope="col" rowspan="1" colspan="2">Parameters</th>
+                            <th class="text-center" scope="col" rowspan="1" colspan="2">{{ 'DSS_information_table.Parameters' | translate }}</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -316,7 +206,7 @@
                   </accordion-group>
                 </accordion>
                 <ng-template #noDssList>
-                  <div class="text-center">No DSS available.</div>
+                  <div class="text-center">{{ 'Information_messages.No_DSS_available' | translate }}</div>
                 </ng-template>
               </div>
               <br>
@@ -327,13 +217,13 @@
         <div class="row">
           <div class="col-12">
             <div class="table-responsive">
-              <h6 class="text-muted size-09">Pest Observations</h6>
+              <h6 class="text-muted size-09">{{ 'DSS_information_table.Pest_observations' | translate }}</h6>
               <table class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <th class="text-center" scope="col">Pest</th>
-                    <th class="text-center" scope="col">Date</th>
-                    <th class="text-center" scope="col">Severity (%)</th>
+                    <th class="text-center" scope="col">{{ 'DSS_information_table.Pest' | translate }}</th>
+                    <th class="text-center" scope="col">{{ 'Common_labels.Date' | translate }}</th>
+                    <th class="text-center" scope="col">{{ 'DSS_information_table.Severity' | translate }}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -352,6 +242,6 @@
     </div>
   </div>
   <div class="modal-footer pull-right">
-    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">Close</button>
+    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
   </div>
 </ng-template>
