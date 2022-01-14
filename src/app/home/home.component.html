@@ -52,7 +52,7 @@
       <div class="row">
         <div class="col-md-6 no-padd">
           <div class="section-title">
-            <h3><b>IPM Decisions</b> News </h3>
+            <h3 [innerHtml]="('Home.IPM_Decisions_News' | translate)"></h3>
           </div>
           <owl-carousel-o [options]="customOptions">
             <ng-container *ngFor="let n of testNews">
@@ -73,7 +73,7 @@
         <div class="col-md-6 no-padd">
           <div class="container" data-aos="fade-up" [style.padding-top]="'47px'">
             <div class="row">
-              <div class="col-md-6 col-lg-6">
+              <div class="col-md-5 col-lg-5">
                 <a routerLink="/farmer-advisor-article">
                   <div class="icon-box" data-aos="fade-up" data-aos-delay="100" style="margin: 0 auto;">
                     <div class="icon">
@@ -95,11 +95,11 @@
                 </a>
               </div>
 
-              <div class="col-md-3 col-lg-3">
+              <div class="col-md-4 col-lg-4">
                 <a routerLink="/coding-article">
                   <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                     <div class="icon"><img src="img/coding.png"></div>
-                    <h4 class="title">{{ 'Common_labels.Developers' | translate }}</h4>
+                    <h4 class="title" >{{ 'Common_labels.Developers' | translate }}</h4>
                   </div>
                 </a>
               </div>
@@ -191,7 +191,7 @@ margin-right: 5px;">
         <p>
           {{ 'Common_labels.Cofundend_by_the_Horizon_2020' | translate }}
           <br>{{ 'Common_labels.Framework_programme' | translate }}
-          <br>{{ 'Common_labels.Under_grant_agreement' | translate }} No 817617
+          <br>{{ 'Common_labels.Under_grant_agreement' | translate }}
         </p>
       </div>
       <div class="col-lg-4 col-md-4 ">

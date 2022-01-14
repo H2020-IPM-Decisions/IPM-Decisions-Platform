@@ -3,14 +3,14 @@
         "Home":"Home",
         "Login":"Accedi",
         "Register":"Registrati",
-        "Farmers_and_Advisors":"Agricoltori & Consulenti",
+        "Farmers_and_Advisors":"Agricoltori e Consulenti",
         "Researchers":"Ricercatori",
         "Developers":"Sviluppatori",
-        "Project_lead":"Leader di progetto",
-        "Technical_contacts":"Contatti tecnici",
-        "Cofundend_by_the_Horizon_2020":"Cofinanziato da Horizon 2020",
-        "Framework_programme":"Programma Quadro dell'Unione Europea",
-        "Under_grant_agreement":"Con finanziamento ",
+        "Project_lead":"Capo progetto",
+        "Technical_contacts":"Referenti tecnici",
+        "Cofundend_by_the_Horizon_2020":"Cofinanziato dal Programma Quadro",
+        "Framework_programme":"dell’Unione Europea Orizzonte 2020",
+        "Under_grant_agreement":"con accordo di sovvenzione nr. 817617",
         "All_rights_reserved":"Tutti i diritti riservati",
         "Email":"E-mail",
         "Password":"Password",
@@ -138,14 +138,16 @@
         "Dutch":"Olandese",
         "Slovenian":"Sloveno",
         "Lithuanian":"Lituano",
-        "Swedish":"Svedese"
+        "Swedish":"Svedese",
+        "Greek":"Greco"
     },
     "Home": {
         "Contacts":"Contatti",
-        "Email_us":"Email",
-        "Web_Site":"Sito Web",
-        "Social":"Social",
-        "Useful_links":"Link Utili"    
+        "Email_us":"Mandaci un’e-mail",
+        "Web_Site":"Sito web",
+        "Social":"Social media",
+        "Useful_links":"Link utili",
+        "IPM_Decisions_News":"News da <b>IPM Decisions</b>"  
     },
     "Register": {
         "User_type":"Tipo di utente",

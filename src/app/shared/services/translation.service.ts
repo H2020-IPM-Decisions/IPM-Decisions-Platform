@@ -30,8 +30,8 @@ export class TranslationService {
 
     public initLanguageFromBrowser(): void {
       this.currentLanguage = this._translate.getBrowserLang();
-      sessionStorage.setItem("selectedLanguage",this.currentLanguage.match(/en|it/) ? this.currentLanguage : 'en')
-      this._translate.use(this.currentLanguage.match(/en|it/) ? this.currentLanguage : 'en');
+      sessionStorage.setItem("selectedLanguage",this.currentLanguage.match(/en|el|se|it/) ? this.currentLanguage : 'en')
+      this._translate.use(this.currentLanguage.match(/en|el|se|it/) ? this.currentLanguage : 'en');
     }
 
     public useLanguage(language: string): void {
@@ -42,9 +42,30 @@ export class TranslationService {
     }
 
     public getCurrentLanguage(): string {
-      if (this.currentLanguage==="en"){
+      /*if (this.currentLanguage==="en"){
         return "gb";
       }
-        return this.currentLanguage;
+        return this.currentLanguage;*/
+      return this.convertLangToFlagCode(this.currentLanguage);
+    }
+    
+    public convertFlagToLangCode(flagCode: string): string {
+      let flagToLangCodeMap: {[key: string]: string} = {
+        "gb":"en",
+        "it":"it",
+        "gr":"el",
+        "se":"se"
+      };
+      return flagToLangCodeMap[flagCode];
+    }
+
+    public convertLangToFlagCode(langCode: string): string {
+      let langToFlagCode: {[key: string]: string} = {
+        "en":"gb",
+        "it":"it",
+        "el":"gr",
+        "se":"se"
+      };
+      return langToFlagCode[langCode];
     }
 }

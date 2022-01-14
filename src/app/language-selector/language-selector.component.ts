@@ -16,8 +16,15 @@ export class LanguageSelectorComponent implements OnInit, OnDestroy {
       { description :'Language_Selector.English',  id:"en" },
       { description :'Language_Selector.Italian',  id:"it" }
     ];*/
+    
+    /* 
+      LANGUAGE LABELS
+    */
     labelEnglish: string;
     labelItalian: string;
+    labelGreek: string;
+    labelSwedish: string;
+
     selectedCountryCode: string;
     customLabels: Record<string,string>;
     countryCodes: string[];
@@ -32,9 +39,15 @@ export class LanguageSelectorComponent implements OnInit, OnDestroy {
         this.initLanguageLabels();
       }
 
+    /*
+      Some country flags uses a different code see the below list:
+      FLAG CODE | LANG CODE | COUNTRY
+          gb    |    en     | Great Britain
+          gr    |    el     | Greek
+    */
     ngOnInit() {
       this.selectedCountryCode = this._translationService.getCurrentLanguage();
-      this.countryCodes = ['gb','it'];
+      this.countryCodes = ['gb','it','gr','se'];
     }
 
     setLanguage(language: string): void {
@@ -43,11 +56,13 @@ export class LanguageSelectorComponent implements OnInit, OnDestroy {
 
     changeSelectedCountryCode(value: string): void {
       this.selectedCountryCode = value;
-      if (value==="gb") {
+      let convertedValue: string = this._translationService.convertFlagToLangCode(value);
+      /*if (value==="gb") {
         this._translationService.useLanguage("en");
       } else {
         this._translationService.useLanguage(value);
-      }
+      }*/
+      this._translationService.useLanguage(convertedValue);
     }
 
     getCurrentCountryCode(): string {
@@ -58,12 +73,20 @@ export class LanguageSelectorComponent implements OnInit, OnDestroy {
       this.subscriptionLanguage = this._translate.get('Language_Selector.English').pipe(
         switchMap((enTranslation) => {
           this.labelEnglish = enTranslation;
-          return this._translate.get('Language_Selector.Italian')})
+          return this._translate.get('Language_Selector.Greek')}),
+        switchMap((elTranslation) => {
+          this.labelGreek = elTranslation;
+          return this._translate.get('Language_Selector.Swedish')}),
+        switchMap((seTranslation) => {
+          this.labelSwedish = seTranslation;
+          return this._translate.get('Language_Selector.Italian')}),
       ).subscribe((itTranslation)=> {
         this.labelItalian = itTranslation;
         this.customLabels = {
           "gb":this.labelEnglish,
           "it":this.labelItalian,
+          "gr":this.labelGreek,
+          "se":this.labelSwedish
         };
       });      
     }

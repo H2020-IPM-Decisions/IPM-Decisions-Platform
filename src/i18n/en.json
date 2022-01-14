@@ -10,7 +10,7 @@
         "Technical_contacts":"Technical contacts",
         "Cofundend_by_the_Horizon_2020":"Co-funded by the Horizon 2020",
         "Framework_programme":"Framework Programme of the European Union",
-        "Under_grant_agreement":"Under grant agreement ",
+        "Under_grant_agreement":"Under grant agreement No 817617",
         "All_rights_reserved":"All Rights Reserved",
         "Email":"E-mail",
         "Password":"Password",
@@ -138,14 +138,16 @@
         "Dutch":"Dutch",
         "Slovenian":"Slovenian",
         "Lithuanian":"Lithuanian",
-        "Swedish":"Swedish"
+        "Swedish":"Swedish",
+        "Greek":"Greek"
     },
     "Home": {
         "Contacts":"Contacts",
         "Email_us":"Email Us",
         "Web_Site":"Web Site",
         "Social":"Social",
-        "Useful_links":"Useful Links"
+        "Useful_links":"Useful Links",
+        "IPM_Decisions_News":"<b>IPM Decisions</b> News"
     },
     "Register": {
         "User_type":"User Type",
