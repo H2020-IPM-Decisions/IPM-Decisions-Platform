@@ -16,7 +16,8 @@ div#login-background {
 }
 
 #login .container #login-row #login-column #login-box {
-    margin-top: 120px;
+    margin-top: 60px;
+    margin-bottom: 60px;
     max-width: 800px;
     min-height: 450px;
     border: 1px solid #ddd;
@@ -68,7 +69,6 @@ a.active.nav-link {
 
 ul.nav.nav-justified {
     bottom: 10px;
-    position: absolute;
     width: 100%;
     left: 0;
     right: 0;

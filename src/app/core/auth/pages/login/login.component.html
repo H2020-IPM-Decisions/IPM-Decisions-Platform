@@ -51,6 +51,9 @@
             <div class="tab-pane" id="forgot-password" role="tabpanel">
               <forget-password></forget-password>
             </div>
+            <div class="tab-pane" id="resend-confirmation-email" role="tabpanel">
+              <resend-confirmation-email></resend-confirmation-email>
+            </div>
           </div>
           <ul class="nav nav-justified" id="login-register-nav">
             <li class="nav-item"><a data-toggle="tab" href="#login-form" class="active nav-link"><i class="fa fa-user"
@@ -59,6 +62,8 @@
                   class="fa fa-address-book" aria-hidden="true"></i> {{ 'Common_labels.Register' | translate }}</a></li>
             <li class="nav-item"><a data-toggle="tab" href="#forgot-password" class="nav-link"> <i
                   class="fa fa-question-circle" aria-hidden="true"></i> {{ 'Common_labels.Forgot_password' | translate }}</a></li>
+            <li *ngIf="emailNotConfirmed" class="nav-item"><a data-toggle="tab" href="#resend-confirmation-email" class="nav-link"> <i
+                  class="fa fa-redo" aria-hidden="true"></i> {{ 'Common_labels.Resend_confirmation_email' | translate }}</a></li>
           </ul>
 
 
@@ -72,7 +77,18 @@
   <div class="modal-body">
     <div class="alert alert-danger" *ngIf="true">
       <p>{{ errorMessage | translate }}</p>
+      <p *ngIf="emailNotConfirmed" [innerHtml]="('Information_messages.Email_not_validated_Message'| translate)"></p>
     </div>
     <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">{{ 'Common_labels.Ok' | translate }}</button>
   </div>
 </ng-template>
+
+<!--<ng-template #resendConfirmationEmailModal>
+  <div class="modal-body">
+    <div class="alert alert-success" *ngIf="true">
+      <p>A new confirmation email has been sent!</p>
+    </div>
+    
+    <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">{{ 'Common_labels.Ok' | translate }}</button>
+  </div>
+</ng-template>-->

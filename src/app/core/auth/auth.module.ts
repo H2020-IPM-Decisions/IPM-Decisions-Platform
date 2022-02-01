@@ -12,6 +12,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateModule} from '@ngx-translate/core';
+import { ResendConfirmationEmailComponent } from './pages/resend-confirmation-email/resend-confirmation-email.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { TranslateModule} from '@ngx-translate/core';
     RegisterComponent,
     ForgetPasswordComponent,
     TermsComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ResendConfirmationEmailComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,8 @@ import { TranslateModule} from '@ngx-translate/core';
     ForgetPasswordComponent,
     TermsComponent,
     LoadingSpinnerComponent,
-    TranslateModule
+    TranslateModule,
+    ResendConfirmationEmailComponent
 
   ]
 })

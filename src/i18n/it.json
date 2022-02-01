@@ -46,7 +46,8 @@
         "Loading":"Caricamento...",
         "Back":"Indietro",
         "Select":"Seleziona",
-        "Deselect":"Deseleziona"
+        "Deselect":"Deseleziona",
+        "Resend_confirmation_email":"Reinvia mail di conferma"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
@@ -97,7 +98,8 @@
         "DSS_delete":"Stai per eliminare il DSS. Vuoi procedere?",
         "DSS_models_retrived":"Modelli DSS ottenuti!",
         "DSS_models_added":"Modelli DSS aggiunti!",
-        "DSS_parameters_updated":"Parametri del DSS aggiornati!"
+        "DSS_parameters_updated":"Parametri del DSS aggiornati!",
+        "Email_not_validated_Message":"Perfavore clicca su <b><b> Reinvia mail di conferma </b></b> in basso a destra della pagina"
     },
     "Countries": {
         "Austria":"Austria", 
@@ -139,7 +141,11 @@
         "Slovenian":"Sloveno",
         "Lithuanian":"Lituano",
         "Swedish":"Svedese",
-        "Greek":"Greco"
+        "Greek":"Greco",
+        "French":"Francese",
+        "Norwegian": "Norvegese",
+    	"Danish": "Danese",
+    	"Finnish": "Finlandese"
     },
     "Home": {
         "Contacts":"Contatti",
@@ -282,5 +288,10 @@
     "DSS_model_parametrisation": {
         "Title":"Parametrizzazione del modello DSS",
         "Saved_parameters":"Parametri Salvati"
-    }
+    },
+    "Resend_confirmation_email":{
+        "Insert_your_account_email":"Inserisci l'email del tuo account",
+        "Resend_confirmation_button":"Reinvia conferma",
+        "A_new_confirmation_email_as_been_sent":"Una nuova mail di conferma è stata inviata!"
+}
 }

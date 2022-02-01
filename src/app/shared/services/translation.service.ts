@@ -30,8 +30,8 @@ export class TranslationService {
 
     public initLanguageFromBrowser(): void {
       this.currentLanguage = this._translate.getBrowserLang();
-      sessionStorage.setItem("selectedLanguage",this.currentLanguage.match(/en|el|se|it/) ? this.currentLanguage : 'en')
-      this._translate.use(this.currentLanguage.match(/en|el|se|it/) ? this.currentLanguage : 'en');
+      sessionStorage.setItem("selectedLanguage",this.currentLanguage.match(/en|el|se|fr|it/) ? this.currentLanguage : 'en')
+      this._translate.use(this.currentLanguage.match(/en|el|se|fr|it/) ? this.currentLanguage : 'en');
     }
 
     public useLanguage(language: string): void {
@@ -54,7 +54,15 @@ export class TranslationService {
         "gb":"en",
         "it":"it",
         "gr":"el",
-        "se":"se"
+        "se":"se",
+        "fr":"fr",
+        "de":"de",
+        "nl":"nl",
+        "si":"si",
+        "fi":"fi",
+        "no":"no",
+        "lt":"lt",
+        "dk":"dk"
       };
       return flagToLangCodeMap[flagCode];
     }
@@ -64,7 +72,15 @@ export class TranslationService {
         "en":"gb",
         "it":"it",
         "el":"gr",
-        "se":"se"
+        "se":"se",
+        "fr":"fr",
+        "de":"de",
+        "nl":"nl",
+        "si":"si",
+        "fi":"fi",
+        "no":"no",
+        "lt":"lt",
+        "dk":"dk"
       };
       return langToFlagCode[langCode];
     }

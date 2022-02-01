@@ -1,0 +1,28 @@
+<form [formGroup]="resendForm" (ngSubmit)="onSubmit()" class="confirmationEmail">
+    <div class="form-group col">
+      <label>{{ 'Resend_confirmation_email.Insert_your_account_email' | translate }}</label>
+      <input
+        type="text"
+        formControlName="email"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+        placeholder=""
+      />
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">{{ 'Error_messages.Email_required' | translate }}</div>
+        <div *ngIf="f.email.errors.email">{{ 'Error_messages.Email_must_be_valid' | translate }}</div>
+      </div>
+    </div>
+    <div class="text-center form-group col">
+      <button class="btn btn-login btn-block">{{ 'Resend_confirmation_email.Resend_confirmation_button' | translate }}</button>
+    </div>
+</form>
+
+<ng-template #resendConfirmationEmailModal>
+  <div class="modal-body">
+    <div class="alert alert-success">
+        <p>{{ 'Resend_confirmation_email.A_new_confirmation_email_as_been_sent' | translate }}</p>
+    </div>
+    <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">{{ 'Common_labels.Ok' | translate }}</button>
+  </div>
+</ng-template>

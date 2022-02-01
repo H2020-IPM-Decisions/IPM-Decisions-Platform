@@ -100,6 +100,7 @@ export class CMSService {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/termsnconditions`, {
         headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
           'Cockpit-Token': `${this.key}`
         }
       })
@@ -110,6 +111,7 @@ export class CMSService {
     return this.http
       .get(`${this.cmsUrl}/api/collections/get/news_`+language, {
         headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
           'Cockpit-Token': `${this.key}`
         }
       })
@@ -120,6 +122,7 @@ export class CMSService {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/homeintroduction`, {
         headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
           'Cockpit-Token': `${this.key}`
         }
       })
@@ -130,6 +133,7 @@ export class CMSService {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/hometitle`, {
         headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
           'Cockpit-Token': `${this.key}`
         }
       })
@@ -140,6 +144,7 @@ export class CMSService {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/farmersadvisorsarticle`, {
         headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
           'Cockpit-Token': `${this.key}`
         }
       })
@@ -150,6 +155,7 @@ export class CMSService {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/researchersarticle`, {
         headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
           'Cockpit-Token': `${this.key}`
         }
       })
@@ -160,6 +166,7 @@ export class CMSService {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/developersarticle`, {
         headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
           'Cockpit-Token': `${this.key}`
         }
       })
@@ -170,6 +177,7 @@ export class CMSService {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/forgotpasswordconfirmation`, {
         headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
           'Cockpit-Token': `${this.key}`
         }
       })
@@ -180,6 +188,7 @@ export class CMSService {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/registrationconfirmation`, {
         headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
           'Cockpit-Token': `${this.key}`
         }
       })
@@ -190,6 +199,7 @@ export class CMSService {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/termsandconditions`, {
         headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
           'Cockpit-Token': `${this.key}`
         }
       })

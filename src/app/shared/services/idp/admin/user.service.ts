@@ -13,14 +13,19 @@
 
     registerUser(token, userId):Observable<any> {
       const url = environment.apiUrl + `/api/idp/accounts/confirmemail?token=${token}&userId=${userId}`;
-      return this.http.get(url);
+      return this.http.get(url, {
+        headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage')
+        }
+      });
     }
 
     getAllUsers():Observable<any> {
       const url = environment.apiUrl + '/api/idp/admin/users';
       return this.http.get<any>(url, {
         headers: {
-          'Accept':'application/json'
+          'Accept':'application/json',
+          'Accept-Language':sessionStorage.getItem('selectedLanguage')
         }
       });
     }
@@ -29,7 +34,8 @@
       const url = environment.apiUrl + '/api/idp/admin/users';
       return this.http.get<any>(url, {
         headers: {
-          'Accept':'application/vnd.h2020ipmdecisions.hateoas+json'
+          'Accept':'application/vnd.h2020ipmdecisions.hateoas+json',
+          'Accept-Language':sessionStorage.getItem('selectedLanguage')
         }
       });
     }
@@ -41,7 +47,8 @@
           searchquery: searchquery
         },
         headers: {
-          'Accept':'application/json'
+          'Accept':'application/json',
+          'Accept-Language':sessionStorage.getItem('selectedLanguage')
         }
       });
     }
@@ -53,7 +60,8 @@
           fields: fields
         },
         headers: {
-          'Accept':'application/json'
+          'Accept':'application/json',
+          'Accept-Language':sessionStorage.getItem('selectedLanguage')
         }
       });
     }
@@ -65,7 +73,8 @@
           orderby: orderby
         },
         headers: {
-          'Accept':'application/json'
+          'Accept':'application/json',
+          'Accept-Language':sessionStorage.getItem('selectedLanguage')
         }
       });
     }
@@ -77,7 +86,8 @@
           orderby: `${orderby} desc`
         },
         headers: {
-          'Accept':'application/json'
+          'Accept':'application/json',
+          'Accept-Language':sessionStorage.getItem('selectedLanguage')
         }
       });
     }
@@ -89,7 +99,8 @@
           pageNumber: pageNumber
         },
         headers: {
-          'Accept':'application/json'
+          'Accept':'application/json',
+          'Accept-Language':sessionStorage.getItem('selectedLanguage')
         }
       });
     }
@@ -106,7 +117,8 @@
           orderby: orderby
         },
         headers: {
-          'Accept':'application/json'
+          'Accept':'application/json',
+          'Accept-Language':sessionStorage.getItem('selectedLanguage')
         }
       });
     }
@@ -123,7 +135,8 @@
           orderby: orderby
         },
         headers: {
-          'Accept':'application/vnd.h2020ipmdecisions.hateoas+json'
+          'Accept':'application/vnd.h2020ipmdecisions.hateoas+json',
+          'Accept-Language':sessionStorage.getItem('selectedLanguage')
         }
       });
     }
@@ -132,7 +145,8 @@
       const url = environment.apiUrl + `/api/idp/admin/users/${id}`;
       return this.http.get<any>(url, {
         headers: {
-          'Accept':'application/json'
+          'Accept':'application/json',
+          'Accept-Language':sessionStorage.getItem('selectedLanguage')
         }
       });
     }
@@ -144,7 +158,8 @@
           fields: fields
         },
         headers: {
-          'Accept':'application/vnd.h2020ipmdecisions.hateoas+json'
+          'Accept':'application/vnd.h2020ipmdecisions.hateoas+json',
+          'Accept-Language':sessionStorage.getItem('selectedLanguage')
         }
       });
     }
@@ -154,7 +169,8 @@
 
       return this.http.delete<any>(url, {
         headers: {
-          'Accept':'application/json'
+          'Accept':'application/json',
+          'Accept-Language':sessionStorage.getItem('selectedLanguage')
         }
       });
     }

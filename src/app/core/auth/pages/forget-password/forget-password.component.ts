@@ -72,7 +72,7 @@ export class ForgetPasswordComponent implements OnInit {
       email: (<string>this.resetForm.value.email).toLowerCase()
     }
 
-    this._emailService.forgotPasswort(emailForForgetPassword).subscribe(response => {
+    this._emailService.forgotPassword(emailForForgetPassword).subscribe(response => {
       this.modalRef = this.modalService.show(this.resetPasswordModal);
     });
 

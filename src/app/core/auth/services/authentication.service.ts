@@ -43,7 +43,11 @@ export class AuthenticationService {
     const url: string = `${environment.apiUrl}/api/idp/authorization/register`;
     // registrationData.password = this.hashPassword(registrationData.password);
 
-    return this.http.post<User>(url, registrationData).pipe(
+    const headers = {
+      'Accept-Language':sessionStorage.getItem('selectedLanguage')
+    };
+
+    return this.http.post<User>(url, registrationData,{ headers }).pipe(
       catchError((errorRes) => {
         let errorMessage = {"code":"UnknownError","description":"Error_messages.An_unknown_error_occured"};
         if (!errorRes.error || !errorRes.error.errors) {
@@ -86,6 +90,7 @@ export class AuthenticationService {
 
     const headers = {
       "Content-Type": "application/json",
+      'Accept-Language':sessionStorage.getItem('selectedLanguage'),
       Accept: "application/json",
       grant_type: "password",
       client_id: "08d7aa5b-e23c-496e-8946-6d8af6b98dd6",
@@ -195,6 +200,7 @@ export class AuthenticationService {
       .post<any>(url, null, {
         headers: {
           "Content-Type": "application/json",
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
           Accept: "application/json",
           grant_type: "refresh_token",
           client_id: "08d7aa5b-e23c-496e-8946-6d8af6b98dd6",

@@ -46,8 +46,7 @@
         "Loading":"Loading...",
         "Back":"Back",
         "Select":"Select",
-        "Deselect":"Deselect",
-        "Resend_confirmation_email":"Resend confirmation email"
+        "Deselect":"Deselect"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -98,8 +97,7 @@
         "DSS_delete":"You are about to delete the DSS. Are you sure?",
         "DSS_models_retrived":"DSS Models retrivied successfully!",
         "DSS_models_added":"DSS Models added successfully!",
-        "DSS_parameters_updated":"DSS parameters updated!",
-        "Email_not_validated_Message":"Please click on <b><b> Resend confirmation email </b></b> located bottom right of this page."
+        "DSS_parameters_updated":"DSS parameters updated!"
     },
     "Countries": {
         "Austria":"Austria", 
@@ -288,10 +286,5 @@
     "DSS_model_parametrisation": {
         "Title":"DSS Model Parametrisation",
         "Saved_parameters":"Saved parameters"
-    },
-    "Resend_confirmation_email":{
-        "Insert_your_account_email":"Insert your account email",
-        "Resend_confirmation_button":"Resend confirmation",
-        "A_new_confirmation_email_as_been_sent":"A new confirmation email has been sent!"
     }
 }

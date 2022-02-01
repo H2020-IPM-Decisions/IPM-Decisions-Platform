@@ -139,7 +139,11 @@
         "Slovenian":"Slovenska",
         "Lithuanian":"Litauiska",
         "Swedish":"Svenska",
-        "Greek":"Grekisk"
+        "Greek":"Grekisk",
+        "French":"Franska",
+        "Finnish":"Finska",
+        "Danish":"Danska",
+        "Norwegian":"Norska"
     },
     "Home": {
         "Contacts":"Kontakter",

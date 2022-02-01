@@ -46,8 +46,7 @@
         "Loading":"Loading...",
         "Back":"Back",
         "Select":"Select",
-        "Deselect":"Deselect",
-        "Resend_confirmation_email":"Resend confirmation email"
+        "Deselect":"Deselect"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -98,8 +97,7 @@
         "DSS_delete":"You are about to delete the DSS. Are you sure?",
         "DSS_models_retrived":"DSS Models retrivied successfully!",
         "DSS_models_added":"DSS Models added successfully!",
-        "DSS_parameters_updated":"DSS parameters updated!",
-        "Email_not_validated_Message":"Please click on <b><b> Resend confirmation email </b></b> located bottom right of this page."
+        "DSS_parameters_updated":"DSS parameters updated!"
     },
     "Countries": {
         "Austria":"Austria", 
@@ -141,11 +139,11 @@
         "Slovenian":"Slovenian",
         "Lithuanian":"Lithuanian",
         "Swedish":"Swedish",
-        "Greek":"Greek",
-        "French":"French",
-        "Norwegian": "Norwegian",
-    	"Danish": "Danish",
-    	"Finnish": "Finnish"
+        "Greek":"Grec",
+        "French":"Français",
+        "Finnish":"Finlandais",
+        "Danish": "Danoise",
+        "Norwegian":"Norvégien"
     },
     "Home": {
         "Contacts":"Contacts",
@@ -153,7 +151,7 @@
         "Web_Site":"Web Site",
         "Social":"Social",
         "Useful_links":"Useful Links",
-        "IPM_Decisions_News":"<b>IPM Decisions</b> News"
+        "IPM_Decisions_News":"Actualités d’<b>IPM Decisions</b>"
     },
     "Register": {
         "User_type":"User Type",
@@ -220,7 +218,7 @@
         "Farm_creation":"Farm creation",
         "Farm_name":"Farm name",
         "Farm_location":"Select farm location",
-        "Nearest_met_station":"Nearest weather station",
+        "Nearest_met_station":"Nearest met. station",
         "Weather_forecast_service":"Weather forecast service"
     },
     "DSS_information_table": {
@@ -288,10 +286,5 @@
     "DSS_model_parametrisation": {
         "Title":"DSS Model Parametrisation",
         "Saved_parameters":"Saved parameters"
-    },
-    "Resend_confirmation_email":{
-        "Insert_your_account_email":"Insert your account email",
-        "Resend_confirmation_button":"Resend confirmation",
-        "A_new_confirmation_email_as_been_sent":"A new confirmation email has been sent!"
     }
 }

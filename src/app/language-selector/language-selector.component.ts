@@ -24,6 +24,14 @@ export class LanguageSelectorComponent implements OnInit, OnDestroy {
     labelItalian: string;
     labelGreek: string;
     labelSwedish: string;
+    labelFrench: string;
+    labelGerman: string;
+    labelDutch: string;
+    labelSlovenian: string;
+    labelFinnish: string;
+    labelNorwegian: string;
+    labelLithuanian: string;
+    labelDanish: any;
 
     selectedCountryCode: string;
     customLabels: Record<string,string>;
@@ -47,7 +55,7 @@ export class LanguageSelectorComponent implements OnInit, OnDestroy {
     */
     ngOnInit() {
       this.selectedCountryCode = this._translationService.getCurrentLanguage();
-      this.countryCodes = ['gb','it','gr','se'];
+      this.countryCodes = ['gb','it','gr','se',/*'fr'*/,'de','nl','si','fi','no',/*'lt'*/,'dk'];
     }
 
     setLanguage(language: string): void {
@@ -79,14 +87,46 @@ export class LanguageSelectorComponent implements OnInit, OnDestroy {
           return this._translate.get('Language_Selector.Swedish')}),
         switchMap((seTranslation) => {
           this.labelSwedish = seTranslation;
-          return this._translate.get('Language_Selector.Italian')}),
-      ).subscribe((itTranslation)=> {
-        this.labelItalian = itTranslation;
+          return this._translate.get('Language_Selector.French')}),
+        switchMap((frTranslation) => {
+          this.labelFrench = frTranslation;
+          return this._translate.get('Language_Selector.German')}),
+        switchMap((deTranslation) => {
+          this.labelGerman = deTranslation;
+          return this._translate.get('Language_Selector.Dutch')}),
+        switchMap((nlTranslation) => {
+          this.labelDutch = nlTranslation;
+          return this._translate.get('Language_Selector.Slovenian')}),
+        switchMap((siTranslation) => {
+          this.labelSlovenian = siTranslation;
+          return this._translate.get('Language_Selector.Finnish')}),
+        switchMap((fiTranslation) => {
+          this.labelFinnish = fiTranslation;
+          return this._translate.get('Language_Selector.Norwegian')}),
+        switchMap((noTranslation) => {
+          this.labelNorwegian = noTranslation;
+          return this._translate.get('Language_Selector.Lithuanian')}),
+        switchMap((ltTranslation) => {
+            this.labelLithuanian = ltTranslation;
+            return this._translate.get('Language_Selector.Italian')}),
+        switchMap((itTranslation) => {
+          this.labelItalian = itTranslation;
+          return this._translate.get('Language_Selector.Danish')}),
+      ).subscribe((dkTranslation)=> {
+        this.labelDanish = dkTranslation;
         this.customLabels = {
           "gb":this.labelEnglish,
           "it":this.labelItalian,
           "gr":this.labelGreek,
-          "se":this.labelSwedish
+          "se":this.labelSwedish,
+          "fr":this.labelFrench,
+          "de":this.labelGerman,
+          "nl":this.labelDutch,
+          "si":this.labelSlovenian,
+          "fi":this.labelFinnish,
+          "no":this.labelNorwegian,
+          "lt":this.labelLithuanian,
+          "dk":this.labelDanish
         };
       });      
     }

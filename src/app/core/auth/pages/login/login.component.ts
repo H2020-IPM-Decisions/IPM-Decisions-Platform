@@ -6,8 +6,10 @@ import { UserForAuthentication } from '../../models/user-for-authentication.mode
 import { Authentication } from './../../models/authentication.model';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Role } from '../../enums/role.enum';
-import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TranslationService } from '@app/shared/services/translation.service';
+//import { IResendConfirmation } from '../../models/resend-confirmation-email.model';
+//import { EmailService } from './../../../../shared/services/eml/email.service';
 
 @Component({
   selector: 'login',
@@ -22,7 +24,9 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   errorMessage = "";
   @ViewChild('loginModal', { static: false }) public loginModal: TemplateRef<any>;
-  modalRef: any;
+  //@ViewChild('resendConfirmationEmailModal', { static: false }) public resendConfirmationEmailModal: TemplateRef<any>;
+  modalRef: BsModalRef;
+  emailNotConfirmed: boolean; //Email not confirmed
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,7 +34,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private modalService: BsModalService,
-    private _translationService: TranslationService
+    private _translationService: TranslationService,
+    //private _emailService: EmailService,
   ) { }
 
   ngOnInit() {
@@ -52,6 +57,7 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
   onLogin() {
+    this.emailNotConfirmed = false;
     this.submitted = true;
     if (this.loginForm.invalid) {
       return;
@@ -69,6 +75,7 @@ export class LoginComponent implements OnInit {
         (res: Authentication) => {
           this.loading = false;
           const hasRoles = this.authenticationService.currentUserValue.roles;
+          console.log("LOG METADATA EMAIL",res.email);
           if (hasRoles && hasRoles.includes(Role.Admin)) {
             this.router.navigate(["/admin"]);
           } else {
@@ -79,6 +86,9 @@ export class LoginComponent implements OnInit {
         (errorMessages: any) => {
           this.loading = false;
           this.errorMessage = errorMessages;
+          if(this.errorMessage === "Email not confirmed"){
+            this.emailNotConfirmed = true;
+          }
           this.modalRef = this.modalService.show(this.loginModal);
         }
     }
@@ -92,4 +102,19 @@ export class LoginComponent implements OnInit {
   forgotPassword() {
     this.forgotPass = true;
   }
+
+  /*resendConfirmationEmail() {
+    if (this.f.email.invalid) {
+      return;
+    }
+
+    const emailForResendConfirmation: IResendConfirmation = {
+      email: (<string>this.f.email.value).toLowerCase()
+    }
+
+    this._emailService.resendConfirmationEmail(emailForResendConfirmation).subscribe(response => {
+      this.modalRef.hide();
+      this.modalRef = this.modalService.show(this.resendConfirmationEmailModal);
+    });
+  }*/
 }

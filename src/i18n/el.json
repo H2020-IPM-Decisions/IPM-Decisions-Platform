@@ -139,7 +139,10 @@
         "Slovenian":"Σλοβενικά",
         "Lithuanian":"Λιθουανικά",
         "Swedish":"Σουηδικά",
-	    "Greek":"Ελληνικά"
+	    "Greek":"Ελληνικά",
+        "French":"Γαλλικά",
+        "Finnish":"Φινλανδικά",
+        "Norwegian":"Νορβηγός"
     },
     "Home": {
         "Contacts":"Επαφές",
