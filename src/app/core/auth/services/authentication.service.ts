@@ -191,6 +191,7 @@ export class AuthenticationService {
     sessionStorage.removeItem("refresh_token");
     this.currentAccountSubject.next(null);
     this.router.navigate(["/"]);
+    location.reload();
   }
 
   authenticateWithRefreshToken(refreshToken: string) {

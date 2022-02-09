@@ -15,12 +15,14 @@
   --main-bg-color: #259fa6;
   --main-txt-color: blue;
   --main-padding: 15px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
 }
 
 html,
 body {
   height: 100%;
-  font-family: "Open Sans", sans-serif;
+  font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   /*font-smoothing: antialiased;*/
 }
@@ -36,8 +38,9 @@ h4,
 h5,
 h6 {
   margin: 0;
-  color: #081624;
+  font-family: inherit;
   font-weight: 600;
+  color: inherit;
 }
 
 h1 {
@@ -958,22 +961,34 @@ span.c-l {
 
 .client-text {
   text-align: justify;
+  font-weight: 400;
   margin-bottom: 90px;
 }
 
 .client-text h2 {
   text-align: center;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 40px;
 }
 
 .client-text p {
   font-size: 14px;
   text-align: justify;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .client-text ul {
   list-style-position: inside;
+  line-height: 2;
+  margin-top: 10px;
+  margin-bottom: 32px;
+  font-weight: 900;
+}
+
+.client-text li {
+  margin-left:40px;
+  font-weight: 400;
 }
 
 .client-slider .single-brand {

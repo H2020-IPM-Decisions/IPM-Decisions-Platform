@@ -1,10 +1,12 @@
 <span>
-    <ng-template #tolTemplateStatusRep>{{statusRepresentation}}</ng-template>
+    <ng-template #tolTemplateStatusRep>
+      {{statusRepresentation}}
+    </ng-template>
     <span class="badge dss-badge containerBox"
-        [tooltip]="tolTemplateStatusRep"
+        [tooltip]="statusRepresentation ? tolTemplateStatusRep : null"
         [ngClass]="{'badge-secondary':!status, 'badge-info': status==1, 'badge-success': status==2, 'badge-warning':status==3, 'badge-danger': status==4}"
         *ngIf="!(executionType==='link')">
-        <span *ngIf="dssDescription"
+        <!--<span *ngIf="dssDescription"
             class="infoIcon fa-stack" 
             popover="{{dssDescription}}" 
             popoverTitle="{{statusRepresentation}}" 
@@ -13,7 +15,7 @@
             container='body'>
             <i class="fas fa-circle fa-stack-1x"></i>
             <i class="fas fa-info-circle fa-stack-1x"></i>
-        </span>
+        </span>-->
         <span *ngIf="!isValid" class="errorIcon fa-stack">
             <a class="details" (click)="openModal(errorModal,'modal-lg')">
                 <i class="fas fa-circle fa-stack-1x"></i>
@@ -32,7 +34,7 @@
     <!-- Template for External DSS Badge -->
     <span class="exeLink"
         *ngIf="executionType==='link'">
-        <span *ngIf="dssDescription"
+        <!--<span *ngIf="dssDescription"
             class="infoIcon fa-stack" 
             popover="{{dssDescription}}" 
             popoverTitle="{{statusRepresentation}}" 
@@ -41,7 +43,7 @@
             container='body'>
             <i class="fas fa-circle fa-stack-1x"></i>
             <i class="fas fa-info-circle fa-stack-1x"></i>
-        </span>
+        </span>-->
         <i class="fas fa-link"></i>
         <span class="label label-danger label-as-badge"></span>
         <a [href]="endpoint" target="_blank" style="color: #6c757d">

@@ -75,7 +75,6 @@ export class LoginComponent implements OnInit {
         (res: Authentication) => {
           this.loading = false;
           const hasRoles = this.authenticationService.currentUserValue.roles;
-          console.log("LOG METADATA EMAIL",res.email);
           if (hasRoles && hasRoles.includes(Role.Admin)) {
             this.router.navigate(["/admin"]);
           } else {

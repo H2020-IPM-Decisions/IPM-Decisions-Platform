@@ -12,12 +12,12 @@
 </div>
 
 <!-- ======= Header ======= -->
-<header id="header" class="fixed-top">
+<header id="header" class=" bannerHeader fixed-top">
   <div class="container d-flex align-items-center">
     <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
-    <b [style.margin-left]="'10px'">{{ homeTitle }}</b>
-    <nav class="nav-menu d-none d-lg-block">
-    </nav><!-- .nav-menu -->
+    <span [style.margin-left]="'10px'"><strong>{{ homeTitle }}</strong></span>
+   <!-- <nav class="nav-menu d-none d-lg-block">
+    </nav> .nav-menu -->
 
   </div>
 </header><!-- End Header -->
@@ -25,7 +25,7 @@
 
 
 <main id="main">
-  <div class="row no-gutters">
+  <div class="row no-gutters cmsIntroduction client-text">
     <div [ngStyle]="{'margin-top': '127px', 'padding': '20px 60px'}" [innerHtml]="homeIntro"></div>
     <!--<div class="col-md-6">
        ======= Hero Section ======= 

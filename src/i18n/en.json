@@ -81,7 +81,8 @@
         "DSS_model_add_error":"Fail to submit the selected models!",
         "DSS_model_combination_error":"No DSS model Submitted, a DSS with selected Crop/Pest combination already exists",
         "DSS_parameters_update_error":"Dss parameters update failed, an error occurs",
-        "DSS_parameters_fetching_error":"Unable to fetch parameters data"
+        "DSS_parameters_fetching_error":"Unable to fetch parameters data",
+        "DSS_model_avaiability_error":"No valid DSS avaiable for the selected crops"
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
@@ -283,7 +284,8 @@
         "DSS_id":"DSS ID",
         "Model_id":"MODEL ID",
         "Description":"DESCRIPTION",
-        "Warning_status_interpretation":"WARNING STATUS INTERPRETATION"
+        "Warning_status_interpretation":"WARNING STATUS INTERPRETATION",
+        "Model_name":"MODEL NAME"
     },
     "DSS_model_parametrisation": {
         "Title":"DSS Model Parametrisation",

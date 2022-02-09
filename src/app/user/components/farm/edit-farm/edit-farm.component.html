@@ -32,11 +32,12 @@
                   </td>
                   <!-- Crop -->
                   <td class="text-center">
-                    <a class="details" (click)="openModal(template, field, 'modal-lg')">
+                    
                       {{field.fieldCropDto.cropEppoCode | eppoCode}}
                       <small>({{field.fieldCropDto.cropEppoCode | uppercase}})</small>
+                    <!--<a class="details" (click)="openModal(template, field, 'modal-lg')">
                       <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
-                    </a>
+                    </a>-->
                   </td>
                   <!-- Pest/Desease -->
                   <td class="text-center">

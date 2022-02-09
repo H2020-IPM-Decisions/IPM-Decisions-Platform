@@ -44,6 +44,7 @@ export class MaprisksService {
 
         m.setView(new L.LatLng(location.y, location.x), location.zoom);
         m.addControl(new (L.Control as any).Fullscreen({position: 'bottomright'}));
+        m.doubleClickZoom.disable();
         m.whenReady(() => {
           m.openPopup
           observer.next(m);
@@ -74,6 +75,7 @@ export class MaprisksService {
   }
 
   addMarker(map: L.Map, location?: Location, editable = true): L.Marker {
+    var markers = new L.FeatureGroup();
     let marker = null;
     if (location) {
       marker = new L.Marker([location.y, location.x], { icon: L.icon({
@@ -86,17 +88,22 @@ export class MaprisksService {
       if(location.address){
         marker.bindPopup(location.address.LongLabel,{autoClose:false});
       }
-      marker.addTo(map).openPopup();
-      
+      //marker.addTo(map).openPopup();
+      //markers.clearLayers();
+      markers.addLayer(marker);
+      map.addLayer(markers);
+      marker.openPopup();
     }
 
     var self = this;
     map.on("click", (e: LeafletMouseEvent) => {
+      map.removeLayer(markers);
       if(!editable) {
         return;
       }
       if (marker) {
-        map.removeLayer(marker);
+        //map.removeLayer(marker);
+        markers.clearLayers();
       }
 
       esriGeo
@@ -110,21 +117,24 @@ export class MaprisksService {
 
           // get location object
           self.locationSubject.next(result);
-
+          
           marker = L.marker(result.latlng, { icon: L.icon({
             iconSize: [42,50],
             iconAnchor: [21, 47],
             popupAnchor: [1,-39],
             iconUrl: 'img/icons/marker-icon-farm.png',
             shadowUrl: 'img/icons/marker-shadow.png'
-          })})
-            .addTo(map)
-            .bindPopup(result.address.Match_addr)
-            .openPopup();
+          })});
+
+            //.addTo(map)
+            marker.bindPopup(result.address.Match_addr);
+            //markers.clearLayers();
+            markers.addLayer(marker);
+            map.addLayer(markers);
+            marker.openPopup();
         });
     });
-
-
+    
     return marker;
   }
 

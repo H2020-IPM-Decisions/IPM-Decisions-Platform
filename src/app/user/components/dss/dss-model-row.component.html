@@ -19,6 +19,9 @@
     </a>
 </td>
 <td class="text-center">
+    {{ dssSelection.name }} 
+</td>
+<td class="text-center">
     <button class="btn btn-info" (click)="onSelect()" [ngClass]="{'data-notSelected': selectedDss === true}" [disabled]="selectedPest === '' || selectedCrop === ''">{{ 'Common_labels.Select' | translate }}</button>
     <button class="btn btn-info" (click)="onDeselect()" [ngClass]="{'data-selected': selectedDss === true, 'data-notSelected': selectedDss === false}">{{ 'Common_labels.Deselect' | translate }}</button>
 </td>

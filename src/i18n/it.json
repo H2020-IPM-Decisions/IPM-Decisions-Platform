@@ -81,7 +81,8 @@
         "DSS_model_add_error":"Impossibile inviare i modelli selezionati!",
         "DSS_model_combination_error":"Nessun modello DSS inviato, esiste già un DSS con la combinazione coltura/parassita selezionata",
         "DSS_parameters_update_error":"Aggiornamento dei parametri del DSS fallito a causa di un errore",
-        "DSS_parameters_fetching_error":"Impossibile recuperare i dati dei parametri"
+        "DSS_parameters_fetching_error":"Impossibile recuperare i dati dei parametri",
+        "DSS_model_avaiability_error":"Non ci sono DSS validi per le colture selezionate"
     },
     "Information_messages":{
         "Farm_deletion_message":"Stai per eliminare una fattoria. Vuoi procedere?",
@@ -283,7 +284,8 @@
         "DSS_id":"ID DSS",
         "Model_id":"ID MODELLO",
         "Description":"DESCRIZIONE",
-        "Warning_status_interpretation":"INTERPRETAZIONE DELLO STATO DI AVVISO"
+        "Warning_status_interpretation":"INTERPRETAZIONE DELLO STATO DI AVVISO",
+        "Model_name":"NOME MODELLO"
     },
     "DSS_model_parametrisation": {
         "Title":"Parametrizzazione del modello DSS",

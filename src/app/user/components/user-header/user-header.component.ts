@@ -1,18 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { CMSService } from 'src/app/shared/services/cms.service';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 import { ActivatedRoute } from '@angular/router';
-import { tap } from 'rxjs/operators';
 import { SidebarMenuUpdateService } from '@app/shared/services/sidebar-menu-update/sidebar-menu-update.service';
-import { stringify } from 'querystring';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'user-header',
   templateUrl: './user-header.component.html',
   styleUrls: ['./user-header.component.css']
 })
-export class UserHeaderComponent implements OnInit {
+export class UserHeaderComponent implements OnInit, OnDestroy {
 
   username;
   bannerUrl = "";
@@ -21,6 +20,7 @@ export class UserHeaderComponent implements OnInit {
   isFarmer: boolean = false;
   isAdvisor: boolean = false;
   isDeveloper: boolean = false;
+  $accountSub: Subscription;
 
   constructor(
     private cmsService: CMSService,
@@ -32,10 +32,10 @@ export class UserHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    let accountSub = this._authService.account$.subscribe(
-      (account) => { this.username = (/(.*)@/).exec(account.email)[1]; },
-      null,
-      () => { accountSub.unsubscribe() }
+    this.$accountSub = this._authService.account$.subscribe(
+      (account) => {
+        if(account !== null){this.username = (/(.*)@/).exec(account.email)[1];}
+      }
     )
 
     this.cmsService
@@ -86,6 +86,12 @@ export class UserHeaderComponent implements OnInit {
 
   logout() {
     this._authService.logout();
+  }
+
+  ngOnDestroy(): void {
+    if(this.$accountSub){
+      this.$accountSub.unsubscribe();
+    }
   }
 
 }

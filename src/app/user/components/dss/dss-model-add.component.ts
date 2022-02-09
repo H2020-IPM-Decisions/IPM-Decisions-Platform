@@ -87,8 +87,13 @@ export class DssModelAddComponent implements OnInit {
     this._dssSelectionService.getDssByMultipleCrops(crops).subscribe(
       (response: HttpResponse<DssSelection[]>) => {
         this.data = response.body;
-        this.areCropsSelected = true;
-        this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
+        if(this.data.length > 0) {
+          this.areCropsSelected = true;
+          this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
+        } else {
+          this.areCropsSelected = false;
+          this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_avaiability_error","Common_labels.Error","toast-error");
+        }
       },
       (error: HttpErrorResponse) => {
         this._logger.error("Dss models selection error",error);
