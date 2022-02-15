@@ -39,6 +39,11 @@ export class DssSelectionService {
     return this._http.get<DssJSONSchema>(requestUrl, { observe: 'response' });
   }
 
+  getSchemaByDssId(dssId: string): Observable<HttpResponse<DssJSONSchema>> {
+    const requestUrl = `${environment.apiUrl}/api/upr/dss/${dssId}/parameters`;
+    return this._http.get<DssJSONSchema>(requestUrl, { observe: 'response' });
+  }
+
   get(id: string): Observable<HttpResponse<IDssFlat>> {
     let requestUrl = `${environment.apiUrl}/api/upr/dss/${id}`;
     return this._http.get<IDssFlat>(requestUrl, {
@@ -265,4 +270,20 @@ export class DssSelectionService {
     });
   }
 
+  getDssToCompare(dssIdList: string[]): Observable<HttpResponse<IDssFlat[]>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/dsscomparison`;
+    let urlDssIds: string = "?";
+    for(let i:number = 0; i< dssIdList.length; i++){
+        urlDssIds = urlDssIds + "dssids="+dssIdList[i]+"&"
+    }
+    urlDssIds = urlDssIds.slice(0, -1)
+    requestUrl = requestUrl + urlDssIds
+    return this._http.get<IDssFlat[]>(requestUrl, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: 'response'
+    });
+  }
 }

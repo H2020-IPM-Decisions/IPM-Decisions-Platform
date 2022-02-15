@@ -1,0 +1,56 @@
+<div class="card">
+    <table class="table table-borderless text-muted">
+      <thead class="tableHeader">
+        <tr>
+          <th class="text-center" style="width: 33.33%">
+            <label>{{ 'DSS_details.Risk_score' | translate }}</label>
+          </th>
+          <th class="text-center" style="width: 33.34%">
+            <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
+              (ngModelChange)="onChangeChartGroup($event)">
+              <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}
+              </option>
+            </select>
+          </th>
+          <th class="text-center" style="width: 33.33%">
+            <label>{{ 'DSS_details.Recommended_actions' | translate }}</label>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation">
+            </custom-chart>
+          </td>
+          <td>
+            <div class="row" *ngFor="let chartGroup of dssChartGroups">
+              <div class="col" *ngIf="selectedDssChartGroup.id === chartGroup.id">
+                <custom-group-chart [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
+              </div>
+            </div>
+          </td>
+          <td class="align-top">
+            INSERT DATASET HERE!
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <accordion class="col" [isAnimated]="true">
+              <accordion-group>
+                <span accordion-heading tooltip="Click to show">
+                  {{ 'DSS_details.Show_data_legend' | translate }}
+                </span>
+                <div class="row" *ngFor="let result of selectedDssChartGroup.resultParameters">
+                  <i [ngStyle]="{ 'color': result.chartInformation?.color,'margin-right':'5px'}"
+                    class="fas fa-square"></i>
+                  <small class="d-flex justify-content-center"><b> {{result.title}} </b></small>
+                </div>
+              </accordion-group>
+            </accordion>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

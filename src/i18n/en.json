@@ -82,7 +82,8 @@
         "DSS_model_combination_error":"No DSS model Submitted, a DSS with selected Crop/Pest combination already exists",
         "DSS_parameters_update_error":"Dss parameters update failed, an error occurs",
         "DSS_parameters_fetching_error":"Unable to fetch parameters data",
-        "DSS_model_avaiability_error":"No valid DSS avaiable for the selected crops"
+        "DSS_model_avaiability_error":"No valid DSS avaiable for the selected crops",
+        "DSS_comparison_model_retrived_error":"Fail to retrieve DSS data!"
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
@@ -100,7 +101,8 @@
         "DSS_models_retrived":"DSS Models retrivied successfully!",
         "DSS_models_added":"DSS Models added successfully!",
         "DSS_parameters_updated":"DSS parameters updated!",
-        "Email_not_validated_Message":"Please click on <b><b> Resend confirmation email </b></b> located bottom right of this page."
+        "Email_not_validated_Message":"Please click on <b><b> Resend confirmation email </b></b> located bottom right of this page.",
+        "DSS_comparison_models_retrived":"DSS Data retrivied successfully!"
     },
     "Countries": {
         "Austria":"Austria", 
@@ -291,9 +293,16 @@
         "Title":"DSS Model Parametrisation",
         "Saved_parameters":"Saved parameters"
     },
-    "Resend_confirmation_email":{
+    "Resend_confirmation_email": {
         "Insert_your_account_email":"Insert your account email",
         "Resend_confirmation_button":"Resend confirmation",
         "A_new_confirmation_email_as_been_sent":"A new confirmation email has been sent!"
+    },
+    "DSS_comparison": {
+        "Title":"DSS Comparison Dashboard",
+        "Select_two_or_more_models":"Select two or more models",
+        "Models_selection":"Models Selection",
+        "Multiselect_tip":"Use <b>CTRL</b> + <b>Click</b> to select multiple models",
+        "Compare_models":"Compare Models"
     }
 }

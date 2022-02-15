@@ -5,7 +5,6 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { NGXLogger } from 'ngx-logger';
 import { JsonEditorService } from './json-editor/json-editor.service';
 import { Subscription } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
 import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
 import * as $ from 'jquery';
 
@@ -30,7 +29,7 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
 
   public $subscriptionEditor: Subscription;
   public $subscriptionSubmit: Subscription;
-  public $subscriptionParameters: Subscription;
+  //public $subscriptionParameters: Subscription;
 
   constructor(
     private _logger: NGXLogger,
@@ -38,7 +37,6 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
     private _router: Router,
     private _dssSelectionService: DssSelectionService,
     private _jsonEditorService: JsonEditorService,
-    private _toastrService: ToastrService,
     private _toastrTranslated: ToastrTranslationService
   ) { }
 
@@ -52,7 +50,7 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
           this.setHistoryData();
       }
       this._logger.debug("Data Fetch:", this.dssId, this.dssModelId, this.dssModelName, this.farmName, this.id, this.dssDetailPage);
-      this._dssSelectionService.getSchemaByDssIdAndModelId(this.dssId, this.dssModelId).subscribe((data) => {
+      this._dssSelectionService.getSchemaByDssId(this.id).subscribe((data) => {
         if (this.editor) {
           this._jsonEditorService.reset(this.editor);
         }
@@ -72,14 +70,14 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
       throw new Error('Unable to fetch data');
     }
 
-    if (this.$subscriptionParameters) {
+    /*if (this.$subscriptionParameters) {
       this.$subscriptionParameters.unsubscribe();
     }
 
     this.$subscriptionParameters = this._dssSelectionService.getDssParameters(this.id).subscribe((parameters: IDssParameters) => {
       this.dssParameters = parameters.dssParameters;
       this._logger.debug(this.dssParameters);
-    })
+    });*/
   }
 
   public ngOnDestroy(): void {
@@ -89,9 +87,9 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
     if (this.$subscriptionSubmit) {
       this.$subscriptionSubmit.unsubscribe();
     }
-    if (this.$subscriptionParameters) {
+    /*if (this.$subscriptionParameters) {
       this.$subscriptionParameters.unsubscribe();
-    }
+    }*/
     this.deleteSessionStorageItems();
   }
 

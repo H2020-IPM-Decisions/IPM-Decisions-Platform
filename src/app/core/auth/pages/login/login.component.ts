@@ -78,7 +78,11 @@ export class LoginComponent implements OnInit {
           if (hasRoles && hasRoles.includes(Role.Admin)) {
             this.router.navigate(["/admin"]);
           } else {
-            this.router.navigate(["/user/farm"]);
+            if (res.hasDss) {
+              this.router.navigate(["/user/dss/dashboard"]);
+            } else {
+              this.router.navigate(["/user/farm"]);
+            }
           }
         },
       error:

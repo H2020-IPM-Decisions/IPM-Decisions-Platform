@@ -10,6 +10,7 @@ import { DssDetailComponent } from './dss-detail.component';
 import { DssSelectionComponent } from './dss-selection.component';
 import { IDssFlat } from './dss-selection.model';
 import { DssSelectionService } from './dss-selection.service';
+import { DssComparisonComponent } from './dss-comparison.component';
 
 @Injectable({ providedIn: 'root' })
 export class DssDetailResolve implements Resolve<IDssFlat> {
@@ -70,6 +71,13 @@ export const dssSelectionRoute: Routes = [
         canActivate: [AuthGuard]
       }
     ]
-    
-  }
+  }/*,
+  {
+    path: 'comparison',
+    component: DssComparisonComponent,
+    data: {
+        roles: [], claims: ["developer", "farmer", "advisor"]
+    },
+    canActivate: [AuthGuard]
+  }*/
 ];

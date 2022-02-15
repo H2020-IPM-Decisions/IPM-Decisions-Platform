@@ -8,6 +8,7 @@ export interface Authentication {
     claims: Claim[],
     token: string,
     tokenType: string,
-    bearer: string
-    refreshToken: string
+    bearer: string,
+    refreshToken: string,
+    hasDss: boolean
 }

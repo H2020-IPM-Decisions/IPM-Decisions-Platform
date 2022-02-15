@@ -16,6 +16,8 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
 import { CustomGroupChartComponent } from './custom-chart/custom-group-chart.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { TranslateModule} from '@ngx-translate/core';
+import { DssComparisonComponent } from './dss-comparison.component';
+import { DssComparisonRowComponent } from './dss-comparison-row.component';
 
 @NgModule({
   imports: [ 
@@ -36,7 +38,9 @@ import { TranslateModule} from '@ngx-translate/core';
     EppoCodeBadgeComponent,
     DssDetailComponent,
     CustomChartComponent,
-    CustomGroupChartComponent
+    CustomGroupChartComponent,
+    DssComparisonComponent,
+    DssComparisonRowComponent
   ],
   entryComponents: []
 })

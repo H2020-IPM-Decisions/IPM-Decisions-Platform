@@ -28,7 +28,7 @@
           {{ dssModelName }} ({{ dssModelId }})
         </strong>
       </legend>
-      <div class="row pt-3">
+      <!--<div class="row pt-3">
         <div class="col-md-6">
           <div class="table-responsive">
             <div>
@@ -54,9 +54,9 @@
                             </tr>
                           </ng-template>
                           <ng-template #paramIsAnObject let-param='param'>
-                            <!--<tr class="text-center" scope="col">
+                            <!- -<tr class="text-center" scope="col">
                             <td class="text-center" colspan="2"><b>{{param.key}}</b></td>
-                          </tr>-->
+                          </tr>- ->
                             <ng-container *ngFor="let nestedParam of param.value | keyvalue">
                               <ng-container
                                 [ngTemplateOutlet]="isObject(nestedParam.value)? paramIsAnObject : paramIsNotAnObject"
@@ -74,7 +74,7 @@
             <br>
           </div>
         </div>
-      </div>
+      </div>-->
       <div id="json-editor-form"></div>
     </fieldset>
     <div class="row pt-3">

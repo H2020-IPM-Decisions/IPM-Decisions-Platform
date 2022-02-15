@@ -1,0 +1,45 @@
+<div class="app-main__inner">
+
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-display1 icon-gradient bg-mean-fruit">
+                    </i>
+                </div>
+                <div>{{ 'DSS_comparison.Title' | translate }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto my-5 page-box">
+        <form [formGroup]="modelSelectionForm">
+            <div formGroupName="modelSelection">
+                <div class="form-group row">
+                    <div class="col-md-8">
+                        <legend class="w-auto px-1 text-muted h5">
+                            <b>{{ 'DSS_comparison.Select_two_or_more_models' | translate }}</b>
+                        </legend>
+                        <select multiple class="form-control" id="models" formControlName="modelId">
+                            <ng-template ngFor let-model [ngForOf]="dssList">
+                                <option value="{{model.id}}">{{ model.dssModelName }} ({{ model.dssName }}, {{
+                                    model.farmName }})</option>
+                            </ng-template>
+                        </select>
+                        <span>
+                            <small class="col-2 pull-left mt-2"
+                                [innerHtml]="( 'DSS_comparison.Multiselect_tip' | translate )"></small>
+                            <button class="btn btn-info btn-sm pull-right mt-2 col-3"
+                                (click)="onConfirmSelectedModels()" [disabled]="!checkSelectedModelsLenght()">
+                                {{ 'DSS_comparison.Compare_models' | translate }}
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div *ngFor="let model of dssInComparison">
+            <app-dss-comparison-row [dssDetail]="model"></app-dss-comparison-row>
+        </div>
+    </div>
+</div>

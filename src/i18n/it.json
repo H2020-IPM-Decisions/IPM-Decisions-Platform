@@ -82,7 +82,8 @@
         "DSS_model_combination_error":"Nessun modello DSS inviato, esiste già un DSS con la combinazione coltura/parassita selezionata",
         "DSS_parameters_update_error":"Aggiornamento dei parametri del DSS fallito a causa di un errore",
         "DSS_parameters_fetching_error":"Impossibile recuperare i dati dei parametri",
-        "DSS_model_avaiability_error":"Non ci sono DSS validi per le colture selezionate"
+        "DSS_model_avaiability_error":"Non ci sono DSS validi per le colture selezionate",
+        "DSS_comparison_model_retrived_error":"Impossibile ottenere i dati dei DSS!"
     },
     "Information_messages":{
         "Farm_deletion_message":"Stai per eliminare una fattoria. Vuoi procedere?",
@@ -100,7 +101,8 @@
         "DSS_models_retrived":"Modelli DSS ottenuti!",
         "DSS_models_added":"Modelli DSS aggiunti!",
         "DSS_parameters_updated":"Parametri del DSS aggiornati!",
-        "Email_not_validated_Message":"Perfavore clicca su <b><b> Reinvia mail di conferma </b></b> in basso a destra della pagina"
+        "Email_not_validated_Message":"Perfavore clicca su <b><b> Reinvia mail di conferma </b></b> in basso a destra della pagina",
+        "DSS_comparison_models_retrived":"Dati dei DSS ottenuti con successo!"
     },
     "Countries": {
         "Austria":"Austria", 
@@ -295,5 +297,12 @@
         "Insert_your_account_email":"Inserisci l'email del tuo account",
         "Resend_confirmation_button":"Reinvia conferma",
         "A_new_confirmation_email_as_been_sent":"Una nuova mail di conferma è stata inviata!"
-}
+    },
+    "DSS_comparison": {
+        "Title":"Dashboard di confronto",
+        "Select_two_or_more_models":"Seleziona due o più modelli",
+        "Models_selection":"Selezione dei modelli",
+        "Multiselect_tip":"Utilizza <b>CTRL</b> + <b>Click</b> per selezionare più modelli",
+        "Compare_models":"Confronta i modelli"
+    }
 }
