@@ -24,12 +24,36 @@ export class MaprisksService {
       if (container) {
         const m = new L.Map(container);
         this.mapSubject.next(m);
+// 
+// https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png
+        /*L.tileLayer("http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}", {
+          maxZoom: 20,
+          subdomains:['mt0','mt1','mt2','mt3'],
+          opacity: 0.5,
+          zIndex: 1,
+        }).addTo(m);*/
 
-        L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
+        var googleHybrid = L.tileLayer("http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}", {
+          maxZoom: 20,
+          subdomains:['mt0','mt1','mt2','mt3'],
+          opacity: 0.75,
+          zIndex: 1,
+        });
+
+        var openTopoMap = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
           maxZoom: 20,
           opacity: 0.5,
           zIndex: 1,
-        }).addTo(m);
+        });
+
+        openTopoMap.addTo(m);
+
+        var baseMaps = {
+          "Map": openTopoMap,
+          "Satellite": googleHybrid     
+        };
+
+        L.control.layers(baseMaps).addTo(m);
 
         if (!location) {
           location = {

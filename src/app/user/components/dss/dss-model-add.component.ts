@@ -92,7 +92,7 @@ export class DssModelAddComponent implements OnInit {
           this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
         } else {
           this.areCropsSelected = false;
-          this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_avaiability_error","Common_labels.Error","toast-error");
+          this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_avaiability_error","Common_labels.Warning","toast-warning");
         }
       },
       (error: HttpErrorResponse) => {

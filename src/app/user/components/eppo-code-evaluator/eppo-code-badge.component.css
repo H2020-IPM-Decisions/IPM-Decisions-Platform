@@ -6,7 +6,8 @@
   display: block;
   font-size: 80%;
   color: #6c757d;
-  width: 120px;
+  min-width: 120px;
+  max-width: 150px;
   height: auto;
   white-space: normal;
 }
@@ -15,14 +16,16 @@
   display: block;
   font-size: 90%;
   color: #2e3133;
-  width: 120px;
+  min-width: 120px;
+  max-width: 150px;
   height: auto;
   white-space: normal;
 }
 
 .dss-badge {
   display: inline-block;
-  width: 120px;
+  min-width: 120px;
+  max-width: 150px;
   min-height: 50px;
   height: auto;
   white-space: normal;
@@ -32,7 +35,8 @@
   display: inline-block;;
   font-size: 80%;
   color: #6c757d;
-  width: 120px;
+  min-width: 120px;
+  max-width: 150px;
   height: auto;
   white-space: normal;
 }

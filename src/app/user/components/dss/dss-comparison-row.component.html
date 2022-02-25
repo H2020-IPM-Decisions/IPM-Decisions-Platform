@@ -1,56 +1,127 @@
 <div class="card">
-    <table class="table table-borderless text-muted">
-      <thead class="tableHeader">
-        <tr>
-          <th class="text-center" style="width: 33.33%">
-            <label>{{ 'DSS_details.Risk_score' | translate }}</label>
-          </th>
-          <th class="text-center" style="width: 33.34%">
-            <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
-              (ngModelChange)="onChangeChartGroup($event)">
-              <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}
-              </option>
-            </select>
-          </th>
-          <th class="text-center" style="width: 33.33%">
-            <label>{{ 'DSS_details.Recommended_actions' | translate }}</label>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation">
-            </custom-chart>
-          </td>
-          <td>
-            <div class="row" *ngFor="let chartGroup of dssChartGroups">
-              <div class="col" *ngIf="selectedDssChartGroup.id === chartGroup.id">
-                <custom-group-chart [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
-              </div>
-            </div>
-          </td>
-          <td class="align-top">
-            INSERT DATASET HERE!
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>
-            <accordion class="col" [isAnimated]="true">
-              <accordion-group>
-                <span accordion-heading tooltip="Click to show">
-                  {{ 'DSS_details.Show_data_legend' | translate }}
-                </span>
-                <div class="row" *ngFor="let result of selectedDssChartGroup.resultParameters">
-                  <i [ngStyle]="{ 'color': result.chartInformation?.color,'margin-right':'5px'}"
-                    class="fas fa-square"></i>
-                  <small class="d-flex justify-content-center"><b> {{result.title}} </b></small>
+  <div class="row">
+    <div class="col pr-0">
+      <table class="table text-muted">
+        <thead class="tableHeader">
+          <tr>
+            <th class="text-center tableHeader">
+              <label>{{ 'DSS_details.Risk_score' | translate }}</label>
+            </th>
+            <th class="text-center tableHeader">
+              <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
+                (ngModelChange)="onChangeChartGroup($event)" *ngIf="dssChartGroups.length > 1">
+                <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}
+                </option>
+              </select>
+              <span *ngIf="dssChartGroups.length == 1" class="text-muted selItem">
+                {{ dssChartGroups[0].title }}
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation">
+              </custom-chart>
+            </td>
+            <td>
+              <div class="row" *ngFor="let chartGroup of dssChartGroups">
+                <div class="col" *ngIf="selectedDssChartGroup.id === chartGroup.id">
+                  <custom-group-chart [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
                 </div>
-              </accordion-group>
-            </accordion>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col dataSet">
+      <div *ngFor="let chartGroup of dssChartGroups">
+        <div *ngIf="selectedDssChartGroup.id === chartGroup.id">
+          <table class="table datasetTable text-muted">
+            <thead>
+              <tr>
+                <th class="datasetTh" [title]="('DSS_comparison.Day' | translate)">
+                  {{ 'DSS_comparison.Day' | translate }}
+                </th>
+                <th class="datasetTh" *ngFor="let resultParams of chartGroup.resultParameters;" [title]="resultParams.title">
+                  {{ resultParams.title }}
+                </th>
+                <th class="datasetTh" [title]="('DSS_comparison.Risk_score' | translate)">
+                  {{ 'DSS_comparison.Risk_score' | translate }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of dssDetail.warningStatusLabels; let i = index;">
+                <td [title]="data">
+                  {{data}}
+                </td>
+                <td *ngFor="let resultParams of chartGroup.resultParameters;" [title]="resultParams.data[i]">
+                  {{ resultParams.data[i] }}
+                </td>
+                <td [title]="dssDetail.warningStatusPerDay[i]">
+                  {{ dssDetail.warningStatusPerDay[i] }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>      
+    </div>
   </div>
+  <a (click)="openModal(expandedTable, 'modal-lg')">
+    <i class="fas fa-expand light-blue-icon fixed pull-right" [title]="('DSS_comparison.Expand_table' | translate)"></i>
+  </a>
+</div>
+
+<ng-template #expandedTable>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      {{ 'DSS_comparison.Parameters_table' | translate }}: {{ dssDetail.dssModelName }}
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body scrollable mr-4">
+    <div class="col">
+      <div *ngFor="let chartGroup of dssChartGroups">
+        <div *ngIf="selectedDssChartGroup.id === chartGroup.id">
+          <table class="table modalDatasetTable text-muted">
+            <thead>
+              <tr>
+                <th class="modalDatasetTh" [title]="('DSS_comparison.Day' | translate)">
+                  {{ 'DSS_comparison.Day' | translate }}
+                </th>
+                <th class="modalDatasetTh" *ngFor="let resultParams of chartGroup.resultParameters;" [title]="resultParams.title">
+                  {{ resultParams.title }}
+                </th>
+                <th class="modalDatasetTh" [title]="('DSS_comparison.Risk_score' | translate)">
+                  {{ 'DSS_comparison.Risk_score' | translate }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of dssDetail.warningStatusLabels; let i = index;">
+                <td [title]="data">
+                  {{data}}
+                </td>
+                <td *ngFor="let resultParams of chartGroup.resultParameters;" [title]="resultParams.data[i]">
+                  {{ resultParams.data[i] }}
+                </td>
+                <td [title]="dssDetail.warningStatusPerDay[i]">
+                  {{ dssDetail.warningStatusPerDay[i] }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>      
+    </div>
+  </div>
+  <div class="modal-footer pull-right">
+    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+  </div>
+</ng-template>

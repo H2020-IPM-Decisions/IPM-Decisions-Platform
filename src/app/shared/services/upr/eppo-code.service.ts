@@ -21,7 +21,13 @@ export class EppoCodeService {
     private httpGetCrops$ = this._http.get<IEppoCode>(`${this.apiUrl}/api/upr/eppocodes/crop`).pipe(
         map(ecodes => {
             return ecodes.eppoCodesDto.map(ecodeDto =>{
-                return new EppoCode(ecodeDto.eppoCode, ecodeDto.languages.en, ecodeDto.languages.la);
+                for (let key in ecodeDto.languages) {
+                    if(key === sessionStorage.getItem("selectedLanguage")) {
+                        return new EppoCode(ecodeDto.eppoCode, ecodeDto.languages[key]);
+                    } else {
+                        return new EppoCode(ecodeDto.eppoCode, ecodeDto.languages["la"]);
+                    }
+                }
             });
         })
     );
@@ -39,7 +45,13 @@ export class EppoCodeService {
     private httpGetPests$ = this._http.get<IEppoCode>(`${this.apiUrl}/api/upr/eppocodes/pest`).pipe(
         map(ecodes => {
             return ecodes.eppoCodesDto.map(ecodeDto =>{
-                return new EppoCode(ecodeDto.eppoCode, ecodeDto.languages.en, ecodeDto.languages.la);
+                for (let key in ecodeDto.languages) {
+                    if(key === sessionStorage.getItem("selectedLanguage")) {
+                        return new EppoCode(ecodeDto.eppoCode, ecodeDto.languages[key]);
+                    } else {
+                        return new EppoCode(ecodeDto.eppoCode, ecodeDto.languages["la"]);
+                    }
+                }
             });
         })
     );

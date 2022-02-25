@@ -16,7 +16,7 @@
         <form [formGroup]="modelSelectionForm">
             <div formGroupName="modelSelection">
                 <div class="form-group row">
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         <legend class="w-auto px-1 text-muted h5">
                             <b>{{ 'DSS_comparison.Select_two_or_more_models' | translate }}</b>
                         </legend>
@@ -28,17 +28,34 @@
                         </select>
                         <span>
                             <small class="col-2 pull-left mt-2"
-                                [innerHtml]="( 'DSS_comparison.Multiselect_tip' | translate )"></small>
-                            <button class="btn btn-info btn-sm pull-right mt-2 col-3"
-                                (click)="onConfirmSelectedModels()" [disabled]="!checkSelectedModelsLenght()">
-                                {{ 'DSS_comparison.Compare_models' | translate }}
-                            </button>
+                                [innerHtml]="( 'DSS_comparison.Multiselect_tip' | translate )">
+                            </small>
                         </span>
+                    </div>
+                    <div class="col-sm-2 buttonContainer">
+                        <button class="btn btn-info buttonPosition" (click)="onConfirmSelectedModels()"
+                            [disabled]="!checkSelectedModelsLenght()">
+                            {{ 'DSS_comparison.Compare_models' | translate }}
+                        </button>
                     </div>
                 </div>
             </div>
         </form>
-        <div *ngFor="let model of dssInComparison">
+
+        <div class="row" *ngIf="areModelsSelected">
+            <div class="col comparisonSeparator">
+                <i class="fas fa-caret-right"></i>
+                <i class="fas fa-caret-left"></i>
+            </div>
+        </div>
+        <div class="mb-4" *ngFor="let model of dssInComparison; let i = index;">
+            <div class="form-group d-flex text-muted pt-2">
+                <div class="mr-auto">
+                    <label class="h6">
+                        <b>{{ 'DSS_comparison.Model' | translate }} {{i+1}} : {{ model.dssModelName }}</b>
+                    </label>
+                </div>
+            </div>
             <app-dss-comparison-row [dssDetail]="model"></app-dss-comparison-row>
         </div>
     </div>

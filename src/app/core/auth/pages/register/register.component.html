@@ -1,7 +1,17 @@
 <div *ngIf="!termsAccepted">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="registrazione">
     <div class="form-row">
-      <div class="form-group col-12">
+      <label>{{ 'Register.User_type' | translate }}</label> 
+      <div class=" form-group col-12">
+        <div class="rolebox" *ngFor="let role of userTypes; let i=index">
+            <input type="checkbox" [value]="role.value" (change)="onCheckboxChange($event)" />
+            {{role.description | translate }}
+        </div>
+      </div>
+      <div *ngIf="f.userType.errors && f.userType.touched" class="col-12 userRoleInvalid">
+        <div *ngIf="f.userType.errors.required">{{ 'Error_messages.User_type_required' | translate }}</div>
+      </div>
+      <!--<div class="form-group col-12">
         <label>{{ 'Register.User_type' | translate }}</label>
         <select formControlName="userType" class="form-control"
           [ngClass]="{ 'is-invalid': f.userType.errors && f.userType.touched }">
@@ -11,7 +21,7 @@
         <div *ngIf="f.userType.errors && f.userType.touched" class="invalid-feedback">
           <div *ngIf="f.userType.errors.required">{{ 'Error_messages.User_type_required' | translate }}</div>
         </div>
-      </div>
+      </div>-->
     </div>
 
     <div class="form-group">
@@ -32,9 +42,12 @@
 
         <div *ngIf="f.password.errors && f.password.touched" class="invalid-feedback">
           <div *ngIf="f.password.errors?.required">{{ 'Error_messages.Password_required' | translate }}</div>
-          <div *ngIf="f.password.errors?.minlength">{{ 'Error_messages.Password_must_be_at_least_6_characters_lenght' | translate }}</div>
-          <div *ngIf="f.password.errors?.pattern">{{ 'Error_messages.Password_must_have_at_least_one_digit' | translate }}</div>
-          <div *ngIf="f.password.errors?.pattern">{{ 'Error_messages.Password_must_have_at_least_one_non_alphanumeric_character' | translate }}</div>
+          <div *ngIf="f.password.errors?.minlength">{{ 'Error_messages.Password_must_be_at_least_6_characters_lenght' |
+            translate }}</div>
+          <div *ngIf="f.password.errors?.pattern">{{ 'Error_messages.Password_must_have_at_least_one_digit' | translate
+            }}</div>
+          <div *ngIf="f.password.errors?.pattern">{{
+            'Error_messages.Password_must_have_at_least_one_non_alphanumeric_character' | translate }}</div>
         </div>
       </div>
       <div class="form-group col">
@@ -53,7 +66,8 @@
     </div>
 
     <div class="text-center">
-      <button [disabled]="!registerForm.valid" class="btn btn-login btn-block">{{ 'Common_labels.Register' | translate }}</button>
+      <button [disabled]="!registerForm.valid" class="btn btn-login btn-block">{{ 'Common_labels.Register' | translate
+        }}</button>
     </div>
   </form>
 </div>
@@ -64,18 +78,18 @@
 </div>
 
 <ng-template #registrationModal>
-      <div class="modal-body">
-        <div class="alert alert-danger" *ngIf="errors.length > 0">
-          <div *ngFor="let error of errors">
-            <p *ngFor="let errDetail of error">{{ errDetail?.description | translate }}</p>
-          </div>
-        </div>
-        <div class="alert alert-success" *ngIf="isSuccess">
-          <strong>{{ 'Register.Registration_confirmation' | translate }}</strong>
-          <br>
-          <span [innerHtml]="confirmationMessage"></span>
-        </div>
-        <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">{{ 'Common_labels.Ok' | translate }}</button>
+  <div class="modal-body">
+    <div class="alert alert-danger" *ngIf="errors.length > 0">
+      <div *ngFor="let error of errors">
+        <p *ngFor="let errDetail of error">{{ errDetail?.description | translate }}</p>
       </div>
+    </div>
+    <div class="alert alert-success" *ngIf="isSuccess">
+      <strong>{{ 'Register.Registration_confirmation' | translate }}</strong>
+      <br>
+      <span [innerHtml]="confirmationMessage"></span>
+    </div>
+    <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">{{ 'Common_labels.Ok' |
+      translate }}</button>
+  </div>
 </ng-template>
-

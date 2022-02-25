@@ -15,13 +15,7 @@ export class EppoCodePipe implements PipeTransform {
     );
     let cropByCode: EppoCode;
     cropByCode = EppoCodes.find(element => element.code === code);
-    cropByCode = (cropByCode === undefined) ? new EppoCode(code,"",code) : cropByCode;
-    if(!(cropByCode.en === "")){
-      return cropByCode.en;
-    } 
-    if(!(cropByCode.la === "")){
-      return cropByCode.la;
-    }
-    return cropByCode.code;
+    cropByCode = (cropByCode === undefined) ? new EppoCode(code,code) : cropByCode;
+    return cropByCode.text;
   }
 }

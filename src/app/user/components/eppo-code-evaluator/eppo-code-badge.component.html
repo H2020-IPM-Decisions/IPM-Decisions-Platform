@@ -22,7 +22,7 @@
                 <i class="fas fa-times-circle fa-stack-1x"></i>
             </a>
         </span>
-        <a *ngIf="itemId; else notClickable"[routerLink]="[itemId,'view']" style="color: white">
+        <a *ngIf="itemId && status>0; else notClickable"[routerLink]="[itemId,'view']" style="color: white">
             <h6  *ngIf="!isLegend"><b>{{code | eppoCode }}</b></h6>
             <small  *ngIf="!isLegend">({{ code }})</small>
         </a>

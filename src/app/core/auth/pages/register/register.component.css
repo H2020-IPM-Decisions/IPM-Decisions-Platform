@@ -12,4 +12,16 @@
     color: #fff !important;
 }
 
+.userRoleInvalid {
+    background: #f98900;
+    color: #fff;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 80%;
+}
+
+.rolebox {
+    float: left !important;
+    margin-right: 10px;
+}
 

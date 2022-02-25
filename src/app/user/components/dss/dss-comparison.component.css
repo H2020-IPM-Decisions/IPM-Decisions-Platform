@@ -1,0 +1,18 @@
+.h6 {
+    color: red;
+}
+
+.buttonContainer {
+    position:relative;
+}
+.buttonPosition {
+    position: absolute;
+    left: 0;
+    bottom: 13%;
+}
+
+.comparisonSeparator {
+    font-size: 220%;
+    color: rgba(91, 92, 92, 0.61);
+    left: 48%;
+}

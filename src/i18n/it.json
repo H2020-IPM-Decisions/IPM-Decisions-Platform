@@ -47,7 +47,9 @@
         "Back":"Indietro",
         "Select":"Seleziona",
         "Deselect":"Deseleziona",
-        "Resend_confirmation_email":"Reinvia mail di conferma"
+        "Resend_confirmation_email":"Reinvia mail di conferma",
+        "Warning":"Attenzione",
+        "Researcher":"Ricercatore"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
@@ -82,7 +84,6 @@
         "DSS_model_combination_error":"Nessun modello DSS inviato, esiste già un DSS con la combinazione coltura/parassita selezionata",
         "DSS_parameters_update_error":"Aggiornamento dei parametri del DSS fallito a causa di un errore",
         "DSS_parameters_fetching_error":"Impossibile recuperare i dati dei parametri",
-        "DSS_model_avaiability_error":"Non ci sono DSS validi per le colture selezionate",
         "DSS_comparison_model_retrived_error":"Impossibile ottenere i dati dei DSS!"
     },
     "Information_messages":{
@@ -103,6 +104,9 @@
         "DSS_parameters_updated":"Parametri del DSS aggiornati!",
         "Email_not_validated_Message":"Perfavore clicca su <b><b> Reinvia mail di conferma </b></b> in basso a destra della pagina",
         "DSS_comparison_models_retrived":"Dati dei DSS ottenuti con successo!"
+    },
+    "Warning_messages":{
+        "DSS_model_avaiability_error":"Non ci sono DSS per le colture selezionate"
     },
     "Countries": {
         "Austria":"Austria", 
@@ -303,6 +307,11 @@
         "Select_two_or_more_models":"Seleziona due o più modelli",
         "Models_selection":"Selezione dei modelli",
         "Multiselect_tip":"Utilizza <b>CTRL</b> + <b>Click</b> per selezionare più modelli",
-        "Compare_models":"Confronta i modelli"
+        "Compare_models":"Confronta i modelli",
+        "Model":"Modello",
+        "Risk_score":"Punteggio di rischio",
+        "Day":"Giorno",
+        "Expand_table":"Espandi tabella",
+        "Parameters_table":"Tabella dei parametri"
     }
 }

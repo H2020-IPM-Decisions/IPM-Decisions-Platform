@@ -47,7 +47,9 @@
         "Back":"Back",
         "Select":"Select",
         "Deselect":"Deselect",
-        "Resend_confirmation_email":"Resend confirmation email"
+        "Resend_confirmation_email":"Resend confirmation email",
+        "Warning":"Warning",
+        "Researcher":"Researcher"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -82,7 +84,6 @@
         "DSS_model_combination_error":"No DSS model Submitted, a DSS with selected Crop/Pest combination already exists",
         "DSS_parameters_update_error":"Dss parameters update failed, an error occurs",
         "DSS_parameters_fetching_error":"Unable to fetch parameters data",
-        "DSS_model_avaiability_error":"No valid DSS avaiable for the selected crops",
         "DSS_comparison_model_retrived_error":"Fail to retrieve DSS data!"
     },
     "Information_messages":{
@@ -103,6 +104,9 @@
         "DSS_parameters_updated":"DSS parameters updated!",
         "Email_not_validated_Message":"Please click on <b><b> Resend confirmation email </b></b> located bottom right of this page.",
         "DSS_comparison_models_retrived":"DSS Data retrivied successfully!"
+    },
+    "Warning_messages":{
+        "DSS_model_avaiability_error":"No DSS avaiable for the selected crops"
     },
     "Countries": {
         "Austria":"Austria", 
@@ -303,6 +307,11 @@
         "Select_two_or_more_models":"Select two or more models",
         "Models_selection":"Models Selection",
         "Multiselect_tip":"Use <b>CTRL</b> + <b>Click</b> to select multiple models",
-        "Compare_models":"Compare Models"
+        "Compare_models":"Compare Models",
+        "Model":"Model",
+        "Risk_score":"Risk score",
+        "Day":"Day",
+        "Expand_table":"Expand table",
+        "Parameters_table":"Parameters table"
     }
 }

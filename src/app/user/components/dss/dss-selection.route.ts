@@ -71,7 +71,7 @@ export const dssSelectionRoute: Routes = [
         canActivate: [AuthGuard]
       }
     ]
-  }/*,
+  },
   {
     path: 'comparison',
     component: DssComparisonComponent,
@@ -79,5 +79,5 @@ export const dssSelectionRoute: Routes = [
         roles: [], claims: ["developer", "farmer", "advisor"]
     },
     canActivate: [AuthGuard]
-  }*/
+  }
 ];

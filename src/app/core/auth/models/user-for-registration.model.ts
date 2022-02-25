@@ -1,5 +1,5 @@
 export interface UserForRegistration {
-    userType: string,
+    userType: string[],
     email: string,
     password: string
 }

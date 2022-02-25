@@ -44,10 +44,14 @@
               </th>
               <th class="text-center" style="width: 33.34%">
                 <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
-                  (ngModelChange)="onChangeChartGroup($event)">
+                  (ngModelChange)="onChangeChartGroup($event)"
+                  *ngIf="dssChartGroups.length > 1">
                   <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}
                   </option>
                 </select>
+                <span *ngIf="dssChartGroups.length == 1" class="text-muted selItem"> 
+                  {{ dssChartGroups[0].title }}
+                </span>
               </th>
               <th class="text-center" style="width: 33.33%">
                 <label>{{ 'DSS_details.Recommended_actions' | translate }}</label>

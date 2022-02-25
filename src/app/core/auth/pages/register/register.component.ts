@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, TemplateRef, ViewChild, OnDestroy } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, FormArray, FormControl} from '@angular/forms';
 import { MustMatch } from '../../_helpers/must-match.validator';
 import { AuthenticationService } from '../../services/authentication.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   userTypes = [
     {'description':'Common_labels.Farmer', 'value':'Farmer'},
     {'description':'Common_labels.Advisor', 'value':'Advisor'},
+    {'description':'Common_labels.Researcher', 'value':'Researcher'},
     {'description':'Common_labels.Developer', 'value':'Developer'},
   ];
   errors: any = [];
@@ -33,6 +34,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   @ViewChild('registrationModal', {static: false}) public registrationModal: TemplateRef<any>;
   modalRef: any;
   confirmationMessage: any;
+  userTypeIsSelected: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -45,22 +47,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.registerForm = this.formBuilder.group(
-      {
-        userType: ['', Validators.required],
-        email: ['', [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]],
-        password: ['',
-          [
-            Validators.required,
-            Validators.minLength(6),
-            Validators.pattern("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+])[A-Za-z\\d][A-Za-z\\d!@#$%^&*()_+]{6,}$")
-          ]],
-        confirmPassword: ['', Validators.required]
-      },
-      {
-        validator: MustMatch('password', 'confirmPassword')
-      }
-    );
+    this.initForm();
 
     let promises = [
       this._cmsService.getRegistrationConfirmationMessage()
@@ -98,6 +85,26 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   }
 
+  initForm() {
+    this.registerForm = this.formBuilder.group(
+      {
+        userType: this.formBuilder.array([], [Validators.required]),
+        //userType: ['', Validators.required],
+        email: ['', [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]],
+        password: ['',
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.pattern("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+])[A-Za-z\\d][A-Za-z\\d!@#$%^&*()_+]{6,}$")
+          ]],
+        confirmPassword: ['', Validators.required]
+      },
+      {
+        validator: MustMatch('password', 'confirmPassword')
+      }
+    );
+  }
+
   get f() {
     return this.registerForm.controls;
   }
@@ -114,7 +121,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   onReset() {
     this.submitted = false;
-    this.registerForm.reset();
+    //this.registerForm.reset();
+    this.initForm();
   }
 
   removeAcceptedTerms(removeTerms: boolean) {
@@ -125,5 +133,26 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptionErrors.unsubscribe();
-}
+  }
+
+  onCheckboxChange(e) {
+    const userTypeArray: FormArray = this.registerForm.get('userType') as FormArray;
+    userTypeArray.markAsTouched();
+    if (e.target.checked) {
+      userTypeArray.push(new FormControl(e.target.value));
+      this.userTypeIsSelected = true
+    } else {
+      let i: number = 0;
+      userTypeArray.controls.forEach((item: FormControl) => {
+        if (item.value == e.target.value) {
+          userTypeArray.removeAt(i);
+          if(userTypeArray.length < 1) {
+            this.userTypeIsSelected = false;
+          }
+          return;
+        }
+        i++;
+      });
+    }
+  }
 }
