@@ -16,3 +16,7 @@
     color: rgba(91, 92, 92, 0.61);
     left: 48%;
 }
+
+.errorTextWrap {
+    word-wrap: break-word;
+}

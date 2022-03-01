@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-
 import { CMSService } from 'src/app/shared/services/cms.service';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 import { ActivatedRoute } from '@angular/router';
@@ -26,7 +25,7 @@ export class UserHeaderComponent implements OnInit, OnDestroy {
     private cmsService: CMSService,
     private _authService: AuthenticationService,
     private _sidebarMenuService: SidebarMenuUpdateService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
   ) {
     this.cmsUrl = cmsService.getUrl();
   }

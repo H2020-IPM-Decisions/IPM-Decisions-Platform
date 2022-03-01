@@ -81,3 +81,13 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.loggedFarmLink {
+  color: white;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.loggedFarmLink:hover {
+  opacity: 1;
+}

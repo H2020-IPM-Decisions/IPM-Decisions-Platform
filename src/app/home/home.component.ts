@@ -1,11 +1,12 @@
 import { MaprisksService } from './../shared/services/maprisks.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { CMSService } from '../shared/services/cms.service';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { DomSanitizer } from '@angular/platform-browser'
+import { DomSanitizer } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
 import * as L from 'leaflet';
 import * as esri_geo from "esri-leaflet-geocoder";
 declare var init: any;
@@ -17,7 +18,7 @@ declare var $;
   encapsulation: ViewEncapsulation.None,
   styleUrls: ["./home.component.css", "./style.css"],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   active: string = "home";
   map;
   cmsUrl;
@@ -62,6 +63,9 @@ export class HomeComponent implements OnInit {
   }
 
   @Output() verified: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  public username: string;
+  public $accountSub: Subscription;
 
   constructor(
     private cmsService: CMSService,
@@ -170,7 +174,17 @@ export class HomeComponent implements OnInit {
     Promise.all(promises).then(() => {
       setTimeout(() => init(), 0);
     });
+
+    // Check if user is logged in
     this.isLoggedIn = this._authService.isLoggedIn();
+    // Format the user name
+    if(this.isLoggedIn){
+      this.$accountSub = this._authService.account$.subscribe(
+        (account) => {
+          if(account !== null){this.username = (/(.*)@/).exec(account.email)[1];}
+        }
+      )
+    }
   }
 
   goToRegistrationPage() {
@@ -194,5 +208,20 @@ export class HomeComponent implements OnInit {
 
   zoomOut() {
     this.sliderImageSize = Math.max(this.sliderImageSize - 100, 100);
+  }
+
+  ngOnDestroy(): void {
+    if(this.$accountSub){
+      this.$accountSub.unsubscribe();
+    }
+  }
+
+  navigateToPrivatePages(): void {
+    const userHasDss: boolean = JSON.parse(sessionStorage.getItem("hasDSS"));
+    if (userHasDss) {
+      this.router.navigate(["/user/dss/dashboard"]);
+    } else {
+      this.router.navigate(["/user/farm"]);
+    }
   }
 }

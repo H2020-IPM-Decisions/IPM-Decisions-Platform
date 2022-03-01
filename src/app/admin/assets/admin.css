@@ -5899,8 +5899,8 @@ a.badge-alternate:focus {
 
 .alert-warning {
     color: #806013;
-    background-color: #fdf1d3;
-    border-color: #fdebc2
+    background-color: #ffe54b;
+    border-color: #f5ca68;
 }
 
 .alert-warning hr {

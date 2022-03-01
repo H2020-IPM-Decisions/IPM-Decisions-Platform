@@ -78,6 +78,7 @@ export class LoginComponent implements OnInit {
           if (hasRoles && hasRoles.includes(Role.Admin)) {
             this.router.navigate(["/admin"]);
           } else {
+            sessionStorage.setItem("hasDSS",JSON.stringify(res.hasDss))
             if (res.hasDss) {
               this.router.navigate(["/user/dss/dashboard"]);
             } else {

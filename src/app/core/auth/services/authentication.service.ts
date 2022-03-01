@@ -155,7 +155,7 @@ export class AuthenticationService {
         tokenInit: decoded["iat"],
         tokenExpiration: decoded["exp"],
         useraccesstype: userAccessType,
-        roles: role,
+        roles: role
       };
 
       return account;
@@ -189,6 +189,7 @@ export class AuthenticationService {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("expires_at");
     sessionStorage.removeItem("refresh_token");
+    sessionStorage.removeItem("hasDSS");
     this.currentAccountSubject.next(null);
     this.router.navigate(["/"]);
     location.reload();

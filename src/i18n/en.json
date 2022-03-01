@@ -106,7 +106,8 @@
         "DSS_comparison_models_retrived":"DSS Data retrivied successfully!"
     },
     "Warning_messages":{
-        "DSS_model_avaiability_error":"No DSS avaiable for the selected crops"
+        "DSS_model_avaiability_error":"No DSS avaiable for the selected crops",
+        "Not_enough_DSS_to_compare":"There are not enough DSS models to compare! Please add at least two models"
     },
     "Countries": {
         "Austria":"Austria", 
@@ -160,7 +161,8 @@
         "Web_Site":"Web Site",
         "Social":"Social",
         "Useful_links":"Useful Links",
-        "IPM_Decisions_News":"<b>IPM Decisions</b> News"
+        "IPM_Decisions_News":"<b>IPM Decisions</b> News",
+        "IPM_Private":"IPM Private"
     },
     "Register": {
         "User_type":"User Type",
