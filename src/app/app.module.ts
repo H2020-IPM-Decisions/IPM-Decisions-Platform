@@ -89,6 +89,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 import { NgxFlagPickerModule } from 'ngx-flag-picker';
+import { ResetPasswordComponent } from './core/components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -161,7 +162,8 @@ import { NgxFlagPickerModule } from 'ngx-flag-picker';
     FarmComponent,
     ManageFarmComponent,
     FieldEditComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

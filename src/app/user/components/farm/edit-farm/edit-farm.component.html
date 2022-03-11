@@ -9,13 +9,13 @@
   </div>
   <div class="col-12">
     <div class="table-responsive">
-      <table class="table table-striped table-bordered">
+      <table id="dssTable" class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th class="text-center" scope="col">{{ 'DSS_information_table.Model_name' | translate }}</th>
-            <th class="text-center" scope="col">{{ 'DSS_information_table.Crop' | translate }}</th>
-            <th class="text-center" scope="col">{{ 'DSS_information_table.Pest_disease' | translate }}</th>
-            <th class="text-center" scope="col">{{ 'DSS_information_table.DSS_name' | translate }}</th>
+            <th class="text-center" scope="col" (click)="sortTable(0)">{{ 'DSS_information_table.Model_name' | translate }}</th>
+            <th class="text-center" scope="col" (click)="sortTable(1)">{{ 'DSS_information_table.Crop' | translate }}</th>
+            <th class="text-center" scope="col"(click)="sortTable(2)">{{ 'DSS_information_table.Pest_disease' | translate }}</th>
+            <th class="text-center" scope="col"(click)="sortTable(3)">{{ 'DSS_information_table.DSS_name' | translate }}</th>
             <!--<th class="text-center" scope="col">{{ 'DSS_information_table.DSS_suitability' | translate }}</th>-->
             <th class="text-center" scope="col" style="width: 13%">{{ 'DSS_information_table.Actions' | translate }}</th>
           </tr>
@@ -34,17 +34,17 @@
                   <td class="text-center">
                     
                       {{field.fieldCropDto.cropEppoCode | eppoCode}}
-                      <small>({{field.fieldCropDto.cropEppoCode | uppercase}})</small>
-                    <!--<a class="details" (click)="openModal(template, field, 'modal-lg')">
+                     <!-- <small>({{field.fieldCropDto.cropEppoCode | uppercase}})</small>
+                    <a class="details" (click)="openModal(template, field, 'modal-lg')">
                       <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
                     </a>-->
                   </td>
                   <!-- Pest/Desease -->
                   <td class="text-center">
                     {{ cropPestCombo.cropPestDto.pestEppoCode | eppoCode }}
-                    <small>
+                    <!--<small>
                       ({{ cropPestCombo.cropPestDto.pestEppoCode | uppercase }})
-                    </small>
+                    </small>-->
                   </td>
                   <!-- DSS Model Name -->
                   <td class="text-center">

@@ -89,8 +89,8 @@ export class LoginComponent implements OnInit {
       error:
         (errorMessages: any) => {
           this.loading = false;
-          this.errorMessage = errorMessages;
-          if(this.errorMessage === "Email not confirmed"){
+          this.errorMessage = errorMessages.message;
+          if(errorMessages.identityErrorType === "EmailNotConfirmed"){
             this.emailNotConfirmed = true;
           }
           this.modalRef = this.modalService.show(this.loginModal);
@@ -106,19 +106,4 @@ export class LoginComponent implements OnInit {
   forgotPassword() {
     this.forgotPass = true;
   }
-
-  /*resendConfirmationEmail() {
-    if (this.f.email.invalid) {
-      return;
-    }
-
-    const emailForResendConfirmation: IResendConfirmation = {
-      email: (<string>this.f.email.value).toLowerCase()
-    }
-
-    this._emailService.resendConfirmationEmail(emailForResendConfirmation).subscribe(response => {
-      this.modalRef.hide();
-      this.modalRef = this.modalService.show(this.resendConfirmationEmailModal);
-    });
-  }*/
 }

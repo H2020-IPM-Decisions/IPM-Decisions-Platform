@@ -25,16 +25,17 @@
         <div class="col-2 text-center">
           <div class="p-2">
             <b class="">{{ crop.eppoCode | eppoCode }}</b>
-            <br>
+            <!--<br>
             <ng-template #tolTemplate>{{crop.eppoCode | eppoCode | uppercase}}</ng-template>
             <small class="d-inline-block text-truncate" style="width: 100%;" [tooltip]="tolTemplate"
-              placement="bottom">{{crop.eppoCode}}</small>
+              placement="bottom">{{crop.eppoCode}}</small>-->
           </div>
         </div>
         <div class="d-flex col-10 text-center">
           <div class="d-flex p-2 mx-1" *ngFor="let item of crop.dssModels" style="position:relative">
             <span *ngIf="item.dssExecutionType !== 'link'" style="position:relative">
               <eppo-code-badge
+                [dssDetail]="item"
                 [itemId]="item.id"
                 [code]="item.pestEppoCode" 
                 [statusRepresentation]="item.warningStatusRepresentation"

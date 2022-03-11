@@ -51,6 +51,7 @@ import { AdminFooterComponent } from "./admin/admin-footer/admin-footer.componen
 import { LoginComponent } from "./core/auth/pages/login/login.component";
 import { SettingsComponent } from './user/components/settings/settings.component';
 import { UserComponent } from './user/user.component';
+import { ResetPasswordComponent } from './core/components/reset-password/reset-password.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -68,6 +69,7 @@ const appRoutes: Routes = [
   { path: "research-article", component: ResearchersArticleComponent },
   { path: "coding-article", component: DevelopersArticleComponent },
   { path: "confirmemail", component: ConfirmMailComponent },
+  { path: "resetpassword", component: ResetPasswordComponent },
   {
     path: "admin/account",
     component: AdminAccountComponent,

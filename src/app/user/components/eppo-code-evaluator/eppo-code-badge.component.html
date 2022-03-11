@@ -6,52 +6,46 @@
         [tooltip]="statusRepresentation ? tolTemplateStatusRep : null"
         [ngClass]="{'badge-secondary':!status, 'badge-info': status==1, 'badge-success': status==2, 'badge-warning':status==3, 'badge-danger': status==4}"
         *ngIf="!(executionType==='link')">
-        <!--<span *ngIf="dssDescription"
-            class="infoIcon fa-stack" 
-            popover="{{dssDescription}}" 
-            popoverTitle="{{statusRepresentation}}" 
-            placement="auto" 
-            [outsideClick]="true"
-            container='body'>
+        <span *ngIf="dssDescription" class="infoIcon fa-stack">
+          <a class="details" (click)="openModal(infoModal,'modal-lg')">
             <i class="fas fa-circle fa-stack-1x"></i>
             <i class="fas fa-info-circle fa-stack-1x"></i>
-        </span>-->
+          </a>
+        </span>
         <span *ngIf="!isValid" class="errorIcon fa-stack">
             <a class="details" (click)="openModal(errorModal,'modal-lg')">
                 <i class="fas fa-circle fa-stack-1x"></i>
                 <i class="fas fa-times-circle fa-stack-1x"></i>
             </a>
         </span>
-        <a *ngIf="itemId && status>0; else notClickable"[routerLink]="[itemId,'view']" style="color: white">
+        <a *ngIf="itemId && status>1; else notValidDSS"[routerLink]="[itemId,'view']" style="color: white">
             <h6  *ngIf="!isLegend"><b>{{code | eppoCode }}</b></h6>
-            <small  *ngIf="!isLegend">({{ code }})</small>
+            <!--<small  *ngIf="!isLegend">({{ code }})</small>-->
         </a>
-        <ng-template #notClickable>
+        <ng-template #notValidDSS>
+          <a (click)="goToModelParametrisation()" style="color: white">
             <h6  *ngIf="!isLegend"><b>{{code | eppoCode }}</b></h6>
-            <small  *ngIf="!isLegend">({{ code }})</small>
+            <!--<small  *ngIf="!isLegend">({{ code }})</small>-->
+          </a>
         </ng-template>
     </span>
     <!-- Template for External DSS Badge -->
     <span class="exeLink"
         *ngIf="executionType==='link'">
-        <!--<span *ngIf="dssDescription"
-            class="infoIcon fa-stack" 
-            popover="{{dssDescription}}" 
-            popoverTitle="{{statusRepresentation}}" 
-            placement="auto" 
-            [outsideClick]="true"
-            container='body'>
+        <span *ngIf="dssDescription" class="infoIcon fa-stack">
+          <a class="details" (click)="openModal(infoModal,'modal-lg')">
             <i class="fas fa-circle fa-stack-1x"></i>
             <i class="fas fa-info-circle fa-stack-1x"></i>
-        </span>-->
+          </a>
+        </span>
         <i class="fas fa-link"></i>
         <span class="label label-danger label-as-badge"></span>
         <a [href]="endpoint" target="_blank" style="color: #6c757d">
             <h6><b>{{code | eppoCode }}</b></h6>
-            <small>({{ code }})</small>
+            <!--<small>({{ code }})</small>-->
         </a>
     </span>
-    <span *ngIf="dss && !isLegend" class="dss text-truncate" placement="bottom">{{dss}}</span>
+    <!--<span *ngIf="dss && !isLegend" class="dss text-truncate" placement="bottom">{{dss}}</span>-->
     <span *ngIf="isLegend" class="dss-legend text-truncate" placement="bottom"><b>{{dss}}</b></span>
 </span>
 
@@ -82,4 +76,36 @@
     <div class="modal-footer pull-right">
       <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
     </div>
-  </ng-template>
+</ng-template>
+
+<!-- INFO MODAL -->
+<ng-template #infoModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      <span class="modalInfoIcon fa-stack">
+        <i class="fas fa-circle fa-stack-1x"></i>
+        <i class="fas fa-info-circle fa-stack-1x"></i>
+      </span> <b>{{ 'Common_labels.Info' | translate }}: {{ code | eppoCode }}</b>
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body scrollable m-2">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label"><b>{{ 'DSS_use_dashboard.Status_representation' | translate }}: </b></label>
+        <div class="col-sm-9">
+            <p>{{ statusRepresentation }}</p>
+        </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label"><b>{{ 'DSS_use_dashboard.Description' | translate }}: </b></label>
+        <div class="col-sm-9">
+            <p>{{ dssDescription }}</p>
+        </div>
+    </div>
+  </div>
+  <div class="modal-footer pull-right">
+    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+  </div>
+</ng-template>

@@ -272,8 +272,11 @@ export class AuthenticationService {
     if (!errorRes.error || !errorRes.error.message) {
       return throwError(errorMessage);
     }
-
-    return throwError(errorRes.error.message);
+    let errObj: object = {
+      message: errorRes.error.message,
+      identityErrorType: errorRes.error.identityErrorType
+    };
+    return throwError(errObj);
   }
 
   public isAdmin(): boolean {

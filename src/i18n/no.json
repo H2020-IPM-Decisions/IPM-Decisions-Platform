@@ -226,7 +226,7 @@
           "Add_dss_model":"Legg til DSS-modell",
           "Model_name":"Modell navn",
           "Crop":"Avling",
-          "Pest_disease":"Skadedyr/sykdom",
+          "Pest_disease":"Skadedyr",
           "DSS_name":"DSS navn",
           "DSS_suitability":"DSS-egnethet",
           "Actions":"Handlinger",

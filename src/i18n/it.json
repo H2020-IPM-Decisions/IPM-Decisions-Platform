@@ -49,7 +49,9 @@
         "Deselect":"Deseleziona",
         "Resend_confirmation_email":"Reinvia mail di conferma",
         "Warning":"Attenzione",
-        "Researcher":"Ricercatore"
+        "Researcher":"Ricercatore",
+        "Back_to_login":"Torna al Login",
+        "Info":"Info"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
@@ -103,7 +105,8 @@
         "DSS_models_added":"Modelli DSS aggiunti!",
         "DSS_parameters_updated":"Parametri del DSS aggiornati!",
         "Email_not_validated_Message":"Perfavore clicca su <b><b> Reinvia mail di conferma </b></b> in basso a destra della pagina",
-        "DSS_comparison_models_retrived":"Dati dei DSS ottenuti con successo!"
+        "DSS_comparison_models_retrived":"Dati dei DSS ottenuti con successo!",
+        "Account_password_changed":"La password è stata cambiata con successo!"
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"Non ci sono DSS per le colture selezionate",
@@ -175,6 +178,12 @@
     "Forgot_password": {
         "Insert_email_for_reset_password":"Inserisci la tua email per ricevere le istruzioni per reimpostare la password"
     },
+    "Reset_password": {
+        "Account_password_reset":"Reimpostazione password account",
+        "New_password":"Nuova password",
+        "Confirm_new_password":"Conferma la nuova password",
+        "Send_password":"Invia password"
+    },
     "User_header": {
         "Account_manager":"Gestione Profilo",
         "Farm":"Fattoria"
@@ -237,7 +246,7 @@
         "Add_dss_model":"Aggiungi Modello DSS",
         "Model_name":"Nome Modello",
         "Crop":"Coltura",
-        "Pest_disease":"Parassita/Malattia",
+        "Pest_disease":"Parassita",
         "DSS_name":"Nome DSS",
         "DSS_suitability":"Idoneità DSS",
         "Actions":"Azioni",
@@ -259,11 +268,13 @@
         "White_box":"Dati insufficienti: verifica i parametri DSS",
         "Green_box":"DSS attivo, Basso rischio",
         "Yellow_box":"DSS attivo, Medio rischio",
-        "Red_box":"DSS attivo, Alto rischio"
+        "Red_box":"DSS attivo, Alto rischio",
+        "Status_representation":"Rappresentazione dello stato",
+        "Description":"Descrizione"
     },
     "DSS_details": {
         "Title":"Dettagli del DSS",
-        "Risk_score":"Punteggio di rischio",
+        "Risk_score":"Stato del rischio",
         "Recommended_actions":"Azioni consigliate",
         "Show_data_legend":"Mostra leggenda",
         "Edit_parameters":"Modifica parametri",
@@ -311,7 +322,7 @@
         "Multiselect_tip":"Utilizza <b>CTRL</b> + <b>Click</b> per selezionare più modelli",
         "Compare_models":"Confronta i modelli",
         "Model":"Modello",
-        "Risk_score":"Punteggio di rischio",
+        "Risk_score":"Stato del rischio",
         "Day":"Giorno",
         "Expand_table":"Espandi tabella",
         "Parameters_table":"Tabella dei parametri"

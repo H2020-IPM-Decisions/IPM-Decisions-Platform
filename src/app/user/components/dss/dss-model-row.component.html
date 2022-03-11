@@ -53,12 +53,12 @@
                 <p>{{ model.description.other }}</p>
             </div>
         </div>
-        <div class="form-group row">
+        <!--<div class="form-group row">
             <label class="col-sm-3 col-form-label"><b>{{ 'DSS_model_selection.Warning_status_interpretation' | translate }}</b></label>
             <div class="col-sm-9">
                 <p *ngIf="model.output?.warning_status_interpretation">{{ model.output.warning_status_interpretation }}</p>
             </div>
-        </div>
+        </div>-->
     </div>
     <div class="modal-footer pull-right">
       <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>

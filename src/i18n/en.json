@@ -49,7 +49,9 @@
         "Deselect":"Deselect",
         "Resend_confirmation_email":"Resend confirmation email",
         "Warning":"Warning",
-        "Researcher":"Researcher"
+        "Researcher":"Researcher",
+        "Back_to_login":"Back to Login",
+        "Info":"Info"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -103,7 +105,8 @@
         "DSS_models_added":"DSS Models added successfully!",
         "DSS_parameters_updated":"DSS parameters updated!",
         "Email_not_validated_Message":"Please click on <b><b> Resend confirmation email </b></b> located bottom right of this page.",
-        "DSS_comparison_models_retrived":"DSS Data retrivied successfully!"
+        "DSS_comparison_models_retrived":"DSS Data retrivied successfully!",
+        "Account_password_changed":"The password was changed successfully!"
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"No DSS avaiable for the selected crops",
@@ -175,6 +178,12 @@
     "Forgot_password": {
         "Insert_email_for_reset_password":"Insert your email to get instructions for reset password"
     },
+    "Reset_password": {
+        "Account_password_reset":"Account password reset",
+        "New_password":"New password",
+        "Confirm_new_password":"Confirm new password",
+        "Send_password":"Send password"
+    },
     "User_header": {
         "Account_manager":"Account Manager",
         "Farm":"Farm"
@@ -237,7 +246,7 @@
         "Add_dss_model":"Add DSS Model",
         "Model_name":"Model Name",
         "Crop":"Crop",
-        "Pest_disease":"Pest/Disease",
+        "Pest_disease":"Pest",
         "DSS_name":"DSS Name",
         "DSS_suitability":"DSS Suitability",
         "Actions":"Actions",
@@ -259,11 +268,14 @@
         "White_box":"Insufficient data: check DSS parameters",
         "Green_box":"DSS active, Low risk",
         "Yellow_box":"DSS active, Medium risk",
-        "Red_box":"DSS active, High risk"
+        "Red_box":"DSS active, High risk",
+        "Status_representation":"Status Representation",
+        "Description":"Description"
+        
     },
     "DSS_details": {
         "Title":"DSS Details",
-        "Risk_score":"Risk score",
+        "Risk_score":"Risk status",
         "Recommended_actions":"Recommended actions",
         "Show_data_legend":"Show data legend",
         "Edit_parameters":"Edit Parameters",
@@ -311,7 +323,7 @@
         "Multiselect_tip":"Use <b>CTRL</b> + <b>Click</b> to select multiple models",
         "Compare_models":"Compare Models",
         "Model":"Model",
-        "Risk_score":"Risk score",
+        "Risk_score":"Risk status",
         "Day":"Day",
         "Expand_table":"Expand table",
         "Parameters_table":"Parameters table"

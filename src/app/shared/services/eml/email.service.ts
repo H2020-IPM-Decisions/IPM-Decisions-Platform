@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IResetPassword } from '@app/core/auth/models/reset-password.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,17 @@ export class EmailService {
   resendConfirmationEmail(email: any): Observable<any> {
 
     return this.http.post<any>(environment.apiUrl + '/api/idp/accounts/ResendConfirmationEmail ', email, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Language':sessionStorage.getItem('selectedLanguage'),
+        'Accept': 'application/json'
+      }
+    });
+  }
+
+  resetPassword(body:IResetPassword): Observable<any> {
+
+    return this.http.post<any>(environment.apiUrl + '/api/idp/accounts/ResetPassword', body, {
       headers: {
         'Content-Type': 'application/json',
         'Accept-Language':sessionStorage.getItem('selectedLanguage'),

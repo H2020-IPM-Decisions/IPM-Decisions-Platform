@@ -30,7 +30,7 @@
                   <div class="col-sm-11">
                     <select multiple class="form-control" id="crops" formControlName="cropEppoCode">
                       <ng-template ngFor let-crop [ngForOf]="cropsEppoCodes">
-                        <option value="{{crop.code}}">{{ crop.code | eppoCode }} ({{ crop.code }})</option>
+                        <option value="{{crop.code}}">{{ crop.code | eppoCode }}</option>
                       </ng-template>
                     </select>
                     <span>

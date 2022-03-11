@@ -7,6 +7,7 @@ import { JsonEditorService } from './json-editor/json-editor.service';
 import { Subscription } from 'rxjs';
 import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
 import * as $ from 'jquery';
+import * as moment from "moment";
 
 @Component({
   selector: "app-dss-model-parametrisation",
@@ -61,6 +62,39 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
         this.editor = this._jsonEditorService.createJsonEditor('json-editor-form', data.body);
         $('#json-editor-form label').filter(function () { return $(this).text() === 'root'; }).css("display", "none");
         this.$subscriptionEditor = this._jsonEditorService.listenChanges(this.editor).subscribe(() => this.editorChanges());
+        
+        /* Change JSON Editor date format
+        $("input[type=date]").on("change", function() {
+          this.setAttribute("data-date", moment(this.value, "YYYY-MM-DD").format("YYYY-MM-DD"));
+        }).trigger("change")*/
+        
+        /*$(function(){ 
+          var label_text = $('label').text();
+          $('label').text( label_text.replace("(YYYY-MM-DD)", "") );
+        });*/
+        /*$(document).ready(function(){
+          $("label").text(this.text().replace("(YYYY-MM-DD)", ""));
+        });*/
+        
+        /* REMOVE Date format from labels*/
+        var ancestor = document.getElementById('paramForm');
+        var descendents = ancestor.getElementsByTagName('*');
+        var e: any;
+        for (let i = 0; i < descendents.length; ++i) {
+          e = descendents.item(i);
+          /*if(e.getAttribute("type") === "date") {
+            $("input").on("change", function() {
+              this.setAttribute("data-date", moment(this.value, "YYYY-MM-DD").format("YYYY-MM-DD"));
+            }).trigger("change")
+            //console.log(e.getAttribute("data-date"));
+            //e.value = moment(e.value, "YYYY-MM-DD").format("YYYY-MM-DD");
+          }*/
+          if(e.nodeName === "LABEL") {
+            var labelText:string = e.innerText;
+            e.innerText = labelText.replace("(YYYY-MM-DD)", "");
+          } 
+        }
+
       }, () => {
         this.remoteCallLoading = false;
       })
@@ -114,7 +148,7 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
         (error) => {
           this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_parameters_update_error","Common_labels.Error","toast-error");
           this._logger.error("Operation Failed:",error);
-        },
+        }
       )
     }
   }

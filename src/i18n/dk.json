@@ -198,7 +198,7 @@
       },
       "Farm_share": {
           "Requester_name":"Anmoderens navn",
-          "Request_status":"Anmodningsstatus"
+          "Request_status":"Anmodnings status"
       },
       "Farm_request": {
           "Insert_the_email":"Indsæt email på valgte landmand"
@@ -226,7 +226,7 @@
           "Add_dss_model":"Tilføj DSS model",
           "Model_name":"Model navn",
           "Crop":"Afgrøde",
-          "Pest_disease":"Disease Skadedyr sygdom",
+          "Pest_disease":"Skadedyr",
           "DSS_name":"DSS navn",
           "DSS_suitability":"DSS egnethed",
           "Actions":"Handlinger",
