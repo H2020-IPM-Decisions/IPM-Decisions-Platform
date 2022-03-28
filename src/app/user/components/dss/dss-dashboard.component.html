@@ -44,7 +44,10 @@
                 [executionType]="item.dssExecutionType"
                 [dssDescription]="item.dssDescription"
                 [isValid]="item.isValid"
-                [errorMessage]="item.resultMessage">
+                [errorMessage]="item.resultMessage"
+                [isQueued]="isQueued(item.dssTaskStatusDto.jobStatus)"
+                [isScheduled]="isScheduled(item.dssTaskStatusDto.jobStatus)"
+                [scheduleTime]="item.dssTaskStatusDto.scheduleTime">
               </eppo-code-badge>
             </span>
             <span *ngIf="item.dssExecutionType === 'link'" style="position:relative">

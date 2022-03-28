@@ -1,7 +1,9 @@
 import { IDssFlat } from './../dss/dss-selection.model';
-import { Component, Input, TemplateRef } from "@angular/core";
+import { Component, Input, TemplateRef, OnInit } from "@angular/core";
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NavigationExtras, Router } from '@angular/router';
+import { TranslationService } from '@app/shared/services/translation.service';
+import * as moment from "moment";
 
 @Component({
     selector: "eppo-code-badge",
@@ -45,13 +47,29 @@ export class EppoCodeBadgeComponent {
     errorMessage?: string;
     @Input()
     isLegend?: boolean;
+    @Input()
+    isQueued?: boolean;
+    @Input()
+    isScheduled?: boolean;
+    @Input()
+    scheduleTime?: string;
 
     modalRef: BsModalRef;
-    
+    usedLanguage: string;
+
     constructor(
         private _modalService: BsModalService,
-        private _router: Router
-        ) { }
+        private _router: Router,
+        private _translationService: TranslationService
+        ) {}
+    
+    public ngOnInit(): void {
+      this.usedLanguage = this._translationService.convertLangToMomentCode(sessionStorage.getItem("selectedLanguage"));
+      moment.locale(this.usedLanguage);
+      if (this.isScheduled) {
+        this.scheduleTime = moment(this.scheduleTime).format('Do MMMM YYYY, h:mm:ss a');
+      }
+    }
 
     openModal(template: TemplateRef<any>, size?: string) {
         this.modalRef = this._modalService.show(template, {class: size});

@@ -1,11 +1,16 @@
 <span>
     <ng-template #tolTemplateStatusRep>
-      {{statusRepresentation}}
+      <p class="tooltipStyle">{{dss}}</p>
+      <p [ngClass]="{'tolLowRisk': status==2, 'tolMediumRisk':status==3, 'tolHighRisk': status==4}">
+        {{ status==2? ('DSS_use_dashboard.Low_risk' | translate) : null }}
+        {{ status==3? ('DSS_use_dashboard.Medium_risk' | translate) : null }}
+        {{ status==4? ('DSS_use_dashboard.High_risk' | translate) : null }}
+      </p>
     </ng-template>
     <span class="badge dss-badge containerBox"
-        [tooltip]="statusRepresentation ? tolTemplateStatusRep : null"
+        [tooltip]="tolTemplateStatusRep"
         [ngClass]="{'badge-secondary':!status, 'badge-info': status==1, 'badge-success': status==2, 'badge-warning':status==3, 'badge-danger': status==4}"
-        *ngIf="!(executionType==='link')">
+        *ngIf="!(executionType==='link') && !isLegend">
         <span *ngIf="dssDescription" class="infoIcon fa-stack">
           <a class="details" (click)="openModal(infoModal,'modal-lg')">
             <i class="fas fa-circle fa-stack-1x"></i>
@@ -18,7 +23,16 @@
                 <i class="fas fa-times-circle fa-stack-1x"></i>
             </a>
         </span>
-        <a *ngIf="itemId && status>1; else notValidDSS"[routerLink]="[itemId,'view']" style="color: white">
+        <span *ngIf="isQueued && !isScheduled" class="syncIcon">
+          <i class="fas fa-sync fa-spin"></i>
+        </span>
+        <span *ngIf="!isQueued && isScheduled" class="scheduledIcon fa-stack">
+          <a class="details" (click)="openModal(scheduledModal,'modal-sm')">
+            <i class="fas fa-circle fa-stack-1x"></i>
+            <i class="fas fa-clock fa-stack-1x"></i>
+          </a>
+        </span>
+        <a *ngIf="itemId && status>1; else notValidDSS" [routerLink]="[itemId,'view']" style="color: white">
             <h6  *ngIf="!isLegend"><b>{{code | eppoCode }}</b></h6>
             <!--<small  *ngIf="!isLegend">({{ code }})</small>-->
         </a>
@@ -29,6 +43,13 @@
           </a>
         </ng-template>
     </span>
+
+    <!-- Template for Legend Badge -->
+    <span class="badge dss-badge-legend containerBox"
+        [ngClass]="{'badge-secondary':!status, 'badge-info': status==1, 'badge-success': status==2, 'badge-warning':status==3, 'badge-danger': status==4}"
+        *ngIf="isLegend">
+    </span>
+
     <!-- Template for External DSS Badge -->
     <span class="exeLink"
         *ngIf="executionType==='link'">
@@ -45,8 +66,9 @@
             <!--<small>({{ code }})</small>-->
         </a>
     </span>
+
     <!--<span *ngIf="dss && !isLegend" class="dss text-truncate" placement="bottom">{{dss}}</span>-->
-    <span *ngIf="isLegend" class="dss-legend text-truncate" placement="bottom"><b>{{dss}}</b></span>
+    <span *ngIf="isLegend" class="dss-badge-legend" placement="bottom"><b>{{dss}}</b></span>
 </span>
 
 <!-- ERROR MODAL -->
@@ -102,6 +124,31 @@
       <label class="col-sm-3 col-form-label"><b>{{ 'DSS_use_dashboard.Description' | translate }}: </b></label>
         <div class="col-sm-9">
             <p>{{ dssDescription }}</p>
+        </div>
+    </div>
+  </div>
+  <div class="modal-footer pull-right">
+    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+  </div>
+</ng-template>
+
+<!-- SCHEDULED MODAL -->
+<ng-template #scheduledModal>
+  <div class="modal-header">
+    <h5 class="modal-title pull-left">
+      <span class="modalScheduledIcon fa-stack">
+        <i class="fas fa-circle fa-stack-1x"></i>
+        <i class="fas fa-clock fa-stack-1x"></i>
+      </span> <b>{{ 'DSS_use_dashboard.Scheduled_time' | translate }}</b>
+    </h5>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body scrollable m-2">
+    <div class="form-group row">
+        <div class="col-sm-9">
+            <p>{{ scheduleTime }}</p>
         </div>
     </div>
   </div>

@@ -24,6 +24,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   resultMessageType: string;
   resultMessage: string;
   dssIsValid: boolean;
+  status: number;
   
   constructor(
     private activatedRoute: ActivatedRoute, 
@@ -37,6 +38,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.$subscription = this.activatedRoute.data.subscribe(({ dssDetail }) => {
       	this.dssDetail = dssDetail;
+        this.status = this.dssDetail.warningStatus;
 		this.dssChartGroups = this.dssDetail.chartGroups;
 	    this.selectedDssChartGroup = this.dssChartGroups[0];
       if(this.dssDetail.warningStatusPerDay){

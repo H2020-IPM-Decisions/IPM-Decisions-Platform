@@ -173,7 +173,7 @@
       "Farm_menu": "Bedrijfsmenu"
     },
     "User_menu_footer": {
-      "Content": "Dit project wordt gefinancierd door het onderzoeks- en innovatieprogramma Horizon 2020 van de Europese Unie. Meer informatie vindt u op"
+      "Content": "Dit project wordt gefinancierd door het onderzoeks- en innovatieprogramma Horizon 2020 van de Europese Unie. Onder subsidieovereenkomst nr. 817617. Meer informatie vindt u op"
     },
     "User_account": {
       "Title": "Gebruikersaccount",
@@ -248,7 +248,10 @@
       "White_box": "Onvoldoende gegevens: controleer BOS-parameterss",
       "Green_box": "BOS actief, laag risico",
       "Yellow_box": "BOS actief, gemiddeld risico",
-      "Red_box": "BOS actief, hoog risico"
+      "Red_box": "BOS actief, hoog risico",
+      "Low_risk":"Laag risico",
+      "Medium_risk":"Gemiddeld risico",
+      "High_risk":"Hoog risico"
     },
     "DSS_details": {
       "Title": "Details BOS",

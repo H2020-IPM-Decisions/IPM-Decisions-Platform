@@ -173,7 +173,7 @@
           "Farm_menu":"Landbrugsmenu"
       },
       "User_menu_footer": {
-          "Content":"Dette projekt modtager støtte fra EU's Horizon 2020 forsknings- og innovationsprogram. Lær mere på"
+          "Content":"Dette projekt modtager støtte fra EU's Horizon 2020 forsknings- og innovationsprogram. Under tilskudsaftale No. 817617. Lær mere på"
       },
       "User_account": {
           "Title":"Brugerkonto",
@@ -248,7 +248,10 @@
           "White_box":"Utilstrækkelige data: Kontroller DSS-parametre",
           "Green_box":"DSS aktiv, lav risiko",
           "Yellow_box":"DSS aktiv, middel risiko",
-          "Red_box":"DSS aktiv, høj risiko"
+          "Red_box":"DSS aktiv, høj risiko",
+          "Low_risk":"Lav risiko",
+          "Medium_risk":"Middel risiko",
+          "High_risk":"Høj risiko"
       },
       "DSS_details": {
           "Title":"Risikoscore",

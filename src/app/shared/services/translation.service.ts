@@ -84,4 +84,22 @@ export class TranslationService {
       };
       return langToFlagCode[langCode];
     }
+
+    public convertLangToMomentCode(langCode: string): string {
+      let langToFlagCode: {[key: string]: string} = {
+        "en":"gb",
+        "it":"it",
+        "el":"el",
+        "se":"sv",
+        "fr":"fr",
+        "de":"de",
+        "nl":"nl",
+        "si":"si",
+        "fi":"fi",
+        "no":"nn",
+        "lt":"lt",
+        "dk":"da"
+      };
+      return langToFlagCode[langCode];
+    }
 }

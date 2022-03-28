@@ -22,7 +22,10 @@
   background-color: #c9c9c9 !important;
   color: rgb(43, 41, 41) !important;
   position:relative;
- 
+}
+
+.tHeader:hover {
+  cursor: pointer;
 }
 
 /* .details:hover i.icon-toggle {

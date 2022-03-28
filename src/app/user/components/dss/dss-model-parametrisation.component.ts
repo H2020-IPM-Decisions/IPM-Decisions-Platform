@@ -140,7 +140,8 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
         (response) => {
           if (response) {
             this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_parameters_updated","Common_labels.Success","toast-success");
-            setTimeout(() => this.goBack(), 5000);
+            //setTimeout(() => this.goBack(), 5000);
+            this.goBack();
           }
           
           

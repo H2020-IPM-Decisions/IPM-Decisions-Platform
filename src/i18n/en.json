@@ -110,7 +110,8 @@
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"No DSS avaiable for the selected crops",
-        "Not_enough_DSS_to_compare":"There are not enough DSS models to compare! Please add at least two models"
+        "Not_enough_DSS_to_compare":"There are not enough DSS models to compare! Please add at least two models",
+        "Farm_creation_warning_message":"The platform will start collecting weather data after the farm creation. This might take up to 2 hours."
     },
     "Countries": {
         "Austria":"Austria", 
@@ -193,7 +194,7 @@
         "Farm_menu":"Farm menu"
     },
     "User_menu_footer": {
-        "Content":"This project receives funding from the European Union's Horizon 2020 research and innovation programme. Learn more at"
+        "Content":"This project receives funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No 817617. Learn more at"
     },
     "User_account": {
         "Title":"User Account",
@@ -244,10 +245,10 @@
     "DSS_information_table": {
         "Title":"DSS Information Table",
         "Add_dss_model":"Add DSS Model",
-        "Model_name":"Model Name",
+        "Model_name":"DSS",
         "Crop":"Crop",
         "Pest_disease":"Pest",
-        "DSS_name":"DSS Name",
+        "DSS_name":"Source",
         "DSS_suitability":"DSS Suitability",
         "Actions":"Actions",
         "Model_parameters":"Model Parameters",
@@ -270,13 +271,16 @@
         "Yellow_box":"DSS active, Medium risk",
         "Red_box":"DSS active, High risk",
         "Status_representation":"Status Representation",
-        "Description":"Description"
-        
+        "Description":"Description",
+        "Scheduled_time":"Scheduled time",
+        "Low_risk":"Low risk",
+        "Medium_risk":"Medium risk",
+        "High_risk":"High risk"
     },
     "DSS_details": {
         "Title":"DSS Details",
         "Risk_score":"Risk status",
-        "Recommended_actions":"Recommended actions",
+        "Recommended_actions":"Guidance",
         "Show_data_legend":"Show data legend",
         "Edit_parameters":"Edit Parameters",
         "Delete_DSS":"Delete DSS",
@@ -291,21 +295,21 @@
         "Warning_message":"Warning Message"
     },
     "DSS_model_selection": {
-        "Title":"DSS Model Selection",
+        "Title":"Decision Support System Selection",
         "Crops_selection":"Crops selection",
         "Multiselect_tip":"Use <b>CTRL</b> + <b>Click</b> to select multiple crops",
         "Show_DSS":"Show DSS",
         "DSS_models_selection":"DSS models selection",
-        "Crop_name":"CROP NAME",
-        "Pest_name":"PEST NAME",
-        "DSS_name":"DSS NAME",
+        "Crop_name":"CROP",
+        "Pest_name":"PEST",
+        "DSS_name":"SOURCE",
         "Select_crop":"Select Crop",
         "Select_pest":"Select Pest",
         "DSS_id":"DSS ID",
         "Model_id":"MODEL ID",
         "Description":"DESCRIPTION",
         "Warning_status_interpretation":"WARNING STATUS INTERPRETATION",
-        "Model_name":"MODEL NAME"
+        "Model_name":"DSS"
     },
     "DSS_model_parametrisation": {
         "Title":"DSS Model Parametrisation",

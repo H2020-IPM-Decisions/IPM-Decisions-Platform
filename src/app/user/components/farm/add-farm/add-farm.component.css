@@ -3,6 +3,10 @@
   cursor: crosshair !important;
 }
 
+.warningTextWrap {
+  word-wrap: break-word;
+}
+
 /* 
 .centered-btn-icon {
   font-size: 1.2rem;

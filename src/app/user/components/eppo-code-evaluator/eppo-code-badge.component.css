@@ -12,21 +12,18 @@
   white-space: normal;
 }
 
-.dss-legend {
+.dss-badge-legend {
   display: block;
-  font-size: 90%;
-  color: #2e3133;
-  min-width: 120px;
-  max-width: 150px;
-  height: auto;
-  white-space: normal;
+  width: 125px;
+  height: 60px;
 }
 
 .dss-badge {
+  padding: 20px 0;
   display: inline-block;
-  min-width: 120px;
+  min-width: 150px;
   max-width: 150px;
-  min-height: 50px;
+  min-height: 60px;
   height: auto;
   white-space: normal;
 }
@@ -35,7 +32,7 @@
   display: inline-block;;
   font-size: 80%;
   color: #6c757d;
-  min-width: 120px;
+  min-width: 150px;
   max-width: 150px;
   height: auto;
   white-space: normal;
@@ -65,6 +62,14 @@
   right: -6px;
 }
 
+.scheduledIcon {
+  font-size: 125%;
+  color: rgb(240, 201, 26);
+  position: absolute;
+  bottom: -3px;
+  left: -5px;
+}
+
 .scrollable {
   height: auto;
   max-height: 60vh;
@@ -88,4 +93,39 @@
   border: 2px;
   border-style: solid;
   border-color: red;
+}
+
+.syncIcon {
+  font-size: 125%;
+  color: rgb(247, 226, 112);
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: rgb(0, 0, 0);
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+}
+
+.modalScheduledIcon {
+  font-size: 150%;
+  color: rgb(255, 198, 91);
+}
+
+.tooltipStyle {
+  color: white;
+  font-weight: bold;
+}
+
+.tolLowRisk {
+  color: #3ac47d;
+  font-weight: bold;
+}
+
+.tolMediumRisk {
+  color: #f7b924;
+  font-weight: bold;
+}
+
+.tolHighRisk {
+  color: #d92550;
+  font-weight: bold;
 }

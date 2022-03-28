@@ -110,7 +110,8 @@
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"Non ci sono DSS per le colture selezionate",
-        "Not_enough_DSS_to_compare":"Non ci sono abbastanza modelli DSS da confrontare! Si prega di aggiungere almeno due modelli"
+        "Not_enough_DSS_to_compare":"Non ci sono abbastanza modelli DSS da confrontare! Si prega di aggiungere almeno due modelli",
+        "Farm_creation_warning_message":"La piattaforma inizierà a raccogliere dati meteorologici dopo la creazione della fattoria. L'operazione potrebbe richiedere fino a 2 ore."
     },
     "Countries": {
         "Austria":"Austria", 
@@ -193,7 +194,7 @@
         "Farm_menu":"Menù Fattoria"
     },
     "User_menu_footer": {
-        "Content":"Questo progetto riceve finanziamenti dal programma di ricerca e innovazione Horizon 2020 dell'Unione europea. Scopri di più su"
+        "Content":"Questo progetto riceve finanziamenti dal programma di ricerca e innovazione Horizon 2020 dell'Unione europea con accordo di sovvenzione nr. 817617. Scopri di più su"
     },
     "User_account": {
         "Title":"Profilo Utente",
@@ -244,10 +245,10 @@
     "DSS_information_table": {
         "Title":"Tabella delle informazioni su DSS",
         "Add_dss_model":"Aggiungi Modello DSS",
-        "Model_name":"Nome Modello",
+        "Model_name":"DSS",
         "Crop":"Coltura",
         "Pest_disease":"Parassita",
-        "DSS_name":"Nome DSS",
+        "DSS_name":"Fonte",
         "DSS_suitability":"Idoneità DSS",
         "Actions":"Azioni",
         "Model_parameters":"Parametri del Modello",
@@ -270,12 +271,16 @@
         "Yellow_box":"DSS attivo, Medio rischio",
         "Red_box":"DSS attivo, Alto rischio",
         "Status_representation":"Rappresentazione dello stato",
-        "Description":"Descrizione"
+        "Description":"Descrizione",
+        "Scheduled_time":"Orario pianificato",
+        "Low_risk":"Basso rischio",
+        "Medium_risk":"Medio rischio",
+        "High_risk":"Alto rischio"
     },
     "DSS_details": {
         "Title":"Dettagli del DSS",
         "Risk_score":"Stato del rischio",
-        "Recommended_actions":"Azioni consigliate",
+        "Recommended_actions":"Guida",
         "Show_data_legend":"Mostra leggenda",
         "Edit_parameters":"Modifica parametri",
         "Delete_DSS":"Eliminazione del DSS",
@@ -290,21 +295,21 @@
         "Warning_message":"Messaggio di avviso"
     },
     "DSS_model_selection": {
-        "Title":"Selezione Modello DSS",
+        "Title":"Selezione del sistema di supporto decisionale",
         "Crops_selection":"Selezione della Coltura",
         "Multiselect_tip":"Utilizza <b>CTRL</b> + <b>Click</b> per selezionare più colture",
         "Show_DSS":"Mostra DSS",
         "DSS_models_selection":"Selezione Modelli DSS",
-        "Crop_name":"NOME COLTURA",
-        "Pest_name":"NOME PARASSITA",
-        "DSS_name":"NOME DSS",
+        "Crop_name":"COLTURA",
+        "Pest_name":"PARASSITA",
+        "DSS_name":"FONTE",
         "Select_crop":"Seleziona Coltura",
         "Select_pest":"Seleziona Parassita",
         "DSS_id":"ID DSS",
         "Model_id":"ID MODELLO",
         "Description":"DESCRIZIONE",
         "Warning_status_interpretation":"INTERPRETAZIONE DELLO STATO DI AVVISO",
-        "Model_name":"NOME MODELLO"
+        "Model_name":"DSS"
     },
     "DSS_model_parametrisation": {
         "Title":"Parametrizzazione del modello DSS",

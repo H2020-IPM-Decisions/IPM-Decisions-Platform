@@ -173,7 +173,7 @@
       "Farm_menu": "Menü Betrieb"
     },
     "User_menu_footer": {
-      "Content": "Dieses Projekt wird durch das Forschungs- und Innovationsprogramm Horizon 2020 der Europäischen Union finanziert. Erfahren Sie mehr unter"
+      "Content": "Dieses Projekt wird durch das Forschungs- und Innovationsprogramm Horizon 2020 der Europäischen Union finanziert. Im Rahmen der Beihilfevereinbarung Nr. 817617. Erfahren Sie mehr unter"
     },
     "User_account": {
       "Title": "Benutzerkonto",
@@ -248,7 +248,10 @@
       "White_box": "Unzureichende Daten: Prüfen Sie die EHS-Parameter",
       "Green_box": "EHS aktiv, geringes Risiko",
       "Yellow_box": "EHS aktiv, mittleres Risiko,",
-      "Red_box": "EHS aktiv, hohes Risiko"
+      "Red_box": "EHS aktiv, hohes Risiko",
+      "Low_risk":"Geringes risiko",
+      "Medium_risk":"Mittleres risiko",
+      "High_risk":"Hohes risiko"
     },
     "DSS_details": {
       "Title": "EHS-Details",

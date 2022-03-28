@@ -173,7 +173,7 @@
       "Farm_menu": "Maatilan valikko"
     },
     "User_menu_footer": {
-      "Content": "Hanke saa rahoitusta Euroopan unionin Horisontti 2020 -tutkimus- ja innovaatioohjelmasta. Lisätietoja osoitteessa"
+      "Content": "Hanke saa rahoitusta Euroopan unionin Horisontti 2020 -tutkimus- ja innovaatioohjelmasta. Rahoitussopimuksen mukaisesti nro 817617. Lisätietoja osoitteessa"
     },
     "User_account": {
       "Title": "Käyttäjätili",
@@ -247,8 +247,11 @@
       "Grey_box": "DSS ei ole tällä hetkellä aktiivinen",
       "White_box": "Riittämättömät tiedot: tarkista DSS-parametrit",
       "Green_box": "DSS aktiivinen, pieni riski",
-      "Yellow_box": "DSS aktiivinen, keskisuuri riski,",
-      "Red_box": "DSS aktiivinen, suuri riski"
+      "Yellow_box": "DSS aktiivinen, keskisuuri riski",
+      "Red_box": "DSS aktiivinen, suuri riski",
+      "Low_risk":"Pieni riski",
+      "Medium_risk":"Keskisuuri riski",
+      "High_risk":"Suuri riski"
     },
     "DSS_details": {
       "Title": "DSS-tiedot",

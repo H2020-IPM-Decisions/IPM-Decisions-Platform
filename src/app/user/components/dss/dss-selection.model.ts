@@ -116,6 +116,7 @@ export interface IDssFlat {
     warningStatusLabels?: string[];
     resultMessage?: string;
     resultMessageType?: string;
+    dssTaskStatusDto?: IDssTaskStatusDto;
 }
 
 export interface IDssChartGroup {
@@ -132,5 +133,12 @@ export interface IDssParameters {
 
 export class DssParameters {
     constructor( public dssParameters: string){}
-} 
+}
+
+export interface IDssTaskStatusDto {
+    dssId?: string;
+    id?: string;
+    jobStatus?: string;
+    scheduleTime?: string;
+}
     

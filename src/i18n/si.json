@@ -173,7 +173,7 @@
     "Farm_menu": "Meni kmetije"
   },
   "User_menu_footer": {
-    "Content": "Ta projekt prejema sredstva iz raziskovalnega in inovacijskega programa Evropske unije Obzorje 2020. Več o tem na"
+    "Content": "Ta projekt prejema sredstva iz raziskovalnega in inovacijskega programa Evropske unije Obzorje 2020. Po pogodbi o dodelitvi sredstev št. 817617. Več o tem na"
   },
   "User_account": {
     "Title": "Uporabniški račun",
@@ -248,7 +248,10 @@
     "White_box": "Ni dovolj podatkov: preverite parametre DSS",
     "Green_box": "Aktiven DSS, nizko tveganje",
     "Yellow_box": "Aktiven DSS, srednje tveganje",
-    "Red_box": "Aktiven DSS, visoko tveganje"
+    "Red_box": "Aktiven DSS, visoko tveganje",
+    "Low_risk":"Nizko tveganje",
+    "Medium_risk":"Srednje tveganje",
+    "High_risk":"Visoko tveganje"
   },
   "DSS_details": {
     "Title": "Podrobnosti DSS",

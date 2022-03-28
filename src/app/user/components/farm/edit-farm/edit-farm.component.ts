@@ -27,6 +27,7 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
   $subscription: Subscription;
   metStationSelected = 0;
   weatherForecastSelected = 1;
+  sortHeaderIndex: number;
 
   constructor(
     public _modalService: BsModalService,
@@ -147,6 +148,7 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     var table, rows, switching, i, x, y, shouldSwitch;
     table = document.getElementById("dssTable");
     switching = true;
+    this.sortHeaderIndex = columnIndex;
     /*Make a loop that will continue until
     no switching has been done:*/
     while (switching) {

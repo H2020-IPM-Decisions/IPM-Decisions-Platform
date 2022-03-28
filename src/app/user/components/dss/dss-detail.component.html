@@ -22,13 +22,14 @@
         <div class="mr-auto p-2">
           <label class="h4">
             <b>{{ dssDetail.pestEppoCode | eppoCode }}</b>
-            <i [tooltip]="tolStatus" [ngStyle]="{ 'color': warning.chartInformation?.color[0],'margin-right':'5px'}"
-              class="fas fa-circle pl-3"></i>
+            <i [tooltip]="tolStatus" 
+              class="fas fa-circle pl-3 mr-5"
+              [ngClass]="{'lowRisk': status==2, 'mediumRisk':status==3, 'highRisk': status==4}"></i>
           </label>
         </div>
         <div class="p-2">
           <label class="h4">
-            <b>{{ dssDetail.dssModelId }}</b><a class="details" (click)="openModal(dssDetails,'modal-lg')">
+            <b>{{ dssDetail.dssModelName }}</b><a class="details" (click)="openModal(dssDetails,'modal-lg')">
               <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
             </a>
           </label>
@@ -71,12 +72,14 @@
                   </div>
                 </div>
               </td>
-              <td class="align-top">
-                <ul class="ml-3" *ngIf="dssDetail.warningMessage !==''">
-                  <li>
-                    {{dssDetail.warningMessage}}
-                  </li>
-                </ul>
+              <td class="align-top" style="overflow-y: auto;">
+                <div class=scrollable>
+                  <ul class="ml-3" *ngIf="dssDetail.warningMessage !==''">
+                    <li>
+                      {{dssDetail.warningMessage}}
+                    </li>
+                  </ul>
+                </div>
               </td>
             </tr>
             <tr>
