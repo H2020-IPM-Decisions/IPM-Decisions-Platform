@@ -4,9 +4,14 @@
 
       </div>
       <app-language-selector></app-language-selector>
-      <div class="social-links btn-registration">
+      <div class="social-links btn-registration" *ngIf="(!isLoggedIn)">
           <a class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>{{ 'Common_labels.Login' | translate }}</span></a>
           <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>{{ 'Common_labels.Register' | translate }}</span></a>
+      </div>
+      <div class="ml-3 header-user-info" *ngIf="(isLoggedIn)">
+        <i class='bx bx-user mr-2'></i><span>{{ username }}</span>
+        <a class="ml-2" (click)="navigateToPrivatePages()"><span class="loggedFarmLink"><i class="bx bx-log-in"></i>
+          {{ 'Home.IPM_Private' | translate }}</span></a>
       </div>
   </div>
 </div>

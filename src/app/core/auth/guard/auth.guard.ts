@@ -34,10 +34,8 @@ export class AuthGuard implements CanActivate {
       const acct: any = this._authService.setUserAccount(sessionStorage.getItem("token"));
 
       if (acct) {
-
         if (acct.roles && acct.roles.length > 0) {
           const roles: string[] = route.data.roles;
-
           if (
             roles &&
             roles.some((role: string) => acct.roles.includes(role))
@@ -49,6 +47,10 @@ export class AuthGuard implements CanActivate {
         if (acct.useraccesstype && acct.useraccesstype.length > 0) {
           const claims: string[] = route.data.claims;
 
+          // Multiple role users contains an array inside the useraccesstype
+          if (Array.isArray(acct.useraccesstype[0])) {
+            acct.useraccesstype = acct.useraccesstype[0];
+          }
           if (
             claims &&
             claims.some((claim: string) => acct.useraccesstype.includes(claim))

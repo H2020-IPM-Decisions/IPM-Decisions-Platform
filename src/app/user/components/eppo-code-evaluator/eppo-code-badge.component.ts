@@ -4,6 +4,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NavigationExtras, Router } from '@angular/router';
 import { TranslationService } from '@app/shared/services/translation.service';
 import * as moment from "moment";
+import * as $ from "jquery";
 
 @Component({
     selector: "eppo-code-badge",
@@ -42,7 +43,7 @@ export class EppoCodeBadgeComponent {
     @Input()
     dssDescription: string;
     @Input()
-    isValid?: boolean;
+    errorType?: number;
     @Input()
     errorMessage?: string;
     @Input()
@@ -88,5 +89,12 @@ export class EppoCodeBadgeComponent {
           }
         };
         this._router.navigate(['/user/farm',this.dssDetail.farmId,'edit','dss',this.dssDetail.id,'parametrisation'], navigationExtras);
+    }
+
+    gotErrorType(): boolean {
+      if (this.errorType == 0 || this.errorType == 1 || this.errorType == 2) {
+        return true;
+      }
+      return false;
     }
 }

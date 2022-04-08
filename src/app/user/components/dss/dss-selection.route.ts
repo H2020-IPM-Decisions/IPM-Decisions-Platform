@@ -44,7 +44,7 @@ export const dssSelectionRoute: Routes = [
     path: 'selection',
     component: DssSelectionComponent,
     data: {
-        roles: [], claims: ["developer", "farmer", "advisor"]
+        roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },
     canActivate: [AuthGuard]
   },*/
@@ -55,7 +55,7 @@ export const dssSelectionRoute: Routes = [
         path:'',
         component: DssDashboardComponent,
         data: {
-            roles: [], claims: ["developer", "farmer", "advisor"]
+            roles: [], claims: ["developer", "farmer", "advisor","researcher"]
         },
         canActivate: [AuthGuard]
       },
@@ -66,7 +66,7 @@ export const dssSelectionRoute: Routes = [
           dssDetail: DssDetailResolve
         },
         data: {
-            roles: [], claims: ["developer", "farmer", "advisor"]
+            roles: [], claims: ["developer", "farmer", "advisor","researcher"]
         },
         canActivate: [AuthGuard]
       }
@@ -76,7 +76,7 @@ export const dssSelectionRoute: Routes = [
     path: 'comparison',
     component: DssComparisonComponent,
     data: {
-        roles: [], claims: ["developer", "farmer", "advisor"]
+        roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },
     canActivate: [AuthGuard]
   }

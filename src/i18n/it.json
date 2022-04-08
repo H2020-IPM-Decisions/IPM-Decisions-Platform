@@ -51,7 +51,8 @@
         "Warning":"Attenzione",
         "Researcher":"Ricercatore",
         "Back_to_login":"Torna al Login",
-        "Info":"Info"
+        "Info":"Info",
+        "Click_to_open":"Clicca per aprire"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
@@ -299,7 +300,7 @@
         "Crops_selection":"Selezione della Coltura",
         "Multiselect_tip":"Utilizza <b>CTRL</b> + <b>Click</b> per selezionare più colture",
         "Show_DSS":"Mostra DSS",
-        "DSS_models_selection":"Selezione Modelli DSS",
+        "DSS_models_selection":"Selezione DSS",
         "Crop_name":"COLTURA",
         "Pest_name":"PARASSITA",
         "DSS_name":"FONTE",
@@ -331,5 +332,8 @@
         "Day":"Giorno",
         "Expand_table":"Espandi tabella",
         "Parameters_table":"Tabella dei parametri"
+    },
+    "User_guide": {
+        "Title":"Guida utente"
     }
 }

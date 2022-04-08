@@ -6,6 +6,7 @@ import { IDssFlat, IDssResultChart, IDssChartGroup, IDssResultFlat} from './dss-
 import { DssSelectionService } from './dss-selection.service';
 import { NGXLogger } from "ngx-logger";
 import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-dss-detail',
@@ -80,7 +81,10 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   }
 
   openModal(template: TemplateRef<any>, size?: string) {
-    this.modalRef = this._modalService.show(template, {class: size});
+    this.modalRef = this._modalService.show(template, {class: size, backdrop: false});
+    //$(".modal-backdrop.in").css("opacity","0");
+    document.body.style.overflow = 'auto';
+    document.body.style.paddingRight = '0';
   }
 
   goToModelParametrisation(): void {

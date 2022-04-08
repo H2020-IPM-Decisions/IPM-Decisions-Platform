@@ -14,6 +14,12 @@ export interface DssModel {
     description?:DssModelDescription;
     execution?:DssModelExecution;
     output?:DssModelOutput;
+    valid_spatial?:IDssModelValidSpatial;
+}
+
+export interface IDssModelValidSpatial {
+    countries?: string[];
+    geoJSON?: string;
 }
 
 export interface DssModelDescription {

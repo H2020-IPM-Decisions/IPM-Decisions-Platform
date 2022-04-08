@@ -73,7 +73,7 @@
                 </div>
               </td>
               <td class="align-top" style="overflow-y: auto;">
-                <div class=scrollable>
+                <div class=scrollableCell>
                   <ul class="ml-3" *ngIf="dssDetail.warningMessage !==''">
                     <li>
                       {{dssDetail.warningMessage}}
@@ -137,7 +137,7 @@
     </div>
   </div>
 </div>
-
+<!-- OLD INFO ICON MODAL
 <ng-template #dssDetails>
   <div class="modal-header">
     <h4 class="modal-title pull-left">
@@ -209,6 +209,7 @@
     <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
   </div>
 </ng-template>
+-->
 
 <ng-template #showError>
   <div class="form-group row mr-5">
@@ -233,3 +234,61 @@
 </ng-template>
 
 <ng-template #tolStatus>{{ dssDetail.warningStatusRepresentation }}</ng-template>
+
+<!-- DRAGGABLE AND RESIZABLE INFO MODAL-->
+<ng-template #dssDetails>
+  <resize-border [dragHolder]="header">
+    <div class="d-flex flex-column">
+      <div class="modal-header">
+        <h4 #header class="modal-title w-100" id="modal-basic-title"> {{ 'DSS_details.Dss_informations' | translate }} </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body flex-grow-1">
+            <div class="form-group row">
+              <label for="met-station" class="col-sm-3 col-form-label"><strong>{{ 'DSS_details.Crop_pest_combination' | translate }}</strong></label>
+              <div class="col-sm-9">
+                <p><strong>{{dssDetail.cropEppoCode}}</strong> - {{dssDetail.cropEppoCode | eppoCode}} |
+                  <strong>{{dssDetail.pestEppoCode}}</strong> - {{dssDetail.pestEppoCode | eppoCode}}</p>
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <label for="met-station" class="col-sm-3 col-form-label"><strong>{{ 'DSS_details.Type_of_the_output' | translate }}</strong></label>
+              <div class="col-sm-9">
+                <p>{{dssDetail.dssTypeOfOutput}}</p>
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <label for="met-station" class="col-sm-3 col-form-label"><strong>{{ 'DSS_details.Description' | translate }}</strong></label>
+              <div class="col-sm-9">
+                <p>{{dssDetail.dssDescription}}</p>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="met-station" class="col-sm-3 col-form-label"><strong>{{ 'DSS_details.DSS_model_id' | translate }}</strong></label>
+              <div class="col-sm-9">
+                <p>{{dssDetail.dssModelId}}</p>
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <label for="met-station" class="col-sm-3 col-form-label"><strong>{{ 'DSS_details.Warning_status_representation' | translate }}</strong></label>
+              <div class="col-sm-9">
+                <p>{{dssDetail.warningStatusRepresentation}}</p>
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <label for="met-station" class="col-sm-3 col-form-label"><strong>{{ 'DSS_details.Warning_message' | translate }}</strong></label>
+              <div class="col-sm-9">
+                <p>{{dssDetail.warningMessage}}</p>
+              </div>
+            </div>
+      </div>
+    </div>
+  </resize-border>
+</ng-template>

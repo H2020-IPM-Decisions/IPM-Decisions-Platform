@@ -15,8 +15,8 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   farmsDssMap: DssGroupedByFarm[] = [];
   remoteCallLoading: boolean = false;
   $startSubscription: Subscription;
-  dssJobStatus: string[] = ["Enqueued", "Processing"];
-
+  dssJobStatus: string[] = ["Enqueued", "Processing"];  
+  
   constructor(
     protected service: DssSelectionService,
     private _logger: NGXLogger,
@@ -24,7 +24,6 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // CALL  api/dss  fetch user's DSS list
-    this.remoteCallLoading = true;
     this.initData();
     // detail /api/dss/{id}
 
@@ -38,18 +37,25 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   }
 
   private initData(): void {
-    this.$startSubscription = this.service.getDssList().subscribe((data: HttpResponse<IDssFlat[]>)=>{
-      let dssList: IDssFlat[] = data.body;
-      for (let dssItem of dssList) {
-        this._logger.debug("READING DSS ITEM:",dssItem);
-        if (this.isQueued(dssItem.dssTaskStatusDto.jobStatus)) {
-          this._logger.debug("THE DSS IS QUEUED! STATUS:",dssItem.dssTaskStatusDto);
-          this.reloadData(5);
+    this.remoteCallLoading = true;
+    this.$startSubscription = this.service.getDssList().subscribe(
+      (data: HttpResponse<IDssFlat[]>)=>{
+        let dssList: IDssFlat[] = data.body;
+        for (let dssItem of dssList) {
+          this._logger.debug("READING DSS ITEM:",dssItem);
+          if (this.isQueued(dssItem.dssTaskStatusDto.jobStatus)) {
+            this._logger.debug("THE DSS IS QUEUED! STATUS:",dssItem.dssTaskStatusDto);
+            this.reloadData(5);
+          }
         }
+        this.farmsDssMap = this.service.getDssGroupedByFarms(dssList);
+        this.remoteCallLoading = false;
+      },
+      errorResponse => {
+        this._logger.error("GET DSS LIST ERROR: ",errorResponse);
+        this.remoteCallLoading = false;
       }
-      this.farmsDssMap = this.service.getDssGroupedByFarms(dssList);
-      this.remoteCallLoading = false;
-    });
+      );
   }
 
   ngOnDestroy() {
@@ -76,7 +82,6 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
     this._logger.info("Reloading!");
     let intervalId = setInterval(() => {
       counter = counter - 1;
-      console.log(counter);
       if(counter < 1) {
         clearInterval(intervalId);
         this.initData();

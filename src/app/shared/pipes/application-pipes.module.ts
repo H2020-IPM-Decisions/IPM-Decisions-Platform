@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { ModuleWithProviders, NgModule } from "@angular/core";
 import { CmsLinkPipe } from "./cms-link.pipe";
 import { EppoCodePipe } from "./eppo-code.pipe";
+import { CountryAlpha2CodePipe } from "./country-alpha2-code.pipe";
 
 @NgModule({
     imports: [
@@ -9,11 +10,13 @@ import { EppoCodePipe } from "./eppo-code.pipe";
     ],
     declarations: [
         CmsLinkPipe,
-        EppoCodePipe
+        EppoCodePipe,
+        CountryAlpha2CodePipe
     ],
     exports: [
         CmsLinkPipe,
-        EppoCodePipe
+        EppoCodePipe,
+        CountryAlpha2CodePipe
     ]
 })
 export class ApplicationPipesModule {

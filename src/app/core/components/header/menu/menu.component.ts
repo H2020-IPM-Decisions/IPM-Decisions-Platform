@@ -17,7 +17,6 @@ export class MenuComponent implements OnInit {
   constructor(private _authService: AuthenticationService, private _route: ActivatedRoute) { }
 
   ngOnInit() {
-
     if (this._authService.currentUserValue.roles && this._authService.currentUserValue.roles.length > 0) {
       this.isAdmin = this._authService.isAdmin();
     } else {

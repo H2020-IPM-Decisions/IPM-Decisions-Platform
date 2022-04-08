@@ -42,7 +42,7 @@ export const farmRoute: Routes = [
     path: '',
     component: FarmListComponent,
     data: {
-        roles: [], claims: ["developer", "farmer", "advisor"]
+        roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },
     canActivate: [AuthGuard]
   },
@@ -53,7 +53,7 @@ export const farmRoute: Routes = [
       farm: FarmResponseModelResolve
     },
     data: {
-        roles: [], claims: ["developer", "farmer", "advisor"]
+        roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },
     canActivate: [AuthGuard]
   },*/
@@ -63,7 +63,7 @@ export const farmRoute: Routes = [
     resolve: {
     },
     data: {
-        roles: [], claims: ["developer", "farmer", "advisor"]
+        roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },
     canActivate: [AuthGuard]
   },
@@ -74,7 +74,7 @@ export const farmRoute: Routes = [
       farm: FarmResponseModelResolve
     },
     data: {
-        roles: [], claims: ["developer", "farmer", "advisor"]
+        roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },
     canActivate: [AuthGuard]
   },
@@ -85,7 +85,7 @@ export const farmRoute: Routes = [
       farm: FarmResponseModelResolve
     },
     data: {
-        roles: [], claims: ["developer", "farmer", "advisor"]
+        roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },
     canActivate: [AuthGuard]
   },
@@ -93,7 +93,7 @@ export const farmRoute: Routes = [
     path: ':id/edit/dss/:dssId/parametrisation',
     component: DssModelParametrisationComponent,
     data: {
-        roles: [], claims: ["developer", "farmer", "advisor"]
+        roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },
     canActivate: [AuthGuard]
   }

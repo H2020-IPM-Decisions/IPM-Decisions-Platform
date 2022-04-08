@@ -1,0 +1,102 @@
+<div class="app-container app-theme-white fixed-sidebar fixed-header body-tabs-shadow fixed-footer">
+    <user-header></user-header>
+    <div class="app-main">
+        <sidebar></sidebar>
+        <div class="app-main__outer">
+            <div class="container">
+                <div class="app-main__inner">
+                    <div class="app-page-title">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-heading">
+                                <div class="page-title-icon">
+                                    <i class="pe-7s-help1 icon-gradient bg-mean-fruit">
+                                    </i>
+                                </div>
+                                <div>{{ 'User_guide.Title' | translate }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container mx-auto my-5 page-box">
+                        <div class="d-flex flex-column">
+                            <div class="p-2">
+                                <h3><strong>Icons guide</strong></h3>
+                            </div>
+                            <div class="p-2">
+                                <p>The IPM Decisions platform provides different kinds of information to the user,
+                                    through the use of clickable icons. <br>
+                                    When an icon is clicked a popup window will appear, allowing the user to check
+                                    infos, errors etc
+                                    about the DSS</p>
+                                <ul class="ml-4">
+                                    <li class="mb-3">
+                                        <strong>Informative icons :</strong>
+                                        <ul class="ml-4 mt-2">
+                                            <li class="mb-3">
+                                                <span class="infoIcon fa-stack">
+                                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                                    <i class="fas fa-info-circle fa-stack-2x"></i>
+                                                </span>
+                                                <strong>Info : </strong>
+                                                Provide a brief description about the DSS and other info.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb-3">
+                                        <strong>Error status :</strong>
+                                        <ul class="ml-4 mt-2">
+                                            <li class="mb-3">
+                                                <span class="errorIcon-red fa-stack">
+                                                    <i class="fas fa-square fa-stack-2x"></i>
+                                                    <i class="fas fa-exclamation-triangle fa-stack-2x"></i>
+                                                </span>
+                                                <strong>Error : </strong>
+                                                An error occured while running the DSS, show the error message.
+                                            </li>
+                                            <li class="mb-3">
+                                                <span class="errorIcon-yellow fa-stack">
+                                                    <i class="fas fa-square fa-stack-2x"></i>
+                                                    <i class="fas fa-exclamation-triangle fa-stack-2x"></i>
+                                                </span>
+                                                <strong>Warning : </strong>
+                                                There is something to be check into the configurations of the DSS.
+                                            </li>
+                                            <li class="mb-3">
+                                                <span class="errorIcon-green fa-stack">
+                                                    <i class="fas fa-square fa-stack-2x"></i>
+                                                    <i class="fas fa-exclamation-triangle fa-stack-2x"></i>
+                                                </span>
+                                                <strong>Information : </strong>
+                                                Some information about the execution.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb-3">
+                                        <strong>Syncronization icons :</strong>
+                                        <ul class="ml-4 mt-2">
+                                            <li class="mb-3">
+                                                <span class="syncIcon fa-stack">
+                                                    <i class="fas fa-sync fa-spin fa-stack-2x"></i>
+                                                </span>
+                                                <strong>Sync : </strong>
+                                                The DSS is synchronizing with the server.
+                                            </li>
+                                            <li class="mb-3">
+                                                <span class="scheduledIcon fa-stack">
+                                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                                    <i class="fas fa-clock fa-stack-2x"></i>
+                                                </span>
+                                                <strong>Scheduled : </strong>
+                                                The DSS is scheduled for retrieve data, click to show the schedule time.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

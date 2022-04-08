@@ -20,6 +20,7 @@ export class DssModelRowComponent implements OnInit {
   public selectedDss: boolean = false;
   public selectedCrop: string = "";
   public selectedPest: string = "";
+  public countriesCodes: string[];
   modalRef: BsModalRef;
 
   constructor (
@@ -38,6 +39,7 @@ export class DssModelRowComponent implements OnInit {
           this.selectedCrop = this.model.crops[0];
         }
       }
+      this.countriesCodes = this.model.valid_spatial.countries;
     }
   }
   cropSelectChanged(event: { target: HTMLInputElement }){

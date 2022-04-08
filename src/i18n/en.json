@@ -51,7 +51,8 @@
         "Warning":"Warning",
         "Researcher":"Researcher",
         "Back_to_login":"Back to Login",
-        "Info":"Info"
+        "Info":"Info",
+        "Click_to_open":"Click to open"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -284,7 +285,7 @@
         "Show_data_legend":"Show data legend",
         "Edit_parameters":"Edit Parameters",
         "Delete_DSS":"Delete DSS",
-        "Dss_informations":"Dss Informations",
+        "Dss_informations":"DSS Information",
         "Crop_pest_combination":"Crop / Pest Combination",
         "Type_of_the_output":"Type of the output",
         "Description":"Description",
@@ -296,10 +297,10 @@
     },
     "DSS_model_selection": {
         "Title":"Decision Support System Selection",
-        "Crops_selection":"Crops selection",
+        "Crops_selection":"Crop selection",
         "Multiselect_tip":"Use <b>CTRL</b> + <b>Click</b> to select multiple crops",
         "Show_DSS":"Show DSS",
-        "DSS_models_selection":"DSS models selection",
+        "DSS_models_selection":"DSS selection",
         "Crop_name":"CROP",
         "Pest_name":"PEST",
         "DSS_name":"SOURCE",
@@ -331,5 +332,8 @@
         "Day":"Day",
         "Expand_table":"Expand table",
         "Parameters_table":"Parameters table"
+    },
+    "User_guide": {
+        "Title":"User guide"
     }
 }

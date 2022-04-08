@@ -7,7 +7,7 @@
         {{ status==4? ('DSS_use_dashboard.High_risk' | translate) : null }}
       </p>
     </ng-template>
-    <span class="badge dss-badge containerBox"
+    <span id="myDssBadgeId" class="badge dss-badge containerBox"
         [tooltip]="tolTemplateStatusRep"
         [ngClass]="{'badge-secondary':!status, 'badge-info': status==1, 'badge-success': status==2, 'badge-warning':status==3, 'badge-danger': status==4}"
         *ngIf="!(executionType==='link') && !isLegend">
@@ -17,10 +17,11 @@
             <i class="fas fa-info-circle fa-stack-1x"></i>
           </a>
         </span>
-        <span *ngIf="!isValid" class="errorIcon fa-stack">
-            <a class="details" (click)="openModal(errorModal,'modal-lg')">
-                <i class="fas fa-circle fa-stack-1x"></i>
-                <i class="fas fa-times-circle fa-stack-1x"></i>
+        <span *ngIf="gotErrorType()" class="fa-stack" 
+          [ngClass]="{'errorIcon-green': errorType==0, 'errorIcon-yellow': errorType==1, 'errorIcon-red': errorType==2}">
+            <a class="details" (click)="openModal(errorModal,'modal-lg')" [title]="('Common_labels.Click_to_open' | translate)">
+                <i class="fa fa-square fa-stack-2x"></i>
+                <i class="fa fa-exclamation-triangle fa-stack-2x"></i>
             </a>
         </span>
         <span *ngIf="isQueued && !isScheduled" class="syncIcon">
@@ -75,10 +76,14 @@
 <ng-template #errorModal>
     <div class="modal-header">
       <h4 class="modal-title pull-left">
-        <span class="modalErrorIcon fa-stack">
-                <i class="fas fa-circle fa-stack-1x"></i>
-                <i class="fas fa-times-circle fa-stack-1x"></i>
-        </span> <b>{{ 'Common_labels.Error' | translate }}</b>
+        <span class="fa-stack" 
+          [ngClass]="{'modalErrorIcon-green': errorType==0, 'modalErrorIcon-yellow': errorType==1, 'modalErrorIcon-red': errorType==2}">
+                <i class="fas fa-square fa-stack-1x"></i>
+                <i class="fas fa-exclamation-triangle fa-stack-1x"></i>
+        </span> 
+        <b *ngIf="errorType==0">{{ 'Common_labels.Info' | translate }}</b>
+        <b *ngIf="errorType==1">{{ 'Common_labels.Warning' | translate }}</b>
+        <b *ngIf="errorType==2">{{ 'Common_labels.Error' | translate }}</b>
       </h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
@@ -87,10 +92,9 @@
     <div class="modal-body scrollable m-2">
       <div class="form-group row">
         <div class="col-md justify-content-center">
-            <div class="alert alert-danger text-muted">
-                <strong>{{ 'Error_messages.DSS_an_error_occured' | translate }}:</strong>
-                <br>
-                {{ errorMessage }}
+            <div class="alert text-muted"
+              [ngClass]="{'alert-green': errorType==0, 'alert-warning': errorType==1, 'alert-danger': errorType==2}">
+                <strong>{{ errorMessage }}</strong>
             </div>
         </div>
       </div>

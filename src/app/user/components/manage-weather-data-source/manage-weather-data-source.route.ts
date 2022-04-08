@@ -41,7 +41,7 @@ export const manageWeatherDataSourceRoute: Routes = [
     path: '',
     component: ManageWeatherDataSourceComponent,
     data: {
-        roles: [], claims: ["developer", "farmer", "advisor"]
+        roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },
     canActivate: [AuthGuard]
   },
@@ -52,7 +52,7 @@ export const manageWeatherDataSourceRoute: Routes = [
       setting: ManageWeatherDataSourceResolve
     },
     data: {
-        roles: [], claims: ["developer", "farmer", "advisor"]
+        roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },
     canActivate: [AuthGuard]
   },
@@ -63,7 +63,7 @@ export const manageWeatherDataSourceRoute: Routes = [
       ManageWeatherData: ManageWeatherDataSourceResolve
     },
     data: {
-        roles: [], claims: ["developer", "farmer", "advisor"]
+        roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },
     canActivate: [AuthGuard]
   },
@@ -74,7 +74,7 @@ export const manageWeatherDataSourceRoute: Routes = [
       setting: ManageWeatherDataSourceResolve
     },
     data: {
-        roles: [], claims: ["developer", "farmer", "advisor"]
+        roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },
     canActivate: [AuthGuard]
   }

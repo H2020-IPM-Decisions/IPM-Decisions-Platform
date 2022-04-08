@@ -18,6 +18,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { TranslateModule} from '@ngx-translate/core';
 import { DssComparisonComponent } from './dss-comparison.component';
 import { DssComparisonRowComponent } from './dss-comparison-row.component';
+import { ResizeBorderComponent } from '@app/shared/resize-border/resize-border.component';
 
 @NgModule({
   imports: [ 
@@ -40,7 +41,8 @@ import { DssComparisonRowComponent } from './dss-comparison-row.component';
     CustomChartComponent,
     CustomGroupChartComponent,
     DssComparisonComponent,
-    DssComparisonRowComponent
+    DssComparisonRowComponent,
+    ResizeBorderComponent
   ],
   entryComponents: []
 })

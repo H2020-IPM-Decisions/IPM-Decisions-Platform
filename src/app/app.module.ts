@@ -90,6 +90,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 import { NgxFlagPickerModule } from 'ngx-flag-picker';
 import { ResetPasswordComponent } from './core/components/reset-password/reset-password.component';
+import { UserInformationPageComponent } from './user/components/user-information-page/user-information-page.component';
 
 @NgModule({
   declarations: [
@@ -163,7 +164,8 @@ import { ResetPasswordComponent } from './core/components/reset-password/reset-p
     ManageFarmComponent,
     FieldEditComponent,
     LanguageSelectorComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    UserInformationPageComponent
   ],
   imports: [
     BrowserModule,

@@ -52,6 +52,7 @@ import { LoginComponent } from "./core/auth/pages/login/login.component";
 import { SettingsComponent } from './user/components/settings/settings.component';
 import { UserComponent } from './user/user.component';
 import { ResetPasswordComponent } from './core/components/reset-password/reset-password.component';
+import { UserInformationPageComponent } from './user/components/user-information-page/user-information-page.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -188,31 +189,31 @@ const appRoutes: Routes = [
     path: "user/account",
     component: AccountComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/account/edit",
     component: EditAccountComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/settings/manage-alerts",
     component: ManageAlertsComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/settings/customize-dashboard",
     component: CustomizeDashboardComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user",
     component: UserComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
     children:[
       {
         path: '',
@@ -230,10 +231,16 @@ const appRoutes: Routes = [
     ]
   },
   {
+    path: "user/guide",
+    component: UserInformationPageComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
+  },
+  {
     path: "user/settings",
     component: SettingsComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
     children:[
       {   
         path: 'manage-weather',
@@ -245,103 +252,103 @@ const appRoutes: Routes = [
     path: "user/crop/add",
     component: AddCropComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/crop/edit",
     component: EditCropComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/crop/manage",
     component: ManageCropComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/crop/list",
     component: CropListComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/pest-disease/action-list",
     component: ActionListComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/pest-disease/action-list/add",
     component: AddActionComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/pest-disease/action-list/edit",
     component: EditActionComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/pest-disease/observation-list",
     component: ObservationListComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/pest-disease/pest-disease-list",
     component: PestDiseaseListComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/pest-disease/observation-list/edit",
     component: EditObservationComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/pest-disease/observation-list/add",
     component: AddObservationComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/pest-disease/add",
     component: AddPestDiseaseComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/pest-disease/alert",
     component: AlertComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/pest-disease/manage",
     component: ManagePestDiseaseComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/dashboard-manager",
     component: DashboardManagerComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/dashboard-manager/add",
     component: AddDashboardComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/dashboard-manager/edit",
     component: EditDashboardComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   }
 ];
 

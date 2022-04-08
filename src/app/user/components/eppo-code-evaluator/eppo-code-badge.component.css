@@ -46,6 +46,12 @@
   color: white;
 }
 
+.fa-square {
+  color: white;
+  bottom: -2px;
+  transform: scale(0.5,0.7);
+}
+
 .infoIcon {
   font-size: 125%;
   color: rgb(0, 140, 255);
@@ -54,12 +60,37 @@
   right: -6px;
 }
 
-.errorIcon {
-  font-size: 125%;
+.errorIcon-red {
+  font-size: 85%;
   color: red;
   position: absolute;
-  bottom: -3px;
-  right: -6px;
+  bottom: 3px;
+  /* right: 2px; */
+  left: 66px;
+  -webkit-text-stroke-width: 0.25px;
+  -webkit-text-stroke-color: rgb(255, 255, 255)
+}
+
+.errorIcon-yellow {
+  font-size: 85%;
+  color: rgb(247 165 43);
+  position: absolute;
+  bottom: 3px;
+  /* right: 2px; */
+  left: 66px;
+  -webkit-text-stroke-width: 0.25px;
+  -webkit-text-stroke-color: rgb(255, 255, 255)
+}
+
+.errorIcon-green {
+  font-size: 85%;
+  color: rgb(105 197 4);
+  position: absolute;
+  bottom: 3px;
+  /* right: 2px; */
+  left: 66px;
+  -webkit-text-stroke-width: 0.25px;
+  -webkit-text-stroke-color: rgb(255, 255, 255)
 }
 
 .scheduledIcon {
@@ -78,9 +109,30 @@
   word-wrap: break-word;
 }
 
-.modalErrorIcon {
+.modalErrorIcon-red {
   font-size: 150%;
   color: red;
+  -webkit-text-stroke-width: 0.25px;
+  -webkit-text-stroke-color: rgb(255, 255, 255)
+}
+
+.modalErrorIcon-yellow {
+  font-size: 150%;
+  color: rgb(247 165 43);
+  -webkit-text-stroke-width: 0.25px;
+  -webkit-text-stroke-color: rgb(255, 255, 255)
+}
+
+.modalErrorIcon-green {
+  font-size: 150%;
+  color: rgb(105 197 4);
+  -webkit-text-stroke-width: 0.25px;
+  -webkit-text-stroke-color: rgb(255, 255, 255)
+}
+
+.alert-green {
+  background-color: #c9ff83;
+  border-color: #ade921;
 }
 
 .modalInfoIcon {
