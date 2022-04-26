@@ -1,0 +1,9 @@
+<div class="row mb-1 mt-1 pl-1">
+    <div class="col-10 d-flex align-items-center" [ngClass]="{'row-selected': isSelected === true, 'row-notSelected': isSelected === false}">
+      {{ textToShow }}
+    </div>
+    <div class="col">
+        <button class="btn btn-info" (click)="onSelect()" [ngClass]="{'data-notSelected': isSelected === true}" [disabled]="currentSelected === maxSelectableOptions">{{ 'Common_labels.Select' | translate }}</button>
+        <button class="btn btn-info" (click)="onDeselect()" [ngClass]="{'data-selected': isSelected === true, 'data-notSelected': isSelected === false}">{{ 'Common_labels.Deselect' | translate }}</button>
+    </div>
+</div>

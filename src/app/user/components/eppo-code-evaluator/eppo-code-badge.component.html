@@ -1,6 +1,7 @@
 <span>
     <ng-template #tolTemplateStatusRep>
       <p class="tooltipStyle">{{dss}}</p>
+      <p class="tolPurpose"> {{ dssDetail.dssPurpose }}</p>
       <p [ngClass]="{'tolLowRisk': status==2, 'tolMediumRisk':status==3, 'tolHighRisk': status==4}">
         {{ status==2? ('DSS_use_dashboard.Low_risk' | translate) : null }}
         {{ status==3? ('DSS_use_dashboard.Medium_risk' | translate) : null }}

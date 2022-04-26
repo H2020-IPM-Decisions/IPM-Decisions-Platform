@@ -15,6 +15,7 @@ export interface DssModel {
     execution?:DssModelExecution;
     output?:DssModelOutput;
     valid_spatial?:IDssModelValidSpatial;
+    purpose?: string;
 }
 
 export interface IDssModelValidSpatial {
@@ -123,6 +124,7 @@ export interface IDssFlat {
     resultMessage?: string;
     resultMessageType?: string;
     dssTaskStatusDto?: IDssTaskStatusDto;
+    dssPurpose?: string;
 }
 
 export interface IDssChartGroup {

@@ -78,7 +78,7 @@
         "User_account_updating_error":"Errore durante l'aggiornamento del profilo utente!",
         "User_account_fetching_error":"Errore durante il recupero del profilo utente!",
         "Invalid_form_data":"Dati del modulo non validi!",
-        "Unable_to_create_farm":"Impossibile creare la fattoria!",
+        "Unable_to_create_farm":"Impossibile creare l'azienda agricola!",
         "Field_detail_fetching_error":"Errore durante il recupero dei dettagli del campo!",
         "DSS_deletion_error":"Impossibile cancellare il DSS",
         "DSS_an_error_occured":"Il DSS non può essere eseguito poichè si è verifato un errore",
@@ -90,17 +90,17 @@
         "DSS_comparison_model_retrived_error":"Impossibile ottenere i dati dei DSS!"
     },
     "Information_messages":{
-        "Farm_deletion_message":"Stai per eliminare una fattoria. Vuoi procedere?",
-        "No_farms_avaiable":"Nessuna fattoria disponibile.",
-        "Farm_copy_success":"Fattoria copiata!",
+        "Farm_deletion_message":"Stai per eliminare un'azienda agricola. Vuoi procedere?",
+        "No_farms_avaiable":"Nessuna azienda agricola disponibile.",
+        "Farm_copy_success":"Azienda agricola copiata!",
         "User_account_updated":"Profilo utente aggiornato correttamente!",
-        "Farm_created":"Fattoria creata!",
+        "Farm_created":"Azienda agricola creata!",
         "You_are_about_to_delete":"Stai per eliminare",
         "Are_you_sure":"Vuoi procedere?",
         "No_model_available":"Nessun modello disponibile.",
         "No_DSS_available":"Nessun DSS disponibile.",
         "DSS_deletion":"DSS eliminato!",
-        "No_DSS_available_please_add":"Nessun DSS disponibile, si prega di aggiungere dei modelli DSS in una fattoria utilizzando Gestione Fattoria",
+        "No_DSS_available_please_add":"Nessun DSS disponibile, si prega di aggiungere dei modelli DSS in un'azienda agricola utilizzando Gestione Azienda Agricola",
         "DSS_delete":"Stai per eliminare il DSS. Vuoi procedere?",
         "DSS_models_retrived":"Modelli DSS ottenuti!",
         "DSS_models_added":"Modelli DSS aggiunti!",
@@ -112,7 +112,7 @@
     "Warning_messages":{
         "DSS_model_avaiability_error":"Non ci sono DSS per le colture selezionate",
         "Not_enough_DSS_to_compare":"Non ci sono abbastanza modelli DSS da confrontare! Si prega di aggiungere almeno due modelli",
-        "Farm_creation_warning_message":"La piattaforma inizierà a raccogliere dati meteorologici dopo la creazione della fattoria. L'operazione potrebbe richiedere fino a 2 ore."
+        "Farm_creation_warning_message":"La piattaforma inizierà a raccogliere dati meteorologici dopo la creazione dell'azienda agricola. L'operazione potrebbe richiedere fino a 2 ore."
     },
     "Countries": {
         "Austria":"Austria", 
@@ -188,11 +188,11 @@
     },
     "User_header": {
         "Account_manager":"Gestione Profilo",
-        "Farm":"Fattoria"
+        "Farm":"Azienda agricola"
     },
     "User_menu": {
         "IPM_private":"IPM Privato",
-        "Farm_menu":"Menù Fattoria"
+        "Farm_menu":"Menù Azienda Agricola"
     },
     "User_menu_footer": {
         "Content":"Questo progetto riceve finanziamenti dal programma di ricerca e innovazione Horizon 2020 dell'Unione europea con accordo di sovvenzione nr. 817617. Scopri di più su"
@@ -201,8 +201,8 @@
         "Title":"Profilo Utente",
         "User_role":"Ruolo Utente",
         "Edit_profile":"Modifica profilo",
-        "Request_farm_control":"Richiedi Controllo Fattoria",
-        "Check_farm_control":"Verifica Controllo Fattoria"
+        "Request_farm_control":"Richiedi Controllo Azienda Agricola",
+        "Check_farm_control":"Verifica Controllo Azienda Agricola"
     },
     "Edit_user_account": {
         "Title":"Modifica Profilo Utente",
@@ -226,20 +226,20 @@
         "Insert_the_email":"Inserisci l'e-mail di un agricoltore a tua scelta"
     },
     "Farm_list": {
-        "Title":"Gestione Fattoria",
-        "Add_farm":"Aggiungi Fattoria",
-        "Farm_information_table":"Tabella delle informazioni sulla fattoria",
+        "Title":"Gestione Azienda Agricola",
+        "Add_farm":"Aggiungi Azienda Agricola",
+        "Farm_information_table":"Tabella delle informazioni sull'azienda agricola",
         "Name":"Nome",
-        "Farm_location":"Posizione della fattoria",
+        "Farm_location":"Posizione dell'azienda agricola",
         "Actions":"Azioni",
-        "Delete_farm":"Cancellazione Fattoria"
+        "Delete_farm":"Cancellazione Azienda Agricola"
     },
     "Add_Edit_farm":{
-        "Add_title":"Aggiungi Fattoria",
-        "Edit_title":"Modifica Fattoria",
-        "Farm_creation":"Creazione Fattoria",
-        "Farm_name":"Nome Fattoria",
-        "Farm_location":"Seleziona la posizione della fattoria",
+        "Add_title":"Aggiungi Azienda Agricola",
+        "Edit_title":"Modifica Azienda Agricola",
+        "Farm_creation":"Creazione Azienda Agricola",
+        "Farm_name":"Nome Azienda Agricola",
+        "Farm_location":"Seleziona la posizione dell'azienda agricola",
         "Nearest_met_station":"Stazione meteo più vicina",
         "Weather_forecast_service":"Servizio di previsioni del tempo"
     },
@@ -331,7 +331,10 @@
         "Risk_score":"Stato del rischio",
         "Day":"Giorno",
         "Expand_table":"Espandi tabella",
-        "Parameters_table":"Tabella dei parametri"
+        "Parameters_table":"Tabella dei parametri",
+        "for":"per",
+        "on":"su",
+        "Note_message":"Si possono confrontare fino ad un massimo di cinque modelli contemporaneamente"
     },
     "User_guide": {
         "Title":"Guida utente"

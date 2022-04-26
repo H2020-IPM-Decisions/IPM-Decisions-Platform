@@ -16,7 +16,8 @@
 </td>
 <!-- DSS COLUMN -->
 <td class="text-center">
-    {{ model.name }} 
+    <span [tooltip]="tolTemplatePurpose" *ngIf="modelPurpose">{{ model.name }}</span>
+    <span *ngIf="!modelPurpose">{{ model.name }}</span>
     <a class="details" (click)="openModal(dssModelDetails,'modal-lg')">
         <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
     </a>
@@ -70,4 +71,8 @@
     <div class="modal-footer pull-right">
       <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
     </div>
+  </ng-template>
+
+  <ng-template #tolTemplatePurpose>
+    <p class="tooltipStyle">{{modelPurpose}}</p>
   </ng-template>

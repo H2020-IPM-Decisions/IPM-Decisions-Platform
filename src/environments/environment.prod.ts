@@ -4,5 +4,6 @@ export const environment = {
   cmsUrl: 'https://cms.ipmdecisions.nibio.no',
   apiUrl: 'https://ipmdecisions.nibio.no',
   //apiUrl:'https://ipm-decisions.ukwest.cloudapp.azure.com',
+  //apiUrl:'http://localhost:5000',
   weatherApi: 'https://ipmdecisions.nibio.no/WeatherService/api'
 };

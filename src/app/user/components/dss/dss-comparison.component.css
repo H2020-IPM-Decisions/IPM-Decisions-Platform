@@ -20,3 +20,34 @@
 .errorTextWrap {
     word-wrap: break-word;
 }
+
+.scrollableContainer {
+    padding-top:6px;
+    padding-bottom:6px;
+    max-height: 210px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    border: 1px solid #ccc!important;
+    border-radius: 8px;
+}
+
+.btn-info.disabled, .btn-info:disabled {
+    color: #fff;
+    background-color: #797f83;
+    border-color: #797f83;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 10px;
+    background: #d1d1d1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #16aaff;
+  }
+
+  .note-message {
+      color: red
+  }

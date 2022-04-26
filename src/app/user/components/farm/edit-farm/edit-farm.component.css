@@ -28,6 +28,11 @@
   cursor: pointer;
 }
 
+.tooltipStyle {
+  color: #c2c2c2;
+  font-weight: bold;
+}
+
 /* .details:hover i.icon-toggle {
   visibility: visible;
 }

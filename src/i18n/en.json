@@ -331,7 +331,10 @@
         "Risk_score":"Risk status",
         "Day":"Day",
         "Expand_table":"Expand table",
-        "Parameters_table":"Parameters table"
+        "Parameters_table":"Parameters table",
+        "for":"for",
+        "on":"on",
+        "Note_message":"You can compare up to five models simultaneously"
     },
     "User_guide": {
         "Title":"User guide"

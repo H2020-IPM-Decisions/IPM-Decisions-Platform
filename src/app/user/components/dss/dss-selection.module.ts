@@ -19,6 +19,7 @@ import { TranslateModule} from '@ngx-translate/core';
 import { DssComparisonComponent } from './dss-comparison.component';
 import { DssComparisonRowComponent } from './dss-comparison-row.component';
 import { ResizeBorderComponent } from '@app/shared/resize-border/resize-border.component';
+import { MultiSelectComponent } from '@app/shared/multi-select/multi-select.component';
 
 @NgModule({
   imports: [ 
@@ -42,7 +43,8 @@ import { ResizeBorderComponent } from '@app/shared/resize-border/resize-border.c
     CustomGroupChartComponent,
     DssComparisonComponent,
     DssComparisonRowComponent,
-    ResizeBorderComponent
+    ResizeBorderComponent,
+    MultiSelectComponent
   ],
   entryComponents: []
 })

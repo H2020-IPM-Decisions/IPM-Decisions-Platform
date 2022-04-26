@@ -46,7 +46,12 @@
       "Loading": "Indlæser",
       "Back": "Tilbage",
       "Select": "Vælg",
-      "Deselect": "Fjern markering"
+      "Deselect": "Fjern markering",
+      "Resend_confirmation_email": "Resend confirmation email",
+      "Warning": "Warning",
+      "Researcher": "Researcher",
+      "Back_to_login": "Back to Login",
+      "Info": "Info"
     },
     "Error_messages": {
       "An_unknown_error_occured": "Ukendt fejl opstod!",
@@ -80,7 +85,8 @@
       "DSS_model_add_error": "Kunne ikke indsende de valgte modeller",
       "DSS_model_combination_error": "Pest combination already exists Ingen DSS-model indsendt, en DSS med valgt afgrøde skadedyr-kombination eksisterer allerede",
       "DSS_parameters_update_error": "Opdatering af DSS-parametre mislykkedes. Der opstod en fejl",
-      "DSS_parameters_fetching_error": "Kan ikke hente parameterdata"
+      "DSS_parameters_fetching_error": "Kan ikke hente parameterdata",
+      "DSS_comparison_model_retrived_error": "Failed to retrieve DSS data!"
     },
     "Information_messages": {
     "Farm_deletion_message": "Du er ved at slette en bedrift. Er du sikker?",
@@ -97,7 +103,15 @@
     "DSS_delete": "Du er ved at slette en DSS. Er du sikker?",
     "DSS_models_retrived": ",” DSS-modeller hentet",
     "DSS_models_added": "DSS-modeller tilføjet",
-    "DSS_parameters_updated": "DSS-parametre opdateret"
+    "DSS_parameters_updated": "DSS-parametre opdateret",
+    "Email_not_validated_Message": "Please click on <b><b> Resend confirmation email </b></b> located bottom right of this page.",
+    "DSS_comparison_models_retrived": "DSS Data retrivied successfully!",
+    "Account_password_changed": "The password was changed successfully!"
+  },
+   "Warning_messages": {
+    "DSS_model_avaiability_error": "No DSS avaiable for the selected crops",
+    "Not_enough_DSS_to_compare": "There are not enough DSS models to compare! Please add at least two models",
+    "Farm_creation_warning_message": "The platform will start collecting weather data after the farm creation. This might take up to 2 hours."
   },
       "Countries":{
           "Austria":"Østrig",
@@ -151,7 +165,8 @@
           "Web_Site":"Hjemmeside",
           "Social":"Social",
           "Useful_links":"Nyttige Links",
-          "IPM_Decisions_News":"nyheder om <b>IPM Decisions</b>"
+          "IPM_Decisions_News":"nyheder om <b>IPM Decisions</b>",
+          "IPM_Private": "IPM Private"
       },
       "Register": {
           "User_type":"Brugertype",
@@ -163,6 +178,12 @@
       },
       "Forgot_password": {
           "Insert_email_for_reset_password":"Indsæt din e-mail for at få instruktioner til at nulstille din adgangskode"
+      },
+       "Reset_password": {
+        "Account_password_reset": "Account password reset",
+        "New_password": "New password",
+        "Confirm_new_password": "Confirm new password",
+        "Send_password": "Send password"
       },
       "User_header": {
           "Account_manager":"Kundeansvarlig",
@@ -249,6 +270,9 @@
           "Green_box":"DSS aktiv, lav risiko",
           "Yellow_box":"DSS aktiv, middel risiko",
           "Red_box":"DSS aktiv, høj risiko",
+          "Status_representation": "Status Representation",
+          "Description": "Description",
+          "Scheduled_time": "Scheduled time",
           "Low_risk":"Lav risiko",
           "Medium_risk":"Middel risiko",
           "High_risk":"Høj risiko"
@@ -284,11 +308,29 @@
           "DSS_id":"DSS ID",
           "Model_id":"Model ID",
           "Description":"Beskrivelse",
-          "Warning_status_interpretation":"FORTOLKNING af ADVARSELS STATUS"
+          "Warning_status_interpretation":"FORTOLKNING af ADVARSELS STATUS",
+          "Model_name": "DSS"
       },
       "DSS_model_parametrisation": {
           "Title":"DSS model Parametrisering",
           "Saved_parameters":"Gemte parametre"
-      }
+      },
+  "Resend_confirmation_email": {
+    "Insert_your_account_email": "Insert your account email",
+    "Resend_confirmation_button": "Resend confirmation",
+    "A_new_confirmation_email_as_been_sent": "A new confirmation email has been sent!"
+  },
+  "DSS_comparison": {
+    "Title": "DSS Comparison Dashboard",
+    "Select_two_or_more_models": "Select two or more models",
+    "Models_selection": "Models Selection",
+    "Multiselect_tip": "Use <b>CTRL</b> + <b>Click</b> to select multiple models",
+    "Compare_models": "Compare Models",
+    "Model": "Model",
+    "Risk_score": "Risk status",
+    "Day": "Day",
+    "Expand_table": "Expand table",
+    "Parameters_table": "Parameters table"
   }
+}
   

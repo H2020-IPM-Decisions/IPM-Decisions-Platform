@@ -1,52 +1,57 @@
 {
-    "Common_labels": {
-      "Home": "Home",
-      "Login": "Inloggen",
-      "Register": "Registreren",
-      "Farmers_and_Advisors": "Boeren & Adviseurs",
-      "Researchers": "Onderzoekers",
-      "Developers": "Ontwikkelaars",
-      "Project_lead": "Projectleiders",
-      "Technical_contacts": "Technische contacten",
-      "Cofundend_by_the_Horizon_2020": "Medegefinancierd door het Horizon 2020",
-      "Framework_programme": "Kaderprogramma van de Europese Unie",
-      "Under_grant_agreement": "Onder subsidieovereenkomst nr. 817617",
-      "All_rights_reserved": "Alle rechten voorbehouden",
-      "Email": "E-mail",
-      "Password": "Wachtwoord",
-      "Forgot_password": "Wachtwoord vergeten",
-      "Ok": "Ok",
-      "Confirm": "Bevestigen",
-      "Farmer": "Boer en tuinder",
-      "Developer": "Ontwikkelaar",
-      "Advisor": "Adviseur",
-      "Wait": "Wacht",
-      "Success": "Succes",
-      "Cancel": "Annuleren",
-      "Yes": "Ja",
-      "Delete": "Verwijderen",
-      "Edit": "Wijzigen",
-      "Copy": "Kopiëren",
-      "Logout": "Uitloggen",
-      "Account": "Account",
-      "Settings": "Instellingen",
-      "About": "Over",
-      "Contact_name": "Naam contactpersoon",
-      "Phone": "Telefoon",
-      "Mobile": "Mobiel",
-      "Address": "Adres",
-      "Send": "Verzenden",
-      "Save_changes": "Wijzigingen opslaan",
-      "Error": "Fout",
-      "Save": "Opslaan",
-      "Details": "Details",
-      "Spray": "Spuit",
-      "Date": "Datum",
-      "Close": "Sluiten",
-      "Loading": "Laden...",
-      "Back": "Terug",
-      "Select": "Selecteer",
-      "Deselect": "Deselecteer"
+  "Common_labels": {
+    "Home": "Home",
+    "Login": "Inloggen",
+    "Register": "Registreren",
+    "Farmers_and_Advisors": "Boeren & Adviseurs",
+    "Researchers": "Onderzoekers",
+    "Developers": "Ontwikkelaars",
+    "Project_lead": "Projectleiders",
+    "Technical_contacts": "Technische contacten",
+    "Cofundend_by_the_Horizon_2020": "Medegefinancierd door het Horizon 2020",
+    "Framework_programme": "Kaderprogramma van de Europese Unie",
+    "Under_grant_agreement": "Onder subsidieovereenkomst nr. 817617",
+    "All_rights_reserved": "Alle rechten voorbehouden",
+    "Email": "E-mail",
+    "Password": "Wachtwoord",
+    "Forgot_password": "Wachtwoord vergeten",
+    "Ok": "Ok",
+    "Confirm": "Bevestigen",
+    "Farmer": "Boer en tuinder",
+    "Developer": "Ontwikkelaar",
+    "Advisor": "Adviseur",
+    "Wait": "Wacht",
+    "Success": "Succes",
+    "Cancel": "Annuleren",
+    "Yes": "Ja",
+    "Delete": "Verwijderen",
+    "Edit": "Wijzigen",
+    "Copy": "Kopiëren",
+    "Logout": "Uitloggen",
+    "Account": "Account",
+    "Settings": "Instellingen",
+    "About": "Over",
+    "Contact_name": "Naam contactpersoon",
+    "Phone": "Telefoon",
+    "Mobile": "Mobiel",
+    "Address": "Adres",
+    "Send": "Verzenden",
+    "Save_changes": "Wijzigingen opslaan",
+    "Error": "Fout",
+    "Save": "Opslaan",
+    "Details": "Details",
+    "Spray": "Spuit",
+    "Date": "Datum",
+    "Close": "Sluiten",
+    "Loading": "Laden...",
+    "Back": "Terug",
+    "Select": "Selecteer",
+    "Deselect": "Deselecteer",
+    "Resend_confirmation_email": "Stuur bevestigingsmail opnieuw",
+    "Warning": "Waarschuwing",
+    "Researcher": "Onderzoeker",
+    "Back_to_login": "Terug naar Inloggen",
+    "Info": "Info"
     },
     "Error_messages": {
       "An_unknown_error_occured": "Er is een onbekende fout opgetreden!",
@@ -80,7 +85,8 @@
       "DSS_model_add_error": "Kan de geselecteerde modellen niet opvragen!",
       "DSS_model_combination_error": "Geen BOS-model gevraagd, er bestaat al een BOS met de geselecteerde gewas/ziektecombinatie",
       "DSS_parameters_update_error": "Bijwerken van BOS-parameters mislukt, er is een fout opgetreden",
-      "DSS_parameters_fetching_error": "Parameters kunnen niet worden opgehaald"
+      "DSS_parameters_fetching_error": "Parameters kunnen niet worden opgehaald",
+      "DSS_comparison_model_retrived_error": "Ophalen BOS data niet gelukt!"
     },
     "Information_messages": {
       "Farm_deletion_message": "U staat op het punt een bedrijf te verwijderen. Weet u dat zeker?",
@@ -97,8 +103,16 @@
       "DSS_delete": "U staat op het punt de BOS te verwijderen. Weet u dat zeker?",
       "DSS_models_retrived": "BOS-modellen succesvol opgehaald!",
       "DSS_models_added": "BOS-modellen met succes toegevoegd!",
-      "DSS_parameters_updated": "BOS-parameters bijgewerkt!"
-    },
+      "DSS_parameters_updated": "BOS-parameters bijgewerkt!",
+      "Email_not_validated_Message": "Klik aub op <b><b> Verstuur bevestigingsmail opnieuw </b></b> staat onderaan rechts op deze pagina.",
+      "DSS_comparison_models_retrived": "BOS Data met succes opgehaald!",
+      "Account_password_changed": "Het wachtwoord is succesvol veranderd!"
+      },
+      "Warning_messages": {
+        "DSS_model_avaiability_error": "Geen BOS beschikbaar voor de geselecteerde gewassen",
+        "Not_enough_DSS_to_compare": " Er zijn niet genoeg BOS'en om te vergelijken! Voeg aub minstens 2 BOS'en toe",
+        "Farm_creation_warning_message": "Het platfrom start met het verzamelen van weerdata na het aanmaken van een bedrijf. Dit kan tot 2 uur duren."
+  },
     "Countries": {
       "Austria": "Oostenrijk",
       "Belgium": "België",
@@ -151,7 +165,8 @@
       "Web_Site": "Website",
       "Social": "Sociaal",
       "Useful_links": "Nuttige Link",
-      "IPM_Decisions_News":"Nieuws over <b>IPM Decisions</b>"
+      "IPM_Decisions_News":"Nieuws over <b>IPM Decisions</b>",
+      "IPM_Private": "IPM Privaat"
     },
     "Register": {
       "User_type": "Type gebruiker",
@@ -163,6 +178,12 @@
     },
     "Forgot_password": {
       "Insert_email_for_reset_password": "Vul uw e-mailadres in om instructies te krijgen om uw wachtwoord te resetten"
+    },
+    "Reset_password": {
+      "Account_password_reset": "Account wachtwoord ge-reset",
+      "New_password": "Nieuw wachtwoord",
+      "Confirm_new_password": "Bevestig nieuw wachtwoord",
+      "Send_password": "Verstuur wachtwoord"
     },
     "User_header": {
       "Account_manager": "Account Manager",
@@ -249,6 +270,9 @@
       "Green_box": "BOS actief, laag risico",
       "Yellow_box": "BOS actief, gemiddeld risico",
       "Red_box": "BOS actief, hoog risico",
+      "Status_representation": "Status Representation",
+      "Description": "Description",
+      "Scheduled_time": "Scheduled time",
       "Low_risk":"Laag risico",
       "Medium_risk":"Gemiddeld risico",
       "High_risk":"Hoog risico"
@@ -284,10 +308,28 @@
       "DSS_id": "BOS ID",
       "Model_id": "MODEL ID",
       "Description": "Beschrijving",
-      "Warning_status_interpretation": "INTERPRETATIE WAARSCHUWINGSSTATUS "
+      "Warning_status_interpretation": "INTERPRETATIE WAARSCHUWINGSSTATUS ",
+      "Model_name": "BOS"
     },
     "DSS_model_parametrisation": {
       "Title": "BOS Model Parameterisatie",
       "Saved_parameters": "Opgeslagen parameters"
-    }
+    },
+    "Resend_confirmation_email": {
+      "Insert_your_account_email": "Voeg uw e-mail account in",
+      "Resend_confirmation_button": "Verstuur bevestiging opnieuw",
+      "A_new_confirmation_email_as_been_sent": "Een nieuwe bevestigingsmail is verstuurd!"
+    },
+    "DSS_comparison": {
+      "Title": "BOS vergelijkings Dashboard",
+      "Select_two_or_more_models": "Selecteer twee of meer BOS'en",
+      "Models_selection": "BOS selectie",
+      "Multiselect_tip": "Gebruik <b>CTRL</b> + <b>Klik</b> om meerdere BOS'en te selecteren",
+      "Compare_models": "Compare Models",
+      "Model": "BOS",
+      "Risk_score": "Risico status",
+      "Day": "Dag",
+      "Expand_table": "Vergroot de tabel",
+      "Parameters_table": "Parameter tabel"
   }
+}

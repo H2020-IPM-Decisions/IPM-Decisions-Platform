@@ -41,8 +41,12 @@
                 <tr>
                   <!-- DSS Name -->
                   <td class="text-center">
-                    <span
-                      *ngIf="model">{{model.cropPestDssDto.dssModelName}}</span>
+                    <span *ngIf="model.cropPestDssDto.dssPurpose" [tooltip]="tolTemplatePurpose">{{model.cropPestDssDto.dssModelName}}</span>
+                    <span *ngIf="!model.cropPestDssDto.dssPurpose">{{model.cropPestDssDto.dssModelName}}</span>
+                    <!-- Purpose Tooltip -->
+                    <ng-template #tolTemplatePurpose>
+                      <p class="tooltipStyle">{{model.cropPestDssDto.dssPurpose}}</p>
+                    </ng-template>
                   </td>
                   <!-- Crop -->
                   <td class="text-center">
