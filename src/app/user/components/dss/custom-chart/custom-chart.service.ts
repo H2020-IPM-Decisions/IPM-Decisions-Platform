@@ -5,11 +5,10 @@ import { IChartDataset } from "./custom-chart.model";
 @Injectable({ providedIn: 'root' })
 export class CustomChartService {
     constructor(){}
-    public drawChart(element: any, labels: string[], data: number[], type: string, legend: string, color: string|string[]): any{
+    public drawChart(element: any, labels: string[], data: number[], type: string, legend: string, color: string|string[], options: object={}): any{
         Chart.defaults.font.size = 14;
         const colors = typeof color === 'string' ? this.getChartJsColorArray(data.length, color) : color;
         const backgroundColors = type === 'bar' ? colors : 'white';
-
         return new Chart(element, {
             type: this.getChartJsType(type),
             data: {
@@ -23,13 +22,7 @@ export class CustomChartService {
                     fill: false
                 }]
             },
-            options: {
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
+            options: options
         });
     }
 

@@ -25,7 +25,20 @@
         </span>
     </div>
     <div class="app-header__content">
-       
+        <!-- Session Bar -->
+        <div *ngIf="isSessionExpiring()" class="sessionBarShow">
+            <div class="row">
+                <div class="warningIcon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div *ngIf="!sessionIsExpired" class="col d-flex justify-content-center">
+                    {{ 'Information_messages.Session_expiration_message_start' | translate }} &nbsp;<span class="countdown">{{ sessionTimeLeftToShow }}</span>&nbsp; {{ 'Common_labels.Seconds' | translate }}.&nbsp;
+                    <span class="clickToExtend" (click)="extendSession()">{{ 'Common_labels.Click_here' | translate }}</span>&nbsp; {{ 'Information_messages.Session_expiration_message_end' | translate }}
+                </div>
+                <div *ngIf="sessionIsExpired" class="col d-flex justify-content-center"> {{ 'Information_messages.Session_expired' | translate }} </div>
+                
+            </div>
+        </div>
         <div class="app-header-right">
             <app-language-selector></app-language-selector>
             <div class="header-btn-lg pr-0">
@@ -57,3 +70,4 @@
         </div>
     </div>
 </div>
+

@@ -3,7 +3,7 @@ import { CMSService } from 'src/app/shared/services/cms.service';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 import { ActivatedRoute } from '@angular/router';
 import { SidebarMenuUpdateService } from '@app/shared/services/sidebar-menu-update/sidebar-menu-update.service';
-import { Subscription } from 'rxjs';
+import { Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'user-header',
@@ -20,6 +20,11 @@ export class UserHeaderComponent implements OnInit, OnDestroy {
   isAdvisor: boolean = false;
   isDeveloper: boolean = false;
   $accountSub: Subscription;
+
+  public sessionTimeLeftToShow: number;
+  public $sessionExpirationTimer: Subscription;
+  public $sessionExtend: Subscription;
+  public sessionIsExpired: boolean = false;
 
   constructor(
     private cmsService: CMSService,
@@ -60,6 +65,9 @@ export class UserHeaderComponent implements OnInit, OnDestroy {
         }
       });
     }
+
+    // Start Session timer
+    this.oberserableTimer();
   }
 
   getActiveClaim(activeClaim: string[]) {
@@ -91,6 +99,43 @@ export class UserHeaderComponent implements OnInit, OnDestroy {
     if(this.$accountSub){
       this.$accountSub.unsubscribe();
     }
+    if (this.$sessionExtend) {
+      this.$sessionExtend.unsubscribe();
+    }
+    if (this.$sessionExpirationTimer) {
+      this.$sessionExpirationTimer.unsubscribe();
+    }
+  }
+
+  private oberserableTimer(): void {
+    if (this.$sessionExpirationTimer) {
+      this.$sessionExpirationTimer.unsubscribe();
+    }
+    const source = timer(0, 1000);
+    this.$sessionExpirationTimer = source.subscribe(() => {
+      this.sessionTimeLeftToShow = this._authService.getExpirationAsSeconds();
+      if (this.sessionTimeLeftToShow < 1) {
+        this.$sessionExpirationTimer.unsubscribe();
+        this.sessionIsExpired = true;
+      }
+    });
+  }
+
+  public isSessionExpiring(): boolean {
+    if(this.sessionTimeLeftToShow < 60){
+      return true;
+    }
+    return false;
+  }
+
+  public extendSession(): void {
+    if (this.$sessionExtend) {
+      this.$sessionExtend.unsubscribe();
+    }
+    this.$sessionExtend = this._authService.authenticateWithRefreshToken(sessionStorage.getItem("refresh_token")).subscribe(()=>{
+      this.oberserableTimer();
+      this.sessionIsExpired = false;
+    });
   }
 
 }

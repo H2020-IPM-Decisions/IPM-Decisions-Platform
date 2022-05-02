@@ -52,7 +52,13 @@
         "Researcher":"Researcher",
         "Back_to_login":"Back to Login",
         "Info":"Info",
-        "Click_to_open":"Click to open"
+        "Click_to_open":"Click to open",
+        "Low":"Low",
+        "Medium":"Medium",
+        "High":"High",
+        "Warning_level":"warning level",
+        "Seconds":"seconds",
+        "Click_here":"Click here"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -61,7 +67,7 @@
         "Email_must_be_valid":"E-mail must be a valid email address",
         "Password_required":"Password is required",
         "Password_must_be_at_least_6_characters_lenght":"Password must be at least 6 characters.",
-        "Password_must_have_at_least_one_non_alphanumeric_character":"Password must have at least one non alphanumeric character ('!@#$%^&*()_+').",
+        "Password_must_have_at_least_one_non_alphanumeric_character":"Password must have at least one digit, one uppercase character and one non-alphanumeric character.",
         "Password_must_have_at_least_one_digit":"Password must have at least one digit ('0'-'9').",
         "User_type_required":"User Type is required",
         "Confirm_password_required":"Confirm Password is required",
@@ -107,7 +113,11 @@
         "DSS_parameters_updated":"DSS parameters updated!",
         "Email_not_validated_Message":"Please click on <b><b> Resend confirmation email </b></b> located bottom right of this page.",
         "DSS_comparison_models_retrived":"DSS Data retrivied successfully!",
-        "Account_password_changed":"The password was changed successfully!"
+        "Account_password_changed":"The password was changed successfully!",
+        "Session_expiration_message_start":"Your session is expiring, you will be logged out in",
+        "Session_expiration_message_end":"to maintain your connection with the IPM platform.",
+        "Session_expired":"Your session is expired! Please refresh the page and log in again."
+
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"No DSS avaiable for the selected crops",
@@ -172,7 +182,8 @@
     "Register": {
         "User_type":"User Type",
         "Confirm_password":"Confirm Password",
-        "Registration_confirmation":"Registration Confirmation"
+        "Registration_confirmation":"Registration Confirmation",
+        "Password_sublabel":"Must be at least 6 characters, have one uppercase character, one digit and one non-alphanumeric character"
     },
     "Terms_and_conditions": {
         "Accept_terms_and_conditions":"Accept Terms & Conditions"

@@ -3,7 +3,7 @@ export interface IChartConfig{
     unit?: string;
     chartType?: string;
     color?: string;
-    options?:number;
+    options?:any;
 }
 
 export interface IChartDataset{

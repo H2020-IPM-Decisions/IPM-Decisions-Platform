@@ -2,7 +2,8 @@
     <ng-template #tolTemplateStatusRep>
       <p class="tooltipStyle">{{dss}}</p>
       <p class="tolPurpose"> {{ dssDetail.dssPurpose }}</p>
-      <p [ngClass]="{'tolLowRisk': status==2, 'tolMediumRisk':status==3, 'tolHighRisk': status==4}">
+      <p [ngClass]="{'tolInactive': status==0, 'tolLowRisk': status==2, 'tolMediumRisk':status==3, 'tolHighRisk': status==4}">
+        {{ status==0? ('DSS_use_dashboard.Grey_box' | translate) : null }}
         {{ status==2? ('DSS_use_dashboard.Low_risk' | translate) : null }}
         {{ status==3? ('DSS_use_dashboard.Medium_risk' | translate) : null }}
         {{ status==4? ('DSS_use_dashboard.High_risk' | translate) : null }}
@@ -34,7 +35,7 @@
             <i class="fas fa-clock fa-stack-1x"></i>
           </a>
         </span>
-        <a *ngIf="itemId && status>1; else notValidDSS" [routerLink]="[itemId,'view']" style="color: white">
+        <a *ngIf="itemId && isValid; else notValidDSS" [routerLink]="[itemId,'view']" style="color: white">
             <h6  *ngIf="!isLegend"><b>{{code | eppoCode }}</b></h6>
             <!--<small  *ngIf="!isLegend">({{ code }})</small>-->
         </a>

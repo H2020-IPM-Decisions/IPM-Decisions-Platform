@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs';
 import { Injectable } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
@@ -7,12 +8,13 @@ import {TranslateService} from '@ngx-translate/core';
 
 export class TranslationService {
     currentLanguage: string;
+    translatedMessage: string;
+
+    $messageTranslationSubscription: Subscription;
+
     constructor(
         private _translate: TranslateService
       ) {    
-        //const browserLang = this._translate.getBrowserLang();
-        //this.useLanguage(browserLang.match(/en|it/) ? browserLang : 'en');
-        //_translate.setDefaultLang('it');
         this.initLanguage();
     }
 
@@ -21,9 +23,6 @@ export class TranslationService {
           this.currentLanguage = sessionStorage.getItem("selectedLanguage");
           this._translate.use(this.currentLanguage);
         } else {
-          /*this.currentLanguage = "en"
-          sessionStorage.setItem("selectedLanguage",this.currentLanguage)
-          this._translate.use(this.currentLanguage);  */
           this.initLanguageFromBrowser();
         }
     }
@@ -101,5 +100,19 @@ export class TranslationService {
         "dk":"da"
       };
       return langToFlagCode[langCode];
+    }
+
+    private initMessageToTranslate(messageKeyToTranslate: string): void {
+      if(this.$messageTranslationSubscription){
+        this.$messageTranslationSubscription.unsubscribe();
+      }
+      this.$messageTranslationSubscription = this._translate.get(messageKeyToTranslate).subscribe((translation)=> {
+        this.translatedMessage = translation;
+      });      
+    }
+
+    public getTranslatedMessage(keyOfMessage: string): string {
+      this.initMessageToTranslate(keyOfMessage)
+      return this.translatedMessage;
     }
 }

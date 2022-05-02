@@ -54,6 +54,8 @@ export class EppoCodeBadgeComponent {
     isScheduled?: boolean;
     @Input()
     scheduleTime?: string;
+    @Input()
+    isValid?: boolean;
 
     modalRef: BsModalRef;
     usedLanguage: string;

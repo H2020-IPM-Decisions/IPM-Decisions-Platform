@@ -52,7 +52,13 @@
         "Researcher":"Ricercatore",
         "Back_to_login":"Torna al Login",
         "Info":"Info",
-        "Click_to_open":"Clicca per aprire"
+        "Click_to_open":"Clicca per aprire",
+        "Low":"Basso",
+        "Medium":"Medio",
+        "High":"Alto",
+        "Warning_level":"livello d'allarme",
+        "Seconds":"secondi",
+        "Click_here":"Clicca qui"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
@@ -61,7 +67,7 @@
         "Email_must_be_valid":"L'indirizzo e-mail deve essere valido",
         "Password_required":"La password è obbligatoria",
         "Password_must_be_at_least_6_characters_lenght":"La password deve essere di almeno 6 caratteri.",
-        "Password_must_have_at_least_one_non_alphanumeric_character":"La password deve contenere almeno un carattere non alfanumerico ('!@#$%^&*()_+').",
+        "Password_must_have_at_least_one_non_alphanumeric_character":"La password deve contenere almeno una lettera maiuscola, un numero ed un carattere non alfanumerico.",
         "Password_must_have_at_least_one_digit":"La password deve contenere almeno un numero ('0'-'9').",
         "User_type_required":"Il tipo di utente è obbligatorio",
         "Confirm_password_required":"La password di conferma è obbligatoria",
@@ -107,7 +113,10 @@
         "DSS_parameters_updated":"Parametri del DSS aggiornati!",
         "Email_not_validated_Message":"Perfavore clicca su <b><b> Reinvia mail di conferma </b></b> in basso a destra della pagina",
         "DSS_comparison_models_retrived":"Dati dei DSS ottenuti con successo!",
-        "Account_password_changed":"La password è stata cambiata con successo!"
+        "Account_password_changed":"La password è stata cambiata con successo!",
+        "Session_expiration_message_start":"La tua sessione sta per scadere, verrai disconnesso tra",
+        "Session_expiration_message_end":"per mantenere la connessione con la piattaforma IPM",
+        "Session_expired":"La tua sessione è scaduta! Per favore, aggiorna la pagina e accedi nuovamente."
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"Non ci sono DSS per le colture selezionate",
@@ -172,7 +181,8 @@
     "Register": {
         "User_type":"Tipo di utente",
         "Confirm_password":"Conferma password",
-        "Registration_confirmation":"Registrazione confermata"
+        "Registration_confirmation":"Registrazione confermata",
+        "Password_sublabel":"Deve essere di almeno 6 caratteri, contenere almeno una lettera maiuscola, un numero ed un carattere speciale"
     },
     "Terms_and_conditions": {
         "Accept_terms_and_conditions":"Accetta Termini & Condizioni"

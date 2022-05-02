@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CMSService } from '@app/shared/services/cms.service';
 import { DomSanitizer } from '@angular/platform-browser'
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
-import { Subscription } from 'rxjs';
+import { Subscription, timer } from 'rxjs';
 
 declare var init: any;
 declare var home: any;
@@ -20,6 +20,11 @@ export class ResearchersArticleComponent implements OnInit, OnDestroy {
   public isLoggedIn: boolean;
   public username: string;
   public $accountSub: Subscription;
+
+  public sessionTimeLeftToShow: number;
+  public $sessionExpirationTimer: Subscription;
+  public $sessionExtend: Subscription;
+  public sessionIsExpired: boolean = false;
 
 
   constructor(
@@ -67,6 +72,8 @@ export class ResearchersArticleComponent implements OnInit, OnDestroy {
           if(account !== null){this.username = (/(.*)@/).exec(account.email)[1];}
         }
       )
+      // Start Session timer
+      this.oberserableTimer();
     }
   }
 
@@ -81,6 +88,12 @@ export class ResearchersArticleComponent implements OnInit, OnDestroy {
     if(this.$accountSub){
       this.$accountSub.unsubscribe();
     }
+    if (this.$sessionExtend) {
+      this.$sessionExtend.unsubscribe();
+    }
+    if (this.$sessionExpirationTimer) {
+      this.$sessionExpirationTimer.unsubscribe();
+    }
   }
 
   navigateToPrivatePages(): void {
@@ -90,6 +103,37 @@ export class ResearchersArticleComponent implements OnInit, OnDestroy {
     } else {
       this.router.navigate(["/user/farm"]);
     }
+  }
+
+  private oberserableTimer(): void {
+    if (this.$sessionExpirationTimer) {
+      this.$sessionExpirationTimer.unsubscribe();
+    }
+    const source = timer(0, 1000);
+    this.$sessionExpirationTimer = source.subscribe(() => {
+      this.sessionTimeLeftToShow = this._authService.getExpirationAsSeconds();
+      if (this.sessionTimeLeftToShow < 1) {
+        this.$sessionExpirationTimer.unsubscribe();
+        this.sessionIsExpired = true;
+      }
+    });
+  }
+
+  public isSessionExpiring(): boolean {
+    if(this.sessionTimeLeftToShow < 60){
+      return true;
+    }
+    return false;
+  }
+
+  public extendSession(): void {
+    if (this.$sessionExtend) {
+      this.$sessionExtend.unsubscribe();
+    }
+    this.$sessionExtend = this._authService.authenticateWithRefreshToken(sessionStorage.getItem("refresh_token")).subscribe(()=>{
+      this.oberserableTimer();
+      this.sessionIsExpired = false;
+    });
   }
 
 }

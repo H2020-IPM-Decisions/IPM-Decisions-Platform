@@ -5,6 +5,7 @@ import { Subscription } from "rxjs";
 import { IDssFlat } from "./dss-selection.model";
 import { DssSelectionService } from "./dss-selection.service";
 import { NGXLogger } from 'ngx-logger';
+import * as moment from "moment";
 
 @Component({
   selector: "app-dss-selection",
@@ -15,7 +16,8 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   farmsDssMap: DssGroupedByFarm[] = [];
   remoteCallLoading: boolean = false;
   $startSubscription: Subscription;
-  dssJobStatus: string[] = ["Enqueued", "Processing"];  
+  dssJobStatus: string[] = ["Enqueued", "Processing"];
+  isSyncronizing: boolean = false;
   
   constructor(
     protected service: DssSelectionService,
@@ -37,6 +39,7 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   }
 
   private initData(): void {
+    let scheduledTimes: number[] = []; 
     this.remoteCallLoading = true;
     this.$startSubscription = this.service.getDssList().subscribe(
       (data: HttpResponse<IDssFlat[]>)=>{
@@ -45,17 +48,35 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
           this._logger.debug("READING DSS ITEM:",dssItem);
           if (this.isQueued(dssItem.dssTaskStatusDto.jobStatus)) {
             this._logger.debug("THE DSS IS QUEUED! STATUS:",dssItem.dssTaskStatusDto);
-            this.reloadData(5);
+            scheduledTimes.push(5);
+          }
+          if (this.isScheduled(dssItem.dssTaskStatusDto.jobStatus)){
+            const duration = moment.duration(moment(dssItem.dssTaskStatusDto.scheduleTime).diff(moment()));
+            let resultTime: number = +duration.asSeconds().toFixed();
+            if (resultTime < 5){
+              resultTime = 5;
+            }
+            scheduledTimes.push(resultTime);   
           }
         }
         this.farmsDssMap = this.service.getDssGroupedByFarms(dssList);
         this.remoteCallLoading = false;
+        if (scheduledTimes.length > 1) {
+          var sortedTimes: number[] = scheduledTimes.sort((n1,n2) => n1 - n2);
+        }
+        if (!this.isSyncronizing) {
+          if (sortedTimes) {
+            this.reloadData(sortedTimes[0]);
+          } else if (scheduledTimes.length > 0) {
+            this.reloadData(scheduledTimes[0]);
+          }
+        }
       },
       errorResponse => {
         this._logger.error("GET DSS LIST ERROR: ",errorResponse);
         this.remoteCallLoading = false;
       }
-      );
+    );
   }
 
   ngOnDestroy() {
@@ -71,7 +92,7 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
     return false;
   }
 
-  public isScheduled(statusVal: string): boolean {
+  public isScheduled(statusVal: string): boolean { 
     if (statusVal === "Scheduled") {
       return true;
     }
@@ -80,10 +101,12 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
 
   private reloadData(counter: number): void{
     this._logger.info("Reloading!");
+    this.isSyncronizing = true;
     let intervalId = setInterval(() => {
       counter = counter - 1;
       if(counter < 1) {
         clearInterval(intervalId);
+        this.isSyncronizing = false;
         this.initData();
       }
   }, 1000)

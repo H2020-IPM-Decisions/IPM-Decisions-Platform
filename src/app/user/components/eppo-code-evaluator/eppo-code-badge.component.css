@@ -168,7 +168,7 @@
 }
 
 .tolPurpose {
-  color: #c2c2c2;
+  color: #8cbcfa;
   font-weight: bold;
 }
 
@@ -184,5 +184,10 @@
 
 .tolHighRisk {
   color: #d92550;
+  font-weight: bold;
+}
+
+.tolInactive {
+  color: #777777;
   font-weight: bold;
 }

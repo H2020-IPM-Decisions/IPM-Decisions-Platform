@@ -31,7 +31,7 @@ export class JsonEditorService {
             });
         });
     }
-    isValid(editor: JE.JSONEditor) : boolean{
+    isValidWithAjv(editor: JE.JSONEditor) : boolean{
         // BE AWARE! JSONEditor validation lacks! I'm using AVJ below
         // const errors = editor.validate();
         // return !(typeof errors.length == 'number' && errors.length > 0);
@@ -40,6 +40,10 @@ export class JsonEditorService {
             return true;
         }
         return false;
+    }
+    isValid(editor: JE.JSONEditor) : boolean{
+        const errors = editor.validate();
+        return !(typeof errors.length == 'number' && errors.length > 0);
     }
     getValues(editor: JE.JSONEditor){
         return editor.getValue();

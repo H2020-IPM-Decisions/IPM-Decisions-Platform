@@ -16,3 +16,42 @@
 li.btn-group.nav-item {
     text-transform: uppercase;
 }
+
+.sessionBarShow {
+    position: absolute;
+    border: solid;
+    left: 12%;
+    width: 75%;
+    z-index: 1;
+    top: 0;
+    animation-name: slideDown;
+    animation-duration: 1s;
+    background-color: #fbe147;
+    border-color: #00000012;
+    font-weight: bold;
+    color: #767676;
+}
+
+@keyframes slideDown{
+    0% {transform: translateY(-100%);}
+    50% {transform: translateY(8%);}
+    65% {transform: translateY(-4%);}
+    80% {transform: translateY(4%);}
+    95% {transform: translateY(-2%);}
+    100% {transform: translateY(0%);}
+}
+
+.warningIcon {
+    position: relative;
+    left: 4%;
+}
+
+.countdown {
+    color: red;
+}
+
+.clickToExtend {
+    cursor: pointer;
+    color: rgb(82, 53, 252);
+    text-decoration: underline;
+}

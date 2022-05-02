@@ -11,7 +11,7 @@ export interface DssModel {
     crops?:string[];
     type_of_decision?:string;
     type_of_output?:string;
-    description?:DssModelDescription;
+    description?:string;
     execution?:DssModelExecution;
     output?:DssModelOutput;
     valid_spatial?:IDssModelValidSpatial;

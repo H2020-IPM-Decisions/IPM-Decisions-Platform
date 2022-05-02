@@ -185,6 +185,14 @@ export class AuthenticationService {
     return moment.unix(expiresAt);
   }
 
+  public getExpirationAsSeconds(): number {
+    const expiration = sessionStorage.getItem("expires_at");
+    const expiresAt = JSON.parse(expiration);
+    const duration = moment.duration(moment.unix(expiresAt).diff(moment()));
+    var result: number = +duration.asSeconds().toFixed();
+    return result;
+  }
+
   logout() {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("expires_at");

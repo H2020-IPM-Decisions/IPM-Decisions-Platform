@@ -25,3 +25,10 @@
     margin-right: 10px;
 }
 
+.passwordSubLabel {
+    margin-left: 1%;
+    color: grey;
+    font-size: 80%;
+    transform: translateY(-40%);
+}
+

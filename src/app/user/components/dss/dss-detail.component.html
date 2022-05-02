@@ -249,8 +249,7 @@
             <div class="form-group row">
               <label for="met-station" class="col-sm-3 col-form-label"><strong>{{ 'DSS_details.Crop_pest_combination' | translate }}</strong></label>
               <div class="col-sm-9">
-                <p><strong>{{dssDetail.cropEppoCode}}</strong> - {{dssDetail.cropEppoCode | eppoCode}} |
-                  <strong>{{dssDetail.pestEppoCode}}</strong> - {{dssDetail.pestEppoCode | eppoCode}}</p>
+                <p>{{dssDetail.cropEppoCode | eppoCode}} / {{dssDetail.pestEppoCode | eppoCode}}</p>
               </div>
             </div>
             

@@ -46,7 +46,12 @@
         "Loading":"Φόρτωση...",
         "Back":"Πίσω",
         "Select":"Επιλογή",
-        "Deselect":"Απόρριψη"
+        "Deselect":"Απόρριψη",
+        "Resend_confirmation_email": "Επαναποστολή email επιβεβαίωσης",
+        "Warning": "Προειδοποίηση",
+        "Researcher": "Ερευνητής",
+        "Back_to_login": "Επιστροφή στην είσοδο",
+        "Info": "Πληροφορίες"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Παρουσιάστηκε άγνωστο σφάλμα!",
@@ -80,7 +85,8 @@
         "DSS_model_add_error":"Αποτυχία υποβολής των επιλεγμένων μοντέλων!",
         "DSS_model_combination_error":"Δεν υποβλήθηκε μοντέλο DSS, υπάρχει ήδη DSS με επιλεγμένο συνδυασμό καλλιέργειας/παρασίτου",
         "DSS_parameters_update_error":"Η ενημέρωση των παραμέτρων του DSS απέτυχε, παρουσιάζεται σφάλμα",
-        "DSS_parameters_fetching_error":"Δεν είναι δυνατή η λήψη δεδομένων παραμέτρων"
+        "DSS_parameters_fetching_error":"Δεν είναι δυνατή η λήψη δεδομένων παραμέτρων",
+        "DSS_comparison_model_retrived_error": "Απέτυχε η ανάκτηση δεδομένων DSS!"
     },
     "Information_messages":{
         "Farm_deletion_message":"Πρόκειται να διαγράψετε ένα αγρόκτημα. Είστε σίγουρος?",
@@ -97,7 +103,15 @@
         "DSS_delete":"Πρόκειται να διαγράψετε ένα DSS. Είστε σίγουρος?",
         "DSS_models_retrived":"Τα μοντέλα DSS ανακτήθηκαν με επιτυχία!",
         "DSS_models_added":"Τα μοντέλα DSS προστέθηκαν με επιτυχία!",
-        "DSS_parameters_updated":"Οι παράμετροι του DSS ανανεώθηκαν!"
+        "DSS_parameters_updated":"Οι παράμετροι του DSS ανανεώθηκαν!",
+        "Email_not_validated_Message": "Παρακαλούμε επιλέξτε <b><b> Επαναποστολή email επιβεβαίωσης </b></b> που βρίσκεται κάτω δεξιά σε αυτή τη σελίδα.",
+        "DSS_comparison_models_retrived": "Τα δεδομένα DSS ανακτήθηκαν με επιτυχία!",
+        "Account_password_changed": "Ο κωδικός πρόσβασης άλλαξε με επιτυχία!"
+  },
+    "Warning_messages": {
+      "DSS_model_avaiability_error": "Δεν υπάρχει διαθέσιμο DSS για τις επιλεγμένες καλλιέργειες",
+      "Not_enough_DSS_to_compare": "Δεν υπάρχουν αρκετά μοντέλα DSS για να συγκριθούν! Παρακαλούμε προσθέστε τουλάχιστον δύο μοντέλα",
+      "Farm_creation_warning_message": "Η πλατφόρμα θα αρχίσει να συλλέγει δεδομένα καιρού μετά τη δημιουργία του αγροκτήματος. Αυτό μπορεί να διαρκέσει έως και 2 ώρες."
     },
     "Countries": {
         "Austria":"Αυστρία", 
@@ -139,10 +153,11 @@
         "Slovenian":"Σλοβενικά",
         "Lithuanian":"Λιθουανικά",
         "Swedish":"Σουηδικά",
-	    "Greek":"Ελληνικά",
+	      "Greek":"Ελληνικά",
         "French":"Γαλλικά",
-        "Finnish":"Φινλανδικά",
-        "Norwegian":"Νορβηγός"
+        "Norwegian":"Νορβηγός",
+        "Danish":"Δανικά",
+        "Finnish":"Φινλανδικά"
     },
     "Home": {
         "Contacts":"Επαφές",
@@ -150,7 +165,8 @@
         "Web_Site":"Ιστοσελίδα",
         "Social":"Δίκτυα",
         "Useful_links":"Χρήσιμοι σύνδεσμοι",
-        "IPM_Decisions_News":"<b>IPM Decisions</b> νέα"
+        "IPM_Decisions_News":"<b>IPM Decisions</b> νέα",
+        "IPM_Private": "IPM Ιδιωτικά"
     },
     "Register": {
         "User_type":"Τύπος χρήστη",
@@ -163,6 +179,12 @@
     "Forgot_password": {
         "Insert_email_for_reset_password":"Εισαγάγετε το email σας για να λάβετε οδηγίες για το κωδικό πρόσβασης επαναφοράς"
     },
+    "Reset_password": {
+        "Account_password_reset": "Επαναφορά κωδικού πρόσβασης λογαριασμού",
+        "New_password": "Νέος κωδικός πρόσβασης",
+        "Confirm_new_password": "Επιβεβαίωση νέου κωδικού πρόσβασης",
+        "Send_password": "Αποστολή κωδικού πρόσβασης"
+  },
     "User_header": {
         "Account_manager":"Διαχείριση Λογαριασμού",
         "Farm":"Αγρόκτημα"
@@ -248,6 +270,9 @@
         "Green_box":"DSS ενεργό, Χαμηλός κίνδυνος",
         "Yellow_box":"DSS ενεργό, Μέτριος κίνδυνος",
         "Red_box":"DSS ενεργό, Υψηλός κίνδυνος",
+        "Status_representation": "Αναπαράσταση κατάστασης",
+        "Description": "Περιγραφή",
+        "Scheduled_time": "Προγραμματισμένος χρόνος",
         "Low_risk":"Χαμηλός κίνδυνος",
         "Medium_risk":"Μέτριος κίνδυνος",
         "High_risk":"Υψηλός κίνδυνος"
@@ -283,10 +308,28 @@
         "DSS_id":"ID DSS ",
         "Model_id":"ID ΜΟΝΤΕΛΟΥ",
         "Description":"ΠΕΡΙΓΡΑΦΗ",
-        "Warning_status_interpretation":"ΜΕΤΑΦΡΑΣΗ ΚΑΤΑΣΤΑΣΗΣ ΠΡΟΕΙΔΟΠΟΙΗΣΗΣ"
+        "Warning_status_interpretation":"ΜΕΤΑΦΡΑΣΗ ΚΑΤΑΣΤΑΣΗΣ ΠΡΟΕΙΔΟΠΟΙΗΣΗΣ",
+        "Model_name": "DSS"
     },
     "DSS_model_parametrisation": {
         "Title":"Παραμετροποίηση του μοντέλου DSS",
         "Saved_parameters":"Οι παράμετροι αποθηκεύτηκαν"
-    }
+    },
+  "Resend_confirmation_email": {
+    "Insert_your_account_email": "Εισάγετε το email του λογαριασμού σας",
+    "Resend_confirmation_button": "Επαναποστολή επιβεβαίωσης",
+    "A_new_confirmation_email_as_been_sent": "Ένα νέο email επιβεβαίωσης έχει σταλεί!"
+  },
+  "DSS_comparison": {
+    "Title": "Πίνακας ελέγχου σύγκρισης DSS",
+    "Select_two_or_more_models": "Επιλέξτε δύο ή περισσότερα μοντέλα",
+    "Models_selection": "Επιλογή μοντέλων",
+    "Multiselect_tip": "Πατήστε <b>CTRL</b> + <b>Click</b> για να επιλέξετε πολλαπλά μοντέλα",
+    "Compare_models": "Σύγκριση μοντέλων",
+    "Model": "Μοντέλο",
+    "Risk_score": "Κατάσταση επικινδυνότητας",
+    "Day": "Ημέρα",
+    "Expand_table": "Διεύρυνση πίνακα",
+    "Parameters_table": "Πίνακας παραμέτρων"
+  }
 }

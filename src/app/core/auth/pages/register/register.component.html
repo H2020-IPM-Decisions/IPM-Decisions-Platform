@@ -44,8 +44,8 @@
           <div *ngIf="f.password.errors?.required">{{ 'Error_messages.Password_required' | translate }}</div>
           <div *ngIf="f.password.errors?.minlength">{{ 'Error_messages.Password_must_be_at_least_6_characters_lenght' |
             translate }}</div>
-          <div *ngIf="f.password.errors?.pattern">{{ 'Error_messages.Password_must_have_at_least_one_digit' | translate
-            }}</div>
+          <!--<div *ngIf="f.password.errors?.pattern">{{ 'Error_messages.Password_must_have_at_least_one_digit' | translate
+            }}</div>-->
           <div *ngIf="f.password.errors?.pattern">{{
             'Error_messages.Password_must_have_at_least_one_non_alphanumeric_character' | translate }}</div>
         </div>
@@ -63,6 +63,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div *ngIf="!(f.password.errors && f.password.touched) && !(f.confirmPassword.errors && f.confirmPassword.touched)" class="form-row passwordSubLabel">
+      <label>{{ 'Register.Password_sublabel' | translate }}</label>
     </div>
 
     <div class="text-center">

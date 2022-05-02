@@ -9,12 +9,14 @@ import { Field } from '@app/shared/models/field.model';
 import { Farm } from '@app/shared/models/farm.model';
 import { catchError } from "rxjs/operators";
 import { NGXLogger } from "ngx-logger";
+import { TranslationService } from '@app/shared/services/translation.service';
 
 @Injectable({ providedIn: 'root' })
 export class DssSelectionService {
   constructor(
     protected _http: HttpClient,
-    private _logger: NGXLogger
+    private _logger: NGXLogger,
+    private _translation: TranslationService
   ) { }
 
   // https://ipmdecisions.nibio.no/api/dss/apidocs/resource_DSSService.html#resource_DSSService_getDSSModelUIFormSchema_GET
@@ -223,6 +225,10 @@ export class DssSelectionService {
     //                        'grey'     'blue'     'green'    'orange'   'red'
     const colors: string[] = ['#6c757d', '#16aaff', '#3ac47d', '#f7b924', '#d92550'];
     let colorStrArr: string[] = [];
+    const unitLabel: string = this._translation.getTranslatedMessage("Common_labels.Warning_level");
+    const lowLabel: string = this._translation.getTranslatedMessage("Common_labels.Low");
+    const mediumLabel: string = this._translation.getTranslatedMessage("Common_labels.Medium");
+    const highLabel: string = this._translation.getTranslatedMessage("Common_labels.High");
     for (let i = 0; i < data.length; i++) {
       colorStrArr.push(colors[data[i]]);
     }
@@ -232,18 +238,50 @@ export class DssSelectionService {
       chartInformation: {
         chartType: 'bar',
         color: colorStrArr,
-        unit: 'warning level',
+        unit: unitLabel,
         defaultVisible: true,
         options: {
-          scales: {
-            y: {
-              max: 4,
-              min: 0,
-              ticks: {
-                stepSize: 1
-              }
+          plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(tooltipItem){
+                        var label = tooltipItem.dataset.label;
+                        var value = tooltipItem.dataset.data[tooltipItem.dataIndex];
+                        switch (value) {
+                            case 2:
+                                return label + ": "+lowLabel;
+                            case 3:
+                                return label + ": "+mediumLabel;
+                            case 4:
+                                return label + ": "+highLabel;
+                        } 
+                    }
+                }
             }
-          }
+          },
+          scales: {
+            y:{
+                min: 1,
+                max: 4,
+                beginAtZero: false,
+                stepSize: 1,
+                ticks: {
+                    callback: function(label, index, labels) {
+                        switch (label) {
+                            case 2:
+                              return lowLabel;
+                            case 3:
+                              return mediumLabel;
+                            case 4:
+                              return highLabel;
+                        }
+                    }
+                }
+            }
+        }
         }
       }
     };

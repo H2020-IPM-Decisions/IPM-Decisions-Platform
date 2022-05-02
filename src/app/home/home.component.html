@@ -1,5 +1,19 @@
 <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
   <div class="container d-flex">
+    <!-- Session Bar -->
+    <div *ngIf="isSessionExpiring() && isLoggedIn" class="sessionBarShow">
+      <div class="row">
+          <div class="warningIcon">
+              <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <div *ngIf="!sessionIsExpired" class="col d-flex justify-content-center">
+              {{ 'Information_messages.Session_expiration_message_start' | translate }} &nbsp;<span class="countdown">{{ sessionTimeLeftToShow }}</span>&nbsp; {{ 'Common_labels.Seconds' | translate }}.&nbsp;
+              <span class="clickToExtend" (click)="extendSession()">{{ 'Common_labels.Click_here' | translate }}</span>&nbsp; {{ 'Information_messages.Session_expiration_message_end' | translate }}
+          </div>
+          <div *ngIf="sessionIsExpired" class="col d-flex justify-content-center"> {{ 'Information_messages.Session_expired' | translate }} </div>
+          
+      </div>
+    </div>
     <div class="contact-info mr-auto">
 
     </div>
