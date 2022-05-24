@@ -40,10 +40,10 @@
         <table class="table table-borderless text-muted">
           <thead class="tableHeader">
             <tr>
-              <th class="text-center" style="width: 33.33%">
+              <th class="text-center">
                 <label>{{ 'DSS_details.Risk_score' | translate }}</label>
               </th>
-              <th class="text-center" style="width: 33.34%">
+              <th class="text-center">
                 <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
                   (ngModelChange)="onChangeChartGroup($event)"
                   *ngIf="dssChartGroups.length > 1">
@@ -54,7 +54,7 @@
                   {{ dssChartGroups[0].title }}
                 </span>
               </th>
-              <th class="text-center" style="width: 33.33%">
+              <th class="text-center">
                 <label>{{ 'DSS_details.Recommended_actions' | translate }}</label>
               </th>
             </tr>
@@ -110,7 +110,7 @@
           <i class="fas fa-arrow-left"></i> {{ 'Common_labels.Back' | translate }}
         </button>
 
-        <button type="button" class="btn btn-md btn-primary" (click)="goToModelParametrisation()">
+        <button type="button" class="btn btn-md btn-primary" (click)="goToModelParameterisation()">
           <i class="fas fa-edit"></i>&nbsp;
           {{ 'DSS_details.Edit_parameters' | translate }}
         </button>
@@ -137,79 +137,6 @@
     </div>
   </div>
 </div>
-<!-- OLD INFO ICON MODAL
-<ng-template #dssDetails>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">
-      {{ 'DSS_details.Dss_informations' | translate }}
-    </h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body scrollable">
-    <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.Crop_pest_combination' | translate }}</label>
-      <div class="col-sm-9">
-        <p><strong>{{dssDetail.cropEppoCode}}</strong> - {{dssDetail.cropEppoCode | eppoCode}} |
-          <strong>{{dssDetail.pestEppoCode}}</strong> - {{dssDetail.pestEppoCode | eppoCode}}</p>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.Type_of_the_output' | translate }}</label>
-      <div class="col-sm-9">
-        <p>{{dssDetail.dssTypeOfOutput}}</p>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.Description' | translate }}</label>
-      <div class="col-sm-9">
-        <p>{{dssDetail.dssDescription}}</p>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.Creation_date' | translate }}</label>
-      <div class="col-sm-9">
-        <p>{{dssDetail.creationDate | date}}</p>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.DSS_id' | translate }}</label>
-      <div class="col-sm-9">
-        <p>{{dssDetail.dssId}}</p>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.DSS_model_id' | translate }}</label>
-      <div class="col-sm-9">
-        <p>{{dssDetail.dssModelId}}</p>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.Warning_status_representation' | translate }}</label>
-      <div class="col-sm-9">
-        <p>{{dssDetail.warningStatusRepresentation}}</p>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="met-station" class="col-sm-3 col-form-label">{{ 'DSS_details.Warning_message' | translate }}</label>
-      <div class="col-sm-9">
-        <p>{{dssDetail.warningMessage}}</p>
-      </div>
-    </div>
-  </div>
-  <div class="modal-footer pull-right">
-    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
-  </div>
-</ng-template>
--->
 
 <ng-template #showError>
   <div class="form-group row mr-5">
@@ -226,7 +153,7 @@
   <!-- <div class="d-flex justify-content-center p-3 text-muted">
       <button type="button" 
         class="btn btn-md btn-primary" 
-        (click)="goToModelParametrisation()">
+        (click)="goToModelParameterisation()">
           <i class="fas fa-plus"></i>&nbsp;
           Add Parameters
         </button>
@@ -240,51 +167,76 @@
   <resize-border [dragHolder]="header">
     <div class="d-flex flex-column">
       <div class="modal-header">
-        <h4 #header class="modal-title w-100" id="modal-basic-title"> {{ 'DSS_details.Dss_informations' | translate }} </h4>
+        <h4 #header class="modal-title w-100" id="modal-basic-title">
+          <span class="modalInfoIcon fa-stack">
+            <i class="fas fa-circle fa-stack-1x"></i>
+            <i class="fas fa-info-circle fa-stack-1x"></i>
+          </span> <b>{{ 'DSS_info_popup.Dss_informations' | translate }}</b> </h4>
         <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body flex-grow-1">
             <div class="form-group row">
-              <label for="met-station" class="col-sm-3 col-form-label"><strong>{{ 'DSS_details.Crop_pest_combination' | translate }}</strong></label>
+              <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.DSS_name' | translate }}</strong></label>
               <div class="col-sm-9">
-                <p>{{dssDetail.cropEppoCode | eppoCode}} / {{dssDetail.pestEppoCode | eppoCode}}</p>
+                <p>{{ dssDetail.dssModelName }}</p>
               </div>
             </div>
             
             <div class="form-group row">
-              <label for="met-station" class="col-sm-3 col-form-label"><strong>{{ 'DSS_details.Type_of_the_output' | translate }}</strong></label>
+              <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.DSS_purpose' | translate }}</strong></label>
               <div class="col-sm-9">
-                <p>{{dssDetail.dssTypeOfOutput}}</p>
-              </div>
-            </div>
-        
-            <div class="form-group row">
-              <label for="met-station" class="col-sm-3 col-form-label"><strong>{{ 'DSS_details.Description' | translate }}</strong></label>
-              <div class="col-sm-9">
-                <p>{{dssDetail.dssDescription}}</p>
+                <p>{{ dssDetail.dssPurpose }}</p>
               </div>
             </div>
 
             <div class="form-group row">
-              <label for="met-station" class="col-sm-3 col-form-label"><strong>{{ 'DSS_details.DSS_model_id' | translate }}</strong></label>
+              <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.DSS_model_id' | translate }}</strong></label>
               <div class="col-sm-9">
-                <p>{{dssDetail.dssModelId}}</p>
+                <p>{{ dssDetail.dssModelId }}</p>
               </div>
             </div>
         
             <div class="form-group row">
-              <label for="met-station" class="col-sm-3 col-form-label"><strong>{{ 'DSS_details.Warning_status_representation' | translate }}</strong></label>
+              <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.Warning_status_representation' | translate }}</strong></label>
               <div class="col-sm-9">
-                <p>{{dssDetail.warningStatusRepresentation}}</p>
+                <p>{{ dssDetail.warningStatusRepresentation }}</p>
               </div>
             </div>
         
             <div class="form-group row">
-              <label for="met-station" class="col-sm-3 col-form-label"><strong>{{ 'DSS_details.Warning_message' | translate }}</strong></label>
+              <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.Warning_message' | translate }}</strong></label>
               <div class="col-sm-9">
-                <p>{{dssDetail.warningMessage}}</p>
+                <p>{{ dssDetail.warningMessage }}</p>
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.Description' | translate }}</strong></label>
+              <div class="col-sm-9">
+                <p>{{ dssDetail.dssDescription }}</p>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"><b>{{ 'DSS_info_popup.Authors_name' | translate }}</b></label>
+              <div class="col-sm-9" *ngFor="let author of dssDetail.authors">
+                  <p>{{ author.name }} ({{ author.organization }})</p>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.Source' | translate }}</strong></label>
+              <div class="col-sm-9">
+                <p>{{ dssDetail.dssName }}</p>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.Source_organisation' | translate }}</strong></label>
+              <div class="col-sm-9">
+                <p>{{ dssDetail.dssSource }}</p>
               </div>
             </div>
       </div>

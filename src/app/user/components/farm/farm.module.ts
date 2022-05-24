@@ -18,7 +18,7 @@ import { ApplicationPipesModule } from '@app/shared/pipes/application-pipes.modu
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { DssModelAddComponent } from '../dss/dss-model-add.component';
 import { DssModelRowComponent } from '../dss/dss-model-row.component';
-import { DssModelParametrisationComponent } from '../dss/dss-model-parametrisation.component';
+import { DssModelParameterisationComponent } from '../dss/dss-model-parameterisation.component';
 import { TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
@@ -43,12 +43,12 @@ import { TranslateModule} from '@ngx-translate/core';
     FieldAddComponent,
     DssModelAddComponent,
     DssModelRowComponent,
-    DssModelParametrisationComponent
+    DssModelParameterisationComponent
   ],
   entryComponents: [
     FieldAddComponent,
     DssModelAddComponent,
-    DssModelParametrisationComponent
+    DssModelParameterisationComponent
   ],
   providers: [EppoCodePipe]
 })

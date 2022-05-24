@@ -22,7 +22,7 @@ li.btn-group.nav-item {
     border: solid;
     left: 12%;
     width: 75%;
-    z-index: 1;
+    z-index: 100;
     top: 0;
     animation-name: slideDown;
     animation-duration: 1s;
@@ -54,4 +54,100 @@ li.btn-group.nav-item {
     cursor: pointer;
     color: rgb(82, 53, 252);
     text-decoration: underline;
+}
+
+.menu-btn {
+    position: fixed;
+    z-index: 20;
+    top: 10px;
+    left: 250px;
+    height: 38px;
+    width: 38px;
+    /*background-image: linear-gradient(to bottom, #24a0a3, #6c5ca2) !important;*/
+    border: 2px solid transparent;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+    filter: grayscale(100%);
+    transition: all 0.5s;
+}
+
+.menu-btn:hover {
+    position: fixed;
+    z-index: 20;
+    top: 10px;
+    left: 250px;
+    height: 38px;
+    width: 38px;
+    /*background-image: linear-gradient(to bottom, #24a0a3, #6c5ca2) !important;*/
+    border: 2px solid rgb(22 170 255);
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+    background-color: white;
+    filter: grayscale(0%);
+}
+
+.menu-btn .rectanglePage {
+    border: 1px solid rgb(22 170 255);
+    position: absolute;
+    left: 9px;
+    top: 7px;
+    width: 18px;
+    height: 20px;
+    background-color: white;
+}
+
+.menu-btn .rectangleMenuClosed {
+    position: absolute;
+    left: -5px;
+    top: -1px;
+    width: 1px;
+    height: 20px;
+    /*background-color: rgb(22 170 255);*/
+    background-image: linear-gradient(to bottom, #1ea27b, #96c93d) !important;
+    transition: all 0.5s;
+}
+
+.menu-btn .rectangleMenuOpen {
+    position: absolute;
+    left: -5px;
+    top: -1px;
+    width: 11px;
+    height: 20px;
+    /*background-color: rgb(22 170 255);*/
+    background-image: linear-gradient(to bottom, #1ea27b, #96c93d) !important;
+    transition: all 0.5s;
+}
+
+.menuTag {
+    position: absolute;
+    border: 2px solid transparent;
+    color: transparent;
+    left: 252px;
+    overflow: hidden;
+    font-size: 12px;
+    white-space: nowrap;
+    height: 22px;
+    width: 0px;
+    filter: grayscale(100%);
+    transition: all 0.5s ease;
+}
+
+.menu-btn:hover + .menuTag {
+    position: absolute;
+    border: 2px solid rgb(22 170 255);;
+    border-radius: 5px;
+    left: 284px;
+    overflow: hidden;
+    padding-left: 5px;
+    font-size: 12px;
+    color: #495057;
+    white-space: nowrap;
+    height: 22px;
+    width: 50px;
+    filter: grayscale(0%);
+    transition: all 0.5s ease;
 }

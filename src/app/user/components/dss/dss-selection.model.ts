@@ -16,6 +16,7 @@ export interface DssModel {
     output?:DssModelOutput;
     valid_spatial?:IDssModelValidSpatial;
     purpose?: string;
+    authors?: IAuthors[];
 }
 
 export interface IDssModelValidSpatial {
@@ -40,6 +41,17 @@ export interface DssSelection {
     id?:string;
     version?:string;
     name?:string;
+    organization?: IOrganization;
+}
+
+export interface IOrganization {
+    address?: string;
+    city?: string;
+    country?: string;
+    email?: string;
+    name?: string;
+    postal_code?: string;
+    url?: string;
 }
 
 export interface DssJSONSchema {
@@ -125,6 +137,14 @@ export interface IDssFlat {
     resultMessageType?: string;
     dssTaskStatusDto?: IDssTaskStatusDto;
     dssPurpose?: string;
+    dssName?: string;
+    dssSource?: string;
+    authors?: IAuthors[];
+}
+
+export interface IAuthors {
+    name?: string;
+    organization?: string;
 }
 
 export interface IDssChartGroup {
@@ -148,5 +168,10 @@ export interface IDssTaskStatusDto {
     id?: string;
     jobStatus?: string;
     scheduleTime?: string;
+}
+
+export interface IDssForAdaptation {
+    dssOriginalResult?: IDssFlat;
+    dssOriginalParameters?: DssJSONSchema;
 }
     

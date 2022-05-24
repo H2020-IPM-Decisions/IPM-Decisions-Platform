@@ -286,7 +286,7 @@
         "Description":"BESKRIVNING",
         "Warning_status_interpretation":"TOLKNING AV VARNINGSSTATUS"
     },
-    "DSS_model_parametrisation": {
+    "DSS_model_parameterisation": {
         "Title":"Parameterisering av DSS-model",
         "Saved_parameters":"Sparade parametrar"
     }

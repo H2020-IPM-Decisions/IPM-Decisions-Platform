@@ -93,7 +93,10 @@
         "DSS_model_combination_error":"No DSS model Submitted, a DSS with selected Crop/Pest combination already exists",
         "DSS_parameters_update_error":"Dss parameters update failed, an error occurs",
         "DSS_parameters_fetching_error":"Unable to fetch parameters data",
-        "DSS_comparison_model_retrived_error":"Fail to retrieve DSS data!"
+        "DSS_comparison_model_retrived_error":"Fail to retrieve DSS data!",
+        "DSS_adaptation_model_retrived_error":"Fail to retrive DSS data!",
+        "DSS_adaptation_parameters_update_error":"DSS parameters update failed, an error occurs",
+        "DSS_adaptation_parameters_send_error":"DSS parameters send failed, an error occurs"
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
@@ -116,13 +119,17 @@
         "Account_password_changed":"The password was changed successfully!",
         "Session_expiration_message_start":"Your session is expiring, you will be logged out in",
         "Session_expiration_message_end":"to maintain your connection with the IPM platform.",
-        "Session_expired":"Your session is expired! Please refresh the page and log in again."
+        "Session_expired":"Your session is expired! Please refresh the page and log in again.",
+        "DSS_adaptation_model_retrived":"DSS Data retrivied successfully!",
+        "DSS_adaptation_parameters_updated":"DSS parameters updated!",
+        "DSS_adaptation_parameters_sent":"DSS parameters successfully sent!"
 
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"No DSS avaiable for the selected crops",
         "Not_enough_DSS_to_compare":"There are not enough DSS models to compare! Please add at least two models",
-        "Farm_creation_warning_message":"The platform will start collecting weather data after the farm creation. This might take up to 2 hours."
+        "Farm_creation_warning_message":"The platform will start collecting weather data after the farm creation. This might take up to 2 hours.",
+        "No_DSS_to_adapt":"There are not any DSS model to adapt! Please add at least one model"
     },
     "Countries": {
         "Austria":"Austria", 
@@ -199,7 +206,8 @@
     },
     "User_header": {
         "Account_manager":"Account Manager",
-        "Farm":"Farm"
+        "Farm":"Farm",
+        "Menu":"Menu"
     },
     "User_menu": {
         "IPM_private":"IPM Private",
@@ -323,8 +331,8 @@
         "Warning_status_interpretation":"WARNING STATUS INTERPRETATION",
         "Model_name":"DSS"
     },
-    "DSS_model_parametrisation": {
-        "Title":"DSS Model Parametrisation",
+    "DSS_model_parameterisation": {
+        "Title":"DSS Model Parameterisation",
         "Saved_parameters":"Saved parameters"
     },
     "Resend_confirmation_email": {
@@ -349,5 +357,36 @@
     },
     "User_guide": {
         "Title":"User guide"
+    },
+    "DSS_info_popup": {
+        "Dss_informations":"DSS Information",
+        "DSS_name":"DSS Name",
+        "DSS_purpose":"DSS Purpose",
+        "DSS_model_id":"DSS Model ID",       
+        "Warning_status_representation":"Warning Status Representation",
+        "Warning_message":"Warning Message",
+        "Description":"Description",
+        "Authors_name":"Authors : Name (Organisation)",
+        "Source":"Source",
+        "Source_organisation":"Source organisation"
+    },
+    "DSS_adaptation": {
+        "Title":"DSS Adaptation Dashboard",
+        "Select_model_label":"Select Model for adaptation",
+        "Select_model_button":"Select Model",
+        "Original_parameters_label":"Original Parameters",
+        "Revised_parameters_label":"Revised Parameters",
+        "Save_parameterisation_button":"Save Parameterisation as new DSS",
+        "Risk_score":"Risk status",
+        "Day":"Day",
+        "Expand_table":"Expand table",
+        "Save_parameters":"Save parameters",
+        "Banned_save_parameters":"Save not allowed",
+        "Parameters_table_original":"Parameters table of original DSS",
+        "Parameters_table_revised":"Parameters table of revised DSS",
+        "for":"for",
+        "on":"on",
+        "Data_is_updating":"Data is updating",
+        "Please_wait":"Please wait"
     }
 }

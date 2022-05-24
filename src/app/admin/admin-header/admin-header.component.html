@@ -5,7 +5,7 @@
                 <img src="img/logo-ipm-decision.png" alt="Logo Ipm Decisions" title="Logo IPM" />
             </a>
         </div>
-        <div class="header__pane ml-auto">
+       <!-- <div class="header__pane ml-auto">
             <div>
                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
                   <span class="hamburger-box">
@@ -13,9 +13,15 @@
                   </span>
               </button>
             </div>
+        </div>-->
+    </div>
+    <div class = "menu-btn" (click)="toggleSidebar()">
+        <!--<i class="fas fa-bars"></i>-->
+        <div class="rectanglePage">
+            <div [ngClass]="{ 'rectangleMenuOpen': mini==false, 'rectangleMenuClosed': mini==true }"></div>
         </div>
     </div>
-    <div class="app-header__mobile-menu">
+    <!--<div class="app-header__mobile-menu">
         <div>
             <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
               <span class="hamburger-box">
@@ -23,8 +29,8 @@
               </span>
           </button>
         </div>
-    </div>
-    <div class="app-header__menu">
+    </div>-->
+    <!--<div class="app-header__menu">
         <span>
           <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
               <span class="btn-icon-wrapper">
@@ -32,7 +38,7 @@
               </span>
         </button>
         </span>
-    </div>
+    </div>-->
     <div class="app-header__content">
         <div class="app-header-left">
 

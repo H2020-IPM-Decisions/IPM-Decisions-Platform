@@ -78,7 +78,7 @@ export class EppoCodeBadgeComponent {
         this.modalRef = this._modalService.show(template, {class: size});
     }
 
-    goToModelParametrisation(): void {
+    goToModelParameterisation(): void {
         const navigationExtras: NavigationExtras = { 
           state: { 
             data: {
@@ -90,7 +90,7 @@ export class EppoCodeBadgeComponent {
             }
           }
         };
-        this._router.navigate(['/user/farm',this.dssDetail.farmId,'edit','dss',this.dssDetail.id,'parametrisation'], navigationExtras);
+        this._router.navigate(['/user/farm',this.dssDetail.farmId,'edit','dss',this.dssDetail.id,'parameterisation'], navigationExtras);
     }
 
     gotErrorType(): boolean {

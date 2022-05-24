@@ -16,3 +16,12 @@
   color: #8cbcfa;
   font-weight: bold;
 }
+
+.modalInfoIcon {
+  font-size: 150%;
+  color: blue;
+}
+
+.fa-circle {
+  color: white;
+}

@@ -87,7 +87,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     document.body.style.paddingRight = '0';
   }
 
-  goToModelParametrisation(): void {
+  goToModelParameterisation(): void {
     const navigationExtras: NavigationExtras = { 
       state: { 
         data: {
@@ -99,6 +99,6 @@ export class DssDetailComponent implements OnInit, OnDestroy {
         }
       }
     };
-    this._router.navigate(['/user/farm',this.dssDetail.farmId,'edit','dss',this.dssDetail.id,'parametrisation'], navigationExtras);
+    this._router.navigate(['/user/farm',this.dssDetail.farmId,'edit','dss',this.dssDetail.id,'parameterisation'], navigationExtras);
   }
 }

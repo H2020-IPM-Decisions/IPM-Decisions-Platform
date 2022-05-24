@@ -1,12 +1,114 @@
+@import url("../../../admin/assets/admin.css");
+
 .footer{
     bottom: 0px;
-    position: inherit;
     color: #fff !important;
     width: 280px;
     font-size: smaller;
-    z-index: 100;
+    position: absolute;
+    white-space: normal;
+    display: none;
 }
 
-img {
+.euFlag {
     max-width: 64px;
+}
+
+.mySidebar {
+    height: 100%;
+    width: 280px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-image: linear-gradient(to bottom, #00b09b, #96c93d) !important;
+    padding-top: 60px;
+    z-index: 15;
+    white-space: nowrap;
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+
+  .mySidebar .mySidebar_heading {
+    color: rgba(255,255,255,.6);
+    text-transform: uppercase;
+    font-size: 18px;
+    margin: 0.75rem 0;
+    font-weight: 700;
+    white-space: nowrap;
+    position: relative;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 24px;
+  }
+
+  .mySidebar .mySidebar_body {
+    color: rgba(255,255,255,.6);
+    font-size: .8rem;
+    margin: 0.75rem 0;
+    font-weight: 700;
+    white-space: nowrap;
+    position: relative;
+    padding-top: 20px;
+    padding-left: 14px;
+    padding-right: 24px;
+  }
+
+  .mySidebar .vertical-nav-menu li a {
+    color: rgba(255,255,255,.7);
+    text-decoration: none;
+  }
+
+  .mySidebar .vertical-nav-menu li a.mm-active {
+    color: #fff;
+    background: rgba(255,255,255,.15);
+    
+}
+
+.vertical-nav-menu li a {
+    display: block;
+    line-height: 2.4rem;
+    height: 2.4rem;
+    padding: 0;
+    position: relative;
+    border-radius: 0.25rem;
+    color: #343a40;
+    white-space: nowrap;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    margin: 0.1rem 0;
+    min-width: 42px;
+}
+
+.mySidebar .vertical-nav-menu li a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff
+}
+
+.mySidebar .vertical-nav-menu i.metismenu-state-icon, .vertical-nav-menu i.metismenu-icon {
+    text-align: center;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    margin-top: -17px;
+    font-size: 1.5rem;
+    opacity: .7;
+    -webkit-transition: color 300ms;
+    transition: color 300ms;
+}
+
+.fixed-sidebar .app-main .app-main__outer {
+    z-index: 9;
+    padding-left: 0px;
+    margin-left: 280px;
+}
+
+.mySidebar span {
+    padding-left: 35px;
+}
+
+#mainDocument {
+    transition: margin-left 0.5s;
 }

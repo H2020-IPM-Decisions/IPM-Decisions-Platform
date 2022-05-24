@@ -99,3 +99,7 @@
 ul li a.nav-link{
   color: #249fa5;
 }
+
+.breadcrumbBar {
+  padding-left: 50px;
+}

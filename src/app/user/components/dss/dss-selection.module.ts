@@ -20,6 +20,8 @@ import { DssComparisonComponent } from './dss-comparison.component';
 import { DssComparisonRowComponent } from './dss-comparison-row.component';
 import { ResizeBorderComponent } from '@app/shared/resize-border/resize-border.component';
 import { MultiSelectComponent } from '@app/shared/multi-select/multi-select.component';
+import { DssAdaptationComponent } from './dss-adaptation.component';
+import { DssAdaptationComponentBody } from './dss-adaptation-body.component';
 
 @NgModule({
   imports: [ 
@@ -44,7 +46,9 @@ import { MultiSelectComponent } from '@app/shared/multi-select/multi-select.comp
     DssComparisonComponent,
     DssComparisonRowComponent,
     ResizeBorderComponent,
-    MultiSelectComponent
+    MultiSelectComponent,
+    DssAdaptationComponent,
+    DssAdaptationComponentBody
   ],
   entryComponents: []
 })

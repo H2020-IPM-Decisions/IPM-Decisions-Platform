@@ -40,7 +40,7 @@
             <!--<small  *ngIf="!isLegend">({{ code }})</small>-->
         </a>
         <ng-template #notValidDSS>
-          <a (click)="goToModelParametrisation()" style="color: white">
+          <a (click)="goToModelParameterisation()" style="color: white">
             <h6  *ngIf="!isLegend"><b>{{code | eppoCode }}</b></h6>
             <!--<small  *ngIf="!isLegend">({{ code }})</small>-->
           </a>
@@ -113,7 +113,7 @@
       <span class="modalInfoIcon fa-stack">
         <i class="fas fa-circle fa-stack-1x"></i>
         <i class="fas fa-info-circle fa-stack-1x"></i>
-      </span> <b>{{ 'Common_labels.Info' | translate }}: {{ code | eppoCode }}</b>
+      </span> <b>{{ 'DSS_info_popup.Dss_informations' | translate }}</b>
     </h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
@@ -121,16 +121,66 @@
   </div>
   <div class="modal-body scrollable m-2">
     <div class="form-group row">
-      <label class="col-sm-3 col-form-label"><b>{{ 'DSS_use_dashboard.Status_representation' | translate }}: </b></label>
-        <div class="col-sm-9">
-            <p>{{ statusRepresentation }}</p>
-        </div>
+      <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.DSS_name' | translate }}</strong></label>
+      <div class="col-sm-9">
+        <p>{{ dssDetail.dssModelName }}</p>
+      </div>
     </div>
+    
     <div class="form-group row">
-      <label class="col-sm-3 col-form-label"><b>{{ 'DSS_use_dashboard.Description' | translate }}: </b></label>
-        <div class="col-sm-9">
-            <p>{{ dssDescription }}</p>
-        </div>
+      <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.DSS_purpose' | translate }}</strong></label>
+      <div class="col-sm-9">
+        <p>{{ dssDetail.dssPurpose }}</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.DSS_model_id' | translate }}</strong></label>
+      <div class="col-sm-9">
+        <p>{{ dssDetail.dssModelId }}</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.Warning_status_representation' | translate }}</strong></label>
+      <div class="col-sm-9">
+        <p>{{ dssDetail.warningStatusRepresentation }}</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.Warning_message' | translate }}</strong></label>
+      <div class="col-sm-9">
+        <p>{{ dssDetail.warningMessage }}</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.Description' | translate }}</strong></label>
+      <div class="col-sm-9">
+        <p>{{ dssDetail.dssDescription }}</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label"><b>{{ 'DSS_info_popup.Authors_name' | translate }}</b></label>
+      <div class="col-sm-9" *ngFor="let author of dssDetail.authors">
+          <p>{{ author.name }} ({{ author.organization }})</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.Source' | translate }}</strong></label>
+      <div class="col-sm-9">
+        <p>{{ dssDetail.dssName }}</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.Source_organisation' | translate }}</strong></label>
+      <div class="col-sm-9">
+        <p>{{ dssDetail.dssSource }}</p>
+      </div>
     </div>
   </div>
   <div class="modal-footer pull-right">

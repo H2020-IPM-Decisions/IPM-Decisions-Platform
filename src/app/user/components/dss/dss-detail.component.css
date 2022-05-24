@@ -2,6 +2,11 @@
     font-size: 45px;
   }
 
+.table {
+  table-layout: fixed;
+  width:100%;
+}
+
 .tableHeader {
   font-size: 18px;
 }
@@ -49,9 +54,18 @@ div.scrollableCell {
 }
 
 .modal-body{
-  margin-top:70px;
+  margin-top:100px;
 }
 
 body.modal-open {
   overflow: auto;
+}
+
+.modalInfoIcon {
+  font-size: 150%;
+  color: blue;
+}
+
+.modalInfoIcon .fa-circle {
+  color: white;
 }

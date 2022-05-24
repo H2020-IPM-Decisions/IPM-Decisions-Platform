@@ -4,7 +4,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import { environment } from "@src/environments/environment";
-import { IDssFlat, IDssFormData, DssJSONSchema, DssModel, DssSelection, IDssResultChart, DssParameters, IDssParameters } from './dss-selection.model';
+import { IDssFlat, IDssFormData, DssJSONSchema, DssModel, DssSelection, IDssResultChart, DssParameters, IDssParameters, IDssForAdaptation } from './dss-selection.model';
 import { Field } from '@app/shared/models/field.model';
 import { Farm } from '@app/shared/models/farm.model';
 import { catchError } from "rxjs/operators";
@@ -241,6 +241,8 @@ export class DssSelectionService {
         unit: unitLabel,
         defaultVisible: true,
         options: {
+          animation: true,
+          maintainAspectRatio: false,
           plugins: {
             legend: {
                 display: false
@@ -322,6 +324,39 @@ export class DssSelectionService {
         Accept: "application/json",
       },
       observe: 'response'
+    });
+  }
+
+  public getDssToAdapt(dssId: string): Observable<HttpResponse<IDssForAdaptation>>{ 
+    let requestUrl = `${environment.apiUrl}/api/upr/adaptation/${dssId}`;
+    return this._http.get<IDssForAdaptation>(requestUrl, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: 'response'
+    });
+  }
+
+  public sendDssParametersForAdaptation(dssId: string, dssParameters: DssParameters): Observable<HttpResponse<any>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/adaptation/${dssId}`;
+    return this._http.post(requestUrl, dssParameters, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: "response",
+    });
+  }  
+
+  public getDssAdaptationRevisedData(dssId: string, taskId: string): Observable<HttpResponse<any>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/adaptation/${dssId}/task?id=${taskId}`;
+    return this._http.get(requestUrl, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: "response",
     });
   }
 }

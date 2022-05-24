@@ -915,7 +915,7 @@ pre code {
 
 @media (min-width: 1200px) {
     .container {
-        max-width: 1140px
+        max-width: 1300px
     }
 }
 
@@ -6595,7 +6595,7 @@ a.close.disabled {
 .bs-tooltip-auto[x-placement^="top"] .arrow::before {
     top: 0;
     border-width: .4rem .4rem 0;
-    border-top-color: #000
+    border-top-color: #272833
 }
 
 .bs-tooltip-right,
@@ -6614,7 +6614,7 @@ a.close.disabled {
 .bs-tooltip-auto[x-placement^="right"] .arrow::before {
     right: 0;
     border-width: .4rem .4rem .4rem 0;
-    border-right-color: #000
+    border-right-color: #272833
 }
 
 .bs-tooltip-bottom,
@@ -6631,7 +6631,7 @@ a.close.disabled {
 .bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
     bottom: 0;
     border-width: 0 .4rem .4rem;
-    border-bottom-color: #000
+    border-bottom-color: #272833
 }
 
 .bs-tooltip-left,
@@ -6650,7 +6650,7 @@ a.close.disabled {
 .bs-tooltip-auto[x-placement^="left"] .arrow::before {
     left: 0;
     border-width: .4rem 0 .4rem .4rem;
-    border-left-color: #000
+    border-left-color: #272833
 }
 
 .tooltip-inner {
@@ -6658,7 +6658,7 @@ a.close.disabled {
     padding: .25rem .5rem;
     color: #fff;
     text-align: center;
-    background-color: #000;
+    background-color: #272833;
     border-radius: .25rem
 }
 
@@ -25730,5 +25730,41 @@ footer.footer-section.spad {
 }
 
 #json-editor-form > .bg-light{
+    box-shadow: none !important;
+}
+
+#json-editor-form-original .card {
+    background: #fff !important;
+    box-shadow: none;
+}
+
+#json-editor-form-original .card-body {
+    background: #fff !important;
+    margin-bottom: 0px;
+    padding-left: 4px;
+    padding-right: 15px;
+    padding-top:0px;
+    padding-bottom: 0px;
+}
+
+#json-editor-form-original > .bg-light{
+    box-shadow: none !important;
+}
+
+#json-editor-form-revised .card {
+    background: #fff !important;
+    box-shadow: none;
+}
+
+#json-editor-form-revised .card-body {
+    background: #fff !important;
+    margin-bottom: 0px;
+    padding-left: 4px;
+    padding-right: 15px;
+    padding-top:0px;
+    padding-bottom: 0px;
+}
+
+#json-editor-form-revised > .bg-light{
     box-shadow: none !important;
 }

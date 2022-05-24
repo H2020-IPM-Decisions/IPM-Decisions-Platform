@@ -36,7 +36,11 @@
 
 <ng-template #dssModelDetails>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">{{ dssSelection.name }} - {{ model.name }}
+      <h4 class="modal-title pull-left">
+        <span class="modalInfoIcon fa-stack">
+            <i class="fas fa-circle fa-stack-1x"></i>
+            <i class="fas fa-info-circle fa-stack-1x"></i>
+          </span> <b>{{ 'DSS_info_popup.Dss_informations' | translate }}</b>
       </h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
@@ -44,29 +48,48 @@
     </div>
     <div class="modal-body scrollable">
         <div class="form-group row">
-            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_model_selection.DSS_id' | translate }}</b></label>
+            <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.DSS_name' | translate }}</strong></label>
             <div class="col-sm-9">
-                <p>{{ dssSelection.id }}</p>
+              <p>{{ model.name }}</p>
+            </div>
+        </div>
+          
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.DSS_purpose' | translate }}</strong></label>
+            <div class="col-sm-9">
+              <p>{{ model.purpose }}</p>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_model_selection.Model_id' | translate }}</b></label>
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_info_popup.DSS_model_id' | translate }}</b></label>
             <div class="col-sm-9">
                 <p>{{ model.id }}</p>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_model_selection.Description' | translate }}</b></label>
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_info_popup.Description' | translate }}</b></label>
             <div class="col-sm-9">
                 <p>{{ model.description }}</p>
             </div>
         </div>
-        <!--<div class="form-group row">
-            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_model_selection.Warning_status_interpretation' | translate }}</b></label>
-            <div class="col-sm-9">
-                <p *ngIf="model.output?.warning_status_interpretation">{{ model.output.warning_status_interpretation }}</p>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_info_popup.Authors_name' | translate }}</b></label>
+            <div class="col-sm-9" *ngFor="let author of model.authors">
+                <p>{{ author.name }} ({{ author.organization }})</p>
             </div>
-        </div>-->
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_info_popup.Source' | translate }}</b></label>
+            <div class="col-sm-9">
+                <p>{{ dssSelection.name }}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_info_popup.Source_organisation' | translate }}</b></label>
+            <div class="col-sm-9">
+                <p>{{ dssSelection.organization.name }}, {{ dssSelection.organization.country }}</p>
+            </div>
+        </div>
     </div>
     <div class="modal-footer pull-right">
       <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>

@@ -25,6 +25,7 @@ export class UserHeaderComponent implements OnInit, OnDestroy {
   public $sessionExpirationTimer: Subscription;
   public $sessionExtend: Subscription;
   public sessionIsExpired: boolean = false;
+  public mini: boolean = false;
 
   constructor(
     private cmsService: CMSService,
@@ -136,6 +137,23 @@ export class UserHeaderComponent implements OnInit, OnDestroy {
       this.oberserableTimer();
       this.sessionIsExpired = false;
     });
+  }
+
+  public toggleSidebar(): void {
+    let sideBar: HTMLElement = document.getElementById("mySidebarId");
+    let sidebarFooter: HTMLElement = document.getElementById("mySidebarFooter");
+    let mainDoc: HTMLElement = document.getElementById("mainDocument")
+    if (this.mini) {
+      sideBar.style.width = "280px";
+      sidebarFooter.style.display = "block";
+      mainDoc.style.marginLeft = "280px"
+      this.mini = false;
+    } else {
+      sideBar.style.width = "0px";
+      sidebarFooter.style.display = "none";
+      mainDoc.style.marginLeft = "0px"
+      this.mini = true;
+    }
   }
 
 }

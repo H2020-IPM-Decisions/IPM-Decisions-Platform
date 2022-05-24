@@ -283,8 +283,8 @@
         "Description":"DESCRIPTION",
         "Warning_status_interpretation":"WARNING STATUS INTERPRETATION"
     },
-    "DSS_model_parametrisation": {
-        "Title":"DSS Model Parametrisation",
+    "DSS_model_parameterisation": {
+        "Title":"DSS Model Parameterisation",
         "Saved_parameters":"Saved parameters"
     }
 }

@@ -12,7 +12,7 @@ import { FarmListComponent } from './farm-list/farm-list.component';
 import { FarmDetailsComponent } from './farm-details/farm-details.component';
 import { AddFarmComponent } from './add-farm/add-farm.component';
 import { DssModelAddComponent } from '../dss/dss-model-add.component';
-import { DssModelParametrisationComponent } from '../dss/dss-model-parametrisation.component';
+import { DssModelParameterisationComponent } from '../dss/dss-model-parameterisation.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -90,8 +90,8 @@ export const farmRoute: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: ':id/edit/dss/:dssId/parametrisation',
-    component: DssModelParametrisationComponent,
+    path: ':id/edit/dss/:dssId/parameterisation',
+    component: DssModelParameterisationComponent,
     data: {
         roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },

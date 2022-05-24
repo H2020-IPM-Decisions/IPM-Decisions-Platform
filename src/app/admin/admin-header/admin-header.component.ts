@@ -14,7 +14,8 @@ export class AdminHeaderComponent implements OnInit {
   @Input() active;
   bannerUrl = "";
   cmsUrl: string;
-
+  public mini: boolean = true;
+  
   constructor(
     private cmsService: CMSService,
     private authenticationService: AuthenticationService
@@ -30,6 +31,24 @@ export class AdminHeaderComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
+  }
+
+  
+  public toggleSidebar(): void {
+    let sideBar: HTMLElement = document.getElementById("mySidebarId");
+    let sidebarFooter: HTMLElement = document.getElementById("mySidebarFooter");
+    let mainDoc: HTMLElement = document.getElementById("mainDocument")
+    if (this.mini) {
+      sideBar.style.width = "280px";
+      sidebarFooter.style.display = "block";
+      mainDoc.style.marginLeft = "280px"
+      this.mini = false;
+    } else {
+      sideBar.style.width = "0px";
+      sidebarFooter.style.display = "none";
+      mainDoc.style.marginLeft = "0px"
+      this.mini = true;
+    }
   }
 
 }

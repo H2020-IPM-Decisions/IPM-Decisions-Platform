@@ -15,6 +15,8 @@ export class CustomChartComponent implements AfterViewInit {
     labels: string[];
     @Input()
     config: IChartConfig;
+    @Input()
+    animation!: boolean;
     
     @ViewChild('chart', {static: false}) 
     el:ElementRef;
@@ -50,6 +52,7 @@ export class CustomChartComponent implements AfterViewInit {
         }
         let options: object = {};
         if(this.config && this.config.options) {
+            this.config.options.animation = this.animation
             options = this.config.options
         }
         this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color, options);

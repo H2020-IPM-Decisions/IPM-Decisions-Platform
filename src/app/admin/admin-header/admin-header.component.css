@@ -12,3 +12,51 @@
     z-index: 10;
     transition: all .2s;
 }
+
+.menu-btn {
+    position: fixed;
+    z-index: 20;
+    top: 10px;
+    left: 250px;
+    height: 38px;
+    width: 38px;
+    /*background-image: linear-gradient(to bottom, #24a0a3, #6c5ca2) !important;*/
+    border: 2px solid rgb(22 170 255);
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+    background-color: white;
+}
+
+.menu-btn .rectanglePage {
+    border: 1px solid rgb(22 170 255);
+    position: absolute;
+    left: 9px;
+    top: 7px;
+    width: 18px;
+    height: 20px;
+    background-color: white;
+}
+
+.menu-btn .rectangleMenuClosed {
+    position: absolute;
+    left: -5px;
+    top: -1px;
+    width: 1px;
+    height: 20px;
+    /*background-color: rgb(22 170 255);*/
+    background-image: linear-gradient(to bottom, #1ea27b, #96c93d) !important;
+    transition: all 0.5s;
+}
+
+.menu-btn .rectangleMenuOpen {
+    position: absolute;
+    left: -5px;
+    top: -1px;
+    width: 11px;
+    height: 20px;
+    /*background-color: rgb(22 170 255);*/
+    background-image: linear-gradient(to bottom, #1ea27b, #96c93d) !important;
+    transition: all 0.5s;
+}

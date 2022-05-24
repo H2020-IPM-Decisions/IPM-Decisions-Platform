@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 
 @Component({
   selector: 'sidebar',
   templateUrl: './sidebar.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
@@ -12,5 +13,4 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

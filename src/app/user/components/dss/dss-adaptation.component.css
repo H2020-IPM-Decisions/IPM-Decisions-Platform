@@ -1,0 +1,192 @@
+.adaptationContainer {
+    padding-left: 10px;
+    padding-right: 10px;
+    /*height: 70vh;*/
+}
+
+/*.adaptationContainer .originalContainer {
+    border: 1px solid black;
+}
+
+.adaptationContainer .revisedContainer {
+    border: 1px solid black;
+}
+
+.adaptationContainer .row .col {
+    border: 1px solid black;
+}*/
+
+.adaptationContainer .myHeading {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    height: 38px;
+    line-height: 34px;
+}
+
+.adaptationContainer .selectionGroupChart {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+.parametersFormContainer {
+    border: 1px solid rgb(110, 158, 247);
+    max-height: 200px;
+    max-width: 265px;
+    overflow: auto;
+}
+
+.dataSetContainer {
+    max-height: 200px;
+    max-width: 265px;
+    overflow: auto;
+}
+
+.dataSetContainer .miniTable {
+    border-collapse: collapse;
+    border-spacing: 2;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.dataSetContainer .miniTable th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+.miniTable th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: -1px;
+    z-index: 1;
+    max-width: 80px;
+    text-align: center;
+    background: #fff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+.adaptationControlPanel {
+    /*border: 1px solid black;*/
+    height: 100px;
+    margin-bottom: 20px
+}
+
+.adaptationControlPanel label {
+    font-weight: bolder;
+    font-size:18px;
+    color: #6c757d;
+}
+
+.adaptationControlPanel .buttonPosition {
+    padding-top: 36px;
+}
+
+.adaptationControlPanel .form-control {
+    font-size: 14px;
+}
+
+.btn-info.disabled,
+.btn-info:disabled {
+    color: #fff;
+    background-color: #797f83;
+    border-color: #797f83;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+    background: #e4e2e2;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #16aaff;
+}
+
+.saveParametersButton{
+    /*width: auto;
+    border-radius: 25px;
+    height: auto;
+    position: absolute;
+    right: 28px;
+    top: -30px;*/
+    font-size: 150%;
+    float: right;
+  }
+.disabledPosition {
+    float: right;
+}
+.disabledSaveIcon {
+    /*font-size: 110%;
+    position: absolute;
+    right: 31px;
+    top: -21px;*/
+    color: #645f5f;
+}
+
+.banIcon {
+    /*position: absolute;
+    z-index: 1;
+    right: 25px;
+    top: -26px;
+    font-size: 185%;*/
+    color: tomato;
+}
+
+.fullScreenButtonDataset{
+    /*width: auto;
+    border-radius: 25px;
+    height: auto;
+    position: absolute;
+    right: 28px;
+    top: -30px;*/
+    text-shadow: 2px 2px 3px #0f0f0f91;
+    font-size: 150%;
+    float: right;
+  }
+  
+  .modalTableIcon {
+    font-size: 1.5em;
+    color: #16aaff;
+    padding: 2px 25px 2px 25px;
+  }
+
+  .scrollableDatasetModalBody {
+    height: auto;
+    max-height: 60vh;
+    overflow: auto;
+  }
+
+.modalDatasetTable {
+    /*max-height: 200px;
+    max-width: 265px;*/
+    max-width: auto;
+    max-height: 60vh;
+    overflow: auto;
+}
+
+.expandedTable {
+    border: 1px solid #e9ecef;
+    max-width: auto;
+    text-align: center;
+    background: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.modalDatasetTable .expandedTable th,
+td {
+    text-align: left;
+    padding: 8px;
+}

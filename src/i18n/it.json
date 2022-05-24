@@ -93,7 +93,10 @@
         "DSS_model_combination_error":"Nessun modello DSS inviato, esiste già un DSS con la combinazione coltura/parassita selezionata",
         "DSS_parameters_update_error":"Aggiornamento dei parametri del DSS fallito a causa di un errore",
         "DSS_parameters_fetching_error":"Impossibile recuperare i dati dei parametri",
-        "DSS_comparison_model_retrived_error":"Impossibile ottenere i dati dei DSS!"
+        "DSS_comparison_model_retrived_error":"Impossibile ottenere i dati dei DSS!",
+        "DSS_adaptation_model_retrived_error":"Impossibile ottenere i dati del DSS!",
+        "DSS_adaptation_parameters_update_error":"Aggiornamento dei parametri del DSS fallito a causa di un errore",
+        "DSS_adaptation_parameters_send_error":"Invio dei parametri del DSS fallito a causa di un errore"
     },
     "Information_messages":{
         "Farm_deletion_message":"Stai per eliminare un'azienda agricola. Vuoi procedere?",
@@ -116,12 +119,16 @@
         "Account_password_changed":"La password è stata cambiata con successo!",
         "Session_expiration_message_start":"La tua sessione sta per scadere, verrai disconnesso tra",
         "Session_expiration_message_end":"per mantenere la connessione con la piattaforma IPM",
-        "Session_expired":"La tua sessione è scaduta! Per favore, aggiorna la pagina e accedi nuovamente."
+        "Session_expired":"La tua sessione è scaduta! Per favore, aggiorna la pagina e accedi nuovamente.",
+        "DSS_adaptation_model_retrived":"Dati del DSS ottenuti con successo!",
+        "DSS_adaptation_parameters_updated":"Parametri del DSS aggiornati!",
+        "DSS_adaptation_parameters_sent":"Parametri del DSS inviati correttamente!"
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"Non ci sono DSS per le colture selezionate",
         "Not_enough_DSS_to_compare":"Non ci sono abbastanza modelli DSS da confrontare! Si prega di aggiungere almeno due modelli",
-        "Farm_creation_warning_message":"La piattaforma inizierà a raccogliere dati meteorologici dopo la creazione dell'azienda agricola. L'operazione potrebbe richiedere fino a 2 ore."
+        "Farm_creation_warning_message":"La piattaforma inizierà a raccogliere dati meteorologici dopo la creazione dell'azienda agricola. L'operazione potrebbe richiedere fino a 2 ore.",
+        "No_DSS_to_adapt":"Non ci sono modelli DSS da adeguare! Si prega di aggiungere almeno un modello"
     },
     "Countries": {
         "Austria":"Austria", 
@@ -198,7 +205,8 @@
     },
     "User_header": {
         "Account_manager":"Gestione Profilo",
-        "Farm":"Azienda agricola"
+        "Farm":"Azienda agricola",
+        "Menu":"Menù"
     },
     "User_menu": {
         "IPM_private":"IPM Privato",
@@ -275,7 +283,7 @@
     },
     "DSS_use_dashboard": {
         "Title":"Dashboard d'uso dei DSS",
-        "Legend":"Leggenda",
+        "Legend":"Legenda",
         "Grey_box":"DSS attualmente inattivo",
         "White_box":"Dati insufficienti: verifica i parametri DSS",
         "Green_box":"DSS attivo, Basso rischio",
@@ -292,7 +300,7 @@
         "Title":"Dettagli del DSS",
         "Risk_score":"Stato del rischio",
         "Recommended_actions":"Guida",
-        "Show_data_legend":"Mostra leggenda",
+        "Show_data_legend":"Mostra legenda",
         "Edit_parameters":"Modifica parametri",
         "Delete_DSS":"Eliminazione del DSS",
         "Dss_informations":"Informazioni del DSS",
@@ -322,7 +330,7 @@
         "Warning_status_interpretation":"INTERPRETAZIONE DELLO STATO DI AVVISO",
         "Model_name":"DSS"
     },
-    "DSS_model_parametrisation": {
+    "DSS_model_parameterisation": {
         "Title":"Parametrizzazione del modello DSS",
         "Saved_parameters":"Parametri Salvati"
     },
@@ -348,5 +356,36 @@
     },
     "User_guide": {
         "Title":"Guida utente"
+    },
+    "DSS_info_popup": {
+        "Dss_informations":"Informazioni del DSS",
+        "DSS_name":"Nome del DSS",
+        "DSS_purpose":"Finalità del DSS",
+        "DSS_model_id":"ID del Modello del DSS",       
+        "Warning_status_representation":"Rappresentazione dello stato di avviso",
+        "Warning_message":"Messaggio di avviso",
+        "Description":"Descrizione",
+        "Authors_name":"Autori : Nome (Organizzazione)",
+        "Source":"Provenienza",
+        "Source_organisation":"Organizzazione di provenienza"
+    },
+    "DSS_adaptation": {
+        "Title":"Dashboard di adeguamento",
+        "Select_model_label":"Seleziona Modello da adeguare",
+        "Select_model_button":"Seleziona Modello",
+        "Original_parameters_label":"Parametri Originali",
+        "Revised_parameters_label":"Parametri Modificati",
+        "Save_parameterisation_button":"Salva la parametrizzazione come nuovo DSS",
+        "Risk_score":"Stato del rischio",
+        "Day":"Giorno",
+        "Expand_table":"Espandi tabella",
+        "Save_parameters":"Salva parametri",
+        "Banned_save_parameters":"Salvataggio non consentito",
+        "Parameters_table_original":"Tabella dei parametri del DSS originale",
+        "Parameters_table_revised":"Tabella dei parametri del DSS modificato",
+        "for":"per",
+        "on":"su",
+        "Data_is_updating":"Aggiornamento dati",
+        "Please_wait":"Attendere prego"
     }
 }

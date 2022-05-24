@@ -10,12 +10,12 @@ import * as $ from 'jquery';
 import * as moment from "moment";
 
 @Component({
-  selector: "app-dss-model-parametrisation",
-  templateUrl: "./dss-model-parametrisation.component.html",
-  styleUrls: ["./dss-model-parametrisation.component.css"],
+  selector: "app-dss-model-parameterisation",
+  templateUrl: "./dss-model-parameterisation.component.html",
+  styleUrls: ["./dss-model-parameterisation.component.css"],
 })
 
-export class DssModelParametrisationComponent implements OnInit, OnDestroy {
+export class DssModelParameterisationComponent implements OnInit, OnDestroy {
   private historyStateData: any;
   public dssId: string; // Dss Owner Id (i.e no.nibio.vips)
   public dssModelId: string; // Model Id (i.e PSILARTEMP)
@@ -59,6 +59,7 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
           this.$subscriptionEditor.unsubscribe();
         }
         this.remoteCallLoading = false;
+        console.log("DATA:",data.body)
         this.editor = this._jsonEditorService.createJsonEditor('json-editor-form', data.body);
         $('#json-editor-form label').filter(function () { return $(this).text() === 'root'; }).css("display", "none");
         this.$subscriptionEditor = this._jsonEditorService.listenChanges(this.editor).subscribe(() => this.editorChanges());
@@ -92,7 +93,11 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
           if(e.nodeName === "LABEL") {
             var labelText:string = e.innerText;
             e.innerText = labelText.replace("(YYYY-MM-DD)", "");
-          } 
+          }
+          // DISABLE ALL FIELDS
+          /*$("input").each(function () {
+            $(this).attr('disabled', 'disabled');
+          });*/
         }
 
       }, () => {
@@ -178,20 +183,20 @@ export class DssModelParametrisationComponent implements OnInit, OnDestroy {
     this.historyStateData = history.state.data;
     this._route.paramMap.subscribe(params => this.id = params.get('dssId'));
     this.fillDataProperties();
-    sessionStorage.setItem("ParametrisationData",JSON.stringify(this.historyStateData));
-    sessionStorage.setItem("ParametrisationId", this.id);
+    sessionStorage.setItem("ParameterisationData",JSON.stringify(this.historyStateData));
+    sessionStorage.setItem("ParameterisationId", this.id);
     window.onbeforeunload = function(){
       sessionStorage.setItem("origin", window.location.href);
     }
   }
   private loadSessionStorageItems(): void {
-    this.historyStateData = JSON.parse(sessionStorage.getItem("ParametrisationData"));
-    this.id = sessionStorage.getItem("ParametrisationId");
+    this.historyStateData = JSON.parse(sessionStorage.getItem("ParameterisationData"));
+    this.id = sessionStorage.getItem("ParameterisationId");
     this.fillDataProperties();
   }
   private deleteSessionStorageItems(): void {
-    sessionStorage.removeItem("ParametrisationId");
-    sessionStorage.removeItem("ParametrisationData");
+    sessionStorage.removeItem("ParameterisationId");
+    sessionStorage.removeItem("ParameterisationData");
     if (sessionStorage.getItem("origin")) {
       sessionStorage.removeItem("origin");
     }

@@ -1,0 +1,330 @@
+<div class="row adaptationContainer">
+    <div class="col originalContainer">
+      <!-- ORIGINAL DSS PAGE BLOCK -->
+      <div class="row originalDssDetailContainer">
+        <!-- DSS DETAILS -->
+        <div class="col">
+          <div class="row">
+            <div class="col-md-6">
+              <label class="text-muted"><b>{{ 'DSS_adaptation.Original_parameters_label' | translate }}</b></label>
+            </div>
+            <div class="col-md-6">
+              <!-- DATASET FULL-SCREEN BUTTON FOR ORGINAL -->
+              <div class="fullScreenButtonDataset" [tooltip]="toolTipExpandTable">
+                <a (click)="openModal(expandedTableOriginal, 'modal-lg')">
+                  <i class="fas fa-expand light-blue-icon"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div id="paramFormOriginal" class="parametersFormContainer" (scroll)="updateScrollParameters()"
+                #originalParameters>
+                <div id="json-editor-form-original"></div>
+              </div>
+            </div>
+            <div class="col-md-6 pb-3">
+              <ng-template ngFor let-chartGroup [ngForOf]="originalDssChartGroups">
+                <div class="dataSetContainer" *ngIf="selectedOriginalDssChartGroup.id === chartGroup.id"
+                  (scroll)="updateScrollDataset()" #originalDataset>
+                  <table class="miniTable table-bordered text-muted">
+                    <tr>
+                      <th [title]="('DSS_adaptation.Day' | translate)">
+                        {{ 'DSS_adaptation.Day' | translate }}
+                      </th>
+                      <th *ngFor="let resultParams of chartGroup.resultParameters;" [title]="resultParams.title">
+                        {{ resultParams.title }}
+                      </th>
+                      <th [title]="('DSS_adaptation.Risk_score' | translate)">
+                        {{ 'DSS_adaptation.Risk_score' | translate }}
+                      </th>
+                    </tr>
+                    <tr *ngFor="let data of originalDssDetails.warningStatusLabels; let i = index;">
+                      <td [title]="data">
+                        {{data}}
+                      </td>
+                      <td *ngFor="let resultParams of chartGroup.resultParameters;" [title]="resultParams.data[i]">
+                        {{ resultParams.data[i] }}
+                      </td>
+                      <td [title]="originalDssDetails.warningStatusPerDay[i]">
+                        {{ originalDssDetails.warningStatusPerDay[i] }}
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </ng-template>
+            </div>
+
+            <div class="w-100"></div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col myHeading text-muted">{{ 'DSS_details.Risk_score' | translate }}</div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <custom-chart [data]="originalWarningChart.data" [labels]="originalWarningChart.labels"
+                    [config]="originalWarningChart.chartInformation">
+                  </custom-chart>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col myHeading text-muted">
+                  <select class="form-control text-muted selectionGroupChart"
+                    [ngModel]="selectedOriginalDssChartGroup" (ngModelChange)="onChangeChartGroup($event)"
+                    *ngIf="originalDssChartGroups.length > 1">
+                    <option *ngFor="let chartGroup of originalDssChartGroups" [ngValue]="chartGroup">{{
+                      chartGroup.title }}
+                    </option>
+                  </select>
+                  <span *ngIf="originalDssChartGroups.length == 1" class="text-muted selectionGroupChart">
+                    {{ originalDssChartGroups[0].title }}
+                  </span>
+                </div>
+              </div>
+              <div class="row" *ngFor="let chartGroup of originalDssChartGroups">
+                <div class="col" *ngIf="selectedOriginalDssChartGroup.id === chartGroup.id">
+                  <custom-group-chart [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col revisedContainer">
+      <div class="syncOverlay" *ngIf="isSyncronizing">
+        <div class="pb-3">{{ 'DSS_adaptation.Data_is_updating' | translate }} <br> {{ 'DSS_adaptation.Please_wait' | translate }}<br></div>
+        <i class="fas fa-sync fa-spin spinningArrows"></i> 
+      </div>
+      <!-- REVISED DSS PAGE BLOCK -->
+      <div class="row revisedDssDetailContainer">
+        <!-- DSS DETAILS -->
+        <div class="col">
+          <div class="row">
+            <div class="col-md-6">
+              <label class="text-muted"><b>{{ 'DSS_adaptation.Revised_parameters_label' | translate }}</b></label>
+              <!-- SAVE PARAMETER BUTTON -->
+              <div class="saveParametersButton" *ngIf="revisedEditorValid" [tooltip]="toolTipSaveParameters">
+                <a (click)="onSubmitRevisedParameters()">
+                  <i class="fas fa-save light-blue-icon"></i>
+                </a>
+              </div>
+              <div class="disabledPosition" *ngIf="!revisedEditorValid" [tooltip]="toolTipBannedSaveParameters">
+                <span class="fa-stack fa-1x">
+                  <i class="fas fa-save fa-stack-1x disabledSaveIcon"></i>
+                  <i class="fas fa-ban fa-stack-2x banIcon"></i>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <!-- DATASET FULL-SCREEN BUTTON FOR REVISED-->
+              <div class="fullScreenButtonDataset" [tooltip]="toolTipExpandTable">
+                <a (click)="openModal(expandedTableRevised, 'modal-lg')">
+                  <i class="fas fa-expand light-blue-icon"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 pb-3">
+              <div id="paramFormRevised" class="parametersFormContainer" (scroll)="updateScrollParameters()"
+                #revisedParameters>
+                <div id="json-editor-form-revised"></div>
+              </div>
+            </div>
+            <div class="col-md-6 pb-3">
+              <ng-template ngFor let-revChartGroup [ngForOf]="revisedDssChartGroups">
+                <div class="dataSetContainer" *ngIf="selectedRevisedDssChartGroup.id === revChartGroup.id"
+                  (scroll)="updateScrollDataset()" #revisedDataset>
+                  <table class="miniTable table-bordered text-muted">
+                    <tr>
+                      <th [title]="('DSS_adaptation.Day' | translate)">
+                        {{ 'DSS_adaptation.Day' | translate }}
+                      </th>
+                      <th *ngFor="let resultParams of revChartGroup.resultParameters;" [title]="resultParams.title">
+                        {{ resultParams.title }}
+                      </th>
+                      <th [title]="('DSS_adaptation.Risk_score' | translate)">
+                        {{ 'DSS_adaptation.Risk_score' | translate }}
+                      </th>
+                    </tr>
+                    <tr *ngFor="let data of revisedDssDetails.warningStatusLabels; let i = index;">
+                      <td [title]="data">
+                        {{data}}
+                      </td>
+                      <td *ngFor="let resultParams of revChartGroup.resultParameters;" [title]="resultParams.data[i]">
+                        {{ resultParams.data[i] }}
+                      </td>
+                      <td [title]="revisedDssDetails.warningStatusPerDay[i]">
+                        {{ revisedDssDetails.warningStatusPerDay[i] }}
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </ng-template>
+            </div>
+
+            <div class="w-100"></div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col myHeading text-muted">{{ 'DSS_details.Risk_score' | translate }}</div>
+              </div>
+              <div class="row">
+                <div class="col" *ngIf="showRevisedRiskChart">
+                  <custom-chart [data]="revisedWarningChart.data" [labels]="revisedWarningChart.labels"
+                    [config]="revisedWarningChart.chartInformation">
+                  </custom-chart>
+                </div>
+                <!-- USED TO SHOWING PREVIOUS DATA WHILE UPDATING -->
+                <div class="col" *ngIf="!showRevisedRiskChart">
+                  <custom-chart [data]="revisedWarningChart.data" [labels]="revisedWarningChart.labels"
+                    [config]="revisedWarningChart.chartInformation" [animation]="false">
+                  </custom-chart> 
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col myHeading text-muted">
+                  <select class="form-control text-muted selectionGroupChart" [ngModel]="selectedRevisedDssChartGroup"
+                    (ngModelChange)="onChangeChartGroup($event)" *ngIf="revisedDssChartGroups.length > 1">
+                    <option *ngFor="let chartGroup of originalDssChartGroups" [ngValue]="chartGroup">{{
+                      chartGroup.title }}
+                    </option>
+                  </select>
+                  <span *ngIf="revisedDssChartGroups.length == 1" class="text-muted selectionGroupChart">
+                    {{ revisedDssChartGroups[0].title }}
+                  </span>
+                </div>
+              </div>
+              <div class="row" *ngFor="let chartGroup of revisedDssChartGroups">
+                <div class="col" *ngIf="selectedRevisedDssChartGroup.id === chartGroup.id">
+                  <custom-group-chart [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPANDED ORIGINAL DATASET -->
+<ng-template #expandedTableOriginal>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">
+        <i class="modalTableIcon fa fa-table" aria-hidden="true"></i><b class="text-muted">{{
+          'DSS_adaptation.Parameters_table_original' | translate }}</b>
+      </h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body mr-4">
+      <div class="col">
+        <ng-template ngFor let-chartGroup [ngForOf]="originalDssChartGroups">
+          <div class="modalDatasetTable" *ngIf="selectedOriginalDssChartGroup.id === chartGroup.id">
+            <table class="expandedTable table-bordered text-muted">
+              <tr>
+                <th [title]="('DSS_adaptation.Day' | translate)">
+                  {{ 'DSS_adaptation.Day' | translate }}
+                </th>
+                <th *ngFor="let resultParams of chartGroup.resultParameters;" [title]="resultParams.title">
+                  {{ resultParams.title }}
+                </th>
+                <th [title]="('DSS_adaptation.Risk_score' | translate)">
+                  {{ 'DSS_adaptation.Risk_score' | translate }}
+                </th>
+              </tr>
+              <tr *ngFor="let data of originalDssDetails.warningStatusLabels; let i = index;">
+                <td [title]="data">
+                  {{data}}
+                </td>
+                <td *ngFor="let resultParams of chartGroup.resultParameters;" [title]="resultParams.data[i]">
+                  {{ resultParams.data[i] }}
+                </td>
+                <td [title]="originalDssDetails.warningStatusPerDay[i]">
+                  {{ originalDssDetails.warningStatusPerDay[i] }}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="modal-footer pull-right">
+      <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate
+        }}</button>
+    </div>
+  </ng-template>
+  
+  <!-- EXPANDED REVISED DATASET -->
+  <ng-template #expandedTableRevised>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">
+        <i class="modalTableIcon fa fa-table" aria-hidden="true"></i><b class="text-muted">{{
+          'DSS_adaptation.Parameters_table_revised' | translate }}</b>
+      </h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body mr-4">
+      <div class="col">
+        <ng-template ngFor let-chartGroup [ngForOf]="revisedDssChartGroups">
+          <div class="modalDatasetTable" *ngIf="selectedRevisedDssChartGroup.id === chartGroup.id">
+            <table class="expandedTable table-bordered text-muted">
+              <tr>
+                <th [title]="('DSS_adaptation.Day' | translate)">
+                  {{ 'DSS_adaptation.Day' | translate }}
+                </th>
+                <th *ngFor="let resultParams of chartGroup.resultParameters;" [title]="resultParams.title">
+                  {{ resultParams.title }}
+                </th>
+                <th [title]="('DSS_adaptation.Risk_score' | translate)">
+                  {{ 'DSS_adaptation.Risk_score' | translate }}
+                </th>
+              </tr>
+              <tr *ngFor="let data of revisedDssDetails.warningStatusLabels; let i = index;">
+                <td [title]="data">
+                  {{data}}
+                </td>
+                <td *ngFor="let resultParams of chartGroup.resultParameters;" [title]="resultParams.data[i]">
+                  {{ resultParams.data[i] }}
+                </td>
+                <td [title]="revisedDssDetails.warningStatusPerDay[i]">
+                  {{ revisedDssDetails.warningStatusPerDay[i] }}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="modal-footer pull-right">
+      <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate
+        }}</button>
+    </div>
+  </ng-template>
+  
+  <!-- TOOLTIPS SECTION -->
+  <ng-template #toolTipExpandTable>
+    {{'DSS_adaptation.Expand_table' | translate}}
+  </ng-template>
+  
+  <ng-template #toolTipSaveParameters>
+    {{'DSS_adaptation.Save_parameters' | translate}}
+  </ng-template>
+  
+  <ng-template #toolTipBannedSaveParameters>
+    {{'DSS_adaptation.Banned_save_parameters' | translate}}
+  </ng-template>

@@ -6,7 +6,6 @@ import { DssSelectionService } from "./dss-selection.service";
 import { NGXLogger } from "ngx-logger";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
-import * as $ from 'jquery';
 
 @Component({
     selector: "app-dss-comparison",
@@ -76,7 +75,9 @@ export class DssComparisonComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        
+        if(this.$startSubscription) {
+            this.$startSubscription.unsubscribe();
+        }
     }
 
     formInit() {

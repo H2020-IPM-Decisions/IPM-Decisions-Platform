@@ -286,7 +286,7 @@
           "Description":"BESKRIVELSE",
           "Warning_status_interpretation":"ADVARSEL STATUS TOLKNING"
       },
-      "DSS_model_parametrisation": {
+      "DSS_model_parameterisation": {
           "Title":"DSS-modellparametrisering",
           "Saved_parameters":"Lagrede parametere"
       }
