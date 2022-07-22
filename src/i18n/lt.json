@@ -54,7 +54,7 @@
         "Email_required":"E-mail is required",
         "Email_must_be_valid":"E-mail must be a valid email address",
         "Password_required":"Password is required",
-        "Password_must_be_at_least_6_characters_lenght":"Password must be at least 6 characters.",
+        "Password_must_be_at_least_6_characters_lenght":"Password must be at least 12 characters.",
         "Password_must_have_at_least_one_non_alphanumeric_character":"Password must have at least one non alphanumeric character ('!@#$%^&*()_+').",
         "Password_must_have_at_least_one_digit":"Password must have at least one digit ('0'-'9').",
         "User_type_required":"User Type is required",

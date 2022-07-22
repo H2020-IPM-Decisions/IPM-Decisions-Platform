@@ -47,6 +47,19 @@ export class MaprisksService {
 
         L.control.layers(baseMaps).addTo(m);*/
 
+        const searchControl = new esriGeo.Geosearch();
+        const results = new L.LayerGroup().addTo(m);
+
+    searchControl
+      .on("results", function (data) {
+        results.clearLayers();
+        console.log("LENG",data.results.length-1);
+        for (let i = data.results.length - 1; i >= 0; i--) {
+          results.addLayer(L.marker(data.results[i].latlng));
+        }
+      })
+      .addTo(m);
+
         if (!location) {
           location = {
             x: 25.3167,

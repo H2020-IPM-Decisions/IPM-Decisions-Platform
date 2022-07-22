@@ -54,7 +54,7 @@
     "Email_required": "E-poštni naslov je obvezen",
     "Email_must_be_valid": "E-poštni naslov mora biti veljaven",
     "Password_required": "Zahtevano je geslo",
-    "Password_must_be_at_least_6_characters_lenght": "Geslo mora vsebovati najmanj 6 znakov",
+    "Password_must_be_at_least_6_characters_lenght": "Geslo mora vsebovati najmanj 12 znakov",
     "Password_must_have_at_least_one_non_alphanumeric_character": "Geslo mora vsebovati vsaj en znak, ki ni alfanumeričen ('!@#$%^&*()_+')",
     "Password_must_have_at_least_one_digit": "Geslo mora vsebovati vsaj eno številko ('0':'9')",
     "User_type_required": "Zahtevana je vrsta uporabnika",

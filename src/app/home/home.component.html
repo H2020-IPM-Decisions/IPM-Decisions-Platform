@@ -32,6 +32,16 @@
   </div>
 </div>
 
+<!-- In development banner -->
+  <div class="developmentBanner" *ngIf = "showDevBanner">
+    <h2><i class='bx bx-wrench backgroundIcon'></i> IN DEVELOPMENT <i class='bx bx-wrench backgroundIcon'></i></h2>
+    <p>
+      This web platform is currently in development and will be updated without warning, potentially resulting in the loss of information or errors. 
+We strongly recommend that you do not use this platform ahead of its release date, which is currently scheduled for 19th September 2022.
+<br><br><span class="linkText" (click)="hideDevBanner()">Hide this banner</span>
+    </p>
+  </div>
+
 <!-- ======= Header ======= -->
 <header id="header" class=" bannerHeader fixed-top">
   <div class="container d-flex align-items-center">
@@ -176,10 +186,13 @@
             <a href="https://ipmworks.net/" target="_blank">https://ipmworks.net/</a>
             <br>
             <a href="https://platform.smartprotect-h2020.eu/"
-              target="_blank">https://platform.smartprotect-h2020.eu/</a>
+              target="_blank">https://platform.smartprotect-h2020.eu/</a> 
             <!--<p>https://bdspublishing.com/resources/ipm-decisions/</p>
             <p>https://ipmworks.net/</p>
             <p>https://platform.smartprotect-h2020.eu/</p>-->
+            <br>
+            <a href="https://www.effispray.com/"
+              target="_blank">https://www.effispray.com/</a>
             <br>
           </div>
         </div>

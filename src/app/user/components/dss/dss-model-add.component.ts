@@ -11,6 +11,8 @@ import { Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { NGXLogger } from "ngx-logger";
 import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
+import { ICountryCode } from './../../../shared/interfaces/country-code.interface';
+import * as isoConverter from 'iso-3166-1';
 
 @Component({
   selector: "app-dss-model-add",
@@ -25,6 +27,9 @@ export class DssModelAddComponent implements OnInit {
   selectedDss: IDssFormData[] = [];
   data: DssSelection[] = [];
   cropsEppoCodes: EppoCode[] = [];
+  countries: ICountryCode[] = [];
+  countryFilterActive: boolean = false;
+  selectedCountry: string = "";
   $subscription?: Subscription;
 
   constructor(
@@ -44,7 +49,7 @@ export class DssModelAddComponent implements OnInit {
     this.$subscription = this._activatedRoute.data.subscribe(({ farm }) => {
       this.farm = farm;
     });
-    
+    this.countries = isoConverter.all();
   }
 
   formInit() {
@@ -84,22 +89,45 @@ export class DssModelAddComponent implements OnInit {
   onConfirmSelectedCrops(): void {
     let cropsSelectedArray: string[] = this.selCropForm.get('cropSelection').get('cropEppoCode').value;
     const crops: string = cropsSelectedArray.join('%2C')
-    this._dssSelectionService.getDssByMultipleCrops(crops).subscribe(
-      (response: HttpResponse<DssSelection[]>) => {
-        this.data = response.body;
-        if(this.data.length > 0) {
-          this.areCropsSelected = true;
-          this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
-        } else {
-          this.areCropsSelected = false;
-          this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_avaiability_error","Common_labels.Warning","toast-warning");
+    if (this.countryFilterActive && (this.selectedCountry != "")) {
+      this._dssSelectionService.getDssByMultipleCropsAndFarmLocationFilteredByCountry(crops,this.farm.location.y,this.farm.location.x,this.selectedCountry).subscribe(
+        (response: HttpResponse<DssSelection[]>) => {
+          this.data = response.body;
+          this.removeWxNotValidatedDSS(this.data);
+          if(this.data.length > 0) {
+            this.areCropsSelected = true;
+            
+            this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
+          } else {
+            this.areCropsSelected = false;
+            this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_avaiability_error","Common_labels.Warning","toast-warning");
+          }
+        },
+        (error: HttpErrorResponse) => {
+          this._logger.error("Dss models selection error",error);
+          this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_retrived_error","Common_labels.Error","toast-error");
         }
-      },
-      (error: HttpErrorResponse) => {
-        this._logger.error("Dss models selection error",error);
-        this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_retrived_error","Common_labels.Error","toast-error");
-      }
-    );
+      );
+    } else {
+      this._dssSelectionService.getDssByMultipleCropsAndFarmLocation(crops,this.farm.location.y,this.farm.location.x).subscribe(
+        (response: HttpResponse<DssSelection[]>) => {
+          this.data = response.body;
+          this.removeWxNotValidatedDSS(this.data);
+          if(this.data.length > 0) {
+            this.areCropsSelected = true;
+            
+            this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
+          } else {
+            this.areCropsSelected = false;
+            this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_avaiability_error","Common_labels.Warning","toast-warning");
+          }
+        },
+        (error: HttpErrorResponse) => {
+          this._logger.error("Dss models selection error",error);
+          this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_retrived_error","Common_labels.Error","toast-error");
+        }
+      );
+    }
   }
 
   onSave() {
@@ -132,5 +160,43 @@ export class DssModelAddComponent implements OnInit {
 
   goBack(): void {
     window.history.back();
+  }
+
+  removeWxNotValidatedDSS(dssArray: DssSelection[]): void {
+    this._logger.debug("DSS LENGTH: ",dssArray.length);
+    for (let i:number = 0; i < dssArray.length; i++) {
+      this._logger.debug("MODELS LENGTH: ",dssArray[i].models.length);
+      if (dssArray[i].models.length > 0) {
+        for (let j:number = 0; j < dssArray[i].models.length; j++) {
+          this._logger.debug("MODEL NAME: ",dssArray[i].models[j].name);
+          this._logger.debug("MODEL WX VALIDATION: ",dssArray[i].models[j].weatherParametersValidated);
+          if (!dssArray[i].models[j].weatherParametersValidated) {
+            this._logger.debug("MODEL WX NOT VALID");
+            this._logger.info("Weather parameters not valid for the following model: ",dssArray[i].models[j].name);
+            this._toastrTranslated.showTranslatedToastrWithOptions("Warning_messages.Weather_parameters_not_avaiable","Common_labels.Warning","toast-warning",dssArray[i].models[j].name+": ",'');
+            dssArray[i].models.splice(j,1);
+            j--;
+            this._logger.debug("MODELS LENGTH: ",dssArray[i].models.length);
+          }
+        }
+        if (dssArray[i].models.length < 1){
+          dssArray.splice(i,1);
+          i--;
+          this._logger.debug("DSS LENGTH: ",dssArray.length);
+        }
+      } else {
+        dssArray.splice(i,1);
+        i--;
+        this._logger.debug("DSS LENGTH: ",dssArray.length);
+      }
+    }
+  }
+
+  onCheckboxChange():void {
+    this.countryFilterActive = !this.countryFilterActive;
+  }
+
+  countryFilterChange(event: { target: HTMLInputElement }):void {
+    this.selectedCountry = event.target.value;
   }
 }

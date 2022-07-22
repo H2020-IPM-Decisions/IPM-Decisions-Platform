@@ -6,10 +6,36 @@
     margin-top: -10px;
 }
 
-.btn-login {
+/*.btn-login {
     width: 100%;
     background: #1a1b1b;
     color: #fff !important;
+}*/
+
+.btn-login {
+    width: 100%;
+    background: #07b197;
+    color: #fff !important;
+}
+
+.btn-disabled {
+    background: #646464;
+    color: rgb(214, 214, 214) !important;
+}
+
+.required-input{
+    border: 2px solid #ff7300;
+    background-color: #ffec77;
+}
+
+.disabled-box {
+    pointer-events: none;
+    filter: grayscale(100%);
+}
+
+.box-content {
+    padding: 10px;
+    margin-bottom: 20px;
 }
 
 .userRoleInvalid {

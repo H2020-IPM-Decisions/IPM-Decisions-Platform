@@ -31,6 +31,16 @@ export class DssSelectionService {
     return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 
+  getDssByMultipleCropsAndFarmLocation(crops: string, lat: number, lon: number): Observable<HttpResponse<DssSelection[]>> {
+    const requestUrl = `${environment.apiUrl}/api/upr/dss/filter?cropCodes=${crops}&LocationLongitude=${lon}&LocationLatitude=${lat}&executionType=ONTHEFLY`;
+    return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
+  }
+
+  getDssByMultipleCropsAndFarmLocationFilteredByCountry(crops: string, lat: number, lon: number, country: string): Observable<HttpResponse<DssSelection[]>> {
+    const requestUrl = `${environment.apiUrl}/api/upr/dss/filter?cropCodes=${crops}&LocationLongitude=${lon}&LocationLatitude=${lat}&executionType=ONTHEFLY&country=${country}`;
+    return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
+  }
+
   getSchemaByDssAndModel(dss: DssSelection, model: DssModel): Observable<HttpResponse<DssJSONSchema>> {
     const requestUrl = `${environment.apiUrl}/api/dss/rest/model/${dss.id}/${model.id}/input_schema/ui_form`;
     return this._http.get<DssJSONSchema>(requestUrl, { observe: 'response' });
@@ -44,6 +54,11 @@ export class DssSelectionService {
   getSchemaByDssId(dssId: string): Observable<HttpResponse<DssJSONSchema>> {
     const requestUrl = `${environment.apiUrl}/api/upr/dss/${dssId}/parameters`;
     return this._http.get<DssJSONSchema>(requestUrl, { observe: 'response' });
+  }
+
+  getDefaultParameters(dssId: string): Observable<HttpResponse<string>> {
+    const requestUrl = `${environment.apiUrl}/api/upr/dss/${dssId}/defaultparameters`;
+    return this._http.get<string>(requestUrl, { observe: 'response' });
   }
 
   get(id: string): Observable<HttpResponse<IDssFlat>> {

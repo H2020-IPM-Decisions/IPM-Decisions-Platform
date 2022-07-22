@@ -25,9 +25,11 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="map" class="col-sm-3 col-form-label">{{ 'Add_Edit_farm.Farm_location' | translate }}</label>
+          <div class="col-sm-3 col-form-label">
+            <label for="map">{{ 'Add_Edit_farm.Farm_location' | translate }}</label>
+          </div>
           <div class="col-sm-9">
-            <div class="map-container" #map></div>
+            <div class="map-container" #map [ngClass]="{'disabledMap': mapLocked==true, 'enabledMap': mapLocked==false}"></div>
           </div>
         </div>
         <div class="row" *ngIf="!farm">
@@ -59,17 +61,19 @@
             </select>
           </div>
         </div>-->
+        <div class="row pt-3">
+          <div class="col-md-12">
+            <button class="btn btn-primary pull-right col-2 mx-2" type="submit" [disabled]="farmForm.invalid || isSaving">
+              <i class="fas fa-save"></i>
+              {{ 'Common_labels.Save' | translate }}</button>
+            <button class="btn btn-primary pull-right col-2 mx-2" *ngIf="farm && mapLocked==true" (click)="lockOrUnlockMap()"><i class="fa fa-unlock" aria-hidden="true"></i>  {{ 'Add_Edit_farm.Farm_unlock_location' | translate }} </button>
+            <button class="btn btn-primary pull-right col-2 mx-2 yellowBtn" *ngIf="farm && mapLocked==false" (click)="lockOrUnlockMap()"><i class="fa fa-lock" aria-hidden="true"></i>  {{ 'Add_Edit_farm.Farm_lock_location' | translate }} </button>
+            <button class="btn btn-info pull-right col-2" type="button" (click)="goBack()">
+              {{ 'Common_labels.Cancel' | translate }}</button>
+          </div>
+        </div>
       </fieldset>
       <app-edit-farm [farm]="farm" *ngIf="farm && farm.id"></app-edit-farm>
-      <div class="row pt-3">
-        <div class="col-md-12">
-          <button class="btn btn-primary pull-right col-2" type="submit" [disabled]="farmForm.invalid || isSaving">
-            <i class="fas fa-save"></i>&nbsp;
-            {{ 'Common_labels.Save' | translate }}</button>
-          <button class="btn btn-info pull-right col-2" type="button" (click)="goBack()">
-            {{ 'Common_labels.Cancel' | translate }}</button>
-        </div>
-      </div>
     </form>
   </div>
 </div>

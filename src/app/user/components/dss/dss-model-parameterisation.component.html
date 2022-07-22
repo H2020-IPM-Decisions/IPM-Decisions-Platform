@@ -86,8 +86,12 @@
           <i class="fas fa-save"></i>&nbsp;
           {{ 'Common_labels.Save' | translate }}
         </button>
+        <button class="btn btn-primary pull-right ml-1" (click)="onResetToDefault()">
+          <i class="fa fa-retweet"></i>&nbsp;
+          {{ 'DSS_model_parameterisation.Reset_to_default' | translate }}
+        </button>
         <button class="btn btn-info col-2 pull-right" type="button" (click)="goBack()">
-          {{ 'Common_labels.Cancel' | translate }}
+          {{ 'Common_labels.Close' | translate }}
         </button>
       </div>
     </div>

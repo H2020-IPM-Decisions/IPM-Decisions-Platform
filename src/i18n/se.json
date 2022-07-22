@@ -54,7 +54,7 @@
         "Email_required":"E-postadress krävs",
         "Email_must_be_valid":"E-post måste vara en giltig e-postadress",
         "Password_required":"Lösenord krävs",
-        "Password_must_be_at_least_6_characters_lenght":"Lösenordet måste bestå av minst 6 tecken.",
+        "Password_must_be_at_least_6_characters_lenght":"Lösenordet måste bestå av minst 12 tecken.",
         "Password_must_have_at_least_one_non_alphanumeric_character":"Lösenordet måste innehålla minst ett icke alfanumeriskt tecken ('!@#$%^&*()_+').",
         "Password_must_have_at_least_one_digit":"Lösenordet måste innehålla minst en siffra ('0'-'9').",
         "User_type_required":"Användarkategori krävs",

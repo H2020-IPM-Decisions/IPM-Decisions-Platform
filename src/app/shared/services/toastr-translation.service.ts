@@ -30,6 +30,16 @@ export class ToastrTranslationService {
         );
     }
 
+    public showTranslatedToastrWithOptions(messageKeyToTranslate: string, titleKeyToTranslate: string, toastrType: string, prefix?: string, suffix?: string): void {
+      this.initToastMessageTranslated(messageKeyToTranslate,titleKeyToTranslate);
+      this._toastr.show(
+          prefix + this.message + suffix,
+          this.title,
+          null,
+          toastrType
+      );
+  }
+
     private initToastMessageTranslated(messageKeyToTranslate: string, titleKeyToTranslate: string): void {
         this.subscriptionToastTranslation = this._translate.get(messageKeyToTranslate).pipe(
           switchMap((messageContent) => {

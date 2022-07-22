@@ -22,6 +22,6 @@ export interface ILanguages {
     nl?:string; //Dutch
     no?:string; //Norsk
     se?:string; //Swedish
-    si?:string; //Slovenian
+    sl?:string; //Slovenian
     la?:string; //Latin
 }

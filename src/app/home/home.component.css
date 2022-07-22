@@ -29,13 +29,13 @@
 
 .fa-play-circle {
   bottom: 10px;
-  left:50%;
+  left: 50%;
   transform: translateX(-50%);
 }
 
 .fa-pause-circle {
   bottom: 10px;
-  left:50%;
+  left: 50%;
   transform: translateX(50%);
 }
 
@@ -70,10 +70,10 @@
   color: #121212;
 }
 
- .cmsIntroduction h2 {
+.cmsIntroduction h2 {
   text-align: left;
   font-weight: 700;
-  color:#121212;
+  color: #121212;
 }
 
 .cmsIntroduction p {
@@ -107,13 +107,30 @@
   color: #767676;
 }
 
-@keyframes slideDown{
-  0% {transform: translateY(-100%);}
-  50% {transform: translateY(8%);}
-  65% {transform: translateY(-4%);}
-  80% {transform: translateY(4%);}
-  95% {transform: translateY(-2%);}
-  100% {transform: translateY(0%);}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  50% {
+    transform: translateY(8%);
+  }
+
+  65% {
+    transform: translateY(-4%);
+  }
+
+  80% {
+    transform: translateY(4%);
+  }
+
+  95% {
+    transform: translateY(-2%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
 }
 
 .warningIcon {
@@ -128,5 +145,45 @@
 .clickToExtend {
   cursor: pointer;
   color: rgb(82, 53, 252);
+  text-decoration: underline;
+}
+
+.developmentBanner {
+  position: fixed;
+  border: 2px solid #ffe600;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  z-index: 1030;
+  height: auto;
+  max-height: 50vh;
+  width: 30vw;
+  left: 1vw;
+  bottom: 3vh;
+  text-align: center;
+  background-color: white;
+  overflow-y: auto;
+}
+
+.developmentBanner h2 {
+  background-color: #ffe600;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: #767676;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.developmentBanner p {
+  
+  font-size: 0.8rem;
+  color: #767676;;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.developmentBanner .linkText {
+  cursor: pointer;
+  color: blue;
   text-decoration: underline;
 }

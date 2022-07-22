@@ -59,7 +59,7 @@
         "Email_required":"Απαταιτείται E-mail",
         "Email_must_be_valid":"Το E-mail πρέπει να είναι έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου",
         "Password_required":"Απαιτείται κωδικός",
-        "Password_must_be_at_least_6_characters_lenght":"Ο κωδικός πρόσβασης πρέπει να περιέχει τουλάχιστον 6 χαρακτήρες.",
+        "Password_must_be_at_least_6_characters_lenght":"Ο κωδικός πρόσβασης πρέπει να περιέχει τουλάχιστον 12 χαρακτήρες.",
         "Password_must_have_at_least_one_non_alphanumeric_character":"Ο κωδικός πρόσβασης πρέπει να περιέχει τουλάχιστον ένα μη αλφαρηθμιτικό χαρακτήρα ('!@#$%^&*()_+').",
         "Password_must_have_at_least_one_digit":"Ο κωδικός πρόσβασης πρέπει να έχει τουλάχιστον ένα ψηφίο ('0'-'9').",
         "User_type_required":"Απαιτείται τύπος χρήστη",

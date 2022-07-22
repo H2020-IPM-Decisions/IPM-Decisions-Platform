@@ -66,7 +66,7 @@
         "Email_required":"E-mail is required",
         "Email_must_be_valid":"E-mail must be a valid email address",
         "Password_required":"Password is required",
-        "Password_must_be_at_least_6_characters_lenght":"Password must be at least 6 characters.",
+        "Password_must_be_at_least_6_characters_lenght":"Password must be at least 12 characters.",
         "Password_must_have_at_least_one_non_alphanumeric_character":"Password must have at least one digit, one uppercase character and one non-alphanumeric character.",
         "Password_must_have_at_least_one_digit":"Password must have at least one digit ('0'-'9').",
         "User_type_required":"User Type is required",
@@ -96,7 +96,8 @@
         "DSS_comparison_model_retrived_error":"Fail to retrieve DSS data!",
         "DSS_adaptation_model_retrived_error":"Fail to retrive DSS data!",
         "DSS_adaptation_parameters_update_error":"DSS parameters update failed, an error occurs",
-        "DSS_adaptation_parameters_send_error":"DSS parameters send failed, an error occurs"
+        "DSS_adaptation_parameters_send_error":"DSS parameters send failed, an error occurs",
+        "DSS_parameters_reset_error":"Dss parameters reset failed, an error occurs"
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
@@ -122,14 +123,16 @@
         "Session_expired":"Your session is expired! Please refresh the page and log in again.",
         "DSS_adaptation_model_retrived":"DSS Data retrivied successfully!",
         "DSS_adaptation_parameters_updated":"DSS parameters updated!",
-        "DSS_adaptation_parameters_sent":"DSS parameters successfully sent!"
+        "DSS_adaptation_parameters_sent":"DSS parameters successfully sent!",
+        "DSS_parameters_reset":"DSS parameters have been reset to default values successfully!"
 
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"No DSS avaiable for the selected crops",
         "Not_enough_DSS_to_compare":"There are not enough DSS models to compare! Please add at least two models",
         "Farm_creation_warning_message":"The platform will start collecting weather data after the farm creation. This might take up to 2 hours.",
-        "No_DSS_to_adapt":"There are not any DSS model to adapt! Please add at least one model"
+        "No_DSS_to_adapt":"There are not any DSS model to adapt! Please add at least one model",
+        "Weather_parameters_not_avaiable":"This DSS model is not able to be run using available weather service! The DSS won't be listed."
     },
     "Countries": {
         "Austria":"Austria", 
@@ -190,7 +193,7 @@
         "User_type":"User Type",
         "Confirm_password":"Confirm Password",
         "Registration_confirmation":"Registration Confirmation",
-        "Password_sublabel":"Must be at least 6 characters, have one uppercase character, one digit and one non-alphanumeric character"
+        "Password_sublabel":"Must be at least 12 characters, have one uppercase character, one digit and one non-alphanumeric character"
     },
     "Terms_and_conditions": {
         "Accept_terms_and_conditions":"Accept Terms & Conditions"
@@ -260,7 +263,9 @@
         "Farm_name":"Farm name",
         "Farm_location":"Select farm location",
         "Nearest_met_station":"Nearest weather station",
-        "Weather_forecast_service":"Weather forecast service"
+        "Weather_forecast_service":"Weather forecast service",
+        "Farm_unlock_location":"Unlock map",
+        "Farm_lock_location":"Lock map"
     },
     "DSS_information_table": {
         "Title":"DSS Information Table",
@@ -329,11 +334,14 @@
         "Model_id":"MODEL ID",
         "Description":"DESCRIPTION",
         "Warning_status_interpretation":"WARNING STATUS INTERPRETATION",
-        "Model_name":"DSS"
+        "Model_name":"DSS",
+        "Filters":"Filters",
+        "Enable_country_filter":"Enable country filter"
     },
     "DSS_model_parameterisation": {
         "Title":"DSS Model Parameterisation",
-        "Saved_parameters":"Saved parameters"
+        "Saved_parameters":"Saved parameters",
+        "Reset_to_default":"Reset to default parameters"
     },
     "Resend_confirmation_email": {
         "Insert_your_account_email":"Insert your account email",

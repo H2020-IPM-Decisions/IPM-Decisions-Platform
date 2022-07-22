@@ -45,7 +45,26 @@
               </div>
             </fieldset>
           </div>
-
+          <div class="col-6">
+            <fieldset class="border p-3 m-3">
+              <legend class="w-auto px-1 text-muted h5">
+                <b>{{ 'DSS_model_selection.Filters' | translate }}</b>
+              </legend>
+              <div>
+                <input type="checkbox" [checked]="countryFilterActive" (change)="onCheckboxChange()" />
+                <label class="col-form-label p-1" for="countries">{{ 'DSS_model_selection.Enable_country_filter' | translate }}</label>
+                <select class="form-control" id="countries" (change)="countryFilterChange($event)" [disabled]="!countryFilterActive">
+                  <option hidden disabled selected value></option>
+                  <ng-template ngFor let-c [ngForOf]="countries">
+                    <option value="{{c.alpha3}}">{{ c.country }}</option>
+                  </ng-template>
+                </select>
+              </div>
+            </fieldset>
+            
+          </div>
+        </div>
+        <div class="row">
           <div *ngIf="areCropsSelected" class="col-12 mt-4">
             <fieldset class="border p-3 ml-3 mr-3 mb-3">
               <legend class="w-auto px-1 text-muted h5">

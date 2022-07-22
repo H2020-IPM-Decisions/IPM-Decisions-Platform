@@ -27,9 +27,11 @@ export class DssModelParameterisationComponent implements OnInit, OnDestroy {
   public editorValid: boolean = false;
   public remoteCallLoading: boolean = false;
   public dssParameters: any;
+  public defaultDssParameters: string;
 
   public $subscriptionEditor: Subscription;
   public $subscriptionSubmit: Subscription;
+  public $subscriptionDefaultParameters: Subscription;
   //public $subscriptionParameters: Subscription;
 
   constructor(
@@ -59,7 +61,7 @@ export class DssModelParameterisationComponent implements OnInit, OnDestroy {
           this.$subscriptionEditor.unsubscribe();
         }
         this.remoteCallLoading = false;
-        console.log("DATA:",data.body)
+        //console.log("DATA:",data.body)
         this.editor = this._jsonEditorService.createJsonEditor('json-editor-form', data.body);
         $('#json-editor-form label').filter(function () { return $(this).text() === 'root'; }).css("display", "none");
         this.$subscriptionEditor = this._jsonEditorService.listenChanges(this.editor).subscribe(() => this.editorChanges());
@@ -102,7 +104,14 @@ export class DssModelParameterisationComponent implements OnInit, OnDestroy {
 
       }, () => {
         this.remoteCallLoading = false;
-      })
+      });
+
+      if (this.$subscriptionDefaultParameters) {
+        this.$subscriptionDefaultParameters.unsubscribe();
+      }
+      this.$subscriptionDefaultParameters = this._dssSelectionService.getDefaultParameters(this.id).subscribe((data) => {
+        this.defaultDssParameters = data.body
+      });
     } catch (error) {
       this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_parameters_fetching_error","Common_labels.Error","toast-error");
       this._logger.error('Unable to fetch data:', error);
@@ -125,6 +134,9 @@ export class DssModelParameterisationComponent implements OnInit, OnDestroy {
     }
     if (this.$subscriptionSubmit) {
       this.$subscriptionSubmit.unsubscribe();
+    }
+    if (this.$subscriptionDefaultParameters) {
+      this.$subscriptionDefaultParameters.unsubscribe();
     }
     /*if (this.$subscriptionParameters) {
       this.$subscriptionParameters.unsubscribe();
@@ -157,6 +169,24 @@ export class DssModelParameterisationComponent implements OnInit, OnDestroy {
         }
       )
     }
+  }
+
+  public onResetToDefault(): void {
+      let inputParams: DssParameters = new DssParameters(JSON.stringify(this.defaultDssParameters));
+      this.$subscriptionSubmit = this._dssSelectionService.updateDssParameters(this.id, inputParams).subscribe(
+        (response) => {
+          if (response) {
+            this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_parameters_reset","Common_labels.Success","toast-success");
+            //setTimeout(() => this.goBack(), 5000);
+            //this.goBack();
+            location.reload();
+          } 
+        },
+        (error) => {
+          this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_parameters_reset_error","Common_labels.Error","toast-error");
+          this._logger.error("Operation Failed:",error);
+        }
+      );
   }
 
   goBack(): void {

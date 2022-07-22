@@ -59,7 +59,7 @@
     "Email_required": "Lisää sähköpostiosoite",
     "Email_must_be_valid": "Sähköpostiosoitteen tulee olla voimassa oleva",
     "Password_required": "Salasana tarvitaan",
-    "Password_must_be_at_least_6_characters_lenght": "Salasanan on oltava vähintään 6 merkkiä pitkä.",
+    "Password_must_be_at_least_6_characters_lenght": "Salasanan on oltava vähintään 12 merkkiä pitkä.",
     "Password_must_have_at_least_one_non_alphanumeric_character": "Salasanassa on oltava vähintään yksi ei-aakkosnumeerinen merkki ('!@#$%^&*()_+').",
     "Password_must_have_at_least_one_digit": "Salasanassa on oltava vähintään yksi numero ('0'-'9').",
     "User_type_required": "Käyttäjätyyppi vaaditaan",

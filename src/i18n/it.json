@@ -66,7 +66,7 @@
         "Email_required":"E-mail obbligatoria",
         "Email_must_be_valid":"L'indirizzo e-mail deve essere valido",
         "Password_required":"La password è obbligatoria",
-        "Password_must_be_at_least_6_characters_lenght":"La password deve essere di almeno 6 caratteri.",
+        "Password_must_be_at_least_6_characters_lenght":"La password deve essere di almeno 12 caratteri.",
         "Password_must_have_at_least_one_non_alphanumeric_character":"La password deve contenere almeno una lettera maiuscola, un numero ed un carattere non alfanumerico.",
         "Password_must_have_at_least_one_digit":"La password deve contenere almeno un numero ('0'-'9').",
         "User_type_required":"Il tipo di utente è obbligatorio",
@@ -96,7 +96,8 @@
         "DSS_comparison_model_retrived_error":"Impossibile ottenere i dati dei DSS!",
         "DSS_adaptation_model_retrived_error":"Impossibile ottenere i dati del DSS!",
         "DSS_adaptation_parameters_update_error":"Aggiornamento dei parametri del DSS fallito a causa di un errore",
-        "DSS_adaptation_parameters_send_error":"Invio dei parametri del DSS fallito a causa di un errore"
+        "DSS_adaptation_parameters_send_error":"Invio dei parametri del DSS fallito a causa di un errore",
+        "DSS_parameters_reset_error":"Reimpostazione dei parametri del DSS fallito a causa di un errore"
     },
     "Information_messages":{
         "Farm_deletion_message":"Stai per eliminare un'azienda agricola. Vuoi procedere?",
@@ -122,13 +123,15 @@
         "Session_expired":"La tua sessione è scaduta! Per favore, aggiorna la pagina e accedi nuovamente.",
         "DSS_adaptation_model_retrived":"Dati del DSS ottenuti con successo!",
         "DSS_adaptation_parameters_updated":"Parametri del DSS aggiornati!",
-        "DSS_adaptation_parameters_sent":"Parametri del DSS inviati correttamente!"
+        "DSS_adaptation_parameters_sent":"Parametri del DSS inviati correttamente!",
+        "DSS_parameters_reset":"I parametri del DSS sono stati ripristinati con successo ai valori predefiniti!"
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"Non ci sono DSS per le colture selezionate",
         "Not_enough_DSS_to_compare":"Non ci sono abbastanza modelli DSS da confrontare! Si prega di aggiungere almeno due modelli",
         "Farm_creation_warning_message":"La piattaforma inizierà a raccogliere dati meteorologici dopo la creazione dell'azienda agricola. L'operazione potrebbe richiedere fino a 2 ore.",
-        "No_DSS_to_adapt":"Non ci sono modelli DSS da adeguare! Si prega di aggiungere almeno un modello"
+        "No_DSS_to_adapt":"Non ci sono modelli DSS da adeguare! Si prega di aggiungere almeno un modello",
+        "Weather_parameters_not_avaiable":"Qeusto modello DSS non può essere eseguito con l'attuale servizio meteorologico! Il DSS non verrà visualizzato sulla lista."
     },
     "Countries": {
         "Austria":"Austria", 
@@ -189,7 +192,7 @@
         "User_type":"Tipo di utente",
         "Confirm_password":"Conferma password",
         "Registration_confirmation":"Registrazione confermata",
-        "Password_sublabel":"Deve essere di almeno 6 caratteri, contenere almeno una lettera maiuscola, un numero ed un carattere speciale"
+        "Password_sublabel":"Deve essere di almeno 12 caratteri, contenere almeno una lettera maiuscola, un numero ed un carattere speciale"
     },
     "Terms_and_conditions": {
         "Accept_terms_and_conditions":"Accetta Termini & Condizioni"
@@ -259,7 +262,9 @@
         "Farm_name":"Nome Azienda Agricola",
         "Farm_location":"Seleziona la posizione dell'azienda agricola",
         "Nearest_met_station":"Stazione meteo più vicina",
-        "Weather_forecast_service":"Servizio di previsioni del tempo"
+        "Weather_forecast_service":"Servizio di previsioni del tempo",
+        "Farm_unlock_location":"Sblocca mappa",
+        "Farm_lock_location":"Blocca mappa"
     },
     "DSS_information_table": {
         "Title":"Tabella delle informazioni su DSS",
@@ -328,11 +333,14 @@
         "Model_id":"ID MODELLO",
         "Description":"DESCRIZIONE",
         "Warning_status_interpretation":"INTERPRETAZIONE DELLO STATO DI AVVISO",
-        "Model_name":"DSS"
+        "Model_name":"DSS",
+        "Filters":"Filtri",
+        "Enable_country_filter":"Abilita filtro nazione"
     },
     "DSS_model_parameterisation": {
         "Title":"Parametrizzazione del modello DSS",
-        "Saved_parameters":"Parametri Salvati"
+        "Saved_parameters":"Parametri Salvati",
+        "Reset_to_default":"Reimposta parametri di default"
     },
     "Resend_confirmation_email":{
         "Insert_your_account_email":"Inserisci l'email del tuo account",

@@ -51,18 +51,18 @@
                       <i class="action-icon light-blue-icon size-11 fas fa-eye"></i>
                     </button>-->
 
+                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit" [title]="('Common_labels.Edit' | translate)" [routerLink]="[farm.id,'edit']">
+                      <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
+                    </button>
+
                     <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Copy" [title]="('Common_labels.Copy' | translate)"
                       routerLink="/user/farm/" (click)="onFarmCopy(farm)">
                       <i class="action-icon size-11 fas fa-copy"></i>
                     </button>
 
-                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit" [title]="('Common_labels.Edit' | translate)" [routerLink]="[farm.id,'edit']">
-                      <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
-                    </button>
-
                     <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Delete" [title]="('Common_labels.Delete' | translate)"
                       (click)="openModal(template)">
-                      <i class="action-icon size-11 fas fa-trash"></i>
+                      <i class="action-icon light-blue-icon size-11 fas fa-trash"></i>
                     </button>
 
                     <!-- delete farm modal -->

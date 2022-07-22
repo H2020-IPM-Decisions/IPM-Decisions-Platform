@@ -61,6 +61,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     }
   }
+  // !!! Temporary variable for development banner
+  showDevBanner: boolean = true;
 
   @Output() verified: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -267,5 +269,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.oberserableTimer();
       this.sessionIsExpired = false;
     });
+  }
+
+  public hideDevBanner(): void {
+    this.showDevBanner = false;
   }
 }

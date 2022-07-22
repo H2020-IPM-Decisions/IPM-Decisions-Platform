@@ -59,7 +59,7 @@
       "Email_required": "E-mail is vereist",
       "Email_must_be_valid": "E-mail moet een geldig e-mail adres zijn",
       "Password_required": "Wachtwoord is vereist",
-      "Password_must_be_at_least_6_characters_lenght": "Wachtwoord moet uit minstens 6 karakters bestaan.",
+      "Password_must_be_at_least_6_characters_lenght": "Wachtwoord moet uit minstens 12 karakters bestaan.",
       "Password_must_have_at_least_one_non_alphanumeric_character": "Wachtwoord moet ten minste één niet alfanumeriek teken bevatten ('!@#$%^&*()_+').",
       "Password_must_have_at_least_one_digit": "Wachtwoord moet uit ten minste één cijfer bestaan ('0'-'9').",
       "User_type_required": "Gebruikerstype is vereist",

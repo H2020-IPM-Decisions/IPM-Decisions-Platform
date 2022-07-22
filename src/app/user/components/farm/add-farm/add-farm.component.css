@@ -7,6 +7,20 @@
   word-wrap: break-word;
 }
 
+.disabledMap {
+  pointer-events:none;
+  border: 3px solid #16aaff;
+}
+
+.enabledMap {
+  pointer-events:all;
+  border: 3px solid #ffd416;
+}
+
+.yellowBtn {
+  border-color: #dfb80a;
+  background-color: #dfb80a;
+}
 /* 
 .centered-btn-icon {
   font-size: 1.2rem;

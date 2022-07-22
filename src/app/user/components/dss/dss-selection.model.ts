@@ -17,6 +17,7 @@ export interface DssModel {
     valid_spatial?:IDssModelValidSpatial;
     purpose?: string;
     authors?: IAuthors[];
+    weatherParametersValidated?: boolean;
 }
 
 export interface IDssModelValidSpatial {

@@ -43,6 +43,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit, OnDestroy {
   weatherHistoricalDtoList: WeatherDataSourceDto[] = [];
   weatherForecastDtoList: WeatherDataSourceDto[] = [];
   private browserLocation: Location;
+  mapLocked: boolean;
 
   constructor(
     private _fb: FormBuilder,
@@ -81,7 +82,15 @@ export class AddFarmComponent implements OnInit, AfterViewInit, OnDestroy {
               });
             }
           }
-      });    
+      }); 
+      
+      if(this.farm) {
+        this.mapLocked = true;
+        var mapControls = document.querySelector<HTMLElement>('.leaflet-control-container');
+        mapControls.style.display = 'none';
+      } else {
+        this.mapLocked = false;
+      }
   }
 
   ngAfterViewInit(): void {
@@ -111,6 +120,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit, OnDestroy {
         this.farm.location.address = data
         this._maprisksService.addMarker(this.map, initFarmLocation);
       });
+      document.querySelector<HTMLElement>('.leaflet-control-container').style.display = 'none';
     } else {
       this._maprisksService.addMarker(this.map, initFarmLocation);
     }
@@ -248,6 +258,15 @@ export class AddFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     if (this.$farmSubmitSubscription) {
       this.$farmSubmitSubscription.unsubscribe();
+    }
+  }
+
+  lockOrUnlockMap():void {
+    this.mapLocked = !this.mapLocked;
+    if (this.mapLocked) {
+      document.querySelector<HTMLElement>('.leaflet-control-container').style.display = 'none';
+    } else {
+      document.querySelector<HTMLElement>('.leaflet-control-container').style.display = 'block';
     }
   }
 

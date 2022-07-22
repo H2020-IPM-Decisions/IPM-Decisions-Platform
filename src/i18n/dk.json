@@ -59,7 +59,7 @@
       "Email_required": "Email er påkrævet",
       "Email_must_be_valid": "E-mail skal være en gyldig e-mailadresse",
       "Password_required": "Adgangskode er påkrævet",
-      "Password_must_be_at_least_6_characters_lenght": "Adgangskode skal være mindst 6 tegn.",
+      "Password_must_be_at_least_6_characters_lenght": "Adgangskode skal være mindst 12 tegn.",
       "Password_must_have_at_least_one_non_alphanumeric_character": "Adgangskoden skal indeholde mindst ét ikke-alfanumerisk tegn ('!@#$%^&*()_+')",
       "Password_must_have_at_least_one_digit": "Adgangskoden skal indeholde mindst ét tal ('0'-'9').",
       "User_type_required": "Brugertype er påkrævet",

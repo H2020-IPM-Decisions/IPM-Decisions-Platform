@@ -36,7 +36,7 @@ export class AdminAccountEditComponent implements OnInit {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         email: [this.authenticationService.currentUserValue.email, 
-          [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]
+          [Validators.required, Validators.pattern("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$")]
         ],
         phoneNumber: ['', Validators.required],
         // password: ['', [

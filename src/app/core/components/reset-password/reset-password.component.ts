@@ -63,8 +63,8 @@ import { Subscription } from 'rxjs';
             newPassword: ['',
               [
                 Validators.required,
-                Validators.minLength(6),
-                Validators.pattern("^(?=(?:[^a-z]*[a-z]))(?=.*[A-Z])(?=(?:[^0-9]*[0-9]))(?=.*[!-\/:-@\[-`{-~]).{6,}$")
+                Validators.minLength(12),
+                Validators.pattern("^(?=(?:[^a-z]*[a-z]))(?=.*[A-Z])(?=(?:[^0-9]*[0-9]))(?=.*[!-\/:-@\[-`{-~]).{12,}$")
               ]],
             confirmPassword: ['', Validators.required]
           },

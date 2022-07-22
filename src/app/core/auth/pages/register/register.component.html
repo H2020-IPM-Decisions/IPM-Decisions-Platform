@@ -1,6 +1,7 @@
 <div *ngIf="!termsAccepted">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="registrazione">
-    <div class="form-row">
+    <div class="form-row box-content" 
+    [ngClass]="{'required-input': (registerForm.valid == false) && (f.userType.errors)}">
       <label>{{ 'Register.User_type' | translate }}</label> 
       <div class=" form-group col-12">
         <div class="rolebox" *ngFor="let role of userTypes; let i=index">
@@ -24,9 +25,11 @@
       </div>-->
     </div>
 
-    <div class="form-group">
+    <div class="form-group box-content" 
+    [ngClass]="{'required-input': (registerForm.valid == false) && (!f.userType.errors) && (f.email.errors),
+                'disabled-box': (registerForm.valid == false) && (f.userType.errors)}">
       <label>{{ 'Common_labels.Email' | translate }}</label>
-      <input type="text" formControlName="email" class="form-control"
+      <input [readonly]="f.userType.errors" type="text" formControlName="email" class="form-control"
         [ngClass]="{ 'is-invalid': f.email.errors && f.email.touched }" />
       <div *ngIf="f.email.errors && f.email.touched" class="invalid-feedback">
         <div *ngIf="f.email.errors.required">{{ 'Error_messages.Email_required' | translate }}</div>
@@ -34,10 +37,12 @@
       </div>
     </div>
 
-    <div class="form-row">
+    <div class="form-row box-content" 
+    [ngClass]="{'required-input': (registerForm.valid == false) && (!f.email.errors && !f.userType.errors) && ((f.password.errors || f.confirmPassword.errors)),
+                'disabled-box': (registerForm.valid == false) && (f.email.errors || f.userType.errors)}">
       <div class="form-group col">
         <label>{{ 'Common_labels.Password' | translate }}</label>
-        <input type="password" formControlName="password" class="form-control"
+        <input [readonly]="f.email.errors || f.userType.errors" type="password" formControlName="password" class="form-control"
           [ngClass]="{ 'is-invalid': f.password.errors && f.password.touched }" />
 
         <div *ngIf="f.password.errors && f.password.touched" class="invalid-feedback">
@@ -52,7 +57,7 @@
       </div>
       <div class="form-group col">
         <label>{{ 'Register.Confirm_password' | translate }}</label>
-        <input type="password" formControlName="confirmPassword" class="form-control"
+        <input [readonly]="f.email.errors || f.userType.errors" type="password" formControlName="confirmPassword" class="form-control"
           [ngClass]="{ 'is-invalid': f.confirmPassword.errors && f.confirmPassword.touched }" />
         <div *ngIf="f.confirmPassword.errors && f.confirmPassword.touched" class="invalid-feedback">
           <div *ngIf="f.confirmPassword.errors.required">
@@ -69,7 +74,7 @@
     </div>
 
     <div class="text-center">
-      <button [disabled]="!registerForm.valid" class="btn btn-login btn-block">{{ 'Common_labels.Register' | translate
+      <button [disabled]="!registerForm.valid" class="btn btn-block" [ngClass]="{'btn-disabled': registerForm.valid == false, 'btn-login': registerForm.valid == true}">{{ 'Common_labels.Register' | translate
         }}</button>
     </div>
   </form>

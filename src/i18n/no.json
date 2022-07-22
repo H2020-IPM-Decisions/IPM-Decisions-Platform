@@ -54,7 +54,7 @@
       "Email_required": "E-post er påkrevd",
       "Email_must_be_valid": "E-post må være en gyldig e-postadresse",
       "Password_required": "Passord er påkrevd",
-      "Password_must_be_at_least_6_characters_lenght": "Passordet må være på minst 6 tegn.",
+      "Password_must_be_at_least_6_characters_lenght": "Passordet må være på minst 12 tegn.",
       "Password_must_have_at_least_one_non_alphanumeric_character": "Passordet må ha minst ett ikke-alfanumerisk tegn ('!@#$%^&*()_+').",
       "Password_must_have_at_least_one_digit": "Passordet må ha minst ett siffer ('0''9').",
       "User_type_required": "Brukertype er påkrevd",

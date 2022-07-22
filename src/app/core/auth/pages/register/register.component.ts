@@ -90,12 +90,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
       {
         userType: this.formBuilder.array([], [Validators.required]),
         //userType: ['', Validators.required],
-        email: ['', [Validators.required, Validators.pattern("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")]],
+        email: ['', [Validators.required, Validators.pattern("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$")]],
         password: ['',
           [
             Validators.required,
-            Validators.minLength(6),
-            Validators.pattern("^(?=(?:[^a-z]*[a-z]))(?=.*[A-Z])(?=(?:[^0-9]*[0-9]))(?=.*[!-\/:-@\[-`{-~]).{6,}$")
+            Validators.minLength(12),
+            Validators.pattern("^(?=(?:[^a-z]*[a-z]))(?=.*[A-Z])(?=(?:[^0-9]*[0-9]))(?=.*[!-\/:-@\[-`{-~]).{12,}$")
           ]],
         confirmPassword: ['', Validators.required]
       },
