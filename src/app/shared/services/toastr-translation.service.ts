@@ -32,10 +32,13 @@ export class ToastrTranslationService {
 
     public showTranslatedToastrWithOptions(messageKeyToTranslate: string, titleKeyToTranslate: string, toastrType: string, prefix?: string, suffix?: string): void {
       this.initToastMessageTranslated(messageKeyToTranslate,titleKeyToTranslate);
+      this._toastr.toastrConfig.preventDuplicates = true;
       this._toastr.show(
           prefix + this.message + suffix,
           this.title,
-          null,
+          { disableTimeOut: true,
+            closeButton: true
+          },
           toastrType
       );
   }

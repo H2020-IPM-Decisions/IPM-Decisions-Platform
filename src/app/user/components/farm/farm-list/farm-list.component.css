@@ -5,3 +5,7 @@
 .hover-pointer:hover {
   cursor: pointer;
 }
+
+.fa-plus-circle{
+  color:white;
+}

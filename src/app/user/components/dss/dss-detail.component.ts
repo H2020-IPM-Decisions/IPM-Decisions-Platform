@@ -56,7 +56,8 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   }
 
   goBack(): void {
-    window.history.back();
+    //window.history.back();
+    this._router.navigate(['/user/dss/dashboard'],{ fragment: this.dssDetail.farmId });
   }
 
   delete(): void{
@@ -95,6 +96,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
           dssModelId: this.dssDetail.dssModelId,
           dssModelName: this.dssDetail.dssModelName,
           farmName: this.dssDetail.farmName,
+          farmId: this.dssDetail.farmId,
           dssDetailPage: true
         }
       }

@@ -30,16 +30,10 @@
                   <div class="col-sm-11">
                     <select multiple class="form-control" id="crops" formControlName="cropEppoCode">
                       <ng-template ngFor let-crop [ngForOf]="cropsEppoCodes">
-                        <option value="{{crop.code}}">{{ crop.code | eppoCode }}</option>
+                        <!--<option value="{{crop.code}}">{{ crop.code | eppoCode }}</option>-->
+                        <option value="{{crop.code}}">{{ crop.text }}</option>
                       </ng-template>
                     </select>
-                    <span>
-                      <small class="col-2 pull-left mt-2" [innerHtml]="( 'DSS_model_selection.Multiselect_tip' | translate )"></small>
-                      <button class="btn btn-info btn-sm pull-right mt-2 col-3" (click)="onConfirmSelectedCrops()"
-                      [disabled]="!selCropForm.get('cropSelection').get('cropEppoCode').valid">
-                      {{ 'DSS_model_selection.Show_DSS' | translate }}
-                    </button>
-                    </span>
                   </div>
                 </div>
               </div>
@@ -51,17 +45,20 @@
                 <b>{{ 'DSS_model_selection.Filters' | translate }}</b>
               </legend>
               <div>
-                <input type="checkbox" [checked]="countryFilterActive" (change)="onCheckboxChange()" />
-                <label class="col-form-label p-1" for="countries">{{ 'DSS_model_selection.Enable_country_filter' | translate }}</label>
+                <input class= "mr-2" type="checkbox" [checked]="countryFilterActive" (change)="onCheckboxChange()" />
+                <label class="countryFilterLabel col-form-label p-1" for="countries">{{ 'DSS_model_selection.Enable_country_filter' | translate }}</label>
                 <select class="form-control" id="countries" (change)="countryFilterChange($event)" [disabled]="!countryFilterActive">
                   <option hidden disabled selected value></option>
                   <ng-template ngFor let-c [ngForOf]="countries">
-                    <option value="{{c.alpha3}}">{{ c.country }}</option>
+                    <option value="{{c.code}}">{{ c.name }}</option>
                   </ng-template>
                 </select>
               </div>
             </fieldset>
-            
+            <button class="btn btn-info btn-sm pull-right m-4 col-3" (click)="onConfirmSelectedCrops()"
+                      [disabled]="!selCropForm.get('cropSelection').get('cropEppoCode').valid">
+                      {{ 'DSS_model_selection.Show_DSS' | translate }}
+            </button>
           </div>
         </div>
         <div class="row">
@@ -78,7 +75,7 @@
                         <th class="text-center col-3">{{ 'DSS_model_selection.Crop_name' | translate }}</th>
                         <th class="text-center col-3">{{ 'DSS_model_selection.Pest_name' | translate }}</th>
                         <th class="text-center col-3">{{ 'DSS_model_selection.Model_name' | translate }}</th>
-                        <th class="text-center">{{ 'DSS_model_selection.DSS_name' | translate }}</th>
+                        <th class="text-center col-3">{{ 'DSS_model_selection.DSS_name' | translate }}</th>
                         <th class="text-center"></th>
                       </tr>
                     </thead>

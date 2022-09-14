@@ -7,7 +7,7 @@
     font-size: smaller;
     position: absolute;
     white-space: normal;
-    display: none;
+    display: block;
 }
 
 .euFlag {
@@ -51,6 +51,7 @@
     padding-top: 20px;
     padding-left: 14px;
     padding-right: 24px;
+    z-index: 1;
   }
 
   .mySidebar .vertical-nav-menu li a {

@@ -61,6 +61,11 @@ export class DssSelectionService {
     return this._http.get<string>(requestUrl, { observe: 'response' });
   }
 
+  getCountries(): Observable<HttpResponse<string[]>> {
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/countries`;
+    return this._http.get<string[]>(requestUrl, { observe: 'response' });
+  }
+
   get(id: string): Observable<HttpResponse<IDssFlat>> {
     let requestUrl = `${environment.apiUrl}/api/upr/dss/${id}`;
     return this._http.get<IDssFlat>(requestUrl, {

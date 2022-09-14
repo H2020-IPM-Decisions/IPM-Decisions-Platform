@@ -86,6 +86,7 @@ export class EppoCodeBadgeComponent {
               dssModelId: this.dssDetail.dssModelId,
               dssModelName: this.dssDetail.dssModelName,
               farmName: this.dssDetail.farmName,
+              farmId: this.dssDetail.farmId,
               dssDetailPage: true
             }
           }

@@ -22,11 +22,11 @@
         <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
     </a>
 </td>
-<!-- SOURCE COLUMN -->
+ <!--SOURCE COLUMN -->
 <td class="text-center">
-    {{ dssSelection.name }}
+    <!--{{ dssSelection.name }}-->
     <div class="d-flex justify-content-center">
-        <span *ngFor="let code of countriesCodes" class="m-1 flag-icon flag-icon-{{code | countryAlpha2}}"></span>
+        <span *ngFor="let code of countriesCodes" class="m-1 flag-icon flag-icon-{{code | countryAlpha2}}" [title]="code | countryName"></span>
     </div>
 </td>
 <td class="text-center">

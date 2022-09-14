@@ -96,7 +96,11 @@
         <div class="col-md justify-content-center">
             <div class="alert text-muted"
               [ngClass]="{'alert-green': errorType==0, 'alert-warning': errorType==1, 'alert-danger': errorType==2}">
-                <strong>{{ errorMessage }}</strong>
+                <strong>
+                  {{ 'Error_messages.DSS_use_dashboard_error_standard_info' | translate }}
+                <br>
+                <br>{{ errorMessage }}
+                </strong>
             </div>
         </div>
       </div>

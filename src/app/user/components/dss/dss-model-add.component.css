@@ -2,3 +2,7 @@
     background: #dddddd;
     border-color: #dddddd;
 }
+
+.countryFilterLabel {
+    display: inline;
+}

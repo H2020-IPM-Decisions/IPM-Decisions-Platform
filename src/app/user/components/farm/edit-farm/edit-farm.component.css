@@ -33,6 +33,10 @@
   font-weight: bold;
 }
 
+.fa-plus-circle{
+  color:white;
+}
+
 /* .details:hover i.icon-toggle {
   visibility: visible;
 }

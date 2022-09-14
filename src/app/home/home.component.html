@@ -1,4 +1,4 @@
-<div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+<div id="topbar" class="d-none d-sm-flex align-items-center fixed-top">
   <div class="container d-flex">
     <!-- Session Bar -->
     <div *ngIf="isSessionExpiring() && isLoggedIn" class="sessionBarShow">
@@ -32,7 +32,7 @@
   </div>
 </div>
 
-<!-- In development banner -->
+<!-- In development banner 
   <div class="developmentBanner" *ngIf = "showDevBanner">
     <h2><i class='bx bx-wrench backgroundIcon'></i> IN DEVELOPMENT <i class='bx bx-wrench backgroundIcon'></i></h2>
     <p>
@@ -40,7 +40,7 @@
 We strongly recommend that you do not use this platform ahead of its release date, which is currently scheduled for 19th September 2022.
 <br><br><span class="linkText" (click)="hideDevBanner()">Hide this banner</span>
     </p>
-  </div>
+  </div>-->
 
 <!-- ======= Header ======= -->
 <header id="header" class=" bannerHeader fixed-top">
@@ -106,7 +106,7 @@ We strongly recommend that you do not use this platform ahead of its release dat
         <div class="col-md-6 no-padd">
           <div class="container" data-aos="fade-up" [style.padding-top]="'47px'">
             <div class="row">
-              <div class="col-md-5 col-lg-5">
+              <div class="col-md-4 col-lg-5">
                 <a routerLink="/farmer-advisor-article">
                   <div class="icon-box" data-aos="fade-up" data-aos-delay="100" style="margin: 0 auto;">
                     <div class="icon">
@@ -117,7 +117,7 @@ We strongly recommend that you do not use this platform ahead of its release dat
                 </a>
               </div>
 
-              <div class="col-md-3 col-lg-3">
+              <div class="col-md-4 col-lg-3">
                 <a routerLink="/research-article">
                   <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                     <div class="icon">
@@ -220,12 +220,9 @@ We strongly recommend that you do not use this platform ahead of its release dat
   <div class="container py-4">
     <div class="row">
       <div class="col-md-5 eu-flag">
-        <p>{{ 'Common_labels.Project_lead' | translate }}: Neil Paveley (neil.paveley@adas.co.uk)</p>
-        <p>{{ 'Common_labels.Technical_contacts' | translate }}: Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
-        <p>Tor-Einar Skog (tor-einar.skog@nibio.no)</p>
-        <img src="img/logo-euro.jpg" style="float: left;
-display: inline-grid;
-margin-right: 5px;">
+        <p>{{ 'Common_labels.EU_footer_further_information' | translate }} <a href="mailto:contacts@ipmdecisions.net" target="_blank">contacts@ipmdecisions.net</a>.</p>
+        <p>{{ 'Common_labels.EU_footer_further_details_on_project' | translate }} <a href="https://www.ipmdecisions.net" target="_blank">https://www.ipmdecisions.net</a>.</p>
+        <img src="img/logo-euro.jpg" style="float: left; display: inline-grid; margin-right: 5px;">
         <p>
           {{ 'Common_labels.Cofundend_by_the_Horizon_2020' | translate }}
           <br>{{ 'Common_labels.Framework_programme' | translate }}

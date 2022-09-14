@@ -1,4 +1,4 @@
-<div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+<div id="topbar" class="d-none d-sm-flex align-items-center fixed-top">
   <div class="container d-flex">
     <!-- Session Bar -->
     <div *ngIf="isSessionExpiring() && isLoggedIn" class="sessionBarShow">
@@ -35,7 +35,7 @@
   <div class="container d-flex align-items-center">
       <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
 
-      <nav class="nav-menu d-none d-lg-block">
+      <nav class="ml-2 d-none d-sm-block"><!-- Removed nav-menu from class -->
           <ul>
               <li class="active"><a routerLink="/">{{ 'Common_labels.Home' | translate }}</a></li>
           </ul>
@@ -68,12 +68,9 @@
   <div class="container py-4">
     <div class="row">
       <div class="col-md-5 eu-flag">
-        <p>{{ 'Common_labels.Project_lead' | translate }}: Neil Paveley (neil.paveley@adas.co.uk)</p>
-        <p>{{ 'Common_labels.Technical_contacts' | translate }}: Dave Skirvin (Dave.Skirvin@adas.co.uk)</p>
-        <p>Tor-Einar Skog (tor-einar.skog@nibio.no)</p>
-        <img src="img/logo-euro.jpg" style="float: left;
-display: inline-grid;
-margin-right: 5px;">
+        <p>{{ 'Common_labels.EU_footer_further_information' | translate }} <a href="mailto:contacts@ipmdecisions.net" target="_blank">contacts@ipmdecisions.net</a>.</p>
+        <p>{{ 'Common_labels.EU_footer_further_details_on_project' | translate }} <a href="https://www.ipmdecisions.net" target="_blank">https://www.ipmdecisions.net</a>.</p>
+        <img src="img/logo-euro.jpg" style="float: left; display: inline-grid; margin-right: 5px;">
         <p>
           {{ 'Common_labels.Cofundend_by_the_Horizon_2020' | translate }}
           <br>{{ 'Common_labels.Framework_programme' | translate }}

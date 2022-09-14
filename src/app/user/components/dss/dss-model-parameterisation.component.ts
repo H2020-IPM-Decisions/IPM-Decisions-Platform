@@ -21,6 +21,7 @@ export class DssModelParameterisationComponent implements OnInit, OnDestroy {
   public dssModelId: string; // Model Id (i.e PSILARTEMP)
   public dssModelName: string; // Model Name (i.e. carrots rust fly model)
   public farmName: string;
+  public farmId: string;
   public dssDetailPage?: boolean; // Redirect from dss details view component?
   public id: string; // Id of the selected Dss from farm edit (dssId from url)
   public editor: any;
@@ -52,7 +53,7 @@ export class DssModelParameterisationComponent implements OnInit, OnDestroy {
           this.deleteSessionStorageItems();
           this.setHistoryData();
       }
-      this._logger.debug("Data Fetch:", this.dssId, this.dssModelId, this.dssModelName, this.farmName, this.id, this.dssDetailPage);
+      this._logger.debug("Data Fetch:", this.dssId, this.dssModelId, this.dssModelName, this.farmName, this.farmId, this.id, this.dssDetailPage);
       this._dssSelectionService.getSchemaByDssId(this.id).subscribe((data) => {
         if (this.editor) {
           this._jsonEditorService.reset(this.editor);
@@ -194,7 +195,8 @@ export class DssModelParameterisationComponent implements OnInit, OnDestroy {
       this.deleteSessionStorageItems();
       window.history.back();
     } else {
-      this._router.navigateByUrl('/user/dss/dashboard');
+      //this._router.navigateByUrl('/user/dss/dashboard');
+      this._router.navigate(['/user/dss/dashboard'],{ fragment: this.farmId });
     }
   }
 
@@ -207,6 +209,7 @@ export class DssModelParameterisationComponent implements OnInit, OnDestroy {
     this.dssModelId = this.historyStateData.dssModelId;
     this.dssModelName = this.historyStateData.dssModelName;
     this.farmName = this.historyStateData.farmName;
+    this.farmId = this.historyStateData.farmId;
     this.dssDetailPage = this.historyStateData.dssDetailPage;
   }
   private setHistoryData(): void {

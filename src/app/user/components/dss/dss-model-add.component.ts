@@ -11,8 +11,8 @@ import { Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { NGXLogger } from "ngx-logger";
 import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
-import { ICountryCode } from './../../../shared/interfaces/country-code.interface';
-import * as isoConverter from 'iso-3166-1';
+import { CountryNamePipe } from "@app/shared/pipes/country-name.pipe";
+import { Country } from "@app/shared/models/country.model";
 
 @Component({
   selector: "app-dss-model-add",
@@ -27,10 +27,13 @@ export class DssModelAddComponent implements OnInit {
   selectedDss: IDssFormData[] = [];
   data: DssSelection[] = [];
   cropsEppoCodes: EppoCode[] = [];
-  countries: ICountryCode[] = [];
+  countries: Country[] = [];
+  countriesCodeList: string [] = [];
   countryFilterActive: boolean = false;
   selectedCountry: string = "";
+
   $subscription?: Subscription;
+  $countriesSubscription?: Subscription;
 
   constructor(
     private _fb: FormBuilder,
@@ -38,18 +41,31 @@ export class DssModelAddComponent implements OnInit {
     private _eppoCodeService: EppoCodeService,
     private _activatedRoute: ActivatedRoute,
     private _logger: NGXLogger,
-    private _toastrTranslated: ToastrTranslationService
+    private _toastrTranslated: ToastrTranslationService,
+    private _countryNamePipe: CountryNamePipe
   ) {}
 
   ngOnInit() {
     this.formInit();
     this._eppoCodeService.cachedRefreshableCrops$.subscribe(data=>{
-      this.cropsEppoCodes=data
+      this.cropsEppoCodes=data;
+      this.cropsEppoCodes = this.cropsEppoCodes.sort(function(a,b){
+        return a.text.localeCompare(b.text);
+      })
     });
     this.$subscription = this._activatedRoute.data.subscribe(({ farm }) => {
       this.farm = farm;
     });
-    this.countries = isoConverter.all();
+    this.$countriesSubscription = this._dssSelectionService.getCountries().subscribe((data) => {
+      this.countriesCodeList = data.body;
+      this.countriesCodeList.forEach((countryCode) =>{
+        let country: Country = new Country(countryCode, this._countryNamePipe.transform(countryCode))
+        this.countries.push(country);
+      });
+      this.countries = this.countries.sort(function(a,b){
+        return a.name.localeCompare(b.name);
+      });
+    });
   }
 
   formInit() {
@@ -135,6 +151,7 @@ export class DssModelAddComponent implements OnInit {
       this._dssSelectionService.submitDss(this.selectedDss,this.farm).subscribe(
         (response) => {
           if (response) {
+            this._toastrTranslated.showTranslatedToastrWithOptions("Information_messages.DSS_model_selection_default_timing","Common_labels.Info","toast-info","","");
             this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_added","Common_labels.Success","toast-success");
             this.goBack();
           }
@@ -155,6 +172,9 @@ export class DssModelAddComponent implements OnInit {
   ngOnDestroy() {
     if (this.$subscription) {
       this.$subscription.unsubscribe();
+    }
+    if (this.$countriesSubscription) {
+      this.$countriesSubscription.unsubscribe();
     }
   }
 

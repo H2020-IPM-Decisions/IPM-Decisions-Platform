@@ -5,6 +5,7 @@ import { Subscription } from "rxjs";
 import { IDssFlat } from "./dss-selection.model";
 import { DssSelectionService } from "./dss-selection.service";
 import { NGXLogger } from 'ngx-logger';
+import { ActivatedRoute } from '@angular/router';
 import * as moment from "moment";
 
 @Component({
@@ -22,13 +23,33 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   constructor(
     protected service: DssSelectionService,
     private _logger: NGXLogger,
+    private _activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
     // CALL  api/dss  fetch user's DSS list
     this.initData();
     // detail /api/dss/{id}
+    
+    // Scroll to farm section when back from detail page
+    this._activatedRoute.fragment.subscribe((value)=>{
+      if (value != null) {
+        let counter = 1;
+        let intervalId = setInterval(() => {
+          counter = counter - 1;
+          if(counter < 1) {
+            clearInterval(intervalId);
+            this.isSyncronizing = false;
+            this.jumpTo(value);
+          }
+        }, 300);
+      }
+    });
 
+  }
+
+  public jumpTo(section){
+    document.getElementById(section).scrollIntoView({behavior:'smooth'});
   }
 
   public gotData(): boolean {
@@ -39,7 +60,7 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   }
 
   private initData(): void {
-    let scheduledTimes: number[] = []; 
+    let scheduledTimes: number[] = [];
     this.remoteCallLoading = true;
     this.$startSubscription = this.service.getDssList().subscribe(
       (data: HttpResponse<IDssFlat[]>)=>{

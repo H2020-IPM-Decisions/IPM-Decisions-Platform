@@ -58,7 +58,9 @@
         "High":"Alto",
         "Warning_level":"livello d'allarme",
         "Seconds":"secondi",
-        "Click_here":"Clicca qui"
+        "Click_here":"Clicca qui",
+        "EU_footer_further_information":"Per ulteriori informazioni sulla piattaforma IPM Decisions o per segnalare eventuali problemi tecnici, inviare un'e-mail a",
+        "EU_footer_further_details_on_project":"Per ulteriori dettagli sul progetto europeo di sviluppo della piattaforma, consultare il sito web"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
@@ -97,7 +99,8 @@
         "DSS_adaptation_model_retrived_error":"Impossibile ottenere i dati del DSS!",
         "DSS_adaptation_parameters_update_error":"Aggiornamento dei parametri del DSS fallito a causa di un errore",
         "DSS_adaptation_parameters_send_error":"Invio dei parametri del DSS fallito a causa di un errore",
-        "DSS_parameters_reset_error":"Reimpostazione dei parametri del DSS fallito a causa di un errore"
+        "DSS_parameters_reset_error":"Reimpostazione dei parametri del DSS fallito a causa di un errore",
+        "DSS_use_dashboard_error_standard_info":"Il DSS ha restituito un avviso o un errore durante l'esecuzione. Il messaggio fornito dal DSS (nella lingua predefinita utilizzata dal DSS) era:"
     },
     "Information_messages":{
         "Farm_deletion_message":"Stai per eliminare un'azienda agricola. Vuoi procedere?",
@@ -124,7 +127,8 @@
         "DSS_adaptation_model_retrived":"Dati del DSS ottenuti con successo!",
         "DSS_adaptation_parameters_updated":"Parametri del DSS aggiornati!",
         "DSS_adaptation_parameters_sent":"Parametri del DSS inviati correttamente!",
-        "DSS_parameters_reset":"I parametri del DSS sono stati ripristinati con successo ai valori predefiniti!"
+        "DSS_parameters_reset":"I parametri del DSS sono stati ripristinati con successo ai valori predefiniti!",
+        "DSS_model_selection_default_timing":"I DSS sono stati aggiunti utilizzando le tempistiche predefinite per la produzione delle colture fornite dal proprietario del DSS. Potrebbe essere necessario modificarli utilizzando la funzione “Modifica parametri DSS” per riflettere accuratamente il proprio sistema di semina."
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"Non ci sono DSS per le colture selezionate",
@@ -299,7 +303,11 @@
         "Scheduled_time":"Orario pianificato",
         "Low_risk":"Basso rischio",
         "Medium_risk":"Medio rischio",
-        "High_risk":"Alto rischio"
+        "High_risk":"Alto rischio",
+        "Icons_info":"Informazioni sulle icone",
+        "Green_triangle_description":"L'errore non ha impedito l'esecuzione del modello e non influisce sull'affidabilità della previsione del rischio.",
+        "Yellow_triangle_description":"L'errore non ha impedito l'esecuzione del modello, ma riduce l'affidabilità della previsione del rischio.",
+        "Red_triangle_description":"Un errore ha impedito l'esecuzione del modello"
     },
     "DSS_details": {
         "Title":"Dettagli del DSS",
@@ -335,7 +343,7 @@
         "Warning_status_interpretation":"INTERPRETAZIONE DELLO STATO DI AVVISO",
         "Model_name":"DSS",
         "Filters":"Filtri",
-        "Enable_country_filter":"Abilita filtro nazione"
+        "Enable_country_filter":"Filtrare per nazione in cui il DSS è stato sviluppato e/o validato"
     },
     "DSS_model_parameterisation": {
         "Title":"Parametrizzazione del modello DSS",

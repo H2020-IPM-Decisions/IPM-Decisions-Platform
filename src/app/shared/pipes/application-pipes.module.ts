@@ -3,6 +3,7 @@ import { ModuleWithProviders, NgModule } from "@angular/core";
 import { CmsLinkPipe } from "./cms-link.pipe";
 import { EppoCodePipe } from "./eppo-code.pipe";
 import { CountryAlpha2CodePipe } from "./country-alpha2-code.pipe";
+import { CountryNamePipe } from "./country-name.pipe";
 
 @NgModule({
     imports: [
@@ -11,12 +12,17 @@ import { CountryAlpha2CodePipe } from "./country-alpha2-code.pipe";
     declarations: [
         CmsLinkPipe,
         EppoCodePipe,
-        CountryAlpha2CodePipe
+        CountryAlpha2CodePipe,
+        CountryNamePipe
     ],
     exports: [
         CmsLinkPipe,
         EppoCodePipe,
-        CountryAlpha2CodePipe
+        CountryAlpha2CodePipe,
+        CountryNamePipe
+    ],
+    providers: [
+        CountryNamePipe
     ]
 })
 export class ApplicationPipesModule {
