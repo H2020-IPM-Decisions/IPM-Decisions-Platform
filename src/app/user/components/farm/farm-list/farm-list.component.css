@@ -9,3 +9,8 @@
 .fa-plus-circle{
   color:white;
 }
+
+.btn-add {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}

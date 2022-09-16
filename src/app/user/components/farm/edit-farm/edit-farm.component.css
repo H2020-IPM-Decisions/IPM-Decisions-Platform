@@ -37,6 +37,11 @@
   color:white;
 }
 
+.btn-add {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
 /* .details:hover i.icon-toggle {
   visibility: visible;
 }

@@ -55,7 +55,7 @@ export class LanguageSelectorComponent implements OnInit, OnDestroy {
     */
     ngOnInit() {
       this.selectedCountryCode = this._translationService.getCurrentLanguage();
-      this.countryCodes = ['gb','it','gr','se',/*'fr',*/'de','nl','si','fi','no',/*'lt',*/'dk'];
+      this.countryCodes = ['gb','it','gr','se',/*'fr',*/'de','nl','si',/*'fi',*/'no',/*'lt',*/'dk'];
     }
 
     setLanguage(language: string): void {

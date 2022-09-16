@@ -46,7 +46,21 @@
       "Loading": "Laster",
       "Back": "Tilbake",
       "Select": "Velge",
-      "Deselect": "Fjern markeringen"
+      "Deselect": "Fjern markeringen",
+      "Resend_confirmation_email": "Send bekreftelses-epost på nytt",
+      "Warning": "Varsel",
+      "Researcher": "Forsker",
+      "Back_to_login": "Tilbake til logg inn",
+      "Info": "Info",
+      "Click_to_open": "Klikk for å åpne",
+      "Low": "Lav",
+      "Medium": "Medium",
+      "High": "Høy",
+      "Warning_level": "Varsel-nivå",
+      "Seconds": "Sekunder",
+      "Click_here": "Klikk her",
+      "EU_footer_further_information": "For mer informasjon relatert til IPM decisions platformen, eller for å rapportere tekniske problemer, vennligst send epost",
+      "EU_footer_further_details_on_project": "Flere detaljer om EU prosjektet som ligger til grunn for utvikling av platformen finnes på"
     },
     "Error_messages": {
       "An_unknown_error_occured": "Det oppstod en ukjent feil!",
@@ -80,70 +94,93 @@
       "DSS_model_add_error": "Kunne ikke sende inn de valgte modellene!",
       "DSS_model_combination_error": "Ingen DSS-modell er sendt inn, en DSS med valgt kombinasjon av avling/skadedyr eksisterer allerede",
       "DSS_parameters_update_error": "Oppdatering av DSS-parametere mislyktes, det oppstod en feil",
-      "DSS_parameters_fetching_error": "Kan ikke hente parameterdata"
+      "DSS_parameters_fetching_error": "Kan ikke hente parameterdata",
+      "DSS_comparison_model_retrived_error": "Kan ikke hente DSS data!",
+      "DSS_adaptation_model_retrived_error": "Kan ikke hente DSS data!",
+      "DSS_adaptation_parameters_update_error": "Oppdatering av DSS parameter mislyktes, det oppstod en feil",
+      "DSS_adaptation_parameters_send_error": "Sending av DSS parametere mislyktes, det oppstod en feil",
+      "DSS_parameters_reset_error": "Reset av DSS parametere mislyktes, det oppstod en feil",
+      "DSS_use_dashboard_error_standard_info": "Det oppstår en advarsel eller feil ved kjøring av DSS. Meldingen som gis fra DSS-en (på originalspråk) var:"
     },
     "Information_messages": {
-    "Farm_deletion_message": "Gården din kommer til å bli slettet. Er du sikker?",
-    "No_farms_avaiable": "Ingen gårder tilgjengelig.",
-    "Farm_copy_success": "Gården ble kopiert!",
-    "User_account_updated": "Brukerkontoen er oppdatert!",
-    "Farm_created": "Farm vellykket opprettet!",
-    "You_are_about_to_delete": "Du er i ferd med å slette",
-    "Are_you_sure": "Er du sikker?",
-    "No_model_available": "Ingen modell tilgjengelig.",
-    "No_DSS_available": "Ingen DSS tilgjengelig.",
-    "DSS_deletion": "DSS ble slettet!",
-    "No_DSS_available_please_add": "Ingen DSS tilgjengelig, vennligst legg til DSS-modeller i en gård ved å bruke Farm Management.",
-    "DSS_delete": "DSS  kommer til å bli slettet. Er du sikker?",
-    "DSS_models_retrived": "DSS-modeller ble hentet vellykket!",
-    "DSS_models_added": "DSS-modeller ble lagt til!",
-    "DSS_parameters_updated": "DSS-parametere oppdatert!"
-  },
-      "Countries":{
-          "Austria":"Østerrike",
-          "Belgium":"Belgia",
-          "Bulgaria":"Bulgaria",
-          "Croatia":"Kroatia",
-          "Republic_of_Cyprus":"Republikken Kypros",
-          "Czech_Republic":"Tsjekkisk Republikk",
-          "Denmark":"Danmark",
-          "Estonia":"Estland",
-          "Finland":"Finland",
-          "France":"Frankrike",
-          "Great_Britain":"Storbritannia",
-          "Germany":"Tyskland",
-          "Greece":"Hellas",
-          "Hungary":"Ungarn",
-          "Ireland":"Irland",
-          "Italy":"Italia",
-          "Latvia":"Latvia",
-          "Lithuania":"Litauen",
-          "Luxembourg":"Luxembourg",
-          "Malta":"Malta",
-          "Netherlands":"Nederland",
-          "Norway":"Norge",
-          "Poland":"Polen",
-          "Portugal":"Portugal",
-          "Romania":"Romania",
-          "Slovakia":"Slovakia",
-          "Slovenia":"Slovenia",
-          "Spain":"Spania",
-          "Sweden":"Sverige"
-      },
-    "Language_Selector":{
-      "Language":"Språk",
-      "English":"Engelsk",
-      "Italian":"Italiensk",
-      "German":"Tysk",
-      "Dutch":"Nederlandsk",
-      "Slovenian":"Slovensk",
-      "Lithuanian":"Litauisk",
-      "Swedish":"Svensk",
-      "Greek":"Gresk",
-      "French":"Fransk",
-      "Norwegian":"Norsk",
-      "Danish":"Dansk",
-      "Finnish":"Finsk"
+      "Farm_deletion_message": "Gården din kommer til å bli slettet. Er du sikker?",
+      "No_farms_avaiable": "Ingen gårder tilgjengelig.",
+      "Farm_copy_success": "Gården ble kopiert!",
+      "User_account_updated": "Brukerkontoen er oppdatert!",
+      "Farm_created": "Gård vellykket opprettet!",
+      "You_are_about_to_delete": "Du er i ferd med å slette",
+      "Are_you_sure": "Er du sikker?",
+      "No_model_available": "Ingen modell tilgjengelig.",
+      "No_DSS_available": "Ingen DSS tilgjengelig.",
+      "DSS_deletion": "DSS ble slettet!",
+      "No_DSS_available_please_add": "Ingen DSS tilgjengelig, vennligst legg til DSS-modeller i en gård ved å bruke Farm Management.",
+      "DSS_delete": "DSS  kommer til å bli slettet. Er du sikker?",
+      "DSS_models_retrived": "DSS-modeller ble hentet vellykket!",
+      "DSS_models_added": "DSS-modeller ble lagt til!",
+      "DSS_parameters_updated": "DSS-parametere oppdatert!",
+      "Email_not_validated_Message": "Vennligst klikk på <b><b> Send bekreftelses-epost på nytt </b></b> nederst til høyre på denne siden.",
+      "DSS_comparison_models_retrived": "Henting av DSS Data var vellykket!",
+      "Account_password_changed": "Endring av passord var vellykket!",
+      "Session_expiration_message_start": "Økten din utløper, du vil bli logget ut om",
+      "Session_expiration_message_end": "for å opprettholde forbindelsen din med IPM-plattformen.",
+      "Session_expired": "Økten din er utløpt! Vennligst oppdatert siden og logg på igjen.",
+      "DSS_adaptation_model_retrived": "Henting av DSS Data var vellykket!",
+      "DSS_adaptation_parameters_updated": "DSS parametere oppdatert!",
+      "DSS_adaptation_parameters_sent": "DSS parametere ble sendt!",
+      "DSS_parameters_reset": "DSS-parametere er tilbakestilt til standardverdier!"
+    },
+    "Warning_messages": {
+      "DSS_model_avaiability_error": "Ingen DSS tilgjengelig for valgte kulturer ",
+      "Not_enough_DSS_to_compare": "Det er ikke nok DSS-modeller til å sammenligne! Legg til minst to modeller",
+      "Farm_creation_warning_message": "Plattformen vil begynne å samle inn værdata etter at gården er opprettet. Dette kan ta opptil 2 timer.",
+      "No_DSS_to_adapt": "Det er ingen DSS-modeller å tilpasse. Vennligst legg til minst en modell",
+      "Weather_parameters_not_avaiable": "Denne DSS-modellen kan ikke kjøres med tilgjengelig værtjeneste! DSS-en vil ikke bli oppført."
+    },
+    "Countries": {
+      "Austria": "Østerrike",
+      "Belgium": "Belgia",
+      "Bulgaria": "Bulgaria",
+      "Croatia": "Kroatia",
+      "Republic_of_Cyprus": "Republikken Kypros",
+      "Czech_Republic": "Tsjekkisk Republikk",
+      "Denmark": "Danmark",
+      "Estonia": "Estland",
+      "Finland": "Finland",
+      "France": "Frankrike",
+      "Great_Britain": "Storbritannia",
+      "Germany": "Tyskland",
+      "Greece": "Hellas",
+      "Hungary": "Ungarn",
+      "Ireland": "Irland",
+      "Italy": "Italia",
+      "Latvia": "Latvia",
+      "Lithuania": "Litauen",
+      "Luxembourg": "Luxembourg",
+      "Malta": "Malta",
+      "Netherlands": "Nederland",
+      "Norway": "Norge",
+      "Poland": "Polen",
+      "Portugal": "Portugal",
+      "Romania": "Romania",
+      "Slovakia": "Slovakia",
+      "Slovenia": "Slovenia",
+      "Spain": "Spania",
+      "Sweden": "Sverige"
+    },
+    "Language_Selector": {
+      "Language": "Språk",
+      "English": "Engelsk",
+      "Italian": "Italiensk",
+      "German": "Tysk",
+      "Dutch": "Nederlandsk",
+      "Slovenian": "Slovensk",
+      "Lithuanian": "Litauisk",
+      "Swedish": "Svensk",
+      "Greek": "Gresk",
+      "French": "Fransk",
+      "Norwegian": "Norsk",
+      "Danish": "Dansk",
+      "Finnish": "Finsk"
     },
     "Home": {
       "Contacts": "Kontakter",
@@ -151,144 +188,219 @@
       "Web_Site": "Nettsted",
       "Social": "Sosial",
       "Useful_links": "Nyttig lenke",
-      "IPM_Decisions_News":"<b>IPM Decisions</b> News"
+      "IPM_Decisions_News": "<b>IPM Decisions</b> News",
+      "IPM_Private": "IPM Private"
     },
-      "Register": {
-          "User_type":"Brukertype",
-          "Confirm_password":"Bekreft passord",
-          "Registration_confirmation":"Registreringsbekreftelse"
-      },
-      "Terms_and_conditions": {
-          "Accept_terms_and_conditions":"Godta vilkår og betingelser"
-      },
-      "Forgot_password": {
-          "Insert_email_for_reset_password":"Sett inn e-posten din for instruksjoner om å tilbakestille passordet ditt"
-      },
-      "User_header": {
-          "Account_manager":"Kontoansvarlig",
-          "Farm":"Gård"
-      },
-      "User_menu": {
-          "IPM_private":"IPM privat",
-          "Farm_menu":"Gårdsmeny"
-      },
-      "User_menu_footer": {
-          "Content":"Dette prosjektet mottar midler fra EUs Horizon 2020 forsknings- og innovasjonsprogram. Under tilskuddsavtale No. 817617. Lær mer på"
-      },
-      "User_account": {
-          "Title":"Brukerkonto",
-          "User_role":"Brukerrolle",
-          "Edit_profile":"Rediger profil",
-          "Request_farm_control":"Be om gårdskontroll",
-          "Check_farm_control":"Sjekk gårdskontroll"
-      },
-      "Edit_user_account": {
-          "Title":"Rediger brukerkonto",
-          "User_account_created":"Brukerkonto er opprettet!",
-          "User_account_updated":"Brukerkontoen er oppdatert!",
-          "Personal_info":"Personlig informasjon",
-          "First_name":"Fornavn",
-          "Last_name":"Etternavn",
-          "Phone_number":"Telefonnummer",
-          "Mobile_number":"Mobilnummer",
-          "Street":"Gate",
-          "City":"By",
-          "Post_code":"Postnummer",
-          "Country":"Land"
-      },
-      "Farm_share": {
-          "Requester_name":"Navn på forespørsel",
-          "Request_status":"Forespørselsstatus"
-      },
-      "Farm_request": {
-          "Insert_the_email":"Sett inn e-posten til en bonde du velger"
-      },
-      "Farm_list": {
-          "Title":"Gårdsdrift",
-          "Add_farm":"Legg til Farm",
-          "Farm_information_table":"Gårdsinformasjonstabell",
-          "Name":"Navn",
-          "Farm_location":"Gårdsbeliggenhet",
-          "Actions":"Handlinger",
-          "Delete_farm":"Slett Farm"
-      },
-      "Add_Edit_farm":{
-          "Add_title":"Legg til Farm",
-          "Edit_title":"Rediger gård",
-          "Farm_creation":"Gårdskaping",
-          "Farm_name":"Gårdsnavn",
-          "Farm_location":"Velg gårdsplassering",
-          "Nearest_met_station":"Nærmeste meteorologiske stasjon",
-          "Weather_forecast_service":"Værmeldingstjeneste"
-      },
-      "DSS_information_table": {
-          "Title":"DSS-informasjonstabell",
-          "Add_dss_model":"Legg til DSS-modell",
-          "Model_name":"Modell navn",
-          "Crop":"Avling",
-          "Pest_disease":"Skadedyr",
-          "DSS_name":"DSS navn",
-          "DSS_suitability":"DSS-egnethet",
-          "Actions":"Handlinger",
-          "Model_parameters":"Modellparametere",
-          "Delete_model":"Slett modell",
-          "Sowing_date":"Sådato",
-          "Sprays_applied":"Spray påført",
-          "Rate":"Rate (kg/ha",
-          "List_of_DSS":"Liste over DSS",
-          "Parameters":"Parametere",
-          "Pest_observations":"Skadedyrobservasjoner",
-          "Pest":"Skadedyr",
-          "Severity":"Alvorlighetsgrad (%)"
-      },
-      "DSS_use_dashboard": {
-          "Title":"DSS Bruk Dashboard",
-          "Legend":"Legende",
-          "Grey_box":"DSS er for øyeblikket inaktiv",
-          "White_box":"Utilstrekkelig data: sjekk DSS-parametere",
-          "Green_box":"DSS aktiv, lav risiko",
-          "Yellow_box":"DSS aktiv, middels risiko",
-          "Red_box":"DSS aktiv, høy risiko",
-          "Low_risk":"Lav risiko",
-          "Medium_risk":"Middels risiko",
-          "High_risk":"Høy risiko"
-      },
-      "DSS_details": {
-          "Title":"DSS-detaljer",
-          "Risk_score":"Risikoscore",
-          "Recommended_actions":"Anbefalte handlinger",
-          "Show_data_legend":"Vis dataforklaring",
-          "Edit_parameters":"Rediger parametere",
-          "Delete_DSS":"Slett DSS",
-          "Dss_informations":"DSS-informasjon",
-          "Crop_pest_combination":"Kombinasjon av avling/skadedyr",
-          "Type_of_the_output":"Type utgang",
-          "Description":"Beskrivelse",
-          "Creation_date":"Opprettelsesdato",
-          "DSS_id":"DSS ID",
-          "DSS_model_id":"DSS modell ID",
-          "Warning_status_representation":"Advarsel Statusrepresentasjon",
-          "Warning_message":"Advarselsmelding"
-      },
-      "DSS_model_selection": {
-          "Title":"DSS modellvalg",
-          "Crops_selection":"Utvalg av avlinger",
-          "Multiselect_tip":"Bruk <b>CTRL</b> + <b>Klikk</b> for å velge flere beskjæringer",
-          "Show_DSS":"Vis DSS",
-          "DSS_models_selection":"DSS modeller utvalg",
-          "Crop_name":"BESKRIV NAVN",
-          "Pest_name":"PESTNAVN",
-          "DSS_name":"DSS NAVN",
-          "Select_crop":"Velg Beskjær",
-          "Select_pest":"Velg Pest",
-          "DSS_id":"DSS ID",
-          "Model_id":"MODELL ID",
-          "Description":"BESKRIVELSE",
-          "Warning_status_interpretation":"ADVARSEL STATUS TOLKNING"
-      },
-      "DSS_model_parameterisation": {
-          "Title":"DSS-modellparametrisering",
-          "Saved_parameters":"Lagrede parametere"
-      }
+    "Register": {
+      "User_type": "Brukertype",
+      "Confirm_password": "Bekreft passord",
+      "Registration_confirmation": "Registrerings-bekreftelse",
+      "Password_sublabel": "Må bestå av minst 12 tegn, ha en stor bokstav, ett tall og ett ikke-alfanumerisk tegn"
+    },
+    "Terms_and_conditions": {
+      "Accept_terms_and_conditions": "Godta vilkår og betingelser"
+    },
+    "Forgot_password": {
+      "Insert_email_for_reset_password": "Sett inn e-posten din for instruksjoner om å tilbakestille passordet ditt"
+    },
+    "Reset_password": {
+      "Account_password_reset": "Tilbakestilling av passord",
+      "New_password": "Nytt passord",
+      "Confirm_new_password": "Bekreft nytt passord",
+      "Send_password": "Send passord"
+    },
+    "User_header": {
+      "Account_manager": "Kontoansvarlig",
+      "Farm": "Gård",
+      "Menu": "Menu"
+    },
+    "User_menu": {
+      "IPM_private": "IPM privat",
+      "Farm_menu": "Gårdsmeny"
+    },
+    "User_menu_footer": {
+      "Content": "Dette prosjektet mottar midler fra EUs Horizon 2020 forsknings- og innovasjonsprogram. Under tilskuddsavtale No. 817617. Lær mer på"
+    },
+    "User_account": {
+      "Title": "Brukerkonto",
+      "User_role": "Brukerrolle",
+      "Edit_profile": "Rediger profil",
+      "Request_farm_control": "Be om gårdskontroll",
+      "Check_farm_control": "Sjekk gårdskontroll"
+    },
+    "Edit_user_account": {
+      "Title": "Rediger brukerkonto",
+      "User_account_created": "Brukerkonto er opprettet!",
+      "User_account_updated": "Brukerkontoen er oppdatert!",
+      "Personal_info": "Personlig informasjon",
+      "First_name": "Fornavn",
+      "Last_name": "Etternavn",
+      "Phone_number": "Telefonnummer",
+      "Mobile_number": "Mobilnummer",
+      "Street": "Gate",
+      "City": "By",
+      "Post_code": "Postnummer",
+      "Country": "Land"
+    },
+    "Farm_share": {
+      "Requester_name": "Navn på forespørsel",
+      "Request_status": "Forespørselsstatus"
+    },
+    "Farm_request": {
+      "Insert_the_email": "Sett inn e-posten til en bonde du velger"
+    },
+    "Farm_list": {
+      "Title": "Gårdsdrift",
+      "Add_farm": "Legg til Farm",
+      "Farm_information_table": "Gårdsinformasjonstabell",
+      "Name": "Navn",
+      "Farm_location": "Gårdsbeliggenhet",
+      "Actions": "Handlinger",
+      "Delete_farm": "Slett Farm"
+    },
+    "Add_Edit_farm": {
+      "Add_title": "Legg til Farm",
+      "Edit_title": "Rediger gård",
+      "Farm_creation": "Gårdskaping",
+      "Farm_name": "Gårdsnavn",
+      "Farm_location": "Velg gårdsplassering",
+      "Nearest_met_station": "Nærmeste meteorologiske stasjon",
+      "Weather_forecast_service": "Værmeldingstjeneste",
+      "Farm_unlock_location": "Unlock map",
+      "Farm_lock_location": "Lock map"
+    },
+    "DSS_information_table": {
+      "Title": "DSS-informasjonstabell",
+      "Add_dss_model": "Legg til DSS-modell",
+      "Model_name": "Modell navn",
+      "Crop": "Avling",
+      "Pest_disease": "Skadedyr",
+      "DSS_name": "DSS navn",
+      "DSS_suitability": "DSS-egnethet",
+      "Actions": "Handlinger",
+      "Model_parameters": "Modellparametere",
+      "Delete_model": "Slett modell",
+      "Sowing_date": "Sådato",
+      "Sprays_applied": "Spray påført",
+      "Rate": "Rate (kg/ha",
+      "List_of_DSS": "Liste over DSS",
+      "Parameters": "Parametere",
+      "Pest_observations": "Skadedyrobservasjoner",
+      "Pest": "Skadedyr",
+      "Severity": "Alvorlighetsgrad (%)"
+    },
+    "DSS_use_dashboard": {
+      "Title": "DSS Bruk Dashboard",
+      "Legend": "Legende",
+      "Grey_box": "DSS er for øyeblikket inaktiv",
+      "White_box": "Utilstrekkelig data: sjekk DSS-parametere",
+      "Green_box": "DSS aktiv, lav risiko",
+      "Yellow_box": "DSS aktiv, middels risiko",
+      "Red_box": "DSS aktiv, høy risiko",
+      "Status_representation": "Status Representation",
+      "Description": "Description",
+      "Scheduled_time": "Scheduled time",
+      "Low_risk": "Lav risiko",
+      "Medium_risk": "Middels risiko",
+      "High_risk": "Høy risiko",
+      "Icons_info": "Icons info",
+      "Green_triangle_description": "Feil forhindret ikke modellen i å kjøre og påvirker ikke påliteligheten til modellens risiko-beregninger",
+      "Yellow_triangle_description": "Feil stoppet ikke modellen fra å kjøre, men reduserer påliteligheten av modellens risiko-beregninger",
+      "Red_triangle_description": "Feil hindret modellen i å kjøre"
+    },
+    "DSS_details": {
+      "Title": "DSS-detaljer",
+      "Risk_score": "Risikoscore",
+      "Recommended_actions": "Anbefalte handlinger",
+      "Show_data_legend": "Vis dataforklaring",
+      "Edit_parameters": "Rediger parametere",
+      "Delete_DSS": "Slett DSS",
+      "Dss_informations": "DSS-informasjon",
+      "Crop_pest_combination": "Kombinasjon av avling/skadedyr",
+      "Type_of_the_output": "Type utgang",
+      "Description": "Beskrivelse",
+      "Creation_date": "Opprettelsesdato",
+      "DSS_id": "DSS ID",
+      "DSS_model_id": "DSS modell ID",
+      "Warning_status_representation": "Advarsel Statusrepresentasjon",
+      "Warning_message": "Advarselsmelding"
+    },
+    "DSS_model_selection": {
+      "Title": "DSS modellvalg",
+      "Crops_selection": "Utvalg av avlinger",
+      "Multiselect_tip": "Bruk <b>CTRL</b> + <b>Klikk</b> for å velge flere beskjæringer",
+      "Show_DSS": "Vis DSS",
+      "DSS_models_selection": "DSS modeller utvalg",
+      "Crop_name": "BESKRIV NAVN",
+      "Pest_name": "PESTNAVN",
+      "DSS_name": "DSS NAVN",
+      "Select_crop": "Velg Beskjær",
+      "Select_pest": "Velg Pest",
+      "DSS_id": "DSS ID",
+      "Model_id": "MODELL ID",
+      "Description": "BESKRIVELSE",
+      "Warning_status_interpretation": "ADVARSEL STATUS TOLKNING",
+      "Model_name": "DSS",
+      "Filters": "Filtere",
+      "Enable_country_filter": "Filtrer etter land hvor DSS er utviklet og/eller gyldig"
+    },
+    "DSS_model_parameterisation": {
+      "Title": "DSS-modellparametrisering",
+      "Saved_parameters": "Lagrede parametere",
+      "Reset_to_default": "Tilbakestill til standard-parametere"
+    },
+    "Resend_confirmation_email": {
+      "Insert_your_account_email": "Insert your account email",
+      "Resend_confirmation_button": "Resend confirmation",
+      "A_new_confirmation_email_as_been_sent": "A new confirmation email has been sent!"
+    },
+    "DSS_comparison": {
+      "Title": "Dashboard for sammenligning av modeller",
+      "Select_two_or_more_models": "Velg to ellerr flere modeller",
+      "Models_selection": "Modellvalg",
+      "Multiselect_tip": "Bruk <b>CTRL</b> + <b>Click</b> for å velge flere modeller",
+      "Compare_models": "Sammenlign modeller",
+      "Model": "Modell",
+      "Risk_score": "Riskoverdi",
+      "Day": "Dag",
+      "Expand_table": "Utvid tabell",
+      "Parameters_table": "Parameter tabell",
+      "for": "for",
+      "on": "på",
+      "Note_message": "Du kan sammenligne opptil fem modeller samtidig"
+    },
+    "User_guide": {
+      "Title": "Bruksanvisning"
+    },
+    "DSS_info_popup": {
+      "Dss_informations": "DSS Informasjon",
+      "DSS_name": "DSS Navn",
+      "DSS_purpose": "DSS Formål",
+      "DSS_model_id": "DSS Modell ID",
+      "Warning_status_representation": "Visning av varsel-status",
+      "Warning_message": "Varsel-melding",
+      "Description": "Beskrivelse",
+      "Authors_name": "Forfattere : Navn (Organisasjon)",
+      "Source": "Kilde",
+      "Source_organisation": "Kilde Organisasjon"
+    },
+    "DSS_adaptation": {
+      "Title": "Dashboard for tilpasning av modeller",
+      "Select_model_label": "Velg modell for tilpasning",
+      "Select_model_button": "Velg Modell",
+      "Original_parameters_label": "Originale Parametere",
+      "Revised_parameters_label": "Reviderte Parametere",
+      "Save_parameterisation_button": "Lagre Parameterisering som ny DSS",
+      "Risk_score": "Risiko status",
+      "Day": "Dag",
+      "Expand_table": "Utvid tabell",
+      "Save_parameters": "Lagre parametere",
+      "Banned_save_parameters": "Lagring ikke tillatt",
+      "Parameters_table_original": "Parameter tabell for original DSS",
+      "Parameters_table_revised": "Parameter tabell for revidert DSS",
+      "for": "for",
+      "on": "på",
+      "Data_is_updating": "Data oppdateres",
+      "Please_wait": "Vennligst vent"
+    }
   }
-  
