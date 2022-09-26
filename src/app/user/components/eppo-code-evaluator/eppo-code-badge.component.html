@@ -99,7 +99,8 @@
                 <strong>
                   {{ 'Error_messages.DSS_use_dashboard_error_standard_info' | translate }}
                 <br>
-                <br>{{ errorMessage }}
+                <br>
+                <span [innerText]="errorMessage"></span>
                 </strong>
             </div>
         </div>
