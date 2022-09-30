@@ -110,6 +110,12 @@
     padding-left: 35px;
 }
 
+.mySidebarDiv {
+    white-space: normal;
+    line-height: 1.5;
+    display: inline-block;
+}
+
 #mainDocument {
     transition: margin-left 0.5s;
 }

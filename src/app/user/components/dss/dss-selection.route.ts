@@ -81,7 +81,7 @@ export const dssSelectionRoute: Routes = [
     },
     canActivate: [AuthGuard]
   },
-  {
+  /**/{
     path: 'adaptation',
     component: DssAdaptationComponent,
     data: {

@@ -29,8 +29,8 @@ export class TranslationService {
 
     public initLanguageFromBrowser(): void {
       this.currentLanguage = this._translate.getBrowserLang();
-      sessionStorage.setItem("selectedLanguage",this.currentLanguage.match(/en|el|se|de|nl|sl|no|dk|fi|it/) ? this.currentLanguage : 'en')
-      this._translate.use(this.currentLanguage.match(/en|el|se|de|nl|sl|no|dk|fi|it/) ? this.currentLanguage : 'en');
+      sessionStorage.setItem("selectedLanguage",this.currentLanguage.match(/en|el|se|de|nl|sl|no|dk|fi|fr|it/) ? this.currentLanguage : 'en')
+      this._translate.use(this.currentLanguage.match(/en|el|se|de|nl|sl|no|dk|fi|fr|it/) ? this.currentLanguage : 'en');
     }
 
     public useLanguage(language: string): void {
