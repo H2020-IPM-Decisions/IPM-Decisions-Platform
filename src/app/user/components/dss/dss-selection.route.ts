@@ -80,8 +80,8 @@ export const dssSelectionRoute: Routes = [
         roles: [], claims: ["developer", "farmer", "advisor","researcher"]
     },
     canActivate: [AuthGuard]
-  },
-  /**/{
+  }/**/,
+  {
     path: 'adaptation',
     component: DssAdaptationComponent,
     data: {
