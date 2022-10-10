@@ -17,3 +17,7 @@
     padding-top: 3px;
     margin-right: 2px;
 }
+
+::ng-deep .list-country-flags {
+    width: 160%;
+}
