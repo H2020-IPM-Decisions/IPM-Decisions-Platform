@@ -18,17 +18,17 @@
         <b>{{ dssDetail.cropEppoCode | eppoCode }}</b>
       </legend>
 
-      <div class="form-group d-flex pl-5 text-muted">
-        <div class="mr-auto p-2">
-          <label class="h4">
+      <div class="row form-group text-muted">
+        <div class="col-md-6 col-xs-12">
+          <label class="h6">
             <b>{{ dssDetail.pestEppoCode | eppoCode }}</b>
             <i [tooltip]="tolStatus" 
               class="fas fa-circle pl-3 mr-5"
               [ngClass]="{'lowRisk': status==2, 'mediumRisk':status==3, 'highRisk': status==4}"></i>
           </label>
         </div>
-        <div class="p-2">
-          <label class="h4">
+        <div class="col-md-6 col-xs-12">
+          <label class="h6">
             <b>{{ dssDetail.dssModelName }}</b><a class="details" (click)="openModal(dssDetails,'modal-lg')">
               <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
             </a>
@@ -36,86 +36,72 @@
         </div>
       </div>
 
-      <div class="card">
-        <table class="table table-borderless text-muted">
-          <thead class="tableHeader">
-            <tr>
-              <th class="text-center">
-                <label>{{ 'DSS_details.Risk_score' | translate }}</label>
-              </th>
-              <th class="text-center">
-                <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
-                  (ngModelChange)="onChangeChartGroup($event)"
-                  *ngIf="dssChartGroups.length > 1">
-                  <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}
-                  </option>
-                </select>
-                <span *ngIf="dssChartGroups.length == 1" class="text-muted selItem"> 
-                  {{ dssChartGroups[0].title }}
-                </span>
-              </th>
-              <th class="text-center">
-                <label>{{ 'DSS_details.Recommended_actions' | translate }}</label>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation">
-                </custom-chart>
-              </td>
-              <td>
-                <div class="row" *ngFor="let chartGroup of dssChartGroups">
-                  <div class="col" *ngIf="selectedDssChartGroup.id === chartGroup.id">
-                    <custom-group-chart [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
-                  </div>
+      <div>
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+              <b><label>{{ 'DSS_details.Risk_score' | translate }}</label></b>
+              <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation">
+              </custom-chart>
+            </div>
+            <div class="col-md-4 col-xs-12">
+              <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
+                (ngModelChange)="onChangeChartGroup($event)" *ngIf="dssChartGroups.length > 1">
+                <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}
+                </option>
+              </select>
+              <span *ngIf="dssChartGroups.length == 1" class="text-muted selItem">
+                {{ dssChartGroups[0].title }}
+              </span>
+              <div class="row" *ngFor="let chartGroup of dssChartGroups">
+                <div class="col-md-12 col-xs-12" *ngIf="selectedDssChartGroup.id === chartGroup.id">
+                  <custom-group-chart [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
                 </div>
-              </td>
-              <td class="align-top" style="overflow-y: auto;">
-                <div class=scrollableCell>
-                  <ul class="ml-3" *ngIf="dssDetail.warningMessage !==''">
-                    <li>
-                      {{dssDetail.warningMessage}}
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>
-                <accordion class="col" [isAnimated]="true">
-                  <accordion-group>
-                    <span accordion-heading tooltip="Click to show">
-                      {{ 'DSS_details.Show_data_legend' | translate }}
-                    </span>
-                    <div class="row" *ngFor="let result of selectedDssChartGroup.resultParameters">
-                      <i [ngStyle]="{ 'color': result.chartInformation?.color,'margin-right':'5px'}"
-                        class="fas fa-square"></i>
-                      <small class="d-flex justify-content-center"><b> {{result.title}} </b></small>
-                    </div>
-                  </accordion-group>
-                </accordion>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+              <b><label>{{ 'DSS_details.Recommended_actions' | translate }}</label></b>
+              <div class=scrollableCell>
+                <ul class="ml-3" *ngIf="dssDetail.warningMessage !==''">
+                  <li>
+                    {{dssDetail.warningMessage}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </div>
+      <div class="row">
+        
+        <div class="col-md-4 offset-md-4 mt-3 mb-3">
+          <accordion class="col-lg-12 col-xl-12" [isAnimated]="true">
+            <accordion-group>
+              <span accordion-heading tooltip="Click to show">
+                {{ 'DSS_details.Show_data_legend' | translate }}
+              </span>
+              <div class="row" *ngFor="let result of selectedDssChartGroup.resultParameters">
+                <i [ngStyle]="{ 'color': result.chartInformation?.color,'margin-right':'5px'}" class="fas fa-square"></i>
+                <small class="d-flex justify-content-center"><b> {{result.title}} </b></small>
+              </div>
+            </accordion-group>
+          </accordion>
+
+        </div>
+
+      </div>
       </div>
 
     </fieldset>
     <div class="form-group row pt-3">
       <div class="col-md-12">
-        <button class="btn btn-info pull-right" type="button" (click)="goBack()">
+        <button class="btn btn-info pull-right btn-w-100" type="button" (click)="goBack()">
           <i class="fas fa-arrow-left"></i> {{ 'Common_labels.Back' | translate }}
         </button>
 
-        <button type="button" class="btn btn-md btn-primary" (click)="goToModelParameterisation()">
+        <button type="button" class="btn btn-md btn-primary btn-w-100" (click)="goToModelParameterisation()">
           <i class="fas fa-edit"></i>&nbsp;
           {{ 'DSS_details.Edit_parameters' | translate }}
         </button>
 
-        <button type="button" class="btn btn-danger mr-2 pull-right" (click)="openModal(deletedsstemplate)">
+        <button type="button" class="btn btn-danger pull-right btn-w-100" (click)="openModal(deletedsstemplate)">
           <i class="fas fa-trash"></i> {{ 'Common_labels.Delete' | translate }}
         </button>
         <ng-template #deletedsstemplate>

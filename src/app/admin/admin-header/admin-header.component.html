@@ -15,10 +15,10 @@
             </div>
         </div>-->
     </div>
-    <div class = "menu-btn" (click)="toggleSidebar()">
+    <div class = "menu-btn" (click)="toggleSidebar()" [ngClass]="{ 'rectangleMenuOpen': mini==false, 'rectangleMenuClosed': mini==true }">
         <!--<i class="fas fa-bars"></i>-->
         <div class="rectanglePage">
-            <div [ngClass]="{ 'rectangleMenuOpen': mini==false, 'rectangleMenuClosed': mini==true }"></div>
+            <div ></div>
         </div>
     </div>
     <!--<div class="app-header__mobile-menu">

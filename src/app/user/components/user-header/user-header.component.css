@@ -64,7 +64,6 @@ li.btn-group.nav-item {
     height: 38px;
     width: 38px;
     /*background-image: linear-gradient(to bottom, #24a0a3, #6c5ca2) !important;*/
-    border: 2px solid transparent;
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
@@ -80,8 +79,6 @@ li.btn-group.nav-item {
     left: 250px;
     height: 38px;
     width: 38px;
-    /*background-image: linear-gradient(to bottom, #24a0a3, #6c5ca2) !important;*/
-    border: 2px solid rgb(22 170 255);
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
@@ -138,7 +135,6 @@ li.btn-group.nav-item {
 
 .menu-btn:hover + .menuTag {
     position: absolute;
-    border: 2px solid rgb(22 170 255);;
     border-radius: 5px;
     left: 284px;
     overflow: hidden;

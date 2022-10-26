@@ -1,9 +1,9 @@
-/*!
+/* 
  =========================================================
  * IPM  Dashboard - v1.0.0
  =========================================================
-
  */
+
  .border-primary {
     border-color: #3f6ad8
 }
@@ -25260,7 +25260,7 @@ a.fc-more:hover {
     }
 
     .app-header .app-header__logo {
-        display: none;
+
         order: 2;
         background: transparent !important;
         border: 0 !important
@@ -25394,7 +25394,9 @@ a.fc-more:hover {
         display: block
     }
 }
-
+.btn-w-100 {
+margin: 2px;    
+}
 @media (max-width: 991.98px) {
 
     .app-page-title .page-title-icon,
@@ -25440,7 +25442,16 @@ a.fc-more:hover {
 
 @media (max-width: 767.98px) {
     .app-main .app-main__inner {
-        padding: 15px 15px 0
+        padding: 5px
+    }
+
+    .btn-w-100 {
+        width: 99%;
+        margin-bottom: 5px;
+    }
+
+    .map-container {
+        height: 200px;
     }
 
     .mbg-3,
@@ -25450,7 +25461,7 @@ a.fc-more:hover {
 
     .app-page-title {
         padding: 15px;
-        margin: -15px -15px 15px
+        margin: -4px -15px 15px
     }
 
     .app-page-title + .body-tabs-layout {

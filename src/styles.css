@@ -1611,9 +1611,9 @@ section#ipm-news {
 }
 
 .info-box a {
-  font-size: 14px;
-  color: #1660ff;
-  text-decoration: underline;
+    font-size: 14px;
+      color: #010101;
+      text-decoration: none;
 }
 
 .circle-progress-warp .circle-progress {

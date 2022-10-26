@@ -63,12 +63,12 @@
         </div>-->
         <div class="row pt-3">
           <div class="col-md-12">
-            <button class="btn btn-primary pull-right col-2 mx-2" type="submit" [disabled]="farmForm.invalid || isSaving">
+            <button class="btn btn-primary pull-right col-md-3 col-xs-12 my-2" type="submit" [disabled]="farmForm.invalid || isSaving">
               <i class="fas fa-save"></i>
               {{ 'Common_labels.Save' | translate }}</button>
-            <button class="btn btn-primary pull-right col-2 mx-2" *ngIf="farm && mapLocked==true" (click)="lockOrUnlockMap()"><i class="fa fa-unlock" aria-hidden="true"></i>  {{ 'Add_Edit_farm.Farm_unlock_location' | translate }} </button>
-            <button class="btn btn-primary pull-right col-2 mx-2 yellowBtn" *ngIf="farm && mapLocked==false" (click)="lockOrUnlockMap()"><i class="fa fa-lock" aria-hidden="true"></i>  {{ 'Add_Edit_farm.Farm_lock_location' | translate }} </button>
-            <button class="btn btn-info pull-right col-2" type="button" (click)="goBack()">
+            <button class="btn btn-primary pull-right col-md-3 col-xs-12 my-2" *ngIf="farm && mapLocked==true" (click)="lockOrUnlockMap()"><i class="fa fa-unlock" aria-hidden="true"></i>  {{ 'Add_Edit_farm.Farm_unlock_location' | translate }} </button>
+            <button class="btn btn-primary pull-right col-md-3 col-xs-12 my-2 yellowBtn" *ngIf="farm && mapLocked==false" (click)="lockOrUnlockMap()"><i class="fa fa-lock" aria-hidden="true"></i>  {{ 'Add_Edit_farm.Farm_lock_location' | translate }} </button>
+            <button class="btn btn-info pull-right col-md-3 col-xs-12 my-2" type="button" (click)="goBack()">
               {{ 'Common_labels.Cancel' | translate }}</button>
           </div>
         </div>

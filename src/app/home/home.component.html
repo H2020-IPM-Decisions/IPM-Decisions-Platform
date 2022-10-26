@@ -1,4 +1,4 @@
-<div id="topbar" class="d-none d-sm-flex align-items-center fixed-top">
+<div id="topbar" class="d-sm-flex align-items-center fixed-top">
   <div class="container d-flex">
     <!-- Session Bar -->
     <div *ngIf="isSessionExpiring() && isLoggedIn" class="sessionBarShow">
@@ -44,13 +44,14 @@ We strongly recommend that you do not use this platform ahead of its release dat
 
 <!-- ======= Header ======= -->
 <header id="header" class=" bannerHeader fixed-top">
-  <div class="container d-flex align-items-center">
-    <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
-    <span [style.margin-left]="'10px'"><strong>{{ homeTitle }}</strong></span>
-    <!-- <nav class="nav-menu d-none d-lg-block">
-    </nav> .nav-menu -->
-
-  </div>
+    <div class="row">
+      <div class="col-md-8 col-xs-12">
+        <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+      </div>
+      <div class="col-md-4 col-xs-12 text-align-top-left">
+        <span [style.margin-left]="'10px'"><strong>{{ homeTitle }}</strong></span>
+      </div>
+    </div>
 </header><!-- End Header -->
 
 
@@ -79,7 +80,7 @@ We strongly recommend that you do not use this platform ahead of its release dat
   </div>
 
   <!-- ======= Featured Services Section ======= -->
-  <section id="featured-services" class="featured-services" style="padding-top: 150px">
+  <section id="featured-services" class="featured-services" style="padding-top: 180px">
 
     <div class="container-fluid">
       <div class="row">

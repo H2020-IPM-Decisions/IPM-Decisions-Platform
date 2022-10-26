@@ -5,14 +5,14 @@
                 <img src="img/logo-ipm-decision.png" alt="Logo Ipm Decisions" title="Logo IPM" />
             </a>
         </div>
-        <div class = "menu-btn" (click)="toggleSidebar()">
-            <div class="rectanglePage">
-                <div [ngClass]="{ 'rectangleMenuOpen': mini==false, 'rectangleMenuClosed': mini==true }"></div>
-            </div>
-        </div>
-        <div class="menuTag">{{ 'User_header.Menu' | translate }}</div>
     </div>
-    <div class="app-header__mobile-menu">
+    <div class="menu-btn" (click)="toggleSidebar()">
+        <div class="rectanglePage">
+            <div [ngClass]="{ 'rectangleMenuOpen': mini==false, 'rectangleMenuClosed': mini==true }"></div>
+        </div>
+    </div>
+    <div class="menuTag">{{ 'User_header.Menu' | translate }}</div>
+    <!-- <div class="app-header__mobile-menu">
         <div>
             <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
               <span class="hamburger-box">
@@ -20,8 +20,8 @@
               </span>
           </button>
         </div>
-    </div>
-    <div class="app-header__menu">
+    </div> -->
+    <!-- <div class="app-header__menu">
         <span>
           <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
               <span class="btn-icon-wrapper">
@@ -29,7 +29,7 @@
               </span>
         </button>
         </span>
-    </div>
+    </div> -->
     <div class="app-header__content">
         <!-- Session Bar -->
         <div *ngIf="isSessionExpiring()" class="sessionBarShow">

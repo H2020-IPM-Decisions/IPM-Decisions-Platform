@@ -19,7 +19,7 @@
       </legend>
       <form [formGroup]="selCropForm">
         <div class="row">
-          <div class="col-6">
+          <div class="col-md-6 col-xs-12">
             <fieldset class="border p-3 m-3">
               <legend class="w-auto px-1 text-muted h5">
                 <b>{{ 'DSS_model_selection.Crops_selection' | translate }}</b>
@@ -39,7 +39,7 @@
               </div>
             </fieldset>
           </div>
-          <div class="col-6">
+          <div class="col-md-6 col-xs-12">
             <fieldset class="border p-3 m-3">
               <legend class="w-auto px-1 text-muted h5">
                 <b>{{ 'DSS_model_selection.Filters' | translate }}</b>
@@ -55,7 +55,7 @@
                 </select>
               </div>
             </fieldset>
-            <button class="btn btn-info btn-sm pull-right m-4 col-3" (click)="onConfirmSelectedCrops()"
+            <button class="btn btn-info btn-sm pull-right m-4" (click)="onConfirmSelectedCrops()"
                       [disabled]="!selCropForm.get('cropSelection').get('cropEppoCode').valid">
                       {{ 'DSS_model_selection.Show_DSS' | translate }}
             </button>
@@ -123,12 +123,12 @@
     </fieldset>
     <div class="row pt-3">
       <div class="col-md-12">
-        <button class="btn btn-primary col-2 pull-right ml-1" (click)="onSave()"
+        <button class="btn btn-primary col-4 pull-right ml-1" (click)="onSave()"
           [disabled]="!selectedDss || selectedDss.length ==0">
           <i class="fas fa-save"></i>&nbsp;
           {{ 'Common_labels.Save' | translate }}
         </button>
-        <button class="btn btn-info col-2 pull-right" type="button" (click)="goBack()">
+        <button class="btn btn-info col-4 pull-right" type="button" (click)="goBack()">
           {{ 'Common_labels.Cancel' | translate }}
         </button>
       </div>

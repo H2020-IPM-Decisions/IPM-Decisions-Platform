@@ -33,13 +33,13 @@
 .parametersFormContainer {
     border: 1px solid rgb(110, 158, 247);
     max-height: 200px;
-    max-width: 265px;
+    /* max-width: 265px; */
     overflow: auto;
 }
 
 .dataSetContainer {
     max-height: 200px;
-    max-width: 265px;
+    /* max-width: 265px; */
     overflow: auto;
 }
 
