@@ -1,4 +1,4 @@
-<div id="topbar" class="d-none d-sm-flex align-items-center fixed-top">
+<div id="topbar" class="d-sm-flex align-items-center fixed-top">
   <div class="container d-flex">
     <!-- Session Bar -->
     <div *ngIf="isSessionExpiring() && isLoggedIn" class="sessionBarShow">
@@ -31,15 +31,17 @@
 </div>
 
 <!-- ======= Header ======= -->
-<header id="header" class="fixed-top">
-  <div class="container d-flex align-items-center">
-      <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
-
-      <nav class="ml-2 d-none d-sm-block"><!-- Removed nav-menu from class -->
-          <ul>
-              <li class="active"><a routerLink="/">{{ 'Common_labels.Home' | translate }}</a></li>
-          </ul>
-      </nav><!-- .nav-menu -->
+<header id="header" class=" bannerHeader fixed-top">
+  <div class="container d-flex align-items-center justify-content-between">
+    <div class="row">
+      <div class="col-md-8 col-xs-12">
+        <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+      </div>
+      <div class="col-md-4 col-xs-12 text-align-top-left">
+        <span><strong>Uno “sportello unico” per il supporto alle decisioni nella gestione integrata dei
+            parassiti</strong></span>
+      </div>
+    </div>
 
   </div>
 </header><!-- End Header -->

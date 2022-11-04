@@ -44,17 +44,22 @@ We strongly recommend that you do not use this platform ahead of its release dat
 
 <!-- ======= Header ======= -->
 <header id="header" class=" bannerHeader fixed-top">
-    <div class="row">
-      <div class="col-md-8 col-xs-12">
-        <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="row">
+        <div class="col-md-8 col-xs-12">
+          <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+        </div>
+        <div class="col-md-4 col-xs-12 text-align-top-left">
+          <span><strong>{{ homeTitle }}</strong></span>
+        </div>
       </div>
-      <div class="col-md-4 col-xs-12 text-align-top-left">
-        <span [style.margin-left]="'10px'"><strong>{{ homeTitle }}</strong></span>
-      </div>
+      
     </div>
 </header><!-- End Header -->
 
-
+  <section id="hero" class="d-flex align-items-center">
+    
+  </section>
 
 <main id="main">
   <div class="row no-gutters cmsIntroduction client-text">
@@ -78,76 +83,72 @@ We strongly recommend that you do not use this platform ahead of its release dat
       </section>
     </div>-->
   </div>
-
   <!-- ======= Featured Services Section ======= -->
-  <section id="featured-services" class="featured-services" style="padding-top: 180px">
-
-    <div class="container-fluid">
+  <section id="featured-services" class="featured-services">
+  
+    <div class="container">
       <div class="row">
-        <div class="col-md-6 no-padd">
-          <div class="section-title">
-            <h3 [innerHtml]="('Home.IPM_Decisions_News' | translate)"></h3>
-          </div>
-          <owl-carousel-o [options]="customOptions">
-            <ng-container *ngFor="let n of testNews">
-              <ng-template class="slide" carouselSlide>
-                <div class="post-slide8">
-                  <div class="post-content">
-                    <h3 class="post-title">
-                      {{ n.title }}
-                    </h3>
-                    <p class="post-description" [innerHtml]="n.content">
-                    </p>
+        <div class="col-lg-4">
+          <div class="content">
+            <h3 [innerHtml]="('Home.IPM_Decisions_News' | translate)" class="title-carousel"></h3>
+            <owl-carousel-o [options]="customOptions">
+              <ng-container *ngFor="let n of testNews">
+                <ng-template class="slide" carouselSlide>
+                  <div class="post-slide8">
+                    <div class="post-content">
+                      <h3 class="post-title">
+                        {{ n.title }}
+                      </h3>
+                      <p class="post-description" [innerHtml]="n.content">
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </ng-template>
-            </ng-container>
-          </owl-carousel-o>
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+          </div>
         </div>
-        <div class="col-md-6 no-padd">
-          <div class="container" data-aos="fade-up" [style.padding-top]="'47px'">
+        <div class="col-lg-8 d-flex align-items-stretch">
+          <div class="icon-boxes d-flex flex-column justify-content-center">
             <div class="row">
-              <div class="col-md-4 col-lg-5">
-                <a routerLink="/farmer-advisor-article">
-                  <div class="icon-box" data-aos="fade-up" data-aos-delay="100" style="margin: 0 auto;">
-                    <div class="icon">
-                      <img src="img/farming.png">
-                    </div>
-                    <h4 class="title">{{ 'Common_labels.Farmers_and_Advisors' | translate }}</h4>
+              <div class="col-xl-4 d-flex align-items-stretch">
+                <a routerLink="/farmer-advisor-article" class="link">
+                <div class="icon-box mt-4 mt-xl-0">
+                  <div class="icon">
+                    <img src="img/farming.png">
                   </div>
+                  <h4 class="title">{{ 'Common_labels.Farmers_and_Advisors' | translate }}</h4>
+                </div>
+                </a>
+                
+              </div>
+              <div class="col-xl-4 d-flex align-items-stretch">
+                <a routerLink="/research-article" class="link">
+                <div class="icon-box mt-4 mt-xl-0">
+                  <div class="icon">
+                    <img src="img/research.png">
+                  </div>
+                  <h4 class="title">{{ 'Common_labels.Researchers' | translate }}</h4>
+                </div>
                 </a>
               </div>
-
-              <div class="col-md-4 col-lg-3">
-                <a routerLink="/research-article">
-                  <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon">
-                      <img src="img/research.png">
-                    </div>
-                    <h4 class="title">{{ 'Common_labels.Researchers' | translate }}</h4>
-                  </div>
+              <div class="col-xl-4 d-flex align-items-stretch">
+                <a routerLink="/coding-article" class="link">
+                <div class="icon-box mt-4 mt-xl-0">
+                  <div class="icon"><img src="img/coding.png"></div>
+                  <h4 class="title">{{ 'Common_labels.Developers' | translate }}</h4>
+                </div>
                 </a>
               </div>
-
-              <div class="col-md-4 col-lg-4">
-                <a routerLink="/coding-article">
-                  <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon"><img src="img/coding.png"></div>
-                    <h4 class="title">{{ 'Common_labels.Developers' | translate }}</h4>
-                  </div>
-                </a>
-              </div>
-
             </div>
-
-          </div>
+          </div><!-- End .content-->
         </div>
-
       </div>
+  
     </div>
-
-
-
+  
+  
+  
   </section><!-- End Featured Services Section -->
 
   <!-- ======= Contact Section ======= -->

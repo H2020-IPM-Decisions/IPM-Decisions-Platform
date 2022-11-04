@@ -97,9 +97,21 @@ function init() {
 		$('.hero-slider').owlCarousel({
 			nav: false,
 			dots: false,
-      loop: false,
-      rewind: true,
+			loop: false,
+			rewind: true,
 			navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+			autoplay: true,
+			items: 1,
+			animateOut: 'fadeOut',
+			animateIn: 'fadeIn',
+		});
+
+		$('.ipm-carousel').owlCarousel({
+			nav: false,
+			dots: false,
+			loop: false,
+			rewind: true,
+			navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
 			autoplay: true,
 			items: 1,
 			animateOut: 'fadeOut',
@@ -109,6 +121,8 @@ function init() {
 		/*------------------
 			Brands Slider
 		--------------------*/
+
+
 		$('#client-carousel').owlCarousel({
 			nav: false,
 			loop: true,
@@ -144,6 +158,8 @@ function init() {
 			autoplay: true,
 			items: 1,
 		});
+
+
 
 		/*------------------
 			Image Popup

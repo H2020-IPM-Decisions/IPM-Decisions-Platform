@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     loop: true,
     autoplay: true,
     center: true,
-    dots: false,
+    dots: true,
     autoHeight: true,
     autoWidth: true,
     responsive: {
