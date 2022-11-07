@@ -1,7 +1,7 @@
 <div class="card">
   <div class="row">
     <div class="col pr-0">
-      <table class="table text-muted">
+      <table class="table table-responsive-sm text-muted">
         <thead class="tableHeader">
           <tr>
             <th class="text-center tableHeader">
@@ -39,7 +39,7 @@
     <div class="col dataSet">
       <div *ngFor="let chartGroup of dssChartGroups">
         <div *ngIf="selectedDssChartGroup.id === chartGroup.id">
-          <table class="table datasetTable text-muted">
+          <table class="table table-responsive-sm datasetTable text-muted">
             <thead>
               <tr>
                 <th class="datasetTh" [title]="('DSS_comparison.Day' | translate)">
@@ -89,7 +89,7 @@
     <div class="col">
       <div *ngFor="let chartGroup of dssChartGroups">
         <div *ngIf="selectedDssChartGroup.id === chartGroup.id">
-          <table class="table modalDatasetTable text-muted">
+          <table class="table table-responsive-sm modalDatasetTable text-muted">
             <thead>
               <tr>
                 <th class="modalDatasetTh" [title]="('DSS_comparison.Day' | translate)">

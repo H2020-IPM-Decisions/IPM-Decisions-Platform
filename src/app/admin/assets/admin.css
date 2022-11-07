@@ -11872,7 +11872,7 @@ button,
 }
 
 .app-main .app-main__inner {
-    padding: 30px 30px 0;
+    padding: 30px 15px 0;
     flex: 1
 }
 
@@ -11940,7 +11940,7 @@ button,
 
 .app-page-title {
     padding: 10px 35px;
-    margin: -46px -30px 30px;
+    margin: -29px -30px 30px;
     position: relative;
 }
 
