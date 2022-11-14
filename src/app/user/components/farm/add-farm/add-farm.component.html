@@ -68,7 +68,7 @@
               {{ 'Common_labels.Save' | translate }}</button>
             <button class="btn btn-primary pull-right col-md-3 col-xs-12 my-2" *ngIf="farm && mapLocked==true" (click)="lockOrUnlockMap()"><i class="fa fa-unlock" aria-hidden="true"></i>  {{ 'Add_Edit_farm.Farm_unlock_location' | translate }} </button>
             <button class="btn btn-primary pull-right col-md-3 col-xs-12 my-2 yellowBtn" *ngIf="farm && mapLocked==false" (click)="lockOrUnlockMap()"><i class="fa fa-lock" aria-hidden="true"></i>  {{ 'Add_Edit_farm.Farm_lock_location' | translate }} </button>
-            <button class="btn btn-info pull-right col-md-3 col-xs-12 my-2" type="button" (click)="goBack()">
+            <button class="btn btn-info pull-right col-md-3 col-xs-12 my-2 btn-goBack" type="button" (click)="goBack()">
               {{ 'Common_labels.Cancel' | translate }}</button>
           </div>
         </div>

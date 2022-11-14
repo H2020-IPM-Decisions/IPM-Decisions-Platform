@@ -2868,6 +2868,10 @@ textarea.form-control.is-invalid {
     transition: color 0.15s, background-color 0.15s, border-color 0.15s, box-shadow 0.15s
 }
 
+.btn-add i {
+    font-size: 15px;
+}
+
 @media screen and (prefers-reduced-motion: reduce) {
     .btn {
         transition: none
@@ -7407,7 +7411,12 @@ button.bg-alternate:focus {
     display: inline-flex !important
 }
 
+
+
+
+
 @media (min-width: 576px) {
+    
     .d-sm-none {
         display: none !important
     }
@@ -7484,6 +7493,11 @@ button.bg-alternate:focus {
 }
 
 @media (min-width: 992px) {
+
+    .profile-mobile {
+        display: none;
+    }
+
     .d-lg-none {
         display: none !important
     }
@@ -11285,6 +11299,15 @@ button,
     background: rgba(0, 0, 0, 0.8)
 }
 
+.footer {
+    bottom: 0px;
+    color: #fff !important;
+    width: 280px;
+    font-size: smaller;
+    position: absolute;
+    white-space: normal;
+    display: block;
+}
 
 .app-sidebar {
     width: 280px;
@@ -25778,4 +25801,84 @@ footer.footer-section.spad {
 
 #json-editor-form-revised > .bg-light{
     box-shadow: none !important;
+}
+
+.btn-goBack {
+    margin-right: 0;
+}
+
+@media (min-width: 360px) {
+
+    .btn-goBack {
+        margin-right: 2px;
+    }
+
+    .profile-mobile {
+        padding: 2px;
+        width: 100%;
+        display: block;
+        margin-top: 5px;
+    }
+
+    .little-profile {
+        background: #28a67e;
+        padding: 5px;
+    }
+
+    .little-profile h5{
+        color: #fff;
+    }
+
+    .btn-profile-mobile,
+    .btn-logout-mobile {
+        color: #ffffff;
+        border-color: #ffffff;
+    }
+
+    .app-language i.bx.bxs-flag-alt {
+        display: none;
+    }
+    .mySidebar span {
+        padding-left: 0;
+    }
+
+    .app-language {
+        background: #fff;
+        padding: 5px;
+    }
+    .btn-outline-primary:hover,
+    .btn-outline-primary:active,
+    .btn-outline-primary:focus{
+        color: #fff;
+        background-color: #77c359;
+        border-color: #77c359;
+    }
+    .btn-outline-primary:not(:disabled):not(.disabled):active,
+    .btn-outline-primary:not(:disabled):not(.disabled).active,
+    .show>.btn-outline-primary.dropdown-toggle {
+        color: #fff;
+        background-color: #77c359;
+        border-color: #77c359;
+    }
+    .list-country-flags {
+        right: 0;
+    }
+    .mobile-profile {
+        padding: 15px;
+    }
+    .footer {
+        position: relative;
+    }
+}
+
+@media (min-width: 992px) {
+    .profile-mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-height: 440px) {
+    .footer {
+        position: relative;
+    }
 }

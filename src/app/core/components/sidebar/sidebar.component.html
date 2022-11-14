@@ -77,7 +77,20 @@
     </div>
     <!-- USER MENU -->
     <ng-template #usermenu>
+        <div class="profile-mobile">
+            <div class="little-profile text-center">
+                <div class="app-language">
+                    <app-language-selector></app-language-selector>
+                </div>
+                <div class="mobile-profile">
+                    <h5 class="mb-2">Mario Rossi</h5>
+                    <button type="button" class="btn btn-outline-primary btn-profile-mobile btn-sm w-50 mr-1">Gestione Profilo</button>
+                    <button type="button" class="btn btn-outline-primary btn-logout-mobile btn-sm w-50">Disconetti</button>
+                </div>
+            </div>
+        </div>
         <div class="mySidebar_heading">{{'User_menu.Farm_menu' | translate}}</div>
+        
         <ul class="vertical-nav-menu mySidebar_body">
             <div>
                 <li>
@@ -102,7 +115,7 @@
             </div>
         </ul>
     </ng-template>
-
+    
     <div id="mySidebarFooter" class="footer p-2">
         <div class="text-center pb-3"><img class="euFlag" src="img/logo-euro.jpg" alt="EU"></div>
         <div>{{ 'User_menu_footer.Content' | translate }} <a href="https://ec.europa.eu" target="_blank">https://ec.europa.eu</a></div>

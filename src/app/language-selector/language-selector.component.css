@@ -21,3 +21,13 @@
 ::ng-deep .list-country-flags {
     width: 160%;
 }
+
+@media (min-width: 360px) {
+
+    .selectWrapper {
+        margin-left: 5px;
+        border-radius: 0;
+        border: none;
+    }
+
+}

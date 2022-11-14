@@ -1,14 +1,6 @@
 @import url("../../../admin/assets/admin.css");
 
-.footer{
-    bottom: 0px;
-    color: #fff !important;
-    width: 280px;
-    font-size: smaller;
-    position: absolute;
-    white-space: normal;
-    display: block;
-}
+
 
 .euFlag {
     max-width: 64px;
@@ -55,7 +47,7 @@
   }
 
   .mySidebar .vertical-nav-menu li a {
-    color: rgba(255,255,255,.7);
+    color: #fff;
     text-decoration: none;
   }
 
@@ -95,9 +87,12 @@
     top: 50%;
     margin-top: -17px;
     font-size: 1.5rem;
-    opacity: .7;
+    opacity: 1;
     -webkit-transition: color 300ms;
     transition: color 300ms;
+    background: white;
+    color: #25b38d;
+    border-radius: 5px;
 }
 
 .fixed-sidebar .app-main .app-main__outer {

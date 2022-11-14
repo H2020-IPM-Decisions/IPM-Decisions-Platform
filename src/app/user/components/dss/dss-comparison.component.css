@@ -51,3 +51,13 @@
   .note-message {
       color: red
   }
+
+ @media only screen and (max-width: 600px) {
+    .buttonPosition {
+        position: relative;
+        left: 0;
+        bottom: -13px;
+        width: 100%;
+    }
+
+}
