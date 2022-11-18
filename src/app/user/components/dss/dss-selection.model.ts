@@ -175,4 +175,18 @@ export interface IDssForAdaptation {
     dssOriginalResult?: IDssFlat;
     dssOriginalParameters?: DssJSONSchema;
 }
+
+export interface ILinkedDSS {
+    userLinkDssDto?: IUserLinkDssDto [];
+}
+
+export interface IUserLinkDssDto {
+    cropEppoCode?: string;
+    pestEppoCode?: string;
+    dssId?: string;
+    dssName?: string;
+    dssModelId?: string;
+    dssModelName?: string;
+    dssEndPoint?: string;
+}
     

@@ -2,7 +2,7 @@ import { DssGroupedByFarm } from './../../../shared/models/dssGroupedByFarm.mode
 import { HttpResponse } from "@angular/common/http";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
-import { IDssFlat } from "./dss-selection.model";
+import { IDssFlat, IUserLinkDssDto } from "./dss-selection.model";
 import { DssSelectionService } from "./dss-selection.service";
 import { NGXLogger } from 'ngx-logger';
 import { ActivatedRoute } from '@angular/router';
@@ -19,6 +19,16 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   $startSubscription: Subscription;
   dssJobStatus: string[] = ["Enqueued", "Processing"];
   isSyncronizing: boolean = false;
+  linkedDSS: IUserLinkDssDto[] = [
+    {
+    cropEppoCode: "1BRSG",
+    pestEppoCode: "PSILRO",
+    dssId: "no.nibio.vips",
+    dssName: "VIPS",
+    dssModelId: "PSILARTEMP",
+    dssModelName: "Carrot rust fly temperature model",
+    dssEndPoint: "https://www.google.it/"}
+  ]
   
   constructor(
     protected service: DssSelectionService,

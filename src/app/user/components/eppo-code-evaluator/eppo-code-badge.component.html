@@ -54,20 +54,24 @@
     </span>
 
     <!-- Template for External DSS Badge -->
-    <span class="exeLink"
-        *ngIf="executionType==='link'">
+    <span class="exeLink" *ngIf="executionType ==='link'">
+      <div class="row">
+        <div class="col-4 align-self-center linkedBadgeIcon">
+          <i class="fas fa-link"></i>
+        </div>
+        <div class="col-6 linkedBadgeText">
+          <a [href]="endpoint" target="_blank" style="color: #6c757d">
+            <h6><b>{{dss}}</b></h6>
+            <!--<small>({{ code }})</small>-->
+          </a>
+        </div>
+      </div>
         <span *ngIf="dssDescription" class="infoIcon fa-stack">
           <a class="details" (click)="openModal(infoModal,'modal-lg')">
             <i class="fas fa-circle fa-stack-1x"></i>
             <i class="fas fa-info-circle fa-stack-1x"></i>
           </a>
         </span>
-        <i class="fas fa-link"></i>
-        <span class="label label-danger label-as-badge"></span>
-        <a [href]="endpoint" target="_blank" style="color: #6c757d">
-            <h6><b>{{code | eppoCode }}</b></h6>
-            <!--<small>({{ code }})</small>-->
-        </a>
     </span>
 
     <!--<span *ngIf="dss && !isLegend" class="dss text-truncate" placement="bottom">{{dss}}</span>-->

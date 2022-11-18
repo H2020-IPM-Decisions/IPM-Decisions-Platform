@@ -1,4 +1,4 @@
-import { IDssFlat } from './../dss/dss-selection.model';
+import { IDssFlat, IUserLinkDssDto } from './../dss/dss-selection.model';
 import { Component, Input, TemplateRef, OnInit } from "@angular/core";
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NavigationExtras, Router } from '@angular/router';
@@ -27,21 +27,23 @@ export class EppoCodeBadgeComponent {
     @Input()
     dssDetail?: IDssFlat;
     @Input()
+    linkedDssDetail?: IUserLinkDssDto;
+    @Input()
     itemId?: string;
     @Input()
     endpoint?: string;
     @Input()
-    code: string;
+    code?: string;
     @Input() 
-    dss: string;
+    dss?: string;
     @Input()
-    status: number;
+    status?: number;
     @Input()
-    statusRepresentation: string;
+    statusRepresentation?: string;
     @Input()
-    executionType: string;
+    executionType?: string;
     @Input()
-    dssDescription: string;
+    dssDescription?: string;
     @Input()
     errorType?: number;
     @Input()

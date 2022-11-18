@@ -31,15 +31,17 @@
 .exeLink {
   display: inline-block;;
   font-size: 80%;
-  color: #6c757d;
+  color: #50a50b;
   min-width: 150px;
-  max-width: 150px;
+  max-width: 200px;
   height: auto;
   white-space: normal;
+  border: 2px solid;
+  border-radius: 5px;
 }
 
 .fa-link {
-  font-size: 125%;
+  font-size: 200%;
 }
 
 .fa-circle {
@@ -199,4 +201,15 @@
 
 .textColorBlack {
   color: black
+}
+
+.linkedBadgeIcon {
+  padding-right: 0px;
+  text-align: center;
+}
+
+.linkedBadgeText {
+  padding-left: 0px;
+  padding-right: 30px;
+  text-align: center;
 }

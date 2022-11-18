@@ -61,3 +61,18 @@ fieldset {
 .noBullets {
     list-style: none;
 }
+
+.cardTdDSS {
+    display: inline-block;
+    float: left;
+    margin: 5px;
+    position: relative;
+}
+
+.w-570 {
+    width: 570px;
+}
+
+.topBorderTd {
+    border-top: 2px solid green;
+}
