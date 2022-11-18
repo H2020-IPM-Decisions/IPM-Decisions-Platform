@@ -25866,9 +25866,7 @@ footer.footer-section.spad {
     .mobile-profile {
         padding: 15px;
     }
-    .footer {
-        position: relative;
-    }
+
 }
 
 @media (min-width: 992px) {
