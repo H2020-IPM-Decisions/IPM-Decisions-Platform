@@ -2,7 +2,7 @@ import { DssGroupedByFarm } from './../../../shared/models/dssGroupedByFarm.mode
 import { HttpResponse } from "@angular/common/http";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
-import { IDssFlat, IUserLinkDssDto } from "./dss-selection.model";
+import { IDssFlat } from "./dss-selection.model";
 import { DssSelectionService } from "./dss-selection.service";
 import { NGXLogger } from 'ngx-logger';
 import { ActivatedRoute } from '@angular/router';
@@ -17,18 +17,10 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   farmsDssMap: DssGroupedByFarm[] = [];
   remoteCallLoading: boolean = false;
   $startSubscription: Subscription;
+  $linkedDssSubscription: Subscription;
   dssJobStatus: string[] = ["Enqueued", "Processing"];
   isSyncronizing: boolean = false;
-  linkedDSS: IUserLinkDssDto[] = [
-    {
-    cropEppoCode: "1BRSG",
-    pestEppoCode: "PSILRO",
-    dssId: "no.nibio.vips",
-    dssName: "VIPS",
-    dssModelId: "PSILARTEMP",
-    dssModelName: "Carrot rust fly temperature model",
-    dssEndPoint: "https://www.google.it/"}
-  ]
+  linkedDSS: IDssFlat[] = [];
   
   constructor(
     protected service: DssSelectionService,
@@ -106,6 +98,11 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
       errorResponse => {
         this._logger.error("GET DSS LIST ERROR: ",errorResponse);
         this.remoteCallLoading = false;
+      }
+    );
+    this.$linkedDssSubscription = this.service.getLinkedDssList().subscribe(
+      (data: HttpResponse<IDssFlat[]>)=>{
+        this.linkedDSS = data.body;
       }
     );
   }

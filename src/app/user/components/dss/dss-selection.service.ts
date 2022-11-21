@@ -99,6 +99,17 @@ export class DssSelectionService {
     });
   }
 
+  getLinkedDssList(): Observable<HttpResponse<IDssFlat[]>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/dss/links`;
+    return this._http.get<IDssFlat[]>(requestUrl, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: 'response'
+    });
+  }
+
   getDssMap(dssList: IDssFlat[]): Map<string, IDssFlat[]> {
     let dssMap: Map<string, IDssFlat[]> = new Map<string, IDssFlat[]>();
     for (const element of dssList) {

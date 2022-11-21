@@ -114,3 +114,11 @@
 #mainDocument {
     transition: margin-left 0.5s;
 }
+
+@media (min-width: 360px) {
+
+    .mySidebar span {
+        padding-left: 25px;
+    }
+
+}

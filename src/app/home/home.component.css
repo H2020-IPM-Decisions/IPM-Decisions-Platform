@@ -187,3 +187,18 @@
   color: blue;
   text-decoration: underline;
 }
+
+@media (min-width: 360px) {
+
+  .downloadText {
+      display: none;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .downloadText {
+    display: inline-block;
+    margin-left: 5px;
+  }
+}

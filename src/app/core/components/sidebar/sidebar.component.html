@@ -83,9 +83,9 @@
                     <app-language-selector></app-language-selector>
                 </div>
                 <div class="mobile-profile">
-                    <h5 class="mb-2">Mario Rossi</h5>
-                    <button type="button" class="btn btn-outline-primary btn-profile-mobile btn-sm w-50 mr-1">Gestione Profilo</button>
-                    <button type="button" class="btn btn-outline-primary btn-logout-mobile btn-sm w-50">Disconetti</button>
+                    <h5 class="mb-2">{{username}}</h5>
+                    <button type="button" [routerLink]="['/user/account']" class="btn btn-outline-primary btn-profile-mobile btn-sm w-50 mr-1">{{ 'Common_labels.Account' | translate }}</button>
+                    <button type="button" (click)="logout()" [routerLink]="['/']" class="btn btn-outline-primary btn-logout-mobile btn-sm w-50">{{ 'Common_labels.Logout' | translate }}</button>
                 </div>
             </div>
         </div>

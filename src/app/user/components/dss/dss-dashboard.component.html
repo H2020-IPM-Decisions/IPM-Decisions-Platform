@@ -53,7 +53,9 @@
               <td class="col-4" style="border-left:2px solid green;">
                 <div class="d-flex p-2 mx-1" *ngFor="let dssLinked of linkedDSS" style="position:relative">
                   <div *ngIf="dssLinked.cropEppoCode === crop.eppoCode" style="position:relative">
-                    <eppo-code-badge 
+                    <eppo-code-badge
+                      [dssDetail]="dssLinked"
+                      [dssDescription]="dssLinked.dssDescription"
                       [endpoint]="dssLinked.dssEndPoint" 
                       [code]="dssLinked.pestEppoCode"
                       [dss]="dssLinked.dssModelName" 

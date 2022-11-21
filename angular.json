@@ -25,7 +25,8 @@
               "src/webfonts",
               "src/img",
               "src/js",
-              "src/i18n"
+              "src/i18n",
+              "src/guides"
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
