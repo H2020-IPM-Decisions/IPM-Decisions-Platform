@@ -7,7 +7,7 @@
   font-size: 80%;
   color: #6c757d;
   min-width: 120px;
-  max-width: 150px;
+  max-width: 170px;
   height: auto;
   white-space: normal;
 }
@@ -22,7 +22,7 @@
   padding: 20px 0;
   display: inline-block;
   min-width: 150px;
-  max-width: 150px;
+  max-width: 170px;
   min-height: 60px;
   height: auto;
   white-space: normal;
@@ -68,7 +68,7 @@
   position: absolute;
   bottom: 3px;
   /* right: 2px; */
-  left: 66px;
+  left: 43%;
   -webkit-text-stroke-width: 0.25px;
   -webkit-text-stroke-color: rgb(255, 255, 255)
 }
@@ -79,7 +79,7 @@
   position: absolute;
   bottom: 3px;
   /* right: 2px; */
-  left: 66px;
+  left: 43%;
   -webkit-text-stroke-width: 0.25px;
   -webkit-text-stroke-color: rgb(255, 255, 255)
 }
@@ -90,7 +90,7 @@
   position: absolute;
   bottom: 3px;
   /* right: 2px; */
-  left: 66px;
+  left: 43%;
   -webkit-text-stroke-width: 0.25px;
   -webkit-text-stroke-color: rgb(255, 255, 255)
 }
@@ -212,4 +212,76 @@
   padding-left: 0px;
   padding-right: 30px;
   text-align: center;
+}
+
+::ng-deep .tooltip {
+  animation-name: delayedFadeIn;
+  animation-duration: 1s; /* Adjust this duration */
+}
+
+@Keyframes delayedFadeIn {
+  0% {opacity: 0;}
+  75% {opacity: 0;} /* Set this to 99% for no fade-in. */
+  100% {opacity: 1;}
+}
+
+.TextBoxMargin {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.HRSecondIconSymbolDistance {
+  position: relative;
+  top: -12px;
+}
+
+.HRThirdIconSymbolDistance {
+  position: relative;
+  top: -23px;
+}
+
+.HighRiskIcon {
+  font-size: 175%;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: -3px;
+  left: 17px;
+}
+
+div .fa-circle {
+  color: rgb(255, 255, 255);
+}
+
+.MRSecondIconSymbolDistance {
+  position: relative;
+  top: 2px;
+}
+
+.MRThirdIconSymbolDistance {
+  position: relative;
+  top: 4px;
+}
+.MediumRiskIcon {
+  font-size: 75%;
+  position: absolute;
+  top: 35%;
+  left: 17px;
+}
+
+.LRSecondIconSymbolDistance {
+  position: relative;
+  top: -12px;
+}
+
+.LRThirdIconSymbolDistance {
+  position: relative;
+  top: -23px;
+}
+
+.LowRiskIcon {
+  font-size: 175%;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  bottom: -26px;
+  left: 17px;
 }

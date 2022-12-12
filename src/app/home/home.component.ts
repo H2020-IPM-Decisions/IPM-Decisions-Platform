@@ -64,6 +64,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   // !!! Temporary variable for development banner
   showDevBanner: boolean = true;
 
+  // CARDS content variables
+  emailUsContent: any;
+  webSiteContent: any;
+  usefulLinksContent: any;
+
+  // FOOTER Content
+  footerContent: any;
+
   @Output() verified: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public username: string;
@@ -175,6 +183,32 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
         if(!languageFound) {
           this.homeTitle = hTitle["en"];
+        }
+      }),
+      cmsService.getHomeCardEmailUs().then((emailUs: any) => {
+        this.emailUsContent = this._sanitizer.bypassSecurityTrustHtml(emailUs["HtmlContent"]);
+      }),
+      cmsService.getHomeCardWebSite().then((webSite: any) => {
+        this.webSiteContent = this._sanitizer.bypassSecurityTrustHtml(webSite["HtmlContent"]);
+      }),
+      cmsService.getHomeCardUsefulLinks().then((usefulLinks: any) => {
+        this.usefulLinksContent = this._sanitizer.bypassSecurityTrustHtml(usefulLinks["HtmlContent"]);
+      }),
+      cmsService.getPublicPageFooter()
+      .then((footer: any) => {
+        let languageFound: boolean = false;
+        for (let key in footer) {
+          if(key === sessionStorage.getItem("selectedLanguage"))
+          {
+            this.footerContent = this._sanitizer.bypassSecurityTrustHtml(footer[key]);
+            languageFound = true;
+            if (footer[key]==="") {
+              this.footerContent = this._sanitizer.bypassSecurityTrustHtml(footer["en"]);
+            }
+          }
+        }
+        if(!languageFound) {
+          this.footerContent = this._sanitizer.bypassSecurityTrustHtml(footer["en"]);
         }
       }),
     ];

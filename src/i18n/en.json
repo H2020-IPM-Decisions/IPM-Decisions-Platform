@@ -128,7 +128,7 @@
         "DSS_adaptation_parameters_updated":"DSS parameters updated!",
         "DSS_adaptation_parameters_sent":"DSS parameters successfully sent!",
         "DSS_parameters_reset":"DSS parameters have been reset to default values successfully!",
-        "DSS_model_selection_default_timing":"DSS have been added using default timings for crop production provided by the DSS owner. You may need to amend these using the “Edit DSS parameters” functionality to accurately reflect your gowing system."
+        "DSS_model_selection_default_timing":"DSS have been added which may use default dates for crop emergence or growth stages. To check if these are correct for your crops or to change the dates, click on the 'Edit DSS parameters' button."
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"No DSS avaiable for the selected crops",

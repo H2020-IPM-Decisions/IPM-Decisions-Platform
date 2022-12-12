@@ -45,3 +45,7 @@
   color: rgb(82, 53, 252);
   text-decoration: underline;
 }
+
+::ng-deep a {
+  color: #7bbc28
+}

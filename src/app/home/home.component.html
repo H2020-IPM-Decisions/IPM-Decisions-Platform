@@ -165,44 +165,30 @@ We strongly recommend that you do not use this platform ahead of its release dat
       <div class="row" data-aos="fade-up" data-aos-delay="100">
 
 
-        <div class="col-md-4 col-md-6">
+        <div class="col-md-4">
           <div class="info-box  mb-4">
             <h3>{{ 'Home.Email_us' | translate }}</h3>
-            <p><a href="mailto:contact@ipmdecisions.net" target="_blank">contact@ipmdecisions.net</a></p>
+            <div [innerHtml]="emailUsContent"></div>
             <br>
           </div>
         </div>
 
-        <div class="col-md-4 col-md-6">
+        <!--<div class="col-md-4 col-md-6">
           <div class="info-box  mb-4">
             <h3>{{ 'Home.Web_Site' | translate }}</h3>
-            <a href="https://www.ipmdecisions.net" target="_blank">https://www.ipmdecisions.net</a>
-            <!--<p>https://www.ipmdecisions.net</p>-->
+            <div [innerHtml]="webSiteContent"></div>
             <br>
           </div>
-        </div>
+        </div>-->
 
-        <div class="col-md-4 col-md-6">
+        <div class="col-md-4">
           <div class="info-box  mb-4">
             <h3>{{ 'Home.Useful_links' | translate }}</h3>
-            <a href="https://bdspublishing.com/resources/ipm-decisions/"
-              target="_blank">https://bdspublishing.com/resources/ipm-decisions/</a>
-            <br>
-            <a href="https://ipmworks.net/" target="_blank">https://ipmworks.net/</a>
-            <br>
-            <a href="https://platform.smartprotect-h2020.eu/"
-              target="_blank">https://platform.smartprotect-h2020.eu/</a> 
-            <!--<p>https://bdspublishing.com/resources/ipm-decisions/</p>
-            <p>https://ipmworks.net/</p>
-            <p>https://platform.smartprotect-h2020.eu/</p>-->
-            <br>
-            <a href="https://www.effispray.com/"
-              target="_blank">https://www.effispray.com/</a>
-            <br>
+            <div [innerHtml]="usefulLinksContent"></div>
           </div>
         </div>
 
-        <div class="col-md-4 col-md-6">
+        <div class="col-md-4">
           <div class="info-box mb-4">
             <h3>{{ 'Home.Social' | translate }}</h3>
             <a href="https://www.facebook.com/IPM-Decisions-113070703594951" class="icoFacebook" title="Facebook"><i
@@ -224,15 +210,15 @@ We strongly recommend that you do not use this platform ahead of its release dat
 
   <div class="container py-4">
     <div class="row">
-      <div class="col-md-5 eu-flag">
-        <p>{{ 'Common_labels.EU_footer_further_information' | translate }} <a href="mailto:contact@ipmdecisions.net" target="_blank">contact@ipmdecisions.net</a>.</p>
+      <div class="col-md-5 eu-flag" [innerHtml]="footerContent">
+        <!--<p>{{ 'Common_labels.EU_footer_further_information' | translate }} <a href="mailto:contact@ipmdecisions.net" target="_blank">contact@ipmdecisions.net</a>.</p>
         <p>{{ 'Common_labels.EU_footer_further_details_on_project' | translate }} <a href="https://www.ipmdecisions.net" target="_blank">https://www.ipmdecisions.net</a>.</p>
         <img src="img/logo-euro.jpg" style="float: left; display: inline-grid; margin-right: 5px;">
         <p>
           {{ 'Common_labels.Cofundend_by_the_Horizon_2020' | translate }}
           <br>{{ 'Common_labels.Framework_programme' | translate }}
           <br>{{ 'Common_labels.Under_grant_agreement' | translate }}
-        </p>
+        </p>-->
       </div>
       <div class="col-md-3 ">
       </div>

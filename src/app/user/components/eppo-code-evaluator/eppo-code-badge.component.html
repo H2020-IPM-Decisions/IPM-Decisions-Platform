@@ -19,6 +19,39 @@
             <i class="fas fa-info-circle fa-stack-1x"></i>
           </a>
         </span>
+        <div *ngIf="status==4" class="HighRiskIcon">
+          <div class="row">
+            <i class="fas fa-caret-up"></i>
+          </div>
+          <div class="row HRSecondIconSymbolDistance">
+            <i class="fas fa-caret-up"></i>
+          </div>
+          <div class="row HRThirdIconSymbolDistance">
+            <i class="fas fa-caret-up"></i>
+          </div>
+        </div>
+        <div *ngIf="status==3" class="MediumRiskIcon">
+          <div class="row">
+            <i class="fas fa-circle"></i>
+          </div>
+          <div class="row MRSecondIconSymbolDistance">
+            <i class="fas fa-circle"></i>
+          </div>
+          <div class="row MRThirdIconSymbolDistance">
+            <i class="fas fa-circle"></i>
+          </div>
+        </div>
+        <div *ngIf="status==2" class="LowRiskIcon">
+          <div class="row">
+            <i class="fas fa-caret-down"></i>
+          </div>
+          <div class="row LRSecondIconSymbolDistance">
+            <i class="fas fa-caret-down"></i>
+          </div>
+          <div class="row LRThirdIconSymbolDistance">
+            <i class="fas fa-caret-down"></i>
+          </div>
+        </div>
         <span *ngIf="gotErrorType()" class="fa-stack" 
           [ngClass]="{'errorIcon-green': errorType==0, 'errorIcon-yellow': errorType==1, 'errorIcon-red': errorType==2}">
             <a class="details" (click)="openModal(errorModal,'modal-lg')" [title]="('Common_labels.Click_to_open' | translate)">
@@ -36,12 +69,12 @@
           </a>
         </span>
         <a *ngIf="itemId && isValid; else notValidDSS" [routerLink]="[itemId,'view']" [ngClass]="{'textColorNormal': status!=1, 'textColorBlack':status==1}">
-            <h6  *ngIf="!isLegend"><b>{{code | eppoCode }}</b></h6>
+            <h6  *ngIf="!isLegend" class="TextBoxMargin"><b>{{code | eppoCode }}</b></h6>
             <!--<small  *ngIf="!isLegend">({{ code }})</small>-->
         </a>
         <ng-template #notValidDSS>
           <a (click)="goToModelParameterisation()" [ngClass]="{'textColorNormal': status!=1, 'textColorBlack':status==1}">
-            <h6  *ngIf="!isLegend"><b>{{code | eppoCode }}</b></h6>
+            <h6  *ngIf="!isLegend" class="TextBoxMargin"><b>{{code | eppoCode }}</b></h6>
             <!--<small  *ngIf="!isLegend">({{ code }})</small>-->
           </a>
         </ng-template>

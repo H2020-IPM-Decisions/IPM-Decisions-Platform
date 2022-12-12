@@ -128,7 +128,7 @@
         "DSS_adaptation_parameters_updated":"Parametri del DSS aggiornati!",
         "DSS_adaptation_parameters_sent":"Parametri del DSS inviati correttamente!",
         "DSS_parameters_reset":"I parametri del DSS sono stati ripristinati con successo ai valori predefiniti!",
-        "DSS_model_selection_default_timing":"I DSS sono stati aggiunti utilizzando le tempistiche predefinite per la produzione delle colture fornite dal proprietario del DSS. Potrebbe essere necessario modificarli utilizzando la funzione “Modifica parametri DSS” per riflettere accuratamente il proprio sistema di semina."
+        "DSS_model_selection_default_timing":"Sono stati aggiunti dei DSS che possono utilizzare date predefinite per le fasi di emergenza o di crescita delle colture. Per verificare se queste date sono corrette per le vostre colture o per modificarle, fate clic sul pulsante 'Modifica parametri DSS'"
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"Non ci sono DSS per le colture selezionate",

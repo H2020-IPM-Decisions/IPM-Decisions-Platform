@@ -18,8 +18,8 @@
 }
 
 ::-webkit-scrollbar {
-  width: 0;  /* Remove scrollbar space */
-  background:transparent;  /* Optional: just make scrollbar invisible */
+  width: 1;  /*Set to 0 to remove scrollbar space*/
+  /*background:transparent;   Optional: just make scrollbar invisible */
 }
   
   /* If we want to see the divs 

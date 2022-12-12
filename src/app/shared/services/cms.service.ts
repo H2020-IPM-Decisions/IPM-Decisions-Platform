@@ -206,4 +206,47 @@ export class CMSService {
       .toPromise();
   }
 
+  getHomeCardEmailUs() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/HomeCardEmailUs`, {
+        headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getHomeCardWebSite() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/HomeCardWebSite`, {
+        headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getHomeCardUsefulLinks() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/HomeCardUsefulLinks`, {
+        headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getPublicPageFooter() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/PublicPageFooter`, {
+        headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
 }
