@@ -18,6 +18,8 @@ export class ResearchersArticleComponent implements OnInit, OnDestroy {
   bannerUrl = "";
   articleContent: any;
   footerContent: any;
+  homeTitle: string;
+  
   public isLoggedIn: boolean;
   public username: string;
   public $accountSub: Subscription;
@@ -74,6 +76,23 @@ export class ResearchersArticleComponent implements OnInit, OnDestroy {
           }
           if(!languageFound) {
             this.footerContent = this._sanitizer.bypassSecurityTrustHtml(footer["en"]);
+          }
+        }),
+      cmsService.getHomeTitle()
+        .then((hTitle: any) => {
+          let languageFound: boolean = false;
+          for (let key in hTitle) {
+            if(key === sessionStorage.getItem("selectedLanguage"))
+            {
+              this.homeTitle = hTitle[key];
+              languageFound = true;
+              if (hTitle[key]==="") {
+                this.homeTitle = hTitle["en"];
+              }
+            }
+          }
+          if(!languageFound) {
+            this.homeTitle = hTitle["en"];
           }
         }),
     ];

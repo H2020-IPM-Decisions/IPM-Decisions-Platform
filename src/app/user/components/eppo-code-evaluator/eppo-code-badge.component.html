@@ -11,6 +11,7 @@
     </ng-template>
     <span id="myDssBadgeId" class="badge dss-badge containerBox"
         [tooltip]="tolTemplateStatusRep"
+        delay="1000"
         [ngClass]="{'badge-secondary':!status, 'badge-info': status==1, 'badge-success': status==2, 'badge-warning':status==3, 'badge-danger': status==4}"
         *ngIf="!(executionType==='link') && !isLegend">
         <span *ngIf="dssDescription" class="infoIcon fa-stack">

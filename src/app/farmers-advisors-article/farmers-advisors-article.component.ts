@@ -17,7 +17,8 @@ export class FarmersAdvisorsArticleComponent implements OnInit, OnDestroy {
 
   bannerUrl = "";
   articleContent: any;
-
+  homeTitle: string;
+  
    // FOOTER Content
   footerContent: any;
 
@@ -76,6 +77,23 @@ export class FarmersAdvisorsArticleComponent implements OnInit, OnDestroy {
           }
           if(!languageFound) {
             this.footerContent = this._sanitizer.bypassSecurityTrustHtml(footer["en"]);
+          }
+        }),
+      cmsService.getHomeTitle()
+        .then((hTitle: any) => {
+          let languageFound: boolean = false;
+          for (let key in hTitle) {
+            if(key === sessionStorage.getItem("selectedLanguage"))
+            {
+              this.homeTitle = hTitle[key];
+              languageFound = true;
+              if (hTitle[key]==="") {
+                this.homeTitle = hTitle["en"];
+              }
+            }
+          }
+          if(!languageFound) {
+            this.homeTitle = hTitle["en"];
           }
         }),
     ];
