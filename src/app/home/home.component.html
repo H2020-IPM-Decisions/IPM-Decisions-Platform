@@ -23,7 +23,7 @@
         {{ 'Common_labels.Login' | translate }}</span></a>
       <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>
         {{ 'Common_labels.Register' | translate }}</span></a>
-      <a href="/guides/QuickStart-en.pdf" download target="_blank"><i class="bx bx-download"></i><span class="downloadText">{{ 'User_guide.Title' | translate }}</span></a>
+      <!--<a href="/guides/QuickStart-en.pdf" download target="_blank"><i class="bx bx-download"></i><span class="downloadText">{{ 'User_guide.Title' | translate }}</span></a>-->
     </div>
     <div class="ml-3 header-user-info" *ngIf="(isLoggedIn)">
       <i class='bx bx-user mr-2'></i><span>{{ username }}</span>
@@ -65,6 +65,11 @@ We strongly recommend that you do not use this platform ahead of its release dat
   </section>
 
 <main id="main">
+  <div class="row">
+    <div class="col-md-4 welcomeBox" [innerHtml]="welcomeContent">
+      Welcome to the IPM Decisions Platform. To get started using decision support systems for IPM, see instructional video here and a quick start guide here. 
+    </div>
+  </div>
   <div class="row no-gutters cmsIntroduction client-text">
     <!-- TEMPORARY DISABLED -->
     <!--<div [ngStyle]="{'margin-top': '127px', 'padding': '20px 60px'}" [innerHtml]="homeIntro"></div>-->
@@ -207,23 +212,13 @@ We strongly recommend that you do not use this platform ahead of its release dat
 
 <!-- ======= Footer ======= -->
 <footer id="footer">
-
   <div class="container py-4">
     <div class="row">
-      <div class="col-md-5 eu-flag" [innerHtml]="footerContent">
-        <!--<p>{{ 'Common_labels.EU_footer_further_information' | translate }} <a href="mailto:contact@ipmdecisions.net" target="_blank">contact@ipmdecisions.net</a>.</p>
-        <p>{{ 'Common_labels.EU_footer_further_details_on_project' | translate }} <a href="https://www.ipmdecisions.net" target="_blank">https://www.ipmdecisions.net</a>.</p>
-        <img src="img/logo-euro.jpg" style="float: left; display: inline-grid; margin-right: 5px;">
-        <p>
-          {{ 'Common_labels.Cofundend_by_the_Horizon_2020' | translate }}
-          <br>{{ 'Common_labels.Framework_programme' | translate }}
-          <br>{{ 'Common_labels.Under_grant_agreement' | translate }}
-        </p>-->
+      <div class="col-md-5 eu-flag" [innerHtml]="footerContent"></div>
+      <div class="col-md-5 ">
+        <div class="row" [innerHtml]="footerMiddleContent"></div>
       </div>
-      <div class="col-md-3 ">
-      </div>
-
-      <div class="col-md-4 ">
+      <div class="col-md-2 ">
         <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
       </div>
     </div>

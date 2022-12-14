@@ -20,7 +20,7 @@
       <form [formGroup]="selCropForm">
         <div class="row">
           <div class="col-md-6 col-xs-12">
-            <fieldset class="border p-3 m-3">
+            <fieldset class="border p-3 m-2">
               <legend class="w-auto px-1 text-muted h5">
                 <b>{{ 'DSS_model_selection.Crops_selection' | translate }}</b>
               </legend>
@@ -41,13 +41,18 @@
             </fieldset>
           </div>
           <div class="col-md-6 col-xs-12">
-            <fieldset class="border p-3 m-3">
+            <fieldset class="border p-3 m-2">
               <legend class="w-auto px-1 text-muted h5">
                 <b>{{ 'DSS_model_selection.Filters' | translate }}</b>
               </legend>
               <div>
                 <input class= "mr-2" type="checkbox" [checked]="countryFilterActive" (change)="onCheckboxChange()" />
-                <label class="countryFilterLabel col-form-label p-1" for="countries">{{ 'DSS_model_selection.Enable_country_filter' | translate }}</label>
+                <label class="countryFilterLabel col-form-label p-1" for="countries">
+                  {{ 'DSS_model_selection.Enable_country_filter' | translate }}
+                  <a class="details" (click)="openModal(countryFilterInfoModal,'modal-sm')">
+                    <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
+                  </a>
+                </label>
                 <select class="form-control" id="countries" (change)="countryFilterChange($event)" [disabled]="!countryFilterActive">
                   <option hidden disabled selected value></option>
                   <ng-template ngFor let-c [ngForOf]="countries">
@@ -136,3 +141,28 @@
     </div>
   </div>
 </div>
+
+<!-- COUNTRY FILTER INFO MODAL -->
+<ng-template #countryFilterInfoModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      <span class="modalInfoIcon fa-stack">
+          <i class="fas fa-circle fa-stack-1x"></i>
+          <i class="fas fa-info-circle fa-stack-1x"></i>
+        </span> <b>{{ 'DSS_model_selection.Country_filter_info_title' | translate }}</b>
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <div class="form-group row">
+          <div class="col-sm-9">
+            <p>{{ 'DSS_model_selection.Country_filter_info_description' | translate }}</p>
+          </div>
+      </div>
+  </div>
+  <div class="modal-footer pull-right">
+    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+  </div>
+</ng-template>

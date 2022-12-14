@@ -127,14 +127,16 @@
 		"DSS_adaptation_model_retrived": "DSS Data retrivied successfully!",
 		"DSS_adaptation_parameters_updated": "DSS parameters updated!",
 		"DSS_adaptation_parameters_sent": "DSS parameters successfully sent!",
-		"DSS_parameters_reset": "DSS parameters have been reset to default values successfully!"
+		"DSS_parameters_reset": "DSS parameters have been reset to default values successfully!",
+		"DSS_model_selection_default_timing":"Er zijn DSS toegevoegd die standaard data kunnen gebruiken voor de opkomst van gewassen of groeistadia. Om te controleren of deze correct zijn voor uw gewassen of om de data te wijzigen, klikt u op de knop 'DSS-parameters bewerken'."
 	},
 	"Warning_messages": {
 		"DSS_model_avaiability_error": "Geen BOS beschikbaar voor de geselecteerde gewassen",
 		"Not_enough_DSS_to_compare": " Er zijn niet genoeg BOS'en om te vergelijken! Voeg aub minstens 2 BOS'en toe",
 		"Farm_creation_warning_message": "Het platfrom start met het verzamelen van weerdata na het aanmaken van een bedrijf. Dit kan tot 2 uur duren.",
 		"No_DSS_to_adapt": "There are not any DSS model to adapt! Please add at least one model",
-		"Weather_parameters_not_avaiable": "This DSS model is not able to be run using available weather service! The DSS won't be listed."
+		"Weather_parameters_not_avaiable": "This DSS model is not able to be run using available weather service! The DSS won't be listed.",
+		"DSS_model_avaiability_country_error":"Geen DSS beschikbaar voor de geselecteerde gewassen in het geselecteerde land. In de toekomst zullen meer DSS worden toegevoegd. In de tussentijd kunnen er DSS beschikbaar zijn uit buurlanden, die gevonden kunnen worden door DSS toe te voegen aan het bedrijf met het vakje 'Landfilter' uitgevinkt."
 	},
 	"Countries": {
 		"Austria": "Oostenrijk",
@@ -306,7 +308,8 @@
 		"Icons_info": "Icons info",
 		"Green_triangle_description": "Error did not prevent the model from running and does not affect the reliability of the model risk prediction",
 		"Yellow_triangle_description": "Error did not stop the model from running, but does reduce reliability of model risk prediction",
-		"Red_triangle_description": "Error prevented the model from running"
+		"Red_triangle_description": "Error prevented the model from running",
+		"Platform_rationale_information":"Dit platform maakt DSS beschikbaar van externe DSS-ontwikkelaars. De 'gouden standaard' voor DSS is dat ze zijn gemaakt door gerenommeerde DSS-ontwikkelaars, getest en op grote schaal in de praktijk gebruikt over vele locaties en seizoenen, en dat de resultaten zijn gepubliceerd in peer-reviewed tijdschriften om aan te tonen dat ze een nuttige voorspellende waarde hebben in de landen waar ze voor gebruik worden aanbevolen. Er zijn maar weinig DSS die aan al deze criteria voldoen. IPM Decisions beoogt een breed scala aan DSS beschikbaar te stellen voor testen en gebruik. Daarom is het geen vereiste dat aan al deze criteria wordt voldaan om een DSS via dit Platform beschikbaar te stellen. In plaats daarvan zorgt het management van IPM Decisions er redelijkerwijs voor dat de DSS afkomstig zijn van gerenommeerde ontwikkelaars en dat over elk DSS nadere informatie wordt verstrekt, zodat een geïnformeerde keuze over het gebruik mogelijk is. De DSS kunnen worden gebruikt ter ondersteuning (niet ter vervanging) van beslissingen door ervaren gewasverzorgers, rekening houdend met alle relevante lokale risicofactoren. Boeren en adviseurs moeten de DSS niet gebruiken als leidraad voor beslissingen over grote arealen totdat zij ervaring hebben opgedaan met het gebruik ervan en de risicoschattingen betrouwbaar vinden. Foutieve risicoschattingen kunnen voorkomen, vooral als de omstandigheden anders zijn dan tijdens de ontwikkeling en het testen van de DSS. Landbouwersgroepen en onderzoeksorganisaties worden aangemoedigd de DSS in het veld te testen en de DSS zo nodig aan de plaatselijke omstandigheden aan te passen en hun ervaring te delen."
 	},
 	"DSS_details": {
 		"Title": "Details BOS",
@@ -323,7 +326,8 @@
 		"DSS_id": "BOS-ID",
 		"DSS_model_id": "BOS-model-ID",
 		"Warning_status_representation": "Weergave waarschuwingsstatus",
-		"Warning_message": "Waarschuwingsbericht"
+		"Warning_message": "Waarschuwingsbericht",
+		"Disclaimer_content":"Dit platform stelt DSS beschikbaar van externe DSS-ontwikkelaars. De DSS kan worden gebruikt ter ondersteuning (niet ter vervanging) van beslissingen door ervaren gewasverzorgers, rekening houdend met lokale sicofactoren. Zie verdere informatie onder de legenda op het DSS Use dashboard."
 	},
 	"DSS_model_selection": {
 		"Title": "BOS Model Selectie",
@@ -342,7 +346,9 @@
 		"Warning_status_interpretation": "INTERPRETATIE WAARSCHUWINGSSTATUS ",
 		"Model_name": "BOS",
 		"Filters": "Filters",
-		"Enable_country_filter": "Filter by country in which DSS was developed and/or valid"
+		"Enable_country_filter": "Filter by country in which DSS was developed and/or valid",
+		"Country_filter_info_title":"Landfilter",
+        "Country_filter_info_description":"Als u dit vakje aanvinkt, wordt het zoeken naar DSS beperkt tot de DSS-leveranciers die relevant zijn voor het geselecteerde land. Relevante DSS zijn meestal ontwikkeld, getest of eerder gebruikt in het geselecteerde land. DSS uit andere landen, die ook nuttig kunnen zijn, worden niet getoond als het vakje is aangevinkt."
 	},
 	"DSS_model_parameterisation": {
 		"Title": "BOS Model Parameterisatie",

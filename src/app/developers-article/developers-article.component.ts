@@ -19,6 +19,7 @@ export class DevelopersArticleComponent implements OnInit, OnDestroy {
   articleContent: any;
   footerContent: any;
   homeTitle: string;
+  footerMiddleContent: any;
 
   public isLoggedIn: boolean;
   public username: string;
@@ -95,6 +96,23 @@ export class DevelopersArticleComponent implements OnInit, OnDestroy {
             this.homeTitle = hTitle["en"];
           }
         }),
+      cmsService.getPublicPageFooterMiddle()
+      .then((footerMiddle: any) => {
+        let languageFound: boolean = false;
+        for (let key in footerMiddle) {
+          if(key === sessionStorage.getItem("selectedLanguage"))
+          {
+            this.footerMiddleContent = this._sanitizer.bypassSecurityTrustHtml(footerMiddle[key]);
+            languageFound = true;
+            if (footerMiddle[key]==="") {
+              this.footerMiddleContent = this._sanitizer.bypassSecurityTrustHtml(footerMiddle["en"]);
+            }
+          }
+        }
+        if(!languageFound) {
+          this.footerMiddleContent = this._sanitizer.bypassSecurityTrustHtml(footerMiddle["en"]);
+        }
+      }),
     ];
     Promise.all(promises).then(() => {
       setTimeout(() => init(), 0)

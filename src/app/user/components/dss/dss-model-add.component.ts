@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpResponse } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, TemplateRef } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Farm } from "@app/shared/models/farm.model";
 import { Field } from "@app/shared/models/field.model";
@@ -13,11 +13,13 @@ import { NGXLogger } from "ngx-logger";
 import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
 import { CountryNamePipe } from "@app/shared/pipes/country-name.pipe";
 import { Country } from "@app/shared/models/country.model";
+import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 
 @Component({
   selector: "app-dss-model-add",
   templateUrl: "./dss-model-add.component.html",
   styleUrls: ["./dss-model-add.component.css"],
+  providers: [BsModalRef]
 })
 export class DssModelAddComponent implements OnInit {
   selCropForm: FormGroup;
@@ -35,6 +37,8 @@ export class DssModelAddComponent implements OnInit {
   $subscription?: Subscription;
   $countriesSubscription?: Subscription;
 
+  modalRef: BsModalRef;
+
   constructor(
     private _fb: FormBuilder,
     private _dssSelectionService: DssSelectionService,
@@ -42,7 +46,8 @@ export class DssModelAddComponent implements OnInit {
     private _activatedRoute: ActivatedRoute,
     private _logger: NGXLogger,
     private _toastrTranslated: ToastrTranslationService,
-    private _countryNamePipe: CountryNamePipe
+    private _countryNamePipe: CountryNamePipe,
+    public _modalService: BsModalService
   ) {}
 
   ngOnInit() {
@@ -116,7 +121,7 @@ export class DssModelAddComponent implements OnInit {
             this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
           } else {
             this.areCropsSelected = false;
-            this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_avaiability_error","Common_labels.Warning","toast-warning");
+            this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_avaiability_country_error","Common_labels.Warning","toast-warning");
           }
         },
         (error: HttpErrorResponse) => {
@@ -218,5 +223,9 @@ export class DssModelAddComponent implements OnInit {
 
   countryFilterChange(event: { target: HTMLInputElement }):void {
     this.selectedCountry = event.target.value;
+  }
+
+  openModal(template: TemplateRef<any>, size?: string) {
+    this.modalRef = this._modalService.show(template, {class: size});
   }
 }

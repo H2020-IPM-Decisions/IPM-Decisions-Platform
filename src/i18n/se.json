@@ -127,14 +127,16 @@
 		"DSS_adaptation_model_retrived": "DSS-data har hämtats!",
 		"DSS_adaptation_parameters_updated": "DSS-parametrarna har uppdaterats!",
 		"DSS_adaptation_parameters_sent": "DSS-parametrarna har skickats!",
-		"DSS_parameters_reset": "DSS-parametrarna har återställts till standardvärdena!"
+		"DSS_parameters_reset": "DSS-parametrarna har återställts till standardvärdena!",
+		"DSS_model_selection_default_timing":"DSS som kan använda standarddatum för grödans uppkomst eller tillväxtstadier har lagts till. För att kontrollera om dessa är korrekta för dina grödor eller för att ändra datum, klicka på knappen 'Redigera DSS-parametrar'."
 	},
 	"Warning_messages": {
 		"DSS_model_avaiability_error": "Inget DSS tillgängligt för de valda grödorna",
 		"Not_enough_DSS_to_compare": "Det finns inte tillräckligt många DSS-modeller att jämföra! Lägg till minst två modeller",
 		"Farm_creation_warning_message": "Plattformen kommer att börja samla in väderdata efter att gården skapats. Detta kan ta upp till 2 timmar.",
 		"No_DSS_to_adapt": "Det finns ingen DSS-modell att anpassa! Lägg till minst en modell",
-		"Weather_parameters_not_avaiable": "Denna DSS-modell kan inte köras med tillgänglig vädertjänst! DSS kommer inte att listas."
+		"Weather_parameters_not_avaiable": "Denna DSS-modell kan inte köras med tillgänglig vädertjänst! DSS kommer inte att listas.",
+		"DSS_model_avaiability_country_error":"Ingen DSS tillgänglig för de valda grödorna i det valda landet. Mer DSS kommer att läggas till i framtiden. Under tiden kan det finnas DSS tillgängligt från grannländer, vilket kan hittas genom att lägga till DSS till gården med rutan 'Landsfilter' avmarkerad."
 	},
 	"Countries": {
 		"Austria": "Österrike",
@@ -306,7 +308,8 @@
 		"Icons_info": "Icons info",
 		"Green_triangle_description": "Felet hindrade inte modellen från att köras och påverkar inte tillförlitligheten av modellens riskprediktion",
 		"Yellow_triangle_description": "Fel hindrade inte modellen från att köras, men minskar tillförlitligheten av modellriskprediktionen",
-		"Red_triangle_description": "Fel hindrade modellen från att köras"
+		"Red_triangle_description": "Fel hindrade modellen från att köras",
+		"Platform_rationale_information":"Denna plattform gör DSS tillgänglig från externa DSS-utvecklare. 'Guldstandarden' för DSS är att de har skapats av välrenommerade DSS-utvecklare, testats och använts i stor utsträckning i praktiken på flera platser och säsonger, och att resultaten publiceras i peer-reviewade tidskrifter för att visa ett användbart värde i att förutsäga risken för skadegörare i de länder där de är rekommenderas för användning. Få DSS uppfyller alla dessa kriterier. IPM Decisions syftar till att göra ett brett utbud av DSS tillgängliga för testning och användning. Därför är det inte ett krav att alla dessa kriterier är uppfyllda för att en DSS ska vara tillgänglig via denna plattform. Istället är ledningen för IPM Decisons noga med att DSS kommer från välrenommerade utvecklare och ytterligare information tillhandahålls om varje DSS, för att möjliggöra ett välgrundat val om användning.  DSS kan användas för att hjälpa (inte ersätta) beslut av erfarna jordbrukareoch rådgivare, med hänsyn till alla relevanta lokala riskfaktorer för skadegörare. Jordbrukare och rådgivare bör inte använda DSS för att vägleda beslut om betydande odlingsarealer förrän de har fått erfarenhet av användningen och har funnit riskuppskattningarna tillförlitliga. Felaktiga riskuppskattningar kan förekomma, särskilt om förhållandena ligger utanför de som rått under utveckling och testning av DSS. Lantbrukargrupper och forskningsorganisationer uppmuntras att testa DSS i fält, ändra DSS för att passa lokala förhållanden vid behov och dela med sig av sina erfarenheter."
 	},
 	"DSS_details": {
 		"Title": "DSS-detaljer",
@@ -323,7 +326,8 @@
 		"DSS_id": "DSS ID",
 		"DSS_model_id": "DSS-modell ID",
 		"Warning_status_representation": "Presentation av varningsstatus",
-		"Warning_message": "Varningsmeddelande"
+		"Warning_message": "Varningsmeddelande",
+		"Disclaimer_content":"Denna plattform gör DSS från externa DSS-utvecklare tillgängliga. DSS kan användas för att hjälpa (inte ersätta) beslut av erfarna odlare och rådgivare, med hänsyn till lokala riskfaktorer för skadegörare. Se ytterligare information under förklaringen på användarpanelen för DSS."
 	},
 	"DSS_model_selection": {
 		"Title": "Val av DSS_modell",
@@ -342,7 +346,9 @@
 		"Warning_status_interpretation": "TOLKNING AV VARNINGSSTATUS",
 		"Model_name": "DSS",
 		"Filters": "Filter",
-		"Enable_country_filter": "Filtrera efter land där DSS utvecklades och/eller validerats"
+		"Enable_country_filter": "Filtrera efter land där DSS utvecklades och/eller validerats",
+		"Country_filter_info_title":"Filter för land",
+		"Country_filter_info_description":"Om du markerar den här rutan begränsas sökningen efter DSS till de som DSS-leverantörerna föreslår är relevanta för det valda landet.Relevanta DSS har vanligtvis utvecklats, testats eller använts tidigare i det valda landet. DSS från andra länder, vilket också kan vara användbart, kommer inte att visas om rutan är markerad."
 	},
 	"DSS_model_parameterisation": {
 		"Title": "Parameterisering av DSS-model",

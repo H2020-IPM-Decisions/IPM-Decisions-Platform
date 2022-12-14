@@ -127,14 +127,16 @@
 		"DSS_adaptation_model_retrived": "EHS-Daten Abruf erfolgreich!",
 		"DSS_adaptation_parameters_updated": "EHS-Parameter aktualisiert!",
 		"DSS_adaptation_parameters_sent": "EHS-Parameter erfolgreich gesendet!",
-		"DSS_parameters_reset": "Die EHS-Parameter wurden erfolgreich auf die Standardwerte zurückgesetzt!"
+		"DSS_parameters_reset": "Die EHS-Parameter wurden erfolgreich auf die Standardwerte zurückgesetzt!",
+		"DSS_model_selection_default_timing":"Es wurden EHS hinzugefügt, die Standarddaten für den Auflauf der Pflanzen oder Wachstumsstadien verwenden können. Um zu prüfen, ob diese für Ihre Kulturen korrekt sind oder um die Daten zu ändern, klicken Sie auf die Schaltfläche 'EHS-Parameter bearbeiten'."
 	},
 	"Warning_messages": {
 		"DSS_model_avaiability_error": "Für die ausgewählten Kulturen ist kein EHS verfügbar",
 		"Not_enough_DSS_to_compare": "Es gibt nicht genug EHS-Modelle zum Vergleichen! Bitte fügen Sie mindestens zwei Modelle hinzu",
 		"Farm_creation_warning_message": "Die Plattform startet mit dem Sammeln der Wetterdaten sobald der Betrieb angelegt ist. Dies kann bis zu 2 Stunden dauern",
 		"No_DSS_to_adapt": "Es sind keine EHS-Modelle zum Anpassen vorhanden! Bitte fügen Sie mindestens ein Modell hinzu",
-		"Weather_parameters_not_avaiable":"Dieses EHS-Modell kann nicht mit dem verfügbaren Wetterdienst betrieben werden! Das EHS wird nicht aufgelistet."
+		"Weather_parameters_not_avaiable":"Dieses EHS-Modell kann nicht mit dem verfügbaren Wetterdienst betrieben werden! Das EHS wird nicht aufgelistet.",
+		"DSS_model_avaiability_country_error":"Kein EHS verfügbar für die ausgewählten Kulturen in dem ausgewählten Land. Weitere EHS werden in Zukunft hinzugefügt.  In der Zwischenzeit können EHS aus Nachbarländern verfügbar sein, die durch Hinzufügen von EHS zum Betrieb bei deaktiviertem 'Länderfilter'-Kästchen gefunden werden können."
 	},
 	"Countries": {
 		"Austria": "Österreich",
@@ -306,7 +308,8 @@
     "Icons_info":"Icon-Info",
     "Green_triangle_description":"Der Fehler hat die Ausführung des Modells nicht verhindert und beeinträchtigt nicht die Zuverlässigkeit der Risikovorhersage des Modells",
     "Yellow_triangle_description":"Der Fehler hat die Ausführung des Modells nicht gestoppt, aber die Zuverlässigkeit der Risikovorhersage des Modells beeinträchtigt",
-    "Red_triangle_description":"Der Fehler verhinderte die Ausführung des Modells"
+    "Red_triangle_description":"Der Fehler verhinderte die Ausführung des Modells",
+	"Platform_rationale_information":"Diese Plattform stellt EHS von externen EHS-Entwicklern zur Verfügung. Der 'Goldstandard' für EHS besteht darin, dass sie von angesehenen EHS-Entwicklern erstellt, getestet und in der Praxis über viele Standorte und Saisons hinweg eingesetzt und die Ergebnisse in Fachzeitschriften veröffentlicht wurden, um nützliche Vorhersagewerte in den Ländern nachzuweisen, in denen sie zur Anwendung empfohlen werden. Nur wenige DSS erfüllen alle diese Kriterien. IPM Decisions zielt darauf ab, eine breite Palette von EHS zur Erprobung und Nutzung zur Verfügung zu stellen. Daher ist es keine Voraussetzung, dass ein EHS alle diese Kriterien erfüllt, um über diese Plattform verfügbar zu sein. Stattdessen achtet das Management von IPM Decisions darauf, dass die EHS von seriösen Entwicklern stammen und weitere Informationen zu jedem EHS bereitgestellt werden, um eine fundierte Entscheidung über die Nutzung zu ermöglichen. Die EHS können zur Unterstützung (nicht als Ersatz) von Entscheidungen erfahrener Landwirte verwendet werden, die alle relevanten lokalen Risikofaktoren der Schaderreger berücksichtigen. Landwirte und Berater sollten die EHS erst dann als Entscheidungshilfe für größere Anbauflächen nutzen, wenn sie Erfahrungen mit der Anwendung gesammelt haben und die Risikoschätzungen für zuverlässig halten. Es kann zu fehlerhaften Risikoschätzungen kommen, insbesondere wenn die Bedingungen nicht denen entsprechen, die während der Entwicklung und Prüfung der EHS herrschten. Landwirte und Forschungseinrichtungen werden ermutigt, das EHS im Feld zu testen, das EHS gegebenenfalls an die örtlichen Bedingungen anzupassen und ihre Erfahrungen weiterzugeben."
 	},
 	"DSS_details": {
 		"Title": "EHS-Details",
@@ -323,7 +326,8 @@
 		"DSS_id": "EHS-ID",
 		"DSS_model_id": "EHS-Modell-ID",
 		"Warning_status_representation": "Darstellung des Warnstatus",
-		"Warning_message": "Warnmeldung"
+		"Warning_message": "Warnmeldung",
+		"Disclaimer_content":"Diese Plattform stellt EHS von externen EHS-Entwicklern zur Verfügung. Die EHS können zur Unterstützung (nicht als Ersatz) von Entscheidungen erfahrener Landwirte unter Berücksichtigung lokaler Risikofaktoren der Schaderreger verwendet werden. Weitere Informationen finden Sie unter der Legende auf dem EHS-Nutzungs-Dashboard."
 	},
 	"DSS_model_selection": {
 		"Title": "EHS-Modellauswahl",
@@ -341,8 +345,11 @@
 		"Description": "BESCHREIBUNG",
 		"Warning_status_interpretation": "ERLÄUTERUNG DES WARNSTATUS",
 		"Model_name":"EHS",
-    "Filters":"Filter",
-    "Enable_country_filter":"Filter nach dem Land, in dem der EHS entwickelt wurde und/oder gültig ist"
+    	"Filters":"Filter",
+    	"Enable_country_filter":"Filter nach dem Land, in dem der EHS entwickelt wurde und/oder gültig ist",
+        "Country_filter_info_title":"Landesfilter",
+        "Country_filter_info_description":"Wenn Sie dieses Kästchen ankreuzen, wird die Suche nach EHS auf diejenigen beschränkt, die nach Meinung der EHS-Anbieter für das ausgewählte Land relevant sind. Einschlägige EHS wurden in der Regel in dem ausgewählten Land entwickelt, getestet oder zuvor angewendet. EHS aus anderen Ländern, die ebenfalls nützlich sein können, werden nicht angezeigt, wenn das Kästchen angekreuzt ist."
+
 	},
 	"DSS_model_parameterisation": {
 		"Title": "EHS-Modell Parametrisierung",

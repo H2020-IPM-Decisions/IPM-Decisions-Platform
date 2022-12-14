@@ -71,6 +71,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   // FOOTER Content
   footerContent: any;
+  footerMiddleContent: any;
+
+  welcomeContent: any;
 
   @Output() verified: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -209,6 +212,40 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
         if(!languageFound) {
           this.footerContent = this._sanitizer.bypassSecurityTrustHtml(footer["en"]);
+        }
+      }),
+      cmsService.getPublicPageFooterMiddle()
+      .then((footerMiddle: any) => {
+        let languageFound: boolean = false;
+        for (let key in footerMiddle) {
+          if(key === sessionStorage.getItem("selectedLanguage"))
+          {
+            this.footerMiddleContent = this._sanitizer.bypassSecurityTrustHtml(footerMiddle[key]);
+            languageFound = true;
+            if (footerMiddle[key]==="") {
+              this.footerMiddleContent = this._sanitizer.bypassSecurityTrustHtml(footerMiddle["en"]);
+            }
+          }
+        }
+        if(!languageFound) {
+          this.footerMiddleContent = this._sanitizer.bypassSecurityTrustHtml(footerMiddle["en"]);
+        }
+      }),
+      cmsService.getHomePageWelcome()
+      .then((welcome: any) => {
+        let languageFound: boolean = false;
+        for (let key in welcome) {
+          if(key === sessionStorage.getItem("selectedLanguage"))
+          {
+            this.welcomeContent = this._sanitizer.bypassSecurityTrustHtml(welcome[key]);
+            languageFound = true;
+            if (welcome[key]==="") {
+              this.welcomeContent = this._sanitizer.bypassSecurityTrustHtml(welcome["en"]);
+            }
+          }
+        }
+        if(!languageFound) {
+          this.welcomeContent = this._sanitizer.bypassSecurityTrustHtml(welcome["en"]);
         }
       }),
     ];

@@ -127,14 +127,16 @@
         "DSS_adaptation_model_retrived":"DSS-tiedot haettu onnistuneesti!",
         "DSS_adaptation_parameters_updated":"DSS-parametrit päivitetty!",
         "DSS_adaptation_parameters_sent":"DSS-parametrien lähetys onnistui!",
-        "DSS_parameters_reset":"DSS-parametrit on palautettu oletusarvoihin onnistuneesti!"
+        "DSS_parameters_reset":"DSS-parametrit on palautettu oletusarvoihin onnistuneesti!",
+		"DSS_model_selection_default_timing":"On lisätty DSS, joka voi käyttää oletuspäivämääriä kasvuston orastumiseen tai eri kasvuasteisiin. Voit tarkistaa, ovatko nämä oikein viljelykasveillesi, tai muuttaa päivämääriä napsauttamalla 'Muokkaa DSS-parametreja' -painiketta."
 	},
 	"Warning_messages": {
 		"DSS_model_avaiability_error": "Valituille kasveille ei ole saatavissa DSS-malleja",
 		"Not_enough_DSS_to_compare": "DSS-malleja ei ole riittävästi vertailua varten! Valitse vähintään kaksi mallia",
 		"Farm_creation_warning_message": "Alusta aloittaa säädatan keruun, kun tila on luotu. Tämä voi kestää 2 tuntia.",
 		"No_DSS_to_adapt":"There are not any DSS model to adapt! Please add at least one model",
-        "Weather_parameters_not_avaiable":"This DSS model is not able to be run using available weather service! The DSS won't be listed."
+        "Weather_parameters_not_avaiable":"This DSS model is not able to be run using available weather service! The DSS won't be listed.",
+		"DSS_model_avaiability_country_error":"Kyseisessä maassa valituille viljelykasveille ei ole käytettävissä DSS-iä. Lisää DSS:iä lisätään tulevaisuudessa. Sillä välin lähimaista voi olla saatavilla DSS:iä, jotka löytyvät lisäämällä tilalle DSS:iä, josisa on ”Country filter” -ruutu valitsematta."
 	},
 	"Countries": {
 		"Austria": "Itävalta",
@@ -306,7 +308,8 @@
 		"Icons_info":"Kuvakkeiden tiedot",
         "Green_triangle_description":"Virhe ei estänyt mallia toimimasta eikä vaikuta mallin riskiennusteen luotettavuuteen",
         "Yellow_triangle_description":"Virhe ei estänyt mallia toimimasta, mutta heikentää mallin riskiennusteen luotettavuutta",
-        "Red_triangle_description":"Virhe esti mallia toimimasta"
+        "Red_triangle_description":"Virhe esti mallia toimimasta",
+		"Platform_rationale_information":"Tämä foorumi tarjoaa DSS: n saataville ulkoisilta DSS-kehittäjiltä. DSS:n ”kultainen standardi” on se, että kokeneet DSS-kehittäjät ovat luoneet ne, ja niitä on testattu ja käytetty laajalti käytännössä useilla alueilla ja useina vuosina. Vertaisarvioiduissa lehdissä julkaistut tulokset osoittavat hyödyllistä ennustearvoa niissä maissa, joissa niitä suositellaan käytettäväksi. Harvat DSS:t täyttävät kaikki nämä kriteerit. IPM Decisions pyrkii tarjoamaan laajan valikoiman DSS:itä testaukseen ja käyttöön. Siksi, ei ole edellytys, että kaikki nämä kriteerit täyttyvät, jotta DSS olisi saatavana tämän alustan kautta. Sen sijaan IPM Decisions -hankkeen johto huolehtii kohtuullisella tavalla siitä, että DSS on peräisin luotettavalta kehittäjiltä, ja jokaisesta DSS: stä annetaan lisätietoja käytön tueksi. DSS: ää voidaan käyttää kokeneiden viljelijöiden päätöksen teon tueksi (ei korvaamiseen) ottaen huomioon kaikki asiaankuuluvat paikalliset kasvintuhoojien riskitekijät. Viljelijöiden ja neuvojien ei tulisi käyttää DSS:ää merkittävillä viljelyaloilla, ennen kuin he ovat saaneet kokemusta niiden käytöstä ja pitäneet riskiarvioita luotettavina. Virheellisiä riskiarvioita voi esiintyä, jos olosuhteet ovat DSS-kehityksen ja testauksen aikana olleet poikkeavat alueesta, jossa DSS:ää käytetään. Viljelijäryhmiä ja tutkimusorganisaatioita kannustetaan testaamaan DSS:iä kentällä, tarvittaessa muuttamaan DSS:ää paikallisiin olosuhteisiin sopivaksi, ja jakamaan kokemuksiaan."
 	},
 	"DSS_details": {
 		"Title": "DSS-tiedot",
@@ -323,7 +326,8 @@
 		"DSS_id": "DSS-tunnus",
 		"DSS_model_id": "DSS-mallin tunnus",
 		"Warning_status_representation": "Varoitustilan esitys",
-		"Warning_message": "Varoitusviesti"
+		"Warning_message": "Varoitusviesti",
+		"Disclaimer_content":"Tämä alusta tarjoaa DSS: n saataville ulkoisilta DSS-kehittäjiltä. DSS: ää käytetään tukemaan (ei korvaamaan) kokeneiden viljelijöiden päätöksentekoa paikallisten kasvintuhoojariskien pohjalta. Katso lisätietoja selitteen alla DSS Use dashboard."
 	},
 	"DSS_model_selection": {
 		"Title": "DSS-mallin valinta",
@@ -342,7 +346,9 @@
 		"Warning_status_interpretation": "VAROITUSTILAN TULKINTA",
 		"Model_name": "DSS",
 		"Filters":"Suodattimet",
-        "Enable_country_filter":"Suodata maan mukaan, jossa DSS on kehitetty ja/tai validoitu"
+        "Enable_country_filter":"Suodata maan mukaan, jossa DSS on kehitetty ja/tai validoitu",
+		"Country_filter_info_title":"Maa Suodatin",
+		"Country_filter_info_description":"Tämän ruudun valitseminen rajoittaa DSS-haun koskemaan niitä malleja, joiden DSS-palveluntarjoajat ehdottavat olevan merkityksellisiä kyseiselle maalle. Tämä DSS on yleensä kehitetty, testattu tai käytetty kyseisessä valitussa maassa. Muista maista tulevaa DSS:ää, joka voi myös olla hyödyllinen, ei näytetä, jos tämä ruutu on rastitettu."
 	},
 	"DSS_model_parameterisation": {
 		"Title": "DSS-mallin parametrointi",

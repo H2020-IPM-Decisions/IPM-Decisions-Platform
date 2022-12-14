@@ -127,14 +127,16 @@
 		"DSS_adaptation_model_retrived": "DSS Data hentet succesfuldt!",
 		"DSS_adaptation_parameters_updated": "DSS parametre updateret!",
 		"DSS_adaptation_parameters_sent": "DSS parametre blev sendt!",
-		"DSS_parameters_reset": "DSS parametre er blevet sat til standardværdier succesfuldt!"
+		"DSS_parameters_reset": "DSS parametre er blevet sat til standardværdier succesfuldt!",
+		"DSS_model_selection_default_timing":"Der er tilføjet BSS, som eventuelt bruger standarddatoer for afgrødens fremkomst eller vækststadier. For at kontrollere, om disse er korrekte for dine afgrøder, eller for at ændre datoerne, skal du klikke på knappen 'Rediger BSS-parametre'."
 	},
 	"Warning_messages": {
 		"DSS_model_avaiability_error": "Ingen tilgængelige DSS til de valgte afgrøder",
 		"Not_enough_DSS_to_compare": "Der er ikke nok DSS til at sammenligne! Tilføj mindst to modeller",
 		"Farm_creation_warning_message": "Platformen starter med at samle vejrdata efter oprettelse af bedrift. Dette kan tage op til 2 timer.",
 		"No_DSS_to_adapt": "Der er ikke nogen DSS model at tilpasse! Tilføj mindst 1 model",
-		"Weather_parameters_not_avaiable": "Denne DSS model kan ikke køre med den tilgængelig vejrdata. DSS bliver ikke vist."
+		"Weather_parameters_not_avaiable": "Denne DSS model kan ikke køre med den tilgængelig vejrdata. DSS bliver ikke vist.",
+		"DSS_model_avaiability_country_error":"Ingen BSS tilgængelige for de valgte afgrøder i det valgte land. Flere BSS vil blive tilføjet i fremtiden. I mellemtiden kan der være BSS tilgængelige fra nabolande, som kan findes ved at tilføje BSS til bedriften med 'Landefilter' afkrydset."
 	},
 	"Countries": {
 		"Austria": "Østrig",
@@ -306,7 +308,8 @@
 		"Icons_info": "Icons info",
 		"Green_triangle_description": "Fejlen forhindrede ikke modellen i at køre og påvirker ikke pålideligheden af modellens risikovudering",
 		"Yellow_triangle_description": "Fejlen forhindrede ikke modellen i at køre, men reducerer pålideligheden af modellens risikovurdering",
-		"Red_triangle_description": "En fejl forhindrede modellen i at køre"
+		"Red_triangle_description": "En fejl forhindrede modellen i at køre",
+		"Platform_rationale_information":"Denne platform gør BSS fra eksterne DSS-udviklere tilgængelige. 'Guldstandarden' for BSS er, at de er blevet skabt af anerkendte BSS-udviklere, testet og udbredt i prak-sis over mange steder og sæsoner, og resultaterne offentliggjort i peer-reviewede tidsskrifter for at demonstrere nyttig forudsigelsesværdi i de lande, hvor de anbefales til brug. Få BSS opfylder alle disse kriterier. IPM Decisions har til formål at gøre en bred vifte af BSS tilgængelige til test og brug. Derfor er det ikke et krav, at alle disse kriterier er opfyldt, for at et BSS er tilgængelig via denne plat-form. I stedet tager IPM Decisions-ledelsen rimelig omhu med, at BSS'er er fra velrenommerede udvik-lere, og der gives yderligere information om hvert BSS for at muliggøre et informeret valg om brug. BSS kan bruges til at hjælpe (ikke erstatte) beslut-ninger af erfarne landbrugere, under hensyntagen til alle relevante lokale skadedyrsrisikofaktorer. Landmænd og rådgivere bør ikke bruge BSS til at tage beslutninger om væsentlige afgrødearealer, før de har opnået erfaring med deres anvendelse og har fundet risikoestimaterne pålidelige. Fejlagtige risikovurderinger kan forekomme, især hvis forholdene ligger uden for dem, der opleves un-der udvikling og test af BSS. Landmandsgrupper og forskningsorganisationer op-fordres til at teste BSS i marken, ændre BSS, så de passer til lokale forhold, hvis det er nødvendigt, og dele deres erfaringer."
 	},
 	"DSS_details": {
 		"Title": "Risikoscore",
@@ -323,7 +326,8 @@
 		"DSS_id": "DSS model ID",
 		"DSS_model_id": "Advarsel Statusrepræsentation",
 		"Warning_status_representation": "Advarselsmeddelelse",
-		"Warning_message": ""
+		"Warning_message": "Advarselsmeddelelse",
+		"Disclaimer_content":"Denne platform gør BSS fra eksterne DSS-udviklere tilgængelige. BSS kan bruges til at hjælpe (ikke erstatte) beslutninger af erfarne landbrugere, der tager højde for lokale skadedyrsrisikofaktorer. Se yderligere information under forklaringen på BSS-dashboardet."
 	},
 	"DSS_model_selection": {
 		"Title": "Vælg DSS model",
@@ -342,7 +346,9 @@
 		"Warning_status_interpretation": "FORTOLKNING af ADVARSELS STATUS",
 		"Model_name": "DSS",
 		"Filters": "Filtre",
-		"Enable_country_filter": "Filtrer efter land hvor DSS er udviklet og/eller valideret"
+		"Enable_country_filter": "Filtrer efter land hvor DSS er udviklet og/eller valideret",
+		"Country_filter_info_title":"Land filter",
+		"Country_filter_info_description":"Afkrydsning af dette felt vil begrænse søgningen efter BSS til dem, som BSS-udbyderne foreslår er relevante for det valgte land. Relevante BSS er normalt blevet udviklet, testet eller tidligere brugt i det valgte land. DSS fra andre lande, som også kan være nyttige, vil ikke blive vist, hvis boksen er afkrydset."
 	},
 	"DSS_model_parameterisation": {
 		"Title": "DSS model Parametrisering",

@@ -135,7 +135,8 @@
         "Not_enough_DSS_to_compare":"There are not enough DSS models to compare! Please add at least two models",
         "Farm_creation_warning_message":"The platform will start collecting weather data after the farm creation. This might take up to 2 hours.",
         "No_DSS_to_adapt":"There are not any DSS model to adapt! Please add at least one model",
-        "Weather_parameters_not_avaiable":"This DSS model is not able to be run using available weather service! The DSS won't be listed."
+        "Weather_parameters_not_avaiable":"This DSS model is not able to be run using available weather service! The DSS won't be listed.",
+        "DSS_model_avaiability_country_error":"No DSS available for the selected crops in the selected country. More DSS will be added in future. In the meantime, there may be DSS available from neighbouring countries, which can be found by adding DSS to the farm with the ‘Country filter’ box unticked."
     },
     "Countries": {
         "Austria":"Austria", 
@@ -307,7 +308,8 @@
         "Icons_info":"Icons info",
         "Green_triangle_description":"Error did not prevent the model from running and does not affect the reliability of the model risk prediction",
         "Yellow_triangle_description":"Error did not stop the model from running, but does reduce reliability of model risk prediction",
-        "Red_triangle_description":"Error prevented the model from running"
+        "Red_triangle_description":"Error prevented the model from running",
+        "Platform_rationale_information":"This platform is making DSS available from external DSS developers. The 'gold standard' for DSS is that they have been created by reputable DSS developers, tested and widely used in practice over many sites and seasons, and the results published in peer reviewed journals to demonstrate useful predictive value in the countries in which they are recommended for use. Few DSS meet all these criteria. IPM Decisions aims to make a wide range of DSS available for testing and use. Therefore, it is not a requirement that all these criteria are met for a DSS to be available through this Platform. Instead the IPM Decisions management take reasonable care that the DSS are from reputable developers and further information is provided about each DSS, to enable an informed choice about use. The DSS can be used to assist (not replace) decisions by experienced crop managers, taking into account all relevant local pest risk factors. Farmers and advisers should not use the DSS to guide decisions on substantial areas of crop until they have gained experience in their use and have found the risk estimates reliable. Erroneous risk estimates can occur, particularly if conditions are outside those experienced during DSS development and testing. Farmer groups and research organisations are encouraged to test the DSS in the field, amend the DSS to suit local conditions if necessary, and share their experience."
     },
     "DSS_details": {
         "Title":"DSS Details",
@@ -324,7 +326,8 @@
         "DSS_id":"DSS ID",
         "DSS_model_id":"DSS Model ID",
         "Warning_status_representation":"Warning Status Representation",
-        "Warning_message":"Warning Message"
+        "Warning_message":"Warning Message",
+        "Disclaimer_content":"This platform is making DSS available from external DSS developers. The DSS can be used to assist (not replace) decisions by experienced crop managers, accounting for local pest risk factors. See further information below the legend on the DSS Use dashboard."
     },
     "DSS_model_selection": {
         "Title":"Decision Support System Selection",
@@ -343,7 +346,9 @@
         "Warning_status_interpretation":"WARNING STATUS INTERPRETATION",
         "Model_name":"DSS",
         "Filters":"Filters",
-        "Enable_country_filter":"Filter by country in which DSS was developed and/or valid"
+        "Enable_country_filter":"Filter by country in which DSS was developed and/or valid",
+        "Country_filter_info_title":"Country Filter",
+        "Country_filter_info_description":"Ticking this box will restrict the search for DSS to those the DSS providers suggest are relevant to the country selected. Relevant DSS have usually been developed, tested or used previously in the country selected. DSS from other countries, which may also be useful, will not be shown if the box is ticked."
     },
     "DSS_model_parameterisation": {
         "Title":"DSS Model Parameterisation",
