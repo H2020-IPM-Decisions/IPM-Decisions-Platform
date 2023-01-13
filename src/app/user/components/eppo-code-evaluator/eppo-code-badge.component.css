@@ -36,6 +36,7 @@
   max-width: 200px;
   height: auto;
   white-space: normal;
+  word-break: break-word;
   border: 2px solid;
   border-radius: 5px;
 }

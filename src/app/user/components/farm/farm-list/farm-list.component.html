@@ -46,7 +46,7 @@
                     </span>
                   </td>
                   <td class="td-actions text-center py-1">
-
+                    <div class="row ml-2">
                     <!--<button type="button" rel="tooltip" class="btn btn-link" data-original-title="View" title="View" [routerLink]="[farm.id,'view']" >
                       <i class="action-icon light-blue-icon size-11 fas fa-eye"></i>
                     </button>-->
@@ -81,6 +81,11 @@
                         <button type="button" class="btn btn-primary" (click)="onDeleteFarm(farm.id)">{{ 'Common_labels.Yes' | translate }}</button>
                       </div>
                     </ng-template>
+
+                    <button type="button" rel="tooltip" class="btn btn-green btn-add pull-right m-3" (click)="goToAddModelDSS(farm.id)">
+                      <i class="action-icon fas fa-plus-circle fa-2x"></i> <strong>Add DSS</strong>
+                    </button>
+                  </div>
 
                   </td>
                 </tr>

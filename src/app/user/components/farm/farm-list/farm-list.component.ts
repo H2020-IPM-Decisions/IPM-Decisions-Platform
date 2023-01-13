@@ -1,5 +1,6 @@
 import { HttpResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { Router } from '@angular/router';
 import { FarmResponseModel } from "@app/shared/models/farm-response.model";
 import { Farm } from "@app/shared/models/farm.model";
 import { FarmService } from "@app/shared/services/upr/farm.service";
@@ -20,7 +21,8 @@ export class FarmListComponent implements OnInit {
     private _farmService: FarmService,
     private _modalService: BsModalService,
     private _logger: NGXLogger,
-    private _toastrTranslated: ToastrTranslationService
+    private _toastrTranslated: ToastrTranslationService,
+    private _router: Router
   ) {}
 
   ngOnInit() {
@@ -80,5 +82,9 @@ export class FarmListComponent implements OnInit {
       this.farmList.splice(this.farmList.length - 1, 1);
     }
     this.modalRef.hide();
+  }
+
+  goToAddModelDSS(farmId) {
+    this._router.navigate(['/user/farm',farmId,'edit','dss','add']);
   }
 }
