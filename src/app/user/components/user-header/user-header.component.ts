@@ -67,6 +67,10 @@ export class UserHeaderComponent implements OnInit, OnDestroy {
       });
     }
 
+    if (window.innerWidth <= 980) {
+      this.mini = true;
+    }
+
     // Start Session timer
     this.oberserableTimer();
   }
@@ -140,14 +144,22 @@ export class UserHeaderComponent implements OnInit, OnDestroy {
   }
 
   public toggleSidebar(): void {
+    
     let sideBar: HTMLElement = document.getElementById("mySidebarId");
     let sidebarFooter: HTMLElement = document.getElementById("mySidebarFooter");
     let mainDoc: HTMLElement = document.getElementById("mainDocument")
     if (this.mini) {
-      sideBar.style.width = "280px";
-      sidebarFooter.style.display = "block";
-      mainDoc.style.marginLeft = "280px"
-      this.mini = false;
+      if (window.innerWidth <= 980 ) {
+        sideBar.style.width = "100%";
+        this.mini = false;
+      }
+      else {
+        sideBar.style.width = "280px";
+        sidebarFooter.style.display = "block";
+        mainDoc.style.marginLeft = "280px"
+        this.mini = false;
+        console.log("TEST WIDTH: ", window.innerWidth);
+      }
     } else {
       sideBar.style.width = "0px";
       sidebarFooter.style.display = "none";

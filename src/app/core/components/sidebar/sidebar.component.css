@@ -115,6 +115,16 @@
     transition: margin-left 0.5s;
 }
 
+@media (max-width: 991.98px) {
+    .fixed-sidebar .app-main .app-main__outer {
+        margin-left: 0;
+    }
+    .mySidebar {
+        width: 0;  
+    }
+}
+
+
 @media (min-width: 360px) {
 
     .mySidebar span {
