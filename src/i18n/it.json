@@ -128,14 +128,15 @@
         "DSS_adaptation_parameters_updated":"Parametri del DSS aggiornati!",
         "DSS_adaptation_parameters_sent":"Parametri del DSS inviati correttamente!",
         "DSS_parameters_reset":"I parametri del DSS sono stati ripristinati con successo ai valori predefiniti!",
-        "DSS_model_selection_default_timing":"Sono stati aggiunti dei DSS che possono utilizzare date predefinite per le fasi di emergenza o di crescita delle colture. Per verificare se queste date sono corrette per le vostre colture o per modificarle, fate clic sul pulsante 'Modifica parametri DSS'"
+        "DSS_model_selection_default_timing":"Sono stati aggiunti dei DSS che possono utilizzare date predefinite per le fasi di emergenza o di crescita delle colture. Per verificare se queste date sono corrette per le vostre colture o per modificarle, fate clic sul pulsante 'Modifica parametri DSS'."
     },
     "Warning_messages":{
         "DSS_model_avaiability_error":"Non ci sono DSS per le colture selezionate",
         "Not_enough_DSS_to_compare":"Non ci sono abbastanza modelli DSS da confrontare! Si prega di aggiungere almeno due modelli",
         "Farm_creation_warning_message":"La piattaforma inizierà a raccogliere dati meteorologici dopo la creazione dell'azienda agricola. L'operazione potrebbe richiedere fino a 2 ore.",
         "No_DSS_to_adapt":"Non ci sono modelli DSS da adeguare! Si prega di aggiungere almeno un modello",
-        "Weather_parameters_not_avaiable":"Qeusto modello DSS non può essere eseguito con l'attuale servizio meteorologico! Il DSS non verrà visualizzato sulla lista."
+        "Weather_parameters_not_avaiable":"Qeusto modello DSS non può essere eseguito con l'attuale servizio meteorologico! Il DSS non verrà visualizzato sulla lista.",
+        "DSS_model_avaiability_country_error":"Nessun DSS disponibile per le colture selezionate nel Paese selezionato. In futuro verranno aggiunti altri DSS.  Nel frattempo, potrebbero essere disponibili DSS dai Paesi vicini, che possono essere trovati aggiungendo DSS all'azienda agricola con la casella 'Filtro Paese' deselezionata."
     },
     "Countries": {
         "Austria":"Austria", 
@@ -307,7 +308,8 @@
         "Icons_info":"Informazioni sulle icone",
         "Green_triangle_description":"L'errore non ha impedito l'esecuzione del modello e non influisce sull'affidabilità della previsione del rischio.",
         "Yellow_triangle_description":"L'errore non ha impedito l'esecuzione del modello, ma riduce l'affidabilità della previsione del rischio.",
-        "Red_triangle_description":"Un errore ha impedito l'esecuzione del modello"
+        "Red_triangle_description":"Un errore ha impedito l'esecuzione del modello",
+        "Platform_rationale_information":"Questa piattaforma rende disponibili i DSS di sviluppatori esterni. Il 'gold standard' per i DSS è che siano stati creati da sviluppatori di DSS affidabili, testati e ampiamente utilizzati nella pratica in molti siti e stagioni, e che i risultati siano stati pubblicati su riviste specializzate per dimostrare un valore predittivo utile nei Paesi in cui se ne raccomanda l'uso. Pochi DSS soddisfano tutti questi criteri. IPM Decisions mira a rendere disponibile un'ampia gamma di DSS da testare e utilizzare. Pertanto, perché un DSS sia disponibile attraverso questa piattaforma non è richiesto che tutti questi criteri siano soddisfatti. La direzione di IPM Decisions si assicura invece che i DSS provengano da sviluppatori affidabili e che vengano fornite ulteriori informazioni su ciascun DSS, in modo da consentire una scelta consapevole sull'utilizzo. I DSS possono essere utilizzati per assistere (non sostituire) le decisioni degli esperti delle colture, tenendo conto di tutti i fattori di rischio locali. Gli agricoltori e i consulenti non dovrebbero utilizzare il DSS per prendere decisioni su aree di coltivazione consistenti finché non hanno acquisito esperienza nel suo utilizzo e non hanno trovato le stime del rischio affidabili. Possono verificarsi stime di rischio errate, soprattutto se le condizioni sono diverse da quelle sperimentate durante lo sviluppo e la sperimentazione del DSS. I gruppi di agricoltori e le organizzazioni di ricerca sono incoraggiati a testare il DSS sul campo, a modificarlo per adattarlo alle condizioni locali, se necessario, e a condividere la loro esperienza."
     },
     "DSS_details": {
         "Title":"Dettagli del DSS",
@@ -324,7 +326,8 @@
         "DSS_id":"ID del DSS",
         "DSS_model_id":"ID del Modello del DSS",
         "Warning_status_representation":"Rappresentazione dello stato di avviso",
-        "Warning_message":"Messaggio di avviso"
+        "Warning_message":"Messaggio di avviso",
+		"Disclaimer_content":"Questa piattaforma rende disponibili i DSS di sviluppatori esterni. I DSS possono essere utilizzati per assistere (non sostituire) le decisioni di esperti delle colture, tenendo conto dei fattori di rischio locali per i parassiti. Vedere ulteriori informazioni sotto la legenda del cruscotto Uso dei DSS."
     },
     "DSS_model_selection": {
         "Title":"Selezione del sistema di supporto decisionale",
@@ -343,7 +346,9 @@
         "Warning_status_interpretation":"INTERPRETAZIONE DELLO STATO DI AVVISO",
         "Model_name":"DSS",
         "Filters":"Filtri",
-        "Enable_country_filter":"Filtrare per nazione in cui il DSS è stato sviluppato e/o validato"
+        "Enable_country_filter":"Filtrare per paese in cui il DSS è stato sviluppato e/o validato",
+        "Country_filter_info_title":"Filtro paese",
+        "Country_filter_info_description":"Selezionando questa casella si limita la ricerca dei DSS a quelli che i fornitori di DSS suggeriscono essere rilevanti per il Paese selezionato. I DSS rilevanti sono stati solitamente sviluppati, testati o utilizzati in precedenza nel Paese selezionato. I DSS di altri Paesi, che potrebbero essere utili, non saranno visualizzati se la casella è selezionata."
     },
     "DSS_model_parameterisation": {
         "Title":"Parametrizzazione del modello DSS",

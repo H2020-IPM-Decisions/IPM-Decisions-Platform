@@ -76,3 +76,7 @@ fieldset {
 .topBorderTd {
     border-top: 2px solid green;
 }
+
+.warningTextWrap {
+    word-wrap: break-word;
+}

@@ -11,3 +11,12 @@
         display: none;
     }
 }
+
+.modalInfoIcon {
+    font-size: 100%;
+    color: blue;
+}
+  
+.fa-circle {
+    color: white;
+}

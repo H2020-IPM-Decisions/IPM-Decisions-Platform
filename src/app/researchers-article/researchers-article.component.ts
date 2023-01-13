@@ -18,6 +18,9 @@ export class ResearchersArticleComponent implements OnInit, OnDestroy {
   bannerUrl = "";
   articleContent: any;
   footerContent: any;
+  homeTitle: string;
+  footerMiddleContent: any;
+
   public isLoggedIn: boolean;
   public username: string;
   public $accountSub: Subscription;
@@ -76,6 +79,40 @@ export class ResearchersArticleComponent implements OnInit, OnDestroy {
             this.footerContent = this._sanitizer.bypassSecurityTrustHtml(footer["en"]);
           }
         }),
+      cmsService.getHomeTitle()
+        .then((hTitle: any) => {
+          let languageFound: boolean = false;
+          for (let key in hTitle) {
+            if(key === sessionStorage.getItem("selectedLanguage"))
+            {
+              this.homeTitle = hTitle[key];
+              languageFound = true;
+              if (hTitle[key]==="") {
+                this.homeTitle = hTitle["en"];
+              }
+            }
+          }
+          if(!languageFound) {
+            this.homeTitle = hTitle["en"];
+          }
+        }),
+      cmsService.getPublicPageFooterMiddle()
+      .then((footerMiddle: any) => {
+        let languageFound: boolean = false;
+        for (let key in footerMiddle) {
+          if(key === sessionStorage.getItem("selectedLanguage"))
+          {
+            this.footerMiddleContent = this._sanitizer.bypassSecurityTrustHtml(footerMiddle[key]);
+            languageFound = true;
+            if (footerMiddle[key]==="") {
+              this.footerMiddleContent = this._sanitizer.bypassSecurityTrustHtml(footerMiddle["en"]);
+            }
+          }
+        }
+        if(!languageFound) {
+          this.footerMiddleContent = this._sanitizer.bypassSecurityTrustHtml(footerMiddle["en"]);
+        }
+      }),
     ];
     Promise.all(promises).then(() => {
       setTimeout(() => init(), 0)

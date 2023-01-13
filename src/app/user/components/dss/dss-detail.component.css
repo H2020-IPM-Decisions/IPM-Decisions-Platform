@@ -69,3 +69,7 @@ body.modal-open {
 .modalInfoIcon .fa-circle {
   color: white;
 }
+
+.warningTextWrap {
+  word-wrap: break-word;
+}

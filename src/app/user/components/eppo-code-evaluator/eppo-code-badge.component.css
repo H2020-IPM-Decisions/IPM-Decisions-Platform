@@ -36,6 +36,7 @@
   max-width: 200px;
   height: auto;
   white-space: normal;
+  word-break: break-word;
   border: 2px solid;
   border-radius: 5px;
 }
@@ -212,17 +213,6 @@
   padding-left: 0px;
   padding-right: 30px;
   text-align: center;
-}
-
-::ng-deep .tooltip {
-  animation-name: delayedFadeIn;
-  animation-duration: 1s; /* Adjust this duration */
-}
-
-@Keyframes delayedFadeIn {
-  0% {opacity: 0;}
-  75% {opacity: 0;} /* Set this to 99% for no fade-in. */
-  100% {opacity: 1;}
 }
 
 .TextBoxMargin {

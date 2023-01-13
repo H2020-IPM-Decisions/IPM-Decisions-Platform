@@ -249,4 +249,26 @@ export class CMSService {
       })
       .toPromise();
   }
+
+  getPublicPageFooterMiddle() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/PublicPageFooterMiddle`, {
+        headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getHomePageWelcome() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/HomePageWelcome`, {
+        headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
 }

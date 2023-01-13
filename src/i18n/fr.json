@@ -127,14 +127,16 @@
         "DSS_adaptation_model_retrived": "Les données d'OAD ont été récupérées avec succès !",
         "DSS_adaptation_parameters_updated": "Mise à jour des paramètres d'OAD !",
         "DSS_adaptation_parameters_sent": "Les paramètres d'OAD ont été envoyés avec succès !",
-        "DSS_parameters_reset": "Les paramètres de l'OAD ont été réinitialisés aux valeurs par défaut avec succès !"
+        "DSS_parameters_reset": "Les paramètres de l'OAD ont été réinitialisés aux valeurs par défaut avec succès !",
+        "DSS_model_selection_default_timing":"DSS have been added which may use default dates for crop emergence or growth stages. To check if these are correct for your crops or to change the dates, click on the 'Edit DSS parameters' button."
     },
     "Warning_messages": {
         "DSS_model_avaiability_error": "Aucun OAD n'est disponible pour les cultures sélectionnées.",
         "Not_enough_DSS_to_compare": "Il n'y a pas assez de modèles d'OAD à comparer ! Veuillez ajouter au moins deux modèles",
         "Farm_creation_warning_message": "La plateforme commencera à collecter les données météorologiques après la création de la ferme, Cela peut prendre jusqu'à 2 heures.",
         "No_DSS_to_adapt": "Il n'y a pas de modèle d'OAD à adapter ! Veuillez ajouter au moins un modèle",
-        "Weather_parameters_not_avaiable": "Ce modèle d'OAD ne peut pas être exécuté en utilisant le service météo disponible ! L'OAD ne sera pas listé."
+        "Weather_parameters_not_avaiable": "Ce modèle d'OAD ne peut pas être exécuté en utilisant le service météo disponible ! L'OAD ne sera pas listé.",
+        "DSS_model_avaiability_country_error":"Aucun OAD disponible pour les cultures sélectionnées dans le pays sélectionné. D'autres OAD seront ajoutés à l'avenir.  Entre-temps, il peut y avoir des OAD disponibles dans les pays voisins, qui peuvent être ajoutés pour l'exploitation avec la case 'Filtre pays' décochée."
     },
     "Countries": {
         "Austria": "Autriche",
@@ -306,7 +308,8 @@
         "Icons_info": "Infos sur les icônes",
         "Green_triangle_description": "L'erreur n'a pas empêché le modèle de fonctionner et n'affecte pas la fiabilité de la prédiction du risque du modèle.",
         "Yellow_triangle_description": "L'erreur n'a pas empêché le modèle de fonctionner, mais elle réduit la fiabilité de la prédiction du risque du modèle.",
-        "Red_triangle_description": "Une erreur a empêché le modèle de fonctionner"
+        "Red_triangle_description": "Une erreur a empêché le modèle de fonctionner",
+        "Platform_rationale_information":"Cette plateforme met à disposition des OAD provenant de développeurs d'OAD externes. Dans l'idéal, les OAD doivent avoir été créés par des développeurs d'OAD réputés, testés et largement utilisés dans la pratique sur de nombreux sites et saisons, avec des résultats publiés dans des revues à comité de lecture pour démontrer une valeur prédictive utile dans les pays dans lesquels leur utilisation est recommandée. Peu d'OAD remplissent tous ces critères. IPM Decisions a pour objectif de mettre à disposition un large éventail d'OAD à tester et à utiliser. Par conséquent, il n'est pas nécessaire que tous ces critères soient remplis pour qu'un OAD soit disponible sur cette plateforme. En revanche, la direction d'IPM Decisions veille à ce que les OAD proviennent de développeurs réputés et à ce que des informations complémentaires soient fournies sur chaque OAD, afin de permettre un choix éclairé quant à leur utilisation. Les OAD peuvent être utilisés pour aider (et non remplacer) les décisions prises par des gestionnaires de cultures expérimentés, en tenant compte de tous les facteurs de risque locaux pertinents. Les agriculteurs et les conseillers ne doivent pas utiliser les OAD pour guider les décisions sur des surfaces de culture importantes avant d'avoir acquis de l'expérience dans leur utilisation et d'avoir validé la fiabilité des estimations de risque. Des estimations de risque erronées peuvent se produire, en particulier si les conditions sont différentes de celles rencontrées lors du développement et des tests du OAD. Les groupes d'agriculteurs et les organismes de recherche sont encouragés à tester les OAD sur le terrain, à les modifier pour l'adapter aux conditions locales si nécessaire, et à partager leur expérience."
     },
     "DSS_details": {
         "Title": "Détails de l'OAD",
@@ -323,7 +326,8 @@
         "DSS_id": "ID de l'OAD",
         "DSS_model_id": "ID du modèle d'OAD",
         "Warning_status_representation": "Représentation du niveau d'alerte",
-        "Warning_message": "Message d'avertissement"
+        "Warning_message": "Message d'avertissement",
+        "Disclaimer_content":"Cette plateforme met à disposition des OAD provenant de développeurs d'OAD externes. Les OAD peuvent être utilisés pour aider (et non remplacer) les décisions prises par des gestionnaires de cultures expérimentés, en tenant compte des facteurs de risque locaux liés aux organismes nuisibles. Voir les informations complémentaires sous la légende du tableau de bord des OAD utilisés."
     },
     "DSS_model_selection": {
         "Title": "Sélection du système d'aide à la décision",
@@ -342,7 +346,10 @@
         "Warning_status_interpretation": "INTERPRÉTATION DU NIVEAU D'ALERTE",
         "Model_name": "OAD",
         "Filters": "Filtres",
-        "Enable_country_filter": "Filtrez les pays dans lesquels l'OAD a été développé et/ou validé"
+        "Enable_country_filter": "Filtrez les pays dans lesquels l'OAD a été développé et/ou validé",
+        "Country_filter_info_title":"Filtre de pays",
+        "Country_filter_info_description":"En cochant cette case, la recherche d'OAD sera limitée à ceux que les fournisseurs d'OAD suggèrent comme étant pertinents pour le pays sélectionné. Les OAD pertinents ont généralement été développés, testés ou utilisés précédemment dans le pays sélectionné. Les OAD d'autres pays, qui peuvent également être utiles, ne seront pas affichés si la case est cochée."
+
     },
     "DSS_model_parameterisation": {
         "Title": "Paramétrage du modèle d'OAD",
