@@ -90,3 +90,15 @@
   font-weight: 600;
   color: #249fa5;
 }
+
+@media (max-width: 991.98px) {
+
+  .app-page-title {
+    padding: 15px;
+    margin: -20px;
+  }
+
+  .app-main__inner.profile-container .container.page-box {
+    zoom: 1;
+  }
+}

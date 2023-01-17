@@ -103,3 +103,15 @@ ul li a.nav-link{
 .breadcrumbBar {
   padding-left: 50px;
 }
+
+@media (max-width: 991.98px) {
+
+  .app-page-title {
+      padding: 15px;
+      margin: -20px;
+    }
+
+  .app-main__inner.profile-container .container.page-box.w-75.p-3 {
+      zoom: 2;
+    }
+}
