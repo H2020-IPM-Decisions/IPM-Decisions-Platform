@@ -25,7 +25,7 @@
  <!--SOURCE COLUMN -->
 <td class="text-center">
     <!--{{ dssSelection.name }}-->
-    <div class="d-flex justify-content-center">
+    <div class="d-block justify-content-center">
         <span *ngFor="let code of countriesCodes" class="m-1 flag-icon flag-icon-{{code | countryAlpha2}}" [title]="code | countryName"></span>
     </div>
 </td>
