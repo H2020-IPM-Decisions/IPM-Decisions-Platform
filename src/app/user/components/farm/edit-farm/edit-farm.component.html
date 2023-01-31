@@ -68,7 +68,7 @@
                   <td class="text-center">
                     <span *ngIf="model">
                       <!--{{ model.cropPestDssDto.dssName }}-->
-                      <div class="d-flex justify-content-center">
+                      <div class="d-block justify-content-center">
                         <span *ngFor="let code of model.cropPestDssDto.validatedSpatialCountries" class="m-1 flag-icon flag-icon-{{code | countryAlpha2}}" [title]="code | countryName"></span>
                       </div>
                     </span>

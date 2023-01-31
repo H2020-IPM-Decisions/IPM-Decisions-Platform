@@ -14,7 +14,7 @@
     left: 0px;
     background-image: linear-gradient(to bottom, #00b09b, #96c93d) !important;
     padding-top: 60px;
-    z-index: 15;
+    z-index: 401;
     white-space: nowrap;
     overflow-x: hidden;
     transition: 0.5s;

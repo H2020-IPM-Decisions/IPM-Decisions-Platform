@@ -30,4 +30,12 @@
         border: none;
     }
 
+    .bxs-flag-alt {
+        display: none;
+    }
+
+    app-language-selector div span {
+        display: none;
+    }
+
 }
