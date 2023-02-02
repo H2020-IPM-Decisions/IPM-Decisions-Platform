@@ -29,7 +29,6 @@ export class DssModelParameterisationComponent implements OnInit, OnDestroy {
   public remoteCallLoading: boolean = false;
   public dssParameters: any;
   public defaultDssParameters: string;
-
   public $subscriptionEditor: Subscription;
   public $subscriptionSubmit: Subscription;
   public $subscriptionDefaultParameters: Subscription;
@@ -62,7 +61,6 @@ export class DssModelParameterisationComponent implements OnInit, OnDestroy {
           this.$subscriptionEditor.unsubscribe();
         }
         this.remoteCallLoading = false;
-        //console.log("DATA:",data.body)
         this.editor = this._jsonEditorService.createJsonEditor('json-editor-form', data.body);
         $('#json-editor-form label').filter(function () { return $(this).text() === 'root'; }).css("display", "none");
         this.$subscriptionEditor = this._jsonEditorService.listenChanges(this.editor).subscribe(() => this.editorChanges());
