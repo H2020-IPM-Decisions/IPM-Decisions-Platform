@@ -104,7 +104,7 @@
     },
     "Information_messages": {
         "Farm_deletion_message": "Vous êtes sur le point de supprimer une ferme, Vous êtes sûr ?",
-        "No_farms_avaiable": "Aucune ferme disponible.",
+        "No_farms_available": "Aucune ferme disponible.",
         "Farm_copy_success": "La ferme a été copiée avec succès !",
         "User_account_updated": "Le compte utilisateur a été mis à jour avec succès !",
         "Farm_created": "La ferme a été créée avec succès !",
@@ -131,12 +131,12 @@
         "DSS_model_selection_default_timing":"DSS have been added which may use default dates for crop emergence or growth stages. To check if these are correct for your crops or to change the dates, click on the 'Edit DSS parameters' button."
     },
     "Warning_messages": {
-        "DSS_model_avaiability_error": "Aucun OAD n'est disponible pour les cultures sélectionnées.",
+        "DSS_model_availability_error": "Aucun OAD n'est disponible pour les cultures sélectionnées.",
         "Not_enough_DSS_to_compare": "Il n'y a pas assez de modèles d'OAD à comparer ! Veuillez ajouter au moins deux modèles",
         "Farm_creation_warning_message": "La plateforme commencera à collecter les données météorologiques après la création de la ferme, Cela peut prendre jusqu'à 2 heures.",
         "No_DSS_to_adapt": "Il n'y a pas de modèle d'OAD à adapter ! Veuillez ajouter au moins un modèle",
-        "Weather_parameters_not_avaiable": "Ce modèle d'OAD ne peut pas être exécuté en utilisant le service météo disponible ! L'OAD ne sera pas listé.",
-        "DSS_model_avaiability_country_error":"Aucun OAD disponible pour les cultures sélectionnées dans le pays sélectionné. D'autres OAD seront ajoutés à l'avenir.  Entre-temps, il peut y avoir des OAD disponibles dans les pays voisins, qui peuvent être ajoutés pour l'exploitation avec la case 'Filtre pays' décochée."
+        "Weather_parameters_not_available": "Ce modèle d'OAD ne peut pas être exécuté en utilisant le service météo disponible ! L'OAD ne sera pas listé.",
+        "DSS_model_availability_country_error":"Aucun OAD disponible pour les cultures sélectionnées dans le pays sélectionné. D'autres OAD seront ajoutés à l'avenir.  Entre-temps, il peut y avoir des OAD disponibles dans les pays voisins, qui peuvent être ajoutés pour l'exploitation avec la case 'Filtre pays' décochée."
     },
     "Countries": {
         "Austria": "Autriche",

@@ -99,9 +99,20 @@ export class DssSelectionService {
     });
   }
 
-  getLinkedDssList(): Observable<HttpResponse<IDssFlat[]>> {
-    let requestUrl = `${environment.apiUrl}/api/upr/dss/links`;
-    return this._http.get<IDssFlat[]>(requestUrl, {
+  getLinkedDssList(): Observable<HttpResponse<DssSelection[]>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/dss/filter?executionType=LINK&DisplayIsSavedByUser=true`;
+    return this._http.get<DssSelection[]>(requestUrl, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: 'response'
+    });
+  }
+
+  getLinkedDssListByMultipleCrops(crops: string): Observable<HttpResponse<DssSelection[]>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/dss/filter?cropCodes=${crops}`+"&executionType=LINK&DisplayIsSavedByUser=true"
+    return this._http.get<DssSelection[]>(requestUrl, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -173,6 +184,17 @@ export class DssSelectionService {
     });
   }
 
+  submitLinkedDssWithoutFarmId(data: IDssFormData[]): Observable<HttpResponse<IDssFormData[]>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/dss/links`;
+    return this._http.post<IDssFormData[]>(requestUrl, data, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: "response",
+    });
+  }
+
   getFormData(field: Field, selectedCrop: string, selectedPest: string, dss: DssSelection, model: DssModel, jsonSchemaForm: any): IDssFormData {
     return {
       fieldId: field.id,
@@ -211,6 +233,49 @@ export class DssSelectionService {
       pestEppoCode: selectedPest,
       dssParameters: JSON.stringify(jsonSchemaForm),
       dssVersion: dss.version
+    }
+  }
+  
+  convertDssSelectionModelToDssFlat(dss: DssSelection): IDssFlat[] {
+    let resultDssList: IDssFlat [] = [];
+    dss.models.forEach((model) => {
+      this._logger.debug("MODEL",model);
+      let dssFlatData: IDssFlat = {
+        alreadySavedByUser: model.alreadySavedByUser,
+        authors: model.authors,
+        cropEppoCode: model.crops[0],
+        dssDescription: model.description,
+        dssDatabaseId: model.dssDatabaseId,
+        dssEndPoint: model.description_URL,
+        dssExecutionType: model.execution.type,
+        dssId: dss.id,
+        dssLogoUrl: dss.logo_url,
+        dssModelId: model.id,
+        dssModelName: model.name,
+        dssModelVersion: model.version,
+        dssName: dss.name,
+        dssPurpose: dss.purpose,
+        dssSource: dss.organization.name +" "+ dss.organization.country,
+        dssVersion: dss.version,
+        pestEppoCode: model.pests[0]
+      }
+      
+      resultDssList.push(dssFlatData);
+    })
+    return resultDssList;
+  }
+
+  getDssDataFromDssFlat(dssModelFlat: IDssFlat): IDssFormData {
+    return {
+      dssId: dssModelFlat.dssId,
+      dssVersion: dssModelFlat.dssVersion,
+      dssName: dssModelFlat.dssName,
+      dssModelName: dssModelFlat.dssModelName,
+      dssModelId: dssModelFlat.dssModelId,
+      dssModelVersion: dssModelFlat.dssModelVersion,
+      pestEppoCode: dssModelFlat.pestEppoCode,
+      cropEppoCode: dssModelFlat.cropEppoCode,
+      dssExecutionType: dssModelFlat.dssExecutionType
     }
   }
 

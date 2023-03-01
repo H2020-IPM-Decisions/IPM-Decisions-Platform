@@ -1,0 +1,20 @@
+.badgecontrols {
+    padding-left: 0;
+}
+
+.data-selected{
+    background-color: #0ca1f8;
+}
+.data-notSelected{
+  display: none;
+}
+
+.red-icon {
+  color: rgb(179, 0, 0)
+}
+
+.dss-text {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 24px;
+}

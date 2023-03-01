@@ -104,7 +104,7 @@
 	},
 	"Information_messages": {
 		"Farm_deletion_message": "Du er ved at slette en bedrift. Er du sikker?",
-		"No_farms_avaiable": "Ingen landbrug tilgængelige",
+		"No_farms_available": "Ingen landbrug tilgængelige",
 		"Farm_copy_success": "Landbruget er kopieret",
 		"User_account_updated": "Brugerkonto er opdateret",
 		"Farm_created": "Landbrug er oprettet",
@@ -131,12 +131,12 @@
 		"DSS_model_selection_default_timing":"Der er tilføjet BSS, som eventuelt bruger standarddatoer for afgrødens fremkomst eller vækststadier. For at kontrollere, om disse er korrekte for dine afgrøder, eller for at ændre datoerne, skal du klikke på knappen 'Rediger BSS-parametre'."
 	},
 	"Warning_messages": {
-		"DSS_model_avaiability_error": "Ingen tilgængelige DSS til de valgte afgrøder",
+		"DSS_model_availability_error": "Ingen tilgængelige DSS til de valgte afgrøder",
 		"Not_enough_DSS_to_compare": "Der er ikke nok DSS til at sammenligne! Tilføj mindst to modeller",
 		"Farm_creation_warning_message": "Platformen starter med at samle vejrdata efter oprettelse af bedrift. Dette kan tage op til 2 timer.",
 		"No_DSS_to_adapt": "Der er ikke nogen DSS model at tilpasse! Tilføj mindst 1 model",
-		"Weather_parameters_not_avaiable": "Denne DSS model kan ikke køre med den tilgængelig vejrdata. DSS bliver ikke vist.",
-		"DSS_model_avaiability_country_error":"Ingen BSS tilgængelige for de valgte afgrøder i det valgte land. Flere BSS vil blive tilføjet i fremtiden. I mellemtiden kan der være BSS tilgængelige fra nabolande, som kan findes ved at tilføje BSS til bedriften med 'Landefilter' afkrydset."
+		"Weather_parameters_not_available": "Denne DSS model kan ikke køre med den tilgængelig vejrdata. DSS bliver ikke vist.",
+		"DSS_model_availability_country_error":"Ingen BSS tilgængelige for de valgte afgrøder i det valgte land. Flere BSS vil blive tilføjet i fremtiden. I mellemtiden kan der være BSS tilgængelige fra nabolande, som kan findes ved at tilføje BSS til bedriften med 'Landefilter' afkrydset."
 	},
 	"Countries": {
 		"Austria": "Østrig",

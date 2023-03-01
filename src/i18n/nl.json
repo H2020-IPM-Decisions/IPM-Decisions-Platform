@@ -104,7 +104,7 @@
 	},
 	"Information_messages": {
 		"Farm_deletion_message": "U staat op het punt een bedrijf te verwijderen. Weet u dat zeker?",
-		"No_farms_avaiable": "Geen bedrijven beschikbaar.",
+		"No_farms_available": "Geen bedrijven beschikbaar.",
 		"Farm_copy_success": "Bedrijf succesvol gekopieerd!",
 		"User_account_updated": "Gebruikersaccount succesvol bijgewerkt!",
 		"Farm_created": "Bedrijf succesvol aangemaakt!",
@@ -131,12 +131,12 @@
 		"DSS_model_selection_default_timing":"Er zijn DSS toegevoegd die standaard data kunnen gebruiken voor de opkomst van gewassen of groeistadia. Om te controleren of deze correct zijn voor uw gewassen of om de data te wijzigen, klikt u op de knop 'DSS-parameters bewerken'."
 	},
 	"Warning_messages": {
-		"DSS_model_avaiability_error": "Geen BOS beschikbaar voor de geselecteerde gewassen",
+		"DSS_model_availability_error": "Geen BOS beschikbaar voor de geselecteerde gewassen",
 		"Not_enough_DSS_to_compare": " Er zijn niet genoeg BOS'en om te vergelijken! Voeg aub minstens 2 BOS'en toe",
 		"Farm_creation_warning_message": "Het platfrom start met het verzamelen van weerdata na het aanmaken van een bedrijf. Dit kan tot 2 uur duren.",
 		"No_DSS_to_adapt": "There are not any DSS model to adapt! Please add at least one model",
-		"Weather_parameters_not_avaiable": "This DSS model is not able to be run using available weather service! The DSS won't be listed.",
-		"DSS_model_avaiability_country_error":"Geen DSS beschikbaar voor de geselecteerde gewassen in het geselecteerde land. In de toekomst zullen meer DSS worden toegevoegd. In de tussentijd kunnen er DSS beschikbaar zijn uit buurlanden, die gevonden kunnen worden door DSS toe te voegen aan het bedrijf met het vakje 'Landfilter' uitgevinkt."
+		"Weather_parameters_not_available": "This DSS model is not able to be run using available weather service! The DSS won't be listed.",
+		"DSS_model_availability_country_error":"Geen DSS beschikbaar voor de geselecteerde gewassen in het geselecteerde land. In de toekomst zullen meer DSS worden toegevoegd. In de tussentijd kunnen er DSS beschikbaar zijn uit buurlanden, die gevonden kunnen worden door DSS toe te voegen aan het bedrijf met het vakje 'Landfilter' uitgevinkt."
 	},
 	"Countries": {
 		"Austria": "Oostenrijk",

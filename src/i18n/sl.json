@@ -104,7 +104,7 @@
 	},
 	"Information_messages": {
 		"Farm_deletion_message": "Izbrisali boste kmetijo. Ali ste prepričani?",
-		"No_farms_avaiable": "Na voljo ni nobena kmetija.",
+		"No_farms_available": "Na voljo ni nobena kmetija.",
 		"Farm_copy_success": "Kmetija uspešno kopirana!",
 		"User_account_updated": "Uporabniški račun uspešno posodobljen!",
 		"Farm_created": "Kmetija uspešno ustvarjena!",
@@ -131,12 +131,12 @@
 		"DSS_model_selection_default_timing":"Dodani so bili DSS, ki lahko uporabljajo privzete datume za vznik ali faze rasti pridelka. Če želite preveriti, ali so ti datumi pravilni za vaše kulturne rastline, ali jih spremeniti, kliknite gumb 'Parametri DSS'."
 	},
 	"Warning_messages": {
-		"DSS_model_avaiability_error": "Za izbrane kulturne rastline ni na voljo noben DSS",
+		"DSS_model_availability_error": "Za izbrane kulturne rastline ni na voljo noben DSS",
 		"Not_enough_DSS_to_compare": "Za primerjavo je premalo aktivnih modelov DSS! Prosimo, dodajte vsaj dva modela",
 		"Farm_creation_warning_message": "Platforma bo začela zbirati vremenske podatke po vpisu kmetije. To lahko traja do 2 uri.",
 		"No_DSS_to_adapt": "Ni modela DSS, ki bi ga lahko prilagodili! Prosimo, dodajte vsaj en model DSS.",
-		"Weather_parameters_not_avaiable": "Tega modela DSS ni mogoče zagnati z uporabo razpoložljivih vremenskih storitev! Model DSS ne bo naveden.",
-		"DSS_model_avaiability_country_error":"Za izbrane kulturne rastline v izbrani državi ni na voljo DSS. Več DSS bo dodanih v prihodnosti. Medtem so lahko na voljo DSS iz sosednjih držav, ki jih lahko poiščete tako, da DSS iščete brez vključenega filtra za državo."
+		"Weather_parameters_not_available": "Tega modela DSS ni mogoče zagnati z uporabo razpoložljivih vremenskih storitev! Model DSS ne bo naveden.",
+		"DSS_model_availability_country_error":"Za izbrane kulturne rastline v izbrani državi ni na voljo DSS. Več DSS bo dodanih v prihodnosti. Medtem so lahko na voljo DSS iz sosednjih držav, ki jih lahko poiščete tako, da DSS iščete brez vključenega filtra za državo."
 	},
 	"Countries": {
 		"Austria": "Avstrija",

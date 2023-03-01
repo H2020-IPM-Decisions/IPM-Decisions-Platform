@@ -121,7 +121,7 @@ export class DssModelAddComponent implements OnInit {
             this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
           } else {
             this.areCropsSelected = false;
-            this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_avaiability_country_error","Common_labels.Warning","toast-warning");
+            this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_availability_country_error","Common_labels.Warning","toast-warning");
           }
         },
         (error: HttpErrorResponse) => {
@@ -140,7 +140,7 @@ export class DssModelAddComponent implements OnInit {
             this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
           } else {
             this.areCropsSelected = false;
-            this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_avaiability_error","Common_labels.Warning","toast-warning");
+            this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_availability_error","Common_labels.Warning","toast-warning");
           }
         },
         (error: HttpErrorResponse) => {
@@ -198,7 +198,7 @@ export class DssModelAddComponent implements OnInit {
           if (!dssArray[i].models[j].weatherParametersValidated) {
             this._logger.debug("MODEL WX NOT VALID");
             this._logger.info("Weather parameters not valid for the following model: ",dssArray[i].models[j].name);
-            this._toastrTranslated.showTranslatedToastrWithOptions("Warning_messages.Weather_parameters_not_avaiable","Common_labels.Warning","toast-warning",dssArray[i].models[j].name+": ",'');
+            this._toastrTranslated.showTranslatedToastrWithOptions("Warning_messages.Weather_parameters_not_available","Common_labels.Warning","toast-warning",dssArray[i].models[j].name+": ",'');
             dssArray[i].models.splice(j,1);
             j--;
             this._logger.debug("MODELS LENGTH: ",dssArray[i].models.length);

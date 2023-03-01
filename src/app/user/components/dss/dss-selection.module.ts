@@ -22,6 +22,8 @@ import { ResizeBorderComponent } from '@app/shared/resize-border/resize-border.c
 import { MultiSelectComponent } from '@app/shared/multi-select/multi-select.component';
 import { DssAdaptationComponent } from './dss-adaptation.component';
 import { DssAdaptationComponentBody } from './dss-adaptation-body.component';
+import { DssLinkedPage } from './dss-linked-page.component';
+import { DssLinkedRow } from './dss-linked-row.component';
 
 @NgModule({
   imports: [ 
@@ -48,7 +50,9 @@ import { DssAdaptationComponentBody } from './dss-adaptation-body.component';
     ResizeBorderComponent,
     MultiSelectComponent,
     DssAdaptationComponent,
-    DssAdaptationComponentBody
+    DssAdaptationComponentBody,
+    DssLinkedPage,
+    DssLinkedRow,
   ],
   entryComponents: []
 })

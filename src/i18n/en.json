@@ -104,7 +104,7 @@
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
-        "No_farms_avaiable":"No farms available.",
+        "No_farms_available":"No farms available.",
         "Farm_copy_success":"Farm successfully copied!",
         "User_account_updated":"User account successfully updated!",
         "Farm_created":"Farm successfully created!",
@@ -113,7 +113,7 @@
         "No_model_available":"No model available.",
         "No_DSS_available":"No DSS available.",
         "DSS_deletion":"DSS successfully deleted!",
-        "No_DSS_available_please_add":"No DSS avaiable, please add DSS Models into a Farm using Farm Management.",
+        "No_DSS_available_please_add":"No DSS available, please add DSS Models into a Farm using Farm Management.",
         "DSS_delete":"You are about to delete the DSS. Are you sure?",
         "DSS_models_retrived":"DSS Models retrivied successfully!",
         "DSS_models_added":"DSS Models added successfully!",
@@ -128,15 +128,18 @@
         "DSS_adaptation_parameters_updated":"DSS parameters updated!",
         "DSS_adaptation_parameters_sent":"DSS parameters successfully sent!",
         "DSS_parameters_reset":"DSS parameters have been reset to default values successfully!",
-        "DSS_model_selection_default_timing":"DSS have been added which may use default dates for crop emergence or growth stages. To check if these are correct for your crops or to change the dates, click on the 'Edit DSS parameters' button."
+        "DSS_model_selection_default_timing":"DSS have been added which may use default dates for crop emergence or growth stages. To check if these are correct for your crops or to change the dates, click on the 'Edit DSS parameters' button.",
+        "No_Linked_DSS_available":"There are no linked DSS available.",
+        "DSS_models_filtered":"DSS Models filtered successfully!",
+        "You_are_about_to_remove":"You are about to remove the following linked DSS:"
     },
     "Warning_messages":{
-        "DSS_model_avaiability_error":"No DSS avaiable for the selected crops",
+        "DSS_model_availability_error":"No DSS available for the selected crops",
         "Not_enough_DSS_to_compare":"There are not enough DSS models to compare! Please add at least two models",
         "Farm_creation_warning_message":"The platform will start collecting weather data after the farm creation. This might take up to 2 hours.",
         "No_DSS_to_adapt":"There are not any DSS model to adapt! Please add at least one model",
-        "Weather_parameters_not_avaiable":"This DSS model is not able to be run using available weather service! The DSS won't be listed.",
-        "DSS_model_avaiability_country_error":"No DSS available for the selected crops in the selected country. More DSS will be added in future. In the meantime, there may be DSS available from neighbouring countries, which can be found by adding DSS to the farm with the ‘Country filter’ box unticked."
+        "Weather_parameters_not_available":"This DSS model is not able to be run using available weather service! The DSS won't be listed.",
+        "DSS_model_availability_country_error":"No DSS available for the selected crops in the selected country. More DSS will be added in future. In the meantime, there may be DSS available from neighbouring countries, which can be found by adding DSS to the farm with the ‘Country filter’ box unticked."
     },
     "Countries": {
         "Austria":"Austria", 
@@ -408,5 +411,17 @@
         "on":"on",
         "Data_is_updating":"Data is updating",
         "Please_wait":"Please wait"
+    },
+    "DSS_linked": {
+        "Title":"Linked DSS",
+        "General_overview":"General Overview",
+        "User_selected":"User Selected",
+        "Crop_filter":"Crop filter",
+        "Filter_DSS":"Filter DSS",
+        "Clear_filter":"Clear filter",
+        "Confirm_selection":"Confirm selection",
+        "Remove_linked_dss":"Remove Linked DSS",
+        "Edit_selection":"Edit selection",
+        "Editing_complete":"Editing complete"
     }
 }

@@ -25,7 +25,6 @@ export class UserHeaderComponent implements OnInit, OnDestroy {
   public $sessionExpirationTimer: Subscription;
   public $sessionExtend: Subscription;
   public sessionIsExpired: boolean = false;
-  public mini: boolean = false;
 
   constructor(
     private cmsService: CMSService,
@@ -66,9 +65,10 @@ export class UserHeaderComponent implements OnInit, OnDestroy {
         }
       });
     }
+    
 
     if (window.innerWidth <= 980) {
-      this.mini = true;
+      sessionStorage.setItem("sidebarminimized",JSON.stringify(true))
     }
 
     // Start Session timer
@@ -148,24 +148,27 @@ export class UserHeaderComponent implements OnInit, OnDestroy {
     let sideBar: HTMLElement = document.getElementById("mySidebarId");
     let sidebarFooter: HTMLElement = document.getElementById("mySidebarFooter");
     let mainDoc: HTMLElement = document.getElementById("mainDocument")
-    if (this.mini) {
+    if (this.checkSideBarStatus()) {
       if (window.innerWidth <= 980 ) {
         sideBar.style.width = "100%";
-        this.mini = false;
+        sessionStorage.setItem("sidebarminimized",JSON.stringify(false))
       }
       else {
         sideBar.style.width = "280px";
         sidebarFooter.style.display = "block";
         mainDoc.style.marginLeft = "280px"
-        this.mini = false;
-        console.log("TEST WIDTH: ", window.innerWidth);
+        sessionStorage.setItem("sidebarminimized",JSON.stringify(false))
       }
     } else {
       sideBar.style.width = "0px";
       sidebarFooter.style.display = "none";
       mainDoc.style.marginLeft = "0px"
-      this.mini = true;
+      sessionStorage.setItem("sidebarminimized",JSON.stringify(true))
     }
+  }
+
+  checkSideBarStatus(): boolean {
+    return JSON.parse(sessionStorage.getItem("sidebarminimized"));
   }
 
 }

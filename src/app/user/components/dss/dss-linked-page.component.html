@@ -1,0 +1,130 @@
+<div class="app-main__inner">
+  <div class="app-page-title">
+    <div class="page-title-wrapper">
+      <div class="page-title-heading">
+        <div class="page-title-icon">
+          <i class="pe-7s-link icon-gradient bg-mean-fruit">
+          </i>
+        </div>
+        <div>{{ 'DSS_linked.Title' | translate }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-box" *ngIf="gotData(); else noData">
+    <form [formGroup]="selCropForm">
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <fieldset class="border p-3 m-2">
+            <legend class="w-auto px-1 text-muted h5">
+              <b>{{ 'DSS_linked.Crop_filter' | translate }}</b>
+            </legend>
+            <div formGroupName="cropSelection">
+              <div class="form-group row">
+                <div class="col-sm-11">
+                  <select multiple class="form-control" id="crops" formControlName="cropEppoCode">
+                    <ng-template ngFor let-crop [ngForOf]="cropsEppoCodes">
+                      <option value="{{crop.code}}">{{ crop.text }}</option>
+                    </ng-template>
+                  </select>
+                  <small class="hideForMobile col-2 pull-left mt-2"
+                    [innerHtml]="( 'DSS_model_selection.Multiselect_tip' | translate )"></small>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-info btn-sm pull-right m-4" 
+              (click)="onConfirmSelectedCrops()"
+              [disabled]="!selCropForm.get('cropSelection').get('cropEppoCode').valid">
+                {{ 'DSS_linked.Filter_DSS' | translate }}
+            </button>
+            <button class="btn btn-danger btn-sm pull-left m-4" *ngIf="isFiltered"
+              (click)="filterReset()">
+                {{ 'DSS_linked.Clear_filter' | translate }}
+            </button>
+          </fieldset>
+        </div>
+      </div>
+    </form>
+    <div>
+      <div class="dss-box" *ngIf="gotUserSelectedLinkedDssData()">
+        <h3 class="text-muted">
+          <strong>
+            {{ 'DSS_linked.User_selected' | translate }}
+          </strong>
+          <button class="btn btn-info pull-right justify-content-center" *ngIf="!isEditing"
+            (click)="onEditUserSelected()"> 
+              <i class="action-icon white-icon fas fa-edit size-11"></i> {{ 'DSS_linked.Edit_selection' | translate }}
+          </button>
+          <button class="btn btn-success pull-right justify-content-center" *ngIf="isEditing"
+            (click)="onEditUserSelected()"> 
+              <i class="action-icon white-icon fas fa-check size-11"></i> {{ 'DSS_linked.Editing_complete' | translate }}
+          </button>
+        </h3>
+      </div>
+        <table class="table table-responsive-sm">
+          <tbody>
+            <tr>
+              <div class="row d-flex justify-content-center">
+                  <div class="p-2 m-3" app-dss-linked-row  *ngFor="let model of linkedDSSSelectedByUser"
+                    [model]="model"
+                    [isEditing]="isEditing"
+                    [isUserSelected]="true"
+                    (delete)="onDeleteUserSelectedLinkedDss($event)">
+                  </div>
+              </div>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+      <div class="dss-box">
+        <h3 class="text-muted">
+          <strong>
+            {{ 'DSS_linked.General_overview' | translate }}
+          </strong>
+          <button class="btn btn-info pull-right" *ngIf="isAnyDssCurrentlySelected()"
+            (click)="onSave()"> {{ 'DSS_linked.Confirm_selection' | translate }} 
+          </button>
+        </h3>
+      </div>
+        <table class="table table-responsive-sm" *ngIf="gotOverallLinkedDssData(); else noOverallData">
+          <tbody>
+            <tr>
+              <div class="row d-flex justify-content-center">
+                  <div class="p-2 m-3" app-dss-linked-row  *ngFor="let model of overallLinkedDSS"
+                    [model]="model"
+                    [isEditing]="false"
+                    [isUserSelected]="false"
+                    (select)="onSelectOverallLinkedDSS($event)" 
+                    (deselect)="onDeselectOverallLinkedDSS($event)">
+                  </div>
+              </div>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #noData>
+    <div class="card">
+      <div class="progress m-3" *ngIf="remoteCallLoading">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%">
+          {{ 'Common_labels.Loading' | translate }}
+        </div>
+      </div>
+      <div class="d-flex justify-content-center p-3 text-muted" *ngIf="!remoteCallLoading">
+        <strong>
+          {{ 'Information_messages.No_Linked_DSS_available' | translate }}
+        </strong>
+      </div>
+    </div>
+</ng-template>
+
+<ng-template #noOverallData>
+  <div class="card">
+    <div class="d-flex justify-content-center p-3 text-muted" *ngIf="!remoteCallLoading">
+      <strong>
+        {{ 'Information_messages.No_Linked_DSS_available' | translate }}
+      </strong>
+    </div>
+  </div>
+</ng-template>

@@ -12,12 +12,15 @@ export interface DssModel {
     type_of_decision?:string;
     type_of_output?:string;
     description?:string;
+    description_URL?:string;
     execution?:DssModelExecution;
     output?:DssModelOutput;
     valid_spatial?:IDssModelValidSpatial;
     purpose?: string;
     authors?: IAuthors[];
     weatherParametersValidated?: boolean;
+    alreadySavedByUser?: boolean;
+    dssDatabaseId?: string;
 }
 
 export interface IDssModelValidSpatial {
@@ -43,6 +46,8 @@ export interface DssSelection {
     version?:string;
     name?:string;
     organization?: IOrganization;
+    logo_url?: string;
+    purpose?: string;
 }
 
 export interface IOrganization {
@@ -107,40 +112,45 @@ export interface IDssResultFlat {
 }
 
 export interface IDssFlat {
-    id?: string;
+    alreadySavedByUser?: boolean;
+    authors?: IAuthors[];
+    chartGroups?: IDssChartGroup[];
     creationDate?: string;
     cropEppoCode?: string;
-    pestEppoCode?: string;
-    dssId?:  string;
-    dssModelId?:  string;
-    isValid?: boolean;
+    dssDescription?: string;
+    dssDatabaseId?: string;
+    dssEndPoint?: string;
     dssExecutionType?:  string;
     dssFullResult?:  string;
-    warningMessage?: any;
-    warningStatus?: number;
-    resultParameters?: IDssResultFlat[];
-    interval?: string;
-    dssDescription?: string;
+    dssId?:  string;
+    dssLogoUrl?: string;
+    dssModelId?:  string;
     dssModelName?: string;
-    dssTypeOfOutput?: string;
+    dssModelVersion?: string;
+    dssName?: string;
+    dssPurpose?: string;
+    dssSource?: string;
+    dssTaskStatusDto?: IDssTaskStatusDto;
     dssTypeOfDecision?: string;
-    dssEndPoint?: string;
+    dssTypeOfOutput?: string;
+    dssVersion?: string;
     farmId?: string;
     farmName?: string;
     fieldId?: string;
-    warningStatusRepresentation?: string;
-    outputTimeStart?: string;
+    id?: string;
+    interval?: string;
+    isValid?: boolean;
     outputTimeEnd?: string;
-    warningStatusPerDay?: number[];
-    chartGroups?: IDssChartGroup[];
-    warningStatusLabels?: string[];
+    outputTimeStart?: string;
+    pestEppoCode?: string;
     resultMessage?: string;
     resultMessageType?: string;
-    dssTaskStatusDto?: IDssTaskStatusDto;
-    dssPurpose?: string;
-    dssName?: string;
-    dssSource?: string;
-    authors?: IAuthors[];
+    resultParameters?: IDssResultFlat[];
+    warningExplanation?: any;
+    warningStatusLabels?: string[];
+    warningStatusPerDay?: number[];
+    warningStatus?: number;
+    warningStatusRepresentation?: string;
 }
 
 export interface IAuthors {

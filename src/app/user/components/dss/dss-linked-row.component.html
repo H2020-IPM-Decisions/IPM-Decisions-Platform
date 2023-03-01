@@ -1,0 +1,50 @@
+<div class="row d-flex">
+    <div class="align-self-center p-2" [ngClass]="{'data-selected': selectedDss === true}">
+        <eppo-code-badge
+            [dssDetail]="model"
+            [dssDescription]="model.dssDescription"
+            [endpoint]="model.dssEndPoint" 
+            [code]="model.pestEppoCode"
+            [dss]="model.dssModelName" 
+            [executionType]="('link')">
+        </eppo-code-badge>
+    </div>
+    <div class="badgecontrols align-self-center" *ngIf="!isUserSelected && !isEditing">
+        <button class="btn" (click)="onSelect()" [ngClass]="{'data-notSelected': selectedDss === true}">
+            <i class="action-icon fas light-green-icon fa-plus-circle fa-2x">
+            </i>
+        </button>
+        <button class="btn" (click)="onDeselect()"  [ngClass]="{'data-notSelected': selectedDss === false}">
+            <i class="light-blue-icon fas fa-times-circle fa-2x">
+            </i>
+        </button>
+    </div>
+    <div class="badgecontrols align-self-center" *ngIf="isUserSelected && isEditing">
+
+        <ng-template #deleteTemplate>
+            <div class="modal-header">
+              <h4 class="modal-title">
+                <i class="fas fa-exclamation-triangle mr-2"></i>{{ 'DSS_linked.Remove_linked_dss' | translate }}
+            </h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {{ 'Information_messages.You_are_about_to_remove' | translate }} 
+              <div class="text-muted dss-text"><b>{{model.dssModelName}}</b></div> 
+              <br>{{ 'Information_messages.Are_you_sure' | translate }}
+            </div>
+            <div class="modal-footer pull-right">
+              <button type="button" class="btn btn-default" (click)="modalRef.hide()">{{'Common_labels.Cancel' | translate}}</button>
+              <button type="button" class="btn btn-primary" (click)="onDelete()">{{'Common_labels.Yes' | translate}}</button>
+            </div>
+          </ng-template>
+
+        <button class="btn" (click)="openModal(deleteTemplate, null)">
+            <i class="action-icon red-icon fas fa-minus-circle fa-2x">
+            </i>
+        </button>
+    </div>
+</div>
+

@@ -104,7 +104,7 @@
     },
     "Information_messages": {
       "Farm_deletion_message": "Gården din kommer til å bli slettet. Er du sikker?",
-      "No_farms_avaiable": "Ingen gårder tilgjengelig.",
+      "No_farms_available": "Ingen gårder tilgjengelig.",
       "Farm_copy_success": "Gården ble kopiert!",
       "User_account_updated": "Brukerkontoen er oppdatert!",
       "Farm_created": "Gård vellykket opprettet!",
@@ -131,12 +131,12 @@
       "DSS_model_selection_default_timing":"Det er lagt til en DSS som kan bruke standarddatoer for spiredato eller vekststadier.  Klikk på knappen 'Rediger DSS-parametere' for å kontrollere om disse er riktige for dine kulturer, eller for å endre data."
     },
     "Warning_messages": {
-      "DSS_model_avaiability_error": "Ingen DSS tilgjengelig for valgte kulturer ",
+      "DSS_model_availability_error": "Ingen DSS tilgjengelig for valgte kulturer ",
       "Not_enough_DSS_to_compare": "Det er ikke nok DSS-modeller til å sammenligne! Legg til minst to modeller",
       "Farm_creation_warning_message": "Plattformen vil begynne å samle inn værdata etter at gården er opprettet. Dette kan ta opptil 2 timer.",
       "No_DSS_to_adapt": "Det er ingen DSS-modeller å tilpasse. Vennligst legg til minst en modell",
-      "Weather_parameters_not_avaiable": "Denne DSS-modellen kan ikke kjøres med tilgjengelig værtjeneste! DSS-en vil ikke bli oppført.",
-      "DSS_model_avaiability_country_error":"Ingen DSS tilgjengelig for valgt kultur i det valgte landet. Flere DSSer vil bli lagt til i fremtiden. I mellomtiden kan det være tilgjengelige DSSer fra naboland som kan finnes ved å legge til DSS til gården med  åpent 'Landfilter' (ikke avkrysset). "
+      "Weather_parameters_not_available": "Denne DSS-modellen kan ikke kjøres med tilgjengelig værtjeneste! DSS-en vil ikke bli oppført.",
+      "DSS_model_availability_country_error":"Ingen DSS tilgjengelig for valgt kultur i det valgte landet. Flere DSSer vil bli lagt til i fremtiden. I mellomtiden kan det være tilgjengelige DSSer fra naboland som kan finnes ved å legge til DSS til gården med  åpent 'Landfilter' (ikke avkrysset). "
     },
     "Countries": {
       "Austria": "Østerrike",

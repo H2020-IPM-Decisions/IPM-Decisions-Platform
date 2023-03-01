@@ -104,7 +104,7 @@
 	},
 	"Information_messages": {
 		"Farm_deletion_message": "Sie sind dabei, einen Betrieb zu löschen. Sind Sie sicher?",
-		"No_farms_avaiable": "Keine Betriebe verfügbar.",
+		"No_farms_available": "Keine Betriebe verfügbar.",
 		"Farm_copy_success": "Betrieb erfolgreich kopiert!",
 		"User_account_updated": "Benutzerkonto erfolgreich aktualisiert!",
 		"Farm_created": "Betrieb erfolgreich erstellt!",
@@ -131,12 +131,12 @@
 		"DSS_model_selection_default_timing":"Es wurden EHS hinzugefügt, die Standarddaten für den Auflauf der Pflanzen oder Wachstumsstadien verwenden können. Um zu prüfen, ob diese für Ihre Kulturen korrekt sind oder um die Daten zu ändern, klicken Sie auf die Schaltfläche 'EHS-Parameter bearbeiten'."
 	},
 	"Warning_messages": {
-		"DSS_model_avaiability_error": "Für die ausgewählten Kulturen ist kein EHS verfügbar",
+		"DSS_model_availability_error": "Für die ausgewählten Kulturen ist kein EHS verfügbar",
 		"Not_enough_DSS_to_compare": "Es gibt nicht genug EHS-Modelle zum Vergleichen! Bitte fügen Sie mindestens zwei Modelle hinzu",
 		"Farm_creation_warning_message": "Die Plattform startet mit dem Sammeln der Wetterdaten sobald der Betrieb angelegt ist. Dies kann bis zu 2 Stunden dauern",
 		"No_DSS_to_adapt": "Es sind keine EHS-Modelle zum Anpassen vorhanden! Bitte fügen Sie mindestens ein Modell hinzu",
-		"Weather_parameters_not_avaiable":"Dieses EHS-Modell kann nicht mit dem verfügbaren Wetterdienst betrieben werden! Das EHS wird nicht aufgelistet.",
-		"DSS_model_avaiability_country_error":"Kein EHS verfügbar für die ausgewählten Kulturen in dem ausgewählten Land. Weitere EHS werden in Zukunft hinzugefügt.  In der Zwischenzeit können EHS aus Nachbarländern verfügbar sein, die durch Hinzufügen von EHS zum Betrieb bei deaktiviertem 'Länderfilter'-Kästchen gefunden werden können."
+		"Weather_parameters_not_available":"Dieses EHS-Modell kann nicht mit dem verfügbaren Wetterdienst betrieben werden! Das EHS wird nicht aufgelistet.",
+		"DSS_model_availability_country_error":"Kein EHS verfügbar für die ausgewählten Kulturen in dem ausgewählten Land. Weitere EHS werden in Zukunft hinzugefügt.  In der Zwischenzeit können EHS aus Nachbarländern verfügbar sein, die durch Hinzufügen von EHS zum Betrieb bei deaktiviertem 'Länderfilter'-Kästchen gefunden werden können."
 	},
 	"Countries": {
 		"Austria": "Österreich",

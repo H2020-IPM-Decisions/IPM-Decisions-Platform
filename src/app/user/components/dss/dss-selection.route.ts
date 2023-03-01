@@ -12,6 +12,7 @@ import { IDssFlat } from './dss-selection.model';
 import { DssSelectionService } from './dss-selection.service';
 import { DssComparisonComponent } from './dss-comparison.component';
 import { DssAdaptationComponent } from './dss-adaptation.component';
+import { DssLinkedPage } from './dss-linked-page.component';
 
 @Injectable({ providedIn: 'root' })
 export class DssDetailResolve implements Resolve<IDssFlat> {
@@ -73,6 +74,14 @@ export const dssSelectionRoute: Routes = [
       }
     ]
   },
+  {
+    path: 'linked',
+    component: DssLinkedPage,
+    data: {
+        roles: [], claims: ["developer", "farmer", "advisor","researcher"]
+    },
+    canActivate: [AuthGuard]
+  }/**/,
   {
     path: 'comparison',
     component: DssComparisonComponent,

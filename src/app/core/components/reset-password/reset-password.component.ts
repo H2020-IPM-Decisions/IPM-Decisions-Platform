@@ -47,7 +47,7 @@ import { Subscription } from 'rxjs';
             this.email = email;
             this._logger.debug("URL Parameters:",params);
             if(!token || !email){
-              // Go back to Home page if no params are avaiable
+              // Go back to Home page if no params are available
               this._logger.info("Parameters not found!");
               this._router.navigate(["/"]);
             }

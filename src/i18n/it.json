@@ -104,7 +104,7 @@
     },
     "Information_messages":{
         "Farm_deletion_message":"Stai per eliminare un'azienda agricola. Vuoi procedere?",
-        "No_farms_avaiable":"Nessuna azienda agricola disponibile.",
+        "No_farms_available":"Nessuna azienda agricola disponibile.",
         "Farm_copy_success":"Azienda agricola copiata!",
         "User_account_updated":"Profilo utente aggiornato correttamente!",
         "Farm_created":"Azienda agricola creata!",
@@ -128,15 +128,18 @@
         "DSS_adaptation_parameters_updated":"Parametri del DSS aggiornati!",
         "DSS_adaptation_parameters_sent":"Parametri del DSS inviati correttamente!",
         "DSS_parameters_reset":"I parametri del DSS sono stati ripristinati con successo ai valori predefiniti!",
-        "DSS_model_selection_default_timing":"Sono stati aggiunti dei DSS che possono utilizzare date predefinite per le fasi di emergenza o di crescita delle colture. Per verificare se queste date sono corrette per le vostre colture o per modificarle, fate clic sul pulsante 'Modifica parametri DSS'."
+        "DSS_model_selection_default_timing":"Sono stati aggiunti dei DSS che possono utilizzare date predefinite per le fasi di emergenza o di crescita delle colture. Per verificare se queste date sono corrette per le vostre colture o per modificarle, fate clic sul pulsante 'Modifica parametri DSS'.",
+        "No_Linked_DSS_available":"Non ci sono DSS esterni disponibili.",
+        "DSS_models_filtered":"Modelli DSS filtrati con successo!",
+        "You_are_about_to_remove":"Stai per rimuovere il seguente DSS esterno:"
     },
     "Warning_messages":{
-        "DSS_model_avaiability_error":"Non ci sono DSS per le colture selezionate",
+        "DSS_model_availability_error":"Non ci sono DSS per le colture selezionate",
         "Not_enough_DSS_to_compare":"Non ci sono abbastanza modelli DSS da confrontare! Si prega di aggiungere almeno due modelli",
         "Farm_creation_warning_message":"La piattaforma inizierà a raccogliere dati meteorologici dopo la creazione dell'azienda agricola. L'operazione potrebbe richiedere fino a 2 ore.",
         "No_DSS_to_adapt":"Non ci sono modelli DSS da adeguare! Si prega di aggiungere almeno un modello",
-        "Weather_parameters_not_avaiable":"Questo modello DSS non può essere eseguito con l'attuale servizio meteorologico! Il DSS non verrà visualizzato nella lista.",
-        "DSS_model_avaiability_country_error":"Nessun DSS disponibile per le colture selezionate nel Paese selezionato. In futuro verranno aggiunti altri DSS.  Nel frattempo, potrebbero essere disponibili DSS dai Paesi vicini, che possono essere trovati aggiungendo DSS all'azienda agricola con la casella 'Filtro Paese' deselezionata."
+        "Weather_parameters_not_available":"Questo modello DSS non può essere eseguito con l'attuale servizio meteorologico! Il DSS non verrà visualizzato nella lista.",
+        "DSS_model_availability_country_error":"Nessun DSS disponibile per le colture selezionate nel Paese selezionato. In futuro verranno aggiunti altri DSS.  Nel frattempo, potrebbero essere disponibili DSS dai Paesi vicini, che possono essere trovati aggiungendo DSS all'azienda agricola con la casella 'Filtro Paese' deselezionata."
     },
     "Countries": {
         "Austria":"Austria", 
@@ -408,5 +411,17 @@
         "on":"su",
         "Data_is_updating":"Aggiornamento dati",
         "Please_wait":"Attendere prego"
+    },
+    "DSS_linked": {
+        "Title":"DSS Esterni",
+        "General_overview":"Panoramica Generale",
+        "User_selected":"Selezionati dall'utente",
+        "Crop_filter":"FIltro coltura",
+        "Filter_DSS":"Filtra DSS",
+        "Clear_filter":"Pulisci filtro",
+        "Confirm_selection":"Conferma selezione",
+        "Remove_linked_dss":"Rimozione DSS esterno",
+        "Edit_selection":"Modifica  selezione",
+        "Editing_complete":"Modifiche completate"
     }
 }

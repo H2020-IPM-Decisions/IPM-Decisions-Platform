@@ -26,4 +26,16 @@ export class SidebarComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
   }
+
+  public toggleSidebarOff(): void {
+    if (window.innerWidth <= 980 ) {
+      let sideBar: HTMLElement = document.getElementById("mySidebarId");
+      let sidebarFooter: HTMLElement = document.getElementById("mySidebarFooter");
+      let mainDoc: HTMLElement = document.getElementById("mainDocument")
+      sideBar.style.width = "0px";
+      sidebarFooter.style.display = "none";
+      mainDoc.style.marginLeft = "0px"
+      sessionStorage.setItem("sidebarminimized",JSON.stringify(true))
+    }
+  }
 }

@@ -1,0 +1,9 @@
+.dss-box {
+    border-bottom: 3px solid;
+    margin-bottom:20px;
+    border-image: linear-gradient(45deg, rgb(16,169,139), rgb(150,201,61)) 1;
+}
+
+.white-icon {
+    color: white;
+}

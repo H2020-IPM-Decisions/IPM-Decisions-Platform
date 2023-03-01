@@ -73,3 +73,10 @@ body.modal-open {
 .warningTextWrap {
   word-wrap: break-word;
 }
+
+img {
+  float: right;
+  width:  120px;
+  height: 100px;
+  object-fit: scale-down;
+}

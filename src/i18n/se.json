@@ -104,7 +104,7 @@
 	},
 	"Information_messages": {
 		"Farm_deletion_message": "Du kommer att ta bort en gård. Är du säker?",
-		"No_farms_avaiable": "Inga gårdar tillgängliga.",
+		"No_farms_available": "Inga gårdar tillgängliga.",
 		"Farm_copy_success": "Gård har kopierats!",
 		"User_account_updated": "Användarkonto har uppdaterats!",
 		"Farm_created": "Gård har skapats!",
@@ -131,12 +131,12 @@
 		"DSS_model_selection_default_timing":"DSS som kan använda standarddatum för grödans uppkomst eller tillväxtstadier har lagts till. För att kontrollera om dessa är korrekta för dina grödor eller för att ändra datum, klicka på knappen 'Redigera DSS-parametrar'."
 	},
 	"Warning_messages": {
-		"DSS_model_avaiability_error": "Inget DSS tillgängligt för de valda grödorna",
+		"DSS_model_availability_error": "Inget DSS tillgängligt för de valda grödorna",
 		"Not_enough_DSS_to_compare": "Det finns inte tillräckligt många DSS-modeller att jämföra! Lägg till minst två modeller",
 		"Farm_creation_warning_message": "Plattformen kommer att börja samla in väderdata efter att gården skapats. Detta kan ta upp till 2 timmar.",
 		"No_DSS_to_adapt": "Det finns ingen DSS-modell att anpassa! Lägg till minst en modell",
-		"Weather_parameters_not_avaiable": "Denna DSS-modell kan inte köras med tillgänglig vädertjänst! DSS kommer inte att listas.",
-		"DSS_model_avaiability_country_error":"Ingen DSS tillgänglig för de valda grödorna i det valda landet. Mer DSS kommer att läggas till i framtiden. Under tiden kan det finnas DSS tillgängligt från grannländer, vilket kan hittas genom att lägga till DSS till gården med rutan 'Landsfilter' avmarkerad."
+		"Weather_parameters_not_available": "Denna DSS-modell kan inte köras med tillgänglig vädertjänst! DSS kommer inte att listas.",
+		"DSS_model_availability_country_error":"Ingen DSS tillgänglig för de valda grödorna i det valda landet. Mer DSS kommer att läggas till i framtiden. Under tiden kan det finnas DSS tillgängligt från grannländer, vilket kan hittas genom att lägga till DSS till gården med rutan 'Landsfilter' avmarkerad."
 	},
 	"Countries": {
 		"Austria": "Österrike",

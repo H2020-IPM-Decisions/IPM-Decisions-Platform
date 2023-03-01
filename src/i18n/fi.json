@@ -104,7 +104,7 @@
 	},
 	"Information_messages": {
 		"Farm_deletion_message": "Olet poistamassa maatilan. Oletko varma?",
-		"No_farms_avaiable": "Maatiloja ei ole saatavilla.",
+		"No_farms_available": "Maatiloja ei ole saatavilla.",
 		"Farm_copy_success": "Maatilan kopioiminen onnistui!",
 		"User_account_updated": "Käyttäjätili päivitetty onnistuneesti!",
 		"Farm_created": "Maatila luotu onnistuneesti!",
@@ -131,12 +131,12 @@
 		"DSS_model_selection_default_timing":"On lisätty DSS, joka voi käyttää oletuspäivämääriä kasvuston orastumiseen tai eri kasvuasteisiin. Voit tarkistaa, ovatko nämä oikein viljelykasveillesi, tai muuttaa päivämääriä napsauttamalla 'Muokkaa DSS-parametreja' -painiketta."
 	},
 	"Warning_messages": {
-		"DSS_model_avaiability_error": "Valituille kasveille ei ole saatavissa DSS-malleja",
+		"DSS_model_availability_error": "Valituille kasveille ei ole saatavissa DSS-malleja",
 		"Not_enough_DSS_to_compare": "DSS-malleja ei ole riittävästi vertailua varten! Valitse vähintään kaksi mallia",
 		"Farm_creation_warning_message": "Alusta aloittaa säädatan keruun, kun tila on luotu. Tämä voi kestää 2 tuntia.",
 		"No_DSS_to_adapt":"There are not any DSS model to adapt! Please add at least one model",
-        "Weather_parameters_not_avaiable":"This DSS model is not able to be run using available weather service! The DSS won't be listed.",
-		"DSS_model_avaiability_country_error":"Kyseisessä maassa valituille viljelykasveille ei ole käytettävissä DSS-iä. Lisää DSS:iä lisätään tulevaisuudessa. Sillä välin lähimaista voi olla saatavilla DSS:iä, jotka löytyvät lisäämällä tilalle DSS:iä, josisa on ”Country filter” -ruutu valitsematta."
+        "Weather_parameters_not_available":"This DSS model is not able to be run using available weather service! The DSS won't be listed.",
+		"DSS_model_availability_country_error":"Kyseisessä maassa valituille viljelykasveille ei ole käytettävissä DSS-iä. Lisää DSS:iä lisätään tulevaisuudessa. Sillä välin lähimaista voi olla saatavilla DSS:iä, jotka löytyvät lisäämällä tilalle DSS:iä, josisa on ”Country filter” -ruutu valitsematta."
 	},
 	"Countries": {
 		"Austria": "Itävalta",

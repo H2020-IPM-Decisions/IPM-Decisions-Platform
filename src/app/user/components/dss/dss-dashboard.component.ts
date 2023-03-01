@@ -17,10 +17,8 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   farmsDssMap: DssGroupedByFarm[] = [];
   remoteCallLoading: boolean = false;
   $startSubscription: Subscription;
-  $linkedDssSubscription: Subscription;
   dssJobStatus: string[] = ["Enqueued", "Processing"];
   isSyncronizing: boolean = false;
-  linkedDSS: IDssFlat[] = [];
   
   constructor(
     protected service: DssSelectionService,
@@ -98,11 +96,6 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
       errorResponse => {
         this._logger.error("GET DSS LIST ERROR: ",errorResponse);
         this.remoteCallLoading = false;
-      }
-    );
-    this.$linkedDssSubscription = this.service.getLinkedDssList().subscribe(
-      (data: HttpResponse<IDssFlat[]>)=>{
-        this.linkedDSS = data.body;
       }
     );
   }

@@ -84,7 +84,7 @@
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
-        "No_farms_avaiable":"No farms available.",
+        "No_farms_available":"No farms available.",
         "Farm_copy_success":"Farm successfully copied!",
         "User_account_updated":"User account successfully updated!",
         "Farm_created":"Farm successfully created!",
@@ -93,7 +93,7 @@
         "No_model_available":"No model available.",
         "No_DSS_available":"No DSS available.",
         "DSS_deletion":"DSS successfully deleted!",
-        "No_DSS_available_please_add":"No DSS avaiable, please add DSS Models into a Farm using Farm Management.",
+        "No_DSS_available_please_add":"No DSS available, please add DSS Models into a Farm using Farm Management.",
         "DSS_delete":"You are about to delete the DSS. Are you sure?",
         "DSS_models_retrived":"DSS Models retrivied successfully!",
         "DSS_models_added":"DSS Models added successfully!",
