@@ -258,7 +258,8 @@
         "Name": "Nom",
         "Farm_location": "Emplacement de la ferme",
         "Actions": "Actions",
-        "Delete_farm": "Supprimer la ferme"
+        "Delete_farm": "Supprimer la ferme",
+        "Add_dss":"Ajouter OAD"
     },
     "Add_Edit_farm": {
         "Add_title": "Ajouter une ferme",

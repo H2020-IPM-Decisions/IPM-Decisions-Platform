@@ -261,7 +261,8 @@
         "Name":"Name",
         "Farm_location":"Farm location",
         "Actions":"Actions",
-        "Delete_farm":"Delete Farm"
+        "Delete_farm":"Delete Farm",
+        "Add_dss":"Add DSS"
     },
     "Add_Edit_farm":{
         "Add_title":"Add Farm",

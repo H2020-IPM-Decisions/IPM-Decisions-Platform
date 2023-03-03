@@ -258,7 +258,8 @@
 		"Name": "Namn",
 		"Farm_location": "Gårdsplats",
 		"Actions": "Åtgärder",
-		"Delete_farm": "Ta bort gård"
+		"Delete_farm": "Ta bort gård",
+		"Add_dss":"Lägg till DSS"
 	},
 	"Add_Edit_farm": {
 		"Add_title": "Lägg till gård",

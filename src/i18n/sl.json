@@ -258,7 +258,8 @@
 		"Name": "Ime",
 		"Farm_location": "Lokacija kmetije",
 		"Actions": "Možnosti",
-		"Delete_farm": "Izbriši kmetijo"
+		"Delete_farm": "Izbriši kmetijo",
+		"Add_dss":"Dodaj DSS"
 	},
 	"Add_Edit_farm": {
 		"Add_title": "Dodaj kmetijo",

@@ -13,6 +13,9 @@ export class MaprisksService {
   private locationSubject = new Subject<any>();
   public mapObservable: Observable<L.Map>;
   public locationObservable: Observable<any>;
+
+  storeResultLayer: L.LayerGroup;
+
   constructor(private _logger: NGXLogger) {
     this.mapObservable = this.mapSubject.asObservable();
     this.locationObservable = this.locationSubject.asObservable();
@@ -53,12 +56,18 @@ export class MaprisksService {
     searchControl
       .on("results", function (data) {
         results.clearLayers();
-        console.log("LENG",data.results.length-1);
         for (let i = data.results.length - 1; i >= 0; i--) {
-          results.addLayer(L.marker(data.results[i].latlng));
+          results.addLayer(L.marker(data.results[i].latlng, { icon: L.icon({
+            iconSize: [30,50],
+            iconAnchor: [21, 47],
+            popupAnchor: [1,-39],
+            iconUrl: 'img/icons/marker-icon.png',
+            shadowUrl: 'img/icons/marker-shadow.png'
+          })}));
         }
       })
       .addTo(m);
+      this.storeResultLayer = results;
 
         if (!location) {
           location = {
@@ -127,6 +136,7 @@ export class MaprisksService {
     var self = this;
     map.on("click", (e: LeafletMouseEvent) => {
       map.removeLayer(markers);
+      this.storeResultLayer.clearLayers();
       if(!editable) {
         return;
       }

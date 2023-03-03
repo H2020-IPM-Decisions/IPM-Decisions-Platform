@@ -258,7 +258,8 @@
 		"Name": "Naam",
 		"Farm_location": "Bedrijfslocatie",
 		"Actions": "Acties",
-		"Delete_farm": "Bedrijf verwijderen"
+		"Delete_farm": "Bedrijf verwijderen",
+		"Add_dss":"DSS toevoegen"
 	},
 	"Add_Edit_farm": {
 		"Add_title": "Bedrijf toevoegen",

@@ -258,7 +258,8 @@
 		"Name": "Navn",
 		"Farm_location": "Landbrugs lokation",
 		"Actions": "Handlinger",
-		"Delete_farm": "Slet landbrug"
+		"Delete_farm": "Slet landbrug",
+		"Add_dss":"Tilføj DSS"
 	},
 	"Add_Edit_farm": {
 		"Add_title": "Tilføj landbrug",

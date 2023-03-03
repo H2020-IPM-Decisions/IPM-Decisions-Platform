@@ -22,7 +22,10 @@
         <div class="col-md-4 col-xs-12">
           <label class="h6">
             <b>{{ dssDetail.pestEppoCode | eppoCode }}</b>
-            <i [tooltip]="tolStatus" 
+            <i [tooltip]="tolStatus" *ngIf="status>1"
+              class="fas fa-circle pl-3 mr-5"
+              [ngClass]="{'lowRisk': status==2, 'mediumRisk':status==3, 'highRisk': status==4}"></i>
+            <i *ngIf="status<2"
               class="fas fa-circle pl-3 mr-5"
               [ngClass]="{'lowRisk': status==2, 'mediumRisk':status==3, 'highRisk': status==4}"></i>
           </label>
@@ -64,9 +67,9 @@
             <div class="col-md-4 col-xs-12">
               <b><label>{{ 'DSS_details.Recommended_actions' | translate }}</label></b>
               <div class=scrollableCell>
-                <ul class="ml-3" *ngIf="dssDetail.warningExplanation !==''">
+                <ul class="ml-3" *ngIf="dssDetail.warningStatusRepresentation !==''">
                   <li>
-                    {{dssDetail.warningExplanation}}
+                    {{dssDetail.warningStatusRepresentation}}
                   </li>
                 </ul>
               </div>
@@ -155,7 +158,13 @@
     </div>-->
 </ng-template>
 
-<ng-template #tolStatus>{{ dssDetail.warningStatusRepresentation }}</ng-template>
+<ng-template #tolStatus>
+  <div [ngClass]="{'tolLowRisk': status==2, 'tolMediumRisk':status==3, 'tolHighRisk': status==4}">
+    {{ status==2? ('DSS_use_dashboard.Low_risk' | translate) : null }}
+    {{ status==3? ('DSS_use_dashboard.Medium_risk' | translate) : null }}
+    {{ status==4? ('DSS_use_dashboard.High_risk' | translate) : null }}
+  </div>
+</ng-template>
 
 <!-- DRAGGABLE AND RESIZABLE INFO MODAL-->
 <ng-template #dssDetails>

@@ -258,7 +258,8 @@
 		"Name": "Nimi",
 		"Farm_location": "Maatilan sijainti",
 		"Actions": "Toiminnot",
-		"Delete_farm": "Poista maatila"
+		"Delete_farm": "Poista maatila",
+		"Add_dss":"Lisää DSS"
 	},
 	"Add_Edit_farm": {
 		"Add_title": "Lisää maatila",

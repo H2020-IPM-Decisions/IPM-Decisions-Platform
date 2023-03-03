@@ -69,6 +69,8 @@ export class UserHeaderComponent implements OnInit, OnDestroy {
 
     if (window.innerWidth <= 980) {
       sessionStorage.setItem("sidebarminimized",JSON.stringify(true))
+    } else {
+      sessionStorage.setItem("sidebarminimized",JSON.stringify(false))
     }
 
     // Start Session timer

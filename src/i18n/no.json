@@ -258,7 +258,8 @@
       "Name": "Navn",
       "Farm_location": "Gårdsbeliggenhet",
       "Actions": "Handlinger",
-      "Delete_farm": "Slett Farm"
+      "Delete_farm": "Slett Farm",
+      "Add_dss":"Legg til DSS"
     },
     "Add_Edit_farm": {
       "Add_title": "Legg til Farm",

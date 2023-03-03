@@ -80,3 +80,18 @@ img {
   height: 100px;
   object-fit: scale-down;
 }
+
+.tolLowRisk {
+  color: #3ac47d;
+  font-weight: bold;
+}
+
+.tolMediumRisk {
+  color: #f7b924;
+  font-weight: bold;
+}
+
+.tolHighRisk {
+  color: #d92550;
+  font-weight: bold;
+}

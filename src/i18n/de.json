@@ -258,7 +258,8 @@
 		"Name": "Name",
 		"Farm_location": "Standort des Betriebes",
 		"Actions": "Aktionen",
-		"Delete_farm": "Betrieb löschen"
+		"Delete_farm": "Betrieb löschen",
+		"Add_dss":"DSS hinzufügen"
 	},
 	"Add_Edit_farm": {
 		"Add_title": "Betrieb hinzufügen",

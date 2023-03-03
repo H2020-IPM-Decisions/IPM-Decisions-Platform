@@ -261,7 +261,8 @@
         "Name":"Nome",
         "Farm_location":"Posizione dell'azienda agricola",
         "Actions":"Azioni",
-        "Delete_farm":"Cancellazione Azienda Agricola"
+        "Delete_farm":"Cancellazione Azienda Agricola",
+        "Add_dss":"Aggiungi DSS"
     },
     "Add_Edit_farm":{
         "Add_title":"Aggiungi Azienda Agricola",
