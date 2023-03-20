@@ -128,7 +128,10 @@
 		"DSS_adaptation_parameters_updated": "EHS-Parameter aktualisiert!",
 		"DSS_adaptation_parameters_sent": "EHS-Parameter erfolgreich gesendet!",
 		"DSS_parameters_reset": "Die EHS-Parameter wurden erfolgreich auf die Standardwerte zurückgesetzt!",
-		"DSS_model_selection_default_timing":"Es wurden EHS hinzugefügt, die Standarddaten für den Auflauf der Pflanzen oder Wachstumsstadien verwenden können. Um zu prüfen, ob diese für Ihre Kulturen korrekt sind oder um die Daten zu ändern, klicken Sie auf die Schaltfläche 'EHS-Parameter bearbeiten'."
+		"DSS_model_selection_default_timing":"Es wurden EHS hinzugefügt, die Standarddaten für den Auflauf der Pflanzen oder Wachstumsstadien verwenden können. Um zu prüfen, ob diese für Ihre Kulturen korrekt sind oder um die Daten zu ändern, klicken Sie auf die Schaltfläche 'EHS-Parameter bearbeiten'.",
+		"No_Linked_DSS_available":"Kein EHS-Link verfügbar.",
+        "DSS_models_filtered":"EHS-Links erfolgreich gefiltert",
+        "You_are_about_to_remove":"Sie sind im Begriff, den/die folgenden DSS-Link(s) zu entfernen:"
 	},
 	"Warning_messages": {
 		"DSS_model_availability_error": "Für die ausgewählten Kulturen ist kein EHS verfügbar",
@@ -409,6 +412,19 @@
 		"for": "für",
 		"on": "ein",
 		"Data_is_updating":"Daten werden aktualisiert",
-    "Please_wait":"Bitte warten"
-	}
+    	"Please_wait":"Bitte warten"
+	},
+	"DSS_linked": {
+        "Title":"Extern verlinkte EHS Dashboard",
+        "General_overview":"Verfügbare EHS-Links",
+        "User_selected":"Ausgewählte EHS-Links",
+        "Crop_filter":"Kulturauswahl",
+        "Filter_DSS":"Filter DSS",
+        "Clear_filter":"Auswahl löschen",
+        "Confirm_selection":"Auswahl bestätigen",
+        "Remove_linked_dss":"EHS-Link entfernen",
+        "Edit_selection":"Auswahl bearbeiten",
+        "Editing_complete":"Bearbeitung abgeschlossen"
+    }
+
 }

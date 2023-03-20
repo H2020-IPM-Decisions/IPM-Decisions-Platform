@@ -128,7 +128,10 @@
         "DSS_adaptation_parameters_updated": "Mise à jour des paramètres d'OAD !",
         "DSS_adaptation_parameters_sent": "Les paramètres d'OAD ont été envoyés avec succès !",
         "DSS_parameters_reset": "Les paramètres de l'OAD ont été réinitialisés aux valeurs par défaut avec succès !",
-        "DSS_model_selection_default_timing":"DSS have been added which may use default dates for crop emergence or growth stages. To check if these are correct for your crops or to change the dates, click on the 'Edit DSS parameters' button."
+        "DSS_model_selection_default_timing":"DSS have been added which may use default dates for crop emergence or growth stages. To check if these are correct for your crops or to change the dates, click on the 'Edit DSS parameters' button.",
+        "No_Linked_DSS_available":"Pas de lien disponible vers un OAD externe.",
+        "DSS_models_filtered":"Les liens vers les OADs externes ont été filtrés avec succès",
+        "You_are_about_to_remove":"Vous vous apprétez à supprimer le(s) lien(s) suivant(s):"
     },
     "Warning_messages": {
         "DSS_model_availability_error": "Aucun OAD n'est disponible pour les cultures sélectionnées.",
@@ -410,5 +413,18 @@
         "on": "sur",
         "Data_is_updating": "Les données sont en cours de mise à jour",
         "Please_wait": "Veuillez patienter"
+    },
+    "DSS_linked": {
+        "Title":"Tableau de bord des OADs externes",
+        "General_overview":"Liens vers les OADs externes",
+        "User_selected":"Liens vers les OADs externes sélectionnés",
+        "Crop_filter":"Filtre par culture",
+        "Filter_DSS":"Filtre DSS",
+        "Clear_filter":"Réinitialiser le filtre",
+        "Confirm_selection":"Confirmer la sélection",
+        "Remove_linked_dss":"Supprimer le lien vers un OAD externe",
+        "Edit_selection":"Modifier la sélection",
+        "Editing_complete":"Édition terminée"
     }
+
 }

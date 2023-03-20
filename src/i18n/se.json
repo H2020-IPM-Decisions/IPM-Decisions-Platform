@@ -128,7 +128,10 @@
 		"DSS_adaptation_parameters_updated": "DSS-parametrarna har uppdaterats!",
 		"DSS_adaptation_parameters_sent": "DSS-parametrarna har skickats!",
 		"DSS_parameters_reset": "DSS-parametrarna har återställts till standardvärdena!",
-		"DSS_model_selection_default_timing":"DSS som kan använda standarddatum för grödans uppkomst eller tillväxtstadier har lagts till. För att kontrollera om dessa är korrekta för dina grödor eller för att ändra datum, klicka på knappen 'Redigera DSS-parametrar'."
+		"DSS_model_selection_default_timing":"DSS som kan använda standarddatum för grödans uppkomst eller tillväxtstadier har lagts till. För att kontrollera om dessa är korrekta för dina grödor eller för att ändra datum, klicka på knappen 'Redigera DSS-parametrar'.",
+		"No_Linked_DSS_available":"Inga DSS-länkar tillgängliga",
+        "DSS_models_filtered":"DSS-länkar har filtrerats",
+        "You_are_about_to_remove":"Du kommer att ta bort följande DSS-länkar:"
 	},
 	"Warning_messages": {
 		"DSS_model_availability_error": "Inget DSS tillgängligt för de valda grödorna",
@@ -409,5 +412,18 @@
 		"on": "på",
 		"Data_is_updating": "Data uppdateras",
 		"Please_wait": "Vänta"
-	}
+	},
+	"DSS_linked": {
+        "Title":"Extern länk DSS Dashboard",
+        "General_overview":"Tillgängliga DSS-länkar",
+        "User_selected":"Valda DSS-länkar",
+        "Crop_filter":"Grödfilter",
+        "Filter_DSS":"Filter DSS",
+        "Clear_filter":"Ta bort filtering",
+        "Confirm_selection":"Bekräfta val",
+        "Remove_linked_dss":"Ta bort DSS-länk",
+        "Edit_selection":"Redigera val",
+        "Editing_complete":"Redigering slutförd"
+    }
+
 }

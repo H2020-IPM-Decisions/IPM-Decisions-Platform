@@ -128,7 +128,10 @@
 		"DSS_adaptation_parameters_updated": "Parametri DSS so posodobljeni!",
 		"DSS_adaptation_parameters_sent": "Parametri DSS so poslani!",
 		"DSS_parameters_reset": "Parametri DSS so bili uspešno ponastavljeni na privzete vrednosti!",
-		"DSS_model_selection_default_timing":"Dodani so bili DSS, ki lahko uporabljajo privzete datume za vznik ali faze rasti pridelka. Če želite preveriti, ali so ti datumi pravilni za vaše kulturne rastline, ali jih spremeniti, kliknite gumb 'Parametri DSS'."
+		"DSS_model_selection_default_timing":"Dodani so bili DSS, ki lahko uporabljajo privzete datume za vznik ali faze rasti pridelka. Če želite preveriti, ali so ti datumi pravilni za vaše kulturne rastline, ali jih spremeniti, kliknite gumb 'Parametri DSS'.",
+		"No_Linked_DSS_available":"Povezave do DSS niso na voljo",
+        "DSS_models_filtered":"Povezave do DSS so uspešno filtrirane",
+        "You_are_about_to_remove":"Odstranili boste naslednje povezave do DSS:"
 	},
 	"Warning_messages": {
 		"DSS_model_availability_error": "Za izbrane kulturne rastline ni na voljo noben DSS",
@@ -409,5 +412,18 @@
 		"on": "na",
 		"Data_is_updating": "Podatki se posodabljajo",
 		"Please_wait": "Prosimo počakajte"
-	}
+	},
+	"DSS_linked": {
+        "Title":"Povezave do DSS",
+        "General_overview":"Razpoložljive povezave do DSS",
+        "User_selected":"Izbrane povezave do DSS",
+        "Crop_filter":"Izbira kulturne rastline",
+        "Filter_DSS":"Filter DSS",
+        "Clear_filter":"Počisti filter",
+        "Confirm_selection":"Potrdi izbiro",
+        "Remove_linked_dss":"Odstrani povezavo do DSS",
+        "Edit_selection":"Urejanje izbora",
+        "Editing_complete":"Urejanje je končano"
+    }
+
 }

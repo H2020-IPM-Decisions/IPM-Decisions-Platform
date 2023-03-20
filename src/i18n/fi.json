@@ -128,7 +128,10 @@
         "DSS_adaptation_parameters_updated":"DSS-parametrit päivitetty!",
         "DSS_adaptation_parameters_sent":"DSS-parametrien lähetys onnistui!",
         "DSS_parameters_reset":"DSS-parametrit on palautettu oletusarvoihin onnistuneesti!",
-		"DSS_model_selection_default_timing":"On lisätty DSS, joka voi käyttää oletuspäivämääriä kasvuston orastumiseen tai eri kasvuasteisiin. Voit tarkistaa, ovatko nämä oikein viljelykasveillesi, tai muuttaa päivämääriä napsauttamalla 'Muokkaa DSS-parametreja' -painiketta."
+		"DSS_model_selection_default_timing":"On lisätty DSS, joka voi käyttää oletuspäivämääriä kasvuston orastumiseen tai eri kasvuasteisiin. Voit tarkistaa, ovatko nämä oikein viljelykasveillesi, tai muuttaa päivämääriä napsauttamalla 'Muokkaa DSS-parametreja' -painiketta.",
+		"No_Linked_DSS_available":"DSS-linkkejä ei ole saatavilla",
+        "DSS_models_filtered":"DSS-linkit on suodatettu",
+        "You_are_about_to_remove":"Olet poistamassa seuraavat DSS-linkit:"
 	},
 	"Warning_messages": {
 		"DSS_model_availability_error": "Valituille kasveille ei ole saatavissa DSS-malleja",
@@ -409,5 +412,18 @@
         "on":"päällä",
         "Data_is_updating":"Tietoja päivitetään",
         "Please_wait":"Olehyvä ja odota"
+    },
+	"DSS_linked": {
+        "Title":"Ulkoinen linkki DSS-hallintapaneeliin",
+        "General_overview":"Saatavilla olevat DSS-linkit",
+        "User_selected":"Valitut DSS-linkit",
+        "Crop_filter":"Rajaa suodatin",
+        "Filter_DSS":"Suodata DSS",
+        "Clear_filter":"Tyhjennä suodatin",
+        "Confirm_selection":"Vahvista valinta",
+        "Remove_linked_dss":"Poista DSS-linkki",
+        "Edit_selection":"Muokkaa valintaa",
+        "Editing_complete":"Muokkaus valmis"
     }
+
 }

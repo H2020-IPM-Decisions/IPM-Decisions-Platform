@@ -85,6 +85,39 @@
     <span class="badge dss-badge-legend containerBox"
         [ngClass]="{'badge-secondary':!status, 'badge-info': status==1, 'badge-success': status==2, 'badge-warning':status==3, 'badge-danger': status==4}"
         *ngIf="isLegend">
+        <div *ngIf="status==4" class="HighRiskIcon">
+          <div class="row">
+            <i class="fas fa-caret-up"></i>
+          </div>
+          <div class="row HRSecondIconSymbolDistance">
+            <i class="fas fa-caret-up"></i>
+          </div>
+          <div class="row HRThirdIconSymbolDistance">
+            <i class="fas fa-caret-up"></i>
+          </div>
+        </div>
+        <div *ngIf="status==3" class="MediumRiskIcon">
+          <div class="row">
+            <i class="fas fa-circle"></i>
+          </div>
+          <div class="row MRSecondIconSymbolDistance">
+            <i class="fas fa-circle"></i>
+          </div>
+          <div class="row MRThirdIconSymbolDistance">
+            <i class="fas fa-circle"></i>
+          </div>
+        </div>
+        <div *ngIf="status==2" class="LowRiskIcon">
+          <div class="row">
+            <i class="fas fa-caret-down"></i>
+          </div>
+          <div class="row LRSecondIconSymbolDistance">
+            <i class="fas fa-caret-down"></i>
+          </div>
+          <div class="row LRThirdIconSymbolDistance">
+            <i class="fas fa-caret-down"></i>
+          </div>
+        </div>
     </span>
 
     <!-- Template for External DSS Badge -->

@@ -128,7 +128,10 @@
 		"DSS_adaptation_parameters_updated": "DSS parametre updateret!",
 		"DSS_adaptation_parameters_sent": "DSS parametre blev sendt!",
 		"DSS_parameters_reset": "DSS parametre er blevet sat til standardværdier succesfuldt!",
-		"DSS_model_selection_default_timing":"Der er tilføjet BSS, som eventuelt bruger standarddatoer for afgrødens fremkomst eller vækststadier. For at kontrollere, om disse er korrekte for dine afgrøder, eller for at ændre datoerne, skal du klikke på knappen 'Rediger BSS-parametre'."
+		"DSS_model_selection_default_timing":"Der er tilføjet BSS, som eventuelt bruger standarddatoer for afgrødens fremkomst eller vækststadier. For at kontrollere, om disse er korrekte for dine afgrøder, eller for at ændre datoerne, skal du klikke på knappen 'Rediger BSS-parametre'.",
+		"No_Linked_DSS_available":"Ingen tilgængelige DSS-links",
+        "DSS_models_filtered":"DSS-links er blevet filtreret",
+        "You_are_about_to_remove":"Du fjerner følgende DSS-links:"
 	},
 	"Warning_messages": {
 		"DSS_model_availability_error": "Ingen tilgængelige DSS til de valgte afgrøder",
@@ -409,5 +412,18 @@
 		"on": "på",
 		"Data_is_updating": "Data updaterer",
 		"Please_wait": "Vent venligst"
-	}
+	},
+	"DSS_linked": {
+        "Title":"Eksternt link DSS Dashboard",
+        "General_overview":"Tilgængelige DSS-links",
+        "User_selected":"Valgte DSS-links",
+        "Crop_filter":"Afgrødefilter",
+        "Filter_DSS":"Filter DSS",
+        "Clear_filter":"Fjern filtrering",
+        "Confirm_selection":"Bekræft valg",
+        "Remove_linked_dss":"Fjern DSS-link",
+        "Edit_selection":"Rediger valg",
+        "Editing_complete":"Redigering afsluttet"
+    }
+
 }

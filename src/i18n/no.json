@@ -128,7 +128,10 @@
       "DSS_adaptation_parameters_updated": "DSS parametere oppdatert!",
       "DSS_adaptation_parameters_sent": "DSS parametere ble sendt!",
       "DSS_parameters_reset": "DSS-parametere er tilbakestilt til standardverdier!",
-      "DSS_model_selection_default_timing":"Det er lagt til en DSS som kan bruke standarddatoer for spiredato eller vekststadier.  Klikk på knappen 'Rediger DSS-parametere' for å kontrollere om disse er riktige for dine kulturer, eller for å endre data."
+      "DSS_model_selection_default_timing":"Det er lagt til en DSS som kan bruke standarddatoer for spiredato eller vekststadier.  Klikk på knappen 'Rediger DSS-parametere' for å kontrollere om disse er riktige for dine kulturer, eller for å endre data.",
+      "No_Linked_DSS_available":"Ingen DSS-linker er tilgjengelige.",
+      "DSS_models_filtered":"DSS-linkene er filtrert",
+      "You_are_about_to_remove":"Du er i ferd med å fjerne følgende DSS-link(er):"
     },
     "Warning_messages": {
       "DSS_model_availability_error": "Ingen DSS tilgjengelig for valgte kulturer ",
@@ -409,5 +412,18 @@
       "on": "på",
       "Data_is_updating": "Data oppdateres",
       "Please_wait": "Vennligst vent"
-    }
+    },
+    "DSS_linked": {
+      "Title":"Ekstern link til DSS-skrivebord",
+      "General_overview":"Tilgjengelige DSS-linker",
+      "User_selected":"Valgte DSS-linker",
+      "Crop_filter":"Avlingfilter",
+      "Filter_DSS":"DSS Filter",
+      "Clear_filter":"Fjern filter",
+      "Confirm_selection":"Bekreft valgte",
+      "Remove_linked_dss":"Fjern DSS-link",
+      "Edit_selection":"Rediger utvalg",
+      "Editing_complete":"Redigering fullført"
+  }
+
   }

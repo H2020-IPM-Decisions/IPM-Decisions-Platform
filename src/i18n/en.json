@@ -129,9 +129,9 @@
         "DSS_adaptation_parameters_sent":"DSS parameters successfully sent!",
         "DSS_parameters_reset":"DSS parameters have been reset to default values successfully!",
         "DSS_model_selection_default_timing":"DSS have been added which may use default dates for crop emergence or growth stages. To check if these are correct for your crops or to change the dates, click on the 'Edit DSS parameters' button.",
-        "No_Linked_DSS_available":"There are no linked DSS available.",
-        "DSS_models_filtered":"DSS Models filtered successfully!",
-        "You_are_about_to_remove":"You are about to remove the following linked DSS:"
+        "No_Linked_DSS_available":"There are no DSS links available.",
+        "DSS_models_filtered":"DSS links filtered successfully!",
+        "You_are_about_to_remove":"You are about to remove the following DSS link(s):"
     },
     "Warning_messages":{
         "DSS_model_availability_error":"No DSS available for the selected crops",
@@ -414,15 +414,15 @@
         "Please_wait":"Please wait"
     },
     "DSS_linked": {
-        "Title":"Linked DSS",
-        "General_overview":"General Overview",
-        "User_selected":"User Selected",
-        "Crop_filter":"Crop filter",
+        "Title":"External Link DSS Dashboard",
+        "General_overview":"Available DSS links",
+        "User_selected":"Selected DSS links",
+        "Crop_filter":"Crop Filter",
         "Filter_DSS":"Filter DSS",
-        "Clear_filter":"Clear filter",
-        "Confirm_selection":"Confirm selection",
-        "Remove_linked_dss":"Remove Linked DSS",
-        "Edit_selection":"Edit selection",
-        "Editing_complete":"Editing complete"
+        "Clear_filter":"Clear Filter",
+        "Confirm_selection":"Confirm Selection",
+        "Remove_linked_dss":"Remove DSS link",
+        "Edit_selection":"Edit Selection",
+        "Editing_complete":"Editing Complete"
     }
 }

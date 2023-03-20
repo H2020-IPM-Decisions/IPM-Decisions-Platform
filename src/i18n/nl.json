@@ -128,7 +128,10 @@
 		"DSS_adaptation_parameters_updated": "DSS parameters updated!",
 		"DSS_adaptation_parameters_sent": "DSS parameters successfully sent!",
 		"DSS_parameters_reset": "DSS parameters have been reset to default values successfully!",
-		"DSS_model_selection_default_timing":"Er zijn DSS toegevoegd die standaard data kunnen gebruiken voor de opkomst van gewassen of groeistadia. Om te controleren of deze correct zijn voor uw gewassen of om de data te wijzigen, klikt u op de knop 'DSS-parameters bewerken'."
+		"DSS_model_selection_default_timing":"Er zijn DSS toegevoegd die standaard data kunnen gebruiken voor de opkomst van gewassen of groeistadia. Om te controleren of deze correct zijn voor uw gewassen of om de data te wijzigen, klikt u op de knop 'DSS-parameters bewerken'.",
+		"No_Linked_DSS_available":"Er zijn geen DSS-links beschikbaar.",
+        "DSS_models_filtered":"DSS-links succesvoll geselecteerd",
+        "You_are_about_to_remove":"Hiermee verwijdert u de volgende DSS-links:"
 	},
 	"Warning_messages": {
 		"DSS_model_availability_error": "Geen BOS beschikbaar voor de geselecteerde gewassen",
@@ -409,5 +412,17 @@
 		"on": "on",
 		"Data_is_updating": "Data is updating",
 		"Please_wait": "Please wait"
-	}
+	},
+	"DSS_linked": {
+        "Title":"Exterbe Link DSS Dashboard",
+        "General_overview":"Beschikbare DSS-links",
+        "User_selected":"Geselecteerde DSS-links",
+        "Crop_filter":"Gewasfilter",
+        "Filter_DSS":"DSS-filter",
+        "Clear_filter":"Wis filter",
+        "Confirm_selection":"Bevestig selectie",
+        "Remove_linked_dss":"Verwijder DSS-link",
+        "Edit_selection":"Selectie bewerken",
+        "Editing_complete":"Bewerking voltooid"
+    }
 }
