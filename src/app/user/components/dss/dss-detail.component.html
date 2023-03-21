@@ -78,7 +78,7 @@
       <div class="row">
         
         <div class="col-md-4 offset-md-4 mt-3 mb-3">
-          <accordion class="col-lg-12 col-xl-12" [isAnimated]="true">
+          <accordion class="col-lg-12 col-xl-12" [isAnimated]="true" *ngIf="selectedDssChartGroup.id !=='' ">
             <accordion-group>
               <span accordion-heading tooltip="Click to show">
                 {{ 'DSS_details.Show_data_legend' | translate }}

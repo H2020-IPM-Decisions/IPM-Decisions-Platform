@@ -121,22 +121,25 @@
       "Email_not_validated_Message": "Spustelėkite ant šio puslapio apačioje dešinėje esančio teksto <b><b> Iš naujo siųsti patvirtinimą el. paštu </b></b>.",
       "DSS_comparison_models_retrived": "SPS duomenys sėkmingai atkurti!",
       "Account_password_changed": "Paskyros slaptažodis pakeistas sėkmingai!",
-          "Session_expiration_message_start":"Jūsų sesija eina į pabaigą, būsite atjungtas",
-          "Session_expiration_message_end":"išlaikyti ryšį su IKOK platforma.",
-          "Session_expired":"Jūsų sesija baigėsi! Atnaujinkite puslapį ir prisijunkite iš naujo.",
-          "DSS_adaptation_model_retrived":"SPS duomenys sėkmingai gauti!",
-          "DSS_adaptation_parameters_updated":"SPS nustatymai atnaujinti!",
-          "DSS_adaptation_parameters_sent":"SPS nustatymai sėkmingai išsiųsti!",
-          "DSS_parameters_reset":"SPS parametrai sėkmingai atstatyti į pradines reikšmes!",
-          "DSS_model_selection_default_timing":"Pridėtos SPS, kuriose gali būti naudojamos numatytosios pasėlių sudygimo ar augimo etapų datos. Norėdami patikrinti, ar sistemos yra tinkamos jūsų pasėliams ar norint pakeisti datas, spustelėkite mygtuką 'Redaguoti SPS parametrus'."
+      "Session_expiration_message_start":"Jūsų sesija eina į pabaigą, būsite atjungtas",
+      "Session_expiration_message_end":"išlaikyti ryšį su IKOK platforma.",
+      "Session_expired":"Jūsų sesija baigėsi! Atnaujinkite puslapį ir prisijunkite iš naujo.",
+      "DSS_adaptation_model_retrived":"SPS duomenys sėkmingai gauti!",
+      "DSS_adaptation_parameters_updated":"SPS nustatymai atnaujinti!",
+      "DSS_adaptation_parameters_sent":"SPS nustatymai sėkmingai išsiųsti!",
+      "DSS_parameters_reset":"SPS parametrai sėkmingai atstatyti į pradines reikšmes!",
+      "DSS_model_selection_default_timing":"Pridėtos SPS, kuriose gali būti naudojamos numatytosios pasėlių sudygimo ar augimo etapų datos. Norėdami patikrinti, ar sistemos yra tinkamos jūsų pasėliams ar norint pakeisti datas, spustelėkite mygtuką 'Redaguoti SPS parametrus'.",
+      "No_Linked_DSS_available":"Prieinamų SPS nuorodų nėra",
+      "DSS_models_filtered":"SPS nuorodos sėkmingai išfiltruotos",
+      "You_are_about_to_remove":"Ketinate pašalinti šią (-as) SPS  nuorodą (-as)"
     },
     "Warning_messages": {
       "DSS_model_availability_error": "Pasirinktiems augalams SPS nėra",
       "Not_enough_DSS_to_compare": "SPS modelių palyginimui nepakanka! Pridėkite dar bent du modelius",
       "Farm_creation_warning_message": "Tik sukūrus Ūkį platforma pradės rinkti orų duomenis. Tai gali užtrukti iki 2 valandų.",
-          "No_DSS_to_adapt":"Nėra jokio SPS modelio, kurį būtų galima pritaikyti! Prašome pridėti bent vieną modelį.",
-          "Weather_parameters_not_available":"Šio SPS modelio negalima paleisti naudojant prieinamą orų tarnybą! SPS nebus įtraukta į sąrašą.",
-          "DSS_model_availability_country_error":"Pasirinktoje šalyje nėra SPS pasirinktiems žemės ūkio augalams. Ateityje bus pridėta daugiau sistemų. Kol kas gali būti kaimyninių šalių SPS, kurias galima rasti į ūkį pridėjus SPS, kai laukelis 'Filtras pagal šalį' nepažymėtas."
+      "No_DSS_to_adapt":"Nėra jokio SPS modelio, kurį būtų galima pritaikyti! Prašome pridėti bent vieną modelį.",
+      "Weather_parameters_not_available":"Šio SPS modelio negalima paleisti naudojant prieinamą orų tarnybą! SPS nebus įtraukta į sąrašą.",
+      "DSS_model_availability_country_error":"Pasirinktoje šalyje nėra SPS pasirinktiems žemės ūkio augalams. Ateityje bus pridėta daugiau sistemų. Kol kas gali būti kaimyninių šalių SPS, kurias galima rasti į ūkį pridėjus SPS, kai laukelis 'Filtras pagal šalį' nepažymėtas."
     },
     "Countries": {
       "Austria": "Austrija",
@@ -409,5 +412,18 @@
           "on":"įjungta",
           "Data_is_updating":"Duomenys atnaujinami",
           "Please_wait":"Prašome palaukti"
-    }
+    },
+    "DSS_linked": {
+      "Title":"Išorinės nuorodos SPS įrankių skydeliui",
+      "General_overview":"Prienamos  SPS nuorodos",
+      "User_selected":"Pasirinktos SPS nuorodos",
+      "Crop_filter":"Augalo pasirinkimas",
+      "Filter_DSS":"filtrą SPS",
+      "Clear_filter":"Išvalyti filtrą",
+      "Confirm_selection":"Patvirtinkite pasirinkimą",
+      "Remove_linked_dss":"Pašalinti SPS nuorodą",
+      "Edit_selection":"Redaguoti parinkimą",
+      "Editing_complete":"Užbaigtas redagavimas"
+  }
+
   }
