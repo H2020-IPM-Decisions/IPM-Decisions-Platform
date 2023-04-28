@@ -39,7 +39,7 @@ export class DssLinkedPage implements OnInit, OnDestroy {
   ngOnInit(): void {
     this._logger.debug("Dss Linked Page Component Init Start");
     this.formInit();
-    this._eppoCodeService.cachedRefreshableCrops$.subscribe(data=>{
+    this._eppoCodeService.cachedRefreshableCropsLink$.subscribe(data=>{
       this.cropsEppoCodes=data;
       this.cropsEppoCodes = this.cropsEppoCodes.sort(function(a,b){
         return a.text.localeCompare(b.text);

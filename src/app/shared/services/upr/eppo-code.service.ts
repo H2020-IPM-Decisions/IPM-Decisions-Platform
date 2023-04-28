@@ -40,6 +40,54 @@ export class EppoCodeService {
         mergeMap(d => (isObservable(d) ? d : of(d)))
     );
 
+    //Crops LINK type
+    public sharedCropsLink$: Observable<any>;
+    private httpGetCropsLink$ = this._http.get<IEppoCode>(`${this.apiUrl}/api/upr/eppocodes/crop?executionType=LINK`).pipe(
+        map(ecodes => {
+            return ecodes.eppoCodesDto.map(ecodeDto =>{
+                for (let key in ecodeDto.languages) {
+                    if(key === sessionStorage.getItem("selectedLanguage")) {
+                        return new EppoCode(ecodeDto.eppoCode, ecodeDto.languages[key]);
+                    } else {
+                        return new EppoCode(ecodeDto.eppoCode, ecodeDto.languages["la"]);
+                    }
+                }
+            });
+        })
+    );
+    private createSharedCropsLink = () =>
+    (this.sharedCropsLink$ = this.httpGetCropsLink$.pipe(
+        shareReplay(1)
+    ));
+    public cachedRefreshableCropsLink$ = this.createSharedCropsLink().pipe(
+        first(null, defer(() => this.createSharedCropsLink())),
+        mergeMap(d => (isObservable(d) ? d : of(d)))
+    );
+
+    //Crops ONTHEFLY type
+    public sharedCropsOnTheFly$: Observable<any>;
+    private httpGetCropsOnTheFly$ = this._http.get<IEppoCode>(`${this.apiUrl}/api/upr/eppocodes/crop?executionType=ONTHEFLY`).pipe(
+        map(ecodes => {
+            return ecodes.eppoCodesDto.map(ecodeDto =>{
+                for (let key in ecodeDto.languages) {
+                    if(key === sessionStorage.getItem("selectedLanguage")) {
+                        return new EppoCode(ecodeDto.eppoCode, ecodeDto.languages[key]);
+                    } else {
+                        return new EppoCode(ecodeDto.eppoCode, ecodeDto.languages["la"]);
+                    }
+                }
+            });
+        })
+    );
+    private createSharedCropsOnTheFly = () =>
+    (this.sharedCropsLink$ = this.httpGetCropsOnTheFly$.pipe(
+        shareReplay(1)
+    ));
+    public cachedRefreshableCropsOnTheFly$ = this.createSharedCropsOnTheFly().pipe(
+        first(null, defer(() => this.createSharedCropsOnTheFly())),
+        mergeMap(d => (isObservable(d) ? d : of(d)))
+    );
+
     //Pests
     public sharedPests$: Observable<any>;
     private httpGetPests$ = this._http.get<IEppoCode>(`${this.apiUrl}/api/upr/eppocodes/pest`).pipe(

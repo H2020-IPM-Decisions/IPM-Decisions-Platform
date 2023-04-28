@@ -52,7 +52,7 @@ export class DssModelAddComponent implements OnInit {
 
   ngOnInit() {
     this.formInit();
-    this._eppoCodeService.cachedRefreshableCrops$.subscribe(data=>{
+    this._eppoCodeService.cachedRefreshableCropsOnTheFly$.subscribe(data=>{
       this.cropsEppoCodes=data;
       this.cropsEppoCodes = this.cropsEppoCodes.sort(function(a,b){
         return a.text.localeCompare(b.text);
