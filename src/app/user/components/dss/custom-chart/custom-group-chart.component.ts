@@ -10,12 +10,15 @@ import Chart from 'chart.js/auto';
     styleUrls: ["./custom-group-chart.component.css"]
 })
 export class CustomGroupChartComponent implements AfterViewInit {
+    @Input()
+    chartId: string;
+    @Input() 
+    chartResultParameters!: IDssResultFlat[]
 
-    @Input() chartResultParameters!: IDssResultFlat[]
     data: number[] = [];
     labels: string[] = [];
     
-    @ViewChild('chart', {static: false}) 
+    @ViewChild('chart') 
     el:ElementRef;
 
     errorMessage: string;
@@ -62,5 +65,19 @@ export class CustomGroupChartComponent implements AfterViewInit {
             this.errorMessage = 'Error with graph data and labels (length different)';
             return;
         }
+    }
+
+    resetZoom() {
+        let mychart = this.customChartService.getChart(this.chartId);
+        mychart.resetZoom('active');
+    }
+
+    isZoomedOrPanned(): boolean {
+        let isZorP = false;
+        let mychart = this.customChartService.getChart(this.chartId);
+        if (mychart && mychart.isZoomedOrPanned()) {
+          isZorP = true;
+        }
+        return isZorP;
     }
 }

@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   returnUrl: string;
   errorMessage = "";
-  @ViewChild('loginModal', { static: false }) public loginModal: TemplateRef<any>;
+  @ViewChild('loginModal') public loginModal: TemplateRef<any>;
   //@ViewChild('resendConfirmationEmailModal', { static: false }) public resendConfirmationEmailModal: TemplateRef<any>;
   modalRef: BsModalRef;
   emailNotConfirmed: boolean; //Email not confirmed

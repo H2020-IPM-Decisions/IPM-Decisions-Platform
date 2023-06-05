@@ -46,7 +46,7 @@
         <div class="row">
             <div class="col-md-4 col-xs-12">
               <b><label>{{ 'DSS_details.Risk_score' | translate }}</label></b>
-              <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation">
+              <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation" [chartId]="'detailChart-'+dssDetail.id">
               </custom-chart>
             </div>
             <div class="col-md-4 col-xs-12">
@@ -60,7 +60,7 @@
               </span>
               <div class="row" *ngFor="let chartGroup of dssChartGroups">
                 <div class="col-md-12 col-xs-12" *ngIf="selectedDssChartGroup.id === chartGroup.id">
-                  <custom-group-chart [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
+                  <custom-group-chart [chartId]="'detailChart-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
                 </div>
               </div>
             </div>

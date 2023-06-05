@@ -139,6 +139,8 @@
         "Farm_creation_warning_message": "La plateforme commencera à collecter les données météorologiques après la création de la ferme, Cela peut prendre jusqu'à 2 heures.",
         "No_DSS_to_adapt": "Il n'y a pas de modèle d'OAD à adapter ! Veuillez ajouter au moins un modèle",
         "Weather_parameters_not_available": "Ce modèle d'OAD ne peut pas être exécuté en utilisant le service météo disponible ! L'OAD ne sera pas listé.",
+        "Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
+        "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
         "DSS_model_availability_country_error":"Aucun OAD disponible pour les cultures sélectionnées dans le pays sélectionné. D'autres OAD seront ajoutés à l'avenir.  Entre-temps, il peut y avoir des OAD disponibles dans les pays voisins, qui peuvent être ajoutés pour l'exploitation avec la case 'Filtre pays' décochée."
     },
     "Countries": {

@@ -14,7 +14,7 @@ import { Subscription } from "rxjs";
 })
 export class FarmDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
   $subscription?: Subscription;
-  @ViewChild("map", { static: false })
+  @ViewChild("map")
   private mapContainer: ElementRef<HTMLElement>;
   private map: L.Map;
   farm?: Farm;

@@ -22,13 +22,13 @@
         <tbody>
           <tr>
             <td>
-              <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation">
+              <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation" [chartId]="'comparisonChart-'+dssDetail.id">
               </custom-chart>
             </td>
             <td>
               <div class="row" *ngFor="let chartGroup of dssChartGroups">
                 <div class="col" *ngIf="selectedDssChartGroup.id === chartGroup.id">
-                  <custom-group-chart [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
+                  <custom-group-chart [chartId]="'comparisonGroupChart-'+chartGroup.id+'-'+dssDetail.id" [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
                 </div>
               </div>
             </td>

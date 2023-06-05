@@ -340,6 +340,22 @@ export class DssSelectionService {
           animation: true,
           maintainAspectRatio: false,
           plugins: {
+            zoom: {
+              zoom: {
+                wheel: {
+                  enabled: true
+                },
+                pinch: {
+                  enabled: true
+                },
+                mode: 'xy'
+              },
+              pan: {
+                enabled: true,
+                mode: 'xy',
+                threshold: 5
+              }
+            },
             legend: {
                 display: false
             },

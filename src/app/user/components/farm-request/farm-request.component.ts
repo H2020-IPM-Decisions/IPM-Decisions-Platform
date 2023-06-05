@@ -19,7 +19,7 @@ export class FarmRequestComponent implements OnInit {
 
   email = "";
   message = "";
-  @ViewChild('farmRequestModal', {static: false}) public farmRequestModal: TemplateRef<any>;
+  @ViewChild('farmRequestModal') public farmRequestModal: TemplateRef<any>;
   modalRef: any;
 
   sendRequest() {

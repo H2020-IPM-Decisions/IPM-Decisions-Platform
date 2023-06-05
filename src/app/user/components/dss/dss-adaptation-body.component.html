@@ -64,7 +64,7 @@
               <div class="row">
                 <div class="col">
                   <custom-chart [data]="originalWarningChart.data" [labels]="originalWarningChart.labels"
-                    [config]="originalWarningChart.chartInformation">
+                    [config]="originalWarningChart.chartInformation" [chartId]="'adaptationChartOriginal-'+originalDssDetails.id">
                   </custom-chart>
                 </div>
               </div>
@@ -87,7 +87,7 @@
               </div>
               <div class="row" *ngFor="let chartGroup of originalDssChartGroups">
                 <div class="col" *ngIf="selectedOriginalDssChartGroup.id === chartGroup.id">
-                  <custom-group-chart [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
+                  <custom-group-chart [chartId]="'adaptationGroupChartOriginal-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
                 </div>
               </div>
             </div>
@@ -179,13 +179,13 @@
               <div class="row">
                 <div class="col" *ngIf="showRevisedRiskChart">
                   <custom-chart [data]="revisedWarningChart.data" [labels]="revisedWarningChart.labels"
-                    [config]="revisedWarningChart.chartInformation">
+                    [config]="revisedWarningChart.chartInformation" [chartId]="'adaptationChartRevised-'+revisedDssDetails.id">
                   </custom-chart>
                 </div>
                 <!-- USED TO SHOWING PREVIOUS DATA WHILE UPDATING -->
                 <div class="col" *ngIf="!showRevisedRiskChart">
                   <custom-chart [data]="revisedWarningChart.data" [labels]="revisedWarningChart.labels"
-                    [config]="revisedWarningChart.chartInformation" [animation]="false">
+                    [config]="revisedWarningChart.chartInformation" [chartId]="'adaptationChartRevised-'+revisedDssDetails.id" [animation]="false">
                   </custom-chart> 
                 </div>
               </div>
@@ -207,7 +207,7 @@
               </div>
               <div class="row" *ngFor="let chartGroup of revisedDssChartGroups">
                 <div class="col" *ngIf="selectedRevisedDssChartGroup.id === chartGroup.id">
-                  <custom-group-chart [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
+                  <custom-group-chart [chartId]="'adaptationGroupChartRevised-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
                 </div>
               </div>
             </div>

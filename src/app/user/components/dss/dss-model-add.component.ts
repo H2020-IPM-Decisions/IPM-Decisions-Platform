@@ -188,6 +188,7 @@ export class DssModelAddComponent implements OnInit {
   }
 
   removeWxNotValidatedDSS(dssArray: DssSelection[]): void {
+    let numberOfInvalidWxModels: number = 0;
     this._logger.debug("DSS LENGTH: ",dssArray.length);
     for (let i:number = 0; i < dssArray.length; i++) {
       this._logger.debug("MODELS LENGTH: ",dssArray[i].models.length);
@@ -198,9 +199,10 @@ export class DssModelAddComponent implements OnInit {
           if (!dssArray[i].models[j].weatherParametersValidated) {
             this._logger.debug("MODEL WX NOT VALID");
             this._logger.info("Weather parameters not valid for the following model: ",dssArray[i].models[j].name);
-            this._toastrTranslated.showTranslatedToastrWithOptions("Warning_messages.Weather_parameters_not_available","Common_labels.Warning","toast-warning",dssArray[i].models[j].name+": ",'');
+            //this._toastrTranslated.showTranslatedToastrWithOptions("Warning_messages.Weather_parameters_not_available","Common_labels.Warning","toast-warning",dssArray[i].models[j].name+": ",'');
             dssArray[i].models.splice(j,1);
             j--;
+            numberOfInvalidWxModels++;
             this._logger.debug("MODELS LENGTH: ",dssArray[i].models.length);
           }
         }
@@ -215,6 +217,13 @@ export class DssModelAddComponent implements OnInit {
         this._logger.debug("DSS LENGTH: ",dssArray.length);
       }
     }
+    if (numberOfInvalidWxModels > 1){
+      this._toastrTranslated.showTranslatedToastrWithDynamicParam("Warning_messages.Weather_parameters_not_available_for_multiple_DSS","Common_labels.Warning","toast-warning",numberOfInvalidWxModels);
+    }
+    if (numberOfInvalidWxModels == 1){
+      this._toastrTranslated.showTranslatedToastr("Warning_messages.Weather_parameters_not_available_for_single_DSS","Common_labels.Warning","toast-warning");
+    }
+    
   }
 
   onCheckboxChange():void {

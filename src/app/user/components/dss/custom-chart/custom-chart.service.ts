@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import Chart from 'chart.js/auto';
 import { IChartDataset } from "./custom-chart.model";
+import zoomPlugin from 'chartjs-plugin-zoom';
+Chart.register(zoomPlugin);
 
 @Injectable({ providedIn: 'root' })
 export class CustomChartService {
@@ -54,6 +56,22 @@ export class CustomChartService {
             options: {
                 maintainAspectRatio: false,
                 plugins: {
+                    zoom: {
+                        zoom: {
+                          wheel: {
+                            enabled: true
+                          },
+                          pinch: {
+                            enabled: true
+                          },
+                          mode: 'xy'
+                        },
+                        pan: {
+                          enabled: true,
+                          mode: 'xy',
+                          threshold: 5
+                        }
+                      },          
                     legend: {
                         display: false
                     }
@@ -93,5 +111,10 @@ export class CustomChartService {
     private getChartJsType(type?: string){
         if(!type || type === 'spline') return 'line';
         return type;
+    }
+
+    getChart(id: string): Chart{
+        let myChart = Chart.getChart(id);
+        return myChart;
     }
 }

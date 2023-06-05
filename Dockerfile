@@ -1,5 +1,5 @@
 # Build Angular app
-FROM node:16.13.0 as node
+FROM node:16.14.2 as node
 WORKDIR /app
 COPY ./package.json package-lock.json ./
 RUN npm install

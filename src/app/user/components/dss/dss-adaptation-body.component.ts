@@ -16,10 +16,10 @@ import * as $ from 'jquery'
 })
 
 export class DssAdaptationComponentBody implements OnInit {
-    @ViewChild('originalDataset', { static: false }) public originalDataset: ElementRef;
-    @ViewChild('revisedDataset', { static: false }) public revisedDataset: ElementRef;
-    @ViewChild('originalParameters', { static: false }) public originalParameters: ElementRef;
-    @ViewChild('revisedParameters', { static: false }) public revisedParameters: ElementRef;
+    @ViewChild('originalDataset') public originalDataset: ElementRef;
+    @ViewChild('revisedDataset') public revisedDataset: ElementRef;
+    @ViewChild('originalParameters') public originalParameters: ElementRef;
+    @ViewChild('revisedParameters') public revisedParameters: ElementRef;
 
     @Input() public originalDssDetails!: IDssFlat;
     @Input() public originalDssParameters!: DssJSONSchema;

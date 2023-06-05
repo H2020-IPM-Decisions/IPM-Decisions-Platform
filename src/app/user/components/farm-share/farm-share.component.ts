@@ -19,7 +19,7 @@ export class FarmShareComponent implements OnInit {
   message = "";
   pagination:any = {};
   currentPage = 1;
-  @ViewChild('farmShareModal', { static: false }) public farmShareModal: TemplateRef<any>;
+  @ViewChild('farmShareModal') public farmShareModal: TemplateRef<any>;
   modalRef: any;
 
   ngOnInit() {

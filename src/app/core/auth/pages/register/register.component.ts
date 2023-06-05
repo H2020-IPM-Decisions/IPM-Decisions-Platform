@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   subscriptionErrors: Subscription;
   successMsg: string;
   isSuccess;
-  @ViewChild('registrationModal', {static: false}) public registrationModal: TemplateRef<any>;
+  @ViewChild('registrationModal') public registrationModal: TemplateRef<any>;
   modalRef: any;
   confirmationMessage: any;
   userTypeIsSelected: boolean = false;

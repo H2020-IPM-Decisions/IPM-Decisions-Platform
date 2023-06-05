@@ -12,7 +12,7 @@ import { IResendConfirmation } from '../../models/resend-confirmation-email.mode
 
 export class ResendConfirmationEmailComponent implements OnInit {
 
-    @ViewChild('resendConfirmationEmailModal', { static: false }) public resendConfirmationEmailModal: TemplateRef<any>;
+    @ViewChild('resendConfirmationEmailModal') public resendConfirmationEmailModal: TemplateRef<any>;
     modalRef: BsModalRef;
     resendForm: FormGroup;
     submitted = false;

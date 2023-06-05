@@ -22,7 +22,7 @@ import { Subscription } from 'rxjs';
     public email: string;
     public errorDescription: string;
 
-    @ViewChild('resetPasswordModal', { static: false }) public resetPasswordModal: TemplateRef<any>;
+    @ViewChild('resetPasswordModal') public resetPasswordModal: TemplateRef<any>;
 
     public $subscriptionSubmit: Subscription;
 

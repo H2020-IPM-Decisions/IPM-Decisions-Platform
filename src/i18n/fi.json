@@ -139,6 +139,8 @@
 		"Farm_creation_warning_message": "Alusta aloittaa säädatan keruun, kun tila on luotu. Tämä voi kestää 2 tuntia.",
 		"No_DSS_to_adapt":"There are not any DSS model to adapt! Please add at least one model",
         "Weather_parameters_not_available":"This DSS model is not able to be run using available weather service! The DSS won't be listed.",
+		"Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
+        "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
 		"DSS_model_availability_country_error":"Kyseisessä maassa valituille viljelykasveille ei ole käytettävissä DSS-iä. Lisää DSS:iä lisätään tulevaisuudessa. Sillä välin lähimaista voi olla saatavilla DSS:iä, jotka löytyvät lisäämällä tilalle DSS:iä, josisa on ”Country filter” -ruutu valitsematta."
 	},
 	"Countries": {

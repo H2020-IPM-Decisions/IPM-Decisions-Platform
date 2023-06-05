@@ -139,6 +139,8 @@
 		"Farm_creation_warning_message": "Platformen starter med at samle vejrdata efter oprettelse af bedrift. Dette kan tage op til 2 timer.",
 		"No_DSS_to_adapt": "Der er ikke nogen DSS model at tilpasse! Tilføj mindst 1 model",
 		"Weather_parameters_not_available": "Denne DSS model kan ikke køre med den tilgængelig vejrdata. DSS bliver ikke vist.",
+		"Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
+        "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
 		"DSS_model_availability_country_error":"Ingen BSS tilgængelige for de valgte afgrøder i det valgte land. Flere BSS vil blive tilføjet i fremtiden. I mellemtiden kan der være BSS tilgængelige fra nabolande, som kan findes ved at tilføje BSS til bedriften med 'Landefilter' afkrydset."
 	},
 	"Countries": {

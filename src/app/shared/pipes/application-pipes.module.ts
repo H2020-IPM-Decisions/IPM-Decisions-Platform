@@ -27,7 +27,7 @@ import { CountryNamePipe } from "./country-name.pipe";
 })
 export class ApplicationPipesModule {
     // found helpful: https://stackoverflow.com/questions/42576420/how-to-declare-a-pipe-globally-to-use-in-different-modules
-    static forRoot(): ModuleWithProviders {
+    static forRoot(): ModuleWithProviders<ApplicationPipesModule> {
         return {
           ngModule: ApplicationPipesModule,
           providers: [ ]

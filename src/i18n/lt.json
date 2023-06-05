@@ -139,6 +139,8 @@
       "Farm_creation_warning_message": "Tik sukūrus Ūkį platforma pradės rinkti orų duomenis. Tai gali užtrukti iki 2 valandų.",
       "No_DSS_to_adapt":"Nėra jokio SPS modelio, kurį būtų galima pritaikyti! Prašome pridėti bent vieną modelį.",
       "Weather_parameters_not_available":"Šio SPS modelio negalima paleisti naudojant prieinamą orų tarnybą! SPS nebus įtraukta į sąrašą.",
+      "Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
+      "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
       "DSS_model_availability_country_error":"Pasirinktoje šalyje nėra SPS pasirinktiems žemės ūkio augalams. Ateityje bus pridėta daugiau sistemų. Kol kas gali būti kaimyninių šalių SPS, kurias galima rasti į ūkį pridėjus SPS, kai laukelis 'Filtras pagal šalį' nepažymėtas."
     },
     "Countries": {

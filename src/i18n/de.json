@@ -139,6 +139,8 @@
 		"Farm_creation_warning_message": "Die Plattform startet mit dem Sammeln der Wetterdaten sobald der Betrieb angelegt ist. Dies kann bis zu 2 Stunden dauern",
 		"No_DSS_to_adapt": "Es sind keine EHS-Modelle zum Anpassen vorhanden! Bitte fügen Sie mindestens ein Modell hinzu",
 		"Weather_parameters_not_available":"Dieses EHS-Modell kann nicht mit dem verfügbaren Wetterdienst betrieben werden! Das EHS wird nicht aufgelistet.",
+		"Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
+        "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
 		"DSS_model_availability_country_error":"Kein EHS verfügbar für die ausgewählten Kulturen in dem ausgewählten Land. Weitere EHS werden in Zukunft hinzugefügt.  In der Zwischenzeit können EHS aus Nachbarländern verfügbar sein, die durch Hinzufügen von EHS zum Betrieb bei deaktiviertem 'Länderfilter'-Kästchen gefunden werden können."
 	},
 	"Countries": {

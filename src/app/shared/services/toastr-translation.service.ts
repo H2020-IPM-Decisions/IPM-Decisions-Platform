@@ -41,10 +41,23 @@ export class ToastrTranslationService {
           },
           toastrType
       );
-  }
+    }
 
-    private initToastMessageTranslated(messageKeyToTranslate: string, titleKeyToTranslate: string): void {
-        this.subscriptionToastTranslation = this._translate.get(messageKeyToTranslate).pipe(
+    public showTranslatedToastrWithDynamicParam(messageKeyToTranslate: string, titleKeyToTranslate: string, toastrType: string, param?: any): void {
+      this.initToastMessageTranslated(messageKeyToTranslate,titleKeyToTranslate, param);
+      this._toastr.toastrConfig.preventDuplicates = true;
+      this._toastr.show(
+          this.message,
+          this.title,
+          { disableTimeOut: true,
+            closeButton: true
+          },
+          toastrType
+      );
+    } 
+
+    private initToastMessageTranslated(messageKeyToTranslate: string, titleKeyToTranslate: string, param?: any): void {
+        this.subscriptionToastTranslation = this._translate.get(messageKeyToTranslate, {value: param}).pipe(
           switchMap((messageContent) => {
             this.message = messageContent;
             return this._translate.get(titleKeyToTranslate)}),

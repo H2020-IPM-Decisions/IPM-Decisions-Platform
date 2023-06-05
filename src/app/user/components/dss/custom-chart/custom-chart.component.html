@@ -1,3 +1,4 @@
 <div class="chartcontainer">
-    <canvas #chart></canvas>
+    <canvas #chart id="{{chartId}}"></canvas>
+    <button class="zoomReset btn btn-info" *ngIf="isZoomedOrPanned()" (click)="resetZoom()"><i class="fas fa-sync"></i></button>
 </div>

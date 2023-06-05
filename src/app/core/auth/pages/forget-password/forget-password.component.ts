@@ -13,7 +13,7 @@ declare var init: any;
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  @ViewChild('resetPasswordModal', { static: false }) public resetPasswordModal: TemplateRef<any>;
+  @ViewChild('resetPasswordModal') public resetPasswordModal: TemplateRef<any>;
   modalRef: any;
   resetForm: FormGroup;
   submitted = false;

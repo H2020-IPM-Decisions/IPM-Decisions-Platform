@@ -10,3 +10,9 @@ canvas{
     display: flex;
     flex-grow:1;
 }
+
+.zoomReset {
+    position: absolute;
+    right: 1px;
+    top: -45px;
+}

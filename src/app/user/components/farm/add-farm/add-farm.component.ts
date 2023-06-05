@@ -36,7 +36,7 @@ export class AddFarmComponent implements OnInit, AfterViewInit, OnDestroy {
   $locationSubscription: Subscription;
   $farmSubmitSubscription: Subscription;
 
-  @ViewChild("map", { static: false })
+  @ViewChild("map")
   private mapContainer: ElementRef<HTMLElement>;
   farm?: Farm;
   farmForm: FormGroup;

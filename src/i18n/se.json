@@ -139,6 +139,8 @@
 		"Farm_creation_warning_message": "Plattformen kommer att börja samla in väderdata efter att gården skapats. Detta kan ta upp till 2 timmar.",
 		"No_DSS_to_adapt": "Det finns ingen DSS-modell att anpassa! Lägg till minst en modell",
 		"Weather_parameters_not_available": "Denna DSS-modell kan inte köras med tillgänglig vädertjänst! DSS kommer inte att listas.",
+		"Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
+        "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
 		"DSS_model_availability_country_error":"Ingen DSS tillgänglig för de valda grödorna i det valda landet. Mer DSS kommer att läggas till i framtiden. Under tiden kan det finnas DSS tillgängligt från grannländer, vilket kan hittas genom att lägga till DSS till gården med rutan 'Landsfilter' avmarkerad."
 	},
 	"Countries": {

@@ -16,9 +16,11 @@ export class CustomChartComponent implements AfterViewInit {
     @Input()
     config: IChartConfig;
     @Input()
+    chartId: string;
+    @Input()
     animation!: boolean;
     
-    @ViewChild('chart', {static: false}) 
+    @ViewChild('chart') 
     el:ElementRef;
 
     errorMessage: string;
@@ -56,6 +58,20 @@ export class CustomChartComponent implements AfterViewInit {
             options = this.config.options
         }
         this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color, options);
+    }
+
+    resetZoom() {
+        let mychart = this.customChartService.getChart(this.chartId);
+        mychart.resetZoom('active');
+    }
+
+    isZoomedOrPanned(): boolean {
+        let isZorP = false;
+        let mychart = this.customChartService.getChart(this.chartId);
+        if (mychart && mychart.isZoomedOrPanned()) {
+          isZorP = true;
+        }
+        return isZorP;
     }
 
 }

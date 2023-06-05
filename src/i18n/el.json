@@ -139,6 +139,8 @@
 		"Farm_creation_warning_message": "Η πλατφόρμα θα αρχίσει να συλλέγει δεδομένα καιρού μετά τη δημιουργία του αγροκτήματος. Αυτό μπορεί να διαρκέσει έως και 2 ώρες.",
 		"No_DSS_to_adapt": "Δεν υπάρχει κανένα μοντέλο DSS για προσαρμογή! Παρακαλώ προσθέστε τουλάχιστον ένα μοντέλο",
 		"Weather_parameters_not_available": "Αυτό το μοντέλο DSS δεν μπορεί να εκτελεστεί χρησιμοποιώντας τη διαθέσιμη μετεωρολογική υπηρεσία! Το DSS δεν θα εμφανιστεί στη λίστα.",
+		"Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
+        "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
 		"DSS_model_availability_country_error":"Δεν υπάρχει διαθέσιμο DSS για τις επιλεγμένες καλλιέργειες στην επιλεγμένη χώρα. Στο μέλλον θα προστεθούν περισσότερα DSS. Εν τω μεταξύ, ενδέχεται να υπάρχουν διαθέσιμα DSS από γειτονικές χώρες, τα οποία μπορείτε να βρείτε προσθέτοντας DSS στο αγρόκτημα με το πλαίσιο 'Φίλτρο χώρας' να μην είναι επιλεγμένο."
 	},
 	"Countries": {

@@ -139,6 +139,8 @@
         "Farm_creation_warning_message":"La piattaforma inizierà a raccogliere dati meteorologici dopo la creazione dell'azienda agricola. L'operazione potrebbe richiedere fino a 2 ore.",
         "No_DSS_to_adapt":"Non ci sono modelli DSS da adeguare! Si prega di aggiungere almeno un modello",
         "Weather_parameters_not_available":"Questo modello DSS non può essere eseguito con l'attuale servizio meteorologico! Il DSS non verrà visualizzato nella lista.",
+        "Weather_parameters_not_available_for_single_DSS":"A causa della disponibilità dei dati meteorologici nella tua posizione, 1 DSS non è in grado di funzionare ed è stato escluso dalla lista dei DSS disponibili.",
+        "Weather_parameters_not_available_for_multiple_DSS":"A causa della disponibilità dei dati meteorologici nella tua posizione, {{value}} DSS non sono in grado di funzionare e sono stati esclusi dalla lista dei DSS disponibili.",
         "DSS_model_availability_country_error":"Nessun DSS disponibile per le colture selezionate nel Paese selezionato. In futuro verranno aggiunti altri DSS.  Nel frattempo, potrebbero essere disponibili DSS dai Paesi vicini, che possono essere trovati aggiungendo DSS all'azienda agricola con la casella 'Filtro Paese' deselezionata."
     },
     "Countries": {
