@@ -333,7 +333,8 @@
         "DSS_model_id":"DSS Model ID",
         "Warning_status_representation":"Warning Status Representation",
         "Warning_message":"Warning Message",
-        "Disclaimer_content":"This platform is making DSS available from external DSS developers. The DSS can be used to assist (not replace) decisions by experienced crop managers, accounting for local pest risk factors. See further information below the legend on the DSS Use dashboard."
+        "Disclaimer_content":"This platform is making DSS available from external DSS developers. The DSS can be used to assist (not replace) decisions by experienced crop managers, accounting for local pest risk factors. See further information below the legend on the DSS Use dashboard.",
+        "Group_chart_popup_title":"Group Chart Information"
     },
     "DSS_model_selection": {
         "Title":"Decision Support System Selection",
@@ -379,7 +380,8 @@
         "Parameters_table":"Parameters table",
         "for":"for",
         "on":"on",
-        "Note_message":"You can compare up to five models simultaneously"
+        "Note_message":"You can compare up to five models simultaneously",
+        "Group_chart_popup_title":"Group Chart Information"
     },
     "User_guide": {
         "Title":"User guide"

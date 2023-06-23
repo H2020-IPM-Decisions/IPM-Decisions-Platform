@@ -333,7 +333,8 @@
         "DSS_model_id":"ID del Modello del DSS",
         "Warning_status_representation":"Rappresentazione dello stato di avviso",
         "Warning_message":"Messaggio di avviso",
-		"Disclaimer_content":"Questa piattaforma rende disponibili i DSS di sviluppatori esterni. I DSS possono essere utilizzati per assistere (non sostituire) le decisioni di esperti delle colture, tenendo conto dei fattori di rischio locali per i parassiti. Vedere ulteriori informazioni sotto la legenda del cruscotto Uso dei DSS."
+		"Disclaimer_content":"Questa piattaforma rende disponibili i DSS di sviluppatori esterni. I DSS possono essere utilizzati per assistere (non sostituire) le decisioni di esperti delle colture, tenendo conto dei fattori di rischio locali per i parassiti. Vedere ulteriori informazioni sotto la legenda del cruscotto Uso dei DSS.",
+        "Group_chart_popup_title":"Diagrammi"
     },
     "DSS_model_selection": {
         "Title":"Selezione del sistema di supporto decisionale",
@@ -379,7 +380,8 @@
         "Parameters_table":"Tabella dei parametri",
         "for":"per",
         "on":"su",
-        "Note_message":"Si possono confrontare fino ad un massimo di cinque modelli contemporaneamente"
+        "Note_message":"Si possono confrontare fino ad un massimo di cinque modelli contemporaneamente",
+        "Group_chart_popup_title":"Diagrammi"
     },
     "User_guide": {
         "Title":"Guida utente"

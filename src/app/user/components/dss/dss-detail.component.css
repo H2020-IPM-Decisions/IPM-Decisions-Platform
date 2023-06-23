@@ -95,3 +95,19 @@ img {
   color: #d92550;
   font-weight: bold;
 }
+
+.risk-chart-popup-btn{
+  position: absolute;
+  top: 175px;
+  right: 10px;
+  text-shadow: 2px 2px 3px rgba(15,15,15,.56);
+  font-size: 150%;
+}
+
+.group-chart-popup-btn{    
+  position: absolute;
+  bottom: -15px;
+  right: 10px;
+  text-shadow: 2px 2px 3px rgba(15,15,15,.56);
+  font-size: 150%;
+}

@@ -66,8 +66,8 @@ export class DssSelectionService {
     return this._http.get<string[]>(requestUrl, { observe: 'response' });
   }
 
-  get(id: string): Observable<HttpResponse<IDssFlat>> {
-    let requestUrl = `${environment.apiUrl}/api/upr/dss/${id}`;
+  get(id: string, days: number): Observable<HttpResponse<IDssFlat>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/dss/${id}?days=${days}`;
     return this._http.get<IDssFlat>(requestUrl, {
       headers: {
         "Content-Type": "application/json",
@@ -338,6 +338,7 @@ export class DssSelectionService {
         defaultVisible: true,
         options: {
           animation: true,
+          responsive: true,
           maintainAspectRatio: false,
           plugins: {
             zoom: {
@@ -422,14 +423,14 @@ export class DssSelectionService {
     });
   }
 
-  getDssToCompare(dssIdList: string[]): Observable<HttpResponse<IDssFlat[]>> {
+  getDssToCompare(dssIdList: string[], days: number): Observable<HttpResponse<IDssFlat[]>> {
     let requestUrl = `${environment.apiUrl}/api/upr/dsscomparison`;
     let urlDssIds: string = "?";
     for(let i:number = 0; i< dssIdList.length; i++){
         urlDssIds = urlDssIds + "dssids="+dssIdList[i]+"&"
     }
     urlDssIds = urlDssIds.slice(0, -1)
-    requestUrl = requestUrl + urlDssIds
+    requestUrl = requestUrl + urlDssIds + `&days=${days}`
     return this._http.get<IDssFlat[]>(requestUrl, {
       headers: {
         "Content-Type": "application/json",
@@ -440,7 +441,7 @@ export class DssSelectionService {
   }
 
   public getDssToAdapt(dssId: string): Observable<HttpResponse<IDssForAdaptation>>{ 
-    let requestUrl = `${environment.apiUrl}/api/upr/adaptation/${dssId}`;
+    let requestUrl = `${environment.apiUrl}/api/upr/adaptation/${dssId}?days=30`;
     return this._http.get<IDssForAdaptation>(requestUrl, {
       headers: {
         "Content-Type": "application/json",

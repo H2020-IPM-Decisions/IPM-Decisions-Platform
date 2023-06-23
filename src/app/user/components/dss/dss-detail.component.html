@@ -29,6 +29,26 @@
               class="fas fa-circle pl-3 mr-5"
               [ngClass]="{'lowRisk': status==2, 'mediumRisk':status==3, 'highRisk': status==4}"></i>
           </label>
+          <div class="row">
+            <div class="col-sm-4">
+              <label class="h6">
+                <b> Select Days </b> 
+              </label>
+            </div>
+            <div class="col-sm-3">
+              <select class="form-control" id="daysSelector" (change)="daysSelectChanged($event)">
+                <option value="7">7</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="60">60</option>
+                <option value="180">180</option>
+                <option value="365">365</option>
+              </select>
+            </div>
+            <div class="col-sm-3">
+              <button class="btn btn-primary" (click)="onConfirmDays()">OK</button>
+            </div>
+          </div>
         </div>
         <div class="col-md-4 col-xs-12">
           <label class="h6">
@@ -44,10 +64,13 @@
 
       <div>
         <div class="row">
-            <div class="col-md-4 col-xs-12">
+            <div class="col-md-4 col-xs-12" *ngIf="!isRefreshingRiskChart">
               <b><label>{{ 'DSS_details.Risk_score' | translate }}</label></b>
               <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation" [chartId]="'detailChart-'+dssDetail.id">
               </custom-chart>
+              <a (click)="openModal(expandedRiskChart, 'modal-xl')">
+                <i class="fas fa-expand light-blue-icon risk-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
+              </a>
             </div>
             <div class="col-md-4 col-xs-12">
               <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
@@ -61,6 +84,9 @@
               <div class="row" *ngFor="let chartGroup of dssChartGroups">
                 <div class="col-md-12 col-xs-12" *ngIf="selectedDssChartGroup.id === chartGroup.id">
                   <custom-group-chart [chartId]="'detailChart-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
+                  <a (click)="openModal(expandedGroupChart, 'modal-xl')">
+                    <i class="fas fa-expand light-blue-icon group-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
+                  </a>
                 </div>
               </div>
             </div>
@@ -246,4 +272,53 @@
       </div>
     </div>
   </resize-border>
+</ng-template>
+
+<ng-template #expandedRiskChart>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      {{ 'DSS_details.Risk_score' | translate }}
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+   <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation" [chartId]="'comparisonChartPopup-'+dssDetail.id">
+  </custom-chart>
+  </div>
+  <div class="modal-footer pull-right">
+    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+  </div>
+</ng-template>
+
+<ng-template #expandedGroupChart>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      {{ 'DSS_details.Group_chart_popup_title' | translate }}
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
+        (ngModelChange)="onChangeChartGroup($event)" *ngIf="dssChartGroups.length > 1">
+        <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}
+        </option>
+      </select>
+      <span *ngIf="dssChartGroups.length == 1" class="text-muted selItem">
+        {{ dssChartGroups[0].title }}
+      </span>
+      <div *ngFor="let chartGroup of dssChartGroups">
+        <div *ngIf="selectedDssChartGroup.id === chartGroup.id">
+          <custom-group-chart [chartId]="'detailChartPopup-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer pull-right">
+    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+  </div>
 </ng-template>

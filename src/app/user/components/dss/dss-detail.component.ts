@@ -6,6 +6,7 @@ import { IDssFlat, IDssResultChart, IDssChartGroup, IDssResultFlat} from './dss-
 import { DssSelectionService } from './dss-selection.service';
 import { NGXLogger } from "ngx-logger";
 import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
+import { HttpResponse } from '@angular/common/http';
 import * as $ from 'jquery';
 
 @Component({
@@ -26,6 +27,8 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   resultMessage: string;
   dssIsValid: boolean;
   status: number;
+  selectedDays: number;
+  isRefreshingRiskChart: boolean = false;
   
   constructor(
     private activatedRoute: ActivatedRoute, 
@@ -102,5 +105,29 @@ export class DssDetailComponent implements OnInit, OnDestroy {
       }
     };
     this._router.navigate(['/user/farm',this.dssDetail.farmId,'edit','dss',this.dssDetail.id,'parameterisation'], navigationExtras);
+  }
+
+  public daysSelectChanged(event: { target: HTMLInputElement }) {
+    this.selectedDays = +event.target.value;
+  }
+
+  public onConfirmDays(): void {
+
+    this.isRefreshingRiskChart = true;
+
+    this.$subscription = this.service.get(this.dssDetail.id, this.selectedDays).subscribe((response: HttpResponse<IDssFlat>) => {
+      this.dssDetail = response.body;
+      this.status = this.dssDetail.warningStatus;
+      this.dssChartGroups = this.dssDetail.chartGroups;
+      this.selectedDssChartGroup = this.dssChartGroups[0];
+      if(this.dssDetail.warningStatusPerDay){
+        this.warning = this.service.getDssWarningChart(this.dssDetail.warningStatusPerDay, this.dssDetail.warningStatusLabels);
+      }
+      this.isRefreshingRiskChart = false;
+    });
+
+    this.resultMessageType = this.dssDetail.resultMessageType;
+    this.resultMessage = this.dssDetail.resultMessage;
+    this.dssIsValid = this.dssDetail.isValid;
   }
 }

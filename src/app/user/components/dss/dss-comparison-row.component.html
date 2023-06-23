@@ -24,6 +24,9 @@
             <td>
               <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation" [chartId]="'comparisonChart-'+dssDetail.id">
               </custom-chart>
+              <a (click)="openModal(expandedRiskChart, 'modal-xl')">
+                <i class="fas fa-expand light-blue-icon risk-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
+              </a>
             </td>
             <td>
               <div class="row" *ngFor="let chartGroup of dssChartGroups">
@@ -31,6 +34,9 @@
                   <custom-group-chart [chartId]="'comparisonGroupChart-'+chartGroup.id+'-'+dssDetail.id" [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
                 </div>
               </div>
+              <a (click)="openModal(expandedGroupChart, 'modal-xl')">
+                <i class="fas fa-expand light-blue-icon group-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
+              </a>
             </td>
           </tr>
         </tbody>
@@ -119,6 +125,57 @@
           </table>
         </div>
       </div>      
+    </div>
+  </div>
+  <div class="modal-footer pull-right">
+    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+  </div>
+</ng-template>
+
+
+
+<ng-template #expandedRiskChart>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      {{ 'DSS_details.Risk_score' | translate }}: {{ dssDetail.dssModelName }}
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+   <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation" [chartId]="'comparisonChartPopup-'+dssDetail.id">
+  </custom-chart>
+  </div>
+  <div class="modal-footer pull-right">
+    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+  </div>
+</ng-template>
+
+<ng-template #expandedGroupChart>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      {{ 'DSS_comparison.Group_chart_popup_title' | translate }}: {{ dssDetail.dssModelName }}
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
+        (ngModelChange)="onChangeChartGroup($event)" *ngIf="dssChartGroups.length > 1">
+        <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}
+        </option>
+      </select>
+      <span *ngIf="dssChartGroups.length == 1" class="text-muted selItem">
+        {{ dssChartGroups[0].title }}
+      </span>
+      <div *ngFor="let chartGroup of dssChartGroups">
+        <div *ngIf="selectedDssChartGroup.id === chartGroup.id">
+          <custom-group-chart [chartId]="'detailChartPopup-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
+        </div>
+      </div>
     </div>
   </div>
   <div class="modal-footer pull-right">

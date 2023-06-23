@@ -24,6 +24,7 @@ export class DssComparisonComponent implements OnInit, OnDestroy {
     public maxSelections: number = 5;
     public numberOfModelSelected: number = 0;
     public selectedModelsId: string[] = [];
+    public selectedDays: number = 7;
 
     constructor(
         protected _dssSelectionService: DssSelectionService,
@@ -56,7 +57,7 @@ export class DssComparisonComponent implements OnInit, OnDestroy {
 
     onConfirmSelectedModels(): void {
         //let selectedModelsId: string[] = this.modelSelectionForm.get('modelSelection').get('modelId').value;
-        this._dssSelectionService.getDssToCompare(this.selectedModelsId).subscribe(
+        this._dssSelectionService.getDssToCompare(this.selectedModelsId, this.selectedDays).subscribe(
             (response: HttpResponse<IDssFlat[]>) => {
               this.dssInComparison = response.body;
               if(this.dssInComparison.length > 0) {
@@ -122,5 +123,28 @@ export class DssComparisonComponent implements OnInit, OnDestroy {
             }
         });
         return index;
+    }
+
+    public daysSelectChanged(event: { target: HTMLInputElement }) {
+        this.selectedDays = +event.target.value;
+    }
+
+    public onConfirmDays(): void {
+        this._dssSelectionService.getDssToCompare(this.selectedModelsId, this.selectedDays).subscribe(
+            (response: HttpResponse<IDssFlat[]>) => {
+              this.dssInComparison = response.body;
+              if(this.dssInComparison.length > 0) {
+                this.areModelsSelected = true;
+                this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_comparison_models_retrived","Common_labels.Success","toast-success");
+              } else {
+                this.areModelsSelected = false;
+                this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_comparison_model_retrived_error","Common_labels.Error","toast-error");
+              }
+            },
+            (error: HttpErrorResponse) => {
+              this._logger.error("Dss comparison error",error);
+              this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_comparison_model_retrived_error","Common_labels.Error","toast-error");
+            }
+        );
     }
 }

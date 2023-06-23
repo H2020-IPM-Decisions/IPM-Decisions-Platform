@@ -81,3 +81,19 @@ table, th, td {
   border-radius: 10px;
   background: #16aaff;
 }
+
+.risk-chart-popup-btn{
+  position: absolute;
+  bottom: 10px;
+  left: 310px;
+  text-shadow: 2px 2px 3px rgba(15,15,15,.56);
+  font-size: 150%;
+}
+
+.group-chart-popup-btn{  
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+  text-shadow: 2px 2px 3px rgba(15,15,15,.56);
+  font-size: 150%;
+}

@@ -62,6 +62,26 @@
                 <i class="fas fa-caret-left"></i>
             </div>
         </div>
+        <div class="row select-days-row" *ngIf="areModelsSelected">
+            <div class="col-sm-2">
+              <label class="h6 text-muted">
+                <b> Select Days </b> 
+              </label>
+            </div>
+            <div class="col-sm-2">
+              <select class="form-control" id="daysSelector" (change)="daysSelectChanged($event)">
+                <option value="7">7</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="60">60</option>
+                <option value="180">180</option>
+                <option value="365">365</option>
+              </select>
+            </div>
+            <div class="col-sm-2">
+              <button class="btn btn-primary" (click)="onConfirmDays()">OK</button>
+            </div>
+        </div>
         <div class="mb-4" *ngFor="let model of dssInComparison; let i = index;">
             <div class="form-group d-flex text-muted pt-2">
                 <div class="mr-auto">

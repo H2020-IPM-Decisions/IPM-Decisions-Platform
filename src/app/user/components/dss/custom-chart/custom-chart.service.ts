@@ -54,6 +54,7 @@ export class CustomChartService {
                 datasets: datasets
             },
             options: {
+                responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
                     zoom: {

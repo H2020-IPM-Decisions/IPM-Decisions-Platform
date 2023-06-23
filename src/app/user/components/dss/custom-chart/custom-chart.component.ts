@@ -27,7 +27,8 @@ export class CustomChartComponent implements AfterViewInit {
     chartElement: any;
     borderColors: string[] = [];
 
-    constructor(private customChartService: CustomChartService){}
+    constructor(private customChartService: CustomChartService)
+    {}
     
     ngAfterViewInit(): void {
         if(this.config && !this.config.defaultVisible){
@@ -73,5 +74,5 @@ export class CustomChartComponent implements AfterViewInit {
         }
         return isZorP;
     }
-
+    
 }
