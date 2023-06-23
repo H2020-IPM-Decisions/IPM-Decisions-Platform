@@ -55,13 +55,6 @@
                 </div>
             </div>
         </form>
-
-        <div class="row" *ngIf="areModelsSelected">
-            <div class="col comparisonSeparator">
-                <i class="fas fa-caret-right"></i>
-                <i class="fas fa-caret-left"></i>
-            </div>
-        </div>
         <div class="row select-days-row" *ngIf="areModelsSelected">
             <div class="col-sm-2">
               <label class="h6 text-muted">
@@ -79,7 +72,13 @@
               </select>
             </div>
             <div class="col-sm-2">
-              <button class="btn btn-primary" (click)="onConfirmDays()">OK</button>
+              <button class="btn btn-primary" (click)="onConfirmDays()">{{ 'Common_labels.Select' | translate }}</button>
+            </div>
+        </div>
+        <div class="row" *ngIf="areModelsSelected">
+            <div class="col comparisonSeparator">
+                <i class="fas fa-caret-right"></i>
+                <i class="fas fa-caret-left"></i>
             </div>
         </div>
         <div class="mb-4" *ngFor="let model of dssInComparison; let i = index;">
