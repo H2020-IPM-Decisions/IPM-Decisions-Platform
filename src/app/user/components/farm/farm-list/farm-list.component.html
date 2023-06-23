@@ -98,6 +98,10 @@
                 </tbody>
               </ng-template>
             </table>
+            <div *ngIf="hasMorePages()">
+              <button [disabled]="!hasPreviousPage()" (click)="getPreviousPage()" class="mb-2 mr-2 btn btn-primary previous">&lt;</button>
+              <button [disabled]="!hasNextPage()" (click)="getNextPage()"class="mb-2 mr-2 btn btn-primary next">&gt;</button>
+            </div>
           </div>
         </div>
       </div>

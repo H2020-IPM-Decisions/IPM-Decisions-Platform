@@ -38,9 +38,9 @@ export class FarmService {
     });
   }
 
-  public getFarms(): Observable<FarmResponseModel> {
+  /*public getFarms(): Observable<FarmResponseModel> {
     return this._http
-      .get(`${this.apiUrl}/api/upr/farms`, {
+      .get(`${this.apiUrl}/api/upr/farms?pageSize=5`, {
         headers: {
           Accept: "application/vnd.h2020ipmdecisions.hateoas+json",
         },
@@ -51,7 +51,40 @@ export class FarmService {
           return of(error);
         })
       );
+  }*/
+
+  public getFarms(currentPage: number): Observable<HttpResponse<FarmResponseModel>> {
+    return this._http
+      .get(`${this.apiUrl}/api/upr/farms?pageNumber=${currentPage}&pageSize=5`, {
+        headers: {
+          Accept: "application/vnd.h2020ipmdecisions.hateoas+json",
+        },
+        observe: 'response'
+      })
+      .pipe(
+        share(),
+        catchError((error) => {
+          return of(error);
+        })
+      );
   }
+
+  public getAllFarms(): Observable<HttpResponse<FarmResponseModel>> {
+    return this._http
+      .get(`${this.apiUrl}/api/upr/farms`, {
+        headers: {
+          Accept: "application/vnd.h2020ipmdecisions.hateoas+json",
+        },
+        observe: 'response'
+      })
+      .pipe(
+        share(),
+        catchError((error) => {
+          return of(error);
+        })
+      );
+  }
+
 
   public find(id: string): Observable<EntityResponseType> {
     return this._http.get<FarmResponseModel>(`${this.apiUrl}/api/upr/farms/${id}`, { headers:{Accept: "application/vnd.h2020ipmdecisions.hateoas+json"}, observe: 'response' });

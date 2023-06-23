@@ -64,11 +64,11 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
     
   ngOnInit() {
     this.remoteCallLoading = true;
-    this.$subscriptionStartup = this.farmService.getFarms().subscribe((response: FarmResponseModel) => {
+    this.$subscriptionStartup = this.farmService.getAllFarms().subscribe((response: HttpResponse<FarmResponseModel>) => {
       this.farmsLoaded = true;
       this.remoteCallLoading = false;
-      if (response && response.value) {
-        this.farms = response.value;
+      if (response.body && response.body.value) {
+        this.farms = response.body.value;
       }
     },()=>this.remoteCallLoading = false);
   }
