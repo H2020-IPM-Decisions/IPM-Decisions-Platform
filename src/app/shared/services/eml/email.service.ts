@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IResetPassword } from '@app/core/auth/models/reset-password.model';
+import { IChangePassword } from '@app/core/auth/models/change-password.model';
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +58,15 @@ export class EmailService {
     });
   }
 
+  changePassword(body:IChangePassword, user_id: string): Observable<any> {
+
+    return this.http.post<any>(environment.apiUrl + `/api/idp/accounts/${user_id}/manage/changepassword`, body, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Language':sessionStorage.getItem('selectedLanguage'),
+        'Accept': 'application/json'
+      }
+    });
+  }
 
 }

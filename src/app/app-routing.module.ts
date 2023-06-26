@@ -53,6 +53,7 @@ import { SettingsComponent } from './user/components/settings/settings.component
 import { UserComponent } from './user/user.component';
 import { ResetPasswordComponent } from './core/components/reset-password/reset-password.component';
 import { UserInformationPageComponent } from './user/components/user-information-page/user-information-page.component';
+import { EditPasswordComponent } from './user/components/account/edit-password/edit-password.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -194,6 +195,12 @@ const appRoutes: Routes = [
   {
     path: "user/account/edit",
     component: EditAccountComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
+  },
+  {
+    path: "user/account/password",
+    component: EditPasswordComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
