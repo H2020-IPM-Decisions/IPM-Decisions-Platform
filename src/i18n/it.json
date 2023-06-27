@@ -60,7 +60,10 @@
         "Seconds":"secondi",
         "Click_here":"Clicca qui",
         "EU_footer_further_information":"Per ulteriori informazioni sulla piattaforma IPM Decisions o per segnalare eventuali problemi tecnici, inviare un'e-mail a",
-        "EU_footer_further_details_on_project":"Per ulteriori dettagli sul progetto europeo di sviluppo della piattaforma, consultare il sito web"
+        "EU_footer_further_details_on_project":"Per ulteriori dettagli sul progetto europeo di sviluppo della piattaforma, consultare il sito web",
+        "Current_password":"Password attuale",
+        "Change_password":"Modifica Password",
+        "Return_to_user_edit":"Ritorna a 'Profilo Utente'"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
@@ -100,7 +103,8 @@
         "DSS_adaptation_parameters_update_error":"Aggiornamento dei parametri del DSS fallito a causa di un errore",
         "DSS_adaptation_parameters_send_error":"Invio dei parametri del DSS fallito a causa di un errore",
         "DSS_parameters_reset_error":"Reimpostazione dei parametri del DSS fallito a causa di un errore",
-        "DSS_use_dashboard_error_standard_info":"Il DSS ha restituito un avviso o un errore durante l'esecuzione. Il messaggio fornito dal DSS (nella lingua predefinita utilizzata dal DSS) era:"
+        "DSS_use_dashboard_error_standard_info":"Il DSS ha restituito un avviso o un errore durante l'esecuzione. Il messaggio fornito dal DSS (nella lingua predefinita utilizzata dal DSS) era:",
+        "New_password_is_required":"La nuova password è obbligatoria"
     },
     "Information_messages":{
         "Farm_deletion_message":"Stai per eliminare un'azienda agricola. Vuoi procedere?",

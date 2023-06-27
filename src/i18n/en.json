@@ -60,7 +60,10 @@
         "Seconds":"seconds",
         "Click_here":"Click here",
         "EU_footer_further_information":"For further information relating to the IPM Decisions platform, or to report any technical problems, please email",
-        "EU_footer_further_details_on_project":"Further details on the underpinning EU project to develop the platform can be found at"
+        "EU_footer_further_details_on_project":"Further details on the underpinning EU project to develop the platform can be found at",
+        "Current_password":"Current Password",
+        "Change_password":"Change Password",
+        "Return_to_user_edit":"Return to 'User Account'"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -100,7 +103,8 @@
         "DSS_adaptation_parameters_update_error":"DSS parameters update failed, an error occurs",
         "DSS_adaptation_parameters_send_error":"DSS parameters send failed, an error occurs",
         "DSS_parameters_reset_error":"Dss parameters reset failed, an error occurs",
-        "DSS_use_dashboard_error_standard_info":"The DSS has returned a warning or error when run. The message provided by the DSS (in the default language used by the DSS) was:"
+        "DSS_use_dashboard_error_standard_info":"The DSS has returned a warning or error when run. The message provided by the DSS (in the default language used by the DSS) was:",
+        "New_password_is_required":"New password is required"
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",

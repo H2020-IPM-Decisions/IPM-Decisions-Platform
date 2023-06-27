@@ -59,14 +59,17 @@
                   </div>
                 </div>
                 <div class="col-md-2">
-                  <button type="button" class="profile-edit-btn" [routerLink]="['/user/account/edit']">
+                  <button type="button" class="profile-edit-btn mb-2" [routerLink]="['/user/account/edit']">
                     <i class="fas fa-edit"></i> {{ 'User_account.Edit_profile' | translate }}
                   </button>
-                    
+                  <button type="button" class="profile-edit-btn" [routerLink]="['/user/account/password']">
+                    {{ 'Common_labels.Change_password' | translate }}
+                  </button>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                </div>
                 <div class="col-md-8">
                   <div class="tab-content profile-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
