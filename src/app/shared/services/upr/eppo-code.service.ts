@@ -18,7 +18,12 @@ export class EppoCodeService {
 
     //Crops
     public sharedCrops$: Observable<any>;
-    private httpGetCrops$ = this._http.get<IEppoCode>(`${this.apiUrl}/api/upr/eppocodes/crop`).pipe(
+    private httpGetCrops$ = this._http.get<IEppoCode>(`${this.apiUrl}/api/upr/eppocodes/crop`, 
+        {
+            headers: {
+                'Accept-Language':sessionStorage.getItem('selectedLanguage')
+            }
+        }).pipe(
         map(ecodes => {
             return ecodes.eppoCodesDto.map(ecodeDto =>{
                 for (let key in ecodeDto.languages) {
@@ -90,7 +95,12 @@ export class EppoCodeService {
 
     //Pests
     public sharedPests$: Observable<any>;
-    private httpGetPests$ = this._http.get<IEppoCode>(`${this.apiUrl}/api/upr/eppocodes/pest`).pipe(
+    private httpGetPests$ = this._http.get<IEppoCode>(`${this.apiUrl}/api/upr/eppocodes/pest`, 
+        {
+            headers: {
+                'Accept-Language':sessionStorage.getItem('selectedLanguage')
+            }
+        }).pipe(
         map(ecodes => {
             return ecodes.eppoCodesDto.map(ecodeDto =>{
                 for (let key in ecodeDto.languages) {

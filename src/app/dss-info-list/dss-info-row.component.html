@@ -1,0 +1,93 @@
+<!-- CROP COLUMN -->
+<td class="text-center">
+    <div *ngFor="let crop of dssCropsList">
+        {{ crop | eppoCode }}
+    </div>
+</td>
+<!-- PEST COLUMN -->
+<td class="text-center">
+    <div *ngFor="let pest of dssPestsList">
+        {{ pest | eppoCode }}
+    </div>
+</td>
+<!-- DSS COLUMN -->
+<td class="text-center">
+    <span [tooltip]="tolTemplatePurpose" *ngIf="modelPurpose">{{ model.name }}</span>
+    <span *ngIf="!modelPurpose">{{ model.name }}</span>
+    <a class="details" (click)="openModal(dssModelDetails,'modal-lg')">
+        <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
+    </a>
+</td>
+ <!--SOURCE COLUMN -->
+<td class="text-center">
+    <!--{{ dssSelection.name }}-->
+    <div class="d-block justify-content-center">
+        <span *ngFor="let code of countriesCodes" class="m-1 flag-icon flag-icon-{{code | countryAlpha2}}" [title]="code | countryName"></span>
+    </div>
+</td>
+
+<ng-template #dssModelDetails>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">
+        <span class="modalInfoIcon fa-stack">
+            <i class="fas fa-circle fa-stack-1x"></i>
+            <i class="fas fa-info-circle fa-stack-1x"></i>
+          </span> <b>{{ 'DSS_info_popup.Dss_informations' | translate }}</b>
+      </h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body scrollable">
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.DSS_name' | translate }}</strong></label>
+            <div class="col-sm-9">
+              <p>{{ model.name }}</p>
+            </div>
+        </div>
+          
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><strong>{{ 'DSS_info_popup.DSS_purpose' | translate }}</strong></label>
+            <div class="col-sm-9">
+              <p>{{ model.purpose }}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_info_popup.DSS_model_id' | translate }}</b></label>
+            <div class="col-sm-9">
+                <p>{{ model.id }}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_info_popup.Description' | translate }}</b></label>
+            <div class="col-sm-9">
+                <p>{{ model.description }}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_info_popup.Authors_name' | translate }}</b></label>
+            <div class="col-sm-9" *ngFor="let author of model.authors">
+                <p>{{ author.name }} ({{ author.organization }})</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_info_popup.Source' | translate }}</b></label>
+            <div class="col-sm-9">
+                <p>{{ dssSelection.name }}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><b>{{ 'DSS_info_popup.Source_organisation' | translate }}</b></label>
+            <div class="col-sm-9">
+                <p>{{ dssSelection.organization.name }}, {{ dssSelection.organization.country }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer pull-right">
+      <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+    </div>
+  </ng-template>
+
+  <ng-template #tolTemplatePurpose>
+    <p class="tooltipStyle">{{modelPurpose}}</p>
+  </ng-template>

@@ -26,8 +26,18 @@ export class DssSelectionService {
     return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 
+  getDss(): Observable<HttpResponse<DssSelection[]>> {
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss`
+    return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
+  }
+
   getDssByMultipleCrops(crops: string): Observable<HttpResponse<DssSelection[]>> {
-    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`+"/platform_validated/true"
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`
+    return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
+  }
+
+  getDssByMultipleCropsAndPlatformValidated(crops: string): Observable<HttpResponse<DssSelection[]>> {
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`+ "/platform_validated/true"
     return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 
