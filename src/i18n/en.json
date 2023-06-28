@@ -63,7 +63,9 @@
         "EU_footer_further_details_on_project":"Further details on the underpinning EU project to develop the platform can be found at",
         "Current_password":"Current Password",
         "Change_password":"Change Password",
-        "Return_to_user_edit":"Return to 'User Account'"
+        "Return_to_user_edit":"Return to 'User Account'", 
+        "Delete_filters":"Delete Filters",
+        "Avaiable_DSS": "Avaiable DSS"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",

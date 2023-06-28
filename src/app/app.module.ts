@@ -92,6 +92,8 @@ import { NgxFlagPickerModule } from 'ngx-flag-picker';
 import { ResetPasswordComponent } from './core/components/reset-password/reset-password.component';
 import { UserInformationPageComponent } from './user/components/user-information-page/user-information-page.component';
 import { EditPasswordComponent } from './user/components/account/edit-password/edit-password.component';
+import { DssInfoListComponent } from './dss-info-list/dss-info-list.component';
+import { DssInfoRowComponent } from './dss-info-list/dss-info-row.component';
 
 @NgModule({
   declarations: [
@@ -167,7 +169,9 @@ import { EditPasswordComponent } from './user/components/account/edit-password/e
     LanguageSelectorComponent,
     ResetPasswordComponent,
     UserInformationPageComponent,
-    EditPasswordComponent
+    EditPasswordComponent,
+    DssInfoListComponent,
+    DssInfoRowComponent
   ],
   imports: [
     BrowserModule,

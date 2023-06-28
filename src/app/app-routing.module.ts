@@ -54,6 +54,7 @@ import { UserComponent } from './user/user.component';
 import { ResetPasswordComponent } from './core/components/reset-password/reset-password.component';
 import { UserInformationPageComponent } from './user/components/user-information-page/user-information-page.component';
 import { EditPasswordComponent } from './user/components/account/edit-password/edit-password.component';
+import { DssInfoListComponent } from './dss-info-list/dss-info-list.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -72,6 +73,7 @@ const appRoutes: Routes = [
   { path: "coding-article", component: DevelopersArticleComponent },
   { path: "confirmemail", component: ConfirmMailComponent },
   { path: "resetpassword", component: ResetPasswordComponent },
+  { path: "dss-info-list", component: DssInfoListComponent },
   {
     path: "admin/account",
     component: AdminAccountComponent,
