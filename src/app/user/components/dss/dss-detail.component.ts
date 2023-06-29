@@ -27,7 +27,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   resultMessage: string;
   dssIsValid: boolean;
   status: number;
-  selectedDays: number;
+  selectedDays: number = 7;
   isRefreshingRiskChart: boolean = false;
   
   constructor(

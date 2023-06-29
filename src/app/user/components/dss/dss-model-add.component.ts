@@ -14,6 +14,7 @@ import { ToastrTranslationService } from "@app/shared/services/toastr-translatio
 import { CountryNamePipe } from "@app/shared/pipes/country-name.pipe";
 import { Country } from "@app/shared/models/country.model";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+import { specialCharacterComparator } from "@app/shared/models/specialCharactersComparator.model";
 
 @Component({
   selector: "app-dss-model-add",
@@ -33,6 +34,7 @@ export class DssModelAddComponent implements OnInit {
   countriesCodeList: string [] = [];
   countryFilterActive: boolean = false;
   selectedCountry: string = "";
+  private specialCharacterComparator$: specialCharacterComparator = new specialCharacterComparator();
 
   $subscription?: Subscription;
   $countriesSubscription?: Subscription;
@@ -57,6 +59,8 @@ export class DssModelAddComponent implements OnInit {
       this.cropsEppoCodes = this.cropsEppoCodes.sort(function(a,b){
         return a.text.localeCompare(b.text);
       })
+
+      this.cropsEppoCodes = this.specialCharacterComparator$.placeCropsWithSpecialCharactersAtTheBottom(this.cropsEppoCodes)
     });
     this.$subscription = this._activatedRoute.data.subscribe(({ farm }) => {
       this.farm = farm;

@@ -14,6 +14,7 @@ import { NGXLogger } from 'ngx-logger';
 import { EppoCode } from '@app/shared/models/eppo-code.model';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { DssSelection } from '@app/user/components/dss/dss-selection.model';
+import { specialCharacterComparator } from '@app/shared/models/specialCharactersComparator.model';
 
 declare var init: any;
 declare var home: any;
@@ -44,6 +45,7 @@ export class DssInfoListComponent implements OnInit {
     public $sessionExpirationTimer: Subscription;
     public $sessionExtend: Subscription;
     public sessionIsExpired: boolean = false;
+    private specialCharacterComparator$: specialCharacterComparator = new specialCharacterComparator();
 
 
     constructor(
@@ -175,10 +177,11 @@ export class DssInfoListComponent implements OnInit {
 
         this._eppoCodeService.cachedRefreshableCrops$.subscribe(data=>{
           this.cropsEppoCodes=data;
-          console.log("CROP LIST: " + JSON.stringify(this.cropsEppoCodes))
-          /*this.cropsEppoCodes = this.cropsEppoCodes.sort(function(a,b){
+          this.cropsEppoCodes = this.cropsEppoCodes.sort(function(a,b){
               return a.text.localeCompare(b.text);
-          })*/
+          })
+          
+          this.cropsEppoCodes = this.specialCharacterComparator$.placeCropsWithSpecialCharactersAtTheBottom(this.cropsEppoCodes)
         });
         this.showDSS()
     }

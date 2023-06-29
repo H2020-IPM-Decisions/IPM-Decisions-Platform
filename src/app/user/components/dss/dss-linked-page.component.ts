@@ -8,6 +8,7 @@ import { DssSelectionService } from "./dss-selection.service";
 import { HttpResponse } from "@angular/common/http";
 import { NGXLogger } from 'ngx-logger';
 import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
+import { specialCharacterComparator } from "@app/shared/models/specialCharactersComparator.model";
 
 @Component({
   selector: "app-dss-linked-page",
@@ -28,6 +29,8 @@ export class DssLinkedPage implements OnInit, OnDestroy {
   deleteLinkedDssSelectedByUserSubscription: Subscription;
   submitSelectedLinkedDssSubscription: Subscription;
   
+  private specialCharacterComparator$: specialCharacterComparator = new specialCharacterComparator();
+  
   constructor(
     private _fb: FormBuilder,
     private _service: DssSelectionService,
@@ -45,6 +48,7 @@ export class DssLinkedPage implements OnInit, OnDestroy {
         return a.text.localeCompare(b.text);
       })
       this._logger.debug("CROPS LOADING COMPLETE");
+      this.cropsEppoCodes = this.specialCharacterComparator$.placeCropsWithSpecialCharactersAtTheBottom(this.cropsEppoCodes)
     });
     this.remoteCallLoading = true;
     this.getInitData();
