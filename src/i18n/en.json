@@ -65,7 +65,8 @@
         "Change_password":"Change Password",
         "Return_to_user_edit":"Return to 'User Account'", 
         "Delete_filters":"Delete Filters",
-        "Avaiable_DSS": "Avaiable DSS"
+        "Avaiable_DSS": "Avaiable DSS",
+        "Select_days": "Select days"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",

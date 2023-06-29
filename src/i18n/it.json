@@ -65,7 +65,8 @@
         "Change_password":"Modifica Password",
         "Return_to_user_edit":"Ritorna a 'Profilo Utente'",
         "Delete_filters":"Elimina Filtri",
-        "Avaiable_DSS": "DSS Disponibili"
+        "Avaiable_DSS": "DSS Disponibili",
+        "Select_days": "Seleziona giorni"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
