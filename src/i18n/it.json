@@ -64,7 +64,7 @@
         "Current_password":"Password attuale",
         "Change_password":"Modifica Password",
         "Return_to_user_edit":"Ritorna a 'Profilo Utente'",
-        "Delete_filters":"Elimina Filtri",
+        "Clear_filter":"Pulisci filtro",
         "Avaiable_DSS": "DSS Disponibili",
         "Select_days": "Seleziona giorni"
     },
@@ -430,7 +430,6 @@
         "User_selected":"Selezionati dall'utente",
         "Crop_filter":"FIltro coltura",
         "Filter_DSS":"Filtra DSS",
-        "Clear_filter":"Pulisci filtro",
         "Confirm_selection":"Conferma selezione",
         "Remove_linked_dss":"Rimozione DSS esterno",
         "Edit_selection":"Modifica  selezione",

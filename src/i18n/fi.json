@@ -60,7 +60,8 @@
         "Seconds":"sekuntit",
         "Click_here":"Klikkaa tästä",
         "EU_footer_further_information":"Jos haluat lisätietoja IPM Decisions -alustasta tai ilmoittaa teknisistä ongelmista, lähetä sähköpostia",
-        "EU_footer_further_details_on_project":"Lisätietoja taustalla olevasta EU-hankkeesta alustan kehittämiseksi löytyy osoitteesta"
+        "EU_footer_further_details_on_project":"Lisätietoja taustalla olevasta EU-hankkeesta alustan kehittämiseksi löytyy osoitteesta",
+        "Clear_filter":"Tyhjennä suodatin"
 	},
 	"Error_messages": {
 		"An_unknown_error_occured": "Tapahtui tuntematon virhe!",
@@ -421,7 +422,6 @@
         "User_selected":"Valitut DSS-linkit",
         "Crop_filter":"Rajaa suodatin",
         "Filter_DSS":"Suodata DSS",
-        "Clear_filter":"Tyhjennä suodatin",
         "Confirm_selection":"Vahvista valinta",
         "Remove_linked_dss":"Poista DSS-linkki",
         "Edit_selection":"Muokkaa valintaa",

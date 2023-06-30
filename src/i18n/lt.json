@@ -60,7 +60,8 @@
       "Seconds": "sekundės",
       "Click_here": "Spausti čia",
       "EU_footer_further_information": "Dėl daugiau informacijos apie „IKOK Sprendimai“ platformą ar norėdami pranešti apie technines problemas, rašykite el. paštu",
-      "EU_footer_further_details_on_project": "Daugiau informacijos apie pagrindinį ES projektą, skirtą platformai kurti, galima rasti adresu"
+      "EU_footer_further_details_on_project": "Daugiau informacijos apie pagrindinį ES projektą, skirtą platformai kurti, galima rasti adresu",
+      "Clear_filter":"Išvalyti filtrą"
     },
     "Error_messages": {
       "An_unknown_error_occured": "Įvyko nežinoma klaida!",
@@ -421,7 +422,6 @@
       "User_selected":"Pasirinktos SPS nuorodos",
       "Crop_filter":"Augalo pasirinkimas",
       "Filter_DSS":"filtrą SPS",
-      "Clear_filter":"Išvalyti filtrą",
       "Confirm_selection":"Patvirtinkite pasirinkimą",
       "Remove_linked_dss":"Pašalinti SPS nuorodą",
       "Edit_selection":"Redaguoti parinkimą",

@@ -60,7 +60,8 @@
         "Seconds": "secondes",
         "Click_here": "Cliquez ici",
         "EU_footer_further_information": "Pour de plus amples informations concernant la plate-forme IPM Decisions ou pour signaler tout problème technique, veuillez envoyer un courriel à l'adresse suivante",
-        "EU_footer_further_details_on_project": "Pour de plus amples informations sur le projet européen IPM Decisions, veuillez consulter le site suivant"
+        "EU_footer_further_details_on_project": "Pour de plus amples informations sur le projet européen IPM Decisions, veuillez consulter le site suivant",
+        "Clear_filter":"Réinitialiser le filtre"
     },
     "Error_messages": {
         "An_unknown_error_occured": "Une erreur inconnue s'est produite !",
@@ -422,7 +423,6 @@
         "User_selected":"Liens vers les OADs externes sélectionnés",
         "Crop_filter":"Filtre par culture",
         "Filter_DSS":"Filtre DSS",
-        "Clear_filter":"Réinitialiser le filtre",
         "Confirm_selection":"Confirmer la sélection",
         "Remove_linked_dss":"Supprimer le lien vers un OAD externe",
         "Edit_selection":"Modifier la sélection",

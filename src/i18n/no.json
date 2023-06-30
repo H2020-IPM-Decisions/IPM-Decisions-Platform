@@ -60,7 +60,8 @@
       "Seconds": "Sekunder",
       "Click_here": "Klikk her",
       "EU_footer_further_information": "For mer informasjon relatert til IPM decisions platformen, eller for å rapportere tekniske problemer, vennligst send epost",
-      "EU_footer_further_details_on_project": "Flere detaljer om EU prosjektet som ligger til grunn for utvikling av platformen finnes på"
+      "EU_footer_further_details_on_project": "Flere detaljer om EU prosjektet som ligger til grunn for utvikling av platformen finnes på",
+      "Clear_filter":"Fjern filter"
     },
     "Error_messages": {
       "An_unknown_error_occured": "Det oppstod en ukjent feil!",
@@ -421,7 +422,6 @@
       "User_selected":"Valgte DSS-linker",
       "Crop_filter":"Avlingfilter",
       "Filter_DSS":"DSS Filter",
-      "Clear_filter":"Fjern filter",
       "Confirm_selection":"Bekreft valgte",
       "Remove_linked_dss":"Fjern DSS-link",
       "Edit_selection":"Rediger utvalg",

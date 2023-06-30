@@ -64,7 +64,7 @@
         "Current_password":"Current Password",
         "Change_password":"Change Password",
         "Return_to_user_edit":"Return to 'User Account'", 
-        "Delete_filters":"Delete Filters",
+        "Clear_filter":"Clear Filter",
         "Avaiable_DSS": "Avaiable DSS",
         "Select_days": "Select days"
     },
@@ -430,7 +430,6 @@
         "User_selected":"Selected DSS links",
         "Crop_filter":"Crop Filter",
         "Filter_DSS":"Filter DSS",
-        "Clear_filter":"Clear Filter",
         "Confirm_selection":"Confirm Selection",
         "Remove_linked_dss":"Remove DSS link",
         "Edit_selection":"Edit Selection",

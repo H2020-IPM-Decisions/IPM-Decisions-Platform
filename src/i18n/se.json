@@ -60,7 +60,8 @@
 		"Seconds": "Sekunder",
 		"Click_here": "Klicka  here",
 		"EU_footer_further_information": "För ytterligare information om IPM Decisions-plattformen, eller för att rapportera tekniska problem, vänligen maila",
-		"EU_footer_further_details_on_project": "Mer information om det underliggande EU-projektet för att utveckla plattformen finns på"
+		"EU_footer_further_details_on_project": "Mer information om det underliggande EU-projektet för att utveckla plattformen finns på",
+		"Clear_filter":"Ta bort filtering"
 	},
 	"Error_messages": {
 		"An_unknown_error_occured": "Ett okänt fel uppkom!",
@@ -421,7 +422,6 @@
         "User_selected":"Valda DSS-länkar",
         "Crop_filter":"Grödfilter",
         "Filter_DSS":"Filter DSS",
-        "Clear_filter":"Ta bort filtering",
         "Confirm_selection":"Bekräfta val",
         "Remove_linked_dss":"Ta bort DSS-länk",
         "Edit_selection":"Redigera val",

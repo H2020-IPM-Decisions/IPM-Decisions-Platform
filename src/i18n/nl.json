@@ -60,7 +60,8 @@
 		"Seconds": "seconden",
 		"Click_here": "Klk hier",
 		"EU_footer_further_information": " Voor meer informatie over het IPM Decisions platform, of om melding te maken van technische problemen, stuur aub een e-mail",
-		"EU_footer_further_details_on_project": " Meer informatie over het onderliggende EU project en het te ontwikkelen platform kunt u  vinden op"
+		"EU_footer_further_details_on_project": " Meer informatie over het onderliggende EU project en het te ontwikkelen platform kunt u  vinden op",
+		"Clear_filter":"Wis filter"
 	},
 	"Error_messages": {
 		"An_unknown_error_occured": "Er is een onbekende fout opgetreden!",
@@ -421,7 +422,6 @@
         "User_selected":"Geselecteerde DSS-links",
         "Crop_filter":"Gewasfilter",
         "Filter_DSS":"DSS-filter",
-        "Clear_filter":"Wis filter",
         "Confirm_selection":"Bevestig selectie",
         "Remove_linked_dss":"Verwijder DSS-link",
         "Edit_selection":"Selectie bewerken",

@@ -60,7 +60,8 @@
 		"Seconds": "Sekund",
 		"Click_here": "Klikni tukaj",
 		"EU_footer_further_information": "Za dodatne informacije v zvezi s platformo IPM Decisions ali za prijavo kakršnih koli tehničnih težav prosimo pošljite e-pošto",
-		"EU_footer_further_details_on_project": "Več podrobnosti o krovnem EU projektu za razvoj platforme je na voljo na spletnem naslovu"
+		"EU_footer_further_details_on_project": "Več podrobnosti o krovnem EU projektu za razvoj platforme je na voljo na spletnem naslovu",
+		"Clear_filter":"Počisti filter"
 	},
 	"Error_messages": {
 		"An_unknown_error_occured": "Pojavila se je neznana napaka",
@@ -421,7 +422,6 @@
         "User_selected":"Izbrane povezave do DSS",
         "Crop_filter":"Izbira kulturne rastline",
         "Filter_DSS":"Filter DSS",
-        "Clear_filter":"Počisti filter",
         "Confirm_selection":"Potrdi izbiro",
         "Remove_linked_dss":"Odstrani povezavo do DSS",
         "Edit_selection":"Urejanje izbora",

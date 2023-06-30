@@ -60,7 +60,8 @@
 		"Seconds": "Sekunden",
 		"Click_here": "Klicken Sie hier",
 		"EU_footer_further_information": "Für weitere Informationen zur IPM Decisions-Plattform oder zur Meldung technischer Probleme senden Sie bitte eine E-Mail",
-		"EU_footer_further_details_on_project": "Weitere Einzelheiten über das zugrunde liegende EU-Projekt zur Entwicklung der Plattform finden Sie unter"
+		"EU_footer_further_details_on_project": "Weitere Einzelheiten über das zugrunde liegende EU-Projekt zur Entwicklung der Plattform finden Sie unter",
+		"Clear_filter":"Auswahl löschen"
 	},
 	"Error_messages": {
 		"An_unknown_error_occured": "Ein unbekannter Fehler ist aufgetreten!",
@@ -422,7 +423,6 @@
         "User_selected":"Ausgewählte EHS-Links",
         "Crop_filter":"Kulturauswahl",
         "Filter_DSS":"Filter DSS",
-        "Clear_filter":"Auswahl löschen",
         "Confirm_selection":"Auswahl bestätigen",
         "Remove_linked_dss":"EHS-Link entfernen",
         "Edit_selection":"Auswahl bearbeiten",
