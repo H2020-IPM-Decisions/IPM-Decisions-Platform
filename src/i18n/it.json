@@ -66,7 +66,8 @@
         "Return_to_user_edit":"Ritorna a 'Profilo Utente'",
         "Clear_filter":"Pulisci filtro",
         "Avaiable_DSS": "DSS Disponibili",
-        "Select_days": "Seleziona giorni"
+        "Select_days": "Seleziona giorni",
+        "Dss_info": "Informazioni DSS"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",

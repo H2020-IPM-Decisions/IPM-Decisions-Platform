@@ -144,7 +144,7 @@ export class DssInfoListComponent implements OnInit {
 
     showDSS(): void{
 
-      this._dssSelectionService.getDss().subscribe(
+      this._dssSelectionService.getValidatedDss().subscribe(
 
         (response: HttpResponse<DssSelection[]>) => {
 
@@ -175,7 +175,7 @@ export class DssInfoListComponent implements OnInit {
         this.checkUserIsLogged();
         this.formInit();
 
-        this._eppoCodeService.cachedRefreshableCrops$.subscribe(data=>{
+        this._eppoCodeService.cachedRefreshableCropsOnTheFly$.subscribe(data=>{
           this.cropsEppoCodes=data;
           this.cropsEppoCodes = this.cropsEppoCodes.sort(function(a,b){
               return a.text.localeCompare(b.text);
@@ -266,7 +266,7 @@ export class DssInfoListComponent implements OnInit {
     onConfirmSelectedCrops(): void {
         let cropsSelectedArray: string[] = this.selCropForm.get('cropSelection').get('cropEppoCode').value;
         const crops: string = cropsSelectedArray.join('%2C')
-        this._dssSelectionService.getDssByMultipleCrops(crops).subscribe(
+        this._dssSelectionService.getDssByMultipleCropsAndPlatformValidated(crops).subscribe(
         (response: HttpResponse<DssSelection[]>) => {
             this.data = response.body;
             if(this.data.length > 0) {

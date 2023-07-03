@@ -66,7 +66,8 @@
         "Return_to_user_edit":"Return to 'User Account'", 
         "Clear_filter":"Clear Filter",
         "Avaiable_DSS": "Avaiable DSS",
-        "Select_days": "Select days"
+        "Select_days": "Select days",
+        "Dss_info": "DSS informations"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",

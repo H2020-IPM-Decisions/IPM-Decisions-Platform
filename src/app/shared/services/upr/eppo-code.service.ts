@@ -71,7 +71,12 @@ export class EppoCodeService {
 
     //Crops ONTHEFLY type
     public sharedCropsOnTheFly$: Observable<any>;
-    private httpGetCropsOnTheFly$ = this._http.get<IEppoCode>(`${this.apiUrl}/api/upr/eppocodes/crop?executionType=ONTHEFLY`).pipe(
+    private httpGetCropsOnTheFly$ = this._http.get<IEppoCode>(`${this.apiUrl}/api/upr/eppocodes/crop?executionType=ONTHEFLY`, 
+        {
+            headers: {
+                'Accept-Language':sessionStorage.getItem('selectedLanguage')
+            }
+        }).pipe(
         map(ecodes => {
             return ecodes.eppoCodesDto.map(ecodeDto =>{
                 for (let key in ecodeDto.languages) {

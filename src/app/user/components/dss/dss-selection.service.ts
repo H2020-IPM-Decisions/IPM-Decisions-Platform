@@ -26,8 +26,8 @@ export class DssSelectionService {
     return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 
-  getDss(): Observable<HttpResponse<DssSelection[]>> {
-    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss`
+  getValidatedDss(): Observable<HttpResponse<DssSelection[]>> {
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss` + "/platform_validated/true"
     return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 
