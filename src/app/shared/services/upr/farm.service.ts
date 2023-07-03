@@ -55,7 +55,7 @@ export class FarmService {
 
   public getFarms(currentPage: number): Observable<HttpResponse<FarmResponseModel>> {
     return this._http
-      .get(`${this.apiUrl}/api/upr/farms?pageNumber=${currentPage}&pageSize=5`, {
+      .get(`${this.apiUrl}/api/upr/farms?pageNumber=${currentPage}&pageSize=10`, {
         headers: {
           Accept: "application/vnd.h2020ipmdecisions.hateoas+json",
         },
