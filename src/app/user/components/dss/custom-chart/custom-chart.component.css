@@ -1,5 +1,5 @@
 canvas{
-    max-width: 1200px;
+    max-width: 5000px;
     max-height: 600px;
 }
 
@@ -20,12 +20,12 @@ canvas{
 }
 
 .scrollArea {
-    width: 800px;  
-    overflow-x: scroll;
+    width: 90vw;  
+    overflow-x: auto;
 }
 
 .chartArea{
-    width: 1200px;  
+    width: 1400px;  
     height: 500px;
 }
 
@@ -35,7 +35,7 @@ canvas{
     top: 0;
     pointer-events: none;
     height: 600px;
-    width: 0px;
+    width: auto;
 }
 
 .zoomReset {

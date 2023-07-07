@@ -359,11 +359,11 @@ export class DssSelectionService {
                 pinch: {
                   enabled: true
                 },
-                mode: 'xy'
+                mode: 'x'
               },
               pan: {
                 enabled: true,
-                mode: 'xy',
+                mode: 'x',
                 threshold: 5
               }
             },
@@ -388,12 +388,10 @@ export class DssSelectionService {
             }
           },
           scales: {
-            /*
-            x:{
+            /*x:{
               min: 0,
-              max: 3,
-            },
-            */
+              //max: 3,
+            },*/
             y:{
                 min: 1,
                 max: 4,

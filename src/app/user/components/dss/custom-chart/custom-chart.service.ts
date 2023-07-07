@@ -61,18 +61,22 @@ export class CustomChartService {
         newOptions["plugins"].zoom = {
             zoom: {
               wheel: {
-                enabled: false
+                enabled: true
               },
               pinch: {
                 enabled: false
               },
-              mode: 'xy'
+              mode: 'x'
             },
             pan: {
               enabled: false,
-              mode: 'xy',
+              mode: 'x',
               threshold: 5
             }
+        };
+
+        newOptions["scales"]['x'] = {
+            min: 0
         };
         
         const sourceCanvas = chartElement;
@@ -104,7 +108,7 @@ export class CustomChartService {
                   sourceCtx.clearRect(0, 0, copyWidth, copyHeight);
                 }
               },
-            }
+        }
 
         return newOptions;
     }
