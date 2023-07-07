@@ -66,9 +66,11 @@ export class CustomChartComponent implements AfterViewInit {
         if(this.isAPopUpChart){
             var chartArea = document.querySelector<HTMLElement>('.chartArea');
             // With 7 days
-            chartArea.style.width = 200 * 7 + "px";
+            //chartArea.style.width = 200 * 7 + "px";
             // With 30 days
             //chartArea.style.width = 75 * 30 + "px";
+            // Testing dimensions
+            chartArea.style.width = 200 * 30 + "px";
             this.chartPopupElement = this.customChartService.drawChartWithFixedYAxis(this.el_popup.nativeElement, this.ax.nativeElement, this.labels, this.data, type, legend, color, options);
         }else{
             this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color, options);
