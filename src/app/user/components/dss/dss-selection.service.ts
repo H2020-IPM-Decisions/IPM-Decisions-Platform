@@ -388,6 +388,12 @@ export class DssSelectionService {
             }
           },
           scales: {
+            /*
+            x:{
+              min: 0,
+              max: 3,
+            },
+            */
             y:{
                 min: 1,
                 max: 4,

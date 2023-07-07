@@ -1,6 +1,6 @@
 canvas{
     max-width: 1200px;
-    max-height: 400px;
+    max-height: 600px;
 }
 
 .chartcontainer {
@@ -9,6 +9,33 @@ canvas{
     width:100%;
     display: flex;
     flex-grow:1;
+}
+
+.chartcontainer-popup{
+    position:relative;
+    min-height:auto;
+    width:100%;
+    display: flex;
+    flex-grow:1;
+}
+
+.scrollArea {
+    width: 800px;  
+    overflow-x: scroll;
+}
+
+.chartArea{
+    width: 1200px;  
+    height: 500px;
+}
+
+.chartcontainer-popup > canvas{
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    height: 600px;
+    width: 0px;
 }
 
 .zoomReset {

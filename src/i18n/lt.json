@@ -97,11 +97,11 @@
       "DSS_parameters_update_error": "Nepavyko atnaujinti SPS parametrų, įvyko klaida",
       "DSS_parameters_fetching_error": "Nepavyko gauti parametrų duomenų",
       "DSS_comparison_model_retrived_error": "Įvyko SPS palyginimo modelio klaida",
-          "DSS_adaptation_model_retrived_error":"Nepavyko gauti SPS duomenų!",
-          "DSS_adaptation_parameters_update_error":"Nepavyko atnaujinti SPS nustatymų, įvyko klaida",
-          "DSS_adaptation_parameters_send_error":"Nepavyko išsiųsti SPS nustatymų, įvyko klaida",
-          "DSS_parameters_reset_error":"Nepavyko atstatyti SPS nustatymų, įvyko klaida",
-          "DSS_use_dashboard_error_standard_info":"Paleidus SPS buvo gautas įspėjimas arba klaida. Sistemos pateiktas pranešimas (numatytąja SPS naudojama kalba) buvo:"
+      "DSS_adaptation_model_retrived_error":"Nepavyko gauti SPS duomenų!",
+      "DSS_adaptation_parameters_update_error":"Nepavyko atnaujinti SPS nustatymų, įvyko klaida",
+      "DSS_adaptation_parameters_send_error":"Nepavyko išsiųsti SPS nustatymų, įvyko klaida",
+      "DSS_parameters_reset_error":"Nepavyko atstatyti SPS nustatymų, įvyko klaida",
+      "DSS_use_dashboard_error_standard_info":"Paleidus SPS buvo gautas įspėjimas arba klaida. Sistemos pateiktas pranešimas (numatytąja SPS naudojama kalba) buvo:"
     },
     "Information_messages": {
       "Farm_deletion_message": "Ketinate panaikinti ūkio duomenis. Ar Jūs tuo įsitikinęs?",

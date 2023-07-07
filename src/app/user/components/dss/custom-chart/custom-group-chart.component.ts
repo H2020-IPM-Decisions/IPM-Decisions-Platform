@@ -14,12 +14,14 @@ export class CustomGroupChartComponent implements AfterViewInit {
     chartId: string;
     @Input() 
     chartResultParameters!: IDssResultFlat[]
+    @Input()
+    isAPopUpChart: boolean;
 
     data: number[] = [];
     labels: string[] = [];
     
-    @ViewChild('chart') 
-    el:ElementRef;
+    @ViewChild('chart') el:ElementRef;
+    @ViewChild('yaxis') ax:ElementRef;
 
     errorMessage: string;
     chartElement: Chart;
@@ -31,7 +33,12 @@ export class CustomGroupChartComponent implements AfterViewInit {
 
     ngAfterViewInit(): void {
         this.initChartData();
-        this.chartElement = this.customChartService.drawGroupChart(this.el.nativeElement, this.labels, this.chartDatasets);
+        if(this.isAPopUpChart){
+            this.chartElement = this.customChartService.drawGroupChartWhitFixedYAxis(this.el.nativeElement, this.ax.nativeElement, this.labels, this.chartDatasets);
+        }else{
+            this.chartElement = this.customChartService.drawGroupChart(this.el.nativeElement, this.labels, this.chartDatasets);
+        }
+        
     }
 
     initChartData(): void{

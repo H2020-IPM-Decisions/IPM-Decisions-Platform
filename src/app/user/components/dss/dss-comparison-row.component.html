@@ -22,7 +22,8 @@
         <tbody>
           <tr>
             <td>
-              <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation" [chartId]="'comparisonChart-'+dssDetail.id">
+              <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation" [chartId]="'comparisonChart-'+dssDetail.id"
+              [isAPopUpChart]="false">
               </custom-chart>
               <a (click)="openModal(expandedRiskChart, 'modal-xl')">
                 <i class="fas fa-expand light-blue-icon risk-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
@@ -31,7 +32,8 @@
             <td>
               <div class="row" *ngFor="let chartGroup of dssChartGroups">
                 <div class="col" *ngIf="selectedDssChartGroup.id === chartGroup.id">
-                  <custom-group-chart [chartId]="'comparisonGroupChart-'+chartGroup.id+'-'+dssDetail.id" [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
+                  <custom-group-chart [chartId]="'comparisonGroupChart-'+chartGroup.id+'-'+dssDetail.id" [chartResultParameters]="chartGroup.resultParameters"
+                  [isAPopUpChart]="false"></custom-group-chart>
                 </div>
               </div>
               <a (click)="openModal(expandedGroupChart, 'modal-xl')">
@@ -144,7 +146,8 @@
     </button>
   </div>
   <div class="modal-body">
-   <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation" [chartId]="'comparisonChartPopup-'+dssDetail.id">
+   <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation" [chartId]="'comparisonChartPopup-'+dssDetail.id"
+   [isAPopUpChart]="true">
   </custom-chart>
   </div>
   <div class="modal-footer pull-right">
@@ -173,7 +176,8 @@
       </span>
       <div *ngFor="let chartGroup of dssChartGroups">
         <div *ngIf="selectedDssChartGroup.id === chartGroup.id">
-          <custom-group-chart [chartId]="'detailChartPopup-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"></custom-group-chart>
+          <custom-group-chart [chartId]="'detailChartPopup-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"
+          [isAPopUpChart]="true"></custom-group-chart>
         </div>
       </div>
     </div>
