@@ -67,7 +67,9 @@
         "Clear_filter":"Clear Filter",
         "Avaiable_DSS": "Avaiable DSS",
         "Select_days": "Select days",
-        "Dss_info": "DSS informations"
+        "Dss_info": "DSS informations",
+        "Start_Date":"Start Date",
+        "End_Date":"End Date"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -342,7 +344,8 @@
         "Warning_status_representation":"Warning Status Representation",
         "Warning_message":"Warning Message",
         "Disclaimer_content":"This platform is making DSS available from external DSS developers. The DSS can be used to assist (not replace) decisions by experienced crop managers, accounting for local pest risk factors. See further information below the legend on the DSS Use dashboard.",
-        "Group_chart_popup_title":"Group Chart Information"
+        "Group_chart_popup_title":"Group Chart Information",
+        "Seasonal_data":"Download Seasonal Data"
     },
     "DSS_model_selection": {
         "Title":"Decision Support System Selection",

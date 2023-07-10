@@ -34,6 +34,15 @@ export class CustomGroupChartComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         this.initChartData();
         if(this.isAPopUpChart){
+            /*
+            var chartArea = document.querySelector<HTMLElement>('.chartArea');
+            // With 7 days
+            //chartArea.style.width = 200 * 7 + "px";
+            // With 30 days
+            //chartArea.style.width = 75 * 30 + "px";
+            // Testing dimensions
+            chartArea.style.width = 200 * 30 + "px";
+            */
             this.chartElement = this.customChartService.drawGroupChartWhitFixedYAxis(this.el.nativeElement, this.ax.nativeElement, this.labels, this.chartDatasets);
         }else{
             this.chartElement = this.customChartService.drawGroupChart(this.el.nativeElement, this.labels, this.chartDatasets);

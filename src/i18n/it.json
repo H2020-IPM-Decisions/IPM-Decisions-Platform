@@ -65,9 +65,12 @@
         "Change_password":"Modifica Password",
         "Return_to_user_edit":"Ritorna a 'Profilo Utente'",
         "Clear_filter":"Pulisci filtro",
-        "Avaiable_DSS": "DSS Disponibili",
-        "Select_days": "Seleziona giorni",
-        "Dss_info": "Informazioni DSS"
+        "Avaiable_DSS":"DSS Disponibili",
+        "Select_days":"Seleziona giorni",
+        "Dss_info":"Informazioni DSS",
+        "Start_Date":"Data di inizio",
+        "End_Date":"Data di fine"
+
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
@@ -342,7 +345,8 @@
         "Warning_status_representation":"Rappresentazione dello stato di avviso",
         "Warning_message":"Messaggio di avviso",
 		"Disclaimer_content":"Questa piattaforma rende disponibili i DSS di sviluppatori esterni. I DSS possono essere utilizzati per assistere (non sostituire) le decisioni di esperti delle colture, tenendo conto dei fattori di rischio locali per i parassiti. Vedere ulteriori informazioni sotto la legenda del cruscotto Uso dei DSS.",
-        "Group_chart_popup_title":"Diagrammi"
+        "Group_chart_popup_title":"Diagrammi",
+        "Seasonal_data":"Scarica Dati Stagionali"
     },
     "DSS_model_selection": {
         "Title":"Selezione del sistema di supporto decisionale",

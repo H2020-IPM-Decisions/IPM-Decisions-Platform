@@ -35,15 +35,20 @@
                 <b> {{ 'Common_labels.Select_days' | translate }} </b> 
               </label>
             </div>
-            <div class="col-sm-3">
-              <select class="form-control" id="daysSelector" (change)="daysSelectChanged($event)">
+            <div class="col-sm-4">
+              <!--<select class="form-control" id="daysSelector" (change)="daysSelectChanged($event)">
                 <option value="7">7</option>
                 <option value="30">30</option>
                 <option value="365">365</option>
-              </select>
+              </select>-->
+              <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>
+              <input type="date" id="startDate" name="period-start" [min]="minDate" [max]="maxDate" (change)="startDateSelected($event)">
+              <label for="start">{{ 'Common_labels.End_Date' | translate }}:</label>
+              <input type="date" id="endDate" name="period-end" [min]="start" [max]="maxDate" 
+              (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
             </div>
             <div class="col-sm-3">
-              <button class="btn btn-primary" (click)="onConfirmDays()">{{ 'Common_labels.Select' | translate }}</button>
+              <button class="btn btn-primary" (click)="onConfirmDays()" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
             </div>
           </div>
         </div>
@@ -55,6 +60,7 @@
           </label>
         </div>
         <div class="col-md-4 col-xs-12">
+          <button class="btn btn-primary" (click)="downloadSeasonalData()">{{ 'DSS_details.Seasonal_data' | translate }}</button>
           <img src="{{dssDetail.dssLogoUrl}}">
         </div>
       </div>

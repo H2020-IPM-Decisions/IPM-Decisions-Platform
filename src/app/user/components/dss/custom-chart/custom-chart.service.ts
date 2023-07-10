@@ -2,12 +2,13 @@ import { Injectable } from "@angular/core";
 import Chart from 'chart.js/auto';
 import { IChartDataset } from "./custom-chart.model";
 import zoomPlugin from 'chartjs-plugin-zoom';
+import { TranslationService } from "@app/shared/services/translation.service";
 Chart.register(zoomPlugin);
 
 @Injectable({ providedIn: 'root' })
 export class CustomChartService {
     
-    constructor(){}
+    constructor(private _translation: TranslationService){}
     public drawChart(element: any, labels: string[], data: number[], type: string, legend: string, color: string|string[], options: object={}): any{
         Chart.defaults.font.size = 14;
         const colors = typeof color === 'string' ? this.getChartJsColorArray(data.length, color) : color;
@@ -58,10 +59,16 @@ export class CustomChartService {
 
         let newOptions: object = JSON.parse(JSON.stringify(options));
 
+        const lowLabel: string = this._translation.getTranslatedMessage("Common_labels.Low");
+        const mediumLabel: string = this._translation.getTranslatedMessage("Common_labels.Medium");
+        const highLabel: string = this._translation.getTranslatedMessage("Common_labels.High");
+
+    
+
         newOptions["plugins"].zoom = {
             zoom: {
               wheel: {
-                enabled: true
+                enabled: false
               },
               pinch: {
                 enabled: false
@@ -75,9 +82,45 @@ export class CustomChartService {
             }
         };
 
+        newOptions["plugins"].tooltip = {
+            callbacks: {
+                label: function(tooltipItem){
+                    var label = tooltipItem.dataset.label;
+                    var value = tooltipItem.dataset.data[tooltipItem.dataIndex];
+                    switch (value) {
+                        case 2:
+                            return label + ": "+lowLabel;
+                        case 3:
+                            return label + ": "+mediumLabel;
+                        case 4:
+                            return label + ": "+highLabel;
+                    } 
+                }
+            }
+        }
+
         newOptions["scales"]['x'] = {
             min: 0
         };
+
+        newOptions["scales"]["y"] = {
+            min: 1,
+                max: 4,
+                beginAtZero: false,
+                stepSize: 1,
+                ticks: {
+                    callback: function(label, index, labels) {
+                        switch (label) {
+                            case 2:
+                              return lowLabel;
+                            case 3:
+                              return mediumLabel;
+                            case 4:
+                              return highLabel;
+                        }
+                    }
+                }
+        }
         
         const sourceCanvas = chartElement;
         const sourceCtx = sourceCanvas.getContext('2d');
@@ -150,11 +193,11 @@ export class CustomChartService {
                           pinch: {
                             enabled: true
                           },
-                          mode: 'xy'
+                          mode: 'x'
                         },
                         pan: {
                           enabled: true,
-                          mode: 'xy',
+                          mode: 'x',
                           threshold: 5
                         }
                       },          
@@ -187,23 +230,26 @@ export class CustomChartService {
             maintainAspectRatio: false,
             plugins: {
                 zoom: {
-                    zoom: {
-                      wheel: {
-                        enabled: false
-                      },
-                      pinch: {
-                        enabled: false
-                      },
-                      mode: 'xy'
+                    wheel: {
+                      enabled: false
                     },
-                    pan: {
-                      enabled: false,
-                      mode: 'xy',
-                      threshold: 5
-                    }
+                    pinch: {
+                      enabled: false
+                    },
+                    mode: 'x'
+                  },
+                  pan: {
+                    enabled: false,
+                    mode: 'x',
+                    threshold: 5
                   },          
                 legend: {
                     display: false
+                }
+            },
+            scales: {
+                x: {
+                    min: 0
                 }
             }
         };

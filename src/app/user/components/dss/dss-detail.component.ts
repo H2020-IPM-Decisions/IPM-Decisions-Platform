@@ -28,6 +28,12 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   dssIsValid: boolean;
   status: number;
   selectedDays: number = 7;
+  startDate: Date;
+  endDate: Date;
+  maxDate: Date;
+  minDate: Date;
+  isStartDateSelected: boolean = false;
+  isEndDateSelected: boolean = false;
   isRefreshingRiskChart: boolean = false;
   
   constructor(
@@ -56,6 +62,8 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     this.resultMessageType = this.dssDetail.resultMessageType;
     this.resultMessage = this.dssDetail.resultMessage;
     this.dssIsValid = this.dssDetail.isValid;
+    this.minDate = (this.warning.labels[0] as unknown) as Date;
+    this.maxDate = (this.warning.labels[this.warning.labels.length -1] as unknown) as Date;
   }
 
   goBack(): void {
@@ -129,5 +137,25 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     this.resultMessageType = this.dssDetail.resultMessageType;
     this.resultMessage = this.dssDetail.resultMessage;
     this.dssIsValid = this.dssDetail.isValid;
+  }
+
+  public startDateSelected(event: { target: HTMLInputElement }): void{
+    this.startDate =  (event.target.value as unknown) as Date;
+    this.isStartDateSelected = true;
+    document.getElementById("endDate").setAttribute("min", `${this.startDate}`);
+  }
+  
+  public endDateSelected(event: { target: HTMLInputElement }): void{
+    this.endDate =  (event.target.value as unknown) as Date;
+    this.isEndDateSelected = true;
+  }
+
+  public downloadSeasonalData(): void{
+    let seasonalData = this.service.getDssSeasonalDataAsCsv(this.dssDetail.id).subscribe((buffer) => {
+      const data: Blob = new Blob([buffer], {
+        type: "text/csv;charset=utf-8"
+      });
+      //saveAs(data, "products.csv");
+    });
   }
 }
