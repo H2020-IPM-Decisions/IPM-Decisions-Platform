@@ -21,7 +21,7 @@ export class DssDetailResolve implements Resolve<IDssFlat> {
   resolve(route: ActivatedRouteSnapshot): Observable<IDssFlat> {
     const id = route.params['id'];
     if (id) {
-      let days = 7;
+      let days = 30; // POTREBBE ESSERE NECCESARIO ELIMINARE DAYS E IL PARAMETRO DAL METODO GET
       return this.service.get(id, days).pipe(
         flatMap((response: HttpResponse<IDssFlat>) => {
           if (response.body) {

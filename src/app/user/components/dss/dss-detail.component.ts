@@ -8,6 +8,8 @@ import { NGXLogger } from "ngx-logger";
 import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
 import { HttpResponse } from '@angular/common/http';
 import * as $ from 'jquery';
+import {saveAs} from "file-saver";
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-dss-detail',
@@ -27,14 +29,20 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   resultMessage: string;
   dssIsValid: boolean;
   status: number;
-  selectedDays: number = 7;
-  startDate: Date;
-  endDate: Date;
-  maxDate: Date;
-  minDate: Date;
+  selectedDays: number = 30;
+  chartLabelsDateFormat: string = "DD/MM/YYYY";
+  htmlFormDateFormat: string = "YYYY-MM-DD";
+  startDate: string;
+  endDate: string;
+  minDate: string;
+  maxDate: string;
+  selectedChartGroupData: number[][];
+  selectedChartGroupLabels: string[][];
+  startDateFormMax: string;
+  aWeekAhead: string;
   isStartDateSelected: boolean = false;
   isEndDateSelected: boolean = false;
-  isRefreshingRiskChart: boolean = false;
+  areChartFilteredByDate: boolean = false;
   
   constructor(
     private activatedRoute: ActivatedRoute, 
@@ -47,9 +55,9 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   
   ngOnInit() {
     this.$subscription = this.activatedRoute.data.subscribe(({ dssDetail }) => {
-      	this.dssDetail = dssDetail;
-        this.status = this.dssDetail.warningStatus;
-		this.dssChartGroups = this.dssDetail.chartGroups;
+      this.dssDetail = dssDetail;
+      this.status = this.dssDetail.warningStatus;
+		  this.dssChartGroups = this.dssDetail.chartGroups;
 	    this.selectedDssChartGroup = this.dssChartGroups[0];
       if(this.dssDetail.warningStatusPerDay){
 		    /*let labels = [];
@@ -62,8 +70,17 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     this.resultMessageType = this.dssDetail.resultMessageType;
     this.resultMessage = this.dssDetail.resultMessage;
     this.dssIsValid = this.dssDetail.isValid;
-    this.minDate = (this.warning.labels[0] as unknown) as Date;
-    this.maxDate = (this.warning.labels[this.warning.labels.length -1] as unknown) as Date;
+
+    this.minDate = moment(this.dssDetail.warningStatusLabels[0], this.chartLabelsDateFormat)
+    .format(this.htmlFormDateFormat);
+
+    this.maxDate = moment(this.dssDetail.warningStatusLabels[this.dssDetail.warningStatusLabels.length-1], this.chartLabelsDateFormat)
+    .format(this.htmlFormDateFormat);
+
+    this.startDateFormMax = moment(this.dssDetail.warningStatusLabels[this.dssDetail.warningStatusLabels.length-1], this.chartLabelsDateFormat)
+    .subtract(7, "days").format(this.htmlFormDateFormat);
+
+    this.initDataAndLalbelsArrayOfSelectedGroupChart();
   }
 
   goBack(): void {
@@ -88,8 +105,38 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     }
   }
 
+  private initDataAndLalbelsArrayOfSelectedGroupChart(): void{
+
+    this.selectedChartGroupData = [];
+    this.selectedChartGroupLabels = [];
+    for(let resultParameter of this.selectedDssChartGroup.resultParameters){
+      this.selectedChartGroupData.push(resultParameter.data.slice());
+      this.selectedChartGroupLabels.push(resultParameter.labels.slice());
+    }
+  }
+
   onChangeChartGroup(selectedChart){
-	this.selectedDssChartGroup = selectedChart
+    
+    for (let index = 0; index < this.selectedDssChartGroup.resultParameters.length; index++) {
+    
+      this.selectedDssChartGroup.resultParameters[index].data = this.selectedChartGroupData[index];
+      this.selectedDssChartGroup.resultParameters[index].labels = this.selectedChartGroupLabels[index];
+
+    }
+    
+	  this.selectedDssChartGroup = selectedChart;
+
+    this.initDataAndLalbelsArrayOfSelectedGroupChart();
+
+    if(this.areChartFilteredByDate){
+      
+      let indexes = this.getIndexForDateFiltering();
+
+      let startIndex = indexes[0];
+      let endIndex = indexes[1];
+
+      this.filterGroupChartInformationInDateIntervall(startIndex, endIndex);
+    }
   }
 
   openModal(template: TemplateRef<any>, size?: string) {
@@ -97,6 +144,16 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     //$(".modal-backdrop.in").css("opacity","0");
     document.body.style.overflow = 'auto';
     document.body.style.paddingRight = '0';
+  }
+
+  closeModal(){
+    let startDateSelector = <HTMLInputElement>document.getElementById("startDate");
+    startDateSelector.value = this.startDate;
+
+    let endDateSelector = <HTMLInputElement>document.getElementById("endDate");
+    endDateSelector.value = this.endDate;
+
+    this.modalRef.hide();
   }
 
   goToModelParameterisation(): void {
@@ -121,41 +178,88 @@ export class DssDetailComponent implements OnInit, OnDestroy {
 
   public onConfirmDays(): void {
 
-    this.isRefreshingRiskChart = true;
+    let indexes = this.getIndexForDateFiltering();
 
-    this.$subscription = this.service.get(this.dssDetail.id, this.selectedDays).subscribe((response: HttpResponse<IDssFlat>) => {
-      this.dssDetail = response.body;
-      this.status = this.dssDetail.warningStatus;
-      this.dssChartGroups = this.dssDetail.chartGroups;
-      this.selectedDssChartGroup = this.dssChartGroups[0];
-      if(this.dssDetail.warningStatusPerDay){
-        this.warning = this.service.getDssWarningChart(this.dssDetail.warningStatusPerDay, this.dssDetail.warningStatusLabels);
-      }
-      this.isRefreshingRiskChart = false;
-    });
+    let startIndex = indexes[0];
+    let endIndex = indexes[1];
 
-    this.resultMessageType = this.dssDetail.resultMessageType;
-    this.resultMessage = this.dssDetail.resultMessage;
-    this.dssIsValid = this.dssDetail.isValid;
+    let subArrayOfWarningStatusPerDay = this.dssDetail.warningStatusPerDay.slice(startIndex, endIndex + 1);
+    let subArrayOfWarningStatusLabels = this.dssDetail.warningStatusLabels.slice(startIndex, endIndex + 1);
+    this.warning = this.service.getDssWarningChart(subArrayOfWarningStatusPerDay, subArrayOfWarningStatusLabels);
+
+    this.filterGroupChartInformationInDateIntervall(startIndex, endIndex);
+
+    this.areChartFilteredByDate = true;
+
+  }
+
+  private getIndexForDateFiltering(): number[]{
+
+    let startDateInLabelFormat = moment(this.startDate, this.htmlFormDateFormat).format(this.chartLabelsDateFormat);
+    let endDateInLabelFormat = moment(this.endDate, this.htmlFormDateFormat).format(this.chartLabelsDateFormat);
+
+    let startIndex = this.dssDetail.warningStatusLabels.indexOf(startDateInLabelFormat);
+    let endIndex = this.dssDetail.warningStatusLabels.indexOf(endDateInLabelFormat);
+
+    return [startIndex, endIndex];
+
+  }
+
+  private filterGroupChartInformationInDateIntervall(startIndex: number, endIndex: number): void{
+
+    let newResultParameters = [];
+
+    for(let resultParameter of this.selectedDssChartGroup.resultParameters){
+      newResultParameters.push(resultParameter);
+    }
+    
+    for (let index = 0; index < newResultParameters.length; index++) {
+
+      newResultParameters[index].data = this.selectedChartGroupData[index].slice(startIndex, endIndex + 1);
+      newResultParameters[index].labels = this.selectedChartGroupLabels[index].slice(startIndex, endIndex + 1);
+      
+    }
+
+    this.selectedDssChartGroup.resultParameters = newResultParameters;
+
   }
 
   public startDateSelected(event: { target: HTMLInputElement }): void{
-    this.startDate =  (event.target.value as unknown) as Date;
+
+    let endDateSelector = <HTMLInputElement>document.getElementById("endDate");
+    endDateSelector.value = "0000-00-00";
+    this.isEndDateSelected = false;
+
+    this.startDate =  (event.target.value as unknown) as string;
+    this.aWeekAhead = moment(this.startDate, this.htmlFormDateFormat).add(7, "days").format(this.htmlFormDateFormat);
     this.isStartDateSelected = true;
-    document.getElementById("endDate").setAttribute("min", `${this.startDate}`);
+
+  }
+
+  public startDateSelectedInPopup(event: { target: HTMLInputElement }): void{
+
+    let endDateSelector = <HTMLInputElement>document.getElementById("endDatePopup");
+    endDateSelector.value = "0000-00-00";
+    this.isEndDateSelected = false;
+
+    this.startDate =  (event.target.value as unknown) as string;
+    this.aWeekAhead = moment(this.startDate, this.htmlFormDateFormat).add(7, "days").format(this.htmlFormDateFormat);
+    this.isStartDateSelected = true;
+  
   }
   
   public endDateSelected(event: { target: HTMLInputElement }): void{
-    this.endDate =  (event.target.value as unknown) as Date;
+    this.endDate =  (event.target.value as unknown) as string;
     this.isEndDateSelected = true;
   }
 
   public downloadSeasonalData(): void{
-    let seasonalData = this.service.getDssSeasonalDataAsCsv(this.dssDetail.id).subscribe((buffer) => {
+    this.service.getDssSeasonalDataAsCsv(this.dssDetail.id).subscribe((buffer) => {
       const data: Blob = new Blob([buffer], {
         type: "text/csv;charset=utf-8"
       });
-      //saveAs(data, "products.csv");
+      saveAs(data, `${this.dssDetail.id}`);
     });
   }
+  
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, OnChanges, SimpleChanges } from "@angular/core";
 import { IChartConfig } from "./custom-chart.model";
 import { CustomChartService } from "./custom-chart.service";
 
@@ -7,7 +7,7 @@ import { CustomChartService } from "./custom-chart.service";
     templateUrl: "./custom-chart.component.html",
     styleUrls: ["./custom-chart.component.css"]
 })
-export class CustomChartComponent implements AfterViewInit {
+export class CustomChartComponent implements AfterViewInit, OnChanges {
 
     @Input() 
     data: number[];
@@ -33,6 +33,7 @@ export class CustomChartComponent implements AfterViewInit {
 
     constructor(private customChartService: CustomChartService)
     {}
+
     
     ngAfterViewInit(): void {
         if(this.config && !this.config.defaultVisible){
@@ -64,21 +65,12 @@ export class CustomChartComponent implements AfterViewInit {
         }
 
         if(this.isAPopUpChart){
-            /*
-            var chartArea = document.querySelector<HTMLElement>('.chartArea');
-            // With 7 days
-            //chartArea.style.width = 200 * 7 + "px";
-            // With 30 days
-            //chartArea.style.width = 75 * 30 + "px";
-            // Testing dimensions
-            chartArea.style.width = 200 * 30 + "px";
-            */
             this.chartPopupElement = this.customChartService.drawChartWithFixedYAxis(this.el_popup.nativeElement, this.ax.nativeElement, this.labels, this.data, type, legend, color, options);
         }else{
             this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color, options);
         }
         
-        /*
+        /* FUNZIONE PER SCROLLARE I DATI CON LA ROTELLINA DEL MOUSE, AL MOMENTO NON ATTIVA (FORSE DA CANCELLARE IN FUTURO) !!!
         function scroller(scroll, myChart) {
             
             const chartXAxisLenght = myChart.data.labels.length;
@@ -113,6 +105,14 @@ export class CustomChartComponent implements AfterViewInit {
         */
     }
     
+    ngOnChanges(changes: SimpleChanges): void {
+        let mychart = this.customChartService.getChart(this.chartId);
+        if(mychart){
+            mychart.data.datasets[0].data = this.data;
+            mychart.data.labels = this.labels;
+            mychart.update();
+        }
+    }
 
     resetZoom() {
         let mychart = this.customChartService.getChart(this.chartId);

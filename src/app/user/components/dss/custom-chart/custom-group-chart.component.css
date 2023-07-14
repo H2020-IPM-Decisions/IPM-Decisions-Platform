@@ -25,7 +25,8 @@ canvas{
 }
 
 .chartArea{
-    width: 1400px;  
+    width: 2000px;
+    min-width: 87vw;  
     height: 500px;
 }
 
@@ -35,6 +36,11 @@ canvas{
     top: 0;
     height: 600px;
     width: auto;
+}
+
+.chartArea > canvas{
+    min-width: 87vw;
+    max-height: 600px;
 }
 
 .zoomReset {

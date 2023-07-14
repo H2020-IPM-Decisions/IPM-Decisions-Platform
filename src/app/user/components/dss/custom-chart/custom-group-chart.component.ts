@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild, SimpleChanges } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, OnChanges, SimpleChanges } from "@angular/core";
 import { IChartDataset } from "./custom-chart.model";
 import { CustomChartService } from "./custom-chart.service";
 import { IDssResultFlat } from "../dss-selection.model";
@@ -9,7 +9,7 @@ import Chart from 'chart.js/auto';
     templateUrl: "./custom-group-chart.component.html",
     styleUrls: ["./custom-group-chart.component.css"]
 })
-export class CustomGroupChartComponent implements AfterViewInit {
+export class CustomGroupChartComponent implements AfterViewInit, OnChanges {
     @Input()
     chartId: string;
     @Input() 
@@ -34,15 +34,6 @@ export class CustomGroupChartComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         this.initChartData();
         if(this.isAPopUpChart){
-            /*
-            var chartArea = document.querySelector<HTMLElement>('.chartArea');
-            // With 7 days
-            //chartArea.style.width = 200 * 7 + "px";
-            // With 30 days
-            //chartArea.style.width = 75 * 30 + "px";
-            // Testing dimensions
-            chartArea.style.width = 200 * 30 + "px";
-            */
             this.chartElement = this.customChartService.drawGroupChartWhitFixedYAxis(this.el.nativeElement, this.ax.nativeElement, this.labels, this.chartDatasets);
         }else{
             this.chartElement = this.customChartService.drawGroupChart(this.el.nativeElement, this.labels, this.chartDatasets);
@@ -53,6 +44,7 @@ export class CustomGroupChartComponent implements AfterViewInit {
     initChartData(): void{
         this.data = this.chartResultParameters[0].data;
         this.labels = this.chartResultParameters[0].labels;
+        //if(this.isAPopUpChart) this.updateChartAreaAndCanvasWidht();
         this.chartResultParameters.forEach(chartResult => {
             if(chartResult.chartInformation && !chartResult.chartInformation.defaultVisible){
                 return;
@@ -83,6 +75,17 @@ export class CustomGroupChartComponent implements AfterViewInit {
         }
     }
 
+    ngOnChanges(changes: SimpleChanges): void {
+        let mychart = this.customChartService.getChart(this.chartId);
+        if(mychart){
+            this.chartDatasets = [];
+            this.initChartData();
+            mychart.data.labels = this.labels;
+            mychart.data.datasets = this.chartDatasets;
+            mychart.update();
+        }
+    }
+
     resetZoom() {
         let mychart = this.customChartService.getChart(this.chartId);
         mychart.resetZoom('active');
@@ -95,5 +98,15 @@ export class CustomGroupChartComponent implements AfterViewInit {
           isZorP = true;
         }
         return isZorP;
+    }
+
+    private updateChartAreaAndCanvasWidht(): void{
+
+        let chartArea = document.querySelector<HTMLElement>('.chartArea');
+        let canvas = document.querySelector<HTMLElement>('canvas');
+        let numberOfLabels = this.labels.length;
+        
+        canvas.style.width = 100 * numberOfLabels + "px";
+        chartArea.style.width = 100 * numberOfLabels + "px";
     }
 }

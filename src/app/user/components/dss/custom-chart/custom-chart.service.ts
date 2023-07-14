@@ -156,25 +156,6 @@ export class CustomChartService {
         return newOptions;
     }
 
-    /*public drawChart(element: any, labels: string[], data: number[], type: string, legend: string, color: string|string[]): any{
-        let chartDatasets: IChartDataset[] = [];
-        chartDatasets.push(this.initChartDataset(data,type,legend,color))
-        return new Chart(element, {
-            type: this.getChartJsType(type),
-            data: {
-                labels: labels,
-                datasets: chartDatasets
-            },
-            options: {
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
-    }*/
-
     public drawGroupChart(element: any, labels: string[], datasets: IChartDataset[]): any{
         return new Chart(element, {
             data: {
@@ -249,7 +230,10 @@ export class CustomChartService {
             },
             scales: {
                 x: {
-                    min: 0
+                    min: 0,
+                    ticks:{
+                        maxRotation:0
+                    }
                 }
             }
         };
@@ -264,7 +248,7 @@ export class CustomChartService {
                 onComplete: function() {
                 if (!this.rectangleSet) {
                     const scale = window.devicePixelRatio;
-                    const copyWidth = this.scales['y'].width - 10;
+                    const copyWidth = this.scales['y'].width - 3;
                     const copyHeight = this.scales['y'].height + this.scales['y'].top + 10;
                     
                     targetCtx.scale(scale, scale);

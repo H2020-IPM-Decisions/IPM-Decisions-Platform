@@ -488,9 +488,9 @@ export class DssSelectionService {
   }
 
   public getDssSeasonalDataAsCsv(dssId: string): Observable<any>{
-    let requestUrl = `${environment.apiUrl}api/upr/dss/${dssId}/download`;
+    let requestUrl = `${environment.apiUrl}/api/upr/dss/${dssId}/download`;
     return this._http.get(requestUrl, {
-      responseType: "text"
+      responseType: "text",
     });
   }
 }
