@@ -33,11 +33,14 @@ export class CustomGroupChartComponent implements AfterViewInit, OnChanges {
 
     ngAfterViewInit(): void {
         this.initChartData();
+        /*
         if(this.isAPopUpChart){
             this.chartElement = this.customChartService.drawGroupChartWhitFixedYAxis(this.el.nativeElement, this.ax.nativeElement, this.labels, this.chartDatasets);
         }else{
             this.chartElement = this.customChartService.drawGroupChart(this.el.nativeElement, this.labels, this.chartDatasets);
         }
+        */
+        this.chartElement = this.customChartService.drawGroupChart(this.el.nativeElement, this.labels, this.chartDatasets);
         
     }
 

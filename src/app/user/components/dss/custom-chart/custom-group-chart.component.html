@@ -5,11 +5,13 @@
 
 
 <div class="chartcontainer-popup" *ngIf="isAPopUpChart">
-    <div class="scrollArea">
+<!--   <div class="scrollArea">
         <div class="chartArea">       
             <canvas #chart id="{{chartId}}"></canvas>
         </div>
     </div>
-    <canvas #yaxis id="custom-chart-axis"></canvas>
-    <!-- <button class="zoomReset btn btn-info" *ngIf="isZoomedOrPanned()" (click)="resetZoom()"><i class="fas fa-sync"></i></button>-->
+    <canvas #yaxis id="custom-chart-axis"></canvas> --> 
+
+    <canvas #chart id="{{chartId}}"></canvas>
+    <button class="zoomReset btn btn-info" *ngIf="isZoomedOrPanned()" (click)="resetZoom()"><i class="fas fa-sync"></i></button>
 </div>

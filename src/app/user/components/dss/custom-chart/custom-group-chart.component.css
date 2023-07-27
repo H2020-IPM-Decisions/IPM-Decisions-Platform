@@ -30,12 +30,18 @@ canvas{
     height: 500px;
 }
 
+/*
 .chartcontainer-popup > canvas{
     position: absolute;
     left: 0;
     top: 0;
     height: 600px;
     width: auto;
+}
+*/
+
+.chartcontainer-popup > canvas{
+    min-height: 600px;
 }
 
 .chartArea > canvas{
