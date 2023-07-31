@@ -34,7 +34,7 @@
               <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>
               <input type="date" id="startDate" name="period-start" [min]="minDate" [max]="startDateFormMax" (change)="startDateSelected($event)">
               &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>
-              <input type="date" id="endDate" name="period-end" [min]="aWeekAhead" [max]="maxDate" 
+              <input type="date" id="endDate" name="period-end" [min]="twoWeekAhead" [max]="maxDate" 
               (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
               <button class="btn btn-primary mt-3" (click)="onConfirmDays()" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
             </div>
@@ -48,7 +48,7 @@
           </label>
         </div>
         <div class="col-md-4 col-xs-12">
-          <button class="btn btn-success" (click)="downloadSeasonalData()">{{ 'DSS_details.Seasonal_data' | translate }}
+          <button class="btn btn-success" (click)="openModal(downloadModal,'modal-sm')">{{ 'DSS_details.Seasonal_data' | translate }}
             &nbsp;<i class="fas fa-file-download"></i>
           </button>
           <img src="{{dssDetail.dssLogoUrl}}">
@@ -289,7 +289,7 @@
       <input type="date" id="startDatePopup" name="period-start" [min]="minDate" [max]="startDateFormMax" 
       [value]="startDate" (change)="startDateSelectedInPopup($event)">
       &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>
-      <input type="date" id="endDatePopup" name="period-end" [min]="aWeekAhead" [max]="maxDate" [value]="endDate" 
+      <input type="date" id="endDatePopup" name="period-end" [min]="twoWeekAhead" [max]="maxDate" [value]="endDate" 
       (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
       <button class="btn btn-primary ml-2" (click)="onConfirmDays()" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
     </div>
@@ -330,10 +330,33 @@
       <input type="date" id="startDatePopup" name="period-start" [min]="minDate" [max]="startDateFormMax" 
       [value]="startDate" (change)="startDateSelectedInPopup($event)">
       &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>
-      <input type="date" id="endDatePopup" name="period-end" [min]="aWeekAhead" [max]="maxDate" [value]="endDate" 
+      <input type="date" id="endDatePopup" name="period-end" [min]="twoWeekAhead" [max]="maxDate" [value]="endDate" 
       (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
       <button class="btn btn-primary ml-2" (click)="onConfirmDays()" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
     </div>
     <button type="button" class="btn btn-info push-right" (click)="closeModal()">{{ 'Common_labels.Close' | translate }}</button>
+  </div>
+</ng-template>
+
+<ng-template #downloadModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      {{ 'DSS_details.Seasonal_data' | translate }}
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <label class="mr-2" for="name">{{ 'DSS_details.File_name' | translate }}:</label>
+      <input type="text" id="file_name" required size="20">
+      <div class="error_message" *ngIf="invalidFileName">
+        {{ 'Error_messages.File_name_is_required' | translate }}
+      </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+    <button type="button" class="btn btn-success push-left" 
+    (click)="downloadSeasonalData()">{{ 'Common_labels.Download' | translate }}</button>
   </div>
 </ng-template>

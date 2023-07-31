@@ -24,7 +24,7 @@ export class DssComparisonComponent implements OnInit, OnDestroy {
     public maxSelections: number = 5;
     public numberOfModelSelected: number = 0;
     public selectedModelsId: string[] = [];
-    public selectedDays: number = 7;
+    public selectedDays: number = 30;
 
     constructor(
         protected _dssSelectionService: DssSelectionService,

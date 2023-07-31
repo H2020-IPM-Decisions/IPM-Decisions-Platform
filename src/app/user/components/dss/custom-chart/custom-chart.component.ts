@@ -63,12 +63,14 @@ export class CustomChartComponent implements AfterViewInit, OnChanges {
             this.config.options.animation = this.animation
             options = this.config.options
         }
-
+        /*
         if(this.isAPopUpChart){
             this.chartPopupElement = this.customChartService.drawChartWithFixedYAxis(this.el_popup.nativeElement, this.ax.nativeElement, this.labels, this.data, type, legend, color, options);
         }else{
             this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color, options);
         }
+        */
+        this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color, options);
         
         /* FUNZIONE PER SCROLLARE I DATI CON LA ROTELLINA DEL MOUSE, AL MOMENTO NON ATTIVA (FORSE DA CANCELLARE IN FUTURO) !!!
         function scroller(scroll, myChart) {

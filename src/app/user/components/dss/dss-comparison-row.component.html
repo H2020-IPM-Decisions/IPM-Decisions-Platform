@@ -1,5 +1,15 @@
 <div class="card">
   <div class="row">
+    <div class="col ml-2">
+      <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>
+      <input type="date" id="{{'startDate' + dssDetail.id}}" name="period-start" [min]="minDate" [max]="startDateFormMax" (change)="startDateSelected($event)">
+      &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>
+      <input type="date" id="{{'endDate' + dssDetail.id}}" name="period-end" [min]="twoWeekAhead" [max]="maxDate" 
+      (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
+      <button class="btn btn-primary ml-3" (click)="onConfirmDays()" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
+    </div>
+  </div>
+  <div class="row">
     <div class="col pr-0">
       <table class="table table-responsive-sm text-muted">
         <thead class="tableHeader">
@@ -139,26 +149,43 @@
 <ng-template #expandedRiskChart>
   <div class="modal-header">
     <h4 class="modal-title pull-left">
-      {{ 'DSS_details.Risk_score' | translate }}: {{ dssDetail.dssModelName }}
+      {{ 'DSS_details.Risk_score' | translate }}
     </h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-   <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation" [chartId]="'comparisonChartPopup-'+dssDetail.id"
+   <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation" [chartId]="'detailChartPopup-'+dssDetail.id"
    [isAPopUpChart]="true">
   </custom-chart>
   </div>
-  <div class="modal-footer pull-right">
-    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+  <div class="modal-footer">
+    <div class="col-sm-7">
+      <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>
+      <input type="date" id="startDatePopup" name="period-start" [min]="minDate" [max]="startDateFormMax" 
+      [value]="startDate" (change)="startDateSelectedInPopup($event)">
+      &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>
+      <input type="date" id="endDatePopup" name="period-end" [min]="twoWeekAhead" [max]="maxDate" [value]="endDate" 
+      (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
+      <button class="btn btn-primary ml-2" (click)="onConfirmDays()" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
+    </div>
+    <button type="button" class="btn btn-info push-right" (click)="closeModal()">{{ 'Common_labels.Close' | translate }}</button>
   </div>
 </ng-template>
 
 <ng-template #expandedGroupChart>
   <div class="modal-header">
     <h4 class="modal-title pull-left">
-      {{ 'DSS_comparison.Group_chart_popup_title' | translate }}: {{ dssDetail.dssModelName }}
+      <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
+        (ngModelChange)="onChangeChartGroup($event)" *ngIf="dssChartGroups.length > 1">
+        <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup" style="font-weight: bold">
+          {{ chartGroup.title }}
+        </option>
+      </select>
+      <span *ngIf="dssChartGroups.length == 1" class="text-muted selItem">
+        <b>{{ dssChartGroups[0].title }}</b>
+      </span>
     </h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
@@ -166,14 +193,6 @@
   </div>
   <div class="modal-body">
     <div>
-      <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
-        (ngModelChange)="onChangeChartGroup($event)" *ngIf="dssChartGroups.length > 1">
-        <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}
-        </option>
-      </select>
-      <span *ngIf="dssChartGroups.length == 1" class="text-muted selItem">
-        {{ dssChartGroups[0].title }}
-      </span>
       <div *ngFor="let chartGroup of dssChartGroups">
         <div *ngIf="selectedDssChartGroup.id === chartGroup.id">
           <custom-group-chart [chartId]="'detailChartPopup-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"
@@ -182,7 +201,16 @@
       </div>
     </div>
   </div>
-  <div class="modal-footer pull-right">
-    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+  <div class="modal-footer">
+    <div class="col-sm-7">
+      <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>
+      <input type="date" id="startDatePopup" name="period-start" [min]="minDate" [max]="startDateFormMax" 
+      [value]="startDate" (change)="startDateSelectedInPopup($event)">
+      &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>
+      <input type="date" id="endDatePopup" name="period-end" [min]="twoWeekAhead" [max]="maxDate" [value]="endDate" 
+      (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
+      <button class="btn btn-primary ml-2" (click)="onConfirmDays()" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
+    </div>
+    <button type="button" class="btn btn-info push-right" (click)="closeModal()">{{ 'Common_labels.Close' | translate }}</button>
   </div>
 </ng-template>

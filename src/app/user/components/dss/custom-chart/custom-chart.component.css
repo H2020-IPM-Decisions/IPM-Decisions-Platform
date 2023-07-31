@@ -25,16 +25,28 @@ canvas{
 }
 
 .chartArea{
-    width: 2000px;  
+    width: 2000px;
+    min-width: 87vw;  
     height: 500px;
 }
 
+/*
 .chartcontainer-popup > canvas{
     position: absolute;
     left: 0;
     top: 0;
     height: 600px;
     width: auto;
+}
+*/
+
+.chartcontainer-popup > canvas{
+    min-height: 600px;
+}
+
+.chartArea > canvas{
+    min-width: 87vw;
+    max-height: 600px;
 }
 
 .zoomReset {

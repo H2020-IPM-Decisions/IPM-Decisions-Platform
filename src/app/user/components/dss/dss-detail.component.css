@@ -111,3 +111,10 @@ img {
   text-shadow: 2px 2px 3px rgba(15,15,15,.56);
   font-size: 150%;
 }
+
+.error_message{
+  background: #f98900;
+  color: #fff;
+  margin-bottom: 10px;
+  padding: 5px;
+}

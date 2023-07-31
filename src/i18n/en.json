@@ -69,7 +69,8 @@
         "Select_days": "Select days",
         "Dss_info": "DSS informations",
         "Start_Date":"Start Date",
-        "End_Date":"End Date"
+        "End_Date":"End Date",
+        "Download":"Download"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -110,7 +111,8 @@
         "DSS_adaptation_parameters_send_error":"DSS parameters send failed, an error occurs",
         "DSS_parameters_reset_error":"Dss parameters reset failed, an error occurs",
         "DSS_use_dashboard_error_standard_info":"The DSS has returned a warning or error when run. The message provided by the DSS (in the default language used by the DSS) was:",
-        "New_password_is_required":"New password is required"
+        "New_password_is_required":"New password is required",
+        "File_name_is_required":"File name is required"
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
@@ -345,7 +347,8 @@
         "Warning_message":"Warning Message",
         "Disclaimer_content":"This platform is making DSS available from external DSS developers. The DSS can be used to assist (not replace) decisions by experienced crop managers, accounting for local pest risk factors. See further information below the legend on the DSS Use dashboard.",
         "Group_chart_popup_title":"Group Chart Information",
-        "Seasonal_data":"Download Seasonal Data"
+        "Seasonal_data":"Download Seasonal Data",
+        "File_name":"File name"
     },
     "DSS_model_selection": {
         "Title":"Decision Support System Selection",

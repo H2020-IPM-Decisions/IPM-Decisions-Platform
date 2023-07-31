@@ -74,30 +74,30 @@ export class EditPasswordComponent implements OnInit {
         );
       }
 
-      get f() {
-        return this.changePasswordForm.controls;
-      }
+    get f() {
+      return this.changePasswordForm.controls;
+    }
 
-      onSubmit() {
-        this.submitted = true;
-        if (this.changePasswordForm.invalid) {
-          return;
+    onSubmit() {
+      this.submitted = true;
+      if (this.changePasswordForm.invalid) {
+        return;
+      }
+      const changePasswordBody: IChangePassword = {
+        newPassword: (<string>this.f.newPassword.value),
+        currentPassword: (<string>this.f.currentPassword.value)
+      };
+
+      this.$subscriptionSubmit = this._emailService.changePassword(changePasswordBody, this.user_id).subscribe(
+        (response) => {
+          this.modalRef = this._modalService.show(this.changePasswordModal);
+        },
+        (error) => {
+          this._logger.error(error);
+          this.errorDescription = error.error.errors[0].description;
+          this.modalRef = this._modalService.show(this.changePasswordModal);
         }
-        const changePasswordBody: IChangePassword = {
-          newPassword: (<string>this.f.newPassword.value),
-          currentPassword: (<string>this.f.currentPassword.value)
-        };
-
-       this.$subscriptionSubmit = this._emailService.changePassword(changePasswordBody, this.user_id).subscribe(
-         (response) => {
-            this.modalRef = this._modalService.show(this.changePasswordModal);
-          },
-          (error) => {
-            this._logger.error(error);
-            this.errorDescription = error.error.errors[0].description;
-            this.modalRef = this._modalService.show(this.changePasswordModal);
-          }
-        );
-      }
+      );
+    }
 
 }

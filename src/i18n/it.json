@@ -69,8 +69,8 @@
         "Select_days":"Seleziona giorni",
         "Dss_info":"Informazioni DSS",
         "Start_Date":"Data di inizio",
-        "End_Date":"Data di fine"
-
+        "End_Date":"Data di fine",
+        "Download":"Scarica"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
@@ -111,7 +111,8 @@
         "DSS_adaptation_parameters_send_error":"Invio dei parametri del DSS fallito a causa di un errore",
         "DSS_parameters_reset_error":"Reimpostazione dei parametri del DSS fallito a causa di un errore",
         "DSS_use_dashboard_error_standard_info":"Il DSS ha restituito un avviso o un errore durante l'esecuzione. Il messaggio fornito dal DSS (nella lingua predefinita utilizzata dal DSS) era:",
-        "New_password_is_required":"La nuova password è obbligatoria"
+        "New_password_is_required":"La nuova password è obbligatoria",
+        "File_name_is_required":"Inserire nome del file"
     },
     "Information_messages":{
         "Farm_deletion_message":"Stai per eliminare un'azienda agricola. Vuoi procedere?",
@@ -346,7 +347,8 @@
         "Warning_message":"Messaggio di avviso",
 		"Disclaimer_content":"Questa piattaforma rende disponibili i DSS di sviluppatori esterni. I DSS possono essere utilizzati per assistere (non sostituire) le decisioni di esperti delle colture, tenendo conto dei fattori di rischio locali per i parassiti. Vedere ulteriori informazioni sotto la legenda del cruscotto Uso dei DSS.",
         "Group_chart_popup_title":"Diagrammi",
-        "Seasonal_data":"Scarica Dati Stagionali"
+        "Seasonal_data":"Scarica Dati Stagionali",
+        "File_name":"Nome del file"
     },
     "DSS_model_selection": {
         "Title":"Selezione del sistema di supporto decisionale",

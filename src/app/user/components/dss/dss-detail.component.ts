@@ -29,7 +29,6 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   resultMessage: string;
   dssIsValid: boolean;
   status: number;
-  selectedDays: number = 30;
   chartLabelsDateFormat: string = "DD/MM/YYYY";
   htmlFormDateFormat: string = "YYYY-MM-DD";
   startDate: string;
@@ -39,10 +38,11 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   selectedChartGroupData: number[][];
   selectedChartGroupLabels: string[][];
   startDateFormMax: string;
-  aWeekAhead: string;
+  twoWeekAhead: string;
   isStartDateSelected: boolean = false;
   isEndDateSelected: boolean = false;
-  areChartFilteredByDate: boolean = false;
+  areChartsFilteredByDate: boolean = false;
+  invalidFileName: boolean = false;
   
   constructor(
     private activatedRoute: ActivatedRoute, 
@@ -78,7 +78,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     .format(this.htmlFormDateFormat);
 
     this.startDateFormMax = moment(this.dssDetail.warningStatusLabels[this.dssDetail.warningStatusLabels.length-1], this.chartLabelsDateFormat)
-    .subtract(7, "days").format(this.htmlFormDateFormat);
+    .subtract(14, "days").format(this.htmlFormDateFormat);
 
     this.initDataAndLalbelsArrayOfSelectedGroupChart();
   }
@@ -128,7 +128,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
 
     this.initDataAndLalbelsArrayOfSelectedGroupChart();
 
-    if(this.areChartFilteredByDate){
+    if(this.areChartsFilteredByDate){
       
       let indexes = this.getIndexForDateFiltering();
 
@@ -144,6 +144,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     //$(".modal-backdrop.in").css("opacity","0");
     document.body.style.overflow = 'auto';
     document.body.style.paddingRight = '0';
+    this.invalidFileName = false;
   }
 
   closeModal(){
@@ -172,10 +173,6 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     this._router.navigate(['/user/farm',this.dssDetail.farmId,'edit','dss',this.dssDetail.id,'parameterisation'], navigationExtras);
   }
 
-  public daysSelectChanged(event: { target: HTMLInputElement }) {
-    this.selectedDays = +event.target.value;
-  }
-
   public onConfirmDays(): void {
 
     let indexes = this.getIndexForDateFiltering();
@@ -189,7 +186,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
 
     this.filterGroupChartInformationInDateIntervall(startIndex, endIndex);
 
-    this.areChartFilteredByDate = true;
+    this.areChartsFilteredByDate = true;
 
   }
 
@@ -231,7 +228,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     this.isEndDateSelected = false;
 
     this.startDate =  (event.target.value as unknown) as string;
-    this.aWeekAhead = moment(this.startDate, this.htmlFormDateFormat).add(7, "days").format(this.htmlFormDateFormat);
+    this.twoWeekAhead = moment(this.startDate, this.htmlFormDateFormat).add(14, "days").format(this.htmlFormDateFormat);
     this.isStartDateSelected = true;
 
   }
@@ -243,7 +240,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     this.isEndDateSelected = false;
 
     this.startDate =  (event.target.value as unknown) as string;
-    this.aWeekAhead = moment(this.startDate, this.htmlFormDateFormat).add(7, "days").format(this.htmlFormDateFormat);
+    this.twoWeekAhead = moment(this.startDate, this.htmlFormDateFormat).add(14, "days").format(this.htmlFormDateFormat);
     this.isStartDateSelected = true;
   
   }
@@ -254,12 +251,25 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   }
 
   public downloadSeasonalData(): void{
+    let inputTextBox = <HTMLInputElement>document.getElementById("file_name");
+    let fileName = <string>inputTextBox.value;
+    
+    if(this.isFileNameInvalid(fileName)){
+      this.invalidFileName = true;
+      return;
+    }
+    this.invalidFileName = false;
     this.service.getDssSeasonalDataAsCsv(this.dssDetail.id).subscribe((buffer) => {
       const data: Blob = new Blob([buffer], {
         type: "text/csv;charset=utf-8"
       });
-      saveAs(data, `${this.dssDetail.id}`);
+      saveAs(data, `${fileName}`);
     });
+  }
+
+
+  isFileNameInvalid(fileName: string): boolean {
+    return fileName.length <= 0;
   }
   
 }
