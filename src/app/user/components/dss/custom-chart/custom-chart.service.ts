@@ -157,6 +157,17 @@ export class CustomChartService {
     }
 
     public drawGroupChart(element: any, labels: string[], datasets: IChartDataset[]): any{
+
+        function freezeAxis(scale) {
+            scale.options.min = scale.min;
+            scale.options.max = scale.max;
+        }
+        
+        function unfreezeAxis(scale) {
+            scale.options.min = null; // or infinite value, e.g., -1/0
+            scale.options.max = null;
+        }
+
         return new Chart(element, {
             data: {
                 labels: labels,
@@ -167,19 +178,30 @@ export class CustomChartService {
                 maintainAspectRatio: false,
                 plugins: {
                     zoom: {
-                        zoom: {
-                          wheel: {
-                            enabled: true
-                          },
-                          pinch: {
-                            enabled: true
-                          },
-                          mode: 'x'
-                        },
                         pan: {
-                          enabled: true,
-                          mode: 'x',
-                          threshold: 5
+                            enabled: true,
+                            mode: "x",
+                            onPanStart({ chart }) {
+                              freezeAxis(chart.scales.y);
+                            },
+                            onPanComplete({ chart }) {
+                              unfreezeAxis(chart.scales.y);
+                            }
+                          },
+                          zoom: {
+                            wheel: {
+                              enabled: true
+                            },
+                            pinch: {
+                              enabled: true
+                            },
+                            mode: "x",
+                            onZoomStart({ chart }) {
+                              freezeAxis(chart.scales.y);
+                            },
+                            onZoomComplete({ chart }) {
+                              unfreezeAxis(chart.scales.y);
+                            }
                         }
                       },          
                     legend: {

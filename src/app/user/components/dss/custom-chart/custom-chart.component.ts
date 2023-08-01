@@ -23,7 +23,6 @@ export class CustomChartComponent implements AfterViewInit, OnChanges {
     animation!: boolean;
     
     @ViewChild('chart') el:ElementRef;
-    @ViewChild('chart_popup') el_popup:ElementRef;
     @ViewChild('yaxis') ax:ElementRef;
 
     errorMessage: string;
@@ -65,7 +64,7 @@ export class CustomChartComponent implements AfterViewInit, OnChanges {
         }
         /*
         if(this.isAPopUpChart){
-            this.chartPopupElement = this.customChartService.drawChartWithFixedYAxis(this.el_popup.nativeElement, this.ax.nativeElement, this.labels, this.data, type, legend, color, options);
+            this.chartPopupElement = this.customChartService.drawChartWithFixedYAxis(this.el.nativeElement, this.ax.nativeElement, this.labels, this.data, type, legend, color, options);
         }else{
             this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color, options);
         }
