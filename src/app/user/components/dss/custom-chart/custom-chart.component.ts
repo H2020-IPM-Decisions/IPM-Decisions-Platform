@@ -111,6 +111,14 @@ export class CustomChartComponent implements AfterViewInit, OnChanges {
         if(mychart){
             mychart.data.datasets[0].data = this.data;
             mychart.data.labels = this.labels;
+            let colors = this.config.color;
+
+            let updatedcolors = typeof colors === 'string' ? this.customChartService.getChartJsColorArray(this.data.length, colors) : colors;
+            mychart.data.datasets[0].borderColor = updatedcolors;
+
+            let updatedBackgroundColors = this.config.chartType === 'bar' ? colors : 'white';
+            mychart.data.datasets[0].backgroundColor = updatedBackgroundColors;
+
             mychart.update();
         }
     }

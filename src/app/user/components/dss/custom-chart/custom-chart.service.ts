@@ -313,7 +313,7 @@ export class CustomChartService {
 
     }
 
-    private getChartJsColorArray(size: number, color?: string): string[]{
+    public getChartJsColorArray(size: number, color?: string): string[]{
         if(!size) return [];
         let borderColors: string[] = [];
         for(let i=0;i<size;i++){
