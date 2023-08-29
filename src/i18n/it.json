@@ -112,7 +112,8 @@
         "DSS_parameters_reset_error":"Reimpostazione dei parametri del DSS fallito a causa di un errore",
         "DSS_use_dashboard_error_standard_info":"Il DSS ha restituito un avviso o un errore durante l'esecuzione. Il messaggio fornito dal DSS (nella lingua predefinita utilizzata dal DSS) era:",
         "New_password_is_required":"La nuova password è obbligatoria",
-        "File_name_is_required":"Inserire nome del file"
+        "File_name_is_required":"Inserire nome del file",
+        "Seasonal_data_download_error": "Impossibile scaricare i dati stagionali"
     },
     "Information_messages":{
         "Farm_deletion_message":"Stai per eliminare un'azienda agricola. Vuoi procedere?",
@@ -143,7 +144,8 @@
         "DSS_model_selection_default_timing":"Sono stati aggiunti dei DSS che possono utilizzare date predefinite per le fasi di emergenza o di crescita delle colture. Per verificare se queste date sono corrette per le vostre colture o per modificarle, fate clic sul pulsante 'Modifica parametri DSS'.",
         "No_Linked_DSS_available":"Non ci sono DSS esterni disponibili.",
         "DSS_models_filtered":"Modelli DSS filtrati con successo!",
-        "You_are_about_to_remove":"Stai per rimuovere il seguente DSS esterno:"
+        "You_are_about_to_remove":"Stai per rimuovere il seguente DSS esterno:",
+        "Seasonal_data_download_success": "Dati stagionali scaricati con successo"
     },
     "Warning_messages":{
         "DSS_model_availability_error":"Non ci sono DSS per le colture selezionate",

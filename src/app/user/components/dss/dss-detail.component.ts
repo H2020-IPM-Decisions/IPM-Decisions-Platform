@@ -43,6 +43,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   isEndDateSelected: boolean = false;
   areChartsFilteredByDate: boolean = false;
   invalidFileName: boolean = false;
+  seasonalDataPlaceholder: string = "IPMDecisions_Download";
   
   constructor(
     private activatedRoute: ActivatedRoute, 
@@ -143,7 +144,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     this.modalRef = this._modalService.show(template, {class: size, backdrop: false});
     //$(".modal-backdrop.in").css("opacity","0");
     document.body.style.overflow = 'auto';
-    document.body.style.paddingRight = '0';
+    document.body.style.paddingRight = '0'; 
     this.invalidFileName = false;
   }
 
@@ -156,6 +157,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
 
     this.modalRef.hide();
   }
+
 
   goToModelParameterisation(): void {
     const navigationExtras: NavigationExtras = { 
@@ -264,7 +266,12 @@ export class DssDetailComponent implements OnInit, OnDestroy {
         type: "text/csv;charset=utf-8"
       });
       saveAs(data, `${fileName}`);
+      this._toastrTranslated.showTranslatedToastr("Information_messages.Seasonal_data_download_success","Common_labels.Success","toast-success")
+    },()=>{
+      this._toastrTranslated.showTranslatedToastr("Error_messages.Seasonal_data_download_error","Common_labels.Error","toast-error");
     });
+    
+    this.modalRef.hide();
   }
 
 

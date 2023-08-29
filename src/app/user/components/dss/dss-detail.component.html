@@ -349,7 +349,7 @@
   </div>
   <div class="modal-body">
       <label class="mr-2" for="name">{{ 'DSS_details.File_name' | translate }}:</label>
-      <input type="text" id="file_name" required size="20">
+      <input type="text" id="file_name" [value]="seasonalDataPlaceholder" required size="20">
       <div class="error_message" *ngIf="invalidFileName">
         {{ 'Error_messages.File_name_is_required' | translate }}
       </div>
