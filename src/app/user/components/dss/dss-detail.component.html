@@ -322,6 +322,12 @@
           [isAPopUpChart]="true"></custom-group-chart>
         </div>
       </div>
+      <div class="row mt-2">
+        <div class="col d-flex justify-content-center" *ngFor="let result of selectedDssChartGroup.resultParameters">
+          <i [ngStyle]="{ 'color': result.chartInformation?.color,'margin-right':'5px'}" class="fas fa-square mt-1"></i>
+          <span><b> {{result.title}} </b></span>
+        </div>
+      </div>
     </div>
   </div>
   <div class="modal-footer">

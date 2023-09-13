@@ -57,7 +57,9 @@
           [ngClass]="{'errorIcon-green': errorType==0, 'errorIcon-yellow': errorType==1, 'errorIcon-red': errorType==2}">
             <a class="details" (click)="openModal(errorModal,'modal-lg')" [title]="('Common_labels.Click_to_open' | translate)">
                 <i class="fa fa-square fa-stack-2x"></i>
-                <i class="fa fa-exclamation-triangle fa-stack-2x"></i>
+                <i *ngIf="errorType==2" class="fa fa-exclamation-triangle fa-stack-2x"></i>
+                <i *ngIf="errorType==1" class="fa fa-exclamation fa-stack-2x"></i>
+                <i *ngIf="errorType==0" class="fa fa-exclamation-circle fa-stack-2x"></i>
             </a>
         </span>
         <span *ngIf="isQueued && !isScheduled" class="syncIcon">
@@ -152,7 +154,9 @@
         <span class="fa-stack" 
           [ngClass]="{'modalErrorIcon-green': errorType==0, 'modalErrorIcon-yellow': errorType==1, 'modalErrorIcon-red': errorType==2}">
                 <i class="fas fa-square fa-stack-1x"></i>
-                <i class="fas fa-exclamation-triangle fa-stack-1x"></i>
+                <i *ngIf="errorType==2" class="fa fa-exclamation-triangle fa-stack-2x"></i>
+                <i *ngIf="errorType==1" class="fa fa-exclamation fa-stack-2x"></i>
+                <i *ngIf="errorType==0" class="fa fa-exclamation-circle fa-stack-2x"></i>
         </span> 
         <b *ngIf="errorType==0">{{ 'Common_labels.Info' | translate }}</b>
         <b *ngIf="errorType==1">{{ 'Common_labels.Warning' | translate }}</b>
