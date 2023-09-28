@@ -5,7 +5,7 @@ import { Subscription } from "rxjs";
 import { IDssFlat } from "./dss-selection.model";
 import { DssSelectionService } from "./dss-selection.service";
 import { NGXLogger } from 'ngx-logger';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from "moment";
 
 @Component({
@@ -23,7 +23,8 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   constructor(
     protected service: DssSelectionService,
     private _logger: NGXLogger,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -141,6 +142,10 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
       }
     }
     return list;
+  }
+
+  goToAddModelDSS(farmId) {
+    this._router.navigate(['/user/farm',farmId,'edit','dss','add']);
   }
 
 }

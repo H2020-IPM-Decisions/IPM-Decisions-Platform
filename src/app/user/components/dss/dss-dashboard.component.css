@@ -96,3 +96,33 @@ fieldset {
 .warningTextWrap {
     word-wrap: break-word;
 }
+
+.app-page-title{
+    position: sticky;
+    top: 55px;
+    z-index: 1;
+}
+
+.add-farm {
+    text-align: right;
+    flex-grow: 1;
+}
+
+.add-farm > .btn-add{
+    float: right;
+}
+
+.fa-plus-circle{
+    color:white;
+}
+  
+.btn-add {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.btn-green {
+    color: #fff;
+    background-color: rgb(58 196 125);
+    border-color: rgb(58 196 125);
+}
