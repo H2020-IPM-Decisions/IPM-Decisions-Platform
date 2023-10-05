@@ -114,6 +114,17 @@
   transform: scale(1.1, 1.1);
 }
 
+.disable-icon {
+  font-size: 85%;
+  color: #FF701E;
+  position: absolute;
+  bottom: 3px;
+  /* right: 2px; */
+  left: 43%;
+  -webkit-text-stroke-width: 0.25px;
+  -webkit-text-stroke-color: rgb(255, 255, 255)
+}
+
 .scheduledIcon {
   font-size: 125%;
   color: rgb(240, 201, 26);
@@ -140,6 +151,13 @@
 .modalErrorIcon-yellow {
   font-size: 150%;
   color: rgb(247 165 43);
+  -webkit-text-stroke-width: 0.25px;
+  -webkit-text-stroke-color: rgb(255, 255, 255)
+}
+
+.modal-disable-icon {
+  font-size: 150%;
+  color: #FF701E;
   -webkit-text-stroke-width: 0.25px;
   -webkit-text-stroke-color: rgb(255, 255, 255)
 }

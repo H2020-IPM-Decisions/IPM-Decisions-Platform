@@ -13,7 +13,7 @@
         [tooltip]="tolTemplateStatusRep"
         delay="1000"
         [ngClass]="{'badge-secondary':!status, 'badge-info': status==1, 'badge-success': status==2, 'badge-warning':status==3, 'badge-danger': status==4}"
-        *ngIf="!(executionType==='link') && !isLegend">
+        *ngIf="!(executionType==='link') && !isLegend && !isDisabled">
         <span *ngIf="dssDescription" class="infoIcon fa-stack">
           <a class="details" (click)="openModal(infoModal,'modal-lg')">
             <i class="fas fa-circle fa-stack-1x"></i>
@@ -141,6 +141,31 @@
             <i class="fas fa-info-circle fa-stack-1x"></i>
           </a>
         </span>
+    </span>
+
+    <!-- Template for Disabled DSS Badge -->
+    <span id="myDssBadgeId" class="badge dss-badge containerBox"
+        [tooltip]="tolTemplateStatusRep"
+        delay="1000"
+        [ngClass]="'badge-secondary'"
+        *ngIf="isDisabled">
+        <span *ngIf="dssDescription" class="infoIcon fa-stack">
+          <a class="details" (click)="openModal(infoModal,'modal-lg')">
+            <i class="fas fa-circle fa-stack-1x"></i>
+            <i class="fas fa-info-circle fa-stack-1x"></i>
+          </a>
+        </span>
+        <span class="fa-stack" 
+          [ngClass]="'disable-icon'">
+            <a class="details" (click)="openModal(disabledModal,'modal-lg')" [title]="('Common_labels.Click_to_open' | translate)">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-ban fa-stack-2x"></i>
+            </a>
+        </span>
+            <h6  *ngIf="!isLegend" class="TextBoxMargin textColorNormal"><b>{{code | eppoCode }}</b></h6>
+        <ng-template #notValidDSS>
+            <h6  *ngIf="!isLegend" class="TextBoxMargin textColorNormal"><b>{{code | eppoCode }}</b></h6>
+        </ng-template>
     </span>
 
     <!--<span *ngIf="dss && !isLegend" class="dss text-truncate" placement="bottom">{{dss}}</span>-->
@@ -286,6 +311,40 @@
         <div class="col-sm-9">
             <p>{{ scheduleTime }}</p>
         </div>
+    </div>
+  </div>
+  <div class="modal-footer pull-right">
+    <button type="button" class="btn btn-info push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+  </div>
+</ng-template>
+
+<!-- DISABLED MODAL -->
+<ng-template #disabledModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      <span class="fa-stack" 
+        [ngClass]="'modal-disable-icon'">
+              <i class="fas fa-circle fa-stack-1x"></i>
+              <i class="fa fa-ban fa-stack-2x"></i>
+      </span> 
+      <b>{{ 'Common_labels.Disabled' | translate }}</b>
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body scrollable m-2">
+    <div class="form-group row">
+      <div class="col-md justify-content-center">
+          <div class="alert text-muted"
+            [ngClass]="'alert-warning'">
+              <strong>
+                {{ 'Error_messages.DSS_disabled_info_message' | translate }}
+              <br>
+              <br>
+              </strong>
+          </div>
+      </div>
     </div>
   </div>
   <div class="modal-footer pull-right">

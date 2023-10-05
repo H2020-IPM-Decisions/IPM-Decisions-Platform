@@ -151,6 +151,7 @@ export interface IDssFlat {
     warningStatusPerDay?: number[];
     warningStatus?: number;
     warningStatusRepresentation?: string;
+    isDisabled?: boolean
 }
 
 export interface IAuthors {

@@ -10,6 +10,7 @@ import { Farm } from '@app/shared/models/farm.model';
 import { catchError } from "rxjs/operators";
 import { NGXLogger } from "ngx-logger";
 import { TranslationService } from '@app/shared/services/translation.service';
+import { IDSSDisabled, IDSSDisabledFormData } from '../account/edit-disabled-dss/edit-disabled-dss.model';
 
 @Injectable({ providedIn: 'root' })
 export class DssSelectionService {
@@ -31,6 +32,16 @@ export class DssSelectionService {
     return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 
+  getIntegratedValidatedDss(): Observable<HttpResponse<DssSelection[]>> {
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss` + "/platform_validated/true?executionType=ONTHEFLY"
+    return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
+  }
+
+  getExternalValidatedDss(): Observable<HttpResponse<DssSelection[]>> {
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss` + "/platform_validated/true?executionType=LINK"
+    return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
+  }
+
   getDssByMultipleCrops(crops: string): Observable<HttpResponse<DssSelection[]>> {
     const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`
     return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
@@ -40,6 +51,17 @@ export class DssSelectionService {
     const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`+ "/platform_validated/true"
     return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
+
+  getIntegratedDssByMultipleCropsAndPlatformValidated(crops: string): Observable<HttpResponse<DssSelection[]>> {
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`+ "/platform_validated/true?executionType=ONTHEFLY"
+    return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
+  }
+
+  getExternalDssByMultipleCropsAndPlatformValidated(crops: string): Observable<HttpResponse<DssSelection[]>> {
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`+ "/platform_validated/true?executionType=LINK"
+    return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
+  }
+
 
   getDssByMultipleCropsAndFarmLocation(crops: string, lat: number, lon: number): Observable<HttpResponse<DssSelection[]>> {
     const requestUrl = `${environment.apiUrl}/api/upr/dss/filter?cropCodes=${crops}&LocationLongitude=${lon}&LocationLatitude=${lat}&executionType=ONTHEFLY`;
@@ -101,6 +123,39 @@ export class DssSelectionService {
   getDssList(): Observable<HttpResponse<IDssFlat[]>> {
     let requestUrl = `${environment.apiUrl}/api/upr/dss`;
     return this._http.get<IDssFlat[]>(requestUrl, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: 'response'
+    });
+  }
+
+  getDssListForDisablingManagement(): Observable<HttpResponse<IDSSDisabled[]>>{
+    let requestUrl = `${environment.apiUrl}/api/upr/admin/disabled-dss`;
+    return this._http.get<IDSSDisabled[]>(requestUrl, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: 'response'
+    });
+  }
+
+  disableDss(requestBody: object): Observable<HttpResponse<any>> {
+    let requestUrl = `${environment.apiUrl}/api/upr/admin/disabled-dss`;
+    return this._http.post(requestUrl, requestBody, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: "response",
+    });
+  }
+
+  enableDss(dssId: string): Observable<HttpResponse<any>>{
+    let requestUrl = `${environment.apiUrl}/api/upr/admin/disabled-dss?ids=${dssId}`;
+    return this._http.delete(requestUrl, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -244,6 +299,17 @@ export class DssSelectionService {
       dssParameters: JSON.stringify(jsonSchemaForm),
       dssVersion: dss.version
     }
+  }
+
+  getDisableDssFromData(DSSId: string, DSSVersion: string, DSSModelId: string, DSSModelVersion: string): IDSSDisabledFormData{
+
+    return {
+      DSSID: DSSId,
+      DSSVERSION: DSSVersion,
+      DSSMODELID: DSSModelId,
+      DSSMODELVERSION: DSSModelVersion
+    }
+
   }
   
   convertDssSelectionModelToDssFlat(dss: DssSelection): IDssFlat[] {
