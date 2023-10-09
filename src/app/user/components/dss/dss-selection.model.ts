@@ -151,6 +151,7 @@ export interface IDssFlat {
     warningStatusPerDay?: number[];
     warningStatus?: number;
     warningStatusRepresentation?: string;
+    isDisabled?: boolean
 }
 
 export interface IAuthors {
@@ -184,4 +185,10 @@ export interface IDssTaskStatusDto {
 export interface IDssForAdaptation {
     dssOriginalResult?: IDssFlat;
     dssOriginalParameters?: DssJSONSchema;
+}
+
+export interface IDssHistoricalData{
+    taskStatusDto?: IDssTaskStatusDto;
+    taskType?: string;
+
 }

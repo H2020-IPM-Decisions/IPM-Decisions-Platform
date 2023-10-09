@@ -31,7 +31,8 @@ export class DssInfoListComponent implements OnInit {
     homeTitle: string;
     footerMiddleContent: any;
     cropsEppoCodes: EppoCode[] = [];
-    data: DssSelection[] = [];
+    integratedDss: DssSelection[] = [];
+    externalDss: DssSelection[] = [];
     selCropForm: FormGroup;
     modalRef: BsModalRef;
     areCropsSelected: boolean = false;
@@ -144,12 +145,34 @@ export class DssInfoListComponent implements OnInit {
 
     showDSS(): void{
 
-      this._dssSelectionService.getValidatedDss().subscribe(
+      this._dssSelectionService.getIntegratedValidatedDss().subscribe(
 
         (response: HttpResponse<DssSelection[]>) => {
 
-            this.data = response.body;
-            if(this.data.length == 0){
+            this.integratedDss = response.body;
+            if(this.integratedDss.length == 0){
+              this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_availability_error",
+                                                          "Common_labels.Warning",
+                                                          "toast-warning");
+            }
+
+        },
+        (error: HttpErrorResponse) => {
+
+            this._logger.error("Dss models selection error",error);
+            this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_retrived_error",
+                                                        "Common_labels.Error",
+                                                        "toast-error");
+        }
+
+      );
+
+      this._dssSelectionService.getExternalValidatedDss().subscribe(
+
+        (response: HttpResponse<DssSelection[]>) => {
+
+            this.externalDss = response.body;
+            if(this.externalDss.length == 0){
               this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_availability_error",
                                                           "Common_labels.Warning",
                                                           "toast-warning");
@@ -266,10 +289,10 @@ export class DssInfoListComponent implements OnInit {
     onConfirmSelectedCrops(): void {
         let cropsSelectedArray: string[] = this.selCropForm.get('cropSelection').get('cropEppoCode').value;
         const crops: string = cropsSelectedArray.join('%2C')
-        this._dssSelectionService.getDssByMultipleCropsAndPlatformValidated(crops).subscribe(
+        this._dssSelectionService.getIntegratedDssByMultipleCropsAndPlatformValidated(crops).subscribe(
         (response: HttpResponse<DssSelection[]>) => {
-            this.data = response.body;
-            if(this.data.length > 0) {
+            this.integratedDss = response.body;
+            if(this.integratedDss.length > 0) {
             this.areCropsSelected = true;
             
             this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
@@ -283,11 +306,29 @@ export class DssInfoListComponent implements OnInit {
             this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_retrived_error","Common_labels.Error","toast-error");
         }
         );
+
+        this._dssSelectionService.getExternalDssByMultipleCropsAndPlatformValidated(crops).subscribe(
+          (response: HttpResponse<DssSelection[]>) => {
+              this.externalDss = response.body;
+              if(this.externalDss.length > 0) {
+              this.areCropsSelected = true;
+              
+              this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
+              } else {
+              this.areCropsSelected = false;
+              this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_availability_error","Common_labels.Warning","toast-warning");
+              }
+          },
+          (error: HttpErrorResponse) => {
+              this._logger.error("Dss models selection error",error);
+              this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_retrived_error","Common_labels.Error","toast-error");
+          }
+          );
       this.DssListFiltered = true;
     }
 
   onDisableFilters(): void{
-    this.showDSS()
+    this.showDSS();
     this.DssListFiltered = false;
   }
 

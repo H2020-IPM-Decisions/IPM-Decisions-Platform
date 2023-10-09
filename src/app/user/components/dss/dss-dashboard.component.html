@@ -53,7 +53,8 @@
                       [isQueued]="isQueued(item.dssTaskStatusDto.jobStatus)"
                       [isScheduled]="isScheduled(item.dssTaskStatusDto.jobStatus)"
                       [scheduleTime]="item.dssTaskStatusDto.scheduleTime" 
-                      [isValid]="item.isValid">
+                      [isValid]="item.isValid"
+                      [isDisabled]="item.isDisabled">
                     </eppo-code-badge>
                   </span>
                 </div>
@@ -174,6 +175,13 @@
                   <i class="fas fa-exclamation-circle fa-stack-2x"></i>
                 </span>
                 <strong>{{ 'DSS_use_dashboard.Green_triangle_description' | translate }}</strong>
+              </li>
+              <li class="mb-3">
+                <span class="disable-icon fa-stack">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-ban fa-stack-2x"></i>
+                </span>
+                <strong>{{ 'DSS_use_dashboard.Ban_icon_description' | translate }}</strong>
               </li>
             </ul>
           </li>

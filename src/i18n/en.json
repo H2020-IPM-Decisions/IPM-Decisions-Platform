@@ -65,12 +65,15 @@
         "Change_password":"Change Password",
         "Return_to_user_edit":"Return to 'User Account'", 
         "Clear_filter":"Clear Filter",
-        "Avaiable_DSS": "Avaiable DSS",
+        "Available_DSS": "Available DSS",
         "Select_days": "Select days",
         "Dss_info": "DSS informations",
         "Start_Date":"Start Date",
         "End_Date":"End Date",
-        "Download":"Download"
+        "Download":"Download",
+        "Integrated_Dss":"Integrated DSS",
+        "External_Dss":"External DSS",
+        "Disabled":"Disabled"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -113,7 +116,8 @@
         "DSS_use_dashboard_error_standard_info":"The DSS has returned a warning or error when run. The message provided by the DSS (in the default language used by the DSS) was:",
         "New_password_is_required":"New password is required",
         "File_name_is_required":"File name is required",
-        "Seasonal_data_download_error": "Failed to download seasonal data"
+        "Seasonal_data_download_error": "Failed to download seasonal data",
+        "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment"
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
@@ -329,7 +333,8 @@
         "Green_triangle_description":"Error did not prevent the model from running and does not affect the reliability of the model risk prediction",
         "Yellow_triangle_description":"Error did not stop the model from running, but does reduce reliability of model risk prediction",
         "Red_triangle_description":"Error prevented the model from running",
-        "Platform_rationale_information":"This platform is making DSS available from external DSS developers. The 'gold standard' for DSS is that they have been created by reputable DSS developers, tested and widely used in practice over many sites and seasons, and the results published in peer reviewed journals to demonstrate useful predictive value in the countries in which they are recommended for use. Few DSS meet all these criteria. IPM Decisions aims to make a wide range of DSS available for testing and use. Therefore, it is not a requirement that all these criteria are met for a DSS to be available through this Platform. Instead the IPM Decisions management take reasonable care that the DSS are from reputable developers and further information is provided about each DSS, to enable an informed choice about use. The DSS can be used to assist (not replace) decisions by experienced crop managers, taking into account all relevant local pest risk factors. Farmers and advisers should not use the DSS to guide decisions on substantial areas of crop until they have gained experience in their use and have found the risk estimates reliable. Erroneous risk estimates can occur, particularly if conditions are outside those experienced during DSS development and testing. Farmer groups and research organisations are encouraged to test the DSS in the field, amend the DSS to suit local conditions if necessary, and share their experience."
+        "Platform_rationale_information":"This platform is making DSS available from external DSS developers. The 'gold standard' for DSS is that they have been created by reputable DSS developers, tested and widely used in practice over many sites and seasons, and the results published in peer reviewed journals to demonstrate useful predictive value in the countries in which they are recommended for use. Few DSS meet all these criteria. IPM Decisions aims to make a wide range of DSS available for testing and use. Therefore, it is not a requirement that all these criteria are met for a DSS to be available through this Platform. Instead the IPM Decisions management take reasonable care that the DSS are from reputable developers and further information is provided about each DSS, to enable an informed choice about use. The DSS can be used to assist (not replace) decisions by experienced crop managers, taking into account all relevant local pest risk factors. Farmers and advisers should not use the DSS to guide decisions on substantial areas of crop until they have gained experience in their use and have found the risk estimates reliable. Erroneous risk estimates can occur, particularly if conditions are outside those experienced during DSS development and testing. Farmer groups and research organisations are encouraged to test the DSS in the field, amend the DSS to suit local conditions if necessary, and share their experience.",
+        "Ban_icon_description":"The DSS is disabled"
     },
     "DSS_details": {
         "Title":"DSS Details",
@@ -397,7 +402,13 @@
         "for":"for",
         "on":"on",
         "Note_message":"You can compare up to five models simultaneously",
-        "Group_chart_popup_title":"Group Chart Information"
+        "Group_chart_popup_title":"Group Chart Information",
+        "Select_one_model": "Select one model",
+        "Use_historical_data":"Use historical data",
+        "Note_message_historical_data":"Select only one model to compare with his historical data",
+        "Compare_with_historical_data":"Compare historical data",
+        "Current":"Current",
+        "Historical":"Historical"
     },
     "User_guide": {
         "Title":"User guide"

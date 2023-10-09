@@ -1,7 +1,7 @@
 import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
-import { IDssFlat } from "./dss-selection.model";
+import { IDssFlat, IDssHistoricalData } from "./dss-selection.model";
 import { DssSelectionService } from "./dss-selection.service";
 import { NGXLogger } from "ngx-logger";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -25,6 +25,11 @@ export class DssComparisonComponent implements OnInit, OnDestroy {
     public numberOfModelSelected: number = 0;
     public selectedModelsId: string[] = [];
     public selectedDays: number = 0;
+    public historicalDataSelected: boolean = false;
+    public historicalDataTaskMap: Map<string, string>;
+    public isSyncronizing: boolean = false;
+    public completedTasksDssResults: IDssFlat[];
+    public historicalTaskTypes: string[] = ["DSS_comparison.Current", "DSS_comparison.Historical"];
 
     constructor(
         protected _dssSelectionService: DssSelectionService,
@@ -75,6 +80,29 @@ export class DssComparisonComponent implements OnInit, OnDestroy {
         );
     }
 
+    compareWithHistoricalData(): void{
+        this._dssSelectionService.getDssHistoricalData(this.selectedModelsId[0]).subscribe(
+
+            (response: HttpResponse<IDssHistoricalData[]>) => {
+
+                this.historicalDataTaskMap = new Map<string, string>();
+                this.completedTasksDssResults = [];
+
+                for(var task of response.body){
+                    this.historicalDataTaskMap.set(task.taskType, task.taskStatusDto.id);
+                }
+
+                this.isSyncronizing = true;
+                this.checkStatusOfDSS("Current");
+
+              },
+              (error: HttpErrorResponse) => {
+                this._logger.error("Dss comparison error",error);
+                this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_comparison_model_retrived_error","Common_labels.Error","toast-error");
+              }
+        );
+    }
+
     ngOnDestroy() {
         if(this.$startSubscription) {
             this.$startSubscription.unsubscribe();
@@ -96,10 +124,19 @@ export class DssComparisonComponent implements OnInit, OnDestroy {
    checkSelectedModelsLenght(): boolean {
         //const selectedModelsId: string[] = this.modelSelectionForm.get('modelSelection').get('modelId').value;
         if((this.selectedModelsId.length > 1)){
-            return true
+            return true;
         } else {
-            return false
+            return false;
         }
+    }
+
+    checkModelIsSelected(): boolean{
+        if((this.selectedModelsId.length == 1)){
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     onSelectModel(modelId: string): void {
@@ -146,5 +183,56 @@ export class DssComparisonComponent implements OnInit, OnDestroy {
               this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_comparison_model_retrived_error","Common_labels.Error","toast-error");
             }
         );
+    }
+
+    checkBoxChanged(state: boolean){
+        this.historicalDataSelected = state;
+        if(this.historicalDataSelected){
+            this.maxSelections = 1;
+        }else{
+            this.maxSelections = 5;
+        }
+    }
+
+    private reloadData(counter: number, taskType: string): void {
+        this._logger.info("Reloading!");
+        let intervalId = setInterval(() => {
+            counter = counter - 1;
+            if (counter < 1) {
+                clearInterval(intervalId);
+                this.checkStatusOfDSS(taskType);
+            }
+        }, 1000)
+    }
+
+    public checkStatusOfDSS(taskType: string): void {
+        this._dssSelectionService.getHistoricalDataTaskStatus(this.selectedModelsId[0], this.historicalDataTaskMap.get(taskType)).subscribe(
+            (data: HttpResponse<any>) => {
+                if (data.body.dssDetailedResult) {
+                    if (data.body.dssTaskStatusDto.jobStatus === "Succeeded") {
+                        this._logger.debug("Revised Data received: ", data.body.dssDetailedResult);
+                        this.completedTasksDssResults.push(data.body.dssDetailedResult);
+                        if(taskType == "Current"){
+                            this.checkStatusOfDSS("Historical");
+                        }else{
+                            this.areModelsSelected = true;
+                            this.dssInComparison = this.completedTasksDssResults;
+                            this.isSyncronizing = false;
+                            this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_comparison_models_retrived", "Common_labels.Success", "toast-success");
+                        }
+                        
+                    } else {
+                        this._logger.debug("DSS Data not Ready: ", data.body.dssDetailedResult);
+                        this.reloadData(0,taskType);
+                    }
+                }
+
+            },
+            (error: HttpErrorResponse) => {
+                this._logger.error("Dss adaptation error", error);
+                this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_comparison_model_retrived_error","Common_labels.Error","toast-error");
+            }
+        );
+        
     }
 }

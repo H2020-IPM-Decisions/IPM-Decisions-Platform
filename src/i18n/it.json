@@ -65,12 +65,15 @@
         "Change_password":"Modifica Password",
         "Return_to_user_edit":"Ritorna a 'Profilo Utente'",
         "Clear_filter":"Pulisci filtro",
-        "Avaiable_DSS":"DSS Disponibili",
+        "Available_DSS":"DSS Disponibili",
         "Select_days":"Seleziona giorni",
         "Dss_info":"Informazioni DSS",
         "Start_Date":"Data di inizio",
         "End_Date":"Data di fine",
-        "Download":"Scarica"
+        "Download":"Scarica",
+        "Integrated_Dss":"DSS integrati",
+        "External_Dss":"DSS esterni",
+        "Disabled":"Disabilitato"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
@@ -113,7 +116,8 @@
         "DSS_use_dashboard_error_standard_info":"Il DSS ha restituito un avviso o un errore durante l'esecuzione. Il messaggio fornito dal DSS (nella lingua predefinita utilizzata dal DSS) era:",
         "New_password_is_required":"La nuova password è obbligatoria",
         "File_name_is_required":"Inserire nome del file",
-        "Seasonal_data_download_error": "Impossibile scaricare i dati stagionali"
+        "Seasonal_data_download_error": "Impossibile scaricare i dati stagionali",
+        "DSS_disabled_info_message":"Il DSS è stato disabilitato ed al momento non può essere utilizzato"
     },
     "Information_messages":{
         "Farm_deletion_message":"Stai per eliminare un'azienda agricola. Vuoi procedere?",
@@ -329,7 +333,8 @@
         "Green_triangle_description":"L'errore non ha impedito l'esecuzione del modello e non influisce sull'affidabilità della previsione del rischio.",
         "Yellow_triangle_description":"L'errore non ha impedito l'esecuzione del modello, ma riduce l'affidabilità della previsione del rischio.",
         "Red_triangle_description":"Un errore ha impedito l'esecuzione del modello",
-        "Platform_rationale_information":"Questa piattaforma rende disponibili i DSS di sviluppatori esterni. Il 'gold standard' per i DSS è che siano stati creati da sviluppatori di DSS affidabili, testati e ampiamente utilizzati nella pratica in molti siti e stagioni, e che i risultati siano stati pubblicati su riviste specializzate per dimostrare un valore predittivo utile nei Paesi in cui se ne raccomanda l'uso. Pochi DSS soddisfano tutti questi criteri. IPM Decisions mira a rendere disponibile un'ampia gamma di DSS da testare e utilizzare. Pertanto, perché un DSS sia disponibile attraverso questa piattaforma non è richiesto che tutti questi criteri siano soddisfatti. La direzione di IPM Decisions si assicura invece che i DSS provengano da sviluppatori affidabili e che vengano fornite ulteriori informazioni su ciascun DSS, in modo da consentire una scelta consapevole sull'utilizzo. I DSS possono essere utilizzati per assistere (non sostituire) le decisioni degli esperti delle colture, tenendo conto di tutti i fattori di rischio locali. Gli agricoltori e i consulenti non dovrebbero utilizzare il DSS per prendere decisioni su aree di coltivazione consistenti finché non hanno acquisito esperienza nel suo utilizzo e non hanno trovato le stime del rischio affidabili. Possono verificarsi stime di rischio errate, soprattutto se le condizioni sono diverse da quelle sperimentate durante lo sviluppo e la sperimentazione del DSS. I gruppi di agricoltori e le organizzazioni di ricerca sono incoraggiati a testare il DSS sul campo, a modificarlo per adattarlo alle condizioni locali, se necessario, e a condividere la loro esperienza."
+        "Platform_rationale_information":"Questa piattaforma rende disponibili i DSS di sviluppatori esterni. Il 'gold standard' per i DSS è che siano stati creati da sviluppatori di DSS affidabili, testati e ampiamente utilizzati nella pratica in molti siti e stagioni, e che i risultati siano stati pubblicati su riviste specializzate per dimostrare un valore predittivo utile nei Paesi in cui se ne raccomanda l'uso. Pochi DSS soddisfano tutti questi criteri. IPM Decisions mira a rendere disponibile un'ampia gamma di DSS da testare e utilizzare. Pertanto, perché un DSS sia disponibile attraverso questa piattaforma non è richiesto che tutti questi criteri siano soddisfatti. La direzione di IPM Decisions si assicura invece che i DSS provengano da sviluppatori affidabili e che vengano fornite ulteriori informazioni su ciascun DSS, in modo da consentire una scelta consapevole sull'utilizzo. I DSS possono essere utilizzati per assistere (non sostituire) le decisioni degli esperti delle colture, tenendo conto di tutti i fattori di rischio locali. Gli agricoltori e i consulenti non dovrebbero utilizzare il DSS per prendere decisioni su aree di coltivazione consistenti finché non hanno acquisito esperienza nel suo utilizzo e non hanno trovato le stime del rischio affidabili. Possono verificarsi stime di rischio errate, soprattutto se le condizioni sono diverse da quelle sperimentate durante lo sviluppo e la sperimentazione del DSS. I gruppi di agricoltori e le organizzazioni di ricerca sono incoraggiati a testare il DSS sul campo, a modificarlo per adattarlo alle condizioni locali, se necessario, e a condividere la loro esperienza.",
+        "Ban_icon_description":"Il DSS è disabilitato"
     },
     "DSS_details": {
         "Title":"Dettagli del DSS",
@@ -397,7 +402,13 @@
         "for":"per",
         "on":"su",
         "Note_message":"Si possono confrontare fino ad un massimo di cinque modelli contemporaneamente",
-        "Group_chart_popup_title":"Diagrammi"
+        "Group_chart_popup_title":"Diagrammi",
+        "Select_one_model": "Seleziona un modello",
+        "Use_historical_data":"Utilizzo dati storici",
+        "Note_message_historical_data":"Selezionare solo un modello per confrontarlo con i suoi dati storici",
+        "Compare_with_historical_data":"Confronta dati storici",
+        "Current":"Attuale",
+        "Historical":"Storico"
     },
     "User_guide": {
         "Title":"Guida utente"

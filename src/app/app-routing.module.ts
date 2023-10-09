@@ -55,6 +55,7 @@ import { ResetPasswordComponent } from './core/components/reset-password/reset-p
 import { UserInformationPageComponent } from './user/components/user-information-page/user-information-page.component';
 import { EditPasswordComponent } from './user/components/account/edit-password/edit-password.component';
 import { DssInfoListComponent } from './dss-info-list/dss-info-list.component';
+import { DisabledDSSComponent } from './user/components/account/edit-disabled-dss/edit-disabled-dss.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -185,6 +186,12 @@ const appRoutes: Routes = [
   {
     path: "admin/source-repo",
     component: SourceRepoComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Admin], claims: [] },
+  },
+  {
+    path: "admin/account/edit/disabled-dss",
+    component: DisabledDSSComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.Admin], claims: [] },
   },

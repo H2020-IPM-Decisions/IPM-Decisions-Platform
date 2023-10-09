@@ -94,6 +94,8 @@ import { UserInformationPageComponent } from './user/components/user-information
 import { EditPasswordComponent } from './user/components/account/edit-password/edit-password.component';
 import { DssInfoListComponent } from './dss-info-list/dss-info-list.component';
 import { DssInfoRowComponent } from './dss-info-list/dss-info-row.component';
+import { DisabledDSSComponent } from './user/components/account/edit-disabled-dss/edit-disabled-dss.component';
+import { DssDisabledRowComponent } from './user/components/account/edit-disabled-dss/edit-disabled-dss-row.component';
 
 @NgModule({
   declarations: [
@@ -171,7 +173,9 @@ import { DssInfoRowComponent } from './dss-info-list/dss-info-row.component';
     UserInformationPageComponent,
     EditPasswordComponent,
     DssInfoListComponent,
-    DssInfoRowComponent
+    DssInfoRowComponent,
+    DisabledDSSComponent,
+    DssDisabledRowComponent
   ],
   imports: [
     BrowserModule,

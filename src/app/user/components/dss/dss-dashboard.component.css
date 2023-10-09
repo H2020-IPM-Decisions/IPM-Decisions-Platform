@@ -52,6 +52,17 @@ fieldset {
     -webkit-text-stroke-color: rgb(255, 255, 255)
 }
 
+.disable-icon {
+    font-size: 100%;
+    color: #FF701E;
+    -webkit-text-stroke-width: 0.25px;
+    -webkit-text-stroke-color: rgb(255, 255, 255)
+}
+
+.disable-icon .fa-circle{
+    color: white;
+}
+
 .errorIcon-yellow .fa-square {
     color: rgb(247 165 43);
     bottom: -2px;
