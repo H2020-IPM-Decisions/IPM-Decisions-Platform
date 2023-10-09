@@ -402,7 +402,13 @@
         "for":"per",
         "on":"su",
         "Note_message":"Si possono confrontare fino ad un massimo di cinque modelli contemporaneamente",
-        "Group_chart_popup_title":"Diagrammi"
+        "Group_chart_popup_title":"Diagrammi",
+        "Select_one_model": "Seleziona un modello",
+        "Use_historical_data":"Utilizzo dati storici",
+        "Note_message_historical_data":"Selezionare solo un modello per confrontarlo con i suoi dati storici",
+        "Compare_with_historical_data":"Confronta dati storici",
+        "Current":"Attuale",
+        "Historical":"Storico"
     },
     "User_guide": {
         "Title":"Guida utente"

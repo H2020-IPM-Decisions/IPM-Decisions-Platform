@@ -186,3 +186,9 @@ export interface IDssForAdaptation {
     dssOriginalResult?: IDssFlat;
     dssOriginalParameters?: DssJSONSchema;
 }
+
+export interface IDssHistoricalData{
+    taskStatusDto?: IDssTaskStatusDto;
+    taskType?: string;
+
+}

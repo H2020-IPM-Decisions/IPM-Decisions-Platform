@@ -402,7 +402,13 @@
         "for":"for",
         "on":"on",
         "Note_message":"You can compare up to five models simultaneously",
-        "Group_chart_popup_title":"Group Chart Information"
+        "Group_chart_popup_title":"Group Chart Information",
+        "Select_one_model": "Select one model",
+        "Use_historical_data":"Use historical data",
+        "Note_message_historical_data":"Select only one model to compare with his historical data",
+        "Compare_with_historical_data":"Compare historical data",
+        "Current":"Current",
+        "Historical":"Historical"
     },
     "User_guide": {
         "Title":"User guide"
