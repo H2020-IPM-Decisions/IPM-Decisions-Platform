@@ -1,13 +1,17 @@
 import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
-import { Component, OnInit, ViewChild, ElementRef, TemplateRef, Input } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef, TemplateRef, Input} from "@angular/core";
 import { Subscription } from "rxjs";
-import { IDssFlat, DssJSONSchema, IDssResultChart, IDssChartGroup, DssParameters } from "./dss-selection.model";
+import { IDssFlat, DssJSONSchema, IDssResultChart, IDssChartGroup, DssParameters, IDssAdaptationSaveBody } from "./dss-selection.model";
 import { DssSelectionService } from "./dss-selection.service";
 import { NGXLogger } from "ngx-logger";
 import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
 import { JsonEditorService } from './json-editor/json-editor.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import * as $ from 'jquery'
+import { TranslationService } from '@app/shared/services/translation.service';
+import * as moment from 'moment';
+
+
 
 @Component({
     selector: "app-dss-adaptation-body",
@@ -24,7 +28,6 @@ export class DssAdaptationComponentBody implements OnInit {
     @Input() public originalDssDetails!: IDssFlat;
     @Input() public originalDssParameters!: DssJSONSchema;
 
-    public editorForOriginalDSS: any;
     public originalWarningChart: { data: number[], labels: string[], chartInformation: IDssResultChart };
     public originalDssChartGroups: IDssChartGroup[] = [];
     public selectedOriginalDssChartGroup: IDssChartGroup;
@@ -39,6 +42,27 @@ export class DssAdaptationComponentBody implements OnInit {
     public showRevisedRiskChart: boolean = false;
     public revisedDssStatusTaskId: string;
     public isSyncronizing: boolean = false;
+    public chartLabelsDateFormat: string = "DD/MM/YYYY";
+    public htmlFormDateFormat: string = "YYYY-MM-DD";
+    public startDate: string;
+    public endDate: string;
+    public minDate: string;
+    public maxDate: string;
+    public selectedRevisedChartGroupData: number[][];
+    public selectedRevisedChartGroupLabels: string[][];
+    public selectedOriginalChartGroupData: number[][];
+    public selectedOriginalChartGroupLabels: string[][];
+    public startDateFormMax: string;
+    public twoWeekAhead: string;
+    public isStartDateSelected: boolean = false;
+    public isEndDateSelected: boolean = false;
+    public revisedDataShowed: boolean = true;
+    public configurationExecuted: boolean;
+    public lastRevisedStartDateSelected: string = "0000-00-00";
+    public lastRevisedEndDateSelected: string = "0000-00-00";
+    public lastOriginalStartDateSelected: string = "0000-00-00";
+    public lastOriginalEndDateSelected: string = "0000-00-00";
+    
 
     public modalRef: BsModalRef;
 
@@ -51,10 +75,12 @@ export class DssAdaptationComponentBody implements OnInit {
         private _logger: NGXLogger,
         private _toastrTranslated: ToastrTranslationService,
         private _jsonEditorService: JsonEditorService,
-        private _modalService: BsModalService
+        private _modalService: BsModalService,
+        private _translation: TranslationService
     ) { }
 
     public ngOnInit(): void {
+        
         this._logger.debug("Original DSS Details: ", this.originalDssDetails);
         this._logger.debug("Original DSS Parameters: ", this.originalDssParameters);
         // Chart Define
@@ -67,33 +93,140 @@ export class DssAdaptationComponentBody implements OnInit {
         }
 
         // Editor Define
-        if (this.editorForOriginalDSS) {
-            this._jsonEditorService.reset(this.editorForOriginalDSS);
-        }
         if (this.editorForRevisedDSS) {
             this._jsonEditorService.reset(this.editorForRevisedDSS);
         }
         if (this.$subscriptionEditorForRevised) {
             this.$subscriptionEditorForRevised.unsubscribe();
         }
-        this.editorForOriginalDSS = this._jsonEditorService.createJsonEditor('json-editor-form-original', this.originalDssParameters);
         this.revisedDssParameters = this.originalDssParameters;
-        this.editorForRevisedDSS = this._jsonEditorService.createJsonEditor('json-editor-form-revised', this.revisedDssParameters);
-        $('#json-editor-form-original label').filter(function () { return $(this).text() === 'root'; }).css("display", "none");
-        $('#json-editor-form-revised label').filter(function () { return $(this).text() === 'root'; }).css("display", "none");
-        $('#json-editor-form-original input').each(function () { $(this).attr('disabled', 'disabled'); });
-        $('#json-editor-form-revised label').each(function () { $(this).text($(this).text().replace("(YYYY-MM-DD)", "")); });
-        $('#json-editor-form-original label').each(function () { $(this).text($(this).text().replace("(YYYY-MM-DD)", "")); });
+        this.editorForRevisedDSS = this._jsonEditorService.createJsonEditor('json-editor-form', this.revisedDssParameters);
+
+        $('#json-editor-form input').css("width","50%");
+        $('#json-editor-form label').filter(function () { return $(this).text() === 'root'; }).css("display", "none");
+        $('#json-editor-form label').each(function () { $(this).text($(this).text().replace("(YYYY-MM-DD)", "")); });
+        
+        this.editJsonEditorForm();
 
         this.$subscriptionEditorForRevised = this._jsonEditorService.listenChanges(this.editorForRevisedDSS).subscribe(() => this.revisedEditorChanges());
 
         // For the first time i get the Data, assign the original data to the revised variables
         this.revisedDssChartGroups = this.originalDssChartGroups;
-        this.selectedRevisedDssChartGroup = this.selectedOriginalDssChartGroup;
+        this.selectedRevisedDssChartGroup = this.selectedOriginalDssChartGroup; // bisogna creare
         this.revisedWarningChart = this.originalWarningChart;
         this.showRevisedRiskChart = true;
         this.revisedDssDetails = this.originalDssDetails;
         this.revisedDssParameters = this.originalDssParameters;
+
+        this.configurationExecuted = false;
+        this.initDataPicker("revised");
+        this.initDataAndLalbelsArrayOfSelectedGroupChart("revised");
+        this.initDataAndLalbelsArrayOfSelectedGroupChart("original");
+        
+    }
+
+    private initDataPicker(mode: string){
+
+        if(mode == "revised"){
+
+            this.minDate = moment(this.revisedDssDetails.warningStatusLabels[0], this.chartLabelsDateFormat)
+            .format(this.htmlFormDateFormat);
+
+            this.maxDate = moment(this.revisedDssDetails.warningStatusLabels[this.revisedDssDetails.warningStatusLabels.length-1], this.chartLabelsDateFormat)
+            .format(this.htmlFormDateFormat);
+
+            this.startDateFormMax = moment(this.revisedDssDetails.warningStatusLabels[this.revisedDssDetails.warningStatusLabels.length-1], this.chartLabelsDateFormat)
+            .subtract(14, "days").format(this.htmlFormDateFormat);
+
+        }else{
+
+            this.minDate = moment(this.originalDssDetails.warningStatusLabels[0], this.chartLabelsDateFormat)
+            .format(this.htmlFormDateFormat);
+
+            this.maxDate = moment(this.originalDssDetails.warningStatusLabels[this.originalDssDetails.warningStatusLabels.length-1], this.chartLabelsDateFormat)
+            .format(this.htmlFormDateFormat);
+
+            this.startDateFormMax = moment(this.originalDssDetails.warningStatusLabels[this.originalDssDetails.warningStatusLabels.length-1], this.chartLabelsDateFormat)
+            .subtract(14, "days").format(this.htmlFormDateFormat);
+
+        }
+    }
+
+    private refreshDatePicker(mode: string){
+
+        let startDateSelector = <HTMLInputElement>document.getElementById("startDate");
+        let endDateSelector = <HTMLInputElement>document.getElementById("endDate");
+
+        if( mode == "revised"){
+
+            $('#startDate').val(`${this.lastRevisedStartDateSelected}`);
+            $('#endDate').val(`${this.lastRevisedEndDateSelected}`);
+            
+        }else if( mode == "original"){
+
+            $('#startDate').val(`${this.lastOriginalStartDateSelected}`);
+            $('#endDate').val(`${this.lastOriginalEndDateSelected}`);
+        }else{
+
+            $('#startDate').val(`0000-00-00`);
+            $('#endDate').val(`0000-00-00`);
+        }
+
+        console.log(startDateSelector.value);
+        console.log(endDateSelector.value);
+
+        if(startDateSelector.value != "0000-00-00"){
+            this.isStartDateSelected = true;
+
+            if(endDateSelector.value != "0000-00-00"){
+                this.isEndDateSelected = true;
+            }else{
+                this.isEndDateSelected = false;
+            }
+
+        }else{
+            this.isStartDateSelected = false;
+            endDateSelector.value = "0000-00-00";
+            this.isEndDateSelected = false;
+        }
+
+
+    }
+    private initDataAndLalbelsArrayOfSelectedGroupChart(mode: string): void{
+
+        if(mode == "revised"){
+
+            this.selectedRevisedChartGroupData = [];
+            this.selectedRevisedChartGroupLabels = [];
+
+            for(let resultParameter of this.selectedRevisedDssChartGroup.resultParameters){
+                this.selectedRevisedChartGroupData.push(resultParameter.data.slice());
+                this.selectedRevisedChartGroupLabels.push(resultParameter.labels.slice());
+            }
+        }else{
+
+            this.selectedOriginalChartGroupData = [];
+            this.selectedOriginalChartGroupLabels = [];
+
+            for(let resultParameter of this.selectedOriginalDssChartGroup.resultParameters){
+                this.selectedOriginalChartGroupData.push(resultParameter.data.slice());
+                this.selectedOriginalChartGroupLabels.push(resultParameter.labels.slice());
+            }
+        }
+        
+    }
+
+    editJsonEditorForm(){
+        
+        let labelTag;
+        let dssParams = this._jsonEditorService.getValues(this.editorForRevisedDSS);
+        for(var key in dssParams){
+            for(var subkey in dssParams[key]){
+                let value = (dssParams[key][subkey] != "") ? dssParams[key][subkey] : this._translation.getTranslatedMessage("DSS_adaptation.Not_defined");
+                labelTag = $("<label>").attr('for', `root\[${key}\]\[${subkey}\]`).text(`${this._translation.getTranslatedMessage("DSS_adaptation.Default")}: ${value}`).css({"font-weight": "bold"});
+                $(`input[name=root\\[${key}\\]\\[${subkey}\\]`).after(labelTag);
+            }
+        }
     }
 
     public onChangeChartGroup(selectedChart) {
@@ -143,7 +276,7 @@ export class DssAdaptationComponentBody implements OnInit {
     public onSubmitRevisedParameters(): void {
 
         if (this.editorForRevisedDSS && this.revisedEditorValid) {
-            let inputParams: DssParameters = new DssParameters(JSON.stringify(this._jsonEditorService.getValues(this.editorForRevisedDSS)))
+            let inputParams: DssParameters = new DssParameters(JSON.stringify(this._jsonEditorService.getValues(this.editorForRevisedDSS)));
             this.$subscriptionSubmit = this._dssSelectionService.sendDssParametersForAdaptation(this.revisedDssDetails.id, inputParams).subscribe(
                 (data: HttpResponse<any>) => {
                     if (data) {
@@ -159,6 +292,7 @@ export class DssAdaptationComponentBody implements OnInit {
                 }
             )
         }
+        //this.editJsonEditorForm();
     }
 
     public checkStatusOfDSS(): void {
@@ -171,9 +305,16 @@ export class DssAdaptationComponentBody implements OnInit {
                         this.revisedDssDetails = data.body.dssDetailedResult;
                         this.revisedDssChartGroups = this.revisedDssDetails.chartGroups;
                         this.revisedWarningChart = this._dssSelectionService.getDssWarningChart(this.revisedDssDetails.warningStatusPerDay, this.revisedDssDetails.warningStatusLabels);
-                        this.selectedRevisedDssChartGroup = this.selectedOriginalDssChartGroup;
+                        this.selectedRevisedDssChartGroup = this.revisedDssChartGroups[0];
                         this.showRevisedRiskChart = true;
+                        this.initDataPicker("revised");
+                        this.initDataAndLalbelsArrayOfSelectedGroupChart("revised");
+                        this.refreshDatePicker("none");
                         this.isSyncronizing = false;
+                        if(!this.configurationExecuted){
+                            this.configurationExecuted = true;
+                        }
+                        this.configurationExecuted = true;
                         this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_adaptation_parameters_updated", "Common_labels.Success", "toast-success");
                     } else {
                         this._logger.debug("DSS Data not Ready: ", data.body.dssDetailedResult);
@@ -199,5 +340,177 @@ export class DssAdaptationComponentBody implements OnInit {
                 this.checkStatusOfDSS();
             }
         }, 1000)
+    }
+
+    saveParametrization(): void{
+        let dssParameters = JSON.stringify(this._jsonEditorService.getValues(this.editorForRevisedDSS));
+        let inputTextBox = <HTMLInputElement>document.getElementById("dss_name");
+        let dssName = <string>inputTextBox.value;
+        let dssToSave: IDssAdaptationSaveBody = {
+            name: dssName,
+            dssParameters: dssParameters
+        };
+        this._dssSelectionService.saveAdaptedDss(this.revisedDssDetails.id, dssToSave).subscribe(
+            (data: HttpResponse<any>) => {
+                console.log("Model Saved");
+            },
+            (error: HttpErrorResponse) => {
+                console.log("Model Not Saved");
+            }
+        );
+    }
+
+    public startDateSelected(event: { target: HTMLInputElement }): void{
+
+        let endDateSelector = <HTMLInputElement>document.getElementById("endDate");
+        endDateSelector.value = "0000-00-00";
+        this.isEndDateSelected = false;
+    
+        this.startDate =  (event.target.value as unknown) as string;
+        if(this.revisedDataShowed){
+            this.lastRevisedStartDateSelected = this.startDate;
+        }else{
+            this.lastOriginalStartDateSelected = this.startDate;
+        }
+        this.twoWeekAhead = moment(this.startDate, this.htmlFormDateFormat).add(14, "days").format(this.htmlFormDateFormat);
+        this.isStartDateSelected = true;
+    
+    }
+
+    public startDateSelectedInPopup(event: { target: HTMLInputElement }): void{
+
+        let endDateSelector = <HTMLInputElement>document.getElementById("endDatePopup");
+        endDateSelector.value = "0000-00-00";
+        this.isEndDateSelected = false;
+
+        this.startDate =  (event.target.value as unknown) as string;
+        this.twoWeekAhead = moment(this.startDate, this.htmlFormDateFormat).add(14, "days").format(this.htmlFormDateFormat);
+        this.isStartDateSelected = true;
+    
+    }
+    
+    public endDateSelected(event: { target: HTMLInputElement }): void{
+        this.endDate =  (event.target.value as unknown) as string;
+        this.isEndDateSelected = true;
+        if(this.revisedDataShowed){
+            this.lastRevisedEndDateSelected = this.endDate;
+        }else{
+            this.lastOriginalEndDateSelected = this.endDate;
+        }
+    }
+
+    public onConfirmDays(mode: string): void {
+
+        let indexes = this.getIndexForDateFiltering(mode);
+    
+        let startIndex = indexes[0];
+        let endIndex = indexes[1];
+
+        let subArrayOfWarningStatusPerDay: number[];
+        let subArrayOfWarningStatusLabels: string[];
+
+        if( mode == "revised"){
+            subArrayOfWarningStatusPerDay = this.revisedDssDetails.warningStatusPerDay.slice(startIndex, endIndex + 1);
+            subArrayOfWarningStatusLabels = this.revisedDssDetails.warningStatusLabels.slice(startIndex, endIndex + 1);
+            
+            this.revisedWarningChart = this._dssSelectionService.getDssWarningChart(subArrayOfWarningStatusPerDay, subArrayOfWarningStatusLabels);
+        }else{
+            subArrayOfWarningStatusPerDay = this.originalDssDetails.warningStatusPerDay.slice(startIndex, endIndex + 1);
+            subArrayOfWarningStatusLabels = this.originalDssDetails.warningStatusLabels.slice(startIndex, endIndex + 1);
+
+            
+            this.originalWarningChart = this._dssSelectionService.getDssWarningChart(subArrayOfWarningStatusPerDay, subArrayOfWarningStatusLabels);
+        }
+    
+        this.filterGroupChartInformationInDateIntervall(startIndex, endIndex, mode);
+    
+        
+    
+    }
+
+    private getIndexForDateFiltering(mode: string): number[]{
+
+        let startDateInLabelFormat = moment(this.startDate, this.htmlFormDateFormat).format(this.chartLabelsDateFormat);
+        let endDateInLabelFormat = moment(this.endDate, this.htmlFormDateFormat).format(this.chartLabelsDateFormat);
+
+        let startIndex: number;
+        let endIndex: number;
+
+        if( mode == "revised"){
+            startIndex = this.revisedDssDetails.warningStatusLabels.indexOf(startDateInLabelFormat);
+            endIndex = this.revisedDssDetails.warningStatusLabels.indexOf(endDateInLabelFormat);
+        }else{
+            startIndex = this.originalDssDetails.warningStatusLabels.indexOf(startDateInLabelFormat);
+            endIndex = this.originalDssDetails.warningStatusLabels.indexOf(endDateInLabelFormat);
+        }
+    
+        
+    
+        return [startIndex, endIndex];
+    
+    }
+
+    private filterGroupChartInformationInDateIntervall(startIndex: number, endIndex: number, mode: string): void{
+
+        let newResultParameters = [];
+
+        if( mode == "revised"){
+
+            for(let resultParameter of this.selectedRevisedDssChartGroup.resultParameters){
+                newResultParameters.push(resultParameter);
+            }
+            
+            for (let index = 0; index < newResultParameters.length; index++) {
+            
+                newResultParameters[index].data = this.selectedRevisedChartGroupData[index].slice(startIndex, endIndex + 1);
+                newResultParameters[index].labels = this.selectedRevisedChartGroupLabels[index].slice(startIndex, endIndex + 1);
+            
+            }
+          
+            this.selectedRevisedDssChartGroup.resultParameters = newResultParameters;
+
+        }else{
+            for(let resultParameter of this.selectedOriginalDssChartGroup.resultParameters){
+                newResultParameters.push(resultParameter);
+            }
+            
+            for (let index = 0; index < newResultParameters.length; index++) {
+            
+                newResultParameters[index].data = this.selectedOriginalChartGroupData[index].slice(startIndex, endIndex + 1);
+                newResultParameters[index].labels = this.selectedOriginalChartGroupLabels[index].slice(startIndex, endIndex + 1);
+            
+            }
+          
+            this.selectedOriginalDssChartGroup.resultParameters = newResultParameters;
+        }
+    
+        
+    
+    }
+
+    closeModal(){
+        let startDateSelector = <HTMLInputElement>document.getElementById("startDate");
+        startDateSelector.value = this.startDate;
+    
+        let endDateSelector = <HTMLInputElement>document.getElementById("endDate");
+        endDateSelector.value = this.endDate;
+    
+        this.modalRef.hide();
+    }
+
+    showOriginalData(){
+        this.revisedDataShowed = false;
+        this.initDataPicker("original");
+        this.refreshDatePicker("original");
+        $('#revisedDataButton').css({"background-color":"#3f6ad8", "border-color":"#3f6ad8"});
+        $('#originalDataButton').css({"background-color":"orange", "border-color":"orange"});
+    }
+
+    showRevisedData(){
+        this.revisedDataShowed = true;
+        this.initDataPicker("revised");
+        this.refreshDatePicker("revised");
+        $('#revisedDataButton').css({"background-color":"orange", "border-color":"orange"});
+        $('#originalDataButton').css({"background-color":"#3f6ad8", "border-color":"#3f6ad8"});
     }
 }

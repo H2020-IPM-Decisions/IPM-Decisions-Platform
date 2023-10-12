@@ -32,7 +32,6 @@
 
 .parametersFormContainer {
     border: 1px solid rgb(110, 158, 247);
-    max-height: 200px;
     /* max-width: 265px; */
     overflow: auto;
 }
@@ -161,4 +160,25 @@ td {
     /* left: 50%; */
     transform: translate(-50%,-50%);
     z-index: -1;
+}
+
+.risk-chart-popup-btn{
+  position: absolute;
+  bottom: 150px;
+  right: 10px;
+  text-shadow: 2px 2px 3px rgba(15,15,15,.56);
+  font-size: 150%;
+}
+
+.group-chart-popup-btn{    
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  text-shadow: 2px 2px 3px rgba(15,15,15,.56);
+  font-size: 150%;
+}
+
+.btn-revised{
+    background-color: orange;
+    border-color: orange;
 }

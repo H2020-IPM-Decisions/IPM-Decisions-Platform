@@ -1,0 +1,107 @@
+<div id="topbar" class="d-sm-flex align-items-center fixed-top">
+    <div class="container d-flex">
+      <!-- Session Bar -->
+      <div *ngIf="isSessionExpiring() && isLoggedIn" class="sessionBarShow">
+        <div class="row">
+            <div class="warningIcon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div *ngIf="!sessionIsExpired" class="col d-flex justify-content-center">
+                {{ 'Information_messages.Session_expiration_message_start' | translate }} &nbsp;<span class="countdown">{{ sessionTimeLeftToShow }}</span>&nbsp; {{ 'Common_labels.Seconds' | translate }}.&nbsp;
+                <span class="clickToExtend" (click)="extendSession()">{{ 'Common_labels.Click_here' | translate }}</span>&nbsp; {{ 'Information_messages.Session_expiration_message_end' | translate }}
+            </div>
+            <div *ngIf="sessionIsExpired" class="col d-flex justify-content-center"> {{ 'Information_messages.Session_expired' | translate }} </div>
+            
+        </div>
+      </div>
+        <div class="contact-info mr-auto">
+  
+        </div>
+        <app-language-selector></app-language-selector>
+        <div class="social-links btn-registration" *ngIf="(!isLoggedIn)">
+            <a class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>{{ 'Common_labels.Login' | translate }}</span></a>
+            <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>{{ 'Common_labels.Register' | translate }}</span></a>
+        </div>
+        <div class="ml-3 header-user-info" *ngIf="(isLoggedIn)">
+          <i class='bx bx-user mr-2'></i><span>{{ username }}</span>
+          <a class="ml-2" (click)="navigateToPrivatePages()"><span class="loggedFarmLink"><i class="bx bx-log-in"></i>
+            {{ 'Home.IPM_Private' | translate }}</span></a>
+        </div>
+    </div>
+</div>
+
+<!-- ======= Header ======= -->
+<header id="header" class=" bannerHeader fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="row">
+        <div class="col-md-4 col-xs-12">
+          <a routerLink="/">
+            <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+          </a>
+        </div>
+        <div class="col-md-8 col-xs-12 text-align-top-left desc-header">
+          <span><strong>{{ homeTitle }}</strong></span>
+        </div>
+      </div>
+    </div>
+</header><!-- End Header -->
+
+<section class="clients-section spad">
+    <div class="container">
+        <form [formGroup]="selCropForm">
+            <div class="row">
+              <div class="col-md-6 col-xs-12">
+                <fieldset class="border p-3 m-2">
+                  <legend class="w-auto px-1 text-muted h5">
+                    <b>{{ 'DSS_model_selection.Crops_selection' | translate }}</b>
+                  </legend>
+                  <div formGroupName="cropSelection">
+                    <div class="form-group row">
+                      <div class="col-sm-11">
+                        <select multiple class="form-control" id="crops" formControlName="cropEppoCode">
+                          <ng-template ngFor let-crop [ngForOf]="cropsEppoCodes">
+                            <option value="{{crop.code}}">{{ crop.text }}</option>
+                          </ng-template>
+                        </select>
+                        <small class="hideForMobile col-2 pull-left mt-2" [innerHtml]="( 'DSS_model_selection.Multiselect_tip' | translate )"></small>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-md-6 col-xs-12">
+                <button class="btn btn-info btn-sm m-4" (click)="onConfirmSelectedCrops()"
+                          [disabled]="!selCropForm.get('cropSelection').get('cropEppoCode').valid">
+                          {{ 'DSS_linked.Filter_DSS' | translate }}
+                </button>
+                <button class="btn btn-danger btn-sm m-4" *ngIf="DssListFiltered" (click)="onDisableFilters()">
+                          {{ 'Common_labels.Clear_filter' | translate }}
+                </button>
+              </div>
+            </div>
+          </form>
+    </div>
+</section>
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-md-5 eu-flag" [innerHtml]="footerContent"></div>
+        <div class="col-md-5 ">
+          <div class="row" [innerHtml]="footerMiddleContent"></div>
+        </div>
+        <div class="col-md-2 ">
+          <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2022 <b>{{ 'Common_labels.All_rights_reserved' | translate }} Engineering</b> <br>VAT: 05724831002
+    </div>
+</footer><!-- End Footer -->
+  
+<div>
+  
+</div>
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>

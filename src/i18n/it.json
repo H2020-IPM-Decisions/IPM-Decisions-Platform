@@ -442,7 +442,11 @@
         "for":"per",
         "on":"su",
         "Data_is_updating":"Aggiornamento dati",
-        "Please_wait":"Attendere prego"
+        "Please_wait":"Attendere prego",
+        "Default":"Default",
+        "Not_defined":"Non definito",
+        "Run_configuration":"Esegui configurazione",
+        "Dss_name":"Nome Dss"
     },
     "DSS_linked": {
         "Title":"DSS Esterni",

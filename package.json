@@ -51,6 +51,7 @@
     "ngx-logger": "^4.1.2",
     "ngx-owl-carousel-o": "^2.1.1",
     "ngx-toastr": "^11.3.3",
+    "ol": "^6.15.1",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.7",
     "save": "^2.4.0",

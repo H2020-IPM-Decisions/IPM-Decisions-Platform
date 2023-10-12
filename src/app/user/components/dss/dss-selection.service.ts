@@ -4,7 +4,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import { environment } from "@src/environments/environment";
-import { IDssFlat, IDssFormData, DssJSONSchema, DssModel, DssSelection, IDssResultChart, DssParameters, IDssParameters, IDssForAdaptation, IDssHistoricalData } from './dss-selection.model';
+import { IDssFlat, IDssFormData, DssJSONSchema, DssModel, DssSelection, IDssResultChart, DssParameters, IDssParameters, IDssForAdaptation, IDssHistoricalData, IDssAdaptationSaveBody } from './dss-selection.model';
 import { Field } from '@app/shared/models/field.model';
 import { Farm } from '@app/shared/models/farm.model';
 import { catchError } from "rxjs/operators";
@@ -33,12 +33,12 @@ export class DssSelectionService {
   }
 
   getIntegratedValidatedDss(): Observable<HttpResponse<DssSelection[]>> {
-    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss` + "/platform_validated/true?executionType=ONTHEFLY"
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss` + `/platform_validated/true?executionType=ONTHEFLY&language=${sessionStorage.getItem("selectedLanguage")}`
     return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 
   getExternalValidatedDss(): Observable<HttpResponse<DssSelection[]>> {
-    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss` + "/platform_validated/true?executionType=LINK"
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss` + `/platform_validated/true?executionType=LINK&language=${sessionStorage.getItem("selectedLanguage")}`
     return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 
@@ -53,12 +53,12 @@ export class DssSelectionService {
   }
 
   getIntegratedDssByMultipleCropsAndPlatformValidated(crops: string): Observable<HttpResponse<DssSelection[]>> {
-    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`+ "/platform_validated/true?executionType=ONTHEFLY"
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`+ `/platform_validated/true?executionType=ONTHEFLY&language=${sessionStorage.getItem("selectedLanguage")}`
     return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 
   getExternalDssByMultipleCropsAndPlatformValidated(crops: string): Observable<HttpResponse<DssSelection[]>> {
-    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`+ "/platform_validated/true?executionType=LINK"
+    const requestUrl = `${environment.apiUrl}/api/dss/rest/dss/crops/${crops}`+ `/platform_validated/true?executionType=LINK&language=${sessionStorage.getItem("selectedLanguage")}`
     return this._http.get<DssSelection[]>(requestUrl, { observe: 'response' });
   }
 
@@ -521,7 +521,7 @@ export class DssSelectionService {
   }
 
   public getDssToAdapt(dssId: string): Observable<HttpResponse<IDssForAdaptation>>{ 
-    let requestUrl = `${environment.apiUrl}/api/upr/adaptation/${dssId}?days=30`;
+    let requestUrl = `${environment.apiUrl}/api/upr/adaptation/${dssId}`;
     return this._http.get<IDssForAdaptation>(requestUrl, {
       headers: {
         "Content-Type": "application/json",
@@ -574,6 +574,17 @@ export class DssSelectionService {
   public getHistoricalDataTaskStatus(dssId: string, taskId: string): Observable<HttpResponse<any>> {
     let requestUrl = `${environment.apiUrl}/api/upr/adaptation/${dssId}/task?id=${taskId}`;
     return this._http.get(requestUrl, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      observe: "response",
+    });
+  }
+
+  public saveAdaptedDss(dssId: string, dssSaveParameters: IDssAdaptationSaveBody): Observable<HttpResponse<any>>{
+    let requestUrl = `${environment.apiUrl}/api/upr/adaptation/${dssId}/save`;
+    return this._http.post(requestUrl, dssSaveParameters, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",

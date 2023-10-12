@@ -192,3 +192,8 @@ export interface IDssHistoricalData{
     taskType?: string;
 
 }
+
+export interface IDssAdaptationSaveBody{
+    name: string,
+    dssParameters: string,
+}

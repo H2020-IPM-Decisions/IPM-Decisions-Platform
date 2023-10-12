@@ -442,7 +442,11 @@
         "for":"for",
         "on":"on",
         "Data_is_updating":"Data is updating",
-        "Please_wait":"Please wait"
+        "Please_wait":"Please wait",
+        "Default":"Default",
+        "Not_defined":"Not defined",
+        "Run_configuration":"Run configuration",
+        "Dss_name":"Dss Name"
     },
     "DSS_linked": {
         "Title":"External Link DSS Dashboard",

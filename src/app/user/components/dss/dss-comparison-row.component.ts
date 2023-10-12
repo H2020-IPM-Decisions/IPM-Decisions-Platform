@@ -14,6 +14,7 @@ import * as moment from 'moment';
 export class DssComparisonRowComponent implements OnInit {
 
     @Input() public dssDetail!: IDssFlat;
+    @Input() public comparisonMode!: string;
 
     warning: {data:number[],labels:string[],chartInformation:IDssResultChart};
     dssChartGroups: IDssChartGroup[] = [];
@@ -94,7 +95,7 @@ export class DssComparisonRowComponent implements OnInit {
   
       }
       
-        this.selectedDssChartGroup = selectedChart;
+      this.selectedDssChartGroup = selectedChart;
   
       this.initDataAndLalbelsArrayOfSelectedGroupChart();
   
@@ -142,7 +143,7 @@ export class DssComparisonRowComponent implements OnInit {
 
     public startDateSelected(event: { target: HTMLInputElement }): void{
 
-      let endDateSelector = <HTMLInputElement>document.getElementById("endDate" + this.dssDetail.id);
+      let endDateSelector = <HTMLInputElement>document.getElementById("endDate" + this.dssDetail.id + this.comparisonMode);
       endDateSelector.value = "0000-00-00";
       this.isEndDateSelected = false;
 
@@ -174,10 +175,10 @@ export class DssComparisonRowComponent implements OnInit {
     }
 
     closeModal(){
-        let startDateSelector = <HTMLInputElement>document.getElementById("startDate" + this.dssDetail.id);
+        let startDateSelector = <HTMLInputElement>document.getElementById("startDate" + this.dssDetail.id + this.comparisonMode);
         startDateSelector.value = this.startDate;
     
-        let endDateSelector = <HTMLInputElement>document.getElementById("endDate" + this.dssDetail.id);
+        let endDateSelector = <HTMLInputElement>document.getElementById("endDate" + this.dssDetail.id + this.comparisonMode);
         endDateSelector.value = this.endDate;
     
         this.modalRef.hide();

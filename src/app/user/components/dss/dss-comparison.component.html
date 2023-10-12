@@ -18,13 +18,7 @@
                 <div class="form-group row">
                     <div class="col-md-10">
                         <legend class="w-auto px-1 text-muted h5">
-                            <b *ngIf="!historicalDataSelected">{{ 'DSS_comparison.Select_two_or_more_models' | translate }}</b>
-                            <b *ngIf="historicalDataSelected">{{ 'DSS_comparison.Select_one_model' | translate }}</b>
-                            <div>
-                                <input type="checkbox" id="historical_data_checkbox" name="historical_data" 
-                                (change)="checkBoxChanged($event.target.checked)"/>
-                                <label class="ml-1" for="historical_data">{{ 'DSS_comparison.Use_historical_data' | translate }}</label>
-                              </div>
+                            <b>{{ 'DSS_comparison.Select_one_model' | translate }}</b>
                         </legend>
                         <!--<select multiple class="form-control" id="models" formControlName="modelId" data-maxoption="2">
                             <ng-template ngFor let-model [ngForOf]="dssList">
@@ -35,11 +29,8 @@
                             </ng-template>
                         </select>-->
                         <div class="mb-2">
-                            <strong *ngIf="!historicalDataSelected" class="col-2 pull-left text-muted"
+                            <strong class="col-2 pull-left text-muted"
                                 [innerHtml]="( 'DSS_comparison.Note_message' | translate )">
-                            </strong>
-                            <strong *ngIf="historicalDataSelected" class="col-2 pull-left text-muted"
-                                [innerHtml]="( 'DSS_comparison.Note_message_historical_data' | translate )">
                             </strong>
                         </div>
                         <div class="container scrollableContainer">
@@ -68,6 +59,19 @@
                         </button>
                     </div>
                 </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <input [disabled]="!checkModelIsSelected() && !historicalDataSelected" type="checkbox" id="historical_data_checkbox" name="historical_data" 
+                        (change)="checkBoxChanged($event.target.checked)" />
+                        <label class="ml-1 mt-2" for="historical_data">{{ 'DSS_comparison.Use_historical_data' | translate }}</label>
+                    </div>
+                    <div class="row">  
+                        <div class="mb-2">
+                            <strong class="col-2 pull-left text-muted" [innerHtml]="( 'DSS_comparison.Note_message_historical_data' | translate )">
+                            </strong>
+                        </div>  
+                    </div>
+                </div>
             </div>
         </form>
         <div *ngIf="!isSyncronizing; else showSynchronizing">
@@ -81,11 +85,11 @@
                 <div class="form-group d-flex text-muted pt-2">
                     <div class="mr-auto">
                         <label class="h6">
-                            <b *ngIf="!historicalDataSelected">{{ 'DSS_comparison.Model' | translate }} {{i+1}} : {{ model.dssModelName }} ({{ model.dssName }}) 
+                            <b *ngIf="!isHistoricalMode">{{ 'DSS_comparison.Model' | translate }} {{i+1}} : {{ model.dssModelName }} ({{ model.dssName }}) 
                                 {{ 'DSS_comparison.for' | translate }} {{ model.cropEppoCode | eppoCode }} {{ 'DSS_comparison.on' | translate }} 
                                 {{ model.farmName }}
                             </b>
-                            <b *ngIf="historicalDataSelected">
+                            <b *ngIf="isHistoricalMode">
                                 {{ historicalTaskTypes[i] | translate }}: {{ model.dssModelName }} ({{ model.dssName }}) 
                                 {{ 'DSS_comparison.for' | translate }} {{ model.cropEppoCode | eppoCode }} {{ 'DSS_comparison.on' | translate }} 
                                 {{ model.farmName }}
@@ -93,7 +97,8 @@
                         </label>
                     </div>
                 </div>
-                <app-dss-comparison-row [dssDetail]="model"></app-dss-comparison-row>
+                <app-dss-comparison-row *ngIf="isHistoricalMode" [comparisonMode]="historicalModes[i]" [dssDetail]="model"></app-dss-comparison-row>
+                <app-dss-comparison-row *ngIf="!isHistoricalMode" [comparisonMode]=" " [dssDetail]="model"></app-dss-comparison-row>
             </div>
         </div>
     </div>

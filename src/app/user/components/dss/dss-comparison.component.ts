@@ -30,6 +30,8 @@ export class DssComparisonComponent implements OnInit, OnDestroy {
     public isSyncronizing: boolean = false;
     public completedTasksDssResults: IDssFlat[];
     public historicalTaskTypes: string[] = ["DSS_comparison.Current", "DSS_comparison.Historical"];
+    public historicalModes:string[] = ["Current", "Historical"];
+    public isHistoricalMode : boolean = false;
 
     constructor(
         protected _dssSelectionService: DssSelectionService,
@@ -62,6 +64,7 @@ export class DssComparisonComponent implements OnInit, OnDestroy {
 
     onConfirmSelectedModels(): void {
         //let selectedModelsId: string[] = this.modelSelectionForm.get('modelSelection').get('modelId').value;
+        this.isHistoricalMode = false;
         this._dssSelectionService.getDssToCompare(this.selectedModelsId, this.selectedDays).subscribe(
             (response: HttpResponse<IDssFlat[]>) => {
               this.dssInComparison = response.body;
@@ -81,6 +84,7 @@ export class DssComparisonComponent implements OnInit, OnDestroy {
     }
 
     compareWithHistoricalData(): void{
+        this.isHistoricalMode = true;
         this._dssSelectionService.getDssHistoricalData(this.selectedModelsId[0]).subscribe(
 
             (response: HttpResponse<IDssHistoricalData[]>) => {
@@ -223,7 +227,7 @@ export class DssComparisonComponent implements OnInit, OnDestroy {
                         
                     } else {
                         this._logger.debug("DSS Data not Ready: ", data.body.dssDetailedResult);
-                        this.reloadData(0,taskType);
+                        this.reloadData(5,taskType);
                     }
                 }
 
