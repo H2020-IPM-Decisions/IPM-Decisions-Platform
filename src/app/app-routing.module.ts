@@ -76,7 +76,7 @@ const appRoutes: Routes = [
   { path: "confirmemail", component: ConfirmMailComponent },
   { path: "resetpassword", component: ResetPasswordComponent },
   { path: "dss-info-list", component: DssInfoListComponent },
-  { path: "risk-map", component: RiskMapComponent },
+  //{ path: "risk-map", component: RiskMapComponent },
   {
     path: "admin/account",
     component: AdminAccountComponent,

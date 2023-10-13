@@ -62,6 +62,7 @@ export class DssAdaptationComponentBody implements OnInit {
     public lastRevisedEndDateSelected: string = "0000-00-00";
     public lastOriginalStartDateSelected: string = "0000-00-00";
     public lastOriginalEndDateSelected: string = "0000-00-00";
+    public showingMode: string;
     
 
     public modalRef: BsModalRef;
@@ -101,6 +102,7 @@ export class DssAdaptationComponentBody implements OnInit {
         }
         this.revisedDssParameters = this.originalDssParameters;
         this.editorForRevisedDSS = this._jsonEditorService.createJsonEditor('json-editor-form', this.revisedDssParameters);
+        this.showingMode = "revised";
 
         $('#json-editor-form input').css("width","50%");
         $('#json-editor-form label').filter(function () { return $(this).text() === 'root'; }).css("display", "none");
@@ -119,13 +121,13 @@ export class DssAdaptationComponentBody implements OnInit {
         this.revisedDssParameters = this.originalDssParameters;
 
         this.configurationExecuted = false;
-        this.initDataPicker("revised");
+        this.initDatePicker("revised");
         this.initDataAndLalbelsArrayOfSelectedGroupChart("revised");
         this.initDataAndLalbelsArrayOfSelectedGroupChart("original");
         
     }
 
-    private initDataPicker(mode: string){
+    private initDatePicker(mode: string){
 
         if(mode == "revised"){
 
@@ -159,27 +161,29 @@ export class DssAdaptationComponentBody implements OnInit {
 
         if( mode == "revised"){
 
-            $('#startDate').val(`${this.lastRevisedStartDateSelected}`);
-            $('#endDate').val(`${this.lastRevisedEndDateSelected}`);
-            
+            startDateSelector.value = this.lastRevisedStartDateSelected;
+            endDateSelector.value = this.lastRevisedEndDateSelected;
+
         }else if( mode == "original"){
 
-            $('#startDate').val(`${this.lastOriginalStartDateSelected}`);
-            $('#endDate').val(`${this.lastOriginalEndDateSelected}`);
+            startDateSelector.value = this.lastOriginalStartDateSelected;
+            endDateSelector.value = this.lastOriginalEndDateSelected;
+
         }else{
 
-            $('#startDate').val(`0000-00-00`);
-            $('#endDate').val(`0000-00-00`);
+            startDateSelector.value = "0000-00-00";
+            endDateSelector.value = "0000-00-00";
         }
 
-        console.log(startDateSelector.value);
-        console.log(endDateSelector.value);
-
-        if(startDateSelector.value != "0000-00-00"){
+        if(startDateSelector.value != "0000-00-00" &&  startDateSelector.value != ""){
             this.isStartDateSelected = true;
+            this.startDate = startDateSelector.value;
+            this.twoWeekAhead = moment(this.startDate, this.htmlFormDateFormat).add(14, "days").format(this.htmlFormDateFormat);
 
-            if(endDateSelector.value != "0000-00-00"){
+            if(endDateSelector.value != "0000-00-00" && endDateSelector.value != ""){
                 this.isEndDateSelected = true;
+                this.endDate = endDateSelector.value;
+                
             }else{
                 this.isEndDateSelected = false;
             }
@@ -192,6 +196,7 @@ export class DssAdaptationComponentBody implements OnInit {
 
 
     }
+
     private initDataAndLalbelsArrayOfSelectedGroupChart(mode: string): void{
 
         if(mode == "revised"){
@@ -307,7 +312,7 @@ export class DssAdaptationComponentBody implements OnInit {
                         this.revisedWarningChart = this._dssSelectionService.getDssWarningChart(this.revisedDssDetails.warningStatusPerDay, this.revisedDssDetails.warningStatusLabels);
                         this.selectedRevisedDssChartGroup = this.revisedDssChartGroups[0];
                         this.showRevisedRiskChart = true;
-                        this.initDataPicker("revised");
+                        this.initDatePicker("revised");
                         this.initDataAndLalbelsArrayOfSelectedGroupChart("revised");
                         this.refreshDatePicker("none");
                         this.isSyncronizing = false;
@@ -365,13 +370,21 @@ export class DssAdaptationComponentBody implements OnInit {
         let endDateSelector = <HTMLInputElement>document.getElementById("endDate");
         endDateSelector.value = "0000-00-00";
         this.isEndDateSelected = false;
-    
+
+        if(this.revisedDataShowed){
+            this.lastRevisedEndDateSelected = endDateSelector.value;
+        }else{
+            this.lastOriginalEndDateSelected = endDateSelector.value;
+        }
+
         this.startDate =  (event.target.value as unknown) as string;
+
         if(this.revisedDataShowed){
             this.lastRevisedStartDateSelected = this.startDate;
         }else{
             this.lastOriginalStartDateSelected = this.startDate;
         }
+
         this.twoWeekAhead = moment(this.startDate, this.htmlFormDateFormat).add(14, "days").format(this.htmlFormDateFormat);
         this.isStartDateSelected = true;
     
@@ -383,7 +396,20 @@ export class DssAdaptationComponentBody implements OnInit {
         endDateSelector.value = "0000-00-00";
         this.isEndDateSelected = false;
 
+        if(this.revisedDataShowed){
+            this.lastRevisedEndDateSelected = endDateSelector.value;
+        }else{
+            this.lastOriginalEndDateSelected = endDateSelector.value;
+        }
+
         this.startDate =  (event.target.value as unknown) as string;
+
+        if(this.revisedDataShowed){
+            this.lastRevisedStartDateSelected = this.startDate;
+        }else{
+            this.lastOriginalStartDateSelected = this.startDate;
+        }
+        
         this.twoWeekAhead = moment(this.startDate, this.htmlFormDateFormat).add(14, "days").format(this.htmlFormDateFormat);
         this.isStartDateSelected = true;
     
@@ -500,7 +526,8 @@ export class DssAdaptationComponentBody implements OnInit {
 
     showOriginalData(){
         this.revisedDataShowed = false;
-        this.initDataPicker("original");
+        this.initDatePicker("original");     
+        this.showingMode = "original";
         this.refreshDatePicker("original");
         $('#revisedDataButton').css({"background-color":"#3f6ad8", "border-color":"#3f6ad8"});
         $('#originalDataButton').css({"background-color":"orange", "border-color":"orange"});
@@ -508,7 +535,8 @@ export class DssAdaptationComponentBody implements OnInit {
 
     showRevisedData(){
         this.revisedDataShowed = true;
-        this.initDataPicker("revised");
+        this.initDatePicker("revised");
+        this.showingMode = "revised";
         this.refreshDatePicker("revised");
         $('#revisedDataButton').css({"background-color":"orange", "border-color":"orange"});
         $('#originalDataButton').css({"background-color":"#3f6ad8", "border-color":"#3f6ad8"});

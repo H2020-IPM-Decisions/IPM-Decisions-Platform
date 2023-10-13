@@ -31,21 +31,21 @@
                 <button id="originalDataButton" class="btn btn-primary mb-1" (click)="showOriginalData()" [disabled]="!revisedDataShowed"> ORIGINAL </button>&nbsp;
                 <button id="revisedDataButton" class="btn btn-primary btn-revised mb-1" (click)="showRevisedData()" [disabled]="revisedDataShowed"> REVISED </button>
               </div>
-              <div *ngIf="revisedDataShowed">
-                <div class="row">
-                  <div class="col">
-                    <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>&nbsp;
-                    <input type="date" id="startDate" name="period-start" [min]="minDate" [max]="startDateFormMax" (change)="startDateSelected($event)">
-                    &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>&nbsp;
-                    <input type="date" id="endDate" name="period-end" [min]="twoWeekAhead" [max]="maxDate" 
-                    (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
-                    <button class="btn btn-primary ml-2" (click)="onConfirmDays('revised')" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
-                  </div>
+              <div class="row">
+                <div class="col">
+                  <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>&nbsp;
+                  <input type="date" id="startDate" name="period-start" [min]="minDate" [max]="startDateFormMax" (change)="startDateSelected($event)">
+                  &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>&nbsp;
+                  <input type="date" id="endDate" name="period-end" [min]="twoWeekAhead" [max]="maxDate" 
+                  (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
+                  <button class="btn btn-primary ml-2" (click)="onConfirmDays(showingMode)" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
                 </div>
+              </div>
+              <div *ngIf="revisedDataShowed">  
                 <div class="row">
                   <div class="col myHeading text-muted">{{ 'DSS_details.Risk_score' | translate }}</div>
                 </div>
-                <div class="row">
+                <div class="row mb-3">
                   <div class="col" *ngIf="showRevisedRiskChart">
                     <custom-chart [data]="revisedWarningChart.data" [labels]="revisedWarningChart.labels"
                       [config]="revisedWarningChart.chartInformation" [chartId]="'adaptationChartRevised-'+revisedDssDetails.id" [isAPopUpChart]="false">
@@ -87,19 +87,9 @@
               </div>
               <div *ngIf="!revisedDataShowed">
                 <div class="row">
-                  <div class="col">
-                    <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>&nbsp;
-                    <input type="date" id="startDate" name="period-start" [min]="minDate" [max]="startDateFormMax" (change)="startDateSelected($event)">
-                    &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>&nbsp;
-                    <input type="date" id="endDate" name="period-end" [min]="twoWeekAhead" [max]="maxDate" 
-                    (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
-                    <button class="btn btn-primary ml-2" (click)="onConfirmDays('original')" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
-                  </div>
-                </div>
-                <div class="row">
                   <div class="col myHeading text-muted">{{ 'DSS_details.Risk_score' | translate }}</div>
                 </div>
-                <div class="row">
+                <div class="row mb-3">
                   <div class="col" *ngIf="showRevisedRiskChart">
                     <custom-chart [data]="originalWarningChart.data" [labels]="originalWarningChart.labels"
                       [config]="originalWarningChart.chartInformation" [chartId]="'adaptationChartOriginal-'+originalDssDetails.id" [isAPopUpChart]="false">
@@ -143,7 +133,7 @@
           </div>
           <div class="row">
             <div class="col mt-2"> 
-              <button class="btn btn-primary pull-right ml-2" (click)="saveParametrization()">{{'DSS_adaptation.Save_parameters' | translate}}</button>
+              <button [disabled]="!configurationExecuted" class="btn btn-primary pull-right ml-2" (click)="saveParametrization()">{{'DSS_adaptation.Save_parameters' | translate}}</button>
               <input class="pull-right" type="text" id="dss_name" [value]="'new'+ ' ' + revisedDssDetails.dssModelName" required size="20">&nbsp;
               <label class="mr-2 pull-right" for="name">{{'DSS_adaptation.Dss_name' | translate}}:</label>
             </div>
@@ -233,23 +223,14 @@
      </custom-chart>
      </div>
     <div class="modal-footer">
-      <div class="col-sm-7" *ngIf="revisedDataShowed">
+      <div class="col-sm-7">
         <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>
         <input type="date" id="startDatePopup" name="period-start" [min]="minDate" [max]="startDateFormMax" 
         [value]="startDate" (change)="startDateSelectedInPopup($event)">
         &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>
         <input type="date" id="endDatePopup" name="period-end" [min]="twoWeekAhead" [max]="maxDate" [value]="endDate" 
         (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
-        <button class="btn btn-primary ml-2" (click)="onConfirmDays('revised')" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
-      </div>
-      <div class="col-sm-7" *ngIf="!revisedDataShowed">
-        <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>
-        <input type="date" id="startDatePopup" name="period-start" [min]="minDate" [max]="startDateFormMax" 
-        [value]="startDate" (change)="startDateSelectedInPopup($event)">
-        &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>
-        <input type="date" id="endDatePopup" name="period-end" [min]="twoWeekAhead" [max]="maxDate" [value]="endDate" 
-        (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
-        <button class="btn btn-primary ml-2" (click)="onConfirmDays('original')" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
+        <button class="btn btn-primary ml-2" (click)="onConfirmDays(showingMode)" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
       </div>
       <button type="button" class="btn btn-info push-right" (click)="closeModal()">{{ 'Common_labels.Close' | translate }}</button>
     </div>
@@ -325,23 +306,14 @@
       </div>
     </div>
     <div class="modal-footer">
-      <div class="col-sm-7" *ngIf="revisedDataShowed">
+      <div class="col-sm-7">
         <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>
         <input type="date" id="startDatePopup" name="period-start" [min]="minDate" [max]="startDateFormMax" 
         [value]="startDate" (change)="startDateSelectedInPopup($event)">
         &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>
         <input type="date" id="endDatePopup" name="period-end" [min]="twoWeekAhead" [max]="maxDate" [value]="endDate" 
         (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
-        <button class="btn btn-primary ml-2" (click)="onConfirmDays('revised')" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
-      </div>
-      <div class="col-sm-7" *ngIf="!revisedDataShowed">
-        <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>
-        <input type="date" id="startDatePopup" name="period-start" [min]="minDate" [max]="startDateFormMax" 
-        [value]="startDate" (change)="startDateSelectedInPopup($event)">
-        &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>
-        <input type="date" id="endDatePopup" name="period-end" [min]="twoWeekAhead" [max]="maxDate" [value]="endDate" 
-        (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
-        <button class="btn btn-primary ml-2" (click)="onConfirmDays('original')" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
+        <button class="btn btn-primary ml-2" (click)="onConfirmDays(showingMode)" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
       </div>
       <button type="button" class="btn btn-info push-right" (click)="closeModal()">{{ 'Common_labels.Close' | translate }}</button>
     </div>

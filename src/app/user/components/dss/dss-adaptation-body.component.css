@@ -164,7 +164,7 @@ td {
 
 .risk-chart-popup-btn{
   position: absolute;
-  bottom: 150px;
+  bottom: 140px;
   right: 10px;
   text-shadow: 2px 2px 3px rgba(15,15,15,.56);
   font-size: 150%;
@@ -172,7 +172,7 @@ td {
 
 .group-chart-popup-btn{    
   position: absolute;
-  top: -20px;
+  top: -11px;
   right: 10px;
   text-shadow: 2px 2px 3px rgba(15,15,15,.56);
   font-size: 150%;
