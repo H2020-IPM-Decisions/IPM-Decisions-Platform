@@ -1,7 +1,7 @@
 
 .clients-section {
-    height: auto;
-  }
+    height: 95vh;
+}
   
   .sessionBarShow {
     position: fixed;
@@ -58,4 +58,10 @@
   
 .fa-circle {
     color: white;
+}
+
+.map {
+    position: absolute;
+    height: 65vh;
+    width: 100%;
 }

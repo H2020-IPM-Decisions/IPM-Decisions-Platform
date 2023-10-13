@@ -15,6 +15,14 @@ import { EppoCode } from '@app/shared/models/eppo-code.model';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { DssSelection } from '@app/user/components/dss/dss-selection.model';
 import { specialCharacterComparator } from '@app/shared/models/specialCharactersComparator.model';
+import Map from 'ol/Map';
+import OSM from 'ol/source/OSM';
+import View from 'ol/View';
+import ImageWMS from 'ol/source/ImageWMS.js';
+import proj4 from 'proj4';
+import Projection from 'ol/proj/Projection.js';
+import { register } from 'ol/proj/proj4';
+import { Image as ImageLayer, Tile as TileLayer } from 'ol/layer.js';
 
 declare var init: any;
 declare var home: any;
@@ -47,6 +55,7 @@ export class RiskMapComponent implements OnInit {
     public $sessionExtend: Subscription;
     public sessionIsExpired: boolean = false;
     private specialCharacterComparator$: specialCharacterComparator = new specialCharacterComparator();
+    public map: Map;
 
 
     constructor(
@@ -158,6 +167,43 @@ export class RiskMapComponent implements OnInit {
           
           this.cropsEppoCodes = this.specialCharacterComparator$.placeCropsWithSpecialCharactersAtTheBottom(this.cropsEppoCodes)
         });
+
+        proj4.defs(
+          'EPSG:25833',
+          '+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs'
+        );
+        register(proj4);
+        this.initializeMap();
+    }
+
+    initializeMap() {
+      const projection = new Projection({
+        code: 'EPSG:25833',
+      });
+      const layers = [
+        new TileLayer({
+          source: new OSM(),
+        }),
+        new ImageLayer({
+          source: new ImageWMS({
+            url: 'https://testvips.nibio.no/cgi-bin/PSILARTEMP',
+            params: { LAYERS: 'PSILARTEMP_TODAY', TRANSPARENT: 'TRUE' },
+            ratio: 1,
+            serverType: 'mapserver',
+            projection: projection,
+          }),
+        }),
+      ];
+  
+      this.map = new Map({
+        target: 'map',
+        layers: layers,
+        controls: [],
+        view: new View({
+          center: [455109.15554, 7162668.726335],
+          zoom: 4,
+        }),
+      });
     }
 
     formInit() {
@@ -235,13 +281,5 @@ export class RiskMapComponent implements OnInit {
     
     openModal(template: TemplateRef<any>, size?: string) {
     this.modalRef = this._modalService.show(template, {class: size});
-    }
-
-    onConfirmSelectedCrops(){
-        console.log("non so se serve");
-    }
-
-    onDisableFilters(){
-        console.log("non so se serve");
     }
 }

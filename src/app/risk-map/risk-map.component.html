@@ -48,38 +48,16 @@
 
 <section class="clients-section spad">
     <div class="container">
-        <form [formGroup]="selCropForm">
-            <div class="row">
-              <div class="col-md-6 col-xs-12">
-                <fieldset class="border p-3 m-2">
-                  <legend class="w-auto px-1 text-muted h5">
-                    <b>{{ 'DSS_model_selection.Crops_selection' | translate }}</b>
-                  </legend>
-                  <div formGroupName="cropSelection">
-                    <div class="form-group row">
-                      <div class="col-sm-11">
-                        <select multiple class="form-control" id="crops" formControlName="cropEppoCode">
-                          <ng-template ngFor let-crop [ngForOf]="cropsEppoCodes">
-                            <option value="{{crop.code}}">{{ crop.text }}</option>
-                          </ng-template>
-                        </select>
-                        <small class="hideForMobile col-2 pull-left mt-2" [innerHtml]="( 'DSS_model_selection.Multiselect_tip' | translate )"></small>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-              </div>
-              <div class="col-md-6 col-xs-12">
-                <button class="btn btn-info btn-sm m-4" (click)="onConfirmSelectedCrops()"
-                          [disabled]="!selCropForm.get('cropSelection').get('cropEppoCode').valid">
-                          {{ 'DSS_linked.Filter_DSS' | translate }}
-                </button>
-                <button class="btn btn-danger btn-sm m-4" *ngIf="DssListFiltered" (click)="onDisableFilters()">
-                          {{ 'Common_labels.Clear_filter' | translate }}
-                </button>
-              </div>
-            </div>
-          </form>
+      <div class="row">
+        <div class="col-xl client-text">
+          <h1> <b> RISK MAP </b></h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl">
+          <div id="map" class="map"></div>
+        </div>
+      </div>
     </div>
 </section>
 
