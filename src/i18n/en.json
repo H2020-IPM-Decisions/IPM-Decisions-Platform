@@ -117,7 +117,8 @@
         "New_password_is_required":"New password is required",
         "File_name_is_required":"File name is required",
         "Seasonal_data_download_error": "Failed to download seasonal data",
-        "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment"
+        "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
+        "Parameters_not_saved":"Cannot save the new Dss configuration"
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
@@ -149,7 +150,8 @@
         "No_Linked_DSS_available":"There are no DSS links available.",
         "DSS_models_filtered":"DSS links filtered successfully!",
         "You_are_about_to_remove":"You are about to remove the following DSS link(s):",
-        "Seasonal_data_download_success": "Seasonal data download successfully"
+        "Seasonal_data_download_success": "Seasonal data download successfully",
+        "Parameters_saved":"Dss with new configuration saved"
     },
     "Warning_messages":{
         "DSS_model_availability_error":"No DSS available for the selected crops",
@@ -446,7 +448,9 @@
         "Default":"Default",
         "Not_defined":"Not defined",
         "Run_configuration":"Run configuration",
-        "Dss_name":"Dss Name"
+        "Dss_name":"Dss Name",
+        "Revised": "Revised",
+        "Original":"Original"
     },
     "DSS_linked": {
         "Title":"External Link DSS Dashboard",

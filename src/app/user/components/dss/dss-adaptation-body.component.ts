@@ -357,10 +357,10 @@ export class DssAdaptationComponentBody implements OnInit {
         };
         this._dssSelectionService.saveAdaptedDss(this.revisedDssDetails.id, dssToSave).subscribe(
             (data: HttpResponse<any>) => {
-                console.log("Model Saved");
+                this._toastrTranslated.showTranslatedToastr("Information_messages.Parameters_saved", "Common_labels.Success", "toast-success");
             },
             (error: HttpErrorResponse) => {
-                console.log("Model Not Saved");
+                this._toastrTranslated.showTranslatedToastr("Error_messages.Parameters_not_saved", "Common_labels.Error", "toast-error");
             }
         );
     }

@@ -56,7 +56,6 @@ import { UserInformationPageComponent } from './user/components/user-information
 import { EditPasswordComponent } from './user/components/account/edit-password/edit-password.component';
 import { DssInfoListComponent } from './dss-info-list/dss-info-list.component';
 import { DisabledDSSComponent } from './user/components/account/edit-disabled-dss/edit-disabled-dss.component';
-import { RiskMapComponent } from './risk-map/risk-map.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -75,8 +74,7 @@ const appRoutes: Routes = [
   { path: "coding-article", component: DevelopersArticleComponent },
   { path: "confirmemail", component: ConfirmMailComponent },
   { path: "resetpassword", component: ResetPasswordComponent },
-  { path: "dss-info-list", component: DssInfoListComponent },
-  //{ path: "risk-map", component: RiskMapComponent },
+  //{ path: "dss-info-list", component: DssInfoListComponent },
   {
     path: "admin/account",
     component: AdminAccountComponent,

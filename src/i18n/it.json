@@ -117,7 +117,8 @@
         "New_password_is_required":"La nuova password è obbligatoria",
         "File_name_is_required":"Inserire nome del file",
         "Seasonal_data_download_error": "Impossibile scaricare i dati stagionali",
-        "DSS_disabled_info_message":"Il DSS è stato disabilitato ed al momento non può essere utilizzato"
+        "DSS_disabled_info_message":"Il DSS è stato disabilitato ed al momento non può essere utilizzato",
+        "Parameters_not_saved":"Impossibile salvare la nuova configurazione del Dss"
     },
     "Information_messages":{
         "Farm_deletion_message":"Stai per eliminare un'azienda agricola. Vuoi procedere?",
@@ -149,7 +150,8 @@
         "No_Linked_DSS_available":"Non ci sono DSS esterni disponibili.",
         "DSS_models_filtered":"Modelli DSS filtrati con successo!",
         "You_are_about_to_remove":"Stai per rimuovere il seguente DSS esterno:",
-        "Seasonal_data_download_success": "Dati stagionali scaricati con successo"
+        "Seasonal_data_download_success": "Dati stagionali scaricati con successo",
+        "Parameters_saved":"La nuova configurazione del Dss è stata salvata correttamente"
     },
     "Warning_messages":{
         "DSS_model_availability_error":"Non ci sono DSS per le colture selezionate",
@@ -446,7 +448,9 @@
         "Default":"Default",
         "Not_defined":"Non definito",
         "Run_configuration":"Esegui configurazione",
-        "Dss_name":"Nome Dss"
+        "Dss_name":"Nome Dss",
+        "Revised": "Modificato",
+        "Original":"Originale"
     },
     "DSS_linked": {
         "Title":"DSS Esterni",

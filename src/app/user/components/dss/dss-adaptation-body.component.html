@@ -28,8 +28,8 @@
             </div>
             <div class="col-md-6">
               <div class="row" *ngIf="configurationExecuted">
-                <button id="originalDataButton" class="btn btn-primary mb-1" (click)="showOriginalData()" [disabled]="!revisedDataShowed"> ORIGINAL </button>&nbsp;
-                <button id="revisedDataButton" class="btn btn-primary btn-revised mb-1" (click)="showRevisedData()" [disabled]="revisedDataShowed"> REVISED </button>
+                <button id="originalDataButton" class="btn btn-primary mb-1" (click)="showOriginalData()" [disabled]="!revisedDataShowed"> {{ 'DSS_adaptation.Original' | translate }} </button>&nbsp;
+                <button id="revisedDataButton" class="btn btn-primary btn-revised mb-1" (click)="showRevisedData()" [disabled]="revisedDataShowed"> {{ 'DSS_adaptation.Revised' | translate }} </button>
               </div>
               <div class="row">
                 <div class="col">
