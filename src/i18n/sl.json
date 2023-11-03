@@ -61,7 +61,16 @@
 		"Click_here": "Klikni tukaj",
 		"EU_footer_further_information": "Za dodatne informacije v zvezi s platformo IPM Decisions ali za prijavo kakršnih koli tehničnih težav prosimo pošljite e-pošto",
 		"EU_footer_further_details_on_project": "Več podrobnosti o krovnem EU projektu za razvoj platforme je na voljo na spletnem naslovu",
-		"Clear_filter":"Počisti filter"
+		"Clear_filter":"Počisti filter",
+		"Available_DSS": "Available DSS",
+        "Select_days": "Select days",
+        "Dss_info": "DSS informations",
+        "Start_Date":"Start Date",
+        "End_Date":"End Date",
+        "Download":"Download",
+        "Integrated_Dss":"Integrated DSS",
+        "External_Dss":"External DSS",
+        "Disabled":"Disabled"
 	},
 	"Error_messages": {
 		"An_unknown_error_occured": "Pojavila se je neznana napaka",
@@ -101,7 +110,12 @@
 		"DSS_adaptation_parameters_update_error": "Posodobitev parametrov DSS ni uspela, prišlo je do napake",
 		"DSS_adaptation_parameters_send_error": "Posodobitev parametrov DSS ni uspela, prišlo je do napake",
 		"DSS_parameters_reset_error": "Ponastavitev parametrov DSS ni uspela, prišlo je do napake",
-		"DSS_use_dashboard_error_standard_info": "DSS je ob zagonu vrnil opozorilo ali napako. Sporočilo DSS (v privzetem jeziku, ki ga uporablja DSS) je bilo:"
+		"DSS_use_dashboard_error_standard_info": "DSS je ob zagonu vrnil opozorilo ali napako. Sporočilo DSS (v privzetem jeziku, ki ga uporablja DSS) je bilo:",
+		"New_password_is_required":"New password is required",
+        "File_name_is_required":"File name is required",
+        "Seasonal_data_download_error": "Failed to download seasonal data",
+        "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
+        "Parameters_not_saved":"Cannot save the new Dss configuration"
 	},
 	"Information_messages": {
 		"Farm_deletion_message": "Izbrisali boste kmetijo. Ali ste prepričani?",
@@ -132,7 +146,9 @@
 		"DSS_model_selection_default_timing":"Dodani so bili DSS, ki lahko uporabljajo privzete datume za vznik ali faze rasti pridelka. Če želite preveriti, ali so ti datumi pravilni za vaše kulturne rastline, ali jih spremeniti, kliknite gumb 'Parametri DSS'.",
 		"No_Linked_DSS_available":"Povezave do DSS niso na voljo",
         "DSS_models_filtered":"Povezave do DSS so uspešno filtrirane",
-        "You_are_about_to_remove":"Odstranili boste naslednje povezave do DSS:"
+        "You_are_about_to_remove":"Odstranili boste naslednje povezave do DSS:",
+        "Seasonal_data_download_success": "Seasonal data download successfully",
+        "Parameters_saved":"Dss with new configuration saved"
 	},
 	"Warning_messages": {
 		"DSS_model_availability_error": "Za izbrane kulturne rastline ni na voljo noben DSS",
@@ -316,7 +332,8 @@
 		"Green_triangle_description": "Napaka ni preprečila delovanja modela DSS in ne vpliva na zanesljivost napovedi tveganja modela DSS",
 		"Yellow_triangle_description": "Napaka ni preprečila delovanja modela DSS, vendar zmanjšuje zanesljivost napovedi tveganja modela DSS.",
 		"Red_triangle_description": "Napaka je preprečila zagon modela DSS",
-		"Platform_rationale_information":"Platforma IPM Decisions omogoča, da so DSS na voljo zunanjim razvijalcem DSS. 'Zlati standard' za DSS je, da so jih ustvarili ugledni razvijalci DSS, da so bili preizkušeni in široko uporabljeni v praksi na številnih lokacijah in sezonah, rezultati pa objavljeni v strokovnih revijah in dokazujejo uporabno napovedno vrednost v državah, v katerih se priporočajo za uporabo. Le malo DSS izpolnjuje vsa ta merila. Cilj IPM Decisions je omogočiti testiranje in uporabo širokega nabora DSS. Zato ni pogoj, da so izpolnjena vsa ta merila, da bi bil DSS na voljo prek te platforme. Namesto tega vodstvo IPM Decisions poskrbi, da so DSS od uglednih razvijalcev in da so o vsakem DSS zagotovljene dodatne informacije, ki omogočajo informirano izbiro. DSS se lahko uporabljajo kot pomoč (ne kot nadomestilo) pri odločitvah izkušenih pridelovalcev, pri čemer se upoštevajo vsi ustrezni lokalni dejavniki tveganja za pojav šokde zaradi škodljivih organizmov. Kmetje in kmetijski svetovalci naj DSS ne uporabljajo za odločanje na večjih površinah posevkov, dokler si ne pridobijo izkušenj z njihovo uporabo in ugotovijo, da so ocene tveganja zanesljive. Napačne ocene tveganja se lahko pojavijo, zlasti če so pogoji drugačni od tistih, ki so bili zaznani med razvojem in testiranjem DSS. Skupine kmetov in raziskovalne organizacije spodbujamo, da DSS preizkusijo na terenu, ga po potrebi spremenijo, da bo ustrezal lokalnim razmeram, in delijo svoje izkušnje."
+		"Platform_rationale_information":"Platforma IPM Decisions omogoča, da so DSS na voljo zunanjim razvijalcem DSS. 'Zlati standard' za DSS je, da so jih ustvarili ugledni razvijalci DSS, da so bili preizkušeni in široko uporabljeni v praksi na številnih lokacijah in sezonah, rezultati pa objavljeni v strokovnih revijah in dokazujejo uporabno napovedno vrednost v državah, v katerih se priporočajo za uporabo. Le malo DSS izpolnjuje vsa ta merila. Cilj IPM Decisions je omogočiti testiranje in uporabo širokega nabora DSS. Zato ni pogoj, da so izpolnjena vsa ta merila, da bi bil DSS na voljo prek te platforme. Namesto tega vodstvo IPM Decisions poskrbi, da so DSS od uglednih razvijalcev in da so o vsakem DSS zagotovljene dodatne informacije, ki omogočajo informirano izbiro. DSS se lahko uporabljajo kot pomoč (ne kot nadomestilo) pri odločitvah izkušenih pridelovalcev, pri čemer se upoštevajo vsi ustrezni lokalni dejavniki tveganja za pojav šokde zaradi škodljivih organizmov. Kmetje in kmetijski svetovalci naj DSS ne uporabljajo za odločanje na večjih površinah posevkov, dokler si ne pridobijo izkušenj z njihovo uporabo in ugotovijo, da so ocene tveganja zanesljive. Napačne ocene tveganja se lahko pojavijo, zlasti če so pogoji drugačni od tistih, ki so bili zaznani med razvojem in testiranjem DSS. Skupine kmetov in raziskovalne organizacije spodbujamo, da DSS preizkusijo na terenu, ga po potrebi spremenijo, da bo ustrezal lokalnim razmeram, in delijo svoje izkušnje.",
+		"Ban_icon_description":"The DSS is disabled"
 	},
 	"DSS_details": {
 		"Title": "Podrobni rezultati DSS",
@@ -334,7 +351,10 @@
 		"DSS_model_id": "DSS Model ID",
 		"Warning_status_representation": "Prikaz opozorilnega statusa",
 		"Warning_message": "Opozorilo",
-		"Disclaimer_content":"Ta platforma omogoča, da so DSS na voljo zunanjim razvijalcem DSS. DSS se lahko uporabljajo za pomoč (ne za nadomestitev) pri odločitvah izkušenih pridelovalcev, pri čemer se upoštevajo lokalni dejavniki tveganja za škodo zaradi škodljivih organizmov. Oglejte si dodatne informacije v legendi v zavihku 'Pregled DSS'."
+		"Disclaimer_content":"Ta platforma omogoča, da so DSS na voljo zunanjim razvijalcem DSS. DSS se lahko uporabljajo za pomoč (ne za nadomestitev) pri odločitvah izkušenih pridelovalcev, pri čemer se upoštevajo lokalni dejavniki tveganja za škodo zaradi škodljivih organizmov. Oglejte si dodatne informacije v legendi v zavihku 'Pregled DSS'.",
+		"Group_chart_popup_title":"Group Chart Information",
+        "Seasonal_data":"Download Seasonal Data",
+        "File_name":"File name"	
 	},
 	"DSS_model_selection": {
 		"Title": "Izbira DSS modela",
@@ -380,7 +400,14 @@
 		"Parameters_table": "Preglednica parametrov",
 		"for": "za",
 		"on": "na",
-		"Note_message": "Primerjate do pet DSS modelov hkrati"
+		"Note_message": "Primerjate do pet DSS modelov hkrati",
+        "Group_chart_popup_title":"Group Chart Information",
+        "Select_one_model": "Select one model",
+        "Use_historical_data":"Use historical data",
+        "Note_message_historical_data":"Select only one model to compare with his historical data",
+        "Compare_with_historical_data":"Compare historical data",
+        "Current":"Current",
+        "Historical":"Historical"
 	},
 	"User_guide": {
 		"Title": "Pomoč uporabnikom"
@@ -414,7 +441,13 @@
 		"for": "za",
 		"on": "na",
 		"Data_is_updating": "Podatki se posodabljajo",
-		"Please_wait": "Prosimo počakajte"
+		"Please_wait": "Prosimo počakajte",
+		"Default":"Default",
+        "Not_defined":"Not defined",
+        "Run_configuration":"Run configuration",
+        "Dss_name":"Dss Name",
+        "Revised": "Revised",
+        "Original":"Original"
 	},
 	"DSS_linked": {
         "Title":"Povezave do DSS",
@@ -426,6 +459,10 @@
         "Remove_linked_dss":"Odstrani povezavo do DSS",
         "Edit_selection":"Urejanje izbora",
         "Editing_complete":"Urejanje je končano"
+    },
+    "User_edit_password": {
+        "Current_password":"Current Password",
+        "Change_password":"Change Password",
+        "Return_to_user_edit":"Return to 'User Account'"
     }
-
 }

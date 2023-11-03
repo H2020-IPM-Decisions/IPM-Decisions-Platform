@@ -61,7 +61,16 @@
         "Click_here": "Cliquez ici",
         "EU_footer_further_information": "Pour de plus amples informations concernant la plate-forme IPM Decisions ou pour signaler tout problème technique, veuillez envoyer un courriel à l'adresse suivante",
         "EU_footer_further_details_on_project": "Pour de plus amples informations sur le projet européen IPM Decisions, veuillez consulter le site suivant",
-        "Clear_filter":"Réinitialiser le filtre"
+        "Clear_filter":"Réinitialiser le filtre",
+        "Available_DSS": "Available DSS",
+        "Select_days": "Select days",
+        "Dss_info": "DSS informations",
+        "Start_Date":"Start Date",
+        "End_Date":"End Date",
+        "Download":"Download",
+        "Integrated_Dss":"Integrated DSS",
+        "External_Dss":"External DSS",
+        "Disabled":"Disabled"
     },
     "Error_messages": {
         "An_unknown_error_occured": "Une erreur inconnue s'est produite !",
@@ -101,7 +110,12 @@
         "DSS_adaptation_parameters_update_error": "La mise à jour des paramètres de l'OAD a échoué, une erreur s'est produite",
         "DSS_adaptation_parameters_send_error": "L'envoi des paramètres de l'OAD a échoué, une erreur s'est produite",
         "DSS_parameters_reset_error": "La réinitialisation des paramètres de l'OAD a échoué, une erreur se produit",
-        "DSS_use_dashboard_error_standard_info": "L'OAD a renvoyé un avertissement ou une erreur lors de son exécution, Le message fourni par l'OAD (dans la langue par défaut utilisée par l'OAD) était :"
+        "DSS_use_dashboard_error_standard_info": "L'OAD a renvoyé un avertissement ou une erreur lors de son exécution, Le message fourni par l'OAD (dans la langue par défaut utilisée par l'OAD) était :",
+        "New_password_is_required":"New password is required",
+        "File_name_is_required":"File name is required",
+        "Seasonal_data_download_error": "Failed to download seasonal data",
+        "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
+        "Parameters_not_saved":"Cannot save the new Dss configuration"
     },
     "Information_messages": {
         "Farm_deletion_message": "Vous êtes sur le point de supprimer une ferme, Vous êtes sûr ?",
@@ -132,7 +146,9 @@
         "DSS_model_selection_default_timing":"DSS have been added which may use default dates for crop emergence or growth stages. To check if these are correct for your crops or to change the dates, click on the 'Edit DSS parameters' button.",
         "No_Linked_DSS_available":"Pas de lien disponible vers un OAD externe.",
         "DSS_models_filtered":"Les liens vers les OADs externes ont été filtrés avec succès",
-        "You_are_about_to_remove":"Vous vous apprétez à supprimer le(s) lien(s) suivant(s):"
+        "You_are_about_to_remove":"Vous vous apprétez à supprimer le(s) lien(s) suivant(s):",
+        "Seasonal_data_download_success": "Seasonal data download successfully",
+        "Parameters_saved":"Dss with new configuration saved"
     },
     "Warning_messages": {
         "DSS_model_availability_error": "Aucun OAD n'est disponible pour les cultures sélectionnées.",
@@ -316,7 +332,8 @@
         "Green_triangle_description": "L'erreur n'a pas empêché le modèle de fonctionner et n'affecte pas la fiabilité de la prédiction du risque du modèle.",
         "Yellow_triangle_description": "L'erreur n'a pas empêché le modèle de fonctionner, mais elle réduit la fiabilité de la prédiction du risque du modèle.",
         "Red_triangle_description": "Une erreur a empêché le modèle de fonctionner",
-        "Platform_rationale_information":"Cette plateforme met à disposition des OAD provenant de développeurs d'OAD externes. Dans l'idéal, les OAD doivent avoir été créés par des développeurs d'OAD réputés, testés et largement utilisés dans la pratique sur de nombreux sites et saisons, avec des résultats publiés dans des revues à comité de lecture pour démontrer une valeur prédictive utile dans les pays dans lesquels leur utilisation est recommandée. Peu d'OAD remplissent tous ces critères. IPM Decisions a pour objectif de mettre à disposition un large éventail d'OAD à tester et à utiliser. Par conséquent, il n'est pas nécessaire que tous ces critères soient remplis pour qu'un OAD soit disponible sur cette plateforme. En revanche, la direction d'IPM Decisions veille à ce que les OAD proviennent de développeurs réputés et à ce que des informations complémentaires soient fournies sur chaque OAD, afin de permettre un choix éclairé quant à leur utilisation. Les OAD peuvent être utilisés pour aider (et non remplacer) les décisions prises par des gestionnaires de cultures expérimentés, en tenant compte de tous les facteurs de risque locaux pertinents. Les agriculteurs et les conseillers ne doivent pas utiliser les OAD pour guider les décisions sur des surfaces de culture importantes avant d'avoir acquis de l'expérience dans leur utilisation et d'avoir validé la fiabilité des estimations de risque. Des estimations de risque erronées peuvent se produire, en particulier si les conditions sont différentes de celles rencontrées lors du développement et des tests du OAD. Les groupes d'agriculteurs et les organismes de recherche sont encouragés à tester les OAD sur le terrain, à les modifier pour l'adapter aux conditions locales si nécessaire, et à partager leur expérience."
+        "Platform_rationale_information":"Cette plateforme met à disposition des OAD provenant de développeurs d'OAD externes. Dans l'idéal, les OAD doivent avoir été créés par des développeurs d'OAD réputés, testés et largement utilisés dans la pratique sur de nombreux sites et saisons, avec des résultats publiés dans des revues à comité de lecture pour démontrer une valeur prédictive utile dans les pays dans lesquels leur utilisation est recommandée. Peu d'OAD remplissent tous ces critères. IPM Decisions a pour objectif de mettre à disposition un large éventail d'OAD à tester et à utiliser. Par conséquent, il n'est pas nécessaire que tous ces critères soient remplis pour qu'un OAD soit disponible sur cette plateforme. En revanche, la direction d'IPM Decisions veille à ce que les OAD proviennent de développeurs réputés et à ce que des informations complémentaires soient fournies sur chaque OAD, afin de permettre un choix éclairé quant à leur utilisation. Les OAD peuvent être utilisés pour aider (et non remplacer) les décisions prises par des gestionnaires de cultures expérimentés, en tenant compte de tous les facteurs de risque locaux pertinents. Les agriculteurs et les conseillers ne doivent pas utiliser les OAD pour guider les décisions sur des surfaces de culture importantes avant d'avoir acquis de l'expérience dans leur utilisation et d'avoir validé la fiabilité des estimations de risque. Des estimations de risque erronées peuvent se produire, en particulier si les conditions sont différentes de celles rencontrées lors du développement et des tests du OAD. Les groupes d'agriculteurs et les organismes de recherche sont encouragés à tester les OAD sur le terrain, à les modifier pour l'adapter aux conditions locales si nécessaire, et à partager leur expérience.",
+        "Ban_icon_description":"The DSS is disabled"
     },
     "DSS_details": {
         "Title": "Détails de l'OAD",
@@ -334,7 +351,10 @@
         "DSS_model_id": "ID du modèle d'OAD",
         "Warning_status_representation": "Représentation du niveau d'alerte",
         "Warning_message": "Message d'avertissement",
-        "Disclaimer_content":"Cette plateforme met à disposition des OAD provenant de développeurs d'OAD externes. Les OAD peuvent être utilisés pour aider (et non remplacer) les décisions prises par des gestionnaires de cultures expérimentés, en tenant compte des facteurs de risque locaux liés aux organismes nuisibles. Voir les informations complémentaires sous la légende du tableau de bord des OAD utilisés."
+        "Disclaimer_content":"Cette plateforme met à disposition des OAD provenant de développeurs d'OAD externes. Les OAD peuvent être utilisés pour aider (et non remplacer) les décisions prises par des gestionnaires de cultures expérimentés, en tenant compte des facteurs de risque locaux liés aux organismes nuisibles. Voir les informations complémentaires sous la légende du tableau de bord des OAD utilisés.",
+        "Group_chart_popup_title":"Group Chart Information",
+        "Seasonal_data":"Download Seasonal Data",
+        "File_name":"File name"
     },
     "DSS_model_selection": {
         "Title": "Sélection du système d'aide à la décision",
@@ -356,7 +376,6 @@
         "Enable_country_filter": "Filtrez les pays dans lesquels l'OAD a été développé et/ou validé",
         "Country_filter_info_title":"Filtre de pays",
         "Country_filter_info_description":"En cochant cette case, la recherche d'OAD sera limitée à ceux que les fournisseurs d'OAD suggèrent comme étant pertinents pour le pays sélectionné. Les OAD pertinents ont généralement été développés, testés ou utilisés précédemment dans le pays sélectionné. Les OAD d'autres pays, qui peuvent également être utiles, ne seront pas affichés si la case est cochée."
-
     },
     "DSS_model_parameterisation": {
         "Title": "Paramétrage du modèle d'OAD",
@@ -381,7 +400,14 @@
         "Parameters_table": "Tableau des paramètres",
         "for": "pour",
         "on": "sur",
-        "Note_message": "Vous pouvez comparer jusqu'à cinq modèles simultanément"
+        "Note_message": "Vous pouvez comparer jusqu'à cinq modèles simultanément",
+        "Group_chart_popup_title":"Group Chart Information",
+        "Select_one_model": "Select one model",
+        "Use_historical_data":"Use historical data",
+        "Note_message_historical_data":"Select only one model to compare with his historical data",
+        "Compare_with_historical_data":"Compare historical data",
+        "Current":"Current",
+        "Historical":"Historical"
     },
     "User_guide": {
         "Title": "Guide de l'utilisateur"
@@ -415,7 +441,13 @@
         "for": "pour",
         "on": "sur",
         "Data_is_updating": "Les données sont en cours de mise à jour",
-        "Please_wait": "Veuillez patienter"
+        "Please_wait": "Veuillez patienter",
+        "Default":"Default",
+        "Not_defined":"Not defined",
+        "Run_configuration":"Run configuration",
+        "Dss_name":"Dss Name",
+        "Revised": "Revised",
+        "Original":"Original"
     },
     "DSS_linked": {
         "Title":"Tableau de bord des OADs externes",
@@ -427,6 +459,10 @@
         "Remove_linked_dss":"Supprimer le lien vers un OAD externe",
         "Edit_selection":"Modifier la sélection",
         "Editing_complete":"Édition terminée"
+    },
+    "User_edit_password": {
+        "Current_password":"Current Password",
+        "Change_password":"Change Password",
+        "Return_to_user_edit":"Return to 'User Account'"
     }
-
 }

@@ -1,6 +1,6 @@
 
 .clients-section {
-    height: 95vh;
+    height: auto;
 }
   
   .sessionBarShow {
@@ -61,7 +61,7 @@
 }
 
 .map {
-    position: absolute;
+    position: relative;
     height: 65vh;
     width: 100%;
 }

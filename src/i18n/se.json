@@ -61,7 +61,16 @@
 		"Click_here": "Klicka  here",
 		"EU_footer_further_information": "För ytterligare information om IPM Decisions-plattformen, eller för att rapportera tekniska problem, vänligen maila",
 		"EU_footer_further_details_on_project": "Mer information om det underliggande EU-projektet för att utveckla plattformen finns på",
-		"Clear_filter":"Ta bort filtering"
+		"Clear_filter":"Ta bort filtering",
+        "Available_DSS": "Available DSS",
+        "Select_days": "Select days",
+        "Dss_info": "DSS informations",
+        "Start_Date":"Start Date",
+        "End_Date":"End Date",
+        "Download":"Download",
+        "Integrated_Dss":"Integrated DSS",
+        "External_Dss":"External DSS",
+        "Disabled":"Disabled"
 	},
 	"Error_messages": {
 		"An_unknown_error_occured": "Ett okänt fel uppkom!",
@@ -101,7 +110,12 @@
 		"DSS_adaptation_parameters_update_error": "DSS-parametrar kunde inte uppdateras, ett fel uppstod",
 		"DSS_adaptation_parameters_send_error": "DSS-parametrar kunde inte skickas, ett fel uppstod",
 		"DSS_parameters_reset_error": "DSS-parametrar kunde inte återställas, ett fel uppstod",
-		"DSS_use_dashboard_error_standard_info": "DSS returnerade en varning eller ett fel när den kördes. Meddelandet från DSS (på standardspråket som används av DSS) var:"
+		"DSS_use_dashboard_error_standard_info": "DSS returnerade en varning eller ett fel när den kördes. Meddelandet från DSS (på standardspråket som används av DSS) var:",
+		"New_password_is_required":"New password is required",
+        "File_name_is_required":"File name is required",
+        "Seasonal_data_download_error": "Failed to download seasonal data",
+        "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
+        "Parameters_not_saved":"Cannot save the new Dss configuration"
 	},
 	"Information_messages": {
 		"Farm_deletion_message": "Du kommer att ta bort en gård. Är du säker?",
@@ -132,7 +146,9 @@
 		"DSS_model_selection_default_timing":"DSS som kan använda standarddatum för grödans uppkomst eller tillväxtstadier har lagts till. För att kontrollera om dessa är korrekta för dina grödor eller för att ändra datum, klicka på knappen 'Redigera DSS-parametrar'.",
 		"No_Linked_DSS_available":"Inga DSS-länkar tillgängliga",
         "DSS_models_filtered":"DSS-länkar har filtrerats",
-        "You_are_about_to_remove":"Du kommer att ta bort följande DSS-länkar:"
+        "You_are_about_to_remove":"Du kommer att ta bort följande DSS-länkar:",
+        "Seasonal_data_download_success": "Seasonal data download successfully",
+        "Parameters_saved":"Dss with new configuration saved"
 	},
 	"Warning_messages": {
 		"DSS_model_availability_error": "Inget DSS tillgängligt för de valda grödorna",
@@ -316,7 +332,8 @@
 		"Green_triangle_description": "Felet hindrade inte modellen från att köras och påverkar inte tillförlitligheten av modellens riskprediktion",
 		"Yellow_triangle_description": "Fel hindrade inte modellen från att köras, men minskar tillförlitligheten av modellriskprediktionen",
 		"Red_triangle_description": "Fel hindrade modellen från att köras",
-		"Platform_rationale_information":"Denna plattform gör DSS tillgänglig från externa DSS-utvecklare. 'Guldstandarden' för DSS är att de har skapats av välrenommerade DSS-utvecklare, testats och använts i stor utsträckning i praktiken på flera platser och säsonger, och att resultaten publiceras i peer-reviewade tidskrifter för att visa ett användbart värde i att förutsäga risken för skadegörare i de länder där de är rekommenderas för användning. Få DSS uppfyller alla dessa kriterier. IPM Decisions syftar till att göra ett brett utbud av DSS tillgängliga för testning och användning. Därför är det inte ett krav att alla dessa kriterier är uppfyllda för att en DSS ska vara tillgänglig via denna plattform. Istället är ledningen för IPM Decisons noga med att DSS kommer från välrenommerade utvecklare och ytterligare information tillhandahålls om varje DSS, för att möjliggöra ett välgrundat val om användning.  DSS kan användas för att hjälpa (inte ersätta) beslut av erfarna jordbrukareoch rådgivare, med hänsyn till alla relevanta lokala riskfaktorer för skadegörare. Jordbrukare och rådgivare bör inte använda DSS för att vägleda beslut om betydande odlingsarealer förrän de har fått erfarenhet av användningen och har funnit riskuppskattningarna tillförlitliga. Felaktiga riskuppskattningar kan förekomma, särskilt om förhållandena ligger utanför de som rått under utveckling och testning av DSS. Lantbrukargrupper och forskningsorganisationer uppmuntras att testa DSS i fält, ändra DSS för att passa lokala förhållanden vid behov och dela med sig av sina erfarenheter."
+		"Platform_rationale_information":"Denna plattform gör DSS tillgänglig från externa DSS-utvecklare. 'Guldstandarden' för DSS är att de har skapats av välrenommerade DSS-utvecklare, testats och använts i stor utsträckning i praktiken på flera platser och säsonger, och att resultaten publiceras i peer-reviewade tidskrifter för att visa ett användbart värde i att förutsäga risken för skadegörare i de länder där de är rekommenderas för användning. Få DSS uppfyller alla dessa kriterier. IPM Decisions syftar till att göra ett brett utbud av DSS tillgängliga för testning och användning. Därför är det inte ett krav att alla dessa kriterier är uppfyllda för att en DSS ska vara tillgänglig via denna plattform. Istället är ledningen för IPM Decisons noga med att DSS kommer från välrenommerade utvecklare och ytterligare information tillhandahålls om varje DSS, för att möjliggöra ett välgrundat val om användning.  DSS kan användas för att hjälpa (inte ersätta) beslut av erfarna jordbrukareoch rådgivare, med hänsyn till alla relevanta lokala riskfaktorer för skadegörare. Jordbrukare och rådgivare bör inte använda DSS för att vägleda beslut om betydande odlingsarealer förrän de har fått erfarenhet av användningen och har funnit riskuppskattningarna tillförlitliga. Felaktiga riskuppskattningar kan förekomma, särskilt om förhållandena ligger utanför de som rått under utveckling och testning av DSS. Lantbrukargrupper och forskningsorganisationer uppmuntras att testa DSS i fält, ändra DSS för att passa lokala förhållanden vid behov och dela med sig av sina erfarenheter.",
+		"Ban_icon_description":"The DSS is disabled"
 	},
 	"DSS_details": {
 		"Title": "DSS-detaljer",
@@ -334,7 +351,10 @@
 		"DSS_model_id": "DSS-modell ID",
 		"Warning_status_representation": "Presentation av varningsstatus",
 		"Warning_message": "Varningsmeddelande",
-		"Disclaimer_content":"Denna plattform gör DSS från externa DSS-utvecklare tillgängliga. DSS kan användas för att hjälpa (inte ersätta) beslut av erfarna odlare och rådgivare, med hänsyn till lokala riskfaktorer för skadegörare. Se ytterligare information under förklaringen på användarpanelen för DSS."
+		"Disclaimer_content":"Denna plattform gör DSS från externa DSS-utvecklare tillgängliga. DSS kan användas för att hjälpa (inte ersätta) beslut av erfarna odlare och rådgivare, med hänsyn till lokala riskfaktorer för skadegörare. Se ytterligare information under förklaringen på användarpanelen för DSS.",
+		"Group_chart_popup_title":"Group Chart Information",
+        "Seasonal_data":"Download Seasonal Data",
+        "File_name":"File name"
 	},
 	"DSS_model_selection": {
 		"Title": "Val av DSS_modell",
@@ -380,7 +400,14 @@
 		"Parameters_table": "Parameter-tabell",
 		"for": "för",
 		"on": "på",
-		"Note_message": "Du kan jämföra upp till fem modeller samtidigt"
+		"Note_message": "Du kan jämföra upp till fem modeller samtidigt",
+        "Group_chart_popup_title":"Group Chart Information",
+        "Select_one_model": "Select one model",
+        "Use_historical_data":"Use historical data",
+        "Note_message_historical_data":"Select only one model to compare with his historical data",
+        "Compare_with_historical_data":"Compare historical data",
+        "Current":"Current",
+        "Historical":"Historical"
 	},
 	"User_guide": {
 		"Title": "Användarhandledning"
@@ -414,7 +441,13 @@
 		"for": "för",
 		"on": "på",
 		"Data_is_updating": "Data uppdateras",
-		"Please_wait": "Vänta"
+		"Please_wait": "Vänta",
+        "Default":"Default",
+        "Not_defined":"Not defined",
+        "Run_configuration":"Run configuration",
+        "Dss_name":"Dss Name",
+        "Revised": "Revised",
+        "Original":"Original"
 	},
 	"DSS_linked": {
         "Title":"Extern länk DSS Dashboard",
@@ -426,6 +459,10 @@
         "Remove_linked_dss":"Ta bort DSS-länk",
         "Edit_selection":"Redigera val",
         "Editing_complete":"Redigering slutförd"
+    },
+    "User_edit_password": {
+        "Current_password":"Current Password",
+        "Change_password":"Change Password",
+        "Return_to_user_edit":"Return to 'User Account'"
     }
-
 }

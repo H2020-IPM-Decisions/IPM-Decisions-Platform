@@ -61,9 +61,6 @@
         "Click_here":"Clicca qui",
         "EU_footer_further_information":"Per ulteriori informazioni sulla piattaforma IPM Decisions o per segnalare eventuali problemi tecnici, inviare un'e-mail a",
         "EU_footer_further_details_on_project":"Per ulteriori dettagli sul progetto europeo di sviluppo della piattaforma, consultare il sito web",
-        "Current_password":"Password attuale",
-        "Change_password":"Modifica Password",
-        "Return_to_user_edit":"Ritorna a 'Profilo Utente'",
         "Clear_filter":"Pulisci filtro",
         "Available_DSS":"DSS Disponibili",
         "Select_days":"Seleziona giorni",
@@ -462,5 +459,10 @@
         "Remove_linked_dss":"Rimozione DSS esterno",
         "Edit_selection":"Modifica  selezione",
         "Editing_complete":"Modifiche completate"
+    },
+    "User_edit_password": {
+        "Current_password":"Password attuale",
+        "Change_password":"Modifica Password",
+        "Return_to_user_edit":"Ritorna a 'Profilo Utente'"
     }
 }

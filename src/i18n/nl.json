@@ -61,7 +61,16 @@
 		"Click_here": "Klk hier",
 		"EU_footer_further_information": " Voor meer informatie over het IPM Decisions platform, of om melding te maken van technische problemen, stuur aub een e-mail",
 		"EU_footer_further_details_on_project": " Meer informatie over het onderliggende EU project en het te ontwikkelen platform kunt u  vinden op",
-		"Clear_filter":"Wis filter"
+		"Clear_filter":"Wis filter",
+        "Available_DSS": "Available DSS",
+        "Select_days": "Select days",
+        "Dss_info": "DSS informations",
+        "Start_Date":"Start Date",
+        "End_Date":"End Date",
+        "Download":"Download",
+        "Integrated_Dss":"Integrated DSS",
+        "External_Dss":"External DSS",
+        "Disabled":"Disabled"
 	},
 	"Error_messages": {
 		"An_unknown_error_occured": "Er is een onbekende fout opgetreden!",
@@ -101,7 +110,12 @@
 		"DSS_adaptation_parameters_update_error": "DSS parameters update failed, an error occurs",
 		"DSS_adaptation_parameters_send_error": "DSS parameters send failed, an error occurs",
 		"DSS_parameters_reset_error": "Dss parameters reset failed, an error occurs",
-		"DSS_use_dashboard_error_standard_info": "The DSS has returned a warning or error when run. The message provided by the DSS (in the default language used by the DSS) was:"
+		"DSS_use_dashboard_error_standard_info": "The DSS has returned a warning or error when run. The message provided by the DSS (in the default language used by the DSS) was:",
+		"New_password_is_required":"New password is required",
+        "File_name_is_required":"File name is required",
+        "Seasonal_data_download_error": "Failed to download seasonal data",
+        "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
+        "Parameters_not_saved":"Cannot save the new Dss configuration"
 	},
 	"Information_messages": {
 		"Farm_deletion_message": "U staat op het punt een bedrijf te verwijderen. Weet u dat zeker?",
@@ -132,7 +146,9 @@
 		"DSS_model_selection_default_timing":"Er zijn DSS toegevoegd die standaard data kunnen gebruiken voor de opkomst van gewassen of groeistadia. Om te controleren of deze correct zijn voor uw gewassen of om de data te wijzigen, klikt u op de knop 'DSS-parameters bewerken'.",
 		"No_Linked_DSS_available":"Er zijn geen DSS-links beschikbaar.",
         "DSS_models_filtered":"DSS-links succesvoll geselecteerd",
-        "You_are_about_to_remove":"Hiermee verwijdert u de volgende DSS-links:"
+        "You_are_about_to_remove":"Hiermee verwijdert u de volgende DSS-links:",
+        "Seasonal_data_download_success": "Seasonal data download successfully",
+        "Parameters_saved":"Dss with new configuration saved"
 	},
 	"Warning_messages": {
 		"DSS_model_availability_error": "Geen BOS beschikbaar voor de geselecteerde gewassen",
@@ -316,7 +332,8 @@
 		"Green_triangle_description": "Error did not prevent the model from running and does not affect the reliability of the model risk prediction",
 		"Yellow_triangle_description": "Error did not stop the model from running, but does reduce reliability of model risk prediction",
 		"Red_triangle_description": "Error prevented the model from running",
-		"Platform_rationale_information":"Dit platform maakt DSS beschikbaar van externe DSS-ontwikkelaars. De 'gouden standaard' voor DSS is dat ze zijn gemaakt door gerenommeerde DSS-ontwikkelaars, getest en op grote schaal in de praktijk gebruikt over vele locaties en seizoenen, en dat de resultaten zijn gepubliceerd in peer-reviewed tijdschriften om aan te tonen dat ze een nuttige voorspellende waarde hebben in de landen waar ze voor gebruik worden aanbevolen. Er zijn maar weinig DSS die aan al deze criteria voldoen. IPM Decisions beoogt een breed scala aan DSS beschikbaar te stellen voor testen en gebruik. Daarom is het geen vereiste dat aan al deze criteria wordt voldaan om een DSS via dit Platform beschikbaar te stellen. In plaats daarvan zorgt het management van IPM Decisions er redelijkerwijs voor dat de DSS afkomstig zijn van gerenommeerde ontwikkelaars en dat over elk DSS nadere informatie wordt verstrekt, zodat een geïnformeerde keuze over het gebruik mogelijk is. De DSS kunnen worden gebruikt ter ondersteuning (niet ter vervanging) van beslissingen door ervaren gewasverzorgers, rekening houdend met alle relevante lokale risicofactoren. Boeren en adviseurs moeten de DSS niet gebruiken als leidraad voor beslissingen over grote arealen totdat zij ervaring hebben opgedaan met het gebruik ervan en de risicoschattingen betrouwbaar vinden. Foutieve risicoschattingen kunnen voorkomen, vooral als de omstandigheden anders zijn dan tijdens de ontwikkeling en het testen van de DSS. Landbouwersgroepen en onderzoeksorganisaties worden aangemoedigd de DSS in het veld te testen en de DSS zo nodig aan de plaatselijke omstandigheden aan te passen en hun ervaring te delen."
+		"Platform_rationale_information":"Dit platform maakt DSS beschikbaar van externe DSS-ontwikkelaars. De 'gouden standaard' voor DSS is dat ze zijn gemaakt door gerenommeerde DSS-ontwikkelaars, getest en op grote schaal in de praktijk gebruikt over vele locaties en seizoenen, en dat de resultaten zijn gepubliceerd in peer-reviewed tijdschriften om aan te tonen dat ze een nuttige voorspellende waarde hebben in de landen waar ze voor gebruik worden aanbevolen. Er zijn maar weinig DSS die aan al deze criteria voldoen. IPM Decisions beoogt een breed scala aan DSS beschikbaar te stellen voor testen en gebruik. Daarom is het geen vereiste dat aan al deze criteria wordt voldaan om een DSS via dit Platform beschikbaar te stellen. In plaats daarvan zorgt het management van IPM Decisions er redelijkerwijs voor dat de DSS afkomstig zijn van gerenommeerde ontwikkelaars en dat over elk DSS nadere informatie wordt verstrekt, zodat een geïnformeerde keuze over het gebruik mogelijk is. De DSS kunnen worden gebruikt ter ondersteuning (niet ter vervanging) van beslissingen door ervaren gewasverzorgers, rekening houdend met alle relevante lokale risicofactoren. Boeren en adviseurs moeten de DSS niet gebruiken als leidraad voor beslissingen over grote arealen totdat zij ervaring hebben opgedaan met het gebruik ervan en de risicoschattingen betrouwbaar vinden. Foutieve risicoschattingen kunnen voorkomen, vooral als de omstandigheden anders zijn dan tijdens de ontwikkeling en het testen van de DSS. Landbouwersgroepen en onderzoeksorganisaties worden aangemoedigd de DSS in het veld te testen en de DSS zo nodig aan de plaatselijke omstandigheden aan te passen en hun ervaring te delen.",
+		"Ban_icon_description":"The DSS is disabled"
 	},
 	"DSS_details": {
 		"Title": "Details BOS",
@@ -334,7 +351,10 @@
 		"DSS_model_id": "BOS-model-ID",
 		"Warning_status_representation": "Weergave waarschuwingsstatus",
 		"Warning_message": "Waarschuwingsbericht",
-		"Disclaimer_content":"Dit platform stelt DSS beschikbaar van externe DSS-ontwikkelaars. De DSS kan worden gebruikt ter ondersteuning (niet ter vervanging) van beslissingen door ervaren gewasverzorgers, rekening houdend met lokale sicofactoren. Zie verdere informatie onder de legenda op het DSS Use dashboard."
+		"Disclaimer_content":"Dit platform stelt DSS beschikbaar van externe DSS-ontwikkelaars. De DSS kan worden gebruikt ter ondersteuning (niet ter vervanging) van beslissingen door ervaren gewasverzorgers, rekening houdend met lokale sicofactoren. Zie verdere informatie onder de legenda op het DSS Use dashboard.",
+		"Group_chart_popup_title":"Group Chart Information",
+        "Seasonal_data":"Download Seasonal Data",
+        "File_name":"File name"
 	},
 	"DSS_model_selection": {
 		"Title": "BOS Model Selectie",
@@ -380,7 +400,14 @@
 		"Parameters_table": "Parameter tabel",
 		"for": "for",
 		"on": "on",
-		"Note_message": "You can compare up to five models simultaneously"
+		"Note_message": "You can compare up to five models simultaneously",
+        "Group_chart_popup_title":"Group Chart Information",
+        "Select_one_model": "Select one model",
+        "Use_historical_data":"Use historical data",
+        "Note_message_historical_data":"Select only one model to compare with his historical data",
+        "Compare_with_historical_data":"Compare historical data",
+        "Current":"Current",
+        "Historical":"Historical"
 	},
 	"User_guide": {
 		"Title": "User guide"
@@ -414,7 +441,13 @@
 		"for": "for",
 		"on": "on",
 		"Data_is_updating": "Data is updating",
-		"Please_wait": "Please wait"
+		"Please_wait": "Please wait",
+        "Default":"Default",
+        "Not_defined":"Not defined",
+        "Run_configuration":"Run configuration",
+        "Dss_name":"Dss Name",
+        "Revised": "Revised",
+        "Original":"Original"
 	},
 	"DSS_linked": {
         "Title":"Exterbe Link DSS Dashboard",
@@ -426,5 +459,10 @@
         "Remove_linked_dss":"Verwijder DSS-link",
         "Edit_selection":"Selectie bewerken",
         "Editing_complete":"Bewerking voltooid"
+    },
+    "User_edit_password": {
+        "Current_password":"Current Password",
+        "Change_password":"Change Password",
+        "Return_to_user_edit":"Return to 'User Account'"
     }
 }
