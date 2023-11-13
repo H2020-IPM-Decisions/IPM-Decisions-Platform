@@ -464,5 +464,13 @@
         "Current_password":"Current Password",
         "Change_password":"Change Password",
         "Return_to_user_edit":"Return to 'User Account'"
+    },
+    "Dss_info_list":{
+        "Integrated_dss_retrieve_success_message":"Integrated DSS models retrivied successfully!",
+        "Integrated_dss_retrieve_warning_message":"No integrated DSS available for the selected crops",
+        "Integrated_dss_retrieve_error_message":"Fail to get the requested integrated models for selected crops!",
+        "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
+        "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
+        "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
     }
 }

@@ -464,5 +464,13 @@
         "Current_password":"Password attuale",
         "Change_password":"Modifica Password",
         "Return_to_user_edit":"Ritorna a 'Profilo Utente'"
-    }
+    },
+    "Dss_info_list":{
+        "Integrated_dss_retrieve_success_message":"Modelli DSS integrati ottenuti!",
+        "Integrated_dss_retrieve_warning_message":"Non ci sono DSS integrati per le colture selezionate",
+        "Integrated_dss_retrieve_error_message":"Impossibile ottenere dei modelli integrati richiesti per le colture selezionate!",
+        "External_dss_retrieve_success_message":"Modelli DSS esterni ottenuti!",
+        "External_dss_retrieve_warning_message":"Non ci sono DSS esterni per le colture selezionate",
+        "External_dss_retrieve_error_message":"Impossibile ottenere dei modelli esterni richiesti per le colture selezionate!"
+    }    
 }

@@ -292,7 +292,7 @@
         "Nearest_met_station": "Nächstgelegene Wetterstation",
         "Weather_forecast_service": "Wettervorhersagedienst",
         "Farm_unlock_location":"Unlock map",
-    "Farm_lock_location":"Lock map"
+        "Farm_lock_location":"Lock map"
     },
     "DSS_information_table": {
         "Title": "EHS-Informationstabelle",
@@ -326,13 +326,13 @@
         "Medium_risk": "Mittleres Risiko",
         "High_risk": "Hohes Risiko",
         "Status_representation":"Status Darstellung",
-    "Description":"Beschreibung",
-    "Scheduled_time":"Geplante Zeit",
-    "Icons_info":"Icon-Info",
-    "Green_triangle_description":"Der Fehler hat die Ausführung des Modells nicht verhindert und beeinträchtigt nicht die Zuverlässigkeit der Risikovorhersage des Modells",
-    "Yellow_triangle_description":"Der Fehler hat die Ausführung des Modells nicht gestoppt, aber die Zuverlässigkeit der Risikovorhersage des Modells beeinträchtigt",
-    "Red_triangle_description":"Der Fehler verhinderte die Ausführung des Modells",
-    "Platform_rationale_information":"Diese Plattform stellt EHS von externen EHS-Entwicklern zur Verfügung. Der 'Goldstandard' für EHS besteht darin, dass sie von angesehenen EHS-Entwicklern erstellt, getestet und in der Praxis über viele Standorte und Saisons hinweg eingesetzt und die Ergebnisse in Fachzeitschriften veröffentlicht wurden, um nützliche Vorhersagewerte in den Ländern nachzuweisen, in denen sie zur Anwendung empfohlen werden. Nur wenige DSS erfüllen alle diese Kriterien. IPM Decisions zielt darauf ab, eine breite Palette von EHS zur Erprobung und Nutzung zur Verfügung zu stellen. Daher ist es keine Voraussetzung, dass ein EHS alle diese Kriterien erfüllt, um über diese Plattform verfügbar zu sein. Stattdessen achtet das Management von IPM Decisions darauf, dass die EHS von seriösen Entwicklern stammen und weitere Informationen zu jedem EHS bereitgestellt werden, um eine fundierte Entscheidung über die Nutzung zu ermöglichen. Die EHS können zur Unterstützung (nicht als Ersatz) von Entscheidungen erfahrener Landwirte verwendet werden, die alle relevanten lokalen Risikofaktoren der Schaderreger berücksichtigen. Landwirte und Berater sollten die EHS erst dann als Entscheidungshilfe für größere Anbauflächen nutzen, wenn sie Erfahrungen mit der Anwendung gesammelt haben und die Risikoschätzungen für zuverlässig halten. Es kann zu fehlerhaften Risikoschätzungen kommen, insbesondere wenn die Bedingungen nicht denen entsprechen, die während der Entwicklung und Prüfung der EHS herrschten. Landwirte und Forschungseinrichtungen werden ermutigt, das EHS im Feld zu testen, das EHS gegebenenfalls an die örtlichen Bedingungen anzupassen und ihre Erfahrungen weiterzugeben.",
+        "Description":"Beschreibung",
+        "Scheduled_time":"Geplante Zeit",
+        "Icons_info":"Icon-Info",
+        "Green_triangle_description":"Der Fehler hat die Ausführung des Modells nicht verhindert und beeinträchtigt nicht die Zuverlässigkeit der Risikovorhersage des Modells",
+        "Yellow_triangle_description":"Der Fehler hat die Ausführung des Modells nicht gestoppt, aber die Zuverlässigkeit der Risikovorhersage des Modells beeinträchtigt",
+        "Red_triangle_description":"Der Fehler verhinderte die Ausführung des Modells",
+        "Platform_rationale_information":"Diese Plattform stellt EHS von externen EHS-Entwicklern zur Verfügung. Der 'Goldstandard' für EHS besteht darin, dass sie von angesehenen EHS-Entwicklern erstellt, getestet und in der Praxis über viele Standorte und Saisons hinweg eingesetzt und die Ergebnisse in Fachzeitschriften veröffentlicht wurden, um nützliche Vorhersagewerte in den Ländern nachzuweisen, in denen sie zur Anwendung empfohlen werden. Nur wenige DSS erfüllen alle diese Kriterien. IPM Decisions zielt darauf ab, eine breite Palette von EHS zur Erprobung und Nutzung zur Verfügung zu stellen. Daher ist es keine Voraussetzung, dass ein EHS alle diese Kriterien erfüllt, um über diese Plattform verfügbar zu sein. Stattdessen achtet das Management von IPM Decisions darauf, dass die EHS von seriösen Entwicklern stammen und weitere Informationen zu jedem EHS bereitgestellt werden, um eine fundierte Entscheidung über die Nutzung zu ermöglichen. Die EHS können zur Unterstützung (nicht als Ersatz) von Entscheidungen erfahrener Landwirte verwendet werden, die alle relevanten lokalen Risikofaktoren der Schaderreger berücksichtigen. Landwirte und Berater sollten die EHS erst dann als Entscheidungshilfe für größere Anbauflächen nutzen, wenn sie Erfahrungen mit der Anwendung gesammelt haben und die Risikoschätzungen für zuverlässig halten. Es kann zu fehlerhaften Risikoschätzungen kommen, insbesondere wenn die Bedingungen nicht denen entsprechen, die während der Entwicklung und Prüfung der EHS herrschten. Landwirte und Forschungseinrichtungen werden ermutigt, das EHS im Feld zu testen, das EHS gegebenenfalls an die örtlichen Bedingungen anzupassen und ihre Erfahrungen weiterzugeben.",
         "Ban_icon_description":"The DSS is disabled"
     },
     "DSS_details": {
@@ -460,9 +460,17 @@
         "Edit_selection":"Auswahl bearbeiten",
         "Editing_complete":"Bearbeitung abgeschlossen"
     },
-"User_edit_password": {
+    "User_edit_password": {
         "Current_password":"Current Password",
         "Change_password":"Change Password",
         "Return_to_user_edit":"Return to 'User Account'"
+    },
+    "Dss_info_list":{
+        "Integrated_dss_retrieve_success_message":"Integrated DSS models retrivied successfully!",
+        "Integrated_dss_retrieve_warning_message":"No integrated DSS available for the selected crops",
+        "Integrated_dss_retrieve_error_message":"Fail to get the requested integrated models for selected crops!",
+        "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
+        "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
+        "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
     }
 }

@@ -151,7 +151,7 @@ export class DssInfoListComponent implements OnInit {
 
             this.integratedDss = response.body;
             if(this.integratedDss.length == 0){
-              this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_availability_error",
+              this._toastrTranslated.showTranslatedToastr("Dss_info_list.Integrated_dss_retrieve_warning_message",
                                                           "Common_labels.Warning",
                                                           "toast-warning");
             }
@@ -160,7 +160,7 @@ export class DssInfoListComponent implements OnInit {
         (error: HttpErrorResponse) => {
 
             this._logger.error("Dss models selection error",error);
-            this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_retrived_error",
+            this._toastrTranslated.showTranslatedToastr("Dss_info_list.Integrated_dss_retrieve_error_message",
                                                         "Common_labels.Error",
                                                         "toast-error");
         }
@@ -173,7 +173,7 @@ export class DssInfoListComponent implements OnInit {
 
             this.externalDss = response.body;
             if(this.externalDss.length == 0){
-              this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_availability_error",
+              this._toastrTranslated.showTranslatedToastr("Dss_info_list.External_dss_retrieve_warning_message",
                                                           "Common_labels.Warning",
                                                           "toast-warning");
             }
@@ -182,7 +182,7 @@ export class DssInfoListComponent implements OnInit {
         (error: HttpErrorResponse) => {
 
             this._logger.error("Dss models selection error",error);
-            this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_retrived_error",
+            this._toastrTranslated.showTranslatedToastr("Dss_info_list.External_dss_retrieve_error_message",
                                                         "Common_labels.Error",
                                                         "toast-error");
         }
@@ -198,7 +198,7 @@ export class DssInfoListComponent implements OnInit {
         this.checkUserIsLogged();
         this.formInit();
 
-        this._eppoCodeService.cachedRefreshableCropsOnTheFly$.subscribe(data=>{
+        this._eppoCodeService.cachedRefreshableCrops$.subscribe(data=>{
           this.cropsEppoCodes=data;
           this.cropsEppoCodes = this.cropsEppoCodes.sort(function(a,b){
               return a.text.localeCompare(b.text);
@@ -295,15 +295,15 @@ export class DssInfoListComponent implements OnInit {
             if(this.integratedDss.length > 0) {
             this.areCropsSelected = true;
             
-            this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
+            this._toastrTranslated.showTranslatedToastr("Dss_info_list.Integrated_dss_retrieve_success_message","Common_labels.Success","toast-success");
             } else {
             this.areCropsSelected = false;
-            this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_availability_error","Common_labels.Warning","toast-warning");
+            this._toastrTranslated.showTranslatedToastr("Dss_info_list.Integrated_dss_retrieve_warning_message","Common_labels.Warning","toast-warning");
             }
         },
         (error: HttpErrorResponse) => {
             this._logger.error("Dss models selection error",error);
-            this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_retrived_error","Common_labels.Error","toast-error");
+            this._toastrTranslated.showTranslatedToastr("Dss_info_list.Integrated_dss_retrieve_error_message","Common_labels.Error","toast-error");
         }
         );
 
@@ -313,15 +313,15 @@ export class DssInfoListComponent implements OnInit {
               if(this.externalDss.length > 0) {
               this.areCropsSelected = true;
               
-              this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_models_retrived","Common_labels.Success","toast-success");
+              this._toastrTranslated.showTranslatedToastr("Dss_info_list.External_dss_retrieve_success_message","Common_labels.Success","toast-success");
               } else {
               this.areCropsSelected = false;
-              this._toastrTranslated.showTranslatedToastr("Warning_messages.DSS_model_availability_error","Common_labels.Warning","toast-warning");
+              this._toastrTranslated.showTranslatedToastr("Dss_info_list.External_dss_retrieve_warning_message","Common_labels.Warning","toast-warning");
               }
           },
           (error: HttpErrorResponse) => {
               this._logger.error("Dss models selection error",error);
-              this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_retrived_error","Common_labels.Error","toast-error");
+              this._toastrTranslated.showTranslatedToastr("Dss_info_list.External_dss_retrieve_error_message","Common_labels.Error","toast-error");
           }
           );
       this.DssListFiltered = true;

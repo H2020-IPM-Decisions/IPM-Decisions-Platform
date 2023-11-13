@@ -219,7 +219,7 @@
     "User_type": "Vartotojo priskirimas suinteresuotai grupei",
     "Confirm_password": "Patvirtinti slaptažodį",
     "Registration_confirmation": "Registracijos patvirtinimas",
-        "Password_sublabel":"Privalo būti ne mažiau kaip 12 simbolių, vienas didysis simbolis, vienas skaitmuo ir vienas ne raidinis-skaitmeninis simbolis"
+    "Password_sublabel":"Privalo būti ne mažiau kaip 12 simbolių, vienas didysis simbolis, vienas skaitmuo ir vienas ne raidinis-skaitmeninis simbolis"
   },
   "Terms_and_conditions": {
     "Accept_terms_and_conditions": "Sutinku su  taisyklėmis ir sąlygomis"
@@ -236,7 +236,7 @@
   "User_header": {
     "Account_manager": "Paskyros valdytojas",
     "Farm": "Ūkis",
-        "Menu":"Menu"
+    "Menu":"Menu"
   },
   "User_menu": {
     "IPM_private": "IPM/IKOK privatus",
@@ -291,8 +291,8 @@
     "Farm_location": "Parinkite ūkio vietą",
     "Nearest_met_station": "Artimiausia meteorologinė stotelė",
     "Weather_forecast_service": "Orų prognozių tarnyba",
-        "Farm_unlock_location":"Atrakinti žemėlapį",
-        "Farm_lock_location":"Užrakinti žemėlapį"
+    "Farm_unlock_location":"Atrakinti žemėlapį",
+    "Farm_lock_location":"Užrakinti žemėlapį"
   },
   "DSS_information_table": {
     "Title": "Informacijos apie SPS lentelė",
@@ -328,12 +328,12 @@
     "Low_risk": "Maža rizika",
     "Medium_risk": "Vidutinė rizika",
     "High_risk": "Aukšta rizika",
-        "Icons_info":"Icons info",
-        "Green_triangle_description":"Klaida nesutrukdė modeliui veikti ir neturėjo įtakos modelio rizikos prognozavimo patikimumui",
-        "Yellow_triangle_description":"Klaida nesustabdė modelio veikimo, tačiau sumažino modelio rizikos prognozavimo patikimumą.",
-        "Red_triangle_description":"Klaida sutrukdė paleisti modelį",
-        "Platform_rationale_information":"Ši platforma suteikia galimybę naudotis SPS iš išorės sistemų kūrėjų. SPS 'auksinis standartas' reiškia, kad jas sukūrė autoritetingi SPS kūrėjai, jos buvo išbandytos ir plačiai naudojamos praktikoje daugelyje vietovių ir sezonų, o rezultatai paskelbti recenzuojamuose žurnaluose, siekiant pademonstruoti naudingą prognozavimo vertę šalyse, kuriose jas rekomenduojama naudoti. Visus šiuos kriterijus atitinka nedaug sistemų. 'IKOK Sprendimai' siekia, kad būtų galima išbandyti ir naudoti įvairias sistemas. Dėl šios priežasties, nereikalaujama, kad SPS atitiktų visus šiuos kriterijus, kad jas būtų galima naudoti šioje platformoje. Tačiau 'IKOK Sprendimai' vadovybė deramai rūpinasi, kad SPS būtų sukurtos patikimų kūrėjų ir kad apie kiekvieną sistemą būtų pateikiama papildoma informacija, leidžiant apgalvotai pasirinkti ar ją naudoti. SPS gali būti naudojamos siekiant padėti patyrusiems pasėlių valdytojams priimti sprendimus (bet ne veikti už juos), atsižvelgiant į visus svarbius vietos kenkėjų rizikos veiksnius. Ūkininkai ir konsultantai neturėtų naudoti SPS sprendimams dideliuose pasėlių plotuose priimti, kol neįgijo jų naudojimo patirties ir neįsitikino, kad rizikos vertinimai yra patikimi. Gali pasitaikyti klaidingų rizikos įverčių, ypač jei sąlygos neatitinka tų, kurios buvo susidariusios kuriant ir bandant sistemą. Ūkininkų grupės ir mokslinių tyrimų organizacijos raginamos išbandyti sprendimų pagalbos sistemas lauko sąlygomis, prireikus pakeisti SPS, kad jos atitiktų vietos sąlygas ir dalytis savo patirtimi.",
-        "Ban_icon_description":"The DSS is disabled"
+    "Icons_info":"Icons info",
+    "Green_triangle_description":"Klaida nesutrukdė modeliui veikti ir neturėjo įtakos modelio rizikos prognozavimo patikimumui",
+    "Yellow_triangle_description":"Klaida nesustabdė modelio veikimo, tačiau sumažino modelio rizikos prognozavimo patikimumą.",
+    "Red_triangle_description":"Klaida sutrukdė paleisti modelį",
+    "Platform_rationale_information":"Ši platforma suteikia galimybę naudotis SPS iš išorės sistemų kūrėjų. SPS 'auksinis standartas' reiškia, kad jas sukūrė autoritetingi SPS kūrėjai, jos buvo išbandytos ir plačiai naudojamos praktikoje daugelyje vietovių ir sezonų, o rezultatai paskelbti recenzuojamuose žurnaluose, siekiant pademonstruoti naudingą prognozavimo vertę šalyse, kuriose jas rekomenduojama naudoti. Visus šiuos kriterijus atitinka nedaug sistemų. 'IKOK Sprendimai' siekia, kad būtų galima išbandyti ir naudoti įvairias sistemas. Dėl šios priežasties, nereikalaujama, kad SPS atitiktų visus šiuos kriterijus, kad jas būtų galima naudoti šioje platformoje. Tačiau 'IKOK Sprendimai' vadovybė deramai rūpinasi, kad SPS būtų sukurtos patikimų kūrėjų ir kad apie kiekvieną sistemą būtų pateikiama papildoma informacija, leidžiant apgalvotai pasirinkti ar ją naudoti. SPS gali būti naudojamos siekiant padėti patyrusiems pasėlių valdytojams priimti sprendimus (bet ne veikti už juos), atsižvelgiant į visus svarbius vietos kenkėjų rizikos veiksnius. Ūkininkai ir konsultantai neturėtų naudoti SPS sprendimams dideliuose pasėlių plotuose priimti, kol neįgijo jų naudojimo patirties ir neįsitikino, kad rizikos vertinimai yra patikimi. Gali pasitaikyti klaidingų rizikos įverčių, ypač jei sąlygos neatitinka tų, kurios buvo susidariusios kuriant ir bandant sistemą. Ūkininkų grupės ir mokslinių tyrimų organizacijos raginamos išbandyti sprendimų pagalbos sistemas lauko sąlygomis, prireikus pakeisti SPS, kad jos atitiktų vietos sąlygas ir dalytis savo patirtimi.",
+    "Ban_icon_description":"The DSS is disabled"
   },
   "DSS_details": {
     "Title": "SPS detalės",
@@ -409,45 +409,45 @@
     "Current":"Current",
     "Historical":"Historical"
   },
-    "User_guide": {
-        "Title":"Naudotojo vadovas"
-    },
-    "DSS_info_popup": {
-        "Dss_informations":"SPS Informacija",
-        "DSS_name":"SPS Pavadinimas",
-        "DSS_purpose":"SPS Tikslas",
-        "DSS_model_id":"SPS Modelio ID",       
-        "Warning_status_representation":"Įspėjimo Būsenos Vaizdavimas",
-        "Warning_message":"Perspėjimo Pranešimas",
-        "Description":"Aprašymas",
-        "Authors_name":"Autoriai : Vardas (Organizacija)",
-        "Source":"Šaltinis",
-        "Source_organisation":"Šaltinio organizacija"
-    },
-    "DSS_adaptation": {
-        "Title":"SPS pritaikymo prietaisų skydelis",
-        "Select_model_label":"Pasirinkite modelį pritaikymui",
-        "Select_model_button":"Pasirinkite modelį",
-        "Original_parameters_label":"Pirminiai nustatymai",
-        "Revised_parameters_label":"Patikslinti nustatymai",
-        "Save_parameterisation_button":"Išsaugoti parametrų nustatymą kaip naują SPS",
-        "Risk_score":"Rizikos lygis",
-        "Day":"Diena",
-        "Expand_table":"Išskleisti lentelę",
-        "Save_parameters":"Išsaugoti nustatymus",
-        "Banned_save_parameters":"Neleidžiama išsaugoti",
-        "Parameters_table_original":"Pradinės SPS parametrų lentelė",
-        "Parameters_table_revised":"Patikslintos SPS parametrų lentelė",
-        "for":"kam",
-        "on":"įjungta",
-        "Data_is_updating":"Duomenys atnaujinami",
-        "Please_wait":"Prašome palaukti",
-        "Default":"Default",
-        "Not_defined":"Not defined",
-        "Run_configuration":"Run configuration",
-        "Dss_name":"Dss Name",
-        "Revised": "Revised",
-        "Original":"Original"
+  "User_guide": {
+    "Title":"Naudotojo vadovas"
+  },
+  "DSS_info_popup": {
+    "Dss_informations":"SPS Informacija",
+    "DSS_name":"SPS Pavadinimas",
+    "DSS_purpose":"SPS Tikslas",
+    "DSS_model_id":"SPS Modelio ID",       
+    "Warning_status_representation":"Įspėjimo Būsenos Vaizdavimas",
+    "Warning_message":"Perspėjimo Pranešimas",
+    "Description":"Aprašymas",
+    "Authors_name":"Autoriai : Vardas (Organizacija)",
+    "Source":"Šaltinis",
+    "Source_organisation":"Šaltinio organizacija"
+  },
+  "DSS_adaptation": {
+    "Title":"SPS pritaikymo prietaisų skydelis",
+    "Select_model_label":"Pasirinkite modelį pritaikymui",
+    "Select_model_button":"Pasirinkite modelį",
+    "Original_parameters_label":"Pirminiai nustatymai",
+    "Revised_parameters_label":"Patikslinti nustatymai",
+    "Save_parameterisation_button":"Išsaugoti parametrų nustatymą kaip naują SPS",
+    "Risk_score":"Rizikos lygis",
+    "Day":"Diena",
+    "Expand_table":"Išskleisti lentelę",
+    "Save_parameters":"Išsaugoti nustatymus",
+    "Banned_save_parameters":"Neleidžiama išsaugoti",
+    "Parameters_table_original":"Pradinės SPS parametrų lentelė",
+    "Parameters_table_revised":"Patikslintos SPS parametrų lentelė",
+    "for":"kam",
+    "on":"įjungta",
+    "Data_is_updating":"Duomenys atnaujinami",
+    "Please_wait":"Prašome palaukti",
+    "Default":"Default",
+    "Not_defined":"Not defined",
+    "Run_configuration":"Run configuration",
+    "Dss_name":"Dss Name",
+    "Revised": "Revised",
+    "Original":"Original"
   },
   "DSS_linked": {
     "Title":"Išorinės nuorodos SPS įrankių skydeliui",
@@ -459,10 +459,18 @@
     "Remove_linked_dss":"Pašalinti SPS nuorodą",
     "Edit_selection":"Redaguoti parinkimą",
     "Editing_complete":"Užbaigtas redagavimas"
-},
+  },
   "User_edit_password": {
-      "Current_password":"Current Password",
-      "Change_password":"Change Password",
-      "Return_to_user_edit":"Return to 'User Account'"
+    "Current_password":"Current Password",
+    "Change_password":"Change Password",
+    "Return_to_user_edit":"Return to 'User Account'"
+  },
+  "Dss_info_list":{
+    "Integrated_dss_retrieve_success_message":"Integrated DSS models retrivied successfully!",
+    "Integrated_dss_retrieve_warning_message":"No integrated DSS available for the selected crops",
+    "Integrated_dss_retrieve_error_message":"Fail to get the requested integrated models for selected crops!",
+    "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
+    "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
+    "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
   }
 }

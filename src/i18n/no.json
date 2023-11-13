@@ -62,15 +62,15 @@
     "EU_footer_further_information": "For mer informasjon relatert til IPM decisions platformen, eller for å rapportere tekniske problemer, vennligst send epost",
     "EU_footer_further_details_on_project": "Flere detaljer om EU prosjektet som ligger til grunn for utvikling av platformen finnes på",
     "Clear_filter":"Fjern filter",
-      "Available_DSS": "Available DSS",
-      "Select_days": "Select days",
-      "Dss_info": "DSS informations",
-      "Start_Date":"Start Date",
-      "End_Date":"End Date",
-      "Download":"Download",
-      "Integrated_Dss":"Integrated DSS",
-      "External_Dss":"External DSS",
-      "Disabled":"Disabled"
+    "Available_DSS": "Available DSS",
+    "Select_days": "Select days",
+    "Dss_info": "DSS informations",
+    "Start_Date":"Start Date",
+    "End_Date":"End Date",
+    "Download":"Download",
+    "Integrated_Dss":"Integrated DSS",
+    "External_Dss":"External DSS",
+    "Disabled":"Disabled"
   },
   "Error_messages": {
     "An_unknown_error_occured": "Det oppstod en ukjent feil!",
@@ -112,10 +112,10 @@
     "DSS_parameters_reset_error": "Reset av DSS parametere mislyktes, det oppstod en feil",
     "DSS_use_dashboard_error_standard_info": "Det oppstår en advarsel eller feil ved kjøring av DSS. Meldingen som gis fra DSS-en (på originalspråk) var:",
     "New_password_is_required":"New password is required",
-      "File_name_is_required":"File name is required",
-      "Seasonal_data_download_error": "Failed to download seasonal data",
-      "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
-      "Parameters_not_saved":"Cannot save the new Dss configuration"
+    "File_name_is_required":"File name is required",
+    "Seasonal_data_download_error": "Failed to download seasonal data",
+    "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
+    "Parameters_not_saved":"Cannot save the new Dss configuration"
   },
   "Information_messages": {
     "Farm_deletion_message": "Gården din kommer til å bli slettet. Er du sikker?",
@@ -148,7 +148,7 @@
     "DSS_models_filtered":"DSS-linkene er filtrert",
     "You_are_about_to_remove":"Du er i ferd med å fjerne følgende DSS-link(er):",
     "Seasonal_data_download_success": "Seasonal data download successfully",
-      "Parameters_saved":"Dss with new configuration saved"
+    "Parameters_saved":"Dss with new configuration saved"
   },
   "Warning_messages": {
     "DSS_model_availability_error": "Ingen DSS tilgjengelig for valgte kulturer ",
@@ -353,8 +353,8 @@
     "Warning_message": "Advarselsmelding",
     "Disclaimer_content":"Denne plattformen gjør DSS fra eksterne DSS-utviklere tilgjengelige. DSS kan brukes for å støtte (ikke erstatte) beslutninger fra erfarne dyrkere og rådgivere, med hensyn til lokale risikofaktorer for skadegjørere. Se ytterligere informasjon under forklaringen på DSS Use Dashboard",
     "Group_chart_popup_title":"Group Chart Information",
-      "Seasonal_data":"Download Seasonal Data",
-      "File_name":"File name"
+    "Seasonal_data":"Download Seasonal Data",
+    "File_name":"File name"
   },
   "DSS_model_selection": {
     "Title": "DSS modellvalg",
@@ -401,13 +401,13 @@
     "for": "for",
     "on": "på",
     "Note_message": "Du kan sammenligne opptil fem modeller samtidig",
-      "Group_chart_popup_title":"Group Chart Information",
-      "Select_one_model": "Select one model",
-      "Use_historical_data":"Use historical data",
-      "Note_message_historical_data":"Select only one model to compare with his historical data",
-      "Compare_with_historical_data":"Compare historical data",
-      "Current":"Current",
-      "Historical":"Historical"
+    "Group_chart_popup_title":"Group Chart Information",
+    "Select_one_model": "Select one model",
+    "Use_historical_data":"Use historical data",
+    "Note_message_historical_data":"Select only one model to compare with his historical data",
+    "Compare_with_historical_data":"Compare historical data",
+    "Current":"Current",
+    "Historical":"Historical"
   },
   "User_guide": {
     "Title": "Bruksanvisning"
@@ -442,12 +442,12 @@
     "on": "på",
     "Data_is_updating": "Data oppdateres",
     "Please_wait": "Vennligst vent",
-      "Default":"Default",
-      "Not_defined":"Not defined",
-      "Run_configuration":"Run configuration",
-      "Dss_name":"Dss Name",
-      "Revised": "Revised",
-      "Original":"Original"
+    "Default":"Default",
+    "Not_defined":"Not defined",
+    "Run_configuration":"Run configuration",
+    "Dss_name":"Dss Name",
+    "Revised": "Revised",
+    "Original":"Original"
   },
   "DSS_linked": {
     "Title":"Ekstern link til DSS-skrivebord",
@@ -459,10 +459,18 @@
     "Remove_linked_dss":"Fjern DSS-link",
     "Edit_selection":"Rediger utvalg",
     "Editing_complete":"Redigering fullført"
-},
+  },
   "User_edit_password": {
-      "Current_password":"Current Password",
-      "Change_password":"Change Password",
-      "Return_to_user_edit":"Return to 'User Account'"
+    "Current_password":"Current Password",
+    "Change_password":"Change Password",
+    "Return_to_user_edit":"Return to 'User Account'"
+  },
+  "Dss_info_list":{
+    "Integrated_dss_retrieve_success_message":"Integrated DSS models retrivied successfully!",
+    "Integrated_dss_retrieve_warning_message":"No integrated DSS available for the selected crops",
+    "Integrated_dss_retrieve_error_message":"Fail to get the requested integrated models for selected crops!",
+    "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
+    "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
+    "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
   }
 }
