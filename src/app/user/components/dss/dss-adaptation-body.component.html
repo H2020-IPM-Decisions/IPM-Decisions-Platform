@@ -50,7 +50,7 @@
                     <custom-chart [data]="revisedWarningChart.data" [labels]="revisedWarningChart.labels"
                       [config]="revisedWarningChart.chartInformation" [chartId]="'adaptationChartRevised-'+revisedDssDetails.id" [isAPopUpChart]="false">
                     </custom-chart>
-                    <a (click)="openModal(expandedRiskChart, 'modal-xl')">
+                    <a (click)="openModal(expandedRiskChart, 'modal-xl', 'risk')">
                       <i class="fas fa-expand light-blue-icon risk-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
                     </a>
                   </div>
@@ -79,7 +79,7 @@
                   <div class="col" *ngIf="selectedRevisedDssChartGroup.id === chartGroup.id">
                     <custom-group-chart [chartId]="'adaptationGroupChartRevised-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"
                     [isAPopUpChart]="false"></custom-group-chart>
-                    <a (click)="openModal(expandedGroupChart, 'modal-xl')">
+                    <a (click)="openModal(expandedGroupChart, 'modal-xl','group')">
                       <i class="fas fa-expand light-blue-icon group-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
                     </a>
                   </div>
@@ -94,7 +94,7 @@
                     <custom-chart [data]="originalWarningChart.data" [labels]="originalWarningChart.labels"
                       [config]="originalWarningChart.chartInformation" [chartId]="'adaptationChartOriginal-'+originalDssDetails.id" [isAPopUpChart]="false">
                     </custom-chart>
-                    <a (click)="openModal(expandedRiskChart, 'modal-xl')">
+                    <a (click)="openModal(expandedRiskChart, 'modal-xl','risk')">
                       <i class="fas fa-expand light-blue-icon risk-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
                     </a>
                   </div>
@@ -123,7 +123,7 @@
                   <div class="col" *ngIf="selectedOriginalDssChartGroup.id === chartGroup.id">
                     <custom-group-chart [chartId]="'adaptationGroupChartOriginal-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"
                     [isAPopUpChart]="false"></custom-group-chart>
-                    <a (click)="openModal(expandedGroupChart, 'modal-xl')">
+                    <a (click)="openModal(expandedGroupChart, 'modal-xl','group')">
                       <i class="fas fa-expand light-blue-icon group-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
                     </a>
                   </div>
@@ -208,7 +208,7 @@
       <h4 class="modal-title pull-left">
         {{ 'DSS_details.Risk_score' | translate }}
       </h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal('risk')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -232,7 +232,7 @@
         (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
         <button class="btn btn-primary ml-2" (click)="onConfirmDays(showingMode)" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
       </div>
-      <button type="button" class="btn btn-info push-right" (click)="closeModal()">{{ 'Common_labels.Close' | translate }}</button>
+      <button type="button" class="btn btn-info push-right" (click)="closeModal('risk')">{{ 'Common_labels.Close' | translate }}</button>
     </div>
   </ng-template>
   
@@ -250,7 +250,7 @@
             <b>{{ revisedDssChartGroups[0].title }}</b>
           </span>
         </h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal('group')">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -284,7 +284,7 @@
             <b>{{ originalDssChartGroups[0].title }}</b>
           </span>
         </h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal('group')">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -315,6 +315,6 @@
         (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
         <button class="btn btn-primary ml-2" (click)="onConfirmDays(showingMode)" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
       </div>
-      <button type="button" class="btn btn-info push-right" (click)="closeModal()">{{ 'Common_labels.Close' | translate }}</button>
+      <button type="button" class="btn btn-info push-right" (click)="closeModal('group')">{{ 'Common_labels.Close' | translate }}</button>
     </div>
   </ng-template>

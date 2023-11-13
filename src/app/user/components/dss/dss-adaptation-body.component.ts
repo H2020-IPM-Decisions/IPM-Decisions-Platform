@@ -10,7 +10,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import * as $ from 'jquery'
 import { TranslationService } from '@app/shared/services/translation.service';
 import * as moment from 'moment';
-
+import { CustomChartService } from './custom-chart/custom-chart.service';
 
 
 @Component({
@@ -63,6 +63,7 @@ export class DssAdaptationComponentBody implements OnInit {
     public lastOriginalStartDateSelected: string = "0000-00-00";
     public lastOriginalEndDateSelected: string = "0000-00-00";
     public showingMode: string;
+    riskChartZoomLevel: number = 1.0;
     
 
     public modalRef: BsModalRef;
@@ -77,7 +78,8 @@ export class DssAdaptationComponentBody implements OnInit {
         private _toastrTranslated: ToastrTranslationService,
         private _jsonEditorService: JsonEditorService,
         private _modalService: BsModalService,
-        private _translation: TranslationService
+        private _translation: TranslationService,
+        private customChartService: CustomChartService
     ) { }
 
     public ngOnInit(): void {
@@ -248,8 +250,46 @@ export class DssAdaptationComponentBody implements OnInit {
         }
     }
 
-    public openModal(template: TemplateRef<any>, size?: string) {
-        this.modalRef = this._modalService.show(template, { class: size });
+    private resetChartZoom(popUp: boolean, chartType: string): void{
+
+        let riskChart;
+        let groupChart;
+        
+        if(!popUp){
+            if(this.revisedDataShowed){
+                riskChart = this.customChartService.getChart('adaptationChartRevised-'+this.revisedDssDetails.id);
+                groupChart = this.customChartService.getChart('adaptationGroupChartRevised-'+this.selectedRevisedDssChartGroup.id);
+            }else{
+                riskChart = this.customChartService.getChart('adaptationChartOriginal-'+this.originalDssDetails.id);
+                groupChart = this.customChartService.getChart('adaptationGroupChartOriginal-'+this.selectedOriginalDssChartGroup.id);
+            }
+        }else{
+            if(this.revisedDataShowed){
+                riskChart = this.customChartService.getChart('detailChartPopupRevised-'+this.revisedDssDetails.id);
+                groupChart = this.customChartService.getChart('detailChartPopupRevised-'+this.selectedRevisedDssChartGroup.id);
+            }else{
+                riskChart = this.customChartService.getChart('detailChartPopupOriginal-'+this.originalDssDetails.id );
+                groupChart = this.customChartService.getChart('detailChartPopupOriginal-'+this.selectedOriginalDssChartGroup.id);
+            }
+        }
+    
+        if(chartType == "risk"){
+          if (riskChart && riskChart.isZoomedOrPanned()) {
+            riskChart.resetZoom('active');
+          }
+        }else if(chartType == "group"){
+          if (groupChart && groupChart.isZoomedOrPanned()) {
+            groupChart.resetZoom('active');
+          }
+        }
+        
+    }
+
+    public openModal(template: TemplateRef<any>, size?: string, chartType: string= 'none') {
+       
+        this.resetChartZoom(false, chartType);
+        
+        this.modalRef = this._modalService.show(template, { class: size, backdrop: "static" });
     }
 
     public updateScrollDataset(): void {
@@ -514,7 +554,10 @@ export class DssAdaptationComponentBody implements OnInit {
     
     }
 
-    closeModal(){
+    closeModal(chartType: string){
+
+        this.resetChartZoom(true, chartType);
+        
         let startDateSelector = <HTMLInputElement>document.getElementById("startDate");
         startDateSelector.value = this.startDate;
     
@@ -525,6 +568,8 @@ export class DssAdaptationComponentBody implements OnInit {
     }
 
     showOriginalData(){
+        this.resetChartZoom(false, "risk");
+        this.resetChartZoom(false, "group");
         this.revisedDataShowed = false;
         this.initDatePicker("original");     
         this.showingMode = "original";
@@ -534,6 +579,8 @@ export class DssAdaptationComponentBody implements OnInit {
     }
 
     showRevisedData(){
+        this.resetChartZoom(false, "risk");
+        this.resetChartZoom(false, "group");
         this.revisedDataShowed = true;
         this.initDatePicker("revised");
         this.showingMode = "revised";

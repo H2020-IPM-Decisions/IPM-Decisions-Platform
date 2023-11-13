@@ -10,6 +10,7 @@ import { HttpResponse } from '@angular/common/http';
 import * as $ from 'jquery';
 import {saveAs} from "file-saver";
 import * as moment from 'moment';
+import { CustomChartService } from './custom-chart/custom-chart.service';
 
 @Component({
   selector: 'app-dss-detail',
@@ -51,7 +52,8 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     private service: DssSelectionService,
     private _router: Router,
 	  private _logger: NGXLogger,
-    private _toastrTranslated: ToastrTranslationService
+    private _toastrTranslated: ToastrTranslationService,
+    private customChartService: CustomChartService
 	) { }
   
   ngOnInit() {
@@ -140,21 +142,58 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  openModal(template: TemplateRef<any>, size?: string) {
+  private resetChartZoom(popUp: boolean, chartType: string): void{
+
+    let riskChart;
+    let groupChart;
+    
+    if(!popUp){
+      riskChart = this.customChartService.getChart('detailChart-'+this.dssDetail.id);
+      groupChart = this.customChartService.getChart('detailChart-'+this.selectedDssChartGroup.id);
+    }else{
+      riskChart = this.customChartService.getChart('detailChartPopup-'+this.dssDetail.id);
+      groupChart = this.customChartService.getChart('detailChartPopup-'+this.selectedDssChartGroup.id);
+    }
+
+    if(chartType == "risk"){
+      if (riskChart && riskChart.isZoomedOrPanned()) {
+        riskChart.resetZoom('active');
+      }
+    }else if(chartType == "group"){
+      if (groupChart && groupChart.isZoomedOrPanned()) {
+        groupChart.resetZoom('active');
+      }
+    }
+    
+  }
+
+  openInfoModal(template: TemplateRef<any>, size?: string) {
     this.modalRef = this._modalService.show(template, {class: size, backdrop: false});
+    //$(".modal-backdrop.in").css("opacity","0");
+    document.body.style.overflow = 'auto';
+    document.body.style.paddingRight = '0';
+  }
+
+  openModal(template: TemplateRef<any>, size?: string, chartType: string = 'none') {
+ 
+    this.resetChartZoom(false, chartType);
+
+    this.modalRef = this._modalService.show(template, {class: size, backdrop: "static"});
     //$(".modal-backdrop.in").css("opacity","0");
     document.body.style.overflow = 'auto';
     document.body.style.paddingRight = '0'; 
     this.invalidFileName = false;
   }
 
-  closeModal(){
+  closeModal(chartType: string){
+
+    this.resetChartZoom(true, chartType);
+
     let startDateSelector = <HTMLInputElement>document.getElementById("startDate");
     startDateSelector.value = this.startDate;
-
     let endDateSelector = <HTMLInputElement>document.getElementById("endDate");
     endDateSelector.value = this.endDate;
-
+    
     this.modalRef.hide();
   }
 

@@ -29,20 +29,10 @@
               class="fas fa-circle pl-3 mr-5"
               [ngClass]="{'lowRisk': status==2, 'mediumRisk':status==3, 'highRisk': status==4}"></i>
           </label>
-          <div class="row">
-            <div class="col">
-              <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>
-              <input type="date" id="startDate" name="period-start" [min]="minDate" [max]="startDateFormMax" (change)="startDateSelected($event)">
-              &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>
-              <input type="date" id="endDate" name="period-end" [min]="twoWeekAhead" [max]="maxDate" 
-              (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
-              <button class="btn btn-primary mt-3" (click)="onConfirmDays()" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
-            </div>
-          </div>
         </div>
         <div class="col-md-4 col-xs-12">
           <label class="h6">
-            <b>{{ dssDetail.dssModelName }}</b><a class="details" (click)="openModal(dssDetails,'modal-lg')">
+            <b>{{ dssDetail.dssModelName }}</b><a class="details" (click)="openInfoModal(dssDetails,'modal-lg')">
               <i class="fas fa-info-circle light-blue-icon ml-1 icon-toggle"></i>
             </a>
           </label>
@@ -57,12 +47,22 @@
 
       <div>
         <div class="row">
+          <div class="col">
+            <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>
+            &nbsp;<input type="date" id="startDate" name="period-start" [min]="minDate" [max]="startDateFormMax" (change)="startDateSelected($event)">
+            &nbsp;<label for="end">{{ 'Common_labels.End_Date' | translate }}:</label>
+            &nbsp;<input type="date" id="endDate" name="period-end" [min]="twoWeekAhead" [max]="maxDate" 
+            (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
+            <button class="btn btn-primary ml-2" (click)="onConfirmDays()" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
+          </div>
+        </div>
+        <div class="row mt-4">
             <div class="col-md-4 col-xs-12">
               <b><label>{{ 'DSS_details.Risk_score' | translate }}</label></b>
               <custom-chart [data]="warning.data" [labels]="warning.labels" [config]="warning.chartInformation" [chartId]="'detailChart-'+dssDetail.id"
               [isAPopUpChart]="false">
               </custom-chart>
-              <a (click)="openModal(expandedRiskChart, 'modal-xl')">
+              <a (click)="openModal(expandedRiskChart, 'modal-xl', 'risk')">
                 <i class="fas fa-expand light-blue-icon risk-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
               </a>
             </div>
@@ -79,7 +79,7 @@
                 <div class="col-md-12 col-xs-12" *ngIf="selectedDssChartGroup.id === chartGroup.id">
                   <custom-group-chart [chartId]="'detailChart-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"
                   [isAPopUpChart]="false"></custom-group-chart>
-                  <a (click)="openModal(expandedGroupChart, 'modal-xl')">
+                  <a (click)="openModal(expandedGroupChart, 'modal-xl', 'group')">
                     <i class="fas fa-expand light-blue-icon group-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
                   </a>
                 </div>
@@ -274,7 +274,7 @@
     <h4 class="modal-title pull-left">
       {{ 'DSS_details.Risk_score' | translate }}
     </h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal('risk')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -293,7 +293,7 @@
       (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
       <button class="btn btn-primary ml-2" (click)="onConfirmDays()" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
     </div>
-    <button type="button" class="btn btn-info push-right" (click)="closeModal()">{{ 'Common_labels.Close' | translate }}</button>
+    <button type="button" class="btn btn-info push-right" (click)="closeModal('risk')">{{ 'Common_labels.Close' | translate }}</button>
   </div>
 </ng-template>
 
@@ -310,7 +310,7 @@
         <b>{{ dssChartGroups[0].title }}</b>
       </span>
     </h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal('group')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -340,7 +340,7 @@
       (change)="endDateSelected($event)" [disabled]="!isStartDateSelected">
       <button class="btn btn-primary ml-2" (click)="onConfirmDays()" [disabled]="!isEndDateSelected">{{ 'Common_labels.Select' | translate }}</button>
     </div>
-    <button type="button" class="btn btn-info push-right" (click)="closeModal()">{{ 'Common_labels.Close' | translate }}</button>
+    <button type="button" class="btn btn-info push-right" (click)="closeModal('group')">{{ 'Common_labels.Close' | translate }}</button>
   </div>
 </ng-template>
 
