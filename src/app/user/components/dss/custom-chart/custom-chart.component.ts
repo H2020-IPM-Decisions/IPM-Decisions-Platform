@@ -62,48 +62,7 @@ export class CustomChartComponent implements AfterViewInit, OnChanges {
             this.config.options.animation = this.animation
             options = this.config.options
         }
-        /*
-        if(this.isAPopUpChart){
-            this.chartPopupElement = this.customChartService.drawChartWithFixedYAxis(this.el.nativeElement, this.ax.nativeElement, this.labels, this.data, type, legend, color, options);
-        }else{
-            this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color, options);
-        }
-        */
         this.chartElement = this.customChartService.drawChart(this.el.nativeElement, this.labels, this.data, type, legend, color, options);
-        
-        /* FUNZIONE PER SCROLLARE I DATI CON LA ROTELLINA DEL MOUSE, AL MOMENTO NON ATTIVA (FORSE DA CANCELLARE IN FUTURO) !!!
-        function scroller(scroll, myChart) {
-            
-            const chartXAxisLenght = myChart.data.labels.length;
-
-            if(scroll.deltaY > 0){
-                if(myChart.config.options.scales.x.max >= chartXAxisLenght){    
-                    myChart.config.options.scales.x.min = chartXAxisLenght - 4;
-                    myChart.config.options.scales.x.max = chartXAxisLenght;
-                }else{
-                    myChart.config.options.scales.x.min +=1;
-                    myChart.config.options.scales.x.max +=1;
-                }
-                
-            } else if(scroll.deltaY < 0){
-                if(myChart.config.options.scales.x.min <= 0){
-                    myChart.config.options.scales.x.min = 0;
-                    myChart.config.options.scales.x.max = 3;
-                }else{
-                    myChart.config.options.scales.x.min -=1;
-                    myChart.config.options.scales.x.max -=1;
-                }
-                
-            }
-
-            myChart.update();
-        }
-
-        this.chartElement.canvas.addEventListener('wheel', (e) => {
-            scroller(e, this.chartElement);
-            console.log("X MIN:" + this.chartElement.config.options.scales.x.min)
-        });
-        */
     }
     
     ngOnChanges(changes: SimpleChanges): void {

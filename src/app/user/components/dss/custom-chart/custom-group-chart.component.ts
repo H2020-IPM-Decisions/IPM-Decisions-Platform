@@ -33,13 +33,6 @@ export class CustomGroupChartComponent implements AfterViewInit, OnChanges {
 
     ngAfterViewInit(): void {
         this.initChartData();
-        /*
-        if(this.isAPopUpChart){
-            this.chartElement = this.customChartService.drawGroupChartWhitFixedYAxis(this.el.nativeElement, this.ax.nativeElement, this.labels, this.chartDatasets);
-        }else{
-            this.chartElement = this.customChartService.drawGroupChart(this.el.nativeElement, this.labels, this.chartDatasets);
-        }
-        */
         this.chartElement = this.customChartService.drawGroupChart(this.el.nativeElement, this.labels, this.chartDatasets);
         
     }
@@ -47,7 +40,6 @@ export class CustomGroupChartComponent implements AfterViewInit, OnChanges {
     initChartData(): void{
         this.data = this.chartResultParameters[0].data;
         this.labels = this.chartResultParameters[0].labels;
-        //if(this.isAPopUpChart) this.updateChartAreaAndCanvasWidht();
         this.chartResultParameters.forEach(chartResult => {
             if(chartResult.chartInformation && !chartResult.chartInformation.defaultVisible){
                 return;
@@ -101,15 +93,5 @@ export class CustomGroupChartComponent implements AfterViewInit, OnChanges {
           isZorP = true;
         }
         return isZorP;
-    }
-
-    private updateChartAreaAndCanvasWidht(): void{
-
-        let chartArea = document.querySelector<HTMLElement>('.chartArea');
-        let canvas = document.querySelector<HTMLElement>('canvas');
-        let numberOfLabels = this.labels.length;
-        
-        canvas.style.width = 100 * numberOfLabels + "px";
-        chartArea.style.width = 100 * numberOfLabels + "px";
     }
 }
