@@ -19,7 +19,7 @@
 }
 
 ::ng-deep .list-country-flags {
-    width: 160%;
+    width: 160% !important;
 }
 
 @media (min-width: 360px) {
