@@ -29,20 +29,19 @@ export class DssLinkedRow implements OnInit {
     this._logger.debug("DSS Linked row Model loaded",this.model);
   }
 
-  onSelect(){
+  onSelect($event: any){
     this.selectedDss = !this.selectedDss;
     const dssFormData: IDssFormData = this._dssSelectionService.getDssDataFromDssFlat(this.model);
     this.select.emit(dssFormData);
   }
 
-  onDeselect(){
+  onDeselect($event: any){
     this.selectedDss = !this.selectedDss;
     const dssFormData: IDssFormData = this._dssSelectionService.getDssDataFromDssFlat(this.model);
     this.deselect.emit(dssFormData);
   }
 
-  onDelete() {
-    this.modalRef.hide();
+  onDelete($event: any) {
     this._logger.debug("MODEL",this.model)
     this.delete.emit(this.model.dssDatabaseId);
   }

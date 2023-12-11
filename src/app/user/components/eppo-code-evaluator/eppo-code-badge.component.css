@@ -32,8 +32,7 @@
   display: inline-block;;
   font-size: 80%;
   color: #50a50b;
-  min-width: 150px;
-  max-width: 200px;
+  width: 200px;
   height: auto;
   white-space: normal;
   word-break: break-word;
@@ -41,6 +40,57 @@
   border-radius: 5px;
   position: relative;
   background-color: white;
+}
+
+
+
+.selectedExeLink {
+  -webkit-box-shadow:inset 0px 0px 0px 3px #0ca1f8;
+
+  -moz-box-shadow:inset 0px 0px 0px 3px #0ca1f8;
+
+  box-shadow:inset 0px 0px 0px 3px #0ca1f8;
+  display: inline-block;
+  font-size: 80%;
+  color: #0ca1f8;
+  border-color: transparent;
+  width: 200px;
+  height: auto;
+  white-space: normal;
+  word-break: break-word;
+  border: 2px solid;
+  border-radius: 5px;
+  position: relative;
+  background-color: white;
+}
+
+#trash-can{
+  color: #3ac47d; 
+  font-weight: 500;  
+}
+
+.card{
+  width: 220px;
+  height: 185px;
+}
+
+.card .card-footer{
+  background-color: transparent;
+  width: 220px;
+  height: 65px;
+  border: none;
+}
+
+.card .card-body{
+  width: 220px;
+  height: 120px;
+  border: none;
+}
+
+.external-link-icon{
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
 }
 
 .fa-link {
@@ -256,9 +306,15 @@
   text-align: center;
 }
 
+.badgecontrols {
+  padding-left: 0;
+}
+
+.data-notSelected{
+  display: none;
+}
+
 .linkedBadgeText {
-  padding-left: 0px;
-  padding-right: 30px;
   text-align: center;
 }
 

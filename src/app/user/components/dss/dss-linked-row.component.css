@@ -2,9 +2,6 @@
     padding-left: 0;
 }
 
-.data-selected{
-    background-color: #0ca1f8;
-}
 .data-notSelected{
   display: none;
 }

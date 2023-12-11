@@ -1,5 +1,5 @@
-import { IDssFlat } from './../dss/dss-selection.model';
-import { Component, Input, TemplateRef, OnInit } from "@angular/core";
+import { IDssFlat, IDssFormData } from './../dss/dss-selection.model';
+import { Component, Input, TemplateRef, OnInit, Output, EventEmitter } from "@angular/core";
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NavigationExtras, Router } from '@angular/router';
 import { TranslationService } from '@app/shared/services/translation.service';
@@ -58,7 +58,18 @@ export class EppoCodeBadgeComponent {
     isValid?: boolean;
     @Input()
     isDisabled: boolean;
+    @Input() 
+    isEditing?: boolean;
+    @Input() 
+    isUserSelected?: boolean;
+    @Input() 
+    selectedDss?: boolean;
 
+    @Output() public select: EventEmitter<IDssFormData> = new EventEmitter();
+    @Output() public deselect: EventEmitter<IDssFormData> = new EventEmitter();
+    @Output() public delete: EventEmitter<string> = new EventEmitter();
+    
+    
     modalRef: BsModalRef;
     usedLanguage: string;
 
@@ -70,6 +81,8 @@ export class EppoCodeBadgeComponent {
     
     public ngOnInit(): void {
       this.usedLanguage = this._translationService.convertLangToMomentCode(sessionStorage.getItem("selectedLanguage"));
+      console.log("BADGE");
+      console.log(this.isEditing, this.isUserSelected);
       moment.locale(this.usedLanguage);
       if (this.isScheduled) {
         this.scheduleTime = moment(this.scheduleTime).format('Do MMMM YYYY, h:mm:ss a');
@@ -101,5 +114,20 @@ export class EppoCodeBadgeComponent {
         return true;
       }
       return false;
+    }
+
+    DeselectExternalDss(){
+      this.selectedDss = !this.selectedDss;
+      this.deselect.emit();
+    }
+
+    SelectExternalDss() {
+      this.selectedDss = !this.selectedDss;
+      this.select.emit();
+    }
+
+    DeleteExternalDss(){
+      this.modalRef.hide();
+      this.delete.emit();
     }
 }
