@@ -42,6 +42,12 @@ export class CMSService {
       .toPromise();
   }
 
+  getNewBanner() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/NewHomeBanner?token=${this.key}`)
+      .toPromise();
+  }
+
   getDSSUse() {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/dssuse?token=${this.key}`)
@@ -250,9 +256,31 @@ export class CMSService {
       .toPromise();
   }
 
+  getNewPublicPageFooter() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/NewHomeUpperFooter`, {
+        headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
   getPublicPageFooterMiddle() {
     return this.http
       .get(`${this.cmsUrl}/api/singletons/get/PublicPageFooterMiddle`, {
+        headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
+
+  getEUFlagBanner() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/EUFlagBannerFooter`, {
         headers: {
           'Accept-Language':sessionStorage.getItem('selectedLanguage'),
           'Cockpit-Token': `${this.key}`

@@ -15,10 +15,16 @@ export class CmsLinkPipe implements PipeTransform {
   }
 
   transform(value: string, ...args: any[]): any {
+    let resultURL = "";
     try {
-      return value[0]=='/' ? this.cmsUrl + value: value;
+      if(value[0]=='/'){
+        resultURL = this.cmsUrl + value;
+      }else{
+        resultURL = this.cmsUrl + "/" + value;
+      }
+      return resultURL;
     } catch (e) {
-      return "";
+      return resultURL;
     }
   }
 
