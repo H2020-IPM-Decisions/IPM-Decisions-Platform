@@ -140,12 +140,12 @@
       </div>
       <div class="card-footer">
         <div class="badgecontrols align-self-center" *ngIf="!isUserSelected && !isEditing">
-          <button class="btn" (click)="SelectExternalDss()" [ngClass]="{'data-notSelected': selectedDss === true}">
+          <button class="btn btn-font" (click)="SelectExternalDss()" [ngClass]="{'data-notSelected': selectedDss === true}">
               <i class="action-icon fas light-green-icon fa-plus-circle"> {{'Common_labels.Select' | translate}}
               </i>
           </button>
-          <button class="btn" (click)="DeselectExternalDss()" [ngClass]="{'data-notSelected': selectedDss === false}">
-              <i class="action-icon fas fa-minus-circle" style="color: rgb(179, 0, 0)"> {{'Common_labels.Deselect' | translate}}
+          <button class="btn btn-font" (click)="DeselectExternalDss()" [ngClass]="{'data-notSelected': selectedDss === false}">
+              <i class="action-icon fas fa-minus-circle" style="color: rgb(179, 0, 0);"> {{'Common_labels.Deselect' | translate}}
               </i>
           </button> 
         </div>
@@ -171,8 +171,8 @@
               </div>
             </ng-template>
     
-          <button class="btn" (click)="openModal(deleteTemplate, null)">
-              <i class="action-icon fas fa-trash fa-2x">
+          <button class="btn btn-font" (click)="openModal(deleteTemplate, null)">
+              <i class="action-icon fas fa-trash">
               </i> <span id="trash-can"> {{'Common_labels.Delete' | translate}} </span> 
           </button>
         </div>

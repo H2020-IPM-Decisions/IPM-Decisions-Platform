@@ -74,6 +74,10 @@
   height: 185px;
 }
 
+.btn-font{
+  font-size: large;
+}
+
 .card .card-footer{
   background-color: transparent;
   width: 220px;
