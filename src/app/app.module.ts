@@ -96,7 +96,7 @@ import { DssInfoListComponent } from './dss-info-list/dss-info-list.component';
 import { DssInfoRowComponent } from './dss-info-list/dss-info-row.component';
 import { DisabledDSSComponent } from './user/components/account/edit-disabled-dss/edit-disabled-dss.component';
 import { DssDisabledRowComponent } from './user/components/account/edit-disabled-dss/edit-disabled-dss-row.component';
-import { RiskMapComponent } from './risk-map/risk-map.component';
+import { TermsNConditionsComponent } from './core/auth/pages/terms&conditionsForNewTemplate/terms&conditions.component';
 
 @NgModule({
   declarations: [
@@ -177,7 +177,7 @@ import { RiskMapComponent } from './risk-map/risk-map.component';
     DssInfoRowComponent,
     DisabledDSSComponent,
     DssDisabledRowComponent,
-    RiskMapComponent
+    TermsNConditionsComponent
   ],
   imports: [
     BrowserModule,
