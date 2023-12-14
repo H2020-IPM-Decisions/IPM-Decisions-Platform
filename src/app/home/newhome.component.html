@@ -1,0 +1,241 @@
+<div id="topbar" class="d-sm-flex align-items-center fixed-top">
+  <div class="container d-flex">
+    <!-- Session Bar -->
+    <div *ngIf="isSessionExpiring() && isLoggedIn" class="sessionBarShow">
+      <div class="row">
+          <div class="warningIcon">
+              <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <div *ngIf="!sessionIsExpired" class="col d-flex justify-content-center">
+              {{ 'Information_messages.Session_expiration_message_start' | translate }} &nbsp;<span class="countdown">{{ sessionTimeLeftToShow }}</span>&nbsp; {{ 'Common_labels.Seconds' | translate }}.&nbsp;
+              <span class="clickToExtend" (click)="extendSession()">{{ 'Common_labels.Click_here' | translate }}</span>&nbsp; {{ 'Information_messages.Session_expiration_message_end' | translate }}
+          </div>
+          <div *ngIf="sessionIsExpired" class="col d-flex justify-content-center"> {{ 'Information_messages.Session_expired' | translate }} </div>
+          
+      </div>
+    </div>
+    <div class="contact-info mr-auto">
+
+    </div>
+    <app-language-selector></app-language-selector>
+    <!--<div class="social-links btn-registration" *ngIf="(!isLoggedIn)">
+      <a id="home-anchor-login" class="user" routerLink="/login"><i class='bx bx-log-in-circle'></i><span>
+        {{ 'Common_labels.Login' | translate }}</span></a>
+      <a class="facebook" (click)='goToRegistrationPage()'><i class='bx bxs-lock-alt'></i><span>
+        {{ 'Common_labels.Register' | translate }}</span></a>
+    </div>
+    <div class="ml-3 header-user-info" *ngIf="(isLoggedIn)">
+      <i class='bx bx-user mr-2'></i><span>{{ username }}</span>
+      <a class="ml-2" (click)="navigateToPrivatePages()"><span class="loggedFarmLink"><i class="bx bx-log-in"></i>
+        {{ 'Home.IPM_Private' | translate }}</span></a>
+    </div>-->
+  </div>
+</div>
+
+  <!-- ======= Header ======= -->
+<header id="header" class=" bannerHeader fixed-top">
+    <div class="container align-items-center justify-content-between">
+      <div class="row">
+        <div class="col-xl-9">
+          <a href="../">
+            <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+          </a>
+          <br>
+          <span class="homeTitle"><strong>{{ homeTitle }}</strong></span>
+        </div>
+        <div class="col-md-3 mt-4">
+          <strong class="mr-5"> <a href="https://www.ipmdecisions.net/the-platform/about/" target="_blank" rel="noopener noreferrer"> ABOUT</a> </strong>
+          <strong> <a href="https://www.ipmdecisions.net/documents/" target="_blank" rel="noopener noreferrer"> FACTSHEETS</a> </strong>
+        </div>
+      </div>
+    </div>
+</header><!-- End Header -->
+  
+<section id="hero" class="d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+        <div class="left col-xl-6">
+            <div class="panel">
+                <div class="inner">
+                    <div class="login" *ngIf="(!isLoggedIn)">
+                      <a (click)='goToRegistrationPage()' class="button button-secondary button-medium button full-width">
+                        <i class="bx bx-log-in-circle"></i>&nbsp; {{ 'Common_labels.Register' | translate }}</a> 
+                        <a routerLink="/login" class="button button-secondary button-medium button full-width">
+                          <i class="fa fa-unlock-alt"></i>&nbsp; {{ 'Common_labels.Login' | translate }}</a>
+                    </div>
+                    <div class="login" *ngIf="(isLoggedIn)">
+                      <div class="button button-secondary button-medium button full-width">
+                        <i class='bx bx-user mr-2'></i><span>{{ username }}</span></div> 
+                        <a (click)="navigateToPrivatePages()" class="button button-secondary button-medium button full-width">
+                          <span class="loggedFarmLink"><i class="bx bx-log-in"></i>{{ 'Home.IPM_Private' | translate }}</span></a>
+                    </div>
+                    <div class="quicklinks"> 
+                      <a href="https://www.ipmdecisions.net/documents/quick-start-guide-ipm-platform/" 
+                      target="_blank" rel="noopener noreferrer" class="button button-primary button-medium button full-width">
+                        <i class="fa fa-book"></i>&nbsp; QuickStart Guide</a> 
+                      <a href="https://www.ipmdecisions.net/contact/" class="button button-primary button-medium button full-width"
+                      target="_blank" rel="noopener noreferrer"><i class="fa fa-phone"></i>&nbsp; Support</a> 
+                      <a href="https://www.ipmdecisions.net/contact/" class="button button-primary button-medium button full-width"
+                      target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i>&nbsp; Newsletter</a> 
+                      <a routerLink="/terms&conditions" class="button button-primary button-medium button full-width">
+                        <i class="fa fa-bars"></i>&nbsp; Term &amp; Conditions</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right col-xl-6">
+            <div class="panel">
+                <div class="inner">
+                    <div id="riskmap" class="riskmap"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+  
+  <main id="main">
+
+    <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services">
+    
+      <div class="container top-container">
+        <div class="row">
+          <div class="pad-col col-xl-3 d-flex align-items-stretch">
+            <a routerLink="/farmer-advisor-article" class="link">
+            <div class="icon-box mt-4 mt-xl-0">
+              <div class="icon">
+                <img src="img/new_farming.png">
+              </div>
+              <h2 class="title">{{ 'Common_labels.Farmers_and_Advisors' | translate }}</h2>
+            </div>
+            <div class="arrow-link align-items-center">
+              <i class="fa fa-arrow-circle-right"></i>
+            </div>
+            <img class="leaf-image" src="img/bg-leaf.svg">
+            </a>
+          </div>
+          <div class="pad-col col-xl-3 d-flex align-items-stretch">
+            <a routerLink="/research-article" class="link">
+            <div class="icon-box mt-4 mt-xl-0">
+              <div class="icon">
+                <img src="img/new_research.png">
+              </div>
+              <h2 class="title">{{ 'Common_labels.Researchers' | translate }}</h2>
+            </div>
+            <div class="arrow-link align-items-center">
+              <i class="fa fa-arrow-circle-right"></i>
+            </div>
+            <img class="leaf-image" src="img/bg-leaf.svg">
+            </a>
+          </div>
+          <div class="pad-col col-xl-3 d-flex align-items-stretch">
+            <a routerLink="/coding-article" class="link">
+            <div class="icon-box mt-4 mt-xl-0">
+              <div class="icon"><img src="img/new_coding.png"></div>
+              <h2 class="title">{{ 'Common_labels.Developers' | translate }}</h2>
+            </div>
+            <div class="arrow-link align-items-center">
+              <i class="fa fa-arrow-circle-right"></i>
+            </div>
+            <img class="leaf-image" src="img/bg-leaf.svg">
+            </a>
+          </div>
+          <div class="pad-col col-xl-3 d-flex align-items-stretch">
+            <a routerLink="/dss-info-list" class="link">
+            <div class="icon-box mt-4 mt-xl-0">
+              <div class="icon"><img src="img/new_dss-info-list.png"></div>
+              <h2 class="title">{{ 'Common_labels.Dss_info' | translate }}</h2>
+            </div>
+            <div class="arrow-link align-items-center">
+              <i class="fa fa-arrow-circle-right"></i>
+            </div>
+            <img class="leaf-image" src="img/bg-leaf.svg">
+            </a>
+          </div>
+        </div>
+      </div>   
+    </section><!-- End Featured Services Section -->
+    <div class="container flex" id="latin-placeholder">
+      <div class="container related-projects" >
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <button (click)="showRelatedProjectsList()" class="button button-primary button-large button-open related-projects-button">
+          Related Projects
+          <i class="fa fa-chevron-right"></i>
+        </button>
+        <div id="related-projects-list" *ngIf="showRelatedProjects">
+          <a href="https://bdspublishing.com/" target="_blank" rel="noopener noreferrer">bdspublishing.com</a>
+          <a href="https://ipmworks.net/" target="_blank" rel="noopener noreferrer">ipmworks.net</a>
+          <a href="https://www.smartprotect-h2020.eu/" target="_blank" rel="noopener noreferrer">smartprotect-h2020.eu</a>
+          <a href="https://www.effispray.com/" target="_blank" rel="noopener noreferrer">effispray.com</a>
+        </div>
+      </div>
+    </div> 
+  
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container container-wide flex">
+        <div class="row">
+          <div class="col-md-4"> 
+            <a href="https://www.ipmdecisions.net/">
+              <img src="img/logo-white.svg">
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <h3><span>{{ 'Home.Contacts' | translate }}</span></h3>
+            <h4>{{ 'Home.Email_us' | translate }}</h4>
+            <div [innerHtml]="emailUsContent"></div>
+          </div>
+          <div class="col-md-4">
+            <h3><span>IPM DECISIONS</span></h3>
+            <div id="footer-cms" [innerHtml]="footerContent"></div>
+          </div>
+          <div class="col-md-4">
+            <h3>{{ 'Home.Social' | translate }}</h3>
+            <p>Subscribe to out newsletter(s).</p>
+            <div class="row">
+              <div class="col-md">
+                <input type="email" class="form-email" placeholder="Your email " />&nbsp;
+                <button class="form-email-button">Sign up!</button>
+              </div>
+            </div>
+            <p>You can follow us on</p>
+            <div class="row">
+              <div class="col-xl">
+                <a href="https://www.facebook.com/IPM-Decisions-113070703594951"  title="Facebook" target="_blank" rel="noopener noreferrer">
+                  <img class="social-icon" src="img/icons/facebook-icon.png" id="facebook-icon"></a>&nbsp;
+                <a href="https://www.linkedin.com/company/ipm-decisions/?viewAsMember=true" title="linkedin" target="_blank" rel="noopener noreferrer">
+                  <img class="social-icon" src="img/icons/linkedin-icon.png" id="linkedin-icon"></a>
+                  &nbsp;<a href="https://twitter.com/intent/follow?source=followbutton&variant=1.0&screen_name=IpmDecisions" title="Twitter" target="_blank" rel="noopener noreferrer">
+                  <img class="social-icon" src="img/icons/twitterx-icon.png" id="twitterx-icon"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+  
+  </main><!-- End #main -->
+  
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="row">
+      <div class="col-md-8 footer-content" >
+        <div [innerHTML]="footerMiddleContent">
+        </div>
+      </div>
+      <div class="col-md-1 footer-content">
+      </div>
+      <div class="col-md-3 footer-content">
+        © 2022 <b>{{ 'Common_labels.All_rights_reserved' | translate }} Engineering</b> VAT: 05724831002
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+  <div>
+  
+  </div>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>

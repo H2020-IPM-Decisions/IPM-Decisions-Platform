@@ -1,7 +1,8 @@
 @import url("../../../admin/admin.component.css"); 
 
 .app-header.header-shadow.header-text-dark {
-    background: white;
+    /*NEW TEMPLATE*/ background: #0085a1;  
+    /*background: white; */
     position: fixed;
     width: 100%;
     top: 0;
@@ -147,3 +148,29 @@ li.btn-group.nav-item {
     filter: grayscale(0%);
     transition: all 0.5s ease;
 }
+
+/*NEW TEMPLATE*/
+.ipm-logo{
+    background: unset !important;
+}
+  
+.widget-heading{
+    color: white !important;
+    opacity: unset !important;
+}
+
+.widget-subheading{
+    color: white !important; 
+    opacity: unset !important;
+}
+
+.btn-group > a > i{
+    color: white; 
+    opacity: unset;
+}
+
+#language-selector{
+    color: white;
+}
+
+

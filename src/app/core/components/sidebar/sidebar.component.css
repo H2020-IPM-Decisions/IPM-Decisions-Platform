@@ -12,7 +12,8 @@
     position: fixed;
     top: 0px;
     left: 0px;
-    background-image: linear-gradient(to bottom, #00b09b, #96c93d) !important;
+    /*background-image: linear-gradient(to bottom, #00b09b, #96c93d) !important;*/
+    /*NEW TEMPLATE*/ background-image: linear-gradient(180deg, rgba(61, 181, 148, 1) 0%, rgba(33, 153, 189, 1) 73%, rgba(122, 82, 154, 1) 100%);
     padding-top: 60px;
     z-index: 401;
     white-space: nowrap;
@@ -21,7 +22,8 @@
   }
 
   .mySidebar .mySidebar_heading {
-    color: rgba(255,255,255,.6);
+    /*NEW TEMPLATE*/ color: #ebf7f4;
+    /*color: rgba(255,255,255,.6);*/
     text-transform: uppercase;
     font-size: 18px;
     margin: 0.75rem 0;

@@ -9,14 +9,23 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription, timer } from 'rxjs';
 import * as L from 'leaflet';
 import * as esri_geo from "esri-leaflet-geocoder";
+import Map from 'ol/Map';
+import OSM from 'ol/source/OSM';
+import View from 'ol/View';
+import ImageWMS from 'ol/source/ImageWMS.js';
+import proj4 from 'proj4';
+import Projection from 'ol/proj/Projection.js';
+import { register } from 'ol/proj/proj4';
+import { Image as ImageLayer, Tile as TileLayer } from 'ol/layer.js';
+
 declare var init: any;
 declare var home: any;
 declare var $;
 @Component({
   selector: "app-home",
-  templateUrl: "./home.component.html",
+  templateUrl: "./newhome.component.html", // NEW TEMPLATE: rimuovere il prefisso new dai file html e css per avere il vecchio template
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ["./home.component.css", "./style.css"],
+  styleUrls: ["./newhome.component.css", "./newstyle.css"],
 })
 export class HomeComponent implements OnInit, OnDestroy {
   active: string = "home";
@@ -84,6 +93,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   public $sessionExpirationTimer: Subscription;
   public $sessionExtend: Subscription;
   public sessionIsExpired: boolean = false;
+  public showRelatedProjects: boolean = false;
+
+  public relatedProjectsList:any;
 
   constructor(
     private cmsService: CMSService,
@@ -119,7 +131,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     let cmsService = this.cmsService;
     let promises = [
-      cmsService.getBanner().then((response: any) => {
+/*      cmsService.getBanner().then((response: any) => {
+        this.bannerUrl = response.image.path;
+      }),*/
+      cmsService.getNewBanner().then((response: any) => { //NEW TEMPLATE: per avere il vecchio banner usare il metodo commentato sopra
         this.bannerUrl = response.image.path;
       }),
       cmsService.getDSSUse().then((response: any) => {
@@ -197,7 +212,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       cmsService.getHomeCardUsefulLinks().then((usefulLinks: any) => {
         this.usefulLinksContent = this._sanitizer.bypassSecurityTrustHtml(usefulLinks["HtmlContent"]);
       }),
-      cmsService.getPublicPageFooter()
+      cmsService.getNewPublicPageFooter()
       .then((footer: any) => {
         let languageFound: boolean = false;
         for (let key in footer) {
@@ -214,7 +229,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.footerContent = this._sanitizer.bypassSecurityTrustHtml(footer["en"]);
         }
       }),
-      cmsService.getPublicPageFooterMiddle()
+      cmsService.getEUFlagBanner()
       .then((footerMiddle: any) => {
         let languageFound: boolean = false;
         for (let key in footerMiddle) {
@@ -265,6 +280,46 @@ export class HomeComponent implements OnInit, OnDestroy {
       // Start Session timer
       this.oberserableTimer();
     }
+    this.initializeMap();
+
+    window.onclick = (event) => {
+      if(!event.target.matches('.related-projects-button')){
+        if(this.showRelatedProjects){
+          this.showRelatedProjects = false;
+        }
+      }
+    }
+
+    document.getElementsByClassName("related-projects-button")[0].addEventListener('click', event => event.stopPropagation());
+    
+  }
+
+  initializeMap() {
+    const layers = [
+      new TileLayer({
+        source: new OSM(),
+      }),
+      new ImageLayer({
+        source: new ImageWMS({
+          url: 'https://gridweb.vips.nibio.no/cgi-bin/PSILARTEMP',
+          params: { LAYERS: 'PSILARTEMP.WARNING_STATUS.2023-12-11', TRANSPARENT: 'TRUE' },
+          ratio: 1,
+          serverType: 'mapserver',
+          projection: 'EPSG:4326',
+        }),
+        opacity: 0.5
+      }),
+    ];
+
+    this.map = new Map({
+      target: 'riskmap',
+      layers: layers,
+      controls: [],
+      view: new View({
+        center: [1955109.15554, 9562668.726335],
+        zoom: 4,
+      }),
+    });
   }
 
   goToRegistrationPage() {
@@ -344,5 +399,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public hideDevBanner(): void {
     this.showDevBanner = false;
+  }
+
+  showRelatedProjectsList() {
+    this.showRelatedProjects = true;
   }
 }

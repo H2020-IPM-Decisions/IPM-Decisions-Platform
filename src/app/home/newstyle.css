@@ -7,7 +7,7 @@ body {
 }
 
 a {
-    color: #7bbc28;
+    color: #fff;
 }
 
 a:hover {
@@ -91,7 +91,7 @@ h6 {
     width: 40px;
     height: 40px;
     border-radius: 4px;
-    background: #7bbc28;
+    background: #0085a1;
     color: #fff;
     transition: all 0.4s;
 }
@@ -114,8 +114,8 @@ h6 {
 # Top Bar
 --------------------------------------------------------------*/
 #topbar {
-    background: #7bbc29;
-    height: 40px;
+    background:#0085a1;
+    height: 30px;
     font-size: 14px;
     transition: all 0.5s;
     color: #fff;
@@ -160,9 +160,9 @@ h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-transition: all 0.5s;
+    transition: all 0.5s;
     z-index: 997;
-    padding: 25px 0;
+    padding: 10px 0;
     top: 30px;
     background: #fff;
     box-shadow: 0 0 29px 0 rgb(45 45 45 / 49%);
@@ -215,8 +215,13 @@ transition: all 0.5s;
 
 #featured-services .container {
     position: relative;
+    max-width: 1176px;
+    max-height: fit-content;
 }
 
+.top-container{
+    margin-top: 170px; 
+}
 
 #header .logo a span {
     color: #7bbc28;
@@ -224,6 +229,10 @@ transition: all 0.5s;
 
 #header .logo img {
     max-height: 40px;
+}
+
+#header a > img{
+    max-width: 50%;
 }
 
 @media (max-width: 576px) {
@@ -508,12 +517,13 @@ nav ul {
 
 #hero .container {
     position: relative;
-    padding-top: 132px;
+    max-width: 1176px;
+    padding-top: 160px;
 }
 
 @media (max-width: 992px) {
     #hero .container {
-        padding-top: 58px;
+        padding-top: 160px;
     }
 }
 
@@ -628,7 +638,7 @@ nav ul {
 # Sections General
 --------------------------------------------------------------*/
 section {
-    padding: 60px 0;
+    padding: 40px 0;
     overflow: hidden;
 }
 
@@ -742,22 +752,35 @@ section {
 --------------------------------------------------------------*/
 .featured-services a.link {
     padding: 25px 20px;
-        position: relative;
-        overflow: hidden;
-        background: #fff;
-        box-shadow: 0 0 29px 0 rgb(68 88 144 / 12%);
-        -webkit-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-        border-radius: 8px;
-        z-index: 1;
-        width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0 29px 0 rgb(68 88 144 / 12%);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+    z-index: 1;
+    width: 100%;
+    min-height: 200px;
 }
 
+.featured-services a.link .icon{
+    opacity: 0.4;
+}
+
+.featured-services a.link:hover{
+    text-decoration: unset;
+    .icon{
+        opacity: 1;  
+        transition: opacity 250ms ease-out;
+        -webkit-transition: opacity 250ms ease-out;  
+        -moz-transition: opacity 250ms ease-in-out;  
+    }
+}
 
 .featured-services a .icon-box::before {
     content: '';
     position: absolute;
-    background: #cbe0fb;
     right: 0;
     left: 0;
     bottom: 0;
@@ -767,13 +790,11 @@ section {
 }
 
 .featured-services a .icon-box:hover::before {
-    background: #7bbc29;
     top: 0;
     border-radius: 0px;
 }
 
 .featured-services a .icon {
-    margin-bottom: 15px;
     text-align: center;
 }
 
@@ -785,9 +806,11 @@ section {
 }
 
 .featured-services a .title {
-    font-weight: 700;
+    line-height: 24px;
+    font-size: 24px;
     text-align: center;
-    color: #121212;
+    color: rgba(61,181,148,1);
+    font-weight: 400;
 }
 
 .featured-services a .title a {
@@ -861,10 +884,11 @@ section {
     margin-top: 10px;
 }
 
-.desc-header span strong {
+.homeTitle {
     font-weight: 600;
     line-height: 12px;
     font-size: 16px;
+    color: #3db594;
 }
 
 /*--------------------------------------------------------------
@@ -1697,6 +1721,18 @@ section {
     background: #3b8af2;
 }
 
+#contact p{
+    font-size: 14px;
+    color: #fff;
+    line-height: 2;
+}
+
+#footer p{
+    font-size: 14px;
+    color: #fff;
+    line-height: 2;
+}
+
 @-webkit-keyframes animate-loading {
     0% {
         transform: rotate(0deg);
@@ -1721,11 +1757,14 @@ section {
 # Footer
 --------------------------------------------------------------*/
 
-#footer {
-    padding: 0 0 20px 0;
-    color: #fff;
-    font-size: 14px;
-    background: #1d1b1b;
+#footer{
+    background: #7a529a;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+}
+
+#footer .row .footer-content > div{
+    margin: 25px;
 }
 
 #footer .footer-newsletter {
