@@ -4,6 +4,7 @@ import { CmsLinkPipe } from "./cms-link.pipe";
 import { EppoCodePipe } from "./eppo-code.pipe";
 import { CountryAlpha2CodePipe } from "./country-alpha2-code.pipe";
 import { CountryNamePipe } from "./country-name.pipe";
+import { HtmlLinkPipe } from "./html-link-pipe";
 
 @NgModule({
     imports: [
@@ -13,13 +14,15 @@ import { CountryNamePipe } from "./country-name.pipe";
         CmsLinkPipe,
         EppoCodePipe,
         CountryAlpha2CodePipe,
-        CountryNamePipe
+        CountryNamePipe,
+        HtmlLinkPipe
     ],
     exports: [
         CmsLinkPipe,
         EppoCodePipe,
         CountryAlpha2CodePipe,
-        CountryNamePipe
+        CountryNamePipe,
+        HtmlLinkPipe
     ],
     providers: [
         CountryNamePipe

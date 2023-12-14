@@ -48,8 +48,7 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-3 col-form-label"><b>{{ 'DSS_info_popup.Description' | translate }}</b></label>
-            <div class="col-sm-9">
-                <p>{{ model.description }}</p>
+            <div class="col-sm-9 newline-rendering" [innerHTML]="model.description | htmlLink">
             </div>
         </div>
         <div class="form-group row">

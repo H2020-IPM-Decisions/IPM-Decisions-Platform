@@ -81,8 +81,6 @@ export class EppoCodeBadgeComponent {
     
     public ngOnInit(): void {
       this.usedLanguage = this._translationService.convertLangToMomentCode(sessionStorage.getItem("selectedLanguage"));
-      console.log("BADGE");
-      console.log(this.isEditing, this.isUserSelected);
       moment.locale(this.usedLanguage);
       if (this.isScheduled) {
         this.scheduleTime = moment(this.scheduleTime).format('Do MMMM YYYY, h:mm:ss a');

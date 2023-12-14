@@ -25,3 +25,7 @@
 .fa-circle {
   color: white;
 }
+
+.newline-rendering{
+  white-space: pre-wrap;
+}
