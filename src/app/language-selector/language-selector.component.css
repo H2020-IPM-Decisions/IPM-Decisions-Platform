@@ -43,11 +43,11 @@
 
 /*NEW TEMPLATE*/
 
-::ng-deep .country-flag > .country-code{
+:host ::ng-deep .country-flag > .country-code{
     color: #ebf7f4;
 }
   
-::ng-deep .country-flag > span:nth-child(3){
+:host ::ng-deep .country-flag > span:nth-child(3){
     color: transparent;
 }
 
