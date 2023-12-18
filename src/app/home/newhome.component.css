@@ -338,12 +338,36 @@ div strong > a:hover{
   background: #ebf7f4;
 }
 
-.arrow-link{
-  text-align: center;
-  position: relative;
-  margin: auto;
-  top: 5%;
+
+@media screen and (min-width: 1200px){
+
+  .arrow-link {
+    text-align: center;
+    position: absolute;
+    margin: auto;
+    bottom: 5%;
+    left: 42%;
+  }
 }
+
+@media screen and (max-width: 1199px){
+
+  .arrow-link{
+    text-align: center;
+    position: relative;
+    margin: auto;
+    top: 5%;
+  }
+  
+ 
+  .pad-col{
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+}
+
+
 
 .arrow-link i{
   width: 50%;

@@ -521,6 +521,12 @@ nav ul {
     padding-top: 160px;
 }
 
+@media (max-width: 1199px){
+    #hero .container {
+        padding-top: 190px;
+    }
+}
+
 @media (max-width: 992px) {
     #hero .container {
         padding-top: 160px;
@@ -750,6 +756,22 @@ section {
 /*--------------------------------------------------------------
 # Featured Services
 --------------------------------------------------------------*/
+@media screen and (min-width: 1200px){
+
+    .featured-services a.link {
+        width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 1199px){
+  
+    .featured-services a.link {
+        width: 50%;
+    }
+  }
+
+
+
 .featured-services a.link {
     padding: 25px 20px;
     position: relative;
@@ -760,7 +782,6 @@ section {
     transition: all 0.3s ease-in-out;
     border-radius: 8px;
     z-index: 1;
-    width: 100%;
     min-height: 200px;
 }
 
