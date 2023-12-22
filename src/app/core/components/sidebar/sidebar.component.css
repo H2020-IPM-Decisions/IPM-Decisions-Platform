@@ -134,3 +134,14 @@
     }
 
 }
+
+ /*NEW TEMPLATE*/
+
+#mySidebarFooter a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+#mySidebarFooter a:hover{
+    text-decoration: none;
+}

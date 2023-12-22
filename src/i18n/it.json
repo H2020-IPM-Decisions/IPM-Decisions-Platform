@@ -70,7 +70,12 @@
         "Download":"Scarica",
         "Integrated_Dss":"DSS integrati",
         "External_Dss":"DSS esterni",
-        "Disabled":"Disabilitato"
+        "Disabled":"Disabilitato",
+        "Factsheets":"Fascicoli",
+        "Quickstart_guide":"Guida rapida",
+        "Support":"Supporto",
+        "Newsletter":"Newsletter",
+        "Terms_and_conditions":"Termini e condizioni"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
@@ -213,7 +218,10 @@
         "Social":"Social media",
         "Useful_links":"Link utili",
         "IPM_Decisions_News":"News da <b>IPM Decisions</b>",
-        "IPM_Private":"IPM Privato"
+        "IPM_Private":"IPM Privato",
+        "Related_project":"Progetti correlati",
+        "Newsletter_subscribe": "Registrati alla nostra newsletter.",
+        "Follow_us": "Puoi seguirci su"
     },
     "Register": {
         "User_type":"Tipo di utente",

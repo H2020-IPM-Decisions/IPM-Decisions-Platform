@@ -70,7 +70,12 @@
         "Download":"Download",
         "Integrated_Dss":"Integrated DSS",
         "External_Dss":"External DSS",
-        "Disabled":"Disabled"
+        "Disabled":"Disabled",
+        "Factsheets":"Factsheets",
+        "Quickstart_guide":"Quickstart guide",
+        "Support":"Support",
+        "Newsletter":"Newsletter",
+        "Terms_and_conditions":"Terms & conditions"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -213,7 +218,10 @@
         "Social":"Social",
         "Useful_links":"Useful Links",
         "IPM_Decisions_News":"<b>IPM Decisions</b> News",
-        "IPM_Private":"IPM Private"
+        "IPM_Private":"IPM Private",
+        "Related_project":"Related project",
+        "Newsletter_subscribe": "Subscribe to our newsletter(s).",
+        "Follow_us": "You can follow us on"
     },
     "Register": {
         "User_type":"User Type",
