@@ -105,7 +105,7 @@
 </div>
 
 <ng-template #noData>
-    <div class="card">
+    <div class="card" *ngIf="!isSyncronizing">
       <div class="progress m-3" *ngIf="remoteCallLoading">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%">
           {{ 'Common_labels.Loading' | translate }}

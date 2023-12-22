@@ -28,6 +28,7 @@ export class DssLinkedPage implements OnInit, OnDestroy {
   getLinkedDssListSubscription: Subscription;
   deleteLinkedDssSelectedByUserSubscription: Subscription;
   submitSelectedLinkedDssSubscription: Subscription;
+  public isSyncronizing: boolean = false;
   
   private specialCharacterComparator$: specialCharacterComparator = new specialCharacterComparator();
   
@@ -55,9 +56,11 @@ export class DssLinkedPage implements OnInit, OnDestroy {
   }
 
   getInitData(): void {
+    console.log(this.isSyncronizing);
     if (this.getLinkedDssListSubscription) {
       this.getLinkedDssListSubscription.unsubscribe();
     }
+    this.isSyncronizing = true;
     this.allLinkedDSS = [];
     this.overallLinkedDSS = [];
     this.linkedDSSSelectedByUser = [];
@@ -71,14 +74,19 @@ export class DssLinkedPage implements OnInit, OnDestroy {
           }
         })
         this.filterByUserSelectedLinkedDSSList(false);
+        this.reloadData(1);
+        this.isSyncronizing = false;
         this.remoteCallLoading = false;
       },
       errorResponse => {
         this._logger.error("GET LINKED DSS LIST ERROR: ",errorResponse);
+        this.reloadData(1);
+        this.isSyncronizing = false;
         this.remoteCallLoading = false;
         this._toastrTranslated.showTranslatedToastr("Error_messages.DSS_model_retrived_error","Common_labels.Error","toast-error");
       }
     );
+    
   }
 
   getInitDataOnlyOverall(): void {
@@ -304,4 +312,14 @@ export class DssLinkedPage implements OnInit, OnDestroy {
       );
     }
   }
+
+  private reloadData(counter: number): void {
+    this._logger.info("Reloading!");
+    let intervalId = setInterval(() => {
+        counter = counter - 1;
+        if (counter < 1) {
+          clearInterval(intervalId);
+        }
+    }, 1000)
+}
 }
