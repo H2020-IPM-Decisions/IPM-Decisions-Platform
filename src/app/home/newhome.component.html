@@ -44,8 +44,8 @@
           <span class="homeTitle"><strong>{{ homeTitle }}</strong></span>
         </div>
         <div class="col-md-3 mt-4">
-          <strong class="mr-5"> <a href="https://www.ipmdecisions.net/the-platform/about/" target="_blank" rel="noopener noreferrer"> ABOUT</a> </strong>
-          <strong> <a href="https://www.ipmdecisions.net/documents/" target="_blank" rel="noopener noreferrer"> FACTSHEETS</a> </strong>
+          <strong class="mr-5"> <a href="https://www.ipmdecisions.net/the-platform/about/" target="_blank" rel="noopener noreferrer"> {{ 'Common_labels.About' | translate }}</a> </strong>
+          <strong> <a href="https://www.ipmdecisions.net/documents/" target="_blank" rel="noopener noreferrer"> {{ 'Common_labels.Factsheets' | translate }}</a> </strong>
         </div>
       </div>
     </div>
@@ -72,13 +72,13 @@
                     <div class="quicklinks"> 
                       <a href="https://www.ipmdecisions.net/documents/quick-start-guide-ipm-platform/" 
                       target="_blank" rel="noopener noreferrer" class="button button-primary button-medium button full-width">
-                        <i class="fa fa-book"></i>&nbsp; QuickStart Guide</a> 
+                        <i class="fa fa-book"></i>&nbsp; {{ 'Common_labels.Quickstart_guide' | translate }}</a> 
                       <a href="https://www.ipmdecisions.net/contact/" class="button button-primary button-medium button full-width"
-                      target="_blank" rel="noopener noreferrer"><i class="fa fa-phone"></i>&nbsp; Support</a> 
+                      target="_blank" rel="noopener noreferrer"><i class="fa fa-headphones"></i>&nbsp; {{ 'Common_labels.Support' | translate }}</a> 
                       <a href="https://www.ipmdecisions.net/contact/" class="button button-primary button-medium button full-width"
-                      target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i>&nbsp; Newsletter</a> 
+                      target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i>&nbsp; {{ 'Common_labels.Newsletter' | translate }}</a> 
                       <a routerLink="/terms&conditions" class="button button-primary button-medium button full-width">
-                        <i class="fa fa-bars"></i>&nbsp; Term &amp; Conditions</a> 
+                        <i class="fa fa-bars"></i>&nbsp; {{ 'Common_labels.Terms_and_conditions' | translate }} </a> 
                     </div>
                 </div>
             </div>
@@ -162,7 +162,7 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
         <button (click)="showRelatedProjectsList()" class="button button-primary button-large button-open related-projects-button">
-          Related Projects
+          {{ 'Home.Related_project' | translate }}
           <i class="fa fa-chevron-right"></i>
         </button>
         <div id="related-projects-list" *ngIf="showRelatedProjects">
@@ -196,14 +196,14 @@
           </div>
           <div class="col-md-4">
             <h3>{{ 'Home.Social' | translate }}</h3>
-            <p>Subscribe to out newsletter(s).</p>
+            <p>{{ 'Home.Newsletter_subscribe' | translate }}</p>
             <div class="row">
               <div class="col-md">
-                <input type="email" class="form-email" placeholder="Your email " />&nbsp;
-                <button class="form-email-button">Sign up!</button>
+                <input type="email" class="form-email" placeholder="{{ 'Common_labels.Email' | translate }}" />&nbsp;
+                <button class="form-email-button">{{ 'Common_labels.Register' | translate }}</button>
               </div>
             </div>
-            <p>You can follow us on</p>
+            <p>{{ 'Home.Follow_us' | translate }}</p>
             <div class="row">
               <div class="col-xl">
                 <a href="https://www.facebook.com/IPM-Decisions-113070703594951"  title="Facebook" target="_blank" rel="noopener noreferrer">
@@ -231,7 +231,7 @@
       <div class="col-md-1 footer-content">
       </div>
       <div class="col-md-3 footer-content">
-        © 2022 <b>{{ 'Common_labels.All_rights_reserved' | translate }} Engineering</b> VAT: 05724831002
+        © 2024 <b>{{ 'Common_labels.All_rights_reserved' | translate }} Engineering</b> VAT: 05724831002
       </div>
     </div>
   </footer><!-- End Footer -->

@@ -11,7 +11,7 @@ declare var home: any;
 @Component({
   selector: 'app-researchers-article',
   templateUrl: './researchers-article.component.html',
-  styleUrls: ['./researchers-article.component.css', '../home/./style.css']
+  styleUrls: ['./researchers-article.component.css', '../home/./newstyle.css'] // NEW TEMPLATE
 })
 export class ResearchersArticleComponent implements OnInit, OnDestroy {
 
@@ -42,7 +42,8 @@ export class ResearchersArticleComponent implements OnInit, OnDestroy {
     home();
     let cmsService = this.cmsService;
     let promises = [
-      cmsService.getBanner()
+      //cmsService.getBanner() NEW TEMPLATE
+      cmsService.getNewBanner()
         .then((response: any) => { this.bannerUrl = response.image.path }),
 
       cmsService.getResearchersArticle()
@@ -96,7 +97,8 @@ export class ResearchersArticleComponent implements OnInit, OnDestroy {
             this.homeTitle = hTitle["en"];
           }
         }),
-      cmsService.getPublicPageFooterMiddle()
+      //cmsService.getPublicPageFooterMiddle() NEW TEMPLATE
+      cmsService.getEUFlagBanner()
       .then((footerMiddle: any) => {
         let languageFound: boolean = false;
         for (let key in footerMiddle) {

@@ -32,7 +32,7 @@
 
 <!-- ======= Header ======= -->
 <header id="header" class=" bannerHeader fixed-top">
-  <div class="container d-flex align-items-center justify-content-between">
+  <!--<div class="container d-flex align-items-center justify-content-between">
     <div class="row">
       <div class="col-md-4 col-xs-12">
         <a routerLink="/">
@@ -43,6 +43,22 @@
         <span><strong>{{ homeTitle }}</strong></span>
       </div>
     </div>
+  </div>-->
+  <!-- NEW TEMPLATE -->
+  <div class="container align-items-center justify-content-between">
+    <div class="row">
+      <div class="col-xl-9">
+        <a href="../">
+          <img [src]="bannerUrl | cmsLink" alt="Logo Ipm Decisions">
+        </a>
+        <br>
+        <span class="homeTitle"><strong>{{ homeTitle }}</strong></span>
+      </div>
+      <div class="col-md-3 mt-4">
+        <strong class="mr-5"> <a href="https://www.ipmdecisions.net/the-platform/about/" target="_blank" rel="noopener noreferrer"> {{ 'Common_labels.About' | translate }}</a> </strong>
+        <strong> <a href="https://www.ipmdecisions.net/documents/" target="_blank" rel="noopener noreferrer"> {{ 'Common_labels.Factsheets' | translate }}</a> </strong>
+      </div>
+    </div>
   </div>
 </header><!-- End Header -->
 
@@ -51,14 +67,14 @@
     <div class="client-text">
       <h2>{{ 'Common_labels.Researchers' | translate }}</h2>
       <img class="article-image" src="img/research.png">
-      <span [innerHtml]="articleContent"></span>
+      <span id="article-content" [innerHtml]="articleContent"></span>
     </div>
   </div>
 </section>
 
 <!-- ======= Footer ======= -->
 <footer id="footer">
-  <div class="container py-4">
+<!--  <div class="container py-4">
     <div class="row">
       <div class="col-md-5 eu-flag" [innerHtml]="footerContent"></div>
       <div class="col-md-5 ">
@@ -71,6 +87,17 @@
   </div>
   <div class="copyright">
     © 2022 <b>{{ 'Common_labels.All_rights_reserved' | translate }} Engineering</b> <br>VAT: 05724831002
+  </div>--> <!-- NEW TEMPLATE-->
+  <div class="row">
+    <div class="col-md-8 footer-content" >
+      <div [innerHTML]="footerMiddleContent">
+      </div>
+    </div>
+    <div class="col-md-1 footer-content">
+    </div>
+    <div class="col-md-3 footer-content">
+      © 2024 <b>{{ 'Common_labels.All_rights_reserved' | translate }} Engineering</b> VAT: 05724831002
+    </div>
   </div>
 </footer><!-- End Footer -->
 <div>

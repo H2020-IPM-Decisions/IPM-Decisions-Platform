@@ -11,7 +11,7 @@ declare var home: any;
 @Component({
   selector: 'app-farmers-advisors-article',
   templateUrl: './farmers-advisors-article.component.html',
-  styleUrls: ['./farmers-advisors-article.component.css', '../home/./style.css']
+  styleUrls: ['./farmers-advisors-article.component.css', '../home/./newstyle.css']
 })
 export class FarmersAdvisorsArticleComponent implements OnInit, OnDestroy {
 
@@ -43,7 +43,8 @@ export class FarmersAdvisorsArticleComponent implements OnInit, OnDestroy {
     home();
     let cmsService = this.cmsService;
     let promises = [
-      cmsService.getBanner()
+      //cmsService.getBanner() NEW TEMPLATE
+      cmsService.getNewBanner()
         .then((response: any) => { this.bannerUrl = response.image.path }),
       
       cmsService.getFarmersAdvisorsArticle()
@@ -97,7 +98,8 @@ export class FarmersAdvisorsArticleComponent implements OnInit, OnDestroy {
             this.homeTitle = hTitle["en"];
           }
         }),
-      cmsService.getPublicPageFooterMiddle()
+      //cmsService.getPublicPageFooterMiddle() NEW TEMPLATE
+      cmsService.getEUFlagBanner()
       .then((footerMiddle: any) => {
         let languageFound: boolean = false;
         for (let key in footerMiddle) {

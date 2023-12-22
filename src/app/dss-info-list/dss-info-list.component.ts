@@ -22,7 +22,7 @@ declare var home: any;
 @Component({
     selector: 'dss-info-list',
     templateUrl: './dss-info-list.component.html',
-    styleUrls: ['./dss-info-list.component.css', '../home/./style.css'],
+    styleUrls: ['./dss-info-list.component.css', '../home/./newstyle.css'], //NEW TEMPLATE
 })
 export class DssInfoListComponent implements OnInit {
 
@@ -68,7 +68,8 @@ export class DssInfoListComponent implements OnInit {
 
         let cmsService = this.cmsService;
         let promises = [
-          cmsService.getBanner()
+          // NEW TEMPLATE cmsService.getBanner()
+            cmsService.getNewBanner()
             .then((response: any) => { this.bannerUrl = response.image.path }),
 
           cmsService.getPublicPageFooter()
@@ -105,7 +106,8 @@ export class DssInfoListComponent implements OnInit {
                 this.homeTitle = hTitle["en"];
               }
             }),
-          cmsService.getPublicPageFooterMiddle()
+          //NEW TEMPLATE cmsService.getPublicPageFooterMiddle()
+          cmsService.getEUFlagBanner()
           .then((footerMiddle: any) => {
             let languageFound: boolean = false;
             for (let key in footerMiddle) {
