@@ -72,7 +72,7 @@ export class EditPasswordComponent implements OnInit {
             validator: MustMatch('newPassword', 'confirmPassword')
           }
         );
-      }
+    }
 
     get f() {
       return this.changePasswordForm.controls;

@@ -56,7 +56,6 @@ export class DssLinkedPage implements OnInit, OnDestroy {
   }
 
   getInitData(): void {
-    console.log(this.isSyncronizing);
     if (this.getLinkedDssListSubscription) {
       this.getLinkedDssListSubscription.unsubscribe();
     }
@@ -321,5 +320,5 @@ export class DssLinkedPage implements OnInit, OnDestroy {
           clearInterval(intervalId);
         }
     }, 1000)
-}
+  }
 }

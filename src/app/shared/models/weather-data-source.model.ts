@@ -1,3 +1,5 @@
+import { Farm } from "@app/shared/models/farm.model";
+
 export interface Historic {
   start: string;
   end?: any;
@@ -51,4 +53,35 @@ export class WeatherDataSourceDto {
     public url: string,
     public id?: string
   ){}
+}
+
+export interface AvailableWeatherStation{
+  weatherId: string,
+  name: string,
+  url: string
+}
+
+export interface UserWeatherStation{
+  WeatherId: string,
+  WeatherStationId: string,
+  WeatherStationReference:string,
+  Username:string,
+  Password:string
+}
+
+export interface UserWeatherStationUpdate{
+  weatherStationId: string,
+  weatherStationReference: string,
+  userName: string,
+  Password:string
+}
+
+export interface UserWeatherStationInfo{
+  id: string,
+  weatherId: string,
+  weatherName: string,
+  weatherStationId: string,
+  weatherStationReference: string,
+  userName: string,
+  farms: Farm[]
 }

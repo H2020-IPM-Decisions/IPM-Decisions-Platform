@@ -285,7 +285,7 @@ export class DssInfoListComponent implements OnInit {
 
     
     openModal(template: TemplateRef<any>, size?: string) {
-    this.modalRef = this._modalService.show(template, {class: size});
+      this.modalRef = this._modalService.show(template, {class: size});
     }
 
     onConfirmSelectedCrops(): void {

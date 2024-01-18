@@ -1,5 +1,5 @@
 import { environment } from "@src/environments/environment";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, tap } from "rxjs/operators";
 import { throwError, Subject, Observable, BehaviorSubject, Subscription, Subscriber } from "rxjs";
@@ -65,6 +65,18 @@ export class WeatherService {
         }
       )
       .pipe(catchError(this.handleError));
+  }
+
+  public getSingleWeatherStationDataSource(WeatherId: string): Observable<HttpResponse<WeatherDataSource>> {
+    return this.http.get<WeatherDataSource>(`${environment.apiUrl}/api/wx/rest/weatherdatasource/${WeatherId}`,
+      {
+        headers: {
+          "Content-Type": "*/*",
+          Accept: "application/json",
+        },
+        observe: "response",
+      }
+    );
   }
 
   /**

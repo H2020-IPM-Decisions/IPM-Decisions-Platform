@@ -97,6 +97,9 @@ import { DssInfoRowComponent } from './dss-info-list/dss-info-row.component';
 import { DisabledDSSComponent } from './user/components/account/edit-disabled-dss/edit-disabled-dss.component';
 import { DssDisabledRowComponent } from './user/components/account/edit-disabled-dss/edit-disabled-dss-row.component';
 import { TermsNConditionsComponent } from './core/auth/pages/terms&conditionsForNewTemplate/terms&conditions.component';
+import { WeaterStationsComponent } from './user/components/account/weather-stations/weather-stations.component';
+import { WeatherStationRowComponent } from './user/components/account/weather-stations/weather-station-row.component';
+import { WeatherStationBodyComponent } from './user/components/account/weather-stations/weather-station-body.component';
 
 @NgModule({
   declarations: [
@@ -177,7 +180,10 @@ import { TermsNConditionsComponent } from './core/auth/pages/terms&conditionsFor
     DssInfoRowComponent,
     DisabledDSSComponent,
     DssDisabledRowComponent,
-    TermsNConditionsComponent
+    TermsNConditionsComponent,
+    WeaterStationsComponent,
+    WeatherStationRowComponent,
+    WeatherStationBodyComponent
   ],
   imports: [
     BrowserModule,

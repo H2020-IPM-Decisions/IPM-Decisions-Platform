@@ -10,7 +10,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
 
 @Component({
-    selector: "app-edit-password",
+    selector: "app-disabled-dss",
     templateUrl: "./edit-disabled-dss.component.html",
     styleUrls: ["./edit-disabled-dss.component.css"],
 })

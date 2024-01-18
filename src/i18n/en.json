@@ -75,7 +75,8 @@
         "Quickstart_guide":"Quickstart guide",
         "Support":"Support",
         "Newsletter":"Newsletter",
-        "Terms_and_conditions":"Terms & conditions"
+        "Terms_and_conditions":"Terms & conditions",
+        "Status":"Status"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -120,7 +121,16 @@
         "File_name_is_required":"File name is required",
         "Seasonal_data_download_error": "Failed to download seasonal data",
         "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
-        "Parameters_not_saved":"Cannot save the new Dss configuration"
+        "Parameters_not_saved":"Cannot save the new Dss configuration",
+        "Weather_stations_retrieve_error": "Error during retrieving weather stations info",
+        "User_weather_stations_retrieve_error": "Error during retrieving the weather station associated with the user",
+        "Weather_station_id_is_required":"Weather station id is required",
+        "Username_is_required":"Username is required",
+        "Only_alphanumeric_characters": "The input must contains only alphanumeric characters",
+        "Weather_station_association_error":"Error during the association of the weather station",
+        "Weather_station_disassociation_error":"Error during the weather station disassociation",
+        "Farm_association_error":"Error during Farms association",
+        "Farm_disassociation_error":"Error during Farms disassociation"
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
@@ -153,7 +163,14 @@
         "DSS_models_filtered":"DSS links filtered successfully!",
         "You_are_about_to_remove":"You are about to remove the following DSS link(s):",
         "Seasonal_data_download_success": "Seasonal data download successfully",
-        "Parameters_saved":"Dss with new configuration saved"
+        "Parameters_saved":"Dss with new configuration saved",
+        "Weather_station_associated":"Weather station associated successfully",
+        "Weather_station_disassociated":"Weather station disassociated",
+        "No_weather_stations_available": "No weather stations available",
+        "No_associated_farm": "No associated farm",
+        "Farm_associated": "Farms associated",
+        "Farm_disassociated": "Farms disassociated"
+
     },
     "Warning_messages":{
         "DSS_model_availability_error":"No DSS available for the selected crops",
@@ -163,7 +180,11 @@
         "Weather_parameters_not_available":"This DSS model is not able to be run using available weather service! The DSS won't be listed.",
         "Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
         "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
-        "DSS_model_availability_country_error":"No DSS available for the selected crops in the selected country. More DSS will be added in future. In the meantime, there may be DSS available from neighbouring countries, which can be found by adding DSS to the farm with the ‘Country filter’ box unticked."
+        "DSS_model_availability_country_error":"No DSS available for the selected crops in the selected country. More DSS will be added in future. In the meantime, there may be DSS available from neighbouring countries, which can be found by adding DSS to the farm with the ‘Country filter’ box unticked.",
+        "Weather_stations_availability_error": "No Weather Station available",
+        "Duplicated_weather_station_id":"The specified Weather Station ID is already in use",
+        "Delete_associated_farm_first": "The weather station have associated farms",
+        "Farm_already_associated": "The farm is already associated with another weather station"
     },
     "Countries": {
         "Austria":"Austria", 
@@ -480,5 +501,22 @@
         "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
         "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
         "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
-    }
+    },
+    "User_weather_stations":{
+        "Weather_stations":"Weather stations",
+        "Available_stations":"Available stations",
+        "Station_name": "Station name",
+        "Info_URL": "Information URL",
+        "Associated":"Associated",
+        "Not_associated":"Not associated",
+        "Associate":"Associate",
+        "Disassociate":"Disassociate",
+        "Weather_station_id": "Weather station id",
+        "Weather_station_reference":"Weather station reference",
+        "Username":"Username",
+        "Associate_weather_station":"Associate weather station",
+        "Manage":"Manage weather station",
+        "Non_associated_Farms":"Non associated Farms",
+        "Associated_Farms":"Associated Farms"
+    }    
 }

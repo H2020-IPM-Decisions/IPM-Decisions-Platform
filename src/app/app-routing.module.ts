@@ -57,6 +57,7 @@ import { EditPasswordComponent } from './user/components/account/edit-password/e
 import { DssInfoListComponent } from './dss-info-list/dss-info-list.component';
 import { DisabledDSSComponent } from './user/components/account/edit-disabled-dss/edit-disabled-dss.component';
 import { TermsNConditionsComponent } from './core/auth/pages/terms&conditionsForNewTemplate/terms&conditions.component';
+import { WeaterStationsComponent } from './user/components/account/weather-stations/weather-stations.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -212,6 +213,12 @@ const appRoutes: Routes = [
   {
     path: "user/account/password",
     component: EditPasswordComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
+  },
+  {
+    path: "user/account/weather-station",
+    component: WeaterStationsComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
