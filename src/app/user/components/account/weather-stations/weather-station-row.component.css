@@ -29,3 +29,7 @@
 .newline-rendering{
   white-space: pre-wrap;
 }
+
+.red-icon{
+  color: red;
+}

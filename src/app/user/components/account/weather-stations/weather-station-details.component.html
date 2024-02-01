@@ -1,0 +1,182 @@
+
+
+<div class="app-container app-theme-white fixed-sidebar fixed-header body-tabs-shadow fixed-footer">
+  <user-header></user-header>
+  <div class="app-main">
+    <sidebar></sidebar>
+    <div class="app-main__outer">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/user/farm">{{ 'Common_labels.Home' | translate }}</a></li>
+          <li class="breadcrumb-item"><a routerLink="/user/account">{{ 'Common_labels.Account' | translate }}</a></li>
+          <li class="breadcrumb-item" ><a routerLink="/user/account/weather-station">{{ 'User_weather_stations.Weather_stations' | translate }}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ 'User_weather_stations.Weather_station_details' | translate }}</li>
+        </ol>
+      </nav>
+      <div class="app-main__inner profile-container">
+        <div class="app-page-title">
+          <div class="page-title-wrapper">
+            <div class="page-title-heading">
+              <div class="page-title-icon">
+                <em class="pe-7s-user icon-gradient bg-mean-fruit">
+                </em>
+              </div>
+              <div>{{ 'User_weather_stations.Weather_station_details' | translate }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container mx-auto my-5 page-box">
+          <div class="container page-box">
+            <fieldset class="border p-3 ml-3 mr-3 mb-3">
+              <legend class="w-auto px-1 text-muted h5">
+                <b>{{ 'User_weather_stations.Istance_management' | translate }}</b>
+              </legend>
+                <form [formGroup]="weatherStationAuthForm">
+                  <div class="form-row">
+                      <div class="col-sm-2">
+                      </div>
+                      <div class="form-group col-sm-8">
+                          <label class="text-info">{{ 'User_weather_stations.Weather_station_id' | translate }}</label>
+                          <input
+                          id="weatherStationId"
+                          type="text"
+                          formControlName="WeatherStationId"
+                          class="form-control"
+                          [ngClass]="{ 'is-invalid': f.WeatherStationId.errors && f.WeatherStationId.touched }"
+                          />
+                      <div *ngIf="f.WeatherStationId.errors && f.WeatherStationId.touched" class="invalid-feedback">
+                          <div *ngIf="f.WeatherStationId.errors?.required">{{ 'Error_messages.Weather_station_id_is_required' | translate }}</div>
+                          <div *ngIf="f.WeatherStationId.errors?.pattern">
+                              {{'Error_messages.Only_alphanumeric_characters' | translate }}
+                          </div>
+                      </div>
+                      </div>
+                      <div class="col-sm-2">
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="col-sm-2">
+                      </div>
+                      <div class="form-group col-sm-8">
+                          <label class="text-info">{{ 'User_weather_stations.Weather_station_name' | translate }}</label>
+                          <input
+                          id="weatherStationReference"
+                          type="text"
+                          formControlName="WeatherStationReference"
+                          class="form-control"
+                          [ngClass]="{ 'is-invalid': f.WeatherStationReference.errors && f.WeatherStationReference.touched }"
+                          />
+                      <div *ngIf="f.WeatherStationReference.errors && f.WeatherStationReference.touched" class="invalid-feedback">
+                          <div *ngIf="f.WeatherStationReference.errors?.pattern">
+                              {{'Error_messages.Only_alphanumeric_characters' | translate }}
+                          </div>
+                      </div>
+                      </div>
+                      <div class="col-sm-2">
+                      </div>
+                  </div>
+                  <div class="form-row" *ngIf="doesTheProviderRequiresAuth">
+                      <div class="col-sm-2">
+                      </div>
+                      <div class="form-group col-sm-8">
+                          <label class="text-info">{{ 'Common_labels.Username' | translate }}</label>
+                          <input
+                          id="username"
+                          type="text"
+                          formControlName="Username"
+                          class="form-control"
+                          [ngClass]="{ 'is-invalid': f.Username.errors && f.Username.touched }"
+                          />
+                      <div *ngIf="f.Username.errors && f.Username.touched" class="invalid-feedback">
+                          <div *ngIf="f.Username.errors?.required">{{ 'Error_messages.Username_is_required' | translate }}</div>
+                      </div>
+                      </div>
+                      <div class="col-sm-2">
+                      </div>
+                  </div>
+                  <div class="form-row" *ngIf="doesTheProviderRequiresAuth">
+                      <div class="col-sm-2">
+                      </div>
+                      <div class="form-group col-sm-8">
+                          <label class="text-info">{{ 'Common_labels.Password' | translate }}</label>
+                          <input
+                          id="password"
+                          type="password"
+                          formControlName="Password"
+                          class="form-control"
+                          [ngClass]="{ 'is-invalid': f.Password.errors && f.Password.touched }"
+                          />
+                      <div *ngIf="f.Password.errors && f.Password.touched" class="invalid-feedback">
+                          <div *ngIf="f.Password.errors?.required">{{ 'Error_messages.Password_required' | translate }}</div>
+                      </div>
+                      </div>
+                      <div class="col-sm-2">
+                      </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-sm-10"></div>
+                    <div class="col-sm-2">
+                      <button type="button" class="btn btn-info" [routerLink]="['/user/account/weather-station']">{{ 'Common_labels.Back' | translate }}</button>&nbsp;
+                      <button type="button" class="btn btn-success" (click)="onSubmit()">{{ 'Common_labels.Save' | translate }}</button> 
+                    </div>
+                  </div>
+              </form>
+            </fieldset>
+              <fieldset class="border p-3 ml-3 mr-3 mb-3">
+                <legend class="w-auto px-1 text-muted h5">
+                  <b>{{ 'Common_labels.Farms' | translate }}</b>
+                </legend>
+                <div class="row" *ngIf="!noFarmsAvailable; else noFarms">
+                  <div class="col">
+                    <table class="table table-striped table-responsive-sm table-bordered">
+                      <thead>
+                        <tr>
+                            <th class="text-center" scope="col">{{ 'Farm_list.Name' | translate }}</th>
+                            <th class="text-center" scope="col">{{ 'Farm_list.Farm_location' | translate }}</th>
+                            <th class="text-center" scope="col">{{ 'Farm_list.Actions' | translate }}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngFor="let farm of farmList; index as i">
+                            <tr>
+                                <td class="text-center">
+                                    {{ farm.name }}
+                                </td>
+                                <td class="text-center hover-pointer">
+                                    <span placement="top" tooltip={{farm.location?.address?.LongLabel}}>
+                                        {{farm.location?.address?.LongLabel}}
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <button *ngIf="!isTheFarmAssociated[i]" type="button" class="btn btn-primary" (click)="associateFarm(farm.id, i)">
+                                      {{ 'User_weather_stations.Associate' | translate }}
+                                    </button>
+                                    <button *ngIf="isTheFarmAssociated[i]" type="button" class="btn btn-danger" (click)="disassociateFarm(farm.id, i)">
+                                      {{ 'User_weather_stations.Disassociate' | translate }}
+                                  </button>
+                                </td>
+                            </tr>
+                        </ng-container>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<ng-template #noFarms>
+  <div class="card">
+    <div class="d-flex justify-content-center p-3 text-muted">
+      <strong>
+        {{ 'Information_messages.No_farms_available' | translate }}
+      </strong>
+    </div>
+  </div>
+</ng-template>

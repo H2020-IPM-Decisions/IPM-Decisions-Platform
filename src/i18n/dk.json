@@ -62,7 +62,7 @@
         "EU_footer_further_information": "For yderligere information omkring IPM Decisions platformen, eller for at rapportere tekniske problemer, send venligst email",
         "EU_footer_further_details_on_project": "Yderligere informationer om det underliggende EU projekt til udvikling af platformen findes på",
         "Clear_filter":"Fjern filtrering",
-"Available_DSS": "Available DSS",
+        "Available_DSS": "Available DSS",
         "Select_days": "Select days",
         "Dss_info": "DSS informations",
         "Start_Date":"Start Date",
@@ -70,7 +70,10 @@
         "Download":"Download",
         "Integrated_Dss":"Integrated DSS",
         "External_Dss":"External DSS",
-        "Disabled":"Disabled"
+        "Disabled":"Disabled",
+        "Status":"Status",
+        "Farms": "Farms",
+        "Username":"Username"
     },
     "Error_messages": {
         "An_unknown_error_occured": "Ukendt fejl opstod!",
@@ -115,7 +118,18 @@
         "File_name_is_required":"File name is required",
         "Seasonal_data_download_error": "Failed to download seasonal data",
         "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
-        "Parameters_not_saved":"Cannot save the new Dss configuration"
+        "Parameters_not_saved":"Cannot save the new Dss configuration",
+        "Weather_stations_providers_retrieve_error": "Error during retrieving weather stations providers",
+        "User_weather_stations_retrieve_error": "Error during retrieving the weather station associated with the user",
+        "Weather_station_id_is_required":"Weather station id is required",
+        "Weather_station_provider_is_required":"Weather station provider is required",
+        "Username_is_required":"Username is required",
+        "Only_alphanumeric_characters": "The input must contains only alphanumeric characters",
+        "Weather_station_association_error":"Error during the association of the weather station",
+        "Weather_station_disassociation_error":"Error during the weather station disassociation",
+        "Farm_association_error":"Error during Farm association",
+        "Farm_disassociation_error":"Error during Farm disassociation",
+        "Weather_station_data_update_error": "Error during weather station data update"
     },
     "Information_messages": {
         "Farm_deletion_message": "Du er ved at slette en bedrift. Er du sikker?",
@@ -148,7 +162,13 @@
         "DSS_models_filtered":"DSS-links er blevet filtreret",
         "You_are_about_to_remove":"Du fjerner følgende DSS-links:",
         "Seasonal_data_download_success": "Seasonal data download successfully",
-        "Parameters_saved":"Dss with new configuration saved"
+        "Parameters_saved":"Dss with new configuration saved",
+        "Weather_station_associated":"Weather station associated successfully",
+        "Weather_station_disassociated":"Weather station disassociated",
+        "No_weather_stations_available": "No weather stations available",
+        "Farm_associated": "Farm associated",
+        "Farm_disassociated": "Farm disassociated",
+        "Weather_station_data_updated": "Weather station data updated" 
     },
     "Warning_messages": {
         "DSS_model_availability_error": "Ingen tilgængelige DSS til de valgte afgrøder",
@@ -158,7 +178,9 @@
         "Weather_parameters_not_available": "Denne DSS model kan ikke køre med den tilgængelig vejrdata. DSS bliver ikke vist.",
         "Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
         "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
-        "DSS_model_availability_country_error":"Ingen BSS tilgængelige for de valgte afgrøder i det valgte land. Flere BSS vil blive tilføjet i fremtiden. I mellemtiden kan der være BSS tilgængelige fra nabolande, som kan findes ved at tilføje BSS til bedriften med 'Landefilter' afkrydset."
+        "DSS_model_availability_country_error":"Ingen BSS tilgængelige for de valgte afgrøder i det valgte land. Flere BSS vil blive tilføjet i fremtiden. I mellemtiden kan der være BSS tilgængelige fra nabolande, som kan findes ved at tilføje BSS til bedriften med 'Landefilter' afkrydset.",
+        "Weather_stations_providers_availability_error": "No Weather Stations Providers available",
+        "Farm_already_associated": "The farm is already associated with another weather station"
     },
     "Countries": {
         "Austria": "Østrig",
@@ -213,7 +235,15 @@
         "Social": "Social",
         "Useful_links": "Nyttige Links",
         "IPM_Decisions_News": "nyheder om <b>IPM Decisions</b>",
-        "IPM_Private": "IPM Private"
+        "IPM_Private": "IPM Private",
+        "Related_project":"Related projects",
+        "Newsletter_subscribe": "Subscribe to our newsletter(s).",
+        "Follow_us": "You can follow us on",
+        "Factsheets":"Factsheets",
+        "Quickstart_guide":"Quickstart guide",
+        "Support":"Support",
+        "Newsletter":"Newsletter",
+        "Terms_and_conditions":"Terms & conditions"
     },
     "Register": {
         "User_type": "Brugertype",
@@ -472,5 +502,22 @@
         "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
         "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
         "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
+    },
+    "User_weather_stations":{
+        "Weather_stations":"Weather stations",
+        "Add_istance":"Add istance",
+        "Associated_istances":"Associated istances",
+        "Station_name": "Station name",
+        "Info_URL": "Information URL",
+        "Associated":"Associated",
+        "Not_associated":"Not associated",
+        "Associate":"Associate",
+        "Disassociate":"Disassociate",
+        "Weather_station_provider": "Weather station provider",
+        "Weather_station_id": "Weather station id",
+        "Weather_station_name":"Weather station name",
+        "Associate_weather_station":"Associate weather station",
+        "Weather_station_details": "Weather station details",
+        "Istance_management": "Istance management"
     }
 }

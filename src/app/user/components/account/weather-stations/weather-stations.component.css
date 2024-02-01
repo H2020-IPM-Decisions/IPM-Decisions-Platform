@@ -76,3 +76,22 @@ button[disabled]{
   padding-top: 4px;
   padding-right: 15px;
 }
+
+.btn:hover{
+  color: white;
+}
+
+.btn-add {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.btn-green {
+  color: #fff;
+  background-color: rgb(58 196 125);
+  border-color: rgb(58 196 125);
+}
+
+.fa-plus-circle{
+  color: white;
+}

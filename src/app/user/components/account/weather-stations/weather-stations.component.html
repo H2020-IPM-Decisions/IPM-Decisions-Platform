@@ -24,43 +24,43 @@
           </div>
   
           <div class="container mx-auto my-5 page-box">
-            <div class="container page-box" *ngIf="!noWeatherStationsAvailable; else noWeatherStation">
+            <div class="container page-box">
                 <div class="row">
-                    <div class="col-12 mt-4">
-                      <fieldset class="border p-3 ml-3 mr-3 mb-3">
-                        <legend class="w-auto px-1 text-muted h5">
-                          <b>{{ 'User_weather_stations.Available_stations' | translate }}</b>
-                        </legend>
-                        <div class="row">
-                          <div class="col">
-                            <table class="table table-striped table-responsive-sm table-bordered">
-                              <thead>
-                                <tr>
-                                  <th class="text-center col-3">{{ 'User_weather_stations.Station_name' | translate }}</th>
-                                  <th class="text-center col-3">{{ 'DSS_information_table.Actions' | translate }}</th>
-                                  <th></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <ng-container *ngFor="let weatherStation of AvailableWeatherStations; index as i">
-                                  <tr app-weather-station-row [weatherStation]="weatherStation" [isStationAssociatedWithUser]="isTheStationAssociated[i]" (Success)="refreshWeatherStationLists()"
-                                  (Disassociate)="disassociateWeatherStation($event)" (Manage)="manageUserWeatherStation($event)">
-                                  </tr>
-                                </ng-container>
-                              </tbody>
-                            </table>
-                          </div>
+                  <div class="col-12 mt-4">
+                    <div class="row">
+                        <div class="col">
+                          <button type="button" class="btn btn-green btn-add pull-right mb-1 mr-3" (click)="openModal(weatherStationAuthModal,'modal-md')">
+                            <i class="action-icon fas fa-plus-circle fa-2x"></i> <strong>{{ 'User_weather_stations.Add_istance' | translate }}</strong>
+                          </button>
                         </div>
-                      </fieldset>
                     </div>
+                    <fieldset class="border p-3 ml-3 mr-3 mb-3" *ngIf="!noWeatherStationsAssociated; else noWeatherStation">
+                      <legend class="w-auto px-1 text-muted h5">
+                        <b>{{ 'User_weather_stations.Associated_istances' | translate }}</b>
+                      </legend>
+                      <div class="row">
+                        <div class="col">
+                          <table class="table table-striped table-responsive-sm table-bordered">
+                            <thead>
+                              <tr>
+                                <th class="text-center col-3">{{ 'User_weather_stations.Weather_station_id' | translate }}</th>
+                                <th class="text-center col-3">{{ 'User_weather_stations.Weather_station_name' | translate }}</th>
+                                <th class="text-center col-3">{{ 'User_weather_stations.Weather_station_provider' | translate }}</th>
+                                <th class="text-center col-3">{{ 'DSS_information_table.Actions' | translate }}</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <ng-container *ngFor="let weatherStation of AssociatedWeatherStations; index as i">
+                                <tr app-weather-station-row [weatherStation]="weatherStation" (Disassociate)="disassociateWeatherStation($event)">
+                                </tr>
+                              </ng-container>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </fieldset>
                   </div>
-                  <div class="row" *ngIf="selectedUserWeatherStationToManage">
-                    <div class="col-12 mt-4">
-                      <fieldset class="border p-3 ml-3 mr-3 mb-3" app-weather-station-body [weatherStation]="userWeatherStationToManage" 
-                      (farmsUpdate)="updateAssociatedFarms($event)" (Close)="closeInfo()">
-                      </fieldset>
-                    </div>
-                  </div>
+                </div>
             </div>
           </div>
         </div>
@@ -78,3 +78,124 @@
   </div>
 </ng-template>
 
+
+<ng-template #weatherStationAuthModal>
+  <div class="modal-header">
+      <h4 class="modal-title pull-left">
+        {{ 'User_weather_stations.Associate_weather_station' | translate }}
+      </h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <form [formGroup]="weatherStationAuthForm">
+            <div class="form-row">
+              <div class="col-sm-2">
+              </div>
+              <div class="form-group col-sm-8">
+                  <label class="text-info">{{ 'User_weather_stations.Weather_station_provider' | translate }}</label>
+                  <select formControlName="WeatherStationProvider" class="form-control" 
+                  [ngClass]="{ 'is-invalid': f.WeatherStationProvider.errors && f.WeatherStationProvider.touched }" 
+                  (change)="getWeatherStationAuthenticatioType($event)">
+                    <option hidden disabled selected value></option>
+                    <ng-template ngFor let-provider [ngForOf]="AvailableWeatherStationsProviders">
+                      <option value="{{provider.weatherId}}"> {{provider.name}}
+                      </option>
+                    </ng-template>
+                  </select>
+              <div *ngIf="f.WeatherStationProvider.errors && f.WeatherStationProvider.touched" class="invalid-feedback">
+                  <div *ngIf="f.WeatherStationProvider.errors?.required">{{ 'Error_messages.Weather_station_provider_is_required' | translate }}</div>
+              </div>
+              </div>
+              <div class="col-sm-2">
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="col-sm-2">
+              </div>
+              <div class="form-group col-sm-8">
+                  <label class="text-info">{{ 'User_weather_stations.Weather_station_id' | translate }}</label>
+                  <input
+                  type="text"
+                  formControlName="WeatherStationId"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': f.WeatherStationId.errors && f.WeatherStationId.touched }"
+                  />
+              <div *ngIf="f.WeatherStationId.errors && f.WeatherStationId.touched" class="invalid-feedback">
+                  <div *ngIf="f.WeatherStationId.errors?.required">{{ 'Error_messages.Weather_station_id_is_required' | translate }}</div>
+                  <div *ngIf="f.WeatherStationId.errors?.pattern">
+                      {{'Error_messages.Only_alphanumeric_characters' | translate }}
+                  </div>
+              </div>
+              </div>
+              <div class="col-sm-2">
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="col-sm-2">
+              </div>
+              <div class="form-group col-sm-8">
+                  <label class="text-info">{{ 'User_weather_stations.Weather_station_name' | translate }}</label>
+                  <input
+                  type="text"
+                  formControlName="WeatherStationReference"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': f.WeatherStationReference.errors && f.WeatherStationReference.touched }"
+                  />
+              <div *ngIf="f.WeatherStationReference.errors && f.WeatherStationReference.touched" class="invalid-feedback">
+                  <div *ngIf="f.WeatherStationReference.errors?.pattern">
+                      {{'Error_messages.Only_alphanumeric_characters' | translate }}
+                  </div>
+              </div>
+              </div>
+              <div class="col-sm-2">
+              </div>
+          </div>
+          <div class="form-row" *ngIf="doesTheProviderRequiresAuth">
+              <div class="col-sm-2">
+              </div>
+              <div class="form-group col-sm-8">
+                  <label class="text-info">{{ 'Common_labels.Username' | translate }}</label>
+                  <input
+                  id="username"
+                  type="text"
+                  formControlName="Username"
+                  class="form-control"
+                  value=""
+                  [ngClass]="{ 'is-invalid': f.Username.errors && f.Username.touched }"
+                  />
+              <div *ngIf="f.Username.errors && f.Username.touched" class="invalid-feedback">
+                  <div *ngIf="f.Username.errors?.required">{{ 'Error_messages.Username_is_required' | translate }}</div>
+              </div>
+              </div>
+              <div class="col-sm-2">
+              </div>
+          </div>
+          <div class="form-row" *ngIf="doesTheProviderRequiresAuth">
+              <div class="col-sm-2">
+              </div>
+              <div class="form-group col-sm-8">
+                  <label class="text-info">{{ 'Common_labels.Password' | translate }}</label>
+                  <input
+                  id="password"
+                  type="password"
+                  value=""
+                  formControlName="Password"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': f.Password.errors && f.Password.touched }"
+                  />
+              <div *ngIf="f.Password.errors && f.Password.touched" class="invalid-feedback">
+                  <div *ngIf="f.Password.errors?.required">{{ 'Error_messages.Password_required' | translate }}</div>
+              </div>
+              </div>
+              <div class="col-sm-2">
+              </div>
+          </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-danger push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+      <button type="button" class="btn btn-success push-left" (click)="onSubmit()">{{ 'Common_labels.Save' | translate }}</button>
+  </div>
+</ng-template>

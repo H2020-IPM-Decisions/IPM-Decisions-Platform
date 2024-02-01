@@ -58,6 +58,7 @@ import { DssInfoListComponent } from './dss-info-list/dss-info-list.component';
 import { DisabledDSSComponent } from './user/components/account/edit-disabled-dss/edit-disabled-dss.component';
 import { TermsNConditionsComponent } from './core/auth/pages/terms&conditionsForNewTemplate/terms&conditions.component';
 import { WeaterStationsComponent } from './user/components/account/weather-stations/weather-stations.component';
+import { WeatherStationDetailsComponent } from './user/components/account/weather-stations/weather-station-details.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -220,7 +221,13 @@ const appRoutes: Routes = [
     path: "user/account/weather-station",
     component: WeaterStationsComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] }
+  },
+  {
+    path: "user/account/weather-station/:id/edit",
+    component: WeatherStationDetailsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] }
   },
   {
     path: "user/settings/manage-alerts",

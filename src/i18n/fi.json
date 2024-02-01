@@ -70,7 +70,10 @@
         "Download":"Download",
         "Integrated_Dss":"Integrated DSS",
         "External_Dss":"External DSS",
-        "Disabled":"Disabled"
+        "Disabled":"Disabled",
+        "Status":"Status",
+        "Farms": "Farms",
+        "Username":"Username"
     },
     "Error_messages": {
         "An_unknown_error_occured": "Tapahtui tuntematon virhe!",
@@ -115,7 +118,18 @@
         "File_name_is_required":"File name is required",
         "Seasonal_data_download_error": "Failed to download seasonal data",
         "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
-        "Parameters_not_saved":"Cannot save the new Dss configuration"
+        "Parameters_not_saved":"Cannot save the new Dss configuration",
+        "Weather_stations_providers_retrieve_error": "Error during retrieving weather stations providers",
+        "User_weather_stations_retrieve_error": "Error during retrieving the weather station associated with the user",
+        "Weather_station_id_is_required":"Weather station id is required",
+        "Weather_station_provider_is_required":"Weather station provider is required",
+        "Username_is_required":"Username is required",
+        "Only_alphanumeric_characters": "The input must contains only alphanumeric characters",
+        "Weather_station_association_error":"Error during the association of the weather station",
+        "Weather_station_disassociation_error":"Error during the weather station disassociation",
+        "Farm_association_error":"Error during Farm association",
+        "Farm_disassociation_error":"Error during Farm disassociation",
+        "Weather_station_data_update_error": "Error during weather station data update"
     },
     "Information_messages": {
         "Farm_deletion_message": "Olet poistamassa maatilan. Oletko varma?",
@@ -148,7 +162,13 @@
         "DSS_models_filtered":"DSS-linkit on suodatettu",
         "You_are_about_to_remove":"Olet poistamassa seuraavat DSS-linkit:",
         "Seasonal_data_download_success": "Seasonal data download successfully",
-        "Parameters_saved":"Dss with new configuration saved"
+        "Parameters_saved":"Dss with new configuration saved",
+        "Weather_station_associated":"Weather station associated successfully",
+        "Weather_station_disassociated":"Weather station disassociated",
+        "No_weather_stations_available": "No weather stations available",
+        "Farm_associated": "Farm associated",
+        "Farm_disassociated": "Farm disassociated",
+        "Weather_station_data_updated": "Weather station data updated" 
     },
     "Warning_messages": {
         "DSS_model_availability_error": "Valituille kasveille ei ole saatavissa DSS-malleja",
@@ -158,7 +178,9 @@
         "Weather_parameters_not_available":"This DSS model is not able to be run using available weather service! The DSS won't be listed.",
         "Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
         "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
-        "DSS_model_availability_country_error":"Kyseisessä maassa valituille viljelykasveille ei ole käytettävissä DSS-iä. Lisää DSS:iä lisätään tulevaisuudessa. Sillä välin lähimaista voi olla saatavilla DSS:iä, jotka löytyvät lisäämällä tilalle DSS:iä, josisa on ”Country filter” -ruutu valitsematta."
+        "DSS_model_availability_country_error":"Kyseisessä maassa valituille viljelykasveille ei ole käytettävissä DSS-iä. Lisää DSS:iä lisätään tulevaisuudessa. Sillä välin lähimaista voi olla saatavilla DSS:iä, jotka löytyvät lisäämällä tilalle DSS:iä, josisa on ”Country filter” -ruutu valitsematta.",
+        "Weather_stations_providers_availability_error": "No Weather Stations Providers available",
+        "Farm_already_associated": "The farm is already associated with another weather station"
     },
     "Countries": {
         "Austria": "Itävalta",
@@ -213,7 +235,15 @@
         "Social": "Some",
         "Useful_links": "Hyödyllisiä linkkejä",
         "IPM_Decisions_News": "<b>IPM Decisions</b> Uutiset",
-        "IPM_Private": "IPM Yksityinen"
+        "IPM_Private": "IPM Yksityinen",
+        "Related_project":"Related projects",
+        "Newsletter_subscribe": "Subscribe to our newsletter(s).",
+        "Follow_us": "You can follow us on",
+        "Factsheets":"Factsheets",
+        "Quickstart_guide":"Quickstart guide",
+        "Support":"Support",
+        "Newsletter":"Newsletter",
+        "Terms_and_conditions":"Terms & conditions"
     },
     "Register": {
         "User_type": "Käyttäjätyyppi",
@@ -472,5 +502,22 @@
         "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
         "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
         "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
+    },
+    "User_weather_stations":{
+        "Weather_stations":"Weather stations",
+        "Add_istance":"Add istance",
+        "Associated_istances":"Associated istances",
+        "Station_name": "Station name",
+        "Info_URL": "Information URL",
+        "Associated":"Associated",
+        "Not_associated":"Not associated",
+        "Associate":"Associate",
+        "Disassociate":"Disassociate",
+        "Weather_station_provider": "Weather station provider",
+        "Weather_station_id": "Weather station id",
+        "Weather_station_name":"Weather station name",
+        "Associate_weather_station":"Associate weather station",
+        "Weather_station_details": "Weather station details",
+        "Istance_management": "Istance management"
     }
 }

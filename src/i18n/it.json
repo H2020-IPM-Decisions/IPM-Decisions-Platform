@@ -71,12 +71,9 @@
         "Integrated_Dss":"DSS integrati",
         "External_Dss":"DSS esterni",
         "Disabled":"Disabilitato",
-        "Factsheets":"Fascicoli",
-        "Quickstart_guide":"Guida rapida",
-        "Support":"Supporto",
-        "Newsletter":"Newsletter",
-        "Terms_and_conditions":"Termini e condizioni",
-        "Status":"Stato"
+        "Status":"Stato",
+        "Farms": "Aziende agricole",
+        "Username":"Nome utente"
     },
     "Error_messages": {
         "An_unknown_error_occured":"Si è verificato un errore sconosciuto!",
@@ -122,15 +119,17 @@
         "Seasonal_data_download_error": "Impossibile scaricare i dati stagionali",
         "DSS_disabled_info_message":"Il DSS è stato disabilitato ed al momento non può essere utilizzato",
         "Parameters_not_saved":"Impossibile salvare la nuova configurazione del Dss",
-        "Weather_stations_retrieve_error": "Errore nel recupero delle informazioni delle stazioni meteo",
+        "Weather_stations_providers_retrieve_error": "Errore nel recupero delle informazioni dei fornitori delle stazioni meteo",
         "User_weather_stations_retrieve_error": "Errore nel recupero delle stazioni meteo associate all'utente",
         "Weather_station_id_is_required":"Inserire l'ID con cui riferirsi alla stazione meteo",
+        "Weather_station_provider_is_required":"Il fornitore della stazione meteo è obbligatorio",
         "Username_is_required":"Il Nome Utente è obbligatorio",
         "Only_alphanumeric_characters": "Il campo deve contenere solo caratteri alfanumerici",
         "Weather_station_association_error":"Errore durante l'associazione della stazione meteo",
         "Weather_station_disassociation_error":"Errore durante la disassociazione della stazione meteo",
-        "Farm_association_error":"Errore durante l'associazione delle aziende agricole",
-        "Farm_disassociation_error":"Errore durante la disassociazione delle aziende agricole"
+        "Farm_association_error":"Errore durante l'associazione dell'azienda agricola",
+        "Farm_disassociation_error":"Errore durante la disassociazione dell'azienda agricola",
+        "Weather_station_data_update_error": "Errore nell'aggiornamento dei dati della stazione meteo"
     },
     "Information_messages":{
         "Farm_deletion_message":"Stai per eliminare un'azienda agricola. Vuoi procedere?",
@@ -167,9 +166,9 @@
         "Weather_station_associated":"Stazione meteo associata correttamente",
         "Weather_station_disassociated":"Stazione meteo disassociata correttamente",
         "No_weather_stations_available": "Nessuna stazione meteo disponibile",
-        "No_associated_farm": "Nessuna azienda agricola associata",
-        "Farm_associated": "Aziende agricole associate",
-        "Farm_disassociated": "Aziende agricole disassociate"
+        "Farm_associated": "Azienda agricola associata",
+        "Farm_disassociated": "Azienda agricola disassociata",
+        "Weather_station_data_updated": "Dati stazione meteo aggiornati"
     },
     "Warning_messages":{
         "DSS_model_availability_error":"Non ci sono DSS per le colture selezionate",
@@ -180,9 +179,7 @@
         "Weather_parameters_not_available_for_single_DSS":"A causa della disponibilità dei dati meteorologici nella tua posizione, 1 DSS non è in grado di funzionare ed è stato escluso dalla lista dei DSS disponibili.",
         "Weather_parameters_not_available_for_multiple_DSS":"A causa della disponibilità dei dati meteorologici nella tua posizione, {{value}} DSS non sono in grado di funzionare e sono stati esclusi dalla lista dei DSS disponibili.",
         "DSS_model_availability_country_error":"Nessun DSS disponibile per le colture selezionate nel Paese selezionato. In futuro verranno aggiunti altri DSS.  Nel frattempo, potrebbero essere disponibili DSS dai Paesi vicini, che possono essere trovati aggiungendo DSS all'azienda agricola con la casella 'Filtro Paese' deselezionata.",
-        "Weather_stations_availability_error": "Nessuna stazione meteo disponibile",
-        "Duplicated_weather_station_id":"L'ID stazione meteo specificato è già in uso",
-        "Delete_associated_farm_first": "La stazione meteo ha delle aziende agricole associate",
+        "Weather_stations_providers_availability_error": "Nessun fornitore di stazioni meteo disponibile",
         "Farm_already_associated": "L'azienda agricola è già associata con un'altra stazione meteo"
     },
     "Countries": {
@@ -232,7 +229,7 @@
     	"Finnish": "Finlandese"
     },
     "Home": {
-        "Contacts":"Contatti",
+        "Contacts":"Contattaci",
         "Email_us":"Mandaci un’e-mail",
         "Web_Site":"Sito web",
         "Social":"Social media",
@@ -241,7 +238,12 @@
         "IPM_Private":"IPM Privato",
         "Related_project":"Progetti correlati",
         "Newsletter_subscribe": "Registrati alla nostra newsletter.",
-        "Follow_us": "Puoi seguirci su"
+        "Follow_us": "Puoi seguirci su",
+        "Factsheets":"Fascicoli",
+        "Quickstart_guide":"Guida rapida",
+        "Support":"Supporto",
+        "Newsletter":"Newsletter",
+        "Terms_and_conditions":"Termini e condizioni"
     },
     "Register": {
         "User_type":"Tipo di utente",
@@ -503,19 +505,19 @@
     },
     "User_weather_stations":{
         "Weather_stations":"Stazioni meteo",
-        "Available_stations":"Stazioni disponibili",
+        "Add_istance":"Aggiungi istanza",
+        "Associated_istances":"Istanze associate",
         "Station_name": "Nome Stazione",
         "Info_URL": "URL informativo",
         "Associated":"Associata",
         "Not_associated":"Non associata",
         "Associate":"Associa",
         "Disassociate":"Disassocia",
+        "Weather_station_provider": "Fornitore stazione meteo",
         "Weather_station_id": "Id stazione meteo",
-        "Weather_station_reference":"Riferimento stazione meteo",
-        "Username":"Nome utente",
+        "Weather_station_name":"Nome stazione meteo",
         "Associate_weather_station":"Associa stazione meteo",
-        "Manage":"Gestisci stazione meteo",
-        "Non_associated_Farms":"Aziende Agricole non associate",
-        "Associated_Farms":"Aziende Agricole Associate"
+        "Weather_station_details": "Dettagli stazione meteo",
+        "Istance_management": "Gestione istanza"
     }    
 }

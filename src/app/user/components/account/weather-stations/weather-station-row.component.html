@@ -1,166 +1,21 @@
 <td class="text-center">
-    <b>{{ weatherStation.name }}</b>
+    {{ weatherStation.weatherStationId }}
 </td>
 <td class="text-center">
-    <button class="btn btn-danger" *ngIf="isStationAssociatedWithUser" (click)="disassociateWeatherStation()">{{ 'User_weather_stations.Disassociate' | translate }}</button>
-    <button class="btn btn-primary" *ngIf="!isStationAssociatedWithUser" (click)="associateWeatherStation()">{{ 'User_weather_stations.Associate' | translate }}</button>
+    {{ weatherStation.weatherStationReference }}
 </td>
 <td class="text-center">
-    <button class="btn btn-success" [disabled]="!isStationAssociatedWithUser" (click)="manageWeatherStation()">{{ 'User_weather_stations.Manage' | translate }}</button>
+    {{ weatherStation.weatherName }}
 </td>
-
-<ng-template #weatherStationAuthModal>
-    <div class="modal-header">
-        <h4 class="modal-title pull-left">
-          {{ 'User_weather_stations.Associate_weather_station' | translate }}
-        </h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-          <span aria-hidden="true">&times;</span>
+<td class="td-actions text-center py-1">
+    <div class="row ml-2">
+        <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Edit" [title]="('Common_labels.Edit' | translate)"
+        [routerLink]="['/user/account/weather-station', weatherStation.id,'edit']">
+            <i class="action-icon light-blue-icon size-11 fas fa-edit"></i>
         </button>
+        <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Delete" [title]="('Common_labels.Delete' | translate)"
+        (click)="disassociateWeatherStation()">
+        <i class="action-icon light-blue-icon size-11 fas fa-trash"></i>
+      </button>
     </div>
-    <div class="modal-body">
-        <form [formGroup]="weatherStationAuthForm">
-            <div class="form-row">
-                <div class="col-sm-4">
-                </div>
-                <div class="form-group col-sm-4">
-                    <label class="text-info">{{ 'User_weather_stations.Weather_station_id' | translate }}</label>
-                    <input
-                    type="text"
-                    formControlName="WeatherStationId"
-                    class="form-control"
-                    [ngClass]="{ 'is-invalid': f.WeatherStationId.errors && f.WeatherStationId.touched }"
-                    />
-                <div *ngIf="f.WeatherStationId.errors && f.WeatherStationId.touched" class="invalid-feedback">
-                    <div *ngIf="f.WeatherStationId.errors?.required">{{ 'Error_messages.Weather_station_id_is_required' | translate }}</div>
-                    <div *ngIf="f.WeatherStationId.errors?.pattern">
-                        {{'Error_messages.Only_alphanumeric_characters' | translate }}
-                    </div>
-                </div>
-                </div>
-                <div class="col-sm-4">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-sm-4">
-                </div>
-                <div class="form-group col-sm-4">
-                    <label class="text-info">{{ 'User_weather_stations.Weather_station_reference' | translate }}</label>
-                    <input
-                    type="text"
-                    formControlName="WeatherStationReference"
-                    class="form-control"
-                    [ngClass]="{ 'is-invalid': f.WeatherStationReference.errors && f.WeatherStationReference.touched }"
-                    />
-                <div *ngIf="f.WeatherStationReference.errors && f.WeatherStationReference.touched" class="invalid-feedback">
-                    <div *ngIf="f.WeatherStationReference.errors?.pattern">
-                        {{'Error_messages.Only_alphanumeric_characters' | translate }}
-                    </div>
-                </div>
-                </div>
-                <div class="col-sm-4">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-sm-4">
-                </div>
-                <div class="form-group col-sm-4">
-                    <label class="text-info">{{ 'User_weather_stations.Username' | translate }}</label>
-                    <input
-                    type="text"
-                    formControlName="Username"
-                    class="form-control"
-                    [ngClass]="{ 'is-invalid': f.Username.errors && f.Username.touched }"
-                    />
-                <div *ngIf="f.Username.errors && f.Username.touched" class="invalid-feedback">
-                    <div *ngIf="f.Username.errors?.required">{{ 'Error_messages.Username_is_required' | translate }}</div>
-                </div>
-                </div>
-                <div class="col-sm-4">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-sm-4">
-                </div>
-                <div class="form-group col-sm-4">
-                    <label class="text-info">{{ 'Common_labels.Password' | translate }}</label>
-                    <input
-                    type="password"
-                    formControlName="Password"
-                    class="form-control"
-                    [ngClass]="{ 'is-invalid': f.Password.errors && f.Password.touched }"
-                    />
-                <div *ngIf="f.Password.errors && f.Password.touched" class="invalid-feedback">
-                    <div *ngIf="f.Password.errors?.required">{{ 'Error_messages.Password_required' | translate }}</div>
-                </div>
-                </div>
-                <div class="col-sm-4">
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-danger push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
-        <button type="button" class="btn btn-success push-left" (click)="onSubmit()">{{ 'User_weather_stations.Associate' | translate }}</button>
-    </div>
-</ng-template>
-
-<ng-template #weatherStationModal>
-    <div class="modal-header">
-        <h4 class="modal-title pull-left">
-          {{ 'User_weather_stations.Associate_weather_station' | translate }}
-        </h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form [formGroup]="weatherStationForm">
-            <div class="form-row">
-                <div class="col-sm-4">
-                </div>
-                <div class="form-group col-sm-4">
-                    <label class="text-info">{{ 'User_weather_stations.Weather_station_id' | translate }}</label>
-                    <input
-                    type="text"
-                    formControlName="WeatherStationId"
-                    class="form-control"
-                    [ngClass]="{ 'is-invalid': f.WeatherStationId.errors && f.WeatherStationId.touched }"
-                    />
-                <div *ngIf="f.WeatherStationId.errors && f.WeatherStationId.touched" class="invalid-feedback">
-                    <div *ngIf="f.WeatherStationId.errors?.required">{{ 'Error_messages.Weather_station_id_is_required' | translate }}</div>
-                    <div *ngIf="f.WeatherStationId.errors?.pattern">
-                        {{'Error_messages.Only_alphanumeric_characters' | translate }}
-                    </div>
-                </div>
-                </div>
-                <div class="col-sm-4">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-sm-4">
-                </div>
-                <div class="form-group col-sm-4">
-                    <label class="text-info">{{ 'User_weather_stations.Weather_station_reference' | translate }}</label>
-                    <input
-                    type="text"
-                    formControlName="WeatherStationReference"
-                    class="form-control"
-                    [ngClass]="{ 'is-invalid': f.WeatherStationReference.errors && f.WeatherStationReference.touched }"
-                    />
-                <div *ngIf="f.WeatherStationReference.errors && f.WeatherStationReference.touched" class="invalid-feedback">
-                    <div *ngIf="f.WeatherStationReference.errors?.pattern">
-                        {{'Error_messages.Only_alphanumeric_characters' | translate }}
-                    </div>
-                </div>
-                </div>
-                <div class="col-sm-4">
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-danger push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
-        <button type="button" class="btn btn-success push-left" (click)="onSubmitWithoutAuth()">{{ 'User_weather_stations.Associate' | translate }}</button>
-    </div>
-</ng-template>
+</td>

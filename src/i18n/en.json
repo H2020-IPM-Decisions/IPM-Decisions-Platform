@@ -71,12 +71,9 @@
         "Integrated_Dss":"Integrated DSS",
         "External_Dss":"External DSS",
         "Disabled":"Disabled",
-        "Factsheets":"Factsheets",
-        "Quickstart_guide":"Quickstart guide",
-        "Support":"Support",
-        "Newsletter":"Newsletter",
-        "Terms_and_conditions":"Terms & conditions",
-        "Status":"Status"
+        "Status":"Status",
+        "Farms": "Farms",
+        "Username":"Username"
     },
     "Error_messages": {
         "An_unknown_error_occured":"An unknown error occured!",
@@ -122,15 +119,17 @@
         "Seasonal_data_download_error": "Failed to download seasonal data",
         "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
         "Parameters_not_saved":"Cannot save the new Dss configuration",
-        "Weather_stations_retrieve_error": "Error during retrieving weather stations info",
+        "Weather_stations_providers_retrieve_error": "Error during retrieving weather stations providers",
         "User_weather_stations_retrieve_error": "Error during retrieving the weather station associated with the user",
         "Weather_station_id_is_required":"Weather station id is required",
+        "Weather_station_provider_is_required":"Weather station provider is required",
         "Username_is_required":"Username is required",
         "Only_alphanumeric_characters": "The input must contains only alphanumeric characters",
         "Weather_station_association_error":"Error during the association of the weather station",
         "Weather_station_disassociation_error":"Error during the weather station disassociation",
-        "Farm_association_error":"Error during Farms association",
-        "Farm_disassociation_error":"Error during Farms disassociation"
+        "Farm_association_error":"Error during Farm association",
+        "Farm_disassociation_error":"Error during Farm disassociation",
+        "Weather_station_data_update_error": "Error during weather station data update"
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
@@ -167,10 +166,9 @@
         "Weather_station_associated":"Weather station associated successfully",
         "Weather_station_disassociated":"Weather station disassociated",
         "No_weather_stations_available": "No weather stations available",
-        "No_associated_farm": "No associated farm",
-        "Farm_associated": "Farms associated",
-        "Farm_disassociated": "Farms disassociated"
-
+        "Farm_associated": "Farm associated",
+        "Farm_disassociated": "Farm disassociated",
+        "Weather_station_data_updated": "Weather station data updated"
     },
     "Warning_messages":{
         "DSS_model_availability_error":"No DSS available for the selected crops",
@@ -181,9 +179,7 @@
         "Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
         "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
         "DSS_model_availability_country_error":"No DSS available for the selected crops in the selected country. More DSS will be added in future. In the meantime, there may be DSS available from neighbouring countries, which can be found by adding DSS to the farm with the ‘Country filter’ box unticked.",
-        "Weather_stations_availability_error": "No Weather Station available",
-        "Duplicated_weather_station_id":"The specified Weather Station ID is already in use",
-        "Delete_associated_farm_first": "The weather station have associated farms",
+        "Weather_stations_providers_availability_error": "No Weather Stations Providers available",
         "Farm_already_associated": "The farm is already associated with another weather station"
     },
     "Countries": {
@@ -233,16 +229,21 @@
     	"Finnish": "Finnish"
     },
     "Home": {
-        "Contacts":"Contacts",
+        "Contacts":"Contacts us",
         "Email_us":"Email Us",
         "Web_Site":"Web Site",
         "Social":"Social",
         "Useful_links":"Useful Links",
         "IPM_Decisions_News":"<b>IPM Decisions</b> News",
         "IPM_Private":"IPM Private",
-        "Related_project":"Related project",
+        "Related_project":"Related projects",
         "Newsletter_subscribe": "Subscribe to our newsletter(s).",
-        "Follow_us": "You can follow us on"
+        "Follow_us": "You can follow us on",
+        "Factsheets":"Factsheets",
+        "Quickstart_guide":"Quickstart guide",
+        "Support":"Support",
+        "Newsletter":"Newsletter",
+        "Terms_and_conditions":"Terms & conditions"
     },
     "Register": {
         "User_type":"User Type",
@@ -504,19 +505,19 @@
     },
     "User_weather_stations":{
         "Weather_stations":"Weather stations",
-        "Available_stations":"Available stations",
+        "Add_istance":"Add istance",
+        "Associated_istances":"Associated istances",
         "Station_name": "Station name",
         "Info_URL": "Information URL",
         "Associated":"Associated",
         "Not_associated":"Not associated",
         "Associate":"Associate",
         "Disassociate":"Disassociate",
+        "Weather_station_provider": "Weather station provider",
         "Weather_station_id": "Weather station id",
-        "Weather_station_reference":"Weather station reference",
-        "Username":"Username",
+        "Weather_station_name":"Weather station name",
         "Associate_weather_station":"Associate weather station",
-        "Manage":"Manage weather station",
-        "Non_associated_Farms":"Non associated Farms",
-        "Associated_Farms":"Associated Farms"
+        "Weather_station_details": "Weather station details",
+        "Istance_management": "Istance management"
     }    
 }
