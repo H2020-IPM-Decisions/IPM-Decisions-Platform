@@ -98,6 +98,7 @@
 
 ul li a.nav-link{
   color: #249fa5;
+  margin-bottom: unset;
 }
 
 .breadcrumbBar {

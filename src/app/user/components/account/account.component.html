@@ -26,7 +26,7 @@
           <div class="container page-box w-75 p-3">
             <form method="post">
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                   <!--<div class="profile-img">
                     <img src="../../../../img/profile.png" alt="" />
                   </div>-->
@@ -42,14 +42,11 @@
                     </h6>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                       <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" role="tab"
                           aria-controls="home" aria-selected="true">{{ 'Common_labels.About' | translate }}</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="functionalities-tab" data-toggle="tab" href="#functionalities" role="tab"
-                          aria-controls="functionalities" aria-selected="true">
                           {{ userRole.value == 'farmer' ? ('User_account.Check_farm_control' | translate) : userRole.value == 'advisor' ? ('User_account.Request_farm_control' | translate) : ''}}
-                        </a>
                       </li>
                       <!--<li class="nav-item">
                         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
@@ -58,22 +55,22 @@
                     </ul>
                   </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4">
                   <button type="button" class="profile-edit-btn mb-2" [routerLink]="['/user/account/edit']">
                     <i class="fas fa-edit"></i> {{ 'User_account.Edit_profile' | translate }}
                   </button>
-                  <button type="button" class="profile-edit-btn mb-2" [routerLink]="['/user/account/password']">
+                  <button type="button" class="profile-edit-btn ml-2" [routerLink]="['/user/account/password']">
                     {{ 'User_edit_password.Change_password' | translate }}
                   </button>
-                  <button type="button" class="profile-edit-btn mb-2" [routerLink]="['/user/account/weather-station']">
+                  <button type="button" class="profile-edit-btn ml-3" [routerLink]="['/user/account/weather-station']">
                     {{ 'User_weather_stations.Weather_stations' | translate }}
                   </button>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                   <div class="tab-content profile-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                       <div class="row">
@@ -126,6 +123,8 @@
                       </div>
                     </div>
                   </div>
+                </div>
+                <div class="col-md-4">
                 </div>
               </div>
             </form>

@@ -99,7 +99,7 @@ import { DssDisabledRowComponent } from './user/components/account/edit-disabled
 import { TermsNConditionsComponent } from './core/auth/pages/terms&conditionsForNewTemplate/terms&conditions.component';
 import { WeaterStationsComponent } from './user/components/account/weather-stations/weather-stations.component';
 import { WeatherStationRowComponent } from './user/components/account/weather-stations/weather-station-row.component';
-import { WeatherStationBodyComponent } from './user/components/account/weather-stations/weather-station-body.component';
+import { WeatherStationDetailsComponent } from './user/components/account/weather-stations/weather-station-details.component';
 
 @NgModule({
   declarations: [
@@ -183,7 +183,7 @@ import { WeatherStationBodyComponent } from './user/components/account/weather-s
     TermsNConditionsComponent,
     WeaterStationsComponent,
     WeatherStationRowComponent,
-    WeatherStationBodyComponent
+    WeatherStationDetailsComponent
   ],
   imports: [
     BrowserModule,

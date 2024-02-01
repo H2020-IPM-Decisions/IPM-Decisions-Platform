@@ -441,7 +441,7 @@ div strong > a:hover{
   max-width: 600px !important;
   margin-bottom: 30px;
   z-index: 20;
-  max-height: 170px;
+  max-height: 70px;
 }
 
 .form-email{

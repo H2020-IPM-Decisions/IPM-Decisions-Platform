@@ -45,7 +45,7 @@
         </div>
         <div class="col-md-3 mt-4">
           <strong class="mr-5"> <a href="https://www.ipmdecisions.net/the-platform/about/" target="_blank" rel="noopener noreferrer"> {{ 'Common_labels.About' | translate }}</a> </strong>
-          <strong> <a href="https://www.ipmdecisions.net/documents/" target="_blank" rel="noopener noreferrer"> {{ 'Common_labels.Factsheets' | translate }}</a> </strong>
+          <strong> <a href="https://www.ipmdecisions.net/documents/" target="_blank" rel="noopener noreferrer"> {{ 'Home.Factsheets' | translate }}</a> </strong>
         </div>
       </div>
     </div>
@@ -72,13 +72,13 @@
                     <div class="quicklinks"> 
                       <a href="https://www.ipmdecisions.net/documents/quick-start-guide-ipm-platform/" 
                       target="_blank" rel="noopener noreferrer" class="button button-primary button-medium button full-width">
-                        <i class="fa fa-book"></i>&nbsp; {{ 'Common_labels.Quickstart_guide' | translate }}</a> 
-                      <a href="https://www.ipmdecisions.net/contact/" class="button button-primary button-medium button full-width"
-                      target="_blank" rel="noopener noreferrer"><i class="fa fa-headphones"></i>&nbsp; {{ 'Common_labels.Support' | translate }}</a> 
-                      <a href="https://www.ipmdecisions.net/contact/" class="button button-primary button-medium button full-width"
-                      target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i>&nbsp; {{ 'Common_labels.Newsletter' | translate }}</a> 
+                        <i class="fa fa-book"></i>&nbsp; {{ 'Home.Quickstart_guide' | translate }}</a> 
+                      <a href="mailto: contact@ipmdecisions.net" class="button button-primary button-medium button full-width"
+                      target="_blank" rel="noopener noreferrer"><i class="fa fa-headphones"></i>&nbsp; {{ 'Home.Support' | translate }}</a> 
+                      <a href="https://www.ipmdecisions.net/the-project/newsletters/" class="button button-primary button-medium button full-width"
+                      target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i>&nbsp; {{ 'Home.Newsletter' | translate }}</a> 
                       <a routerLink="/terms&conditions" class="button button-primary button-medium button full-width">
-                        <i class="fa fa-bars"></i>&nbsp; {{ 'Common_labels.Terms_and_conditions' | translate }} </a> 
+                        <i class="fa fa-bars"></i>&nbsp; {{ 'Home.Terms_and_conditions' | translate }} </a> 
                     </div>
                 </div>
             </div>
@@ -157,10 +157,7 @@
       </div>   
     </section><!-- End Featured Services Section -->
     <div class="container flex" id="latin-placeholder">
-      <div class="container related-projects" >
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
+      <div class="container related-projects">
         <button (click)="showRelatedProjectsList()" class="button button-primary button-large button-open related-projects-button">
           {{ 'Home.Related_project' | translate }}
           <i class="fa fa-chevron-right"></i>
@@ -187,8 +184,7 @@
         <div class="row">
           <div class="col-md-4">
             <h3><span>{{ 'Home.Contacts' | translate }}</span></h3>
-            <h4>{{ 'Home.Email_us' | translate }}</h4>
-            <div [innerHtml]="emailUsContent"></div>
+            <h2><div [innerHtml]="emailUsContent"></div></h2>
           </div>
           <div class="col-md-4">
             <h3><span>IPM DECISIONS</span></h3>
@@ -196,13 +192,14 @@
           </div>
           <div class="col-md-4">
             <h3>{{ 'Home.Social' | translate }}</h3>
+            <!--
             <p>{{ 'Home.Newsletter_subscribe' | translate }}</p>
             <div class="row">
               <div class="col-md">
                 <input type="email" class="form-email" placeholder="{{ 'Common_labels.Email' | translate }}" />&nbsp;
                 <button class="form-email-button">{{ 'Common_labels.Register' | translate }}</button>
               </div>
-            </div>
+            </div>-->
             <p>{{ 'Home.Follow_us' | translate }}</p>
             <div class="row">
               <div class="col-xl">
