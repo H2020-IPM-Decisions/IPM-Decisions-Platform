@@ -168,7 +168,8 @@
         "No_weather_stations_available": "Nessuna stazione meteo disponibile",
         "Farm_associated": "Azienda agricola associata",
         "Farm_disassociated": "Azienda agricola disassociata",
-        "Weather_station_data_updated": "Dati stazione meteo aggiornati"
+        "Weather_station_data_updated": "Dati stazione meteo aggiornati",
+        "Chart_information_not_provided": "Digrammi non forniti dal proprietario del DSS"
     },
     "Warning_messages":{
         "DSS_model_availability_error":"Non ci sono DSS per le colture selezionate",

@@ -62,18 +62,18 @@
         "EU_footer_further_information": "For yderligere information omkring IPM Decisions platformen, eller for at rapportere tekniske problemer, send venligst email",
         "EU_footer_further_details_on_project": "Yderligere informationer om det underliggende EU projekt til udvikling af platformen findes på",
         "Clear_filter":"Fjern filtrering",
-        "Available_DSS": "Available DSS",
-        "Select_days": "Select days",
-        "Dss_info": "DSS informations",
-        "Start_Date":"Start Date",
-        "End_Date":"End Date",
-        "Download":"Download",
-        "Integrated_Dss":"Integrated DSS",
-        "External_Dss":"External DSS",
-        "Disabled":"Disabled",
+        "Available_DSS": "Tilgængelige BSS",
+        "Select_days": "Vælg dage",
+        "Dss_info": "BSS information",
+        "Start_Date":"Startdato",
+        "End_Date":"Slutdato",
+        "Download":"Hent",
+        "Integrated_Dss":"Integrerede BSS",
+        "External_Dss":"Eksterne BSS",
+        "Disabled":"Deaktiveret",
         "Status":"Status",
-        "Farms": "Farms",
-        "Username":"Username"
+        "Farms": "Gårde",
+        "Username":"Brugernavn"
     },
     "Error_messages": {
         "An_unknown_error_occured": "Ukendt fejl opstod!",
@@ -114,22 +114,22 @@
         "DSS_adaptation_parameters_send_error": "Kunne ikke sende DSS parametre på grund af en fejl",
         "DSS_parameters_reset_error": "Kunne ikke nulstille DSS parametre på grund af en fejl",
         "DSS_use_dashboard_error_standard_info": "DSS har returneret en advarsel eller en fejl ved kørsel. Fejlmeddelsen fra DSS (i standardsproget for DSS) var:",
-"New_password_is_required":"New password is required",
-        "File_name_is_required":"File name is required",
-        "Seasonal_data_download_error": "Failed to download seasonal data",
-        "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
-        "Parameters_not_saved":"Cannot save the new Dss configuration",
-        "Weather_stations_providers_retrieve_error": "Error during retrieving weather stations providers",
-        "User_weather_stations_retrieve_error": "Error during retrieving the weather station associated with the user",
-        "Weather_station_id_is_required":"Weather station id is required",
-        "Weather_station_provider_is_required":"Weather station provider is required",
-        "Username_is_required":"Username is required",
-        "Only_alphanumeric_characters": "The input must contains only alphanumeric characters",
-        "Weather_station_association_error":"Error during the association of the weather station",
-        "Weather_station_disassociation_error":"Error during the weather station disassociation",
-        "Farm_association_error":"Error during Farm association",
-        "Farm_disassociation_error":"Error during Farm disassociation",
-        "Weather_station_data_update_error": "Error during weather station data update"
+        "New_password_is_required":"Nyt kodeord påkrævet",
+        "File_name_is_required":"Filnavn påkræves",
+        "Seasonal_data_download_error": "Fejl ved hentning af årstidsbestemte data",
+        "DSS_disabled_info_message":"BSS er deaktiveret og kan ikke bruges på dette tidspunkt",
+        "Parameters_not_saved":"Kan ikke gemme den nye BSS konfiguration",
+        "Weather_stations_providers_retrieve_error": "Fejl under hentning af vejrstationsleverandører",
+        "User_weather_stations_retrieve_error": "Fejl under hentning af vejrstationen tilkyttet til",
+        "Weather_station_id_is_required":"Vejrstationens ID er påkrævet",
+        "Weather_station_provider_is_required":"Leverandør af vejrstationen er påkrævet",
+        "Username_is_required":"Brugernavn påkrævet",
+        "Only_alphanumeric_characters": "Indtastningen skal kun indeholde alfanumeriske tegn",
+        "Weather_station_association_error":"Fejl under koblingen med vejrstationen",
+        "Weather_station_disassociation_error":"Fejl under frakoblingen af vejrstationen",
+        "Farm_association_error":"Fejl ved kobling af gård",
+        "Farm_disassociation_error":"Fejl ved frakobling af gård",
+        "Weather_station_data_update_error": "Fejl under vejrstationens dataopdatering"
     },
     "Information_messages": {
         "Farm_deletion_message": "Du er ved at slette en bedrift. Er du sikker?",
@@ -161,14 +161,14 @@
         "No_Linked_DSS_available":"Ingen tilgængelige DSS-links",
         "DSS_models_filtered":"DSS-links er blevet filtreret",
         "You_are_about_to_remove":"Du fjerner følgende DSS-links:",
-        "Seasonal_data_download_success": "Seasonal data download successfully",
-        "Parameters_saved":"Dss with new configuration saved",
-        "Weather_station_associated":"Weather station associated successfully",
-        "Weather_station_disassociated":"Weather station disassociated",
-        "No_weather_stations_available": "No weather stations available",
-        "Farm_associated": "Farm associated",
-        "Farm_disassociated": "Farm disassociated",
-        "Weather_station_data_updated": "Weather station data updated" 
+        "Seasonal_data_download_success": "Årstidsbestemte data hentet med succes",
+        "Parameters_saved":"BSS gemt med ny konfiguration",
+        "Weather_station_associated":"Vejrstationen blev tilknyttet med succes",
+        "Weather_station_disassociated":"Vejrstationen blev frakoblet",
+        "No_weather_stations_available": "Ingen vejrstationer tilgængelige",
+        "Farm_associated": "Gården er tilknyttet",
+        "Farm_disassociated": "Gården er frakoblet",
+        "Weather_station_data_updated": "Data fra vejrstationen er opdateret" 
     },
     "Warning_messages": {
         "DSS_model_availability_error": "Ingen tilgængelige DSS til de valgte afgrøder",
@@ -179,8 +179,8 @@
         "Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
         "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
         "DSS_model_availability_country_error":"Ingen BSS tilgængelige for de valgte afgrøder i det valgte land. Flere BSS vil blive tilføjet i fremtiden. I mellemtiden kan der være BSS tilgængelige fra nabolande, som kan findes ved at tilføje BSS til bedriften med 'Landefilter' afkrydset.",
-        "Weather_stations_providers_availability_error": "No Weather Stations Providers available",
-        "Farm_already_associated": "The farm is already associated with another weather station"
+        "Weather_stations_providers_availability_error": "Ingen leverandør af vejrstationer til rådighed",
+        "Farm_already_associated": "Gården er allerede koblet til en anden vejrstation"
     },
     "Countries": {
         "Austria": "Østrig",
@@ -236,13 +236,13 @@
         "Useful_links": "Nyttige Links",
         "IPM_Decisions_News": "nyheder om <b>IPM Decisions</b>",
         "IPM_Private": "IPM Private",
-        "Related_project":"Related projects",
+        "Related_project":" Relaterede projekter",
         "Newsletter_subscribe": "Subscribe to our newsletter(s).",
-        "Follow_us": "You can follow us on",
-        "Factsheets":"Factsheets",
-        "Quickstart_guide":"Quickstart guide",
+        "Follow_us": "Du kan følge os på",        
+        "Factsheets":"Faktablad",
+        "Quickstart_guide":"Hurtigstart-vejledning",
         "Support":"Support",
-        "Newsletter":"Newsletter",
+        "Newsletter":"Nyhedsbrev",
         "Terms_and_conditions":"Terms & conditions"
     },
     "Register": {
@@ -321,8 +321,8 @@
         "Farm_location": "Vælg landbrugets lokation",
         "Nearest_met_station": "Nærmeste vejrstation",
         "Weather_forecast_service": "Vejrudsigtstjeneste",
-        "Farm_unlock_location": "Unlock map",
-        "Farm_lock_location": "Lock map"
+        "Farm_unlock_location": "Lås op for kortet",
+        "Farm_lock_location": "Lås kortet"
     },
     "DSS_information_table": {
         "Title": "DSS informationstabel",
@@ -363,7 +363,7 @@
         "Yellow_triangle_description": "Fejlen forhindrede ikke modellen i at køre, men reducerer pålideligheden af modellens risikovurdering",
         "Red_triangle_description": "En fejl forhindrede modellen i at køre",
         "Platform_rationale_information":"Denne platform gør BSS fra eksterne DSS-udviklere tilgængelige. 'Guldstandarden' for BSS er, at de er blevet skabt af anerkendte BSS-udviklere, testet og udbredt i prak-sis over mange steder og sæsoner, og resultaterne offentliggjort i peer-reviewede tidsskrifter for at demonstrere nyttig forudsigelsesværdi i de lande, hvor de anbefales til brug. Få BSS opfylder alle disse kriterier. IPM Decisions har til formål at gøre en bred vifte af BSS tilgængelige til test og brug. Derfor er det ikke et krav, at alle disse kriterier er opfyldt, for at et BSS er tilgængelig via denne plat-form. I stedet tager IPM Decisions-ledelsen rimelig omhu med, at BSS'er er fra velrenommerede udvik-lere, og der gives yderligere information om hvert BSS for at muliggøre et informeret valg om brug. BSS kan bruges til at hjælpe (ikke erstatte) beslut-ninger af erfarne landbrugere, under hensyntagen til alle relevante lokale skadedyrsrisikofaktorer. Landmænd og rådgivere bør ikke bruge BSS til at tage beslutninger om væsentlige afgrødearealer, før de har opnået erfaring med deres anvendelse og har fundet risikoestimaterne pålidelige. Fejlagtige risikovurderinger kan forekomme, især hvis forholdene ligger uden for dem, der opleves un-der udvikling og test af BSS. Landmandsgrupper og forskningsorganisationer op-fordres til at teste BSS i marken, ændre BSS, så de passer til lokale forhold, hvis det er nødvendigt, og dele deres erfaringer.",
-        "Ban_icon_description":"The DSS is disabled"
+        "Ban_icon_description":"BSS er deaktiveret"
     },
     "DSS_details": {
         "Title": "Risikoscore",
@@ -382,9 +382,9 @@
         "Warning_status_representation": "Advarselsmeddelelse",
         "Warning_message": "Advarselsmeddelelse",
         "Disclaimer_content":"Denne platform gør BSS fra eksterne DSS-udviklere tilgængelige. BSS kan bruges til at hjælpe (ikke erstatte) beslutninger af erfarne landbrugere, der tager højde for lokale skadedyrsrisikofaktorer. Se yderligere information under forklaringen på BSS-dashboardet.",
-        "Group_chart_popup_title":"Group Chart Information",
-        "Seasonal_data":"Download Seasonal Data",
-        "File_name":"File name"
+        "Group_chart_popup_title":"Information om gruppediagram",
+        "Seasonal_data":"Hent årstidsbestemte data",
+        "File_name":"Filnavn"
     },
     "DSS_model_selection": {
         "Title": "Vælg DSS model",
@@ -431,13 +431,13 @@
         "for": "for",
         "on": "på",
         "Note_message": "Du kan sammenligne op til fem modeller samtidigt",
-        "Group_chart_popup_title":"Group Chart Information",
-        "Select_one_model": "Select one model",
-        "Use_historical_data":"Use historical data",
-        "Note_message_historical_data":"Select only one model to compare with his historical data",
-        "Compare_with_historical_data":"Compare historical data",
-        "Current":"Current",
-        "Historical":"Historical"
+        "Group_chart_popup_title":"Information om gruppediagram",
+        "Select_one_model": "Vælg en model",
+        "Use_historical_data":"Brug historiske data",
+        "Note_message_historical_data":"Vælg kun én model til sammenligning med dens historiske data",
+        "Compare_with_historical_data":"Sammenlign historiske data",
+        "Current":"Nuværende",
+        "Historical":"Historisk"
     },
     "User_guide": {
         "Title": "Brugerguide"
@@ -472,11 +472,11 @@
         "on": "på",
         "Data_is_updating": "Data updaterer",
         "Please_wait": "Vent venligst",
-        "Default":"Default",
-        "Not_defined":"Not defined",
-        "Run_configuration":"Run configuration",
-        "Dss_name":"Dss Name",
-        "Revised": "Revised",
+        "Default":"Standard",
+        "Not_defined":"Ikke defineret",
+        "Run_configuration":"Kør konfiguration",
+        "Dss_name":"Navn på BSS",
+        "Revised": "Revideret",
         "Original":"Original"
     },
     "DSS_linked": {
@@ -484,40 +484,40 @@
         "General_overview":"Tilgængelige DSS-links",
         "User_selected":"Valgte DSS-links",
         "Crop_filter":"Afgrødefilter",
-        "Filter_DSS":"Filter DSS",
+        "Filter_DSS":"Filtrer BSS",
         "Confirm_selection":"Bekræft valg",
         "Remove_linked_dss":"Fjern DSS-link",
         "Edit_selection":"Rediger valg",
         "Editing_complete":"Redigering afsluttet"
     },
     "User_edit_password": {
-        "Current_password":"Current Password",
-        "Change_password":"Change Password",
-        "Return_to_user_edit":"Return to 'User Account'"
+        "Current_password":" Nuværende kodeord",
+        "Change_password":"Ændre kodeord",
+        "Return_to_user_edit":"Gå tilbage til 'Brugerkonto'"
     },
     "Dss_info_list":{
-        "Integrated_dss_retrieve_success_message":"Integrated DSS models retrivied successfully!",
-        "Integrated_dss_retrieve_warning_message":"No integrated DSS available for the selected crops",
-        "Integrated_dss_retrieve_error_message":"Fail to get the requested integrated models for selected crops!",
-        "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
-        "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
-        "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
+        "Integrated_dss_retrieve_success_message":"Integrerede BSS modeller hentet med succes!",
+        "Integrated_dss_retrieve_warning_message":"Ingen integrerede BSS tilgængelig for de valgte afgrøder",
+        "Integrated_dss_retrieve_error_message":"Fejl ved hentning af de ønskede integrerede modeller for de valgte afgrøder",
+        "External_dss_retrieve_success_message":"Eksterne BSS modeller hentet med success!",
+        "External_dss_retrieve_warning_message":"Ingen eksterne BSS tilgængelig for de valgte afgrøder",
+        "External_dss_retrieve_error_message":"Fejl ved hentning af de ønskede eksterne modeller for de valgte afgrøder"
     },
     "User_weather_stations":{
-        "Weather_stations":"Weather stations",
-        "Add_istance":"Add istance",
-        "Associated_istances":"Associated istances",
-        "Station_name": "Station name",
-        "Info_URL": "Information URL",
-        "Associated":"Associated",
-        "Not_associated":"Not associated",
-        "Associate":"Associate",
-        "Disassociate":"Disassociate",
-        "Weather_station_provider": "Weather station provider",
-        "Weather_station_id": "Weather station id",
-        "Weather_station_name":"Weather station name",
-        "Associate_weather_station":"Associate weather station",
-        "Weather_station_details": "Weather station details",
-        "Istance_management": "Istance management"
+        "Weather_stations":"Vejrstationer",
+        "Add_istance":"Tilføj instans",
+        "Associated_istances":"Tilhørende instanser",
+        "Station_name": "Stationens navn",
+        "Info_URL": "URL information",
+        "Associated":"Tilhørende",
+        "Not_associated":"Ikke tilhørende",
+        "Associate":"Forbundet",
+        "Disassociate":"Frakoblet",
+        "Weather_station_provider": "Leverandør af vejrstationen",
+        "Weather_station_id": "Vejrstationens ID",
+        "Weather_station_name":"Vejrstationens navn",
+        "Associate_weather_station":"Tilhørende vejrstation",
+        "Weather_station_details": "Informationer om vejrstationen",
+        "Istance_management": "Administration af instanser"
     }
 }

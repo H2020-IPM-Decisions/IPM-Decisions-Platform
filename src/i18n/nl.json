@@ -62,18 +62,18 @@
 		"EU_footer_further_information": " Voor meer informatie over het IPM Decisions platform, of om melding te maken van technische problemen, stuur aub een e-mail",
 		"EU_footer_further_details_on_project": " Meer informatie over het onderliggende EU project en het te ontwikkelen platform kunt u  vinden op",
 		"Clear_filter":"Wis filter",
-        "Available_DSS": "Available DSS",
-        "Select_days": "Select days",
-        "Dss_info": "DSS informations",
-        "Start_Date":"Start Date",
-        "End_Date":"End Date",
-        "Download":"Download",
-        "Integrated_Dss":"Integrated DSS",
-        "External_Dss":"External DSS",
-        "Disabled":"Disabled",
+        "Available_DSS": "Beschikbare BOS",
+        "Select_days": "Selecteer dagen",
+        "Dss_info": "BOS informatie",
+        "Start_Date":"Start Datum",
+        "End_Date":"Eind Datum",
+        "Download":"Downloaden",
+        "Integrated_Dss":"Geïntegreerd BOS",
+        "External_Dss":"Externe BOS",
+        "Disabled":"Uitgeschakeld",
         "Status":"Status",
-        "Farms": "Farms",
-        "Username":"Username"
+        "Farms": "Bedrijven",
+        "Username":"Gebruikersnaam"
 	},
 	"Error_messages": {
 		"An_unknown_error_occured": "Er is een onbekende fout opgetreden!",
@@ -114,22 +114,22 @@
 		"DSS_adaptation_parameters_send_error": "DSS parameters send failed, an error occurs",
 		"DSS_parameters_reset_error": "Dss parameters reset failed, an error occurs",
 		"DSS_use_dashboard_error_standard_info": "The DSS has returned a warning or error when run. The message provided by the DSS (in the default language used by the DSS) was:",
-		"New_password_is_required":"New password is required",
-        "File_name_is_required":"File name is required",
-        "Seasonal_data_download_error": "Failed to download seasonal data",
-        "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
-        "Parameters_not_saved":"Cannot save the new Dss configuration",
-        "Weather_stations_providers_retrieve_error": "Error during retrieving weather stations providers",
-        "User_weather_stations_retrieve_error": "Error during retrieving the weather station associated with the user",
-        "Weather_station_id_is_required":"Weather station id is required",
-        "Weather_station_provider_is_required":"Weather station provider is required",
-        "Username_is_required":"Username is required",
-        "Only_alphanumeric_characters": "The input must contains only alphanumeric characters",
-        "Weather_station_association_error":"Error during the association of the weather station",
-        "Weather_station_disassociation_error":"Error during the weather station disassociation",
-        "Farm_association_error":"Error during Farm association",
-        "Farm_disassociation_error":"Error during Farm disassociation",
-        "Weather_station_data_update_error": "Error during weather station data update"
+		"New_password_is_required":"Nieuw wachtwoord is vereist",
+        "File_name_is_required":"Bestandsnaam is vereist",
+        "Seasonal_data_download_error": "Download seizoensgegevens mislukt",
+        "DSS_disabled_info_message":"De BOS is uitgeschakeld en kan momenteel niet worden gebruikt.",
+        "Parameters_not_saved":"Kan de nieuwe BOS-configuratie niet opslaan",
+        "Weather_stations_providers_retrieve_error": "Fout tijdens ophalen weerstations providers",
+        "User_weather_stations_retrieve_error": "Fout bij het ophalen van het weerstation gekoppeld aan",
+        "Weather_station_id_is_required":"Weerstation id is vereist",
+        "Weather_station_provider_is_required":"Weerstationprovider is vereist",
+        "Username_is_required":"Gebruikersnaam is vereist",
+        "Only_alphanumeric_characters": "De invoer mag alleen alfanumerieke tekens bevatten",
+        "Weather_station_association_error":"Fout tijdens het koppelen van het weerstation",
+        "Weather_station_disassociation_error":"Fout bij het loskoppelen van het weerstation",
+        "Farm_association_error":"Fout tijdens koppelen van bedrijf",
+        "Farm_disassociation_error":"Fout bij ontkoppeling van het bedrijf",
+        "Weather_station_data_update_error": "Fout bij het updaten van de weerstationgegevens"
 	},
 	"Information_messages": {
 		"Farm_deletion_message": "U staat op het punt een bedrijf te verwijderen. Weet u dat zeker?",
@@ -161,14 +161,14 @@
 		"No_Linked_DSS_available":"Er zijn geen DSS-links beschikbaar.",
         "DSS_models_filtered":"DSS-links succesvoll geselecteerd",
         "You_are_about_to_remove":"Hiermee verwijdert u de volgende DSS-links:",
-        "Seasonal_data_download_success": "Seasonal data download successfully",
-        "Parameters_saved":"Dss with new configuration saved",
-        "Weather_station_associated":"Weather station associated successfully",
-        "Weather_station_disassociated":"Weather station disassociated",
-        "No_weather_stations_available": "No weather stations available",
-        "Farm_associated": "Farm associated",
-        "Farm_disassociated": "Farm disassociated",
-        "Weather_station_data_updated": "Weather station data updated" 
+        "Seasonal_data_download_success": "Seizoensgegevens succesvol gedownload",
+        "Parameters_saved":"BOS met nieuwe configuratie opgeslagen",
+        "Weather_station_associated":"Weerstation succesvol gekoppeld",
+        "Weather_station_disassociated":"Weerstation niet gekoppeld",
+        "No_weather_stations_available": "Geen weerstations beschikbaar",
+        "Farm_associated": "Boerderij gekoppeld",
+        "Farm_disassociated": "Boerderij ontkoppeld",
+        "Weather_station_data_updated": "Weerstationgegevens bijgewerkt" 
 	},
 	"Warning_messages": {
 		"DSS_model_availability_error": "Geen BOS beschikbaar voor de geselecteerde gewassen",
@@ -179,8 +179,8 @@
 		"Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
         "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
 		"DSS_model_availability_country_error":"Geen DSS beschikbaar voor de geselecteerde gewassen in het geselecteerde land. In de toekomst zullen meer DSS worden toegevoegd. In de tussentijd kunnen er DSS beschikbaar zijn uit buurlanden, die gevonden kunnen worden door DSS toe te voegen aan het bedrijf met het vakje 'Landfilter' uitgevinkt.",
-        "Weather_stations_providers_availability_error": "No Weather Stations Providers available",
-        "Farm_already_associated": "The farm is already associated with another weather station"
+        "Weather_stations_providers_availability_error": "Geen weerstationaanbieders beschikbaar",
+        "Farm_already_associated": "De boerderij is al gekoppeld aan een ander weerstation"
 	},
 	"Countries": {
 		"Austria": "Oostenrijk",
@@ -236,13 +236,13 @@
 		"Useful_links": "Nuttige Link",
 		"IPM_Decisions_News": "Nieuws over <b>IPM Decisions</b>",
 		"IPM_Private": "IPM Privaat",
-        "Related_project":"Related projects",
+        "Related_project":"Gerelateerde projecten",
         "Newsletter_subscribe": "Subscribe to our newsletter(s).",
-        "Follow_us": "You can follow us on",
+        "Follow_us": "U kunt ons volgen op",
         "Factsheets":"Factsheets",
-        "Quickstart_guide":"Quickstart guide",
-        "Support":"Support",
-        "Newsletter":"Newsletter",
+        "Quickstart_guide":"Snelstartgids",
+        "Support":"Ondersteuning",
+        "Newsletter":"Nieuwbrief",
         "Terms_and_conditions":"Terms & conditions"
 	},
 	"Register": {
@@ -321,8 +321,8 @@
 		"Farm_location": "Bedrijfslocatie kiezen",
 		"Nearest_met_station": "Dichtstbijzijnde weerstation",
 		"Weather_forecast_service": "Weersvoorspellingsdienst",
-		"Farm_unlock_location": "Unlock map",
-		"Farm_lock_location": "Lock map"
+		"Farm_unlock_location": "Kaart openen",
+		"Farm_lock_location": "Kaart vergrendelen"
 	},
 	"DSS_information_table": {
 		"Title": "BOS-informatietabel",
@@ -363,7 +363,7 @@
 		"Yellow_triangle_description": "Error did not stop the model from running, but does reduce reliability of model risk prediction",
 		"Red_triangle_description": "Error prevented the model from running",
 		"Platform_rationale_information":"Dit platform maakt DSS beschikbaar van externe DSS-ontwikkelaars. De 'gouden standaard' voor DSS is dat ze zijn gemaakt door gerenommeerde DSS-ontwikkelaars, getest en op grote schaal in de praktijk gebruikt over vele locaties en seizoenen, en dat de resultaten zijn gepubliceerd in peer-reviewed tijdschriften om aan te tonen dat ze een nuttige voorspellende waarde hebben in de landen waar ze voor gebruik worden aanbevolen. Er zijn maar weinig DSS die aan al deze criteria voldoen. IPM Decisions beoogt een breed scala aan DSS beschikbaar te stellen voor testen en gebruik. Daarom is het geen vereiste dat aan al deze criteria wordt voldaan om een DSS via dit Platform beschikbaar te stellen. In plaats daarvan zorgt het management van IPM Decisions er redelijkerwijs voor dat de DSS afkomstig zijn van gerenommeerde ontwikkelaars en dat over elk DSS nadere informatie wordt verstrekt, zodat een geïnformeerde keuze over het gebruik mogelijk is. De DSS kunnen worden gebruikt ter ondersteuning (niet ter vervanging) van beslissingen door ervaren gewasverzorgers, rekening houdend met alle relevante lokale risicofactoren. Boeren en adviseurs moeten de DSS niet gebruiken als leidraad voor beslissingen over grote arealen totdat zij ervaring hebben opgedaan met het gebruik ervan en de risicoschattingen betrouwbaar vinden. Foutieve risicoschattingen kunnen voorkomen, vooral als de omstandigheden anders zijn dan tijdens de ontwikkeling en het testen van de DSS. Landbouwersgroepen en onderzoeksorganisaties worden aangemoedigd de DSS in het veld te testen en de DSS zo nodig aan de plaatselijke omstandigheden aan te passen en hun ervaring te delen.",
-		"Ban_icon_description":"The DSS is disabled"
+		"Ban_icon_description":"De BOS is uitgeschakeld"
 	},
 	"DSS_details": {
 		"Title": "Details BOS",
@@ -382,8 +382,8 @@
 		"Warning_status_representation": "Weergave waarschuwingsstatus",
 		"Warning_message": "Waarschuwingsbericht",
 		"Disclaimer_content":"Dit platform stelt DSS beschikbaar van externe DSS-ontwikkelaars. De DSS kan worden gebruikt ter ondersteuning (niet ter vervanging) van beslissingen door ervaren gewasverzorgers, rekening houdend met lokale sicofactoren. Zie verdere informatie onder de legenda op het DSS Use dashboard.",
-		"Group_chart_popup_title":"Group Chart Information",
-        "Seasonal_data":"Download Seasonal Data",
+		"Group_chart_popup_title":"Informatie over groepskaarten",
+        "Seasonal_data":"Seizoensgegevens downloaden",
         "File_name":"File name"
 	},
 	"DSS_model_selection": {
@@ -431,13 +431,13 @@
 		"for": "for",
 		"on": "on",
 		"Note_message": "You can compare up to five models simultaneously",
-        "Group_chart_popup_title":"Group Chart Information",
-        "Select_one_model": "Select one model",
-        "Use_historical_data":"Use historical data",
-        "Note_message_historical_data":"Select only one model to compare with his historical data",
-        "Compare_with_historical_data":"Compare historical data",
-        "Current":"Current",
-        "Historical":"Historical"
+        "Group_chart_popup_title":"Informatie over groepskaarten",
+        "Select_one_model": "Selecteer één BOS",
+        "Use_historical_data":"Gebruik historische gegevens",
+        "Note_message_historical_data":"Selecteer slechts één BOS om te vergelijken met zijn historische gegevens",
+        "Compare_with_historical_data":"Historische gegevens vergelijken",
+        "Current":"Huidige",
+        "Historical":"Historisch"
 	},
 	"User_guide": {
 		"Title": "User guide"
@@ -472,52 +472,52 @@
 		"on": "on",
 		"Data_is_updating": "Data is updating",
 		"Please_wait": "Please wait",
-        "Default":"Default",
-        "Not_defined":"Not defined",
-        "Run_configuration":"Run configuration",
-        "Dss_name":"Dss Name",
-        "Revised": "Revised",
-        "Original":"Original"
+        "Default":"Standaard",
+        "Not_defined":"Niet gedefinieerd",
+        "Run_configuration":"Configuratie uitvoeren",
+        "Dss_name":"BOS-naam",
+        "Revised": "Herzien",
+        "Original":"Origineel"
 	},
 	"DSS_linked": {
         "Title":"Exterbe Link DSS Dashboard",
         "General_overview":"Beschikbare DSS-links",
         "User_selected":"Geselecteerde DSS-links",
         "Crop_filter":"Gewasfilter",
-        "Filter_DSS":"DSS-filter",
+        "Filter_DSS":"Filter BOS",
         "Confirm_selection":"Bevestig selectie",
         "Remove_linked_dss":"Verwijder DSS-link",
         "Edit_selection":"Selectie bewerken",
         "Editing_complete":"Bewerking voltooid"
     },
     "User_edit_password": {
-        "Current_password":"Current Password",
-        "Change_password":"Change Password",
-        "Return_to_user_edit":"Return to 'User Account'"
+        "Current_password":"Huidig wachtwoord",
+        "Change_password":"Wachtwoord wijzigen",
+        "Return_to_user_edit":"Terug naar 'Gebruikersaccount'"
     },
     "Dss_info_list":{
-        "Integrated_dss_retrieve_success_message":"Integrated DSS models retrivied successfully!",
-        "Integrated_dss_retrieve_warning_message":"No integrated DSS available for the selected crops",
-        "Integrated_dss_retrieve_error_message":"Fail to get the requested integrated models for selected crops!",
-        "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
-        "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
-        "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
+        "Integrated_dss_retrieve_success_message":"Geïntegreerde DSS-modellen succesvol opgehaald!",
+        "Integrated_dss_retrieve_warning_message":"Geen geïntegreerde DSS beschikbaar voor de geselecteerde gewassen",
+        "Integrated_dss_retrieve_error_message":"Het is niet gelukt om de gevraagde geïntegreerde BOS'en voor de geselecteerde gewassen op te halen!",
+        "External_dss_retrieve_success_message":"Externe BOS'en opgehaald!",
+        "External_dss_retrieve_warning_message":"Geen externe BOS beschikbaar voor de geselecteerde gewassen",
+        "External_dss_retrieve_error_message":"De gevraagde externe BOS'en voor de geselecteerde gewassen zijn niet gevonden!"
     },
     "User_weather_stations":{
-        "Weather_stations":"Weather stations",
-        "Add_istance":"Add istance",
-        "Associated_istances":"Associated istances",
-        "Station_name": "Station name",
-        "Info_URL": "Information URL",
-        "Associated":"Associated",
-        "Not_associated":"Not associated",
-        "Associate":"Associate",
-        "Disassociate":"Disassociate",
-        "Weather_station_provider": "Weather station provider",
-        "Weather_station_id": "Weather station id",
-        "Weather_station_name":"Weather station name",
-        "Associate_weather_station":"Associate weather station",
-        "Weather_station_details": "Weather station details",
-        "Istance_management": "Istance management"
+        "Weather_stations":"Weerstations",
+        "Add_istance":"Instantie toevoegen",
+        "Associated_istances":"Bijbehorende instanties",
+        "Station_name": "Station naaem",
+        "Info_URL": "Informatie URL",
+        "Associated":"Geassocieerd",
+        "Not_associated":"Niet geassocieerd",
+        "Associate":"Gekoppeld",
+        "Disassociate":"Niet gekoppeld",
+        "Weather_station_provider": "Aanbieder weerstation",
+        "Weather_station_id": "Weerstation id",
+        "Weather_station_name":"Naam weerstation",
+        "Associate_weather_station":"Weerstation koppelen",
+        "Weather_station_details": "Details weerstation",
+        "Istance_management": "Beheer instantie"
     }
 }

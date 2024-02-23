@@ -62,18 +62,18 @@
         "EU_footer_further_information": "Für weitere Informationen zur IPM Decisions-Plattform oder zur Meldung technischer Probleme senden Sie bitte eine E-Mail",
         "EU_footer_further_details_on_project": "Weitere Einzelheiten über das zugrunde liegende EU-Projekt zur Entwicklung der Plattform finden Sie unter",
         "Clear_filter":"Auswahl löschen",
-        "Available_DSS": "Available DSS",
-        "Select_days": "Select days",
-        "Dss_info": "DSS informations",
-        "Start_Date":"Start Date",
-        "End_Date":"End Date",
-        "Download":"Download",
-        "Integrated_Dss":"Integrated DSS",
-        "External_Dss":"External DSS",
-        "Disabled":"Disabled",
+        "Available_DSS": "Verfügbare EHS",
+        "Select_days": "Tage auswählen",
+        "Dss_info": "EHS-Informationen",
+        "Start_Date":"Startdatum",
+        "End_Date":"Enddatum",
+        "Download":"Herunterladen",
+        "Integrated_Dss":"Integriertes EHS",
+        "External_Dss":"Externe EHS",
+        "Disabled":"Deaktiviert",
         "Status":"Status",
-        "Farms": "Farms",
-        "Username":"Username"
+        "Farms": "Betriebe",
+        "Username":"Benutzername"
     },
     "Error_messages": {
         "An_unknown_error_occured": "Ein unbekannter Fehler ist aufgetreten!",
@@ -114,22 +114,22 @@
         "DSS_adaptation_parameters_send_error": "EHS-Parameter senden fehlgeschlagen, ein Fehler ist aufgetreten",
         "DSS_parameters_reset_error": "EHS-Parameter zurücksetzen fehlgeschlagen, ein Fehler ist aufgetreten",
         "DSS_use_dashboard_error_standard_info": "Das EHS hat bei der Ausführung eine Warnung oder einen Fehler zurückgegeben. Die vom EHS gelieferte Meldung (in der vom EHS verwendeten Standardsprache) war:",
-        "New_password_is_required":"New password is required",
-        "File_name_is_required":"File name is required",
-        "Seasonal_data_download_error": "Failed to download seasonal data",
-        "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
-        "Parameters_not_saved":"Cannot save the new Dss configuration",
-        "Weather_stations_providers_retrieve_error": "Error during retrieving weather stations providers",
-        "User_weather_stations_retrieve_error": "Error during retrieving the weather station associated with the user",
-        "Weather_station_id_is_required":"Weather station id is required",
-        "Weather_station_provider_is_required":"Weather station provider is required",
-        "Username_is_required":"Username is required",
-        "Only_alphanumeric_characters": "The input must contains only alphanumeric characters",
-        "Weather_station_association_error":"Error during the association of the weather station",
-        "Weather_station_disassociation_error":"Error during the weather station disassociation",
-        "Farm_association_error":"Error during Farm association",
-        "Farm_disassociation_error":"Error during Farm disassociation",
-        "Weather_station_data_update_error": "Error during weather station data update"
+        "New_password_is_required":"Neues Passwort ist erforderlich",
+        "File_name_is_required":"Dateiname ist erforderlich",
+        "Seasonal_data_download_error": "Download der saisonalen Daten fehlgeschlagen",
+        "DSS_disabled_info_message":"Der EHS wurde deaktiviert und kann derzeit nicht verwendet werden.",
+        "Parameters_not_saved":"Die neue EHS-Konfiguration kann nicht gespeichert werden",
+        "Weather_stations_providers_retrieve_error": "Fehler beim Abrufen von Wetterstationsanbietern",
+        "User_weather_stations_retrieve_error": "Fehler beim Abrufen der Wetterstation, die verbunden sind mit",
+        "Weather_station_id_is_required":"Wetterstationskennung ist erforderlich",
+        "Weather_station_provider_is_required":"Anbieter einer Wetterstation ist erforderlich",
+        "Username_is_required":"Benutzername ist erforderlich",
+        "Only_alphanumeric_characters": "Die Eingabe darf nur alphanumerische Zeichen enthalten",
+        "Weather_station_association_error":"Fehler bei der Zuordnung der Wetterstation",
+        "Weather_station_disassociation_error":"Fehler bei der Trennung der Wetterstation",
+        "Farm_association_error":"Fehler bei der Zuordnung des Betriebs",
+        "Farm_disassociation_error":"Fehler bei der Trennung des Betriebs",
+        "Weather_station_data_update_error": "Fehler bei der Aktualisierung der Wetterstationsdaten"
     },
     "Information_messages": {
         "Farm_deletion_message": "Sie sind dabei, einen Betrieb zu löschen. Sind Sie sicher?",
@@ -161,14 +161,14 @@
         "No_Linked_DSS_available":"Kein EHS-Link verfügbar.",
         "DSS_models_filtered":"EHS-Links erfolgreich gefiltert",
         "You_are_about_to_remove":"Sie sind im Begriff, den/die folgenden DSS-Link(s) zu entfernen:",
-        "Seasonal_data_download_success": "Seasonal data download successfully",
-        "Parameters_saved":"Dss with new configuration saved",
-        "Weather_station_associated":"Weather station associated successfully",
-        "Weather_station_disassociated":"Weather station disassociated",
-        "No_weather_stations_available": "No weather stations available",
-        "Farm_associated": "Farm associated",
-        "Farm_disassociated": "Farm disassociated",
-        "Weather_station_data_updated": "Weather station data updated"  
+        "Seasonal_data_download_success": "Saisonale Daten erfolgreich heruntergeladen",
+        "Parameters_saved":"EHS mit neuer Konfiguration gespeichert",
+        "Weather_station_associated":"Wetterstation erfolgreich zugeordnet",
+        "Weather_station_disassociated":"Wetterstation abgetrennt",
+        "No_weather_stations_available": "Keine Wetterstationen verfügbar",
+        "Farm_associated": "Betrieb zugeordnet",
+        "Farm_disassociated": "Betrieb getrennt",
+        "Weather_station_data_updated": "Daten der Wetterstation aktualisiert"  
     },
     "Warning_messages": {
         "DSS_model_availability_error": "Für die ausgewählten Kulturen ist kein EHS verfügbar",
@@ -179,8 +179,8 @@
         "Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
         "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
         "DSS_model_availability_country_error":"Kein EHS verfügbar für die ausgewählten Kulturen in dem ausgewählten Land. Weitere EHS werden in Zukunft hinzugefügt.  In der Zwischenzeit können EHS aus Nachbarländern verfügbar sein, die durch Hinzufügen von EHS zum Betrieb bei deaktiviertem 'Länderfilter'-Kästchen gefunden werden können.",
-        "Weather_stations_providers_availability_error": "No Weather Stations Providers available",
-        "Farm_already_associated": "The farm is already associated with another weather station"
+        "Weather_stations_providers_availability_error": "Keine Anbieter von Wetterstationen verfügbar",
+        "Farm_already_associated": "Der Betrieb ist bereits mit einer anderen Wetterstation verbunden"
     },
     "Countries": {
         "Austria": "Österreich",
@@ -236,12 +236,12 @@
         "Useful_links": "Nützlicher Link",
         "IPM_Decisions_News": "Neuigkeiten zu <b>IPM Decisions</b>",
         "IPM_Private": "Mein IPM",
-        "Related_project":"Related projects",
+        "Related_project":"Verwandte Projekte",
         "Newsletter_subscribe": "Subscribe to our newsletter(s).",
-        "Follow_us": "You can follow us on",
+        "Follow_us": "Sie können uns folgen auf",
         "Factsheets":"Factsheets",
-        "Quickstart_guide":"Quickstart guide",
-        "Support":"Support",
+        "Quickstart_guide":"Schnellstart-Anleitung",
+        "Support":"Unterstützung",
         "Newsletter":"Newsletter",
         "Terms_and_conditions":"Terms & conditions"
     },
@@ -321,8 +321,8 @@
         "Farm_location": "Betriebsstandort auswählen",
         "Nearest_met_station": "Nächstgelegene Wetterstation",
         "Weather_forecast_service": "Wettervorhersagedienst",
-        "Farm_unlock_location":"Unlock map",
-        "Farm_lock_location":"Lock map"
+        "Farm_unlock_location":"Karte freischalten",
+        "Farm_lock_location":"Karte sperren"
     },
     "DSS_information_table": {
         "Title": "EHS-Informationstabelle",
@@ -363,7 +363,7 @@
         "Yellow_triangle_description":"Der Fehler hat die Ausführung des Modells nicht gestoppt, aber die Zuverlässigkeit der Risikovorhersage des Modells beeinträchtigt",
         "Red_triangle_description":"Der Fehler verhinderte die Ausführung des Modells",
         "Platform_rationale_information":"Diese Plattform stellt EHS von externen EHS-Entwicklern zur Verfügung. Der 'Goldstandard' für EHS besteht darin, dass sie von angesehenen EHS-Entwicklern erstellt, getestet und in der Praxis über viele Standorte und Saisons hinweg eingesetzt und die Ergebnisse in Fachzeitschriften veröffentlicht wurden, um nützliche Vorhersagewerte in den Ländern nachzuweisen, in denen sie zur Anwendung empfohlen werden. Nur wenige DSS erfüllen alle diese Kriterien. IPM Decisions zielt darauf ab, eine breite Palette von EHS zur Erprobung und Nutzung zur Verfügung zu stellen. Daher ist es keine Voraussetzung, dass ein EHS alle diese Kriterien erfüllt, um über diese Plattform verfügbar zu sein. Stattdessen achtet das Management von IPM Decisions darauf, dass die EHS von seriösen Entwicklern stammen und weitere Informationen zu jedem EHS bereitgestellt werden, um eine fundierte Entscheidung über die Nutzung zu ermöglichen. Die EHS können zur Unterstützung (nicht als Ersatz) von Entscheidungen erfahrener Landwirte verwendet werden, die alle relevanten lokalen Risikofaktoren der Schaderreger berücksichtigen. Landwirte und Berater sollten die EHS erst dann als Entscheidungshilfe für größere Anbauflächen nutzen, wenn sie Erfahrungen mit der Anwendung gesammelt haben und die Risikoschätzungen für zuverlässig halten. Es kann zu fehlerhaften Risikoschätzungen kommen, insbesondere wenn die Bedingungen nicht denen entsprechen, die während der Entwicklung und Prüfung der EHS herrschten. Landwirte und Forschungseinrichtungen werden ermutigt, das EHS im Feld zu testen, das EHS gegebenenfalls an die örtlichen Bedingungen anzupassen und ihre Erfahrungen weiterzugeben.",
-        "Ban_icon_description":"The DSS is disabled"
+        "Ban_icon_description":"Das EHS ist deaktiviert"
     },
     "DSS_details": {
         "Title": "EHS-Details",
@@ -382,8 +382,8 @@
         "Warning_status_representation": "Darstellung des Warnstatus",
         "Warning_message": "Warnmeldung",
         "Disclaimer_content":"Diese Plattform stellt EHS von externen EHS-Entwicklern zur Verfügung. Die EHS können zur Unterstützung (nicht als Ersatz) von Entscheidungen erfahrener Landwirte unter Berücksichtigung lokaler Risikofaktoren der Schaderreger verwendet werden. Weitere Informationen finden Sie unter der Legende auf dem EHS-Nutzungs-Dashboard.",
-        "Group_chart_popup_title":"Group Chart Information",
-        "Seasonal_data":"Download Seasonal Data",
+        "Group_chart_popup_title":"Informationen zum Gruppendiagramm",
+        "Seasonal_data":"Saisonale Daten herunterladen",
         "File_name":"File name"
     },
     "DSS_model_selection": {
@@ -431,13 +431,13 @@
         "for": "für",
         "on": "ein",
         "Note_message": "Sie können bis zu fünf Modelle gleichzeitig vergleichen",
-        "Group_chart_popup_title":"Group Chart Information",
-        "Select_one_model": "Select one model",
-        "Use_historical_data":"Use historical data",
-        "Note_message_historical_data":"Select only one model to compare with his historical data",
-        "Compare_with_historical_data":"Compare historical data",
-        "Current":"Current",
-        "Historical":"Historical"
+        "Group_chart_popup_title":"Informationen zum Gruppendiagramm",
+        "Select_one_model": "Wählen Sie ein Modell",
+        "Use_historical_data":"Historische Daten verwenden",
+        "Note_message_historical_data":"Wählen Sie nur ein Modell zum Vergleich mit seinen historischen Daten aus.",
+        "Compare_with_historical_data":"Historische Daten vergleichen",
+        "Current":"Aktuell",
+        "Historical":"Historisch"
     },
     "User_guide": {
         "Title": "Benutzerhandbuch"
@@ -472,11 +472,11 @@
         "on": "ein",
         "Data_is_updating":"Daten werden aktualisiert",
         "Please_wait":"Bitte warten",
-        "Default":"Default",
-        "Not_defined":"Not defined",
-        "Run_configuration":"Run configuration",
-        "Dss_name":"Dss Name",
-        "Revised": "Revised",
+        "Default":"Standard",
+        "Not_defined":"Nicht definiert",
+        "Run_configuration":"Konfiguration ausführen",
+        "Dss_name":"EHS Name",
+        "Revised": "Überarbeitet",
         "Original":"Original"
     },
     "DSS_linked": {
@@ -484,40 +484,53 @@
         "General_overview":"Verfügbare EHS-Links",
         "User_selected":"Ausgewählte EHS-Links",
         "Crop_filter":"Kulturauswahl",
-        "Filter_DSS":"Filter DSS",
+        "Filter_DSS":"EHS filtern",
         "Confirm_selection":"Auswahl bestätigen",
         "Remove_linked_dss":"EHS-Link entfernen",
         "Edit_selection":"Auswahl bearbeiten",
         "Editing_complete":"Bearbeitung abgeschlossen"
     },
     "User_edit_password": {
-        "Current_password":"Current Password",
-        "Change_password":"Change Password",
-        "Return_to_user_edit":"Return to 'User Account'"
+        "Current_password":"Aktuelles Passwort",
+        "Change_password":"Passwort ändern",
+        "Return_to_user_edit":"Zurück zun 'Benutzerkonto'"
     },
     "Dss_info_list":{
-        "Integrated_dss_retrieve_success_message":"Integrated DSS models retrivied successfully!",
-        "Integrated_dss_retrieve_warning_message":"No integrated DSS available for the selected crops",
-        "Integrated_dss_retrieve_error_message":"Fail to get the requested integrated models for selected crops!",
-        "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
-        "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
-        "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
+        "Integrated_dss_retrieve_success_message":"Integrierte EHS-Modelle erfolgreich abgerufen!",
+        "Integrated_dss_retrieve_warning_message":"Kein integriertes EHS für die ausgewählten Kulturpflanzen verfügbar",
+        "Integrated_dss_retrieve_error_message":"Die angeforderten integrierten Modelle für ausgewählte Kulturpflanzen konnten nicht abgerufen werden!",
+        "External_dss_retrieve_success_message":"Externe EHS-Modelle wurden erfolgreich abgerufen!",
+        "External_dss_retrieve_warning_message":"Keine externe EHS für die ausgewählten Kulturen verfügbar",
+        "External_dss_retrieve_error_message":"Die angeforderten externen Modelle für die ausgewählten Kulturen konnten nicht abgerufen werden!"
     },
     "User_weather_stations":{
-        "Weather_stations":"Weather stations",
-        "Add_istance":"Add istance",
-        "Associated_istances":"Associated istances",
-        "Station_name": "Station name",
+        "Weather_stations":"Wetterstationen",
+        "Add_istance":"Instanz hinzufügen",
+        "Associated_istances":"Zugeordnete Instanzen",
+        "Station_name": "Name der Station",
         "Info_URL": "Information URL",
-        "Associated":"Associated",
-        "Not_associated":"Not associated",
-        "Associate":"Associate",
-        "Disassociate":"Disassociate",
-        "Weather_station_provider": "Weather station provider",
-        "Weather_station_id": "Weather station id",
-        "Weather_station_name":"Weather station name",
-        "Associate_weather_station":"Associate weather station",
-        "Weather_station_details": "Weather station details",
-        "Istance_management": "Istance management"
-    } 
+        "Associated":"Zugeordnet",
+        "Not_associated":"Nicht zugeordnet",
+        "Associate":"Verbunden",
+        "Disassociate":"Getrennt",
+        "Weather_station_provider": "Anbieter von Wetterstationen",
+        "Weather_station_id": "Kennung der Wetterstation",
+        "Weather_station_name":"Name der Wetterstation",
+        "Associate_weather_station":"Zugeordnete Wetterstation",
+        "Weather_station_details": "Details zur Wetterstation",
+        "Istance_management": "Verwaltung der Instanzen"
+    }
+    
+    
+
+
+
+
+
+
+
+
+
+
+
 }

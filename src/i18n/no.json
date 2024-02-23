@@ -62,18 +62,18 @@
     "EU_footer_further_information": "For mer informasjon relatert til IPM decisions platformen, eller for å rapportere tekniske problemer, vennligst send epost",
     "EU_footer_further_details_on_project": "Flere detaljer om EU prosjektet som ligger til grunn for utvikling av platformen finnes på",
     "Clear_filter":"Fjern filter",
-    "Available_DSS": "Available DSS",
-    "Select_days": "Select days",
-    "Dss_info": "DSS informations",
-    "Start_Date":"Start Date",
-    "End_Date":"End Date",
-    "Download":"Download",
-    "Integrated_Dss":"Integrated DSS",
-    "External_Dss":"External DSS",
-    "Disabled":"Disabled",
+    "Available_DSS": "Tilgjenglig DSS",
+    "Select_days": "Velg dager",
+    "Dss_info": "DSS-informasjon",
+    "Start_Date":"Startdato",
+    "End_Date":"Sluttdato",
+    "Download":"Last ned",
+    "Integrated_Dss":"Integrert DSS",
+    "External_Dss":"Ekstern DSS",
+    "Disabled":"Deaktivert",
     "Status":"Status",
-    "Farms": "Farms",
-    "Username":"Username"
+    "Farms": "Gårder",
+    "Username":"Brukernavn"
   },
   "Error_messages": {
     "An_unknown_error_occured": "Det oppstod en ukjent feil!",
@@ -114,22 +114,22 @@
     "DSS_adaptation_parameters_send_error": "Sending av DSS parametere mislyktes, det oppstod en feil",
     "DSS_parameters_reset_error": "Reset av DSS parametere mislyktes, det oppstod en feil",
     "DSS_use_dashboard_error_standard_info": "Det oppstår en advarsel eller feil ved kjøring av DSS. Meldingen som gis fra DSS-en (på originalspråk) var:",
-    "New_password_is_required":"New password is required",
-    "File_name_is_required":"File name is required",
-    "Seasonal_data_download_error": "Failed to download seasonal data",
-    "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
-    "Parameters_not_saved":"Cannot save the new Dss configuration",
-    "Weather_stations_providers_retrieve_error": "Error during retrieving weather stations providers",
-    "User_weather_stations_retrieve_error": "Error during retrieving the weather station associated with the user",
-    "Weather_station_id_is_required":"Weather station id is required",
-    "Weather_station_provider_is_required":"Weather station provider is required",
-    "Username_is_required":"Username is required",
-    "Only_alphanumeric_characters": "The input must contains only alphanumeric characters",
-    "Weather_station_association_error":"Error during the association of the weather station",
-    "Weather_station_disassociation_error":"Error during the weather station disassociation",
-    "Farm_association_error":"Error during Farm association",
-    "Farm_disassociation_error":"Error during Farm disassociation",
-    "Weather_station_data_update_error": "Error during weather station data update"
+    "New_password_is_required":"Nytt passord kreves",
+    "File_name_is_required":"Filnavn kreves",
+    "Seasonal_data_download_error": "Det var ikke mulig å laste ned sesongdata",
+    "DSS_disabled_info_message":"DSS er deaktivert og kan ikke brukes for øyeblikket",
+    "Parameters_not_saved":"Kunne ikke lagre den nye DSS-konfigurasjonen",
+    "Weather_stations_providers_retrieve_error": "Det oppstod en feil med å hente leverandør av værstasjoner",
+    "User_weather_stations_retrieve_error": "Det oppstod en feil med å hente tilknyttede værstasjoner",
+    "Weather_station_id_is_required":"Værstasjonens ID krever",
+    "Weather_station_provider_is_required":"Leverandør av værstasjon kreves",
+    "Username_is_required":"Brukernavn kreves",
+    "Only_alphanumeric_characters": "Inntastingen må bare bestå av bokstaver eller tall",
+    "Weather_station_association_error":"Det oppstod en feil med å tilknytte værstasjonen",
+    "Weather_station_disassociation_error":"Det oppstod en feil med å frakoble værstasjonen",
+    "Farm_association_error":"Det oppstod en feil med å tilknytte gården",
+    "Farm_disassociation_error":"Det oppstod en feil med å frakoble gården",
+    "Weather_station_data_update_error": "Det oppstod en feil med å oppdatere data fra værstasjonen"
   },
   "Information_messages": {
     "Farm_deletion_message": "Gården din kommer til å bli slettet. Er du sikker?",
@@ -161,14 +161,14 @@
     "No_Linked_DSS_available":"Ingen DSS-linker er tilgjengelige.",
     "DSS_models_filtered":"DSS-linkene er filtrert",
     "You_are_about_to_remove":"Du er i ferd med å fjerne følgende DSS-link(er):",
-    "Seasonal_data_download_success": "Seasonal data download successfully",
-    "Parameters_saved":"Dss with new configuration saved",
-    "Weather_station_associated":"Weather station associated successfully",
-    "Weather_station_disassociated":"Weather station disassociated",
-    "No_weather_stations_available": "No weather stations available",
-    "Farm_associated": "Farm associated",
-    "Farm_disassociated": "Farm disassociated",
-    "Weather_station_data_updated": "Weather station data updated" 
+    "Seasonal_data_download_success": "Sesongdata er nedlastet",
+    "Parameters_saved":"DSS med ny konfigurering er lagret",
+    "Weather_station_associated":"Værstasjonen er tilknyttet",
+    "Weather_station_disassociated":"Værstasjonen er frakoblet",
+    "No_weather_stations_available": "Det er ingen tilgjengelige værstasjoner",
+    "Farm_associated": "Gården er tilknyttet",
+    "Farm_disassociated": "Gården er frakoblet",
+    "Weather_station_data_updated": "Data fra værstasjonen er oppdaterte" 
   },
   "Warning_messages": {
     "DSS_model_availability_error": "Ingen DSS tilgjengelig for valgte kulturer ",
@@ -179,8 +179,8 @@
     "Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
     "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
     "DSS_model_availability_country_error":"Ingen DSS tilgjengelig for valgt kultur i det valgte landet. Flere DSSer vil bli lagt til i fremtiden. I mellomtiden kan det være tilgjengelige DSSer fra naboland som kan finnes ved å legge til DSS til gården med  åpent 'Landfilter' (ikke avkrysset). ",
-    "Weather_stations_providers_availability_error": "No Weather Stations Providers available",
-    "Farm_already_associated": "The farm is already associated with another weather station"
+    "Weather_stations_providers_availability_error": "Det er ngen leverandører av værstasjoner tilgjengelig",
+    "Farm_already_associated": "Gården er allerede tilknyttet en annen værstasjon"
   },
   "Countries": {
     "Austria": "Østerrike",
@@ -236,13 +236,13 @@
     "Useful_links": "Nyttig lenke",
     "IPM_Decisions_News": "<b>IPM Decisions</b> News",
     "IPM_Private": "IPM Private",
-    "Related_project":"Related projects",
+    "Related_project":"Relaterte prosjekt",
     "Newsletter_subscribe": "Subscribe to our newsletter(s).",
-    "Follow_us": "You can follow us on",
-    "Factsheets":"Factsheets",
-    "Quickstart_guide":"Quickstart guide",
-    "Support":"Support",
-    "Newsletter":"Newsletter",
+    "Follow_us": "Følg oss på",
+    "Factsheets":"Faktaark",
+    "Quickstart_guide":"Hurtigstart-guide",
+    "Support":"Brukerstøtte",
+    "Newsletter":"Nyhetsbrev",
     "Terms_and_conditions":"Terms & conditions"
   },
   "Register": {
@@ -321,8 +321,8 @@
     "Farm_location": "Velg gårdsplassering",
     "Nearest_met_station": "Nærmeste meteorologiske stasjon",
     "Weather_forecast_service": "Værmeldingstjeneste",
-    "Farm_unlock_location": "Unlock map",
-    "Farm_lock_location": "Lock map"
+    "Farm_unlock_location": "Lås opp kart",
+    "Farm_lock_location": "Lås kart"
   },
   "DSS_information_table": {
     "Title": "DSS-informasjonstabell",
@@ -363,7 +363,7 @@
     "Yellow_triangle_description": "Feil stoppet ikke modellen fra å kjøre, men reduserer påliteligheten av modellens risiko-beregninger",
     "Red_triangle_description": "Feil hindret modellen i å kjøre",
     "Platform_rationale_information":"Denne plattformen gjør DSSer fra eksterne DSS-utviklere tilgjengelige.'Gullstandarden' for DSSer er at de er laget av velrennomerte DSS-utviklere, testet og i praktisk bruk ved flere lokaliteter over flere sesonger. Resultatene er publisert i peer-review tidsskrift for å demonstrere nytteverdien i de land hvor de er anbefalt for bruk. Få DSSer møter alle disse kriteriene. IPM Decisions har som mål å gjøre et bredt utvalg av DSSer tilgjengelige for test og bruk. Derfor er det ikke et krav at alle kriterier er oppfylt før en DSS kan gjøres tilgjengelig på plattformen. I stedet er ledelsen for IPM Decisions nøye med at DSSer kommer fra anerkjente utviklere og at det gis ytterligere informasjon om hver DSS for å muliggjøre et informert valg om bruk. DSSer kan brukes for å støtte (ikke erstatte) beslutninger fra erfarne dyrkere og rådgivere, med hensyn til lokale risikofaktorer for skadegjørere. Dyrkere og rådgivere bør ikke bruke DSSer til å ta beslutninger om store dyrkingsarealer før de har fått erfaring med bruken og har funnet risikoestimatene pålitelige. Feilaktige risiko-estimat kan forekomme, spesielt hvis forholdene er utenfor de som lå til grunn for utvikling og test av DSSen. Dyrker-grupper og forskningsorganisasjoner oppfordres til å teste DSSer i felt, tilpasse DSSer til lokale forhold hvis nødvendig, og å dele sine erfaringer.",
-    "Ban_icon_description":"The DSS is disabled"
+    "Ban_icon_description":"DSS er deaktivert"
   },
   "DSS_details": {
     "Title": "DSS-detaljer",
@@ -382,8 +382,8 @@
     "Warning_status_representation": "Advarsel Statusrepresentasjon",
     "Warning_message": "Advarselsmelding",
     "Disclaimer_content":"Denne plattformen gjør DSS fra eksterne DSS-utviklere tilgjengelige. DSS kan brukes for å støtte (ikke erstatte) beslutninger fra erfarne dyrkere og rådgivere, med hensyn til lokale risikofaktorer for skadegjørere. Se ytterligere informasjon under forklaringen på DSS Use Dashboard",
-    "Group_chart_popup_title":"Group Chart Information",
-    "Seasonal_data":"Download Seasonal Data",
+    "Group_chart_popup_title":"Informasjon om gruppediagram",
+    "Seasonal_data":"Last ned sesongdata",
     "File_name":"File name"
   },
   "DSS_model_selection": {
@@ -431,13 +431,13 @@
     "for": "for",
     "on": "på",
     "Note_message": "Du kan sammenligne opptil fem modeller samtidig",
-    "Group_chart_popup_title":"Group Chart Information",
-    "Select_one_model": "Select one model",
-    "Use_historical_data":"Use historical data",
-    "Note_message_historical_data":"Select only one model to compare with his historical data",
-    "Compare_with_historical_data":"Compare historical data",
-    "Current":"Current",
-    "Historical":"Historical"
+    "Group_chart_popup_title":"Informasjon om gruppediagram",
+    "Select_one_model": "Velg en modell",
+    "Use_historical_data":"Bruk historiske data",
+    "Note_message_historical_data":"Velg kun en modell for sammenligning med sine historiske data",
+    "Compare_with_historical_data":"Sammenlign historiske data",
+    "Current":"Nåværende",
+    "Historical":"Historisk"
   },
   "User_guide": {
     "Title": "Bruksanvisning"
@@ -472,11 +472,11 @@
     "on": "på",
     "Data_is_updating": "Data oppdateres",
     "Please_wait": "Vennligst vent",
-    "Default":"Default",
-    "Not_defined":"Not defined",
-    "Run_configuration":"Run configuration",
-    "Dss_name":"Dss Name",
-    "Revised": "Revised",
+    "Default":"Standard",
+    "Not_defined":"Ikke definert",
+    "Run_configuration":"Kjør konfigurering",
+    "Dss_name":"DSS-navn",
+    "Revised": "Revidert",
     "Original":"Original"
   },
   "DSS_linked": {
@@ -484,40 +484,40 @@
     "General_overview":"Tilgjengelige DSS-linker",
     "User_selected":"Valgte DSS-linker",
     "Crop_filter":"Avlingfilter",
-    "Filter_DSS":"DSS Filter",
+    "Filter_DSS":"Filtrer DSS",
     "Confirm_selection":"Bekreft valgte",
     "Remove_linked_dss":"Fjern DSS-link",
     "Edit_selection":"Rediger utvalg",
     "Editing_complete":"Redigering fullført"
   },
   "User_edit_password": {
-    "Current_password":"Current Password",
-    "Change_password":"Change Password",
-    "Return_to_user_edit":"Return to 'User Account'"
+    "Current_password":"Nåværende passord",
+    "Change_password":"Bytt passord",
+    "Return_to_user_edit":"Gå tilbake til 'Brukerkonto'"
   },
   "Dss_info_list":{
-    "Integrated_dss_retrieve_success_message":"Integrated DSS models retrivied successfully!",
-    "Integrated_dss_retrieve_warning_message":"No integrated DSS available for the selected crops",
-    "Integrated_dss_retrieve_error_message":"Fail to get the requested integrated models for selected crops!",
-    "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
-    "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
-    "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
+    "Integrated_dss_retrieve_success_message":"Integrerte DSS-modeller er hentet!",
+    "Integrated_dss_retrieve_warning_message":"Ingen integrerte DSS-modeller tilgjengelig for valgte kulturer",
+    "Integrated_dss_retrieve_error_message":"Kunne ikke hente de forespurte integrerte modellene for valgte kulturer!",
+    "External_dss_retrieve_success_message":"Eksterne DSS-modeller er hentet!",
+    "External_dss_retrieve_warning_message":"Ingen ekstern DSS tilgjengelig for de valgte kulturene",
+    "External_dss_retrieve_error_message":"Kunne ikke hente de forespurte eksterne modellene for valgte kulturer!"
   },
   "User_weather_stations":{
-    "Weather_stations":"Weather stations",
-    "Add_istance":"Add istance",
-    "Associated_istances":"Associated istances",
-    "Station_name": "Station name",
-    "Info_URL": "Information URL",
-    "Associated":"Associated",
-    "Not_associated":"Not associated",
-    "Associate":"Associate",
-    "Disassociate":"Disassociate",
-    "Weather_station_provider": "Weather station provider",
-    "Weather_station_id": "Weather station id",
-    "Weather_station_name":"Weather station name",
-    "Associate_weather_station":"Associate weather station",
-    "Weather_station_details": "Weather station details",
-    "Istance_management": "Istance management"
+    "Weather_stations":"Værstasjoner",
+    "Add_istance":"Legg til forekomst",
+    "Associated_istances":"Tilhørende instanser",
+    "Station_name": "Stasjonsnavn",
+    "Info_URL": "URL-informasjon",
+    "Associated":"Assosiert",
+    "Not_associated":"Ikke assosiert",
+    "Associate":"Tilkoble",
+    "Disassociate":"Frakoble",
+    "Weather_station_provider": "Leverandør av værstasjon",
+    "Weather_station_id": "Værstasjonens ID",
+    "Weather_station_name":"Værstasjonens navn",
+    "Associate_weather_station":"Tilhørende værstasjon",
+    "Weather_station_details": "Detaljer om værstasjon",
+    "Istance_management": "Håndtering av forekomster"
   }
 }

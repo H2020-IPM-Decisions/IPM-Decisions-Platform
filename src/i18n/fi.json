@@ -62,18 +62,18 @@
         "EU_footer_further_information":"Jos haluat lisätietoja IPM Decisions -alustasta tai ilmoittaa teknisistä ongelmista, lähetä sähköpostia",
         "EU_footer_further_details_on_project":"Lisätietoja taustalla olevasta EU-hankkeesta alustan kehittämiseksi löytyy osoitteesta",
         "Clear_filter":"Tyhjennä suodatin",
-        "Available_DSS": "Available DSS",
-        "Select_days": "Select days",
-        "Dss_info": "DSS informations",
-        "Start_Date":"Start Date",
-        "End_Date":"End Date",
-        "Download":"Download",
-        "Integrated_Dss":"Integrated DSS",
-        "External_Dss":"External DSS",
-        "Disabled":"Disabled",
+        "Available_DSS": "Saatavilla oleva DSS",
+        "Select_days": "Valitse päivät",
+        "Dss_info": "DSS-info",
+        "Start_Date":"Alkupäivä",
+        "End_Date":"Päättymispäivä",
+        "Download":"Lataa",
+        "Integrated_Dss":"Integroitu DSS",
+        "External_Dss":"Ulkoinen DSS",
+        "Disabled":"Inaktivoitu",
         "Status":"Status",
         "Farms": "Farms",
-        "Username":"Username"
+        "Username":"Käyttäjänimi"
     },
     "Error_messages": {
         "An_unknown_error_occured": "Tapahtui tuntematon virhe!",
@@ -114,11 +114,11 @@
         "DSS_adaptation_parameters_send_error":"DSS-parametrien lähetys epäonnistui, tapahtui virhe",
         "DSS_parameters_reset_error":"DSS-parametrien palautus epäonnistui, tapahtui virhe",
         "DSS_use_dashboard_error_standard_info":"DSS on palauttanut varoituksen tai virheen ajettaessa. DSS:n viesti (DSS:n oletuskielellä) oli:",
-        "New_password_is_required":"New password is required",
-        "File_name_is_required":"File name is required",
-        "Seasonal_data_download_error": "Failed to download seasonal data",
-        "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
-        "Parameters_not_saved":"Cannot save the new Dss configuration",
+        "New_password_is_required":"Uusi salasana tarvitaan",
+        "File_name_is_required":"Tiedoston nimi tarvitaan",
+        "Seasonal_data_download_error": "Kasvukauden tietojen lataaminen epäonnistui",
+        "DSS_disabled_info_message":"DSS on poistettu käytöstä, eikä sitä voi käyttää tällä hetkellä.",
+        "Parameters_not_saved":"Uutta DSS-asetelmaa ei voi tallentaa",
         "Weather_stations_providers_retrieve_error": "Error during retrieving weather stations providers",
         "User_weather_stations_retrieve_error": "Error during retrieving the weather station associated with the user",
         "Weather_station_id_is_required":"Weather station id is required",
@@ -163,7 +163,7 @@
         "You_are_about_to_remove":"Olet poistamassa seuraavat DSS-linkit:",
         "Seasonal_data_download_success": "Seasonal data download successfully",
         "Parameters_saved":"Dss with new configuration saved",
-        "Weather_station_associated":"Weather station associated successfully",
+        "Weather_station_associated":"Sääasema liitetty onnistuneesti",
         "Weather_station_disassociated":"Weather station disassociated",
         "No_weather_stations_available": "No weather stations available",
         "Farm_associated": "Farm associated",
@@ -179,8 +179,8 @@
         "Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
         "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
         "DSS_model_availability_country_error":"Kyseisessä maassa valituille viljelykasveille ei ole käytettävissä DSS-iä. Lisää DSS:iä lisätään tulevaisuudessa. Sillä välin lähimaista voi olla saatavilla DSS:iä, jotka löytyvät lisäämällä tilalle DSS:iä, josisa on ”Country filter” -ruutu valitsematta.",
-        "Weather_stations_providers_availability_error": "No Weather Stations Providers available",
-        "Farm_already_associated": "The farm is already associated with another weather station"
+        "Weather_stations_providers_availability_error": "Ei sääasemien tarjoajia saatavilla",
+        "Farm_already_associated": "Tilalla on jo toinen sääasema"
     },
     "Countries": {
         "Austria": "Itävalta",
@@ -236,13 +236,13 @@
         "Useful_links": "Hyödyllisiä linkkejä",
         "IPM_Decisions_News": "<b>IPM Decisions</b> Uutiset",
         "IPM_Private": "IPM Yksityinen",
-        "Related_project":"Related projects",
+        "Related_project":"Aiheeseen liittyvät hankkeet",
         "Newsletter_subscribe": "Subscribe to our newsletter(s).",
-        "Follow_us": "You can follow us on",
-        "Factsheets":"Factsheets",
-        "Quickstart_guide":"Quickstart guide",
-        "Support":"Support",
-        "Newsletter":"Newsletter",
+        "Follow_us": "Seuraa meitä",
+        "Factsheets":"Tietosivu",
+        "Quickstart_guide":"Pikaopas",
+        "Support":"Tuki",
+        "Newsletter":"Uutiskirje",
         "Terms_and_conditions":"Terms & conditions"
     },
     "Register": {
@@ -363,7 +363,7 @@
         "Yellow_triangle_description":"Virhe ei estänyt mallia toimimasta, mutta heikentää mallin riskiennusteen luotettavuutta",
         "Red_triangle_description":"Virhe esti mallia toimimasta",
         "Platform_rationale_information":"Tämä foorumi tarjoaa DSS: n saataville ulkoisilta DSS-kehittäjiltä. DSS:n ”kultainen standardi” on se, että kokeneet DSS-kehittäjät ovat luoneet ne, ja niitä on testattu ja käytetty laajalti käytännössä useilla alueilla ja useina vuosina. Vertaisarvioiduissa lehdissä julkaistut tulokset osoittavat hyödyllistä ennustearvoa niissä maissa, joissa niitä suositellaan käytettäväksi. Harvat DSS:t täyttävät kaikki nämä kriteerit. IPM Decisions pyrkii tarjoamaan laajan valikoiman DSS:itä testaukseen ja käyttöön. Siksi, ei ole edellytys, että kaikki nämä kriteerit täyttyvät, jotta DSS olisi saatavana tämän alustan kautta. Sen sijaan IPM Decisions -hankkeen johto huolehtii kohtuullisella tavalla siitä, että DSS on peräisin luotettavalta kehittäjiltä, ja jokaisesta DSS: stä annetaan lisätietoja käytön tueksi. DSS: ää voidaan käyttää kokeneiden viljelijöiden päätöksen teon tueksi (ei korvaamiseen) ottaen huomioon kaikki asiaankuuluvat paikalliset kasvintuhoojien riskitekijät. Viljelijöiden ja neuvojien ei tulisi käyttää DSS:ää merkittävillä viljelyaloilla, ennen kuin he ovat saaneet kokemusta niiden käytöstä ja pitäneet riskiarvioita luotettavina. Virheellisiä riskiarvioita voi esiintyä, jos olosuhteet ovat DSS-kehityksen ja testauksen aikana olleet poikkeavat alueesta, jossa DSS:ää käytetään. Viljelijäryhmiä ja tutkimusorganisaatioita kannustetaan testaamaan DSS:iä kentällä, tarvittaessa muuttamaan DSS:ää paikallisiin olosuhteisiin sopivaksi, ja jakamaan kokemuksiaan.",
-        "Ban_icon_description":"The DSS is disabled"
+        "Ban_icon_description":"DSS on pois käytöstä"
     },
     "DSS_details": {
         "Title": "DSS-tiedot",
@@ -382,9 +382,9 @@
         "Warning_status_representation": "Varoitustilan esitys",
         "Warning_message": "Varoitusviesti",
         "Disclaimer_content":"Tämä alusta tarjoaa DSS: n saataville ulkoisilta DSS-kehittäjiltä. DSS: ää käytetään tukemaan (ei korvaamaan) kokeneiden viljelijöiden päätöksentekoa paikallisten kasvintuhoojariskien pohjalta. Katso lisätietoja selitteen alla DSS Use dashboard.",
-        "Group_chart_popup_title":"Group Chart Information",
-        "Seasonal_data":"Download Seasonal Data",
-        "File_name":"File name"
+        "Group_chart_popup_title":"Ryhmäkaavion tiedot",
+        "Seasonal_data":"Lataa kasvukauden data",
+        "File_name":"Tiedoston nimi"
     },
     "DSS_model_selection": {
         "Title": "DSS-mallin valinta",
@@ -431,13 +431,13 @@
         "for":"jollekin",
         "on":"päällä",
         "Note_message":"Voit vertailla jopa viittä mallia samanaikaisesti",
-        "Group_chart_popup_title":"Group Chart Information",
-        "Select_one_model": "Select one model",
-        "Use_historical_data":"Use historical data",
-        "Note_message_historical_data":"Select only one model to compare with his historical data",
-        "Compare_with_historical_data":"Compare historical data",
-        "Current":"Current",
-        "Historical":"Historical"
+        "Group_chart_popup_title":"Ryhmäkaavion tiedot",
+        "Select_one_model": "Valitse yksi malli",
+        "Use_historical_data":"Käytä historiadataa",
+        "Note_message_historical_data":"Valitse yksi malli, jota voit verrata historiadataan",
+        "Compare_with_historical_data":"Vertaa historiatietoja",
+        "Current":"Nykyinen",
+        "Historical":"Historiallinen"
     },
     "User_guide": {
         "Title":"Käyttöohjeet"
@@ -472,12 +472,12 @@
         "on":"päällä",
         "Data_is_updating":"Tietoja päivitetään",
         "Please_wait":"Olehyvä ja odota",
-        "Default":"Default",
-        "Not_defined":"Not defined",
-        "Run_configuration":"Run configuration",
-        "Dss_name":"Dss Name",
-        "Revised": "Revised",
-        "Original":"Original"
+        "Default":"Oletus",
+        "Not_defined":"Ei määritetty",
+        "Run_configuration":"Suorita konfigurointi",
+        "Dss_name":"DSS:n nimi",
+        "Revised": "Tarkistettu",
+        "Original":"Alkuperäinen"
     },
     "DSS_linked": {
         "Title":"Ulkoinen linkki DSS-hallintapaneeliin",
@@ -491,33 +491,33 @@
         "Editing_complete":"Muokkaus valmis"
     },
     "User_edit_password": {
-        "Current_password":"Current Password",
-        "Change_password":"Change Password",
-        "Return_to_user_edit":"Return to 'User Account'"
+        "Current_password":"Nykyinen salasana",
+        "Change_password":"Muuta salasana",
+        "Return_to_user_edit":"Palaa 'Käyttäjätiliin'"
     },
     "Dss_info_list":{
-        "Integrated_dss_retrieve_success_message":"Integrated DSS models retrivied successfully!",
-        "Integrated_dss_retrieve_warning_message":"No integrated DSS available for the selected crops",
-        "Integrated_dss_retrieve_error_message":"Fail to get the requested integrated models for selected crops!",
-        "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
-        "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
-        "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
+        "Integrated_dss_retrieve_success_message":"Integroidut DSS-mallit haettu onnistuneesti!",
+        "Integrated_dss_retrieve_warning_message":"Valituille viljelykasveille ei ole saatavilla integroitua DSS-ää",
+        "Integrated_dss_retrieve_error_message":"Pyydettyjä integroituja malleja ei onnistuttu saamaan valituille viljelykasveille!",
+        "External_dss_retrieve_success_message":"Ulkoisten DSS-mallien haku onnistui!",
+        "External_dss_retrieve_warning_message":"Valituille viljelykasveille ei ole saatavilla ulkoista DSS-ää",
+        "External_dss_retrieve_error_message":"Pyydettyjä ulkoisia malleja ei onnistuttu saamaan valituille viljelykasveille!"
     },
     "User_weather_stations":{
-        "Weather_stations":"Weather stations",
-        "Add_istance":"Add istance",
-        "Associated_istances":"Associated istances",
-        "Station_name": "Station name",
-        "Info_URL": "Information URL",
-        "Associated":"Associated",
-        "Not_associated":"Not associated",
-        "Associate":"Associate",
-        "Disassociate":"Disassociate",
-        "Weather_station_provider": "Weather station provider",
-        "Weather_station_id": "Weather station id",
-        "Weather_station_name":"Weather station name",
-        "Associate_weather_station":"Associate weather station",
-        "Weather_station_details": "Weather station details",
-        "Istance_management": "Istance management"
+        "Weather_stations":"Sääasemat",
+        "Add_istance":"Lisää tapaus",
+        "Associated_istances":"Liittyvät tapaukset",
+        "Station_name": "Aseman nimi",
+        "Info_URL": "Info-URL",
+        "Associated":"Yhdistetty",
+        "Not_associated":"Ei-yhdistetty",
+        "Associate":"Yhdistä",
+        "Disassociate":"Erota",
+        "Weather_station_provider": "Sääaseman palveluntarjoaja",
+        "Weather_station_id": "Sääaseman ID",
+        "Weather_station_name":"Sääaseman nimi",
+        "Associate_weather_station":"Liitännäinen sääasema",
+        "Weather_station_details": "Sääaseman tiedot",
+        "Istance_management": "Tapausken hallinta"
     }
 }
