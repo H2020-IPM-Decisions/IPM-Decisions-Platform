@@ -60,13 +60,10 @@ export class WeatherStationDetailsComponent implements OnInit {
     }
 
     private initFormValues(){
-        $("#weatherStationId").val(this.weatherStation.weatherStationId);
-        $("#weatherStationReference").val(this.weatherStation.weatherStationReference);
-
         setTimeout(()=>{
-            $("#username").val(this.weatherStation.userName);
+            $("#username").val("");
             $("#password").val("");
-        },250);
+        },750);
         
     }
 

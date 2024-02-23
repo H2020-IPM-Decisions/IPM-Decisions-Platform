@@ -56,6 +56,8 @@ export class WeaterStationsComponent implements OnInit {
 
     public modalRef: BsModalRef;
     public submitted: boolean = false;
+
+    public weatherStationProviderAuthType;
     
 
     ngOnInit(): void {
@@ -178,12 +180,6 @@ export class WeaterStationsComponent implements OnInit {
         this.$AssociatedWeatherStationSubscription.unsubscribe();
         this.retrieveUserWeatherStation();
     }
-    /* TODO: forse spostare nella componente dei details
-    updateAssociatedFarms(updateInfo){
-        let weatherStationToManageInfo = this.AssociatedWeatherStations.find((weatherStation) => weatherStation.weatherId == updateInfo.weatherId);
-        weatherStationToManageInfo.farms = updateInfo.farms;
-    }
-    */
 
     onSubmit() {
 
@@ -192,13 +188,28 @@ export class WeaterStationsComponent implements OnInit {
             return;
         }
 
-        const associateWeatherStationBody: UserWeatherStation = {
-            WeatherId: (<string>this.f.WeatherStationProvider.value),
-            WeatherStationId: (<string>this.f.WeatherStationId.value),
-            WeatherStationReference: (<string>this.f.WeatherStationReference.value),
-            Username: (<string>this.f.Username.value),
-            Password: (<string>this.f.Password.value),
-        };
+        let associateWeatherStationBody: UserWeatherStation;
+
+        if(this.weatherStationProviderAuthType === "NONE"){
+
+            associateWeatherStationBody = {
+                WeatherId: (<string>this.f.WeatherStationProvider.value),
+                WeatherStationId: (<string>this.f.WeatherStationId.value),
+                WeatherStationReference: (<string>this.f.WeatherStationReference.value),
+                Username: "",
+                Password: "",
+            };
+    
+        }else if(this.weatherStationProviderAuthType === "CREDENTIALS"){
+            
+            associateWeatherStationBody = {
+                WeatherId: (<string>this.f.WeatherStationProvider.value),
+                WeatherStationId: (<string>this.f.WeatherStationId.value),
+                WeatherStationReference: (<string>this.f.WeatherStationReference.value),
+                Username: (<string>this.f.Username.value),
+                Password: (<string>this.f.Password.value),
+            };
+        }
 
         this.doAssociation(associateWeatherStationBody);
 
@@ -209,7 +220,8 @@ export class WeaterStationsComponent implements OnInit {
         console.log(weatherId);
         this._weatherService.getSingleWeatherStationDataSource(weatherId).subscribe(
             (response: HttpResponse<WeatherDataSource>) => {
-                if(response.body.authentication_type === "NONE"){
+                this.weatherStationProviderAuthType = response.body.authentication_type;
+                if(this.weatherStationProviderAuthType === "NONE"){
                     this.doesTheProviderRequiresAuth = false;
                 }else{
                     this.doesTheProviderRequiresAuth = true;
