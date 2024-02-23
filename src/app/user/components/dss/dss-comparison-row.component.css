@@ -97,3 +97,7 @@ table, th, td {
   text-shadow: 2px 2px 3px rgba(15,15,15,.56);
   font-size: 150%;
 }
+
+.no-group-chart{
+  width: 404px ;
+}

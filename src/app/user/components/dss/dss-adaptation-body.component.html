@@ -63,10 +63,10 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col myHeading text-muted">
+                  <div class="col myHeading text-muted" *ngIf="revisedDssChartGroups.length > 0">
                     <select class="form-control text-muted selectionGroupChart" [ngModel]="selectedRevisedDssChartGroup"
                       (ngModelChange)="onChangeChartGroup($event)" *ngIf="revisedDssChartGroups.length > 1">
-                      <option *ngFor="let chartGroup of originalDssChartGroups" [ngValue]="chartGroup">{{
+                      <option *ngFor="let chartGroup of revisedDssChartGroups" [ngValue]="chartGroup">{{
                         chartGroup.title }}
                       </option>
                     </select>
@@ -75,9 +75,9 @@
                     </span>
                   </div>
                 </div>
-                <div class="row" *ngFor="let chartGroup of revisedDssChartGroups">
-                  <div class="col" *ngIf="selectedRevisedDssChartGroup.id === chartGroup.id">
-                    <custom-group-chart [chartId]="'adaptationGroupChartRevised-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"
+                <div class="row" *ngIf="revisedDssChartGroups.length > 0; else noGroupChart">
+                  <div class="col">
+                    <custom-group-chart [chartId]="'adaptationGroupChartRevised-'+selectedRevisedDssChartGroup.id" [chartResultParameters]="selectedRevisedDssChartGroup.resultParameters"
                     [isAPopUpChart]="false"></custom-group-chart>
                     <a (click)="openModal(expandedGroupChart, 'modal-xl','group')">
                       <i class="fas fa-expand light-blue-icon group-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
@@ -107,7 +107,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col myHeading text-muted">
+                  <div class="col myHeading text-muted" *ngIf="originalDssChartGroups.length > 0">
                     <select class="form-control text-muted selectionGroupChart" [ngModel]="selectedOriginalDssChartGroup"
                       (ngModelChange)="onChangeChartGroup($event)" *ngIf="originalDssChartGroups.length > 1">
                       <option *ngFor="let chartGroup of originalDssChartGroups" [ngValue]="chartGroup">{{
@@ -119,9 +119,9 @@
                     </span>
                   </div>
                 </div>
-                <div class="row" *ngFor="let chartGroup of originalDssChartGroups">
-                  <div class="col" *ngIf="selectedOriginalDssChartGroup.id === chartGroup.id">
-                    <custom-group-chart [chartId]="'adaptationGroupChartOriginal-'+chartGroup.id" [chartResultParameters]="chartGroup.resultParameters"
+                <div class="row" *ngIf="originalDssChartGroups.length > 0; else noGroupChart">
+                  <div class="col">
+                    <custom-group-chart [chartId]="'adaptationGroupChartOriginal-'+selectedOriginalDssChartGroup.id" [chartResultParameters]="selectedOriginalDssChartGroup.resultParameters"
                     [isAPopUpChart]="false"></custom-group-chart>
                     <a (click)="openModal(expandedGroupChart, 'modal-xl','group')">
                       <i class="fas fa-expand light-blue-icon group-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
@@ -318,3 +318,13 @@
       <button type="button" class="btn btn-info push-right" (click)="closeModal('group')">{{ 'Common_labels.Close' | translate }}</button>
     </div>
   </ng-template>
+
+
+  
+<ng-template #noGroupChart>
+  <div class="d-flex justify-content-center p-3 text-muted">
+    <strong>
+      {{ 'Information_messages.Chart_information_not_provided' | translate }}
+    </strong>
+  </div>
+</ng-template>

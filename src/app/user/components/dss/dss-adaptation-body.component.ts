@@ -116,7 +116,7 @@ export class DssAdaptationComponentBody implements OnInit {
 
         // For the first time i get the Data, assign the original data to the revised variables
         this.revisedDssChartGroups = this.originalDssChartGroups;
-        this.selectedRevisedDssChartGroup = this.selectedOriginalDssChartGroup; // bisogna creare
+        this.selectedRevisedDssChartGroup = this.selectedOriginalDssChartGroup; 
         this.revisedWarningChart = this.originalWarningChart;
         this.showRevisedRiskChart = true;
         this.revisedDssDetails = this.originalDssDetails;
@@ -126,7 +126,7 @@ export class DssAdaptationComponentBody implements OnInit {
         this.initDatePicker("revised");
         this.initDataAndLalbelsArrayOfSelectedGroupChart("revised");
         this.initDataAndLalbelsArrayOfSelectedGroupChart("original");
-        
+        this.ChartGroupDataSanityCheck("revised");
     }
 
     private initDatePicker(mode: string){
@@ -351,6 +351,7 @@ export class DssAdaptationComponentBody implements OnInit {
                         this.revisedDssChartGroups = this.revisedDssDetails.chartGroups;
                         this.revisedWarningChart = this._dssSelectionService.getDssWarningChart(this.revisedDssDetails.warningStatusPerDay, this.revisedDssDetails.warningStatusLabels);
                         this.selectedRevisedDssChartGroup = this.revisedDssChartGroups[0];
+                        this.ChartGroupDataSanityCheck("revised");
                         this.showRevisedRiskChart = true;
                         this.initDatePicker("revised");
                         this.initDataAndLalbelsArrayOfSelectedGroupChart("revised");
@@ -576,6 +577,7 @@ export class DssAdaptationComponentBody implements OnInit {
         this.refreshDatePicker("original");
         $('#revisedDataButton').css({"background-color":"#3f6ad8", "border-color":"#3f6ad8"});
         $('#originalDataButton').css({"background-color":"orange", "border-color":"orange"});
+        this.ChartGroupDataSanityCheck("original");
     }
 
     showRevisedData(){
@@ -587,5 +589,24 @@ export class DssAdaptationComponentBody implements OnInit {
         this.refreshDatePicker("revised");
         $('#revisedDataButton').css({"background-color":"orange", "border-color":"orange"});
         $('#originalDataButton').css({"background-color":"#3f6ad8", "border-color":"#3f6ad8"});
+        this.ChartGroupDataSanityCheck("revised");
+    }
+
+    ChartGroupDataSanityCheck(mode: string){
+        if(mode === "revised"){
+            for(let chartGroups of this.revisedDssChartGroups){
+                if(chartGroups.id === ''){
+                  this.revisedDssChartGroups = [];
+                  break;
+                }
+            }
+        }else{
+            for(let chartGroups of this.originalDssChartGroups){
+                if(chartGroups.id === ''){
+                  this.originalDssChartGroups = [];
+                  break;
+                }
+            }
+        }
     }
 }

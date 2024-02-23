@@ -62,6 +62,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
       this.status = this.dssDetail.warningStatus;
 		  this.dssChartGroups = this.dssDetail.chartGroups;
 	    this.selectedDssChartGroup = this.dssChartGroups[0];
+      this.ChartGroupDataSanityCheck();
       if(this.dssDetail.warningStatusPerDay){
 		    /*let labels = [];
         for(let i=0; i<this.dssDetail.warningStatusPerDay.length; i++){
@@ -316,6 +317,15 @@ export class DssDetailComponent implements OnInit, OnDestroy {
 
   isFileNameInvalid(fileName: string): boolean {
     return fileName.length <= 0;
+  }
+
+  ChartGroupDataSanityCheck(){
+    for(let chartGroups of this.dssChartGroups){
+      if(chartGroups.id === ''){
+        this.dssChartGroups = [];
+        break;
+      }
+    }
   }
   
 }

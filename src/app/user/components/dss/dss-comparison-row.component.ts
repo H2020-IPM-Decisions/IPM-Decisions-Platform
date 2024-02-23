@@ -47,6 +47,7 @@ export class DssComparisonRowComponent implements OnInit {
   ngOnInit(): void {
     this.dssChartGroups = this.dssDetail.chartGroups;
     this.selectedDssChartGroup = this.dssChartGroups[0];
+    this.ChartGroupDataSanityCheck();
     if(this.dssDetail.warningStatusPerDay){
     this.warning = this.service.getDssWarningChart(this.dssDetail.warningStatusPerDay, this.dssDetail.warningStatusLabels);
     }
@@ -213,5 +214,14 @@ export class DssComparisonRowComponent implements OnInit {
 
     this.modalRef.hide();
     }
+  
+  ChartGroupDataSanityCheck(){
+    for(let chartGroups of this.dssChartGroups){
+      if(chartGroups.id === ''){
+        this.dssChartGroups = [];
+        break;
+      }
+    }
+  }
 
 }
