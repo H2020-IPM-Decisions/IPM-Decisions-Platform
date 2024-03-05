@@ -62,18 +62,18 @@
         "EU_footer_further_information": "Για περισσότερες πληροφορίες σχετικά με την πλατφόρμα IPM Decisions, ή για να αναφέρετε τυχόν τεχνικά προβλήματα, παρακαλούμε στείλτε μήνυμα ηλεκτρονικού ταχυδρομείου.",
         "EU_footer_further_details_on_project": "Περισσότερες λεπτομέρειες σχετικά με το υποστηρικτικό έργο της ΕΕ για την ανάπτυξη της πλατφόρμας μπορείτε να βρείτε στη διεύθυνση",
         "Clear_filter":"Καθαρισμός φίλτρων",
-        "Available_DSS": "Available DSS",
-        "Select_days": "Select days",
-        "Dss_info": "DSS informations",
-        "Start_Date":"Start Date",
-        "End_Date":"End Date",
-        "Download":"Download",
-        "Integrated_Dss":"Integrated DSS",
-        "External_Dss":"External DSS",
-        "Disabled":"Disabled",
-        "Status":"Status",
-        "Farms": "Farms",
-        "Username":"Username"
+        "Available_DSS": "Διαθέσιμο DSS",
+        "Select_days": "Επιλέξτε ημέρες",
+        "Dss_info": "Πληροφορίες DSS",
+        "Start_Date":"Ημερομηνία έναρξης",
+        "End_Date":"Ημερομηνία λήξης",
+        "Download":"Λήψη",
+        "Integrated_Dss":"Ενσωματωμένα DSS",
+        "External_Dss":"Εξωτερικά DSS",
+        "Disabled":"Απενεργοποιημένο",
+        "Status":"Κατάσταση",
+        "Farms": "Αγροκτήματα",
+        "Username":"Όνομα χρήστη"
     },
     "Error_messages": {
         "An_unknown_error_occured": "Παρουσιάστηκε άγνωστο σφάλμα!",
@@ -114,22 +114,22 @@
         "DSS_adaptation_parameters_send_error": "Η αποστολή παραμέτρων DSS απέτυχε, προέκυψε σφάλμα",
         "DSS_parameters_reset_error": "Η επαναφορά των παραμέτρων Dss απέτυχε, προέκυψε σφάλμα",
         "DSS_use_dashboard_error_standard_info": "Το DSS επέστρεψε προειδοποίηση ή σφάλμα κατά την εκτέλεση. Το μήνυμα που παρείχε το DSS (στην προεπιλεγμένη γλώσσα που χρησιμοποιεί το DSS) ήταν:",
-        "New_password_is_required":"New password is required",
-        "File_name_is_required":"File name is required",
-        "Seasonal_data_download_error": "Failed to download seasonal data",
-        "DSS_disabled_info_message":"The DSS has been disabled and it can't be used at the moment",
-        "Parameters_not_saved":"Cannot save the new Dss configuration",
-        "Weather_stations_providers_retrieve_error": "Error during retrieving weather stations providers",
-        "User_weather_stations_retrieve_error": "Error during retrieving the weather station associated with the user",
-        "Weather_station_id_is_required":"Weather station id is required",
-        "Weather_station_provider_is_required":"Weather station provider is required",
-        "Username_is_required":"Username is required",
-        "Only_alphanumeric_characters": "The input must contains only alphanumeric characters",
-        "Weather_station_association_error":"Error during the association of the weather station",
-        "Weather_station_disassociation_error":"Error during the weather station disassociation",
-        "Farm_association_error":"Error during Farm association",
-        "Farm_disassociation_error":"Error during Farm disassociation",
-        "Weather_station_data_update_error": "Error during weather station data update"
+        "New_password_is_required":"Απαιτείται νέος κωδικός",
+        "File_name_is_required":"Απαιτείται ονομασία αρχείου",
+        "Seasonal_data_download_error": "Αποτυχία λήψης εποχικών δεδομένων",
+        "DSS_disabled_info_message":"Το DSS έχει απενεργοποιηθεί και δεν μπορεί να χρησιμοποιηθεί προς το παρόν.",
+        "Parameters_not_saved":"Μη ικανή αποθήκευση της νέας ρύθμισης του DSS",
+        "Weather_stations_providers_retrieve_error": "Σφάλμα κατά την ανάκτηση παρόχων μετεωρολογικών σταθμών",
+        "User_weather_stations_retrieve_error": "Σφάλμα κατά την ανάκτηση του μετεωρολογικού σταθμού που σχετίζεται με",
+        "Weather_station_id_is_required":"Απαιτείται ταυτότητα μετεωρολογικού σταθμού",
+        "Weather_station_provider_is_required":"Απαιτείται πάροχος μετεωρολογικού σταθμού",
+        "Username_is_required":"Απαιτείται όνομα χρήστη",
+        "Only_alphanumeric_characters": "Η καταχώρηση πρέπει να περιέχει μόνο αλφαριθμητικούς χαρακτήρες",
+        "Weather_station_association_error":"Σφάλμα κατά τη σύνδεση του μετεωρολογικού σταθμού",
+        "Weather_station_disassociation_error":"Σφάλμα κατά την αποσύνδεση του μετεωρολογικού σταθμού",
+        "Farm_association_error":"Σφάλμα κατά τη συσχέτιση αγροκτήματος",
+        "Farm_disassociation_error":"Σφάλμα κατά την αποσύνδεση αγροκτήματος",
+        "Weather_station_data_update_error": "Σφάλμα κατά την ενημέρωση των δεδομένων του μετεωρολογικού σταθμού"
     },
     "Information_messages": {
         "Farm_deletion_message": "Πρόκειται να διαγράψετε ένα αγρόκτημα. Είστε σίγουρος?",
@@ -161,14 +161,14 @@
         "No_Linked_DSS_available":"Δεν υπάρχουν διαθέσιμοι υπερσύνδεσμοι DSS.",
         "DSS_models_filtered":"Επιτυχές φιλτράρισμα υπερσυνδέσμων DSS",
         "You_are_about_to_remove":"Επιβεβαιώνετε τη μετακίνηση των επόμενων DSS:",
-        "Seasonal_data_download_success": "Seasonal data download successfully",
-        "Parameters_saved":"Dss with new configuration saved",
-        "Weather_station_associated":"Weather station associated successfully",
-        "Weather_station_disassociated":"Weather station disassociated",
-        "No_weather_stations_available": "No weather stations available",
-        "Farm_associated": "Farm associated",
-        "Farm_disassociated": "Farm disassociated",
-        "Weather_station_data_updated": "Weather station data updated" 
+        "Seasonal_data_download_success": "Η λήψη εποχικών δεδομένων πραγματοποιήθηκε με επιτυχία",
+        "Parameters_saved":"Αποθήκευση DSS με νέα ρύθμιση",
+        "Weather_station_associated":"Ο μετεωρολογικός σταθμός συνδέθηκε επιτυχώς",
+        "Weather_station_disassociated":"Μη συσχετισμένος μετεωρολογικός σταθμός",
+        "No_weather_stations_available": "Δεν υπάρχουν διαθέσιμοι μετεωρολογικοί σταθμοί",
+        "Farm_associated": "Συνδεδεμένο αγρόκτημα",
+        "Farm_disassociated": "Μη συνδεδεμένο αγρόκτημα",
+        "Weather_station_data_updated": "Ενημερωμένα δεδομένα μετεωρολογικού σταθμού" 
     },
     "Warning_messages": {
         "DSS_model_availability_error": "Δεν υπάρχει διαθέσιμο DSS για τις επιλεγμένες καλλιέργειες",
@@ -179,8 +179,8 @@
         "Weather_parameters_not_available_for_single_DSS":"Due to weather data availability in your location, 1 DSS was identified as not being able to run at your location and has been omitted from the list of available DSS.",
         "Weather_parameters_not_available_for_multiple_DSS":"Due to weather data availability in your location, {{value}} DSS were identified as not being able to run at your location and have been omitted from the list of available DSS",
         "DSS_model_availability_country_error":"Δεν υπάρχει διαθέσιμο DSS για τις επιλεγμένες καλλιέργειες στην επιλεγμένη χώρα. Στο μέλλον θα προστεθούν περισσότερα DSS. Εν τω μεταξύ, ενδέχεται να υπάρχουν διαθέσιμα DSS από γειτονικές χώρες, τα οποία μπορείτε να βρείτε προσθέτοντας DSS στο αγρόκτημα με το πλαίσιο 'Φίλτρο χώρας' να μην είναι επιλεγμένο.",
-		"Weather_stations_providers_availability_error": "No Weather Stations Providers available",
-        "Farm_already_associated": "The farm is already associated with another weather station"
+		"Weather_stations_providers_availability_error": "Δεν υπάρχουν διαθέσιμοι πάροχοι μετεωρολογικών σταθμών",
+        "Farm_already_associated": "Το αγρόκτημα είναι ήδη συνδεδεμένο με έναν άλλο μετεωρολογικό σταθμό"
     },
     "Countries": {
         "Austria": "Αυστρία",
@@ -236,13 +236,13 @@
         "Useful_links": "Χρήσιμοι σύνδεσμοι",
         "IPM_Decisions_News": "<b>IPM Decisions</b> νέα",
         "IPM_Private": "IPM Ιδιωτικά",
-        "Related_project":"Related projects",
+        "Related_project":"Σχετικά έργα",
         "Newsletter_subscribe": "Subscribe to our newsletter(s).",
-        "Follow_us": "You can follow us on",
+        "Follow_us": "Ακολουθήστε μας",
         "Factsheets":"Factsheets",
-        "Quickstart_guide":"Quickstart guide",
-        "Support":"Support",
-        "Newsletter":"Newsletter",
+        "Quickstart_guide":"Γρήγορη πρόσβαση",
+        "Support":"Υποστήριξη",
+        "Newsletter":"Ενημερωτικό δελτίο",
         "Terms_and_conditions":"Terms & conditions"
     },
     "Register": {
@@ -321,8 +321,8 @@
         "Farm_location": "Επιλογή τοποθεσίας αγροκτήματος",
         "Nearest_met_station": "Κοντινότερος μετεωρολογικός σταθμός",
         "Weather_forecast_service": "Υπηρεσία πρόγνωσης καιρού",
-        "Farm_unlock_location": "Unlock map",
-        "Farm_lock_location": "Lock map"
+        "Farm_unlock_location": "Ξεκλείδωμα χάρτη",
+        "Farm_lock_location": "Κλείδωμα χάρτη"
     },
     "DSS_information_table": {
         "Title": "Πίνακας πληροφοριών DSS ",
@@ -363,7 +363,7 @@
         "Yellow_triangle_description": "Το σφάλμα δεν εμπόδισε τη λειτουργία του μοντέλου, αλλά μειώνει την αξιοπιστία της πρόβλεψης κινδύνου του μοντέλου",
         "Red_triangle_description": "Το σφάλμα εμπόδισε την εκτέλεση του μοντέλου",
         "Platform_rationale_information":"Αυτή η πλατφόρμα καθιστά τα DSS διαθέσιμα από εξωτερικούς προγραμματιστές DSS. Το 'χρυσό πρότυπο' για τα DSS είναι να έχουν δημιουργηθεί από αξιόπιστους προγραμματιστές DSS, να έχουν δοκιμαστεί και να χρησιμοποιούνται ευρέως στην πράξη σε πολλές περιοχές και εποχές, και τα αποτελέσματα να έχουν δημοσιευθεί σε περιοδικά με κριτές, ώστε να αποδεικνύουν χρήσιμη προγνωστική αξία στις χώρες στις οποίες συνιστάται η χρήση τους. Λίγα DSS πληρούν όλα αυτά τα κριτήρια. Το IPM Decisions έχει ως στόχο να καταστήσει διαθέσιμο ένα ευρύ φάσμα DSS για δοκιμή και χρήση. Ως εκ τούτου, δεν απαιτείται να πληρούνται όλα αυτά τα κριτήρια για να είναι διαθέσιμο ένα DSS μέσω της πλατφόρμας αυτής. Αντίθετα, η διοίκηση του IPM Decisions φροντίζει εύλογα ώστε τα DSS να προέρχονται από αξιόπιστους προγραμματιστές και να παρέχονται περαιτέρω πληροφορίες για κάθε DSS, ώστε να είναι δυνατή η τεκμηριωμένη επιλογή χρήσης. Τα DSS μπορούν να χρησιμοποιηθούν για να βοηθήσουν (όχι να αντικαταστήσουν) τις αποφάσεις έμπειρων διαχειριστών καλλιεργειών, λαμβάνοντας υπόψη όλους τους σχετικούς τοπικούς παράγοντες κινδύνου επιβλαβών οργανισμών. Οι αγρότες και οι σύμβουλοι δεν θα πρέπει να χρησιμοποιούν τα DSS για να καθοδηγούν αποφάσεις σχετικά με σημαντικές εκτάσεις καλλιέργειας, έως ότου αποκτήσουν εμπειρία στη χρήση τους και διαπιστώσουν ότι οι εκτιμήσεις κινδύνου είναι αξιόπιστες. Μπορεί να προκύψουν λανθασμένες εκτιμήσεις κινδύνου, ιδίως εάν οι συνθήκες είναι εκτός εκείνων που αντιμετωπίστηκαν κατά την ανάπτυξη και τη δοκιμή του DSS. Οι ομάδες παραγωγών και οι ερευνητικοί οργανισμοί ενθαρρύνονται να δοκιμάζουν το DSS στον αγρό, να τροποποιούν το DSS ώστε να ταιριάζει στις τοπικές συνθήκες, εάν είναι απαραίτητο, και να μοιράζονται την εμπειρία τους.",
-        "Ban_icon_description":"The DSS is disabled"
+        "Ban_icon_description":"Το DSS είναι απενεργοποιημένο"
     },
     "DSS_details": {
         "Title": "Λεπτομέρειες DSS",
@@ -382,8 +382,8 @@
         "Warning_status_representation": "Αναπαράσταση κατάστασης προειδοποίησης",
         "Warning_message": "Προειδοποιητικό μήνυμα",
         "Disclaimer_content":"Αυτή η πλατφόρμα καθιστά τα DSS διαθέσιμα από εξωτερικούς προγραμματιστές DSS. Τα DSS μπορούν να χρησιμοποιηθούν για να βοηθήσουν (όχι να αντικαταστήσουν) τις αποφάσεις έμπειρων διαχειριστών καλλιεργειών, λαμβάνοντας υπόψη τους τοπικούς παράγοντες κινδύνου επιβλαβών οργανισμών. Βλέπε περισσότερες πληροφορίες κάτω από το υπόμνημα στο πίνακα χρήσης των DSS.",
-        "Group_chart_popup_title":"Group Chart Information",
-        "Seasonal_data":"Download Seasonal Data",
+        "Group_chart_popup_title":"Πληροφορίες διαγράμματος ομάδας",
+        "Seasonal_data":"Κατεβάστε τα εποχιακά δεδομένα",
         "File_name":"File name"
     },
     "DSS_model_selection": {
@@ -431,13 +431,13 @@
         "for": "for",
         "on": "on",
         "Note_message": "Μπορείτε να συγκρίνετε έως και πέντε μοντέλα ταυτόχρονα",
-        "Group_chart_popup_title":"Group Chart Information",
-        "Select_one_model": "Select one model",
-        "Use_historical_data":"Use historical data",
-        "Note_message_historical_data":"Select only one model to compare with his historical data",
-        "Compare_with_historical_data":"Compare historical data",
-        "Current":"Current",
-        "Historical":"Historical"
+        "Group_chart_popup_title":"Πληροφορίες διαγράμματος ομάδας",
+        "Select_one_model": "Επιλογή ενός μοντέλου",
+        "Use_historical_data":"Χρήση ιστορικών δεδομένων",
+        "Note_message_historical_data":"Επιλέξτε μόνο ένα μοντέλο για σύγκριση με τα ιστορικά δεδομένα του",
+        "Compare_with_historical_data":"Σύγκριση ιστορικών δεδομένων",
+        "Current":"Τρέχων",
+        "Historical":"Ιστορικό"
     },
     "User_guide": {
         "Title": "Οδηγός χρήσης"
@@ -472,12 +472,12 @@
         "on": "στο",
         "Data_is_updating": "Τα δεδομένα ενημερώνονται",
         "Please_wait": "Παρακαλώ περιμένετε",
-        "Default":"Default",
-        "Not_defined":"Not defined",
-        "Run_configuration":"Run configuration",
-        "Dss_name":"Dss Name",
-        "Revised": "Revised",
-        "Original":"Original"
+        "Default":"Προεπιλογή",
+        "Not_defined":"Μη καθορισμένο",
+        "Run_configuration":"Εκτέλεση ρύθμισης",
+        "Dss_name":"Ονομασία DSS",
+        "Revised": "Διορθωμένο",
+        "Original":"Αυθεντικό"
     },
     "DSS_linked": {
         "Title":"Πίνακας με εξωτερικούς υπερσύνδεσμους DSS",
@@ -491,33 +491,47 @@
         "Editing_complete":"Ολοκλήρωση της επεξεργασίας"
     },
     "User_edit_password": {
-        "Current_password":"Current Password",
-        "Change_password":"Change Password",
-        "Return_to_user_edit":"Return to 'User Account'"
+        "Current_password":"Τρέχων κωδικός",
+        "Change_password":"Αλλαγή κωδικού",
+        "Return_to_user_edit":"Επιστροφή στον 'Λογαριασμό χρήστη'"
     },
     "Dss_info_list":{
-        "Integrated_dss_retrieve_success_message":"Integrated DSS models retrivied successfully!",
-        "Integrated_dss_retrieve_warning_message":"No integrated DSS available for the selected crops",
-        "Integrated_dss_retrieve_error_message":"Fail to get the requested integrated models for selected crops!",
-        "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
-        "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
-        "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
+        "Integrated_dss_retrieve_success_message":"Επιτυχία ανάκτησης ολοκληρωμένων μοντέλων DSS!",
+        "Integrated_dss_retrieve_warning_message":"Μη διαθέσιμα ολοκληρωμένα DSS για τις επιλεγμένες καλλιέργειες",
+        "Integrated_dss_retrieve_error_message":"Αποτυχία λήψης των ολοκληρωμένων μοντέλων που ζητήθηκαν για τις επιλεγμένες καλλιέργειες!",
+        "External_dss_retrieve_success_message":"Επιτυχία ανάκτησης εξωτερικών μοντέλων DSS!",
+        "External_dss_retrieve_warning_message":"Μη διαθέσιμα εξωτερικά μοντέλα DSS για τις επιλεγμένες καλλιέργειες",
+        "External_dss_retrieve_error_message":"Αποτυχία λήψης των εξωτερικών μοντέλων που ζητήθηκαν για τις επιλεγμένες καλλιέργειες!"
     },
     "User_weather_stations":{
-        "Weather_stations":"Weather stations",
-        "Add_istance":"Add istance",
-        "Associated_istances":"Associated istances",
-        "Station_name": "Station name",
-        "Info_URL": "Information URL",
-        "Associated":"Associated",
-        "Not_associated":"Not associated",
-        "Associate":"Associate",
-        "Disassociate":"Disassociate",
-        "Weather_station_provider": "Weather station provider",
-        "Weather_station_id": "Weather station id",
-        "Weather_station_name":"Weather station name",
-        "Associate_weather_station":"Associate weather station",
-        "Weather_station_details": "Weather station details",
-        "Istance_management": "Istance management"
+        "Weather_stations":"Μετεωρολογικοί σταθμοί",
+        "Add_istance":"Προσθήκη",
+        "Associated_istances":"Σχετικά παραδείγματα",
+        "Station_name": "Όνομα σταθμού",
+        "Info_URL": "URL πληροφορίες",
+        "Associated":"Συσχετίζεται",
+        "Not_associated":"Δεν συσχετίζεται", 
+        "Associate":"Συσχετίζω",
+        "Disassociate":"Δεν συσχετίζω",
+        "Weather_station_provider": "Πάροχος μετεωρολογικού σταθμού",
+        "Weather_station_id": "Ταυτότητα ID μετεωρολογικού σταθμού",
+        "Weather_station_name":"Όνομα μετεωρολογικού σταθμού",
+        "Associate_weather_station":"Σύνδεδεμένος μετεωρολογικός σταθμός",
+        "Weather_station_details": "Στοιχεία μετεωρολογικού σταθμού",
+        "Istance_management": "Διαχείριση περιστατικούt"
     }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
 }
