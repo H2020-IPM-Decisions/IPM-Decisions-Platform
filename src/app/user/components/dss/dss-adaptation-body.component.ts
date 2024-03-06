@@ -64,6 +64,12 @@ export class DssAdaptationComponentBody implements OnInit {
     public lastOriginalEndDateSelected: string = "0000-00-00";
     public showingMode: string;
     riskChartZoomLevel: number = 1.0;
+    noOriginalGroupChartsAvailable: boolean = false;
+    noOriginalRiskChartAvailable: boolean = false;
+    noOriginalChartsAvailable: boolean = false;
+    noRevisedGroupChartsAvailable: boolean = false;
+    noRevisedRiskChartAvailable: boolean = false;
+    noRevisedChartsAvailable: boolean = false;
     
 
     public modalRef: BsModalRef;
@@ -93,6 +99,9 @@ export class DssAdaptationComponentBody implements OnInit {
         if (this.originalDssDetails.warningStatusPerDay) {
             this.originalWarningChart = this._dssSelectionService.getDssWarningChart(this.originalDssDetails.warningStatusPerDay, this.originalDssDetails.warningStatusLabels);
             this._logger.debug("CHART RISK:", this.originalWarningChart);
+        }else{
+            this.noOriginalRiskChartAvailable = true;
+            this.noRevisedRiskChartAvailable = true;
         }
 
         // Editor Define
@@ -123,10 +132,18 @@ export class DssAdaptationComponentBody implements OnInit {
         this.revisedDssParameters = this.originalDssParameters;
 
         this.configurationExecuted = false;
-        this.initDatePicker("revised");
-        this.initDataAndLalbelsArrayOfSelectedGroupChart("revised");
-        this.initDataAndLalbelsArrayOfSelectedGroupChart("original");
+        
         this.ChartGroupDataSanityCheck("revised");
+        this.ChartGroupDataSanityCheck("original");
+
+        if(this.noRevisedGroupChartsAvailable && this.noRevisedRiskChartAvailable){
+            this.noRevisedChartsAvailable = true;
+            this.noOriginalChartsAvailable = true;
+        }else{
+            this.initDatePicker("revised");
+            this.initDataAndLalbelsArrayOfSelectedGroupChart("revised");
+            this.initDataAndLalbelsArrayOfSelectedGroupChart("original");
+        }
     }
 
     private initDatePicker(mode: string){
@@ -349,18 +366,28 @@ export class DssAdaptationComponentBody implements OnInit {
                         this._logger.debug("Revised Data received: ", data.body.dssDetailedResult);
                         this.revisedDssDetails = data.body.dssDetailedResult;
                         this.revisedDssChartGroups = this.revisedDssDetails.chartGroups;
-                        this.revisedWarningChart = this._dssSelectionService.getDssWarningChart(this.revisedDssDetails.warningStatusPerDay, this.revisedDssDetails.warningStatusLabels);
+                        if(this.revisedDssDetails.warningStatusPerDay){
+                            this.revisedWarningChart = this._dssSelectionService.getDssWarningChart(this.revisedDssDetails.warningStatusPerDay, this.revisedDssDetails.warningStatusLabels);
+                            this.noRevisedRiskChartAvailable = false;
+                        }else{
+                            this.noRevisedRiskChartAvailable = true;
+                        }
                         this.selectedRevisedDssChartGroup = this.revisedDssChartGroups[0];
                         this.ChartGroupDataSanityCheck("revised");
-                        this.showRevisedRiskChart = true;
-                        this.initDatePicker("revised");
-                        this.initDataAndLalbelsArrayOfSelectedGroupChart("revised");
-                        this.refreshDatePicker("none");
-                        this.isSyncronizing = false;
-                        if(!this.configurationExecuted){
-                            this.configurationExecuted = true;
+                        if(this.noRevisedGroupChartsAvailable && this.noRevisedRiskChartAvailable){
+                            this.noRevisedChartsAvailable = true;
+                        }else{
+                            this.noRevisedChartsAvailable = false;
+                            
                         }
+                        this.showRevisedRiskChart = true;
+                        this.initDataAndLalbelsArrayOfSelectedGroupChart("revised");
+                        this.isSyncronizing = false;
                         this.configurationExecuted = true;
+                        if(!this.noRevisedRiskChartAvailable){
+                            this.initDatePicker("revised");
+                            this.refreshDatePicker("none");
+                        }
                         this._toastrTranslated.showTranslatedToastr("Information_messages.DSS_adaptation_parameters_updated", "Common_labels.Success", "toast-success");
                     } else {
                         this._logger.debug("DSS Data not Ready: ", data.body.dssDetailedResult);
@@ -577,7 +604,6 @@ export class DssAdaptationComponentBody implements OnInit {
         this.refreshDatePicker("original");
         $('#revisedDataButton').css({"background-color":"#3f6ad8", "border-color":"#3f6ad8"});
         $('#originalDataButton').css({"background-color":"orange", "border-color":"orange"});
-        this.ChartGroupDataSanityCheck("original");
     }
 
     showRevisedData(){
@@ -589,21 +615,20 @@ export class DssAdaptationComponentBody implements OnInit {
         this.refreshDatePicker("revised");
         $('#revisedDataButton').css({"background-color":"orange", "border-color":"orange"});
         $('#originalDataButton').css({"background-color":"#3f6ad8", "border-color":"#3f6ad8"});
-        this.ChartGroupDataSanityCheck("revised");
     }
 
     ChartGroupDataSanityCheck(mode: string){
         if(mode === "revised"){
             for(let chartGroups of this.revisedDssChartGroups){
                 if(chartGroups.id === ''){
-                  this.revisedDssChartGroups = [];
+                  this.noRevisedGroupChartsAvailable = true;
                   break;
                 }
             }
         }else{
             for(let chartGroups of this.originalDssChartGroups){
                 if(chartGroups.id === ''){
-                  this.originalDssChartGroups = [];
+                  this.noOriginalGroupChartsAvailable = true;
                   break;
                 }
             }

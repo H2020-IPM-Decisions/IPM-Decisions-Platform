@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="row">
+  <div class="row" *ngIf="!noChartsAvailable">
     <div class="col ml-2">
       <label for="start">{{ 'Common_labels.Start_Date' | translate }}:</label>
       <input type="date" id="{{'startDate' + dssDetail.id + comparisonMode}}" name="period-start" [min]="minDate" [max]="startDateFormMax" (change)="startDateSelected($event)">
@@ -10,14 +10,14 @@
     </div>
   </div>
   <div class="row">
-    <div class="col pr-0">
+    <div class="col pr-0" *ngIf="!noChartsAvailable; else noCharts">
       <table class="table table-responsive-sm text-muted">
         <thead class="tableHeader">
           <tr>
             <th class="text-center tableHeader">
               <label>{{ 'DSS_details.Risk_score' | translate }}</label>
             </th>
-            <th class="text-center tableHeader">
+            <th class="text-center tableHeader" *ngIf="!noGroupChartsAvailable">
               <select class="form-control text-muted selItem" [ngModel]="selectedDssChartGroup"
                 (ngModelChange)="onChangeChartGroup($event)" *ngIf="dssChartGroups.length > 1">
                 <option *ngFor="let chartGroup of dssChartGroups" [ngValue]="chartGroup">{{ chartGroup.title }}
@@ -27,7 +27,6 @@
                 {{ dssChartGroups[0].title }}
               </span>
             </th>
-          </tr>
         </thead>
         <tbody>
           <tr>
@@ -40,13 +39,13 @@
               </a>
             </td>
             <td>
-              <div class="row" *ngIf="dssChartGroups.length > 0; else noGroupChart">
+              <div class="row" *ngIf="!noGroupChartsAvailable; else noGroupChart">
                 <div class="col">
                   <custom-group-chart [chartId]="'comparisonGroupChart-'+selectedDssChartGroup.id+'-'+ dssDetail.id + comparisonMode" [chartResultParameters]="selectedDssChartGroup.resultParameters"
                   [isAPopUpChart]="false"></custom-group-chart>
                 </div>
               </div>
-              <a (click)="openModal(expandedGroupChart, 'modal-xl', 'group')"  *ngIf="dssChartGroups.length > 0">
+              <a (click)="openModal(expandedGroupChart, 'modal-xl', 'group')"  *ngIf="!noGroupChartsAvailable">
                 <i class="fas fa-expand light-blue-icon group-chart-popup-btn" [title]="('DSS_comparison.Expand_table' | translate)"></i>
               </a>
             </td>
@@ -54,7 +53,7 @@
         </tbody>
       </table>
     </div>
-    <div class="col dataSet" *ngIf="dssChartGroups.length > 0">
+    <div class="col dataSet" *ngIf="!noGroupChartsAvailable && !noChartsAvailable">
       <div *ngFor="let chartGroup of dssChartGroups">
         <div *ngIf="selectedDssChartGroup.id === chartGroup.id">
           <table class="table table-responsive-sm datasetTable text-muted">
@@ -88,7 +87,7 @@
         </div>
       </div>      
     </div>
-    <div class="col dataSet" *ngIf="dssChartGroups.length === 0">
+    <div class="col dataSet" *ngIf="noGroupChartsAvailable && !noChartsAvailable">
       <table class="table table-responsive-sm datasetTable text-muted">
         <thead>
           <tr>
@@ -113,7 +112,7 @@
       </table>
     </div>
   </div>
-  <a (click)="openModal(expandedTable, 'modal-lg')">
+  <a (click)="openModal(expandedTable, 'modal-lg')" *ngIf="!noChartsAvailable">
     <i class="fas fa-expand light-blue-icon fixed pull-right" [title]="('DSS_comparison.Expand_table' | translate)"></i>
   </a>
 </div>
@@ -128,7 +127,7 @@
     </button>
   </div>
   <div class="modal-body scrollable mr-4">
-    <div class="col" *ngIf="dssChartGroups.length > 0">
+    <div class="col" *ngIf="!noGroupChartsAvailable">
       <div *ngFor="let chartGroup of dssChartGroups">
         <div *ngIf="selectedDssChartGroup.id === chartGroup.id">
           <table class="table table-responsive-sm modalDatasetTable text-muted">
@@ -162,7 +161,7 @@
         </div>
       </div>      
     </div>
-    <div class="col" *ngIf="dssChartGroups.length === 0">
+    <div class="col" *ngIf="noGroupChartsAvailable">
       <table class="table table-responsive-sm modalDatasetTable text-muted">
         <thead>
           <tr>
@@ -266,12 +265,22 @@
 
 <ng-template #noGroupChart>
   <div class="row">
-    <div class="col no-group-chart">
+    <div class="col no-chart-message">
       <div class="d-flex justify-content-center p-3 text-muted">
         <strong>
           {{ 'Information_messages.Chart_information_not_provided' | translate }}
         </strong>
       </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #noCharts>
+  <div class="col pr-0">
+    <div class="d-flex justify-content-center p-3 text-muted">
+      <strong>
+        {{ 'Information_messages.No_chart_data_available' | translate }}
+      </strong>
     </div>
   </div>
 </ng-template>

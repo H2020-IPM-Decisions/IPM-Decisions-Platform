@@ -45,7 +45,10 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   areChartsFilteredByDate: boolean = false;
   invalidFileName: boolean = false;
   seasonalDataPlaceholder: string = "IPMDecisions_Download";
-  
+  noGroupChartsAvailable: boolean = false;
+  noRiskChartAvailable: boolean = false;
+  noChartsAvailable: boolean = false;
+
   constructor(
     private activatedRoute: ActivatedRoute, 
     private _modalService: BsModalService,
@@ -69,7 +72,12 @@ export class DssDetailComponent implements OnInit, OnDestroy {
           labels.push(this.dssDetail.outputTimeStart);
         }*/
 		    this.warning = this.service.getDssWarningChart(this.dssDetail.warningStatusPerDay, this.dssDetail.warningStatusLabels);
-	    }
+	    }else{
+        this.noRiskChartAvailable = true;
+      }
+      if(this.noRiskChartAvailable && this.noGroupChartsAvailable){
+        this.noChartsAvailable = true;
+      }
     });
     this.resultMessageType = this.dssDetail.resultMessageType;
     this.resultMessage = this.dssDetail.resultMessage;
@@ -322,7 +330,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   ChartGroupDataSanityCheck(){
     for(let chartGroups of this.dssChartGroups){
       if(chartGroups.id === ''){
-        this.dssChartGroups = [];
+        this.noGroupChartsAvailable = true;
         break;
       }
     }

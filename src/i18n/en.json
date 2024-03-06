@@ -169,7 +169,8 @@
         "Farm_associated": "Farm associated",
         "Farm_disassociated": "Farm disassociated",
         "Weather_station_data_updated": "Weather station data updated",
-        "Chart_information_not_provided": "Chart information not provided by the DSS Owner"
+        "Chart_information_not_provided": "Chart information not provided by the DSS Owner",
+        "No_chart_data_available": "No Chart Data Available"
     },
     "Warning_messages":{
         "DSS_model_availability_error":"No DSS available for the selected crops",

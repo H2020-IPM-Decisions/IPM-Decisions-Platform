@@ -35,6 +35,9 @@ export class DssComparisonRowComponent implements OnInit {
   isEndDateSelected: boolean = false;
   areChartsFilteredByDate: boolean = false;
   riskChartZoomLevel: number = 1.0;
+  noGroupChartsAvailable: boolean = false;
+  noRiskChartAvailable: boolean = false;
+  noChartsAvailable: boolean = false;
 
   constructor(
     private service: DssSelectionService,
@@ -49,7 +52,12 @@ export class DssComparisonRowComponent implements OnInit {
     this.selectedDssChartGroup = this.dssChartGroups[0];
     this.ChartGroupDataSanityCheck();
     if(this.dssDetail.warningStatusPerDay){
-    this.warning = this.service.getDssWarningChart(this.dssDetail.warningStatusPerDay, this.dssDetail.warningStatusLabels);
+      this.warning = this.service.getDssWarningChart(this.dssDetail.warningStatusPerDay, this.dssDetail.warningStatusLabels);
+    }else{
+      this.noRiskChartAvailable = true;
+    }
+    if(this.noRiskChartAvailable && this.noGroupChartsAvailable){
+      this.noChartsAvailable = true;
     }
     this.minDate = moment(this.dssDetail.warningStatusLabels[0], this.chartLabelsDateFormat)
     .format(this.htmlFormDateFormat);
@@ -218,7 +226,7 @@ export class DssComparisonRowComponent implements OnInit {
   ChartGroupDataSanityCheck(){
     for(let chartGroups of this.dssChartGroups){
       if(chartGroups.id === ''){
-        this.dssChartGroups = [];
+        this.noGroupChartsAvailable = true;
         break;
       }
     }

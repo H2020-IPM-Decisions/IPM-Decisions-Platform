@@ -26,9 +26,9 @@
                 </span>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" *ngIf="!noRevisedChartsAvailable; else noCharts">
               <div class="row" *ngIf="configurationExecuted">
-                <button id="originalDataButton" class="btn btn-primary mb-1" (click)="showOriginalData()" [disabled]="!revisedDataShowed"> {{ 'DSS_adaptation.Original' | translate }} </button>&nbsp;
+                <button id="originalDataButton" *ngIf="!noOriginalChartsAvailable" class="btn btn-primary mb-1" (click)="showOriginalData()" [disabled]="!revisedDataShowed"> {{ 'DSS_adaptation.Original' | translate }} </button>&nbsp;
                 <button id="revisedDataButton" class="btn btn-primary btn-revised mb-1" (click)="showRevisedData()" [disabled]="revisedDataShowed"> {{ 'DSS_adaptation.Revised' | translate }} </button>
               </div>
               <div class="row">
@@ -63,7 +63,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col myHeading text-muted" *ngIf="revisedDssChartGroups.length > 0">
+                  <div class="col myHeading text-muted" *ngIf="!noRevisedGroupChartsAvailable">
                     <select class="form-control text-muted selectionGroupChart" [ngModel]="selectedRevisedDssChartGroup"
                       (ngModelChange)="onChangeChartGroup($event)" *ngIf="revisedDssChartGroups.length > 1">
                       <option *ngFor="let chartGroup of revisedDssChartGroups" [ngValue]="chartGroup">{{
@@ -75,7 +75,7 @@
                     </span>
                   </div>
                 </div>
-                <div class="row" *ngIf="revisedDssChartGroups.length > 0; else noGroupChart">
+                <div class="row" *ngIf="!noRevisedGroupChartsAvailable; else noGroupChart">
                   <div class="col">
                     <custom-group-chart [chartId]="'adaptationGroupChartRevised-'+selectedRevisedDssChartGroup.id" [chartResultParameters]="selectedRevisedDssChartGroup.resultParameters"
                     [isAPopUpChart]="false"></custom-group-chart>
@@ -107,7 +107,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col myHeading text-muted" *ngIf="originalDssChartGroups.length > 0">
+                  <div class="col myHeading text-muted" *ngIf="!noOriginalGroupChartsAvailable">
                     <select class="form-control text-muted selectionGroupChart" [ngModel]="selectedOriginalDssChartGroup"
                       (ngModelChange)="onChangeChartGroup($event)" *ngIf="originalDssChartGroups.length > 1">
                       <option *ngFor="let chartGroup of originalDssChartGroups" [ngValue]="chartGroup">{{
@@ -119,7 +119,7 @@
                     </span>
                   </div>
                 </div>
-                <div class="row" *ngIf="originalDssChartGroups.length > 0; else noGroupChart">
+                <div class="row" *ngIf="!noOriginalGroupChartsAvailable; else noGroupChart">
                   <div class="col">
                     <custom-group-chart [chartId]="'adaptationGroupChartOriginal-'+selectedOriginalDssChartGroup.id" [chartResultParameters]="selectedOriginalDssChartGroup.resultParameters"
                     [isAPopUpChart]="false"></custom-group-chart>
@@ -326,5 +326,15 @@
     <strong>
       {{ 'Information_messages.Chart_information_not_provided' | translate }}
     </strong>
+  </div>
+</ng-template>
+
+<ng-template #noCharts>
+  <div class="col-md-6">
+    <div class="d-flex justify-content-center p-3 text-muted">
+      <strong>
+        {{ 'Information_messages.No_chart_data_available' | translate }}
+      </strong>
+    </div>
   </div>
 </ng-template>
