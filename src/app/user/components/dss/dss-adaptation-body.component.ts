@@ -223,19 +223,23 @@ export class DssAdaptationComponentBody implements OnInit {
             this.selectedRevisedChartGroupData = [];
             this.selectedRevisedChartGroupLabels = [];
 
-            for(let resultParameter of this.selectedRevisedDssChartGroup.resultParameters){
-                this.selectedRevisedChartGroupData.push(resultParameter.data.slice());
-                this.selectedRevisedChartGroupLabels.push(resultParameter.labels.slice());
+            if(!this.noRevisedGroupChartsAvailable){
+                for(let resultParameter of this.selectedRevisedDssChartGroup.resultParameters){
+                    this.selectedRevisedChartGroupData.push(resultParameter.data.slice());
+                    this.selectedRevisedChartGroupLabels.push(resultParameter.labels.slice());
+                }
             }
         }else{
 
             this.selectedOriginalChartGroupData = [];
             this.selectedOriginalChartGroupLabels = [];
 
-            for(let resultParameter of this.selectedOriginalDssChartGroup.resultParameters){
-                this.selectedOriginalChartGroupData.push(resultParameter.data.slice());
-                this.selectedOriginalChartGroupLabels.push(resultParameter.labels.slice());
-            }
+            if(!this.noOriginalGroupChartsAvailable){
+                for(let resultParameter of this.selectedOriginalDssChartGroup.resultParameters){
+                    this.selectedOriginalChartGroupData.push(resultParameter.data.slice());
+                    this.selectedOriginalChartGroupLabels.push(resultParameter.labels.slice());
+                }
+            }    
         }
         
     }
@@ -275,18 +279,26 @@ export class DssAdaptationComponentBody implements OnInit {
         if(!popUp){
             if(this.revisedDataShowed){
                 riskChart = this.customChartService.getChart('adaptationChartRevised-'+this.revisedDssDetails.id);
-                groupChart = this.customChartService.getChart('adaptationGroupChartRevised-'+this.selectedRevisedDssChartGroup.id);
+                if(!this.noRevisedGroupChartsAvailable){
+                    groupChart = this.customChartService.getChart('adaptationGroupChartRevised-'+this.selectedRevisedDssChartGroup.id);    
+                }
             }else{
                 riskChart = this.customChartService.getChart('adaptationChartOriginal-'+this.originalDssDetails.id);
-                groupChart = this.customChartService.getChart('adaptationGroupChartOriginal-'+this.selectedOriginalDssChartGroup.id);
+                if(!this.noOriginalGroupChartsAvailable){
+                    groupChart = this.customChartService.getChart('adaptationGroupChartOriginal-'+this.selectedOriginalDssChartGroup.id);                
+                }
             }
         }else{
             if(this.revisedDataShowed){
                 riskChart = this.customChartService.getChart('detailChartPopupRevised-'+this.revisedDssDetails.id);
-                groupChart = this.customChartService.getChart('detailChartPopupRevised-'+this.selectedRevisedDssChartGroup.id);
+                if(!this.noRevisedGroupChartsAvailable){
+                    groupChart = this.customChartService.getChart('detailChartPopupRevised-'+this.selectedRevisedDssChartGroup.id);                
+                }
             }else{
                 riskChart = this.customChartService.getChart('detailChartPopupOriginal-'+this.originalDssDetails.id );
-                groupChart = this.customChartService.getChart('detailChartPopupOriginal-'+this.selectedOriginalDssChartGroup.id);
+                if(!this.noOriginalGroupChartsAvailable){
+                    groupChart = this.customChartService.getChart('detailChartPopupOriginal-'+this.selectedOriginalDssChartGroup.id);                
+                }
             }
         }
     
@@ -548,7 +560,7 @@ export class DssAdaptationComponentBody implements OnInit {
 
         let newResultParameters = [];
 
-        if( mode == "revised"){
+        if( mode == "revised" && !this.noRevisedGroupChartsAvailable){
 
             for(let resultParameter of this.selectedRevisedDssChartGroup.resultParameters){
                 newResultParameters.push(resultParameter);
@@ -563,7 +575,7 @@ export class DssAdaptationComponentBody implements OnInit {
           
             this.selectedRevisedDssChartGroup.resultParameters = newResultParameters;
 
-        }else{
+        }else if(mode == "original" && !this.noOriginalGroupChartsAvailable){
             for(let resultParameter of this.selectedOriginalDssChartGroup.resultParameters){
                 newResultParameters.push(resultParameter);
             }
@@ -619,6 +631,10 @@ export class DssAdaptationComponentBody implements OnInit {
 
     ChartGroupDataSanityCheck(mode: string){
         if(mode === "revised"){
+            if(this.revisedDssChartGroups.length === 0){
+                this.noRevisedGroupChartsAvailable = true;
+                return;
+            }
             for(let chartGroups of this.revisedDssChartGroups){
                 if(chartGroups.id === ''){
                   this.noRevisedGroupChartsAvailable = true;
@@ -626,6 +642,10 @@ export class DssAdaptationComponentBody implements OnInit {
                 }
             }
         }else{
+            if(this.originalDssChartGroups.length === 0){
+                this.noOriginalGroupChartsAvailable = true;
+                return;
+            }
             for(let chartGroups of this.originalDssChartGroups){
                 if(chartGroups.id === ''){
                   this.noOriginalGroupChartsAvailable = true;

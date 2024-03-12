@@ -75,9 +75,11 @@ export class DssComparisonRowComponent implements OnInit {
 
     this.selectedChartGroupData = [];
     this.selectedChartGroupLabels = [];
-    for(let resultParameter of this.selectedDssChartGroup.resultParameters){
-      this.selectedChartGroupData.push(resultParameter.data.slice());
-      this.selectedChartGroupLabels.push(resultParameter.labels.slice());
+    if(!this.noGroupChartsAvailable){
+      for(let resultParameter of this.selectedDssChartGroup.resultParameters){
+        this.selectedChartGroupData.push(resultParameter.data.slice());
+        this.selectedChartGroupLabels.push(resultParameter.labels.slice());
+      }
     }
   }
 
@@ -92,7 +94,9 @@ export class DssComparisonRowComponent implements OnInit {
     let subArrayOfWarningStatusLabels = this.dssDetail.warningStatusLabels.slice(startIndex, endIndex + 1);
     this.warning = this.service.getDssWarningChart(subArrayOfWarningStatusPerDay, subArrayOfWarningStatusLabels);
 
-    this.filterGroupChartInformationInDateIntervall(startIndex, endIndex);
+    if(!this.noGroupChartsAvailable){ 
+      this.filterGroupChartInformationInDateIntervall(startIndex, endIndex);
+    }
 
     this.areChartsFilteredByDate = true;
   
@@ -189,10 +193,14 @@ export class DssComparisonRowComponent implements OnInit {
     
     if(!popUp){
       riskChart = this.customChartService.getChart('comparisonChart-'+this.dssDetail.id + this.comparisonMode);
-      groupChart = this.customChartService.getChart('comparisonGroupChart-'+this.selectedDssChartGroup.id+'-'+ this.dssDetail.id + this.comparisonMode);
+      if(!this.noGroupChartsAvailable){
+        groupChart = this.customChartService.getChart('comparisonGroupChart-'+this.selectedDssChartGroup.id+'-'+ this.dssDetail.id + this.comparisonMode); 
+      }
     }else{
       riskChart = this.customChartService.getChart('detailChartPopup-'+this.dssDetail.id + this.comparisonMode);
-      groupChart = this.customChartService.getChart('detailChartPopup-'+this.selectedDssChartGroup.id + this.comparisonMode);
+      if(!this.noGroupChartsAvailable){
+        groupChart = this.customChartService.getChart('detailChartPopup-'+this.selectedDssChartGroup.id + this.comparisonMode); 
+      }
     }
 
     if(chartType == "risk"){
@@ -224,6 +232,10 @@ export class DssComparisonRowComponent implements OnInit {
     }
   
   ChartGroupDataSanityCheck(){
+    if(this.dssChartGroups.length === 0){
+      this.noGroupChartsAvailable = true;
+      return;
+    }
     for(let chartGroups of this.dssChartGroups){
       if(chartGroups.id === ''){
         this.noGroupChartsAvailable = true;

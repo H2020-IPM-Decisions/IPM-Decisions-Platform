@@ -91,7 +91,7 @@ export class DssDetailComponent implements OnInit, OnDestroy {
 
     this.startDateFormMax = moment(this.dssDetail.warningStatusLabels[this.dssDetail.warningStatusLabels.length-1], this.chartLabelsDateFormat)
     .subtract(14, "days").format(this.htmlFormDateFormat);
-
+  
     this.initDataAndLalbelsArrayOfSelectedGroupChart();
   }
 
@@ -121,9 +121,11 @@ export class DssDetailComponent implements OnInit, OnDestroy {
 
     this.selectedChartGroupData = [];
     this.selectedChartGroupLabels = [];
-    for(let resultParameter of this.selectedDssChartGroup.resultParameters){
-      this.selectedChartGroupData.push(resultParameter.data.slice());
-      this.selectedChartGroupLabels.push(resultParameter.labels.slice());
+    if(!this.noGroupChartsAvailable){
+      for(let resultParameter of this.selectedDssChartGroup.resultParameters){
+        this.selectedChartGroupData.push(resultParameter.data.slice());
+        this.selectedChartGroupLabels.push(resultParameter.labels.slice());
+      }
     }
   }
 
@@ -158,10 +160,14 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     
     if(!popUp){
       riskChart = this.customChartService.getChart('detailChart-'+this.dssDetail.id);
-      groupChart = this.customChartService.getChart('detailChart-'+this.selectedDssChartGroup.id);
+      if(!this.noGroupChartsAvailable){
+        groupChart = this.customChartService.getChart('detailChart-'+this.selectedDssChartGroup.id);
+      }
     }else{
       riskChart = this.customChartService.getChart('detailChartPopup-'+this.dssDetail.id);
-      groupChart = this.customChartService.getChart('detailChartPopup-'+this.selectedDssChartGroup.id);
+      if(!this.noGroupChartsAvailable){
+        groupChart = this.customChartService.getChart('detailChartPopup-'+this.selectedDssChartGroup.id);
+      }
     }
 
     if(chartType == "risk"){
@@ -234,7 +240,9 @@ export class DssDetailComponent implements OnInit, OnDestroy {
     let subArrayOfWarningStatusLabels = this.dssDetail.warningStatusLabels.slice(startIndex, endIndex + 1);
     this.warning = this.service.getDssWarningChart(subArrayOfWarningStatusPerDay, subArrayOfWarningStatusLabels);
 
-    this.filterGroupChartInformationInDateIntervall(startIndex, endIndex);
+    if(!this.noGroupChartsAvailable){
+      this.filterGroupChartInformationInDateIntervall(startIndex, endIndex);
+    }
 
     this.areChartsFilteredByDate = true;
 
@@ -328,6 +336,10 @@ export class DssDetailComponent implements OnInit, OnDestroy {
   }
 
   ChartGroupDataSanityCheck(){
+    if(this.dssChartGroups.length === 0){
+      this.noGroupChartsAvailable = true;
+      return;
+    }
     for(let chartGroups of this.dssChartGroups){
       if(chartGroups.id === ''){
         this.noGroupChartsAvailable = true;
