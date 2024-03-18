@@ -191,10 +191,11 @@ h6 {
 
 #hero {
     width: 100%;
-    height: 65vh;
+    height: 85vh;
     background: url("img/hero-bg.jpg") top center;
     background-size: cover;
     margin-bottom: -200px;
+    position: relative;
 }
 
 .content {
@@ -237,8 +238,7 @@ h6 {
 
 @media (max-width: 576px) {
     #header {
-        padding: 15px;
-        top: 40px;
+        top: 30px;
     }
 
     #header .logo {
@@ -506,20 +506,24 @@ nav ul {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-#hero {
-    width: 100%;
-    height: 75vh;
-    /* background: url("../img/hero-bg.jpg") top left; */
-    background-size: cover;
-    position: relative;
+
+@media (max-width: 768px){
+    #hero .container {
+        position: relative;
+        max-width: 383px;
+        padding-top: 160px;
+    }
+}
+
+@media (min-width: 769px){
+    #hero .container {
+        position: relative;
+        max-width: 1176px;
+        padding-top: 160px;
+    }
 }
 
 
-#hero .container {
-    position: relative;
-    max-width: 1176px;
-    padding-top: 160px;
-}
 
 @media (max-width: 1199px){
     #hero .container {
@@ -607,7 +611,7 @@ nav ul {
 
 @media (max-width: 768px) {
     #hero {
-        height: 50vh;
+        height: 120vh;
     }
 
     #hero h1 {
@@ -905,12 +909,25 @@ section {
     margin-top: 10px;
 }
 
-.homeTitle {
-    font-weight: 600;
-    line-height: 12px;
-    font-size: 16px;
-    color: #3db594;
+@media (max-width: 992px) {
+    .homeTitle {
+        font-weight: 600;
+        line-height: 10px;
+        font-size: 9px;
+        color: #3db594;
+    }
 }
+
+@media (min-width: 993px) {
+    .homeTitle {
+        font-weight: 600;
+        line-height: 12px;
+        font-size: 16px;
+        color: #3db594;
+    }
+}
+
+
 
 /*--------------------------------------------------------------
 # Skills
