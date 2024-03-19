@@ -216,7 +216,7 @@ const appRoutes: Routes = [
     component: EditPasswordComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
-  },/**/
+  },/*
   {
     path: "user/account/weather-station",
     component: WeaterStationsComponent,
@@ -228,7 +228,7 @@ const appRoutes: Routes = [
     component: WeatherStationDetailsComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] }
-  },
+  },*/
   {
     path: "user/settings/manage-alerts",
     component: ManageAlertsComponent,
