@@ -2,8 +2,8 @@ export const environment = {
   production: true,
   key: "3fd7616d24a0681333b1532d66bf0f",
   cmsUrl: 'https://platformcms.ipmdecisions.net',
-  apiUrl: 'https://ipmdecisions.nibio.no', // DEVELOPMENT HOST URL
-  //apiUrl:'https://platform.ipmdecisions.net', // LIVE PRODUCTION URL
+  //apiUrl: 'https://ipmdecisions.nibio.no', // DEVELOPMENT HOST URL
+  apiUrl:'https://platform.ipmdecisions.net', // LIVE PRODUCTION URL
   //apiUrl:'https://demo.ipmdecisions.net', // DEMO URL
 
   //cmsUrl: 'https://cms.ipmdecisions.nibio.no', //OLD CMS Url
