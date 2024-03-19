@@ -1,0 +1,43 @@
+{
+    "ReRoutes": [
+        {
+            "DownstreamPathTemplate": "/api",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "idp.api",
+                    "Port": 80
+                }
+            ],
+            "UpstreamPathTemplate": "/api/idp",
+            "UpstreamScheme": "https",
+            "UpstreamHttpMethod": [ "Get" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "upr.api",
+                    "Port": 80
+                }
+            ],
+            "UpstreamPathTemplate": "/api/upr",
+            "UpstreamScheme": "https",
+            "UpstreamHttpMethod": [ "Get" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "eml.api",
+                    "Port": 80
+                }
+            ],
+            "UpstreamPathTemplate": "/api/eml",
+            "UpstreamScheme": "https",
+            "UpstreamHttpMethod": [ "Get" ]
+        }
+    ]
+}

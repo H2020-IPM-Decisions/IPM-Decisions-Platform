@@ -1,0 +1,79 @@
+{
+    "ReRoutes": [
+        {
+            "DownstreamPathTemplate": "/api/eppocodes",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "upr.api",
+                    "Port": 80
+                }
+            ],
+            "UpstreamPathTemplate": "/api/upr/eppocodes",
+            "UpstreamScheme": "https",
+            "UpstreamHttpMethod": [
+                "Get"
+            ],
+            "DownstreamHeaderTransform": {
+                "Location": "{DownstreamBaseUrl}/api, {BaseUrl}/api/upr"
+            },
+            "RouteClaimsRequirement": {},
+            "Priority": 2
+        },
+        {
+            "DownstreamPathTemplate": "/api/eppocodes/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "upr.api",
+                    "Port": 80
+                }
+            ],
+            "UpstreamPathTemplate": "/api/upr/eppocodes/{catchAll}",
+            "UpstreamScheme": "https",
+            "UpstreamHttpMethod": [
+                "Get"
+            ],
+            "DownstreamHeaderTransform": {
+                "Location": "{DownstreamBaseUrl}/api, {BaseUrl}/api/upr"
+            },
+            "RouteClaimsRequirement": {},
+            "Priority": 3
+        },
+        {
+            "DownstreamPathTemplate": "/api/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "upr.api",
+                    "Port": 80
+                }
+            ],
+            "UpstreamPathTemplate": "/api/upr/{catchAll}",
+            "UpstreamScheme": "https",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer"
+            },
+            "DownstreamHeaderTransform": {
+                "Location": "{DownstreamBaseUrl}/api, {BaseUrl}/api/upr"
+            },
+            "RouteClaimsRequirement": {},
+            "Priority": 0
+        },
+        {
+            "DownstreamPathTemplate": "/api/internalcall/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                   "Host": "upr.api",
+                    "Port": 80
+                }
+            ],
+            "UpstreamPathTemplate": "/api/upr/internal/{catchAll}",
+            "UpstreamScheme": "https",
+            "AuthenticationOptions": {},
+            "RouteClaimsRequirement": {},
+            "Priority": 1
+        }
+    ]
+}

@@ -68,7 +68,7 @@ To run the platform locally the following IPM services needs to be deployed in t
 |     WX          |    [Weather Service][wx]            |
 |     APG         |    [API Gateway][apg]               |
 
-An example of docker-compose file containing all the above service images can be inspected [here][docker-compose-file]
+The **"Developer Docker Suite Example"** folder contains the basic resources and a docker-compose file that define all the above service images. Follow the respective guides to each service listed above to configure the suite and make the services run locally. The folder can be inspected [here][dev-docker-suite].
 
 Once the docker-compose file of IPM services is completly set, open a command shell on the same folder of the compose file and run the command:
 ```
@@ -294,7 +294,7 @@ Engineering Ingegneria Informatica - [ENG][eng-site]
 [ipm-platform-tags]:https://github.com/H2020-IPM-Decisions/IPM-Decisions-Platform/tags
 [eng-site]:https://www.eng.it/
 [docker]:https://www.docker.com/
-[docker-compose-file]:https://
+[dev-docker-suite]:https://
 [ngx-translate]:https://github.com/ngx-translate/core/tree/v12.1.2
 [flag-icon-cdn]:https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/css/flag-icons.min.css
 [ngx-flag-picker]:https://github.com/iamartyom/ngx-flag-picker/tree/8.0.0

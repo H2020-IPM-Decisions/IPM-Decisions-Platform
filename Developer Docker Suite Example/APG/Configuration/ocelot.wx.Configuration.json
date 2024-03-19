@@ -1,0 +1,19 @@
+{
+    "ReRoutes": [
+        {
+            "DownstreamPathTemplate": "/WeatherService/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "wx.api",
+                    "Port": 8080
+                }
+            ],
+            "UpstreamPathTemplate": "/api/wx/{catchAll}",
+            "UpstreamScheme": "https",
+            "Priority": 0,
+            "AuthenticationOptions": {},
+            "RouteClaimsRequirement": {}
+        }
+   ]
+}
