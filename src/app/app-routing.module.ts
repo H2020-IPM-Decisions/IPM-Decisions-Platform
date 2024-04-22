@@ -59,6 +59,7 @@ import { DisabledDSSComponent } from './user/components/account/edit-disabled-ds
 import { TermsNConditionsComponent } from './core/auth/pages/terms&conditionsForNewTemplate/terms&conditions.component';
 import { WeaterStationsComponent } from './user/components/account/weather-stations/weather-stations.component';
 import { WeatherStationDetailsComponent } from './user/components/account/weather-stations/weather-station-details.component';
+import { FarmShareComponent } from './user/components/farm-share/farm-share.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -210,6 +211,12 @@ const appRoutes: Routes = [
     component: EditAccountComponent,
     canActivate: [AuthGuard],
     data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
+  },
+  {
+    path: "user/account/share-request",
+    component: FarmShareComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [], claims: ["farmer"] },
   },
   {
     path: "user/account/password",

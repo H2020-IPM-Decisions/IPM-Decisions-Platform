@@ -1,6 +1,6 @@
 import { MaprisksService } from './../shared/services/maprisks.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, OnDestroy, TemplateRef } from '@angular/core';
 import { CMSService } from '../shared/services/cms.service';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
@@ -17,6 +17,11 @@ import proj4 from 'proj4';
 import Projection from 'ol/proj/Projection.js';
 import { register } from 'ol/proj/proj4';
 import { Image as ImageLayer, Tile as TileLayer } from 'ol/layer.js';
+import { LayerConfigurarion, LegendItems, MapConfiguration, RiskMap, RiskMapProvider } from '@app/shared/models/riskmap.model';
+import { UserProfileService } from '@app/shared/services/upr/user-profile.service';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import {FullScreen, defaults as defaultControls} from 'ol/control.js';
 
 declare var init: any;
 declare var home: any;
@@ -29,7 +34,7 @@ declare var $;
 })
 export class HomeComponent implements OnInit, OnDestroy {
   active: string = "home";
-  map;
+  map: Map;
   cmsUrl;
   cmsPath = "";
   assetPath = "";
@@ -94,8 +99,22 @@ export class HomeComponent implements OnInit, OnDestroy {
   public $sessionExtend: Subscription;
   public sessionIsExpired: boolean = false;
   public showRelatedProjects: boolean = false;
-
   public relatedProjectsList:any;
+
+
+  public AvailableRiskMapProviders: RiskMapProvider[];
+  public SelectedRiskMapProvider: RiskMapProvider;
+  public SelectedRiskMap: RiskMap;
+  public SelectedRiskMapConfiguration: MapConfiguration;
+  public SelectedRiskMapLayersConfiguration: LayerConfigurarion[] = [];
+  public SelectedRiskMapLayersName: string[] = [];
+  public RiskMapLayers: string[] = [];
+  public modalRef: BsModalRef;
+  
+  public riskMapCurrentDate: string;
+  public riskMapCurrentLayer: LayerConfigurarion;
+  public selectedLayerLegendUrl: string = "";
+  public selectedLayerLegend: LegendItems[];
 
   constructor(
     private cmsService: CMSService,
@@ -103,7 +122,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     private router: Router,
     public _activatedRoute: ActivatedRoute,
     private maprisksService: MaprisksService,
-    private _sanitizer: DomSanitizer
+    private _sanitizer: DomSanitizer,
+    private _userProfileService: UserProfileService,
+    private _modalService: BsModalService
   ) {
     this.cmsUrl = cmsService.getUrl();
     this.cmsPath = cmsService.getUrl();
@@ -280,7 +301,19 @@ export class HomeComponent implements OnInit, OnDestroy {
       // Start Session timer
       this.oberserableTimer();
     }
-    this.initializeMap();
+
+    this._userProfileService.getRiskMapProviders().subscribe(
+      (response: HttpResponse<any>) => {
+
+          this.AvailableRiskMapProviders = response.body;
+          this.SelectedRiskMapProvider = this.AvailableRiskMapProviders[0];
+          this.getMapData();
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error.message);
+      }
+  );
+    
 
     window.onclick = (event) => {
       if(!event.target.matches('.related-projects-button')){
@@ -291,7 +324,41 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     document.getElementsByClassName("related-projects-button")[0].addEventListener('click', event => event.stopPropagation());
-    
+  }
+
+  private getMapData(){
+    this._userProfileService.getRiskMap(this.SelectedRiskMapProvider.providerId, this.SelectedRiskMapProvider.id).subscribe(
+      (response: HttpResponse<any>) => {
+
+          this.SelectedRiskMap = response.body;
+          this.SelectedRiskMapConfiguration = this.SelectedRiskMap.mapConfiguration;
+          this.SelectedRiskMapLayersConfiguration = this.SelectedRiskMapConfiguration.layersConfiguration;
+          this.SelectedRiskMapLayersName = [];
+          this.RiskMapLayers = [];
+          const parser: DOMParser = new DOMParser();
+          const tmpDoc: Document = parser.parseFromString(this.SelectedRiskMapConfiguration.abstract, "text/html");
+          const spanElement: NodeListOf<HTMLSpanElement> = tmpDoc.querySelectorAll("span[itemprop]");
+          spanElement.forEach(spanItem => {this.RiskMapLayers.push(spanItem.textContent);});
+          for (let layer of this.SelectedRiskMapLayersConfiguration) {
+            let layerName = layer.name.split(".")[1];
+            this.SelectedRiskMapLayersName.push(layerName);
+          }
+          
+          this.configureMap();
+          
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error.message);
+      }
+    );
+  }
+
+  private configureMap(){
+    this.riskMapCurrentLayer = this.SelectedRiskMapLayersConfiguration[0];
+    this.riskMapCurrentDate = this.riskMapCurrentLayer.dates[this.riskMapCurrentLayer.dates.length - 1];
+    this.selectedLayerLegendUrl = this.riskMapCurrentLayer.legendURL;
+    this.selectedLayerLegend = this.riskMapCurrentLayer.legendMetadata.legendItems;
+    this.initializeMap();
   }
 
   initializeMap() {
@@ -301,11 +368,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       }),
       new ImageLayer({
         source: new ImageWMS({
-          url: 'https://gridweb.vips.nibio.no/cgi-bin/PSILARTEMP',
-          params: { LAYERS: 'PSILARTEMP.WARNING_STATUS.2023-12-11', TRANSPARENT: 'TRUE' },
+          url: this.SelectedRiskMap.wmsUrl,
+          params: { LAYERS: `${this.riskMapCurrentLayer.name}.${this.riskMapCurrentDate}`, TRANSPARENT: 'TRUE' },
           ratio: 1,
           serverType: 'mapserver',
-          projection: 'EPSG:4326',
+          projection: this.SelectedRiskMapConfiguration.projection,
         }),
         opacity: 0.5
       }),
@@ -314,10 +381,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.map = new Map({
       target: 'riskmap',
       layers: layers,
-      controls: [],
+      controls: [new FullScreen()],
       view: new View({
         center: [1955109.15554, 9562668.726335],
-        zoom: 4,
+        zoom: 3,
       }),
     });
   }
@@ -403,5 +470,64 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   showRelatedProjectsList() {
     this.showRelatedProjects = true;
+  }
+
+  riskMapProviderChanged($event: any) {
+    this.SelectedRiskMapProvider = this.AvailableRiskMapProviders.find((riskMapProvider) => riskMapProvider.providerId == $event.target.value);
+    this.map.dispose();
+    this.getMapData();
+  }
+
+  moveDateSlider(offset: number){
+
+    let dataSlider = <HTMLInputElement>document.getElementById("dataslider");
+
+    if((+dataSlider.value == 0 && offset < 0) || (+dataSlider.value == (this.riskMapCurrentLayer.dates.length -1) && offset > 0)){
+      return;
+    }
+
+    dataSlider.value = String(+dataSlider.value + offset);
+    this.riskMapCurrentDateChange(+dataSlider.value);
+
+  }
+
+  riskMapCurrentDateChange(value: any){
+    this.riskMapCurrentDate = this.riskMapCurrentLayer.dates[value];
+    this.modifyMap();    
+  }
+
+  riskMapCurrentLayerChanged(value: any){
+
+    let previousLayerButton = <HTMLInputElement>document.getElementById(this.riskMapCurrentLayer.name.split(".")[1]);
+    previousLayerButton.checked = false;
+
+    this.changeSelectedLayer(value);
+
+  }
+
+  changeSelectedLayer(value: any){
+
+    let dataSlider = <HTMLInputElement>document.getElementById("dataslider");
+
+    this.riskMapCurrentLayer = this.SelectedRiskMapLayersConfiguration.find((layer) => layer.name == (this.SelectedRiskMap.id+"."+value));
+    this.riskMapCurrentDate = this.riskMapCurrentLayer.dates[+dataSlider.value];
+    this.selectedLayerLegendUrl = this.riskMapCurrentLayer.legendURL;
+    this.selectedLayerLegend = this.riskMapCurrentLayer.legendMetadata.legendItems;
+
+    this.modifyMap()
+
+  }
+
+  modifyMap(){
+    this.map.getAllLayers()[1].get("source").updateParams(
+      {
+        LAYERS: `${this.riskMapCurrentLayer.name}.${this.riskMapCurrentDate}`, TRANSPARENT: 'TRUE'
+      }
+    );
+    this.map.getAllLayers()[1].get("source").refresh();
+  }
+
+  openModal(template: TemplateRef<any>, size?: string) {
+    this.modalRef = this._modalService.show(template, {class: size});
   }
 }

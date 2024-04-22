@@ -549,3 +549,67 @@ div strong > a:hover{
 .pad-col{
   padding: 25px;
 }
+
+#riskmap-legend{
+  z-index: 3;
+  position: absolute;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #fff;
+  right: 40px;
+  top: 80px;
+}
+
+#riskmap-legend > .fa-square{
+  color: transparent !important;
+}
+
+#riskmap-dataslider{
+  z-index: 3;
+  left: 40px;
+  bottom: 40px;
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+#riskmap-layers{
+  z-index: 3;
+  background-color: #fff;
+  right: 40px;
+  bottom: 120px;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.slider-btn{
+  background-color: rgb(230, 230, 230);
+}
+
+.layer-button{
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.ol-control button {
+  display: block;
+  margin: 5px;
+  padding: 0;
+  color: #848484;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: inherit;
+  text-align: center;
+  height: 1.375em;
+  width: 1.375em;
+  line-height: .4em;
+  background-color: #fff;
+  border: none;
+  border-radius: 2px;
+}
+
+#riskmap-info-button{
+  position: absolute;
+  z-index: 3;
+  top: 39px;
+  left: 300px;
+}

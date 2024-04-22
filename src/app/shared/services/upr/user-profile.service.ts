@@ -10,6 +10,8 @@ import { ADVISORS_EMAIL_LIST } from "./../../../mock/advisors-emial-list.mock";
 import { UserProfileForUpdate } from '@app/shared/models/user-profile-for-update.model';
 import { UserProfile } from '@app/shared/models/user-profile.model';
 import { AvailableWeatherStation, UserWeatherStation, UserWeatherStationInfo, UserWeatherStationUpdate } from "@app/shared/models/weather-data-source.model";
+import { RiskMap, RiskMapProvider } from "@app/shared/models/riskmap.model";
+import { FarmShareResponseModel } from "@app/shared/models/farm-response.model";
 
 @Injectable({
   providedIn: "root",
@@ -160,6 +162,84 @@ export class UserProfileService {
       body: farmdIds
     };
     return this.http.delete(url, httpOptions);
+  }
+
+  getRiskMapProviders(): Observable<HttpResponse<RiskMapProvider[]>>{
+    const url = `${environment.apiUrl}/api/upr/riskmaps`;
+    return this.http.get<RiskMapProvider[]>(url, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      observe: "response",
+    });
+  }
+
+  getRiskMap(providerId: string, id: string): Observable<HttpResponse<RiskMap>>{
+    const url = `${environment.apiUrl}/api/upr/riskmaps/${providerId}/${id}`;
+    return this.http.get<RiskMap>(url, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      observe: "response",
+    });
+  }
+
+  sendFarmShareRequest(Email: string): Observable<HttpResponse<any>>{
+    const url = `${environment.apiUrl}/api/upr/datashare`;
+    return this.http.post(url, {email: Email}, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      observe: "response",
+    });
+  }
+
+  getFarmShareRequests(): Observable<HttpResponse<FarmShareResponseModel>>{
+    const url = `${environment.apiUrl}/api/upr/datashare`;
+    return this.http.get<FarmShareResponseModel>(url, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      observe: "response",
+    });
+    
+  }
+
+  replyFarmShareRequest(reply: {}): Observable<HttpResponse<any>>{
+    const url = `${environment.apiUrl}/api/upr/datashare/reply`;
+    return this.http.post(url, reply, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      observe: "response",
+    });
+  }
+
+  updateFarmShareRequest(update: {}): Observable<HttpResponse<any>>{
+    const url = `${environment.apiUrl}/api/upr/datashare/update`;
+    return this.http.post(url, update, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      observe: "response",
+    });
+  }
+
+  deleteFarmShareRequest(id: string): Observable<HttpResponse<any>>{
+    const url = `${environment.apiUrl}/api/upr/datashare/${id}`;
+    return this.http.delete(url, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      observe: "response",
+    });
   }
   
 }

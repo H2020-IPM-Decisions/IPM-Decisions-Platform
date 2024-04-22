@@ -518,7 +518,7 @@ nav ul {
 @media (min-width: 769px){
     #hero .container {
         position: relative;
-        max-width: 1176px;
+        max-width: 1400px;
         padding-top: 160px;
     }
 }

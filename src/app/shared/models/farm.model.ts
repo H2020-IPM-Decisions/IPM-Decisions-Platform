@@ -16,4 +16,16 @@ export interface Farm {
   location?: Location;
   weatherForecastDto: WeatherDataSourceDto;
   weatherHistoricalDto: WeatherDataSourceDto;
+  isShared: boolean,
+  owner: boolean,
+  sharedPersonName: string,
+}
+
+export interface FarmShareRequest{
+  id: string,
+  requestStatus: string,
+  requesteeId: string,
+  requesteeName: string,
+  requesterId: string,
+  requesterName: string
 }

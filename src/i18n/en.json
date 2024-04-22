@@ -129,7 +129,8 @@
         "Weather_station_disassociation_error":"Error during the weather station disassociation",
         "Farm_association_error":"Error during Farm association",
         "Farm_disassociation_error":"Error during Farm disassociation",
-        "Weather_station_data_update_error": "Error during weather station data update"
+        "Weather_station_data_update_error": "Error during weather station data update",
+        "Farm_share_request_error": "Error during the sending of the farm share request"
     },
     "Information_messages":{
         "Farm_deletion_message":"You are about to delete a farm. Are you sure?",
@@ -170,7 +171,9 @@
         "Farm_disassociated": "Farm disassociated",
         "Weather_station_data_updated": "Weather station data updated",
         "Chart_information_not_provided": "Chart information not provided by the DSS Owner",
-        "No_chart_data_available": "No Chart Data Available"
+        "No_chart_data_available": "No Chart Data Available",
+        "Farm_share_request_sent": "Farm share request sent",
+        "No_farms_share_requests": "No farms share requests"
     },
     "Warning_messages":{
         "DSS_model_availability_error":"No DSS available for the selected crops",
@@ -299,10 +302,14 @@
         "Country":"Country"
     },
     "Farm_share": {
+        "Farm_share_requests": "Farm share requests",
         "Requester_name":"Requester Name",
-        "Request_status":"Request Status"
+        "Request_status":"Request Status",
+        "Share_all_farms": "Share all farms",
+        "Select_farms": "Select farms"
     },
     "Farm_request": {
+        "Farm_share_request": "Farm share request",
         "Insert_the_email":"Insert the email of a farmer of your choosing"
     },
     "Farm_list": {

@@ -129,7 +129,8 @@
         "Weather_station_disassociation_error":"Errore durante la disassociazione della stazione meteo",
         "Farm_association_error":"Errore durante l'associazione dell'azienda agricola",
         "Farm_disassociation_error":"Errore durante la disassociazione dell'azienda agricola",
-        "Weather_station_data_update_error": "Errore nell'aggiornamento dei dati della stazione meteo"
+        "Weather_station_data_update_error": "Errore nell'aggiornamento dei dati della stazione meteo",
+        "Farm_share_request_error": "Errore durante l'invio della richiesta condivisione"
     },
     "Information_messages":{
         "Farm_deletion_message":"Stai per eliminare un'azienda agricola. Vuoi procedere?",
@@ -170,7 +171,9 @@
         "Farm_disassociated": "Azienda agricola disassociata",
         "Weather_station_data_updated": "Dati stazione meteo aggiornati",
         "Chart_information_not_provided": "Digrammi non forniti dal proprietario del DSS",
-        "No_chart_data_available": "Nessun diagramma disponibile"
+        "No_chart_data_available": "Nessun diagramma disponibile",
+        "Farm_share_request_sent": "Richiesta condivisione azienda agricola inviata",
+        "No_farms_share_requests": "Nessuna richiesta di condivisione"
     },
     "Warning_messages":{
         "DSS_model_availability_error":"Non ci sono DSS per le colture selezionate",
@@ -299,10 +302,14 @@
         "Country":"Paese"
     },
     "Farm_share": {
+        "Farm_share_requests": "Richieste di condivisione azienda agricola",
         "Requester_name":"Nome del Richiedente",
-        "Request_status":"Stato della Richiesta"
+        "Request_status":"Stato della Richiesta",
+        "Share_all_farms": "Condividi tutte le aziende agricole",
+        "Select_farms": "Seleziona aziende agricole"
     },
     "Farm_request": {
+        "Farm_share_request": "Richiesta condivisione azienda agricola",
         "Insert_the_email":"Inserisci l'e-mail di un agricoltore a tua scelta"
     },
     "Farm_list": {
@@ -489,7 +496,7 @@
         "Filter_DSS":"Filtra DSS",
         "Confirm_selection":"Conferma selezione",
         "Remove_linked_dss":"Rimozione DSS esterno",
-        "Edit_selection":"Modifica  selezione",
+        "Edit_selection":"Modifica selezione",
         "Editing_complete":"Modifiche completate"
     },
     "User_edit_password": {
