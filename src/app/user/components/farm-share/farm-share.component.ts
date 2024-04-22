@@ -1,7 +1,12 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { environment } from './../../../../environments/environment';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { UserProfileService } from '@app/shared/services/upr/user-profile.service';
+import { FarmShareRequest } from '@app/shared/models/farm.model';
+import { FarmResponseModel, FarmShareResponseModel } from '@app/shared/models/farm-response.model';
+import { Farm } from "@app/shared/models/farm.model";
+import { FarmService } from '@app/shared/services/upr/farm.service';
+import { ToastrTranslationService } from '@app/shared/services/toastr-translation.service';
 
 @Component({
   selector: 'farm-share',
@@ -10,54 +15,89 @@ import { environment } from './../../../../environments/environment';
 })
 export class FarmShareComponent implements OnInit {
 
-  constructor(
-    private http: HttpClient,
-    private modalService: BsModalService
-  ) { }
-
-  items;
-  message = "";
-  pagination:any = {};
-  currentPage = 1;
+  public requests: FarmShareRequest[] = [];
+  public modalRef: BsModalRef;
+  public currentPage: number = 1;
+  public pagination:any = {};
+  public farmList: Farm[];
+  public isTheFarmSelectedForSharing: boolean[];
+  public selectedFarmForSharing: string[] = [];
+  public noFarmsAvailable: boolean = false;
+  public sharingAllFarms: boolean = false;
+  public selectedRequestId: string;
+  public selectedRequestRequesterId: string;
+  public isUpdateRequest: boolean;
+  
   @ViewChild('farmShareModal') public farmShareModal: TemplateRef<any>;
-  modalRef: any;
+  
+  constructor(
+    private _modalService: BsModalService,
+    private _userProfileService: UserProfileService,
+    private _farmService: FarmService,
+    private _toastrTranslated: ToastrTranslationService,
+  ) { }
 
   ngOnInit() {
     this.updateList();
   }
 
   updateList() {
-    return this.http.get(
-      `${environment.apiUrl}/api/upr/datashare?pageSize=5&pageNumber=${this.currentPage}`, {
-        observe: 'response'
+    this._userProfileService.getFarmShareRequests().subscribe(
+      (response: HttpResponse<FarmShareResponseModel>) => {
+        this.requests = response.body.value;
+      },
+      (response: HttpErrorResponse) => {
+        this.requests = [];
+        console.log(response.message);
       }
-    ).toPromise()
-      .then((x: HttpResponse<any>) => {
-        this.pagination = JSON.parse(x.headers.get('x-pagination'));
-        this.items = x.body.value;
-      })
+    );
   }
 
-  makeRequest(
-    requesterId,
-    reply
-  ) {
-    this.http.post(
-      `${environment.apiUrl}/api/upr/datashare/reply`,
-      {
-        "RequesterId": requesterId,
-        "Farms": [],
+  makeResponse(request: FarmShareRequest, reply: string) {
+    this.selectedRequestId = request.id;
+    if(reply === "Accepted"){
+      this.modalRef = this._modalService.show(this.farmShareModal, {backdrop: 'static', class: 'modal-xl'});
+      this.selectedRequestRequesterId = request.requesterId;
+      this.isUpdateRequest = false;
+      this.getAllFarms();
+    }else{
+      let response = {
+        "RequesterId": request.requesterId,
+        "id": request.id,
         "Reply": reply,
-        "AllowAllFarms": true
       }
-    ).toPromise()
-      .then((response: any) => {
-        return this.updateList();
-      })
-      .catch((response: any) => {
-        this.message = response.error.message;
-        this.modalRef = this.modalService.show(this.farmShareModal);
-      })
+      this._userProfileService.replyFarmShareRequest(response).subscribe(
+        (response: HttpResponse<any>) => {
+          this.updateList();
+        },
+        (response: HttpErrorResponse) => {
+          console.log(response.message);
+        }
+      );
+    }
+  }
+
+  makeUpdate(request: FarmShareRequest, reply: string) {
+    this.selectedRequestId = request.id;
+    if(reply === "Accepted"){
+      this.modalRef = this._modalService.show(this.farmShareModal, {backdrop: 'static', class: 'modal-xl'});
+      this.selectedRequestRequesterId = request.requesterId;
+      this.isUpdateRequest = true;
+      this.getAllFarms();
+    }else{
+      let response = {
+        "RequesterId": request.requesterId,
+        "Reply": reply,
+      }
+      this._userProfileService.updateFarmShareRequest(response).subscribe(
+        (response: HttpResponse<any>) => {
+          this.updateList();
+        },
+        (response: HttpErrorResponse) => {
+          console.log(response.message);
+        }
+      );
+    }
   }
 
   getNextPage() {
@@ -76,6 +116,163 @@ export class FarmShareComponent implements OnInit {
 
   hasPreviousPage() {
     return this.pagination["HasPrevious"];
+  }
+
+  getAllFarms(){
+    this._farmService.getAllFarms().subscribe(
+        (response: HttpResponse<FarmResponseModel>) => {
+            const farms = response.body.value;
+            farms.forEach((farm) => {
+                if(!(farm.name === "Autogenerated_ExternalDss_Farm")) {
+                  this._farmService.getAddressFromCoordinates(farm.location.y, farm.location.x).subscribe( (data) => farm.location.address = data);
+                }      
+            });
+            this.farmList = farms;
+            this.removeAutogeneratedFarmFromList();
+            if(this.farmList.length == 0){
+                this.noFarmsAvailable = true;
+                this._toastrTranslated.showTranslatedToastr("Information_messages.No_farms_available",
+                                                            "Common_labels.Warning",
+                                                            "toast-warning");
+            }else{
+              let areAllFarmsShared = true;
+              this.isTheFarmSelectedForSharing = [];
+              this.selectedFarmForSharing = [];
+              for(let farm of this.farmList){
+                if(farm.isShared){
+                  this.isTheFarmSelectedForSharing.push(true);
+                  this.selectedFarmForSharing.push(farm.id);
+                }else{
+                  this.isTheFarmSelectedForSharing.push(false);
+                  areAllFarmsShared = false;
+                }
+              }
+              if(areAllFarmsShared){
+                let sharingAllFarmsCheckbox = <HTMLInputElement>document.getElementById("share_all_farms");
+                sharingAllFarmsCheckbox.checked = true;
+                this.sharingAllFarms = true;
+              }
+            }
+        }
+    );
+  }  
+
+  private removeAutogeneratedFarmFromList():void {
+      for (let i = 0; i < this.farmList.length; i++) {
+        if (this.farmList[i].name === "Autogenerated_ExternalDss_Farm") {
+          this.farmList.splice(i--, 1);
+        }
+      }
+  }
+
+  selectFarm(farmId: string, i: number){
+    this.isTheFarmSelectedForSharing[i] = true;
+    this.selectedFarmForSharing.push(farmId);
+
+  }
+
+  deselectFarm(farmId: string, i: number){
+    this.isTheFarmSelectedForSharing[i] = false;
+    let index = this.selectedFarmForSharing.indexOf(farmId, 0);
+    this.selectedFarmForSharing.splice(index, 1);
+  }
+
+  acceptRequest(){
+    let response = this.buildResponse();
+    if(this.isUpdateRequest){
+      console.log(response);
+      this._userProfileService.updateFarmShareRequest(response).subscribe(
+        (response: HttpResponse<any>) => {
+          this.closeModal();
+        },
+        (response: HttpErrorResponse) => {
+          console.log(response.message);
+        }
+      );
+    }else{
+      this._userProfileService.replyFarmShareRequest(response).subscribe(
+        (response: HttpResponse<any>) => {
+          this.closeModal();
+        },
+        (response: HttpErrorResponse) => {
+          console.log(response.message);
+        }
+      );
+    }
+  }
+
+  private buildResponse(): object{
+    if(this.isUpdateRequest){
+      let farmListWithAuthorize = [];
+      for(let farm of this.farmList){
+        if(this.sharingAllFarms){
+          farmListWithAuthorize.push({
+            farmId: farm.id, 
+            authorize:true
+          })
+        }else{
+          if(this.selectedFarmForSharing.find((id) => (farm.id === id)) != undefined){
+            farmListWithAuthorize.push({
+              farmId: farm.id, 
+              authorize:true
+            })
+          }else{
+            farmListWithAuthorize.push({
+              farmId: farm.id, 
+              authorize:false
+            })
+          }
+        }
+      }
+      
+      return {
+        "RequesterId": this.selectedRequestRequesterId,
+        "farms": farmListWithAuthorize,
+        "Reply": "Accepted"
+      }
+      
+    }else{
+      if(this.sharingAllFarms){
+        return {
+          "RequesterId": this.selectedRequestRequesterId,
+          "Reply": "Accepted",
+          "AllowAllFarms": true
+        }
+      }else{
+        return {
+          "RequesterId": this.selectedRequestRequesterId,
+          "Farms": this.selectedFarmForSharing,
+          "Reply": "Accepted",
+        }
+      }
+    }
+    
+  }
+
+
+  closeModal(update: boolean = true){
+    let sharingAllFarmsCheckbox = <HTMLInputElement>document.getElementById("share_all_farms");
+    sharingAllFarmsCheckbox.checked = false;
+    this.sharingAllFarms = false;
+    if(update){
+      this.updateList();
+    }
+    this.modalRef.hide();
+  }
+
+  shareAllFarms(state: boolean){
+    this.sharingAllFarms = state;
+  }
+
+  deleteRequest(requestId: string){
+    this._userProfileService.deleteFarmShareRequest(requestId).subscribe(
+      (response: HttpResponse<any>) => {
+        this.updateList();
+      },
+      (response: HttpErrorResponse) => {
+        console.log(response.message);
+      }
+    );
   }
 
 }

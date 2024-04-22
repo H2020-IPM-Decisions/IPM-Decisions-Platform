@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, TemplateRef } from "@angular/core";
 import { AuthenticationService } from "@app/core/auth/services/authentication.service";
 import { UserProfileService } from '@app/shared/services/upr/user-profile.service';
 import { UserProfile } from '@app/shared/models/user-profile.model';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: "app-account",
@@ -11,9 +12,11 @@ import { UserProfile } from '@app/shared/models/user-profile.model';
 export class AccountComponent implements OnInit {
   user: UserProfile;
   userRole = {description: "", value: ""};
+  modalRef: BsModalRef;
   constructor(
     private _userProfileService: UserProfileService,
-    public authService: AuthenticationService
+    public authService: AuthenticationService,
+    private _modalService: BsModalService
   ) {
     var userAccessType = this.authService.currentUserValue.useraccesstype;
     if (userAccessType.includes('farmer')) {
@@ -33,6 +36,14 @@ export class AccountComponent implements OnInit {
       .subscribe((userFriendly: UserProfile) => {
         this.user = userFriendly;
       });
+  }
+
+  openModal(template: TemplateRef<any>, size?: string) {
+    this.modalRef = this._modalService.show(template, {class: size});
+  }
+
+  closeModal(){
+    this.modalRef.hide()
   }
 
 }

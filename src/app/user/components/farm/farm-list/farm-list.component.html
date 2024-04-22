@@ -60,7 +60,7 @@
                       <i class="action-icon size-11 fas fa-copy"></i>
                     </button>
 
-                    <button type="button" rel="tooltip" class="btn btn-link" data-original-title="Delete" [title]="('Common_labels.Delete' | translate)"
+                    <button *ngIf="farm.owner" type="button" rel="tooltip" class="btn btn-link" data-original-title="Delete" [title]="('Common_labels.Delete' | translate)"
                       (click)="openModal(template)">
                       <i class="action-icon light-blue-icon size-11 fas fa-trash"></i>
                     </button>

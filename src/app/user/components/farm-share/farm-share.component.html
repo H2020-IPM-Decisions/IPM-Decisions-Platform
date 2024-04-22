@@ -1,47 +1,152 @@
-<div class="main-card mb-3 card">
-  <div class="card-body">
-    <table class="mb-0 table table-cover">
-      <!-- requesterName requestStatus -->
-      <tr>
-        <th>{{ 'Farm_share.Requester_name' | translate }}</th>
-        <th>{{ 'Farm_share.Request_status' | translate }}</th>
-        <th></th>
-      </tr>
-      <tr *ngFor="let item of items">
-        <td>{{item.requesterName}}</td>
-        <td>{{item.requestStatus}}</td>
-        <td style="font-size: 20px; min-width: 70px;">
-          <div *ngIf="item.requestStatus == 'Pending'">
-            <i class="fas fa-check-circle" style="color: green; cursor: pointer;"
-              (click)="makeRequest(item.requesterId, 'Accepted')"
-            ></i>&nbsp;
-            <i class="fas fa-times-circle" style="color: red; cursor: pointer;"
-              (click)="makeRequest(item.requesterId, 'Declined')"
-            ></i>
+<div class="app-container app-theme-white fixed-sidebar fixed-header body-tabs-shadow fixed-footer">
+  <user-header></user-header>
+  <div class="app-main">
+    <sidebar></sidebar>
+    <div id="mainDocument" class="app-main__outer">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumbBar">
+          <li class="breadcrumb-item"><a routerLink="/user/farm">{{ 'Common_labels.Home' | translate }}</a></li>
+            <li class="breadcrumb-item"><a routerLink="/user/account">{{ 'Common_labels.Account' | translate }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ 'Farm_share.Farm_share_requests' | translate }}</li>
+        </ol>
+      </nav>
+      <div class="app-main__inner profile-container">
+        <div class="app-page-title">
+          <div class="page-title-wrapper">
+            <div class="page-title-heading">
+              <div class="page-title-icon">
+                <em class="pe-7s-user icon-gradient bg-mean-fruit">
+                </em>
+              </div>
+              <div>{{ 'Farm_share.Farm_share_requests' | translate }}</div>
+            </div>
           </div>
-        </td>
-      </tr>
-    </table>
-    <button
-      [disabled]="!hasPreviousPage()"
-      (click)="getPreviousPage()"
-      class="mb-2 mr-2 btn btn-primary previous"
-    >&lt;</button>
-    <button
-      [disabled]="!hasNextPage()"
-      (click)="getNextPage()"
-      class="mb-2 mr-2 btn btn-primary next"
-    >&gt;</button>
+        </div>
+
+        <div class="container mx-auto my-5 page-box">
+          <div class="container page-box w-75 p-3">
+            <div class="main-card mb-3 card">
+              <div class="card-body" *ngIf="requests.length > 0; else noRequests">
+                <table class="mb-0 table table-cover">
+                  <!-- requesterName requestStatus -->
+                  <tr>
+                    <th>{{ 'Farm_share.Requester_name' | translate }}</th>
+                    <th>{{ 'Farm_share.Request_status' | translate }}</th>
+                    <th></th>
+                  </tr>
+                  <tr *ngFor="let item of requests">
+                    <td>{{item.requesterName}}</td>
+                    <td>{{item.requestStatus}}</td>
+                    <td style="font-size: 20px; min-width: 70px;">
+                      <div *ngIf="item.requestStatus == 'Pending'">
+                        <i class="fas fa-check-circle" style="color: green; cursor: pointer;"
+                          (click)="makeResponse(item, 'Accepted')"
+                        ></i>&nbsp;
+                        <i class="fas fa-times-circle" style="color: red; cursor: pointer;"
+                          (click)="makeResponse(item, 'Declined')"
+                        ></i>
+                      </div>
+                      <div *ngIf="item.requestStatus == 'Accepted'">
+                        <i class="fas fa-edit" style="color: #0090e2;; cursor: pointer;"
+                          (click)="makeUpdate(item, 'Accepted')"
+                        ></i>&nbsp;
+                        <i class="fas fa-times-circle" style="color: red; cursor: pointer;"
+                          (click)="makeUpdate(item, 'Declined')"
+                        ></i>
+                      </div>
+                      <div *ngIf="item.requestStatus == 'Declined'">
+                        <i class="fas fa-edit" style="color: #0090e2;; cursor: pointer;"
+                          (click)="makeUpdate(item, 'Accepted')"
+                        ></i>&nbsp;
+                        <i class="fas fa-trash" style="color: #0090e2;; cursor: pointer;"
+                          (click)="deleteRequest(item.id)"
+                        ></i>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+                <button
+                  [disabled]="!hasPreviousPage()"
+                  (click)="getPreviousPage()"
+                  class="mb-2 mr-2 btn btn-primary previous"
+                >&lt;</button>
+                <button
+                  [disabled]="!hasNextPage()"
+                  (click)="getNextPage()"
+                  class="mb-2 mr-2 btn btn-primary next"
+                >&gt;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <ng-template #farmShareModal>
-  <div class="modal-body">
-    <div class="alert">
-      <span>
-        {{message}}
-      </span>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      {{ 'Farm_share.Select_farms' | translate }}
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal(false)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="overflow-y:auto;">
+    <div class="row">
+      <input class="ml-2" type="checkbox" id="share_all_farms" name="share_all_farms" 
+      (change)="shareAllFarms($event.target.checked)" />
+      <label class="ml-1 mt-2" for="share_all_farms"> {{ 'Farm_share.Share_all_farms' | translate }} </label>
     </div>
-    <button type="button" class="btn btn-primary float-right" (click)="modalRef.hide()">{{ 'Common_labels.Ok' | translate }}</button>
+    <table class="mb-0 table table-cover">
+      <thead>
+        <tr>
+          <th class="text-center">{{ 'Farm_list.Name' | translate }}</th>
+          <th class="text-center">{{ 'Farm_list.Actions' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let farm of farmList; index as i">
+          <tr>
+            <td class="text-center">
+                {{ farm.name }}
+            </td>
+            <td class="text-center">
+                <button [disabled]="sharingAllFarms" *ngIf="!isTheFarmSelectedForSharing[i]" type="button" class="btn btn-primary" (click)="selectFarm(farm.id, i)">
+                  {{ 'Common_labels.Select' | translate }}
+                </button>
+                <button [disabled]="sharingAllFarms" *ngIf="isTheFarmSelectedForSharing[i]" type="button" class="btn btn-danger" (click)="deselectFarm(farm.id, i)">
+                  {{ 'Common_labels.Deselect' | translate }}
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-danger push-right" (click)="closeModal(false)">{{ 'Common_labels.Close' | translate }}</button>
+      <button [disabled]="!sharingAllFarms && selectedFarmForSharing.length == 0" type="button" class="btn btn-success push-left" (click)="acceptRequest()">{{ 'Common_labels.Confirm' | translate }}</button>
+  </div>
+</ng-template>
+
+<ng-template #noRequests>
+  <div class="col-md-12">
+    <div class="d-flex justify-content-center p-3 text-muted">
+      <strong>
+        {{ 'Information_messages.No_farms_share_requests' | translate }}
+      </strong>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #noFarms>
+  <div class="card">
+    <div class="d-flex justify-content-center p-3 text-muted">
+      <strong>
+        {{ 'Information_messages.No_farms_available' | translate }}
+      </strong>
+    </div>
   </div>
 </ng-template>
