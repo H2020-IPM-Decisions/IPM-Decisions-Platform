@@ -66,7 +66,7 @@ services:
       - ./UPR/Postgresql_Init_Script/2.dbBackup.sql:/docker-entrypoint-initdb.d/2.dbBackup.sql
       - ./UPR/Postgresql_Init_Script/3.defaultData.sql:/docker-entrypoint-initdb.d/3.defaultData.sql
   upr.api:
-    image: ipmdecisions/userprovisionservice:latest
+    image: ipmdecisions/userprovisionservice:develop
     container_name: upr-api
     hostname: upr.api
     restart: always
@@ -152,7 +152,7 @@ services:
       APP_NAME: H2020.IPMDecisions.CMS
       COCKPIT_SESSION_NAME: cockpit
   dss.api:
-    image: ipmdecisions/dss_api:2024-03-18
+    image: ipmdecisions/dss_api:2024-04-08 
     hostname: dss.api
     container_name: dss-api
     restart: always
@@ -162,7 +162,7 @@ services:
       - EPPO_AUTHTOKEN={EPPO_Codes_DatabaseToken - https://www.eppo.int/RESOURCES/eppo_databases/eppo_codes}
       - IPMDSS_ADMIN_TOKEN_MD5={EPPO_Codes_DatabaseToken}
   wx.api:
-    image: ipmdecisions/weather_api:2024-01-30
+    image: ipmdecisions/weather_api:2024-04-18
     hostname: wx.api
     container_name: wx-api
     restart: always
@@ -172,7 +172,7 @@ services:
       - WEATHER_API_URL={URLOftheWXMicroservices}
       - BEARER_TOKEN_fr_meteo-concept_api={Meto_Fr_Auth_Token}
   apg.api:
-    image: ipmdecisions/apigateway:latest
+    image: ipmdecisions/apigateway:1.0.0 #it was 'latest'
     links:
       - idp.api
       - upr.api

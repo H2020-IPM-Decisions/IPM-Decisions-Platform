@@ -274,8 +274,8 @@ For the versions available, see the [tags on this repository][ipm-platform-tags]
 
 ## Features under development
 
-- Risk Map UI
-- Select Weather Station settings
+- Risk Map multilanguage integration
+- Farm share management
 
 ## Authors
 
