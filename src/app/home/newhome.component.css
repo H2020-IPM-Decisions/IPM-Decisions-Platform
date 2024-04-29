@@ -556,8 +556,8 @@ div strong > a:hover{
   border-radius: 5px;
   padding: 5px;
   background-color: #fff;
-  right: 40px;
-  top: 80px;
+  right: 25px;
+  top: 50px;
 }
 
 #riskmap-legend > .fa-square{
@@ -610,6 +610,15 @@ div strong > a:hover{
 #riskmap-info-button{
   position: absolute;
   z-index: 3;
-  top: 39px;
-  left: 300px;
+  top: 8px;
+  left: 285px;
+}
+
+#weather-source-credit{
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: #0085a1;
+}
+
+#weather-source-credit:hover{
+  color: #3b8af2;
 }

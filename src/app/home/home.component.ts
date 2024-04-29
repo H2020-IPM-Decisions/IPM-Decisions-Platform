@@ -78,6 +78,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   // !!! Temporary variable for development banner
   showDevBanner: boolean = true;
 
+  riskMapDescription: any;
+
   // CARDS content variables
   emailUsContent: any;
   webSiteContent: any;
@@ -284,6 +286,23 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.welcomeContent = this._sanitizer.bypassSecurityTrustHtml(welcome["en"]);
         }
       }),
+      cmsService.getRiskMapDescription()
+      .then((description: any) => {
+        let languageFound: boolean = false;
+        for (let key in description) {
+          if(key === sessionStorage.getItem("selectedLanguage"))
+          {
+            this.riskMapDescription = this._sanitizer.bypassSecurityTrustHtml(description[key]);
+            languageFound = true;
+            if (description[key]==="") {
+              this.riskMapDescription = this._sanitizer.bypassSecurityTrustHtml(description["en"]);
+            }
+          }
+        }
+        if(!languageFound) {
+          this.riskMapDescription = this._sanitizer.bypassSecurityTrustHtml(description["en"]);
+        }
+      }),
     ];
     Promise.all(promises).then(() => {
       setTimeout(() => init(), 0);
@@ -307,6 +326,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
           this.AvailableRiskMapProviders = response.body;
           this.SelectedRiskMapProvider = this.AvailableRiskMapProviders[0];
+          console.log(this.SelectedRiskMapProvider);
           this.getMapData();
       },
       (error: HttpErrorResponse) => {

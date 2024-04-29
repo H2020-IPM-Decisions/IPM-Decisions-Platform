@@ -299,4 +299,15 @@ export class CMSService {
       })
       .toPromise();
   }
+
+  getRiskMapDescription() {
+    return this.http
+      .get(`${this.cmsUrl}/api/singletons/get/RiskMapDescription`, {
+        headers: {
+          'Accept-Language':sessionStorage.getItem('selectedLanguage'),
+          'Cockpit-Token': `${this.key}`
+        }
+      })
+      .toPromise();
+  }
 }

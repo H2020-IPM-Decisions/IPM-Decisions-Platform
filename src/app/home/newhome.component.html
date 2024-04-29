@@ -84,43 +84,54 @@
             </div>
         </div>
         <div class="right col-xl-9">
-<!---->    <div class="panel">
+          <div class="panel">
             <div class="inner">
-              <select class="form-control" [value]="SelectedRiskMapProvider.title"
-              (change)="riskMapProviderChanged($event)">
-              <option hidden disabled selected value></option>
-              <ng-template ngFor let-provider [ngForOf]="AvailableRiskMapProviders">
-                <option value='{{provider.providerId}}'> {{provider.title}}
-                </option>
-              </ng-template>
-              </select>
-              <a id="riskmap-info-button" (click)="openModal(mapDetails,'modal-xl')">
-                <i class="fas fa-info-circle light-blue-icon icon-toggle ml-1" ></i>
-              </a>
-              <div id="riskmap-legend">
-                <ng-template ngFor let-legend [ngForOf]="selectedLayerLegend">
-                  <i class="fas fa-square ml-1" [style]="legend.legendIconCSS"></i> &nbsp;
-                  <span>{{legend.legendLabel}}</span> <br>
-                </ng-template>
-              </div>
-              <div id="riskmap" class="riskmap mt-1"></div>
               <div class="row">
-                <div class="col-md-9">
-                  <div id="riskmap-dataslider">
-                    <span>{{ 'Common_labels.Date' | translate }}: {{riskMapCurrentDate}}</span><br>
-                    <button type="button" class="btn slider-btn" (click)="moveDateSlider(-1);"><i class="fa fa-step-backward" aria-hidden="true"></i></button>&nbsp;
-                    <input (change)="riskMapCurrentDateChange($event.target.value)" type="range" min="0" [max]="riskMapCurrentLayer.dates.length - 1" id="dataslider"  [value]="riskMapCurrentLayer.dates.length -1" class="slider">&nbsp;
-                    <button type="button" class="btn slider-btn" (click)="moveDateSlider(1);"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div id="riskmap-layers">
-                    <ng-template ngFor let-layer [ngForOf]="SelectedRiskMapLayersName" let-i="index">
-                      <input class="layer-button" (change)="riskMapCurrentLayerChanged($event.target.value)" type="radio" [id]="layer" [value]="layer" checked *ngIf="layer == 'WARNING_STATUS'"/> 
-                      <input class="layer-button" (change)="riskMapCurrentLayerChanged($event.target.value)" type="radio" [id]="layer" [value]="layer" *ngIf="layer != 'WARNING_STATUS'"/> 
-                      &nbsp;<label *ngIf="layer == 'WARNING_STATUS'" [for]="layer">{{layer}}</label>
-                      <label *ngIf="layer != 'WARNING_STATUS'" [for]="layer">{{RiskMapLayers[i-1]}}</label> <br>
+                <div class="col-xl-3" [innerHTML]="riskMapDescription"></div>
+                <div class="col-xl-9">
+                  <select class="form-control" [value]="SelectedRiskMapProvider.title"
+                  (change)="riskMapProviderChanged($event)">
+                  <option hidden disabled selected value></option>
+                  <ng-template ngFor let-provider [ngForOf]="AvailableRiskMapProviders">
+                    <option value='{{provider.providerId}}'> {{provider.title}}
+                    </option>
+                  </ng-template>
+                  </select>
+                  <a id="riskmap-info-button" (click)="openModal(mapDetails,'modal-xl')">
+                    <i class="fas fa-info-circle light-blue-icon icon-toggle ml-1" ></i>
+                  </a>
+                  <div id="riskmap-legend">
+                    <ng-template ngFor let-legend [ngForOf]="selectedLayerLegend">
+                      <i class="fas fa-square ml-1" [style]="legend.legendIconCSS"></i> &nbsp;
+                      <span>{{legend.legendLabel}}</span> <br>
                     </ng-template>
+                  </div>
+                  <div id="riskmap" class="riskmap mt-1"></div>
+                  <div class="row">
+                    <div class="col-md-9">
+                      <div id="riskmap-dataslider">
+                        <span>{{ 'Common_labels.Date' | translate }}: {{riskMapCurrentDate}}</span><br>
+                        <button type="button" class="btn slider-btn" (click)="moveDateSlider(-1);"><i class="fa fa-step-backward" aria-hidden="true"></i></button>&nbsp;
+                        <input (change)="riskMapCurrentDateChange($event.target.value)" type="range" min="0" [max]="riskMapCurrentLayer.dates.length - 1" id="dataslider"  [value]="riskMapCurrentLayer.dates.length -1" class="slider">&nbsp;
+                        <button type="button" class="btn slider-btn" (click)="moveDateSlider(1);"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div id="riskmap-layers">
+                        <ng-template ngFor let-layer [ngForOf]="SelectedRiskMapLayersName" let-i="index">
+                          <input class="layer-button" (change)="riskMapCurrentLayerChanged($event.target.value)" type="radio" [id]="layer" [value]="layer" checked *ngIf="layer == 'WARNING_STATUS'"/> 
+                          <input class="layer-button" (change)="riskMapCurrentLayerChanged($event.target.value)" type="radio" [id]="layer" [value]="layer" *ngIf="layer != 'WARNING_STATUS'"/> 
+                          &nbsp;<label *ngIf="layer == 'WARNING_STATUS'" [for]="layer">{{layer}}</label>
+                          <label *ngIf="layer != 'WARNING_STATUS'" [for]="layer">{{RiskMapLayers[i-1]}}</label> <br>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      {{ 'Home.Risk_map_weather_source' | translate }}: <a href="https://www.dwd.de/EN/ourservices/opendata/opendata.html" 
+                      target="_blank" rel="noopener noreferrer" id="weather-source-credit">Deutscher Wetterdienst</a> 
+                    </div>
                   </div>
                 </div>
               </div>

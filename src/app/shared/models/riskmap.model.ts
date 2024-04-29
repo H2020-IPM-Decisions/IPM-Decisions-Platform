@@ -39,7 +39,7 @@ export interface LayerConfigurarion{
 }
 
 export interface LegendMetadata{
-    isWarningStatus: true,
+    isWarningStatus: boolean,
     legendItems: LegendItems[]
 }
 
