@@ -518,7 +518,7 @@ nav ul {
 @media (min-width: 769px){
     #hero .container {
         position: relative;
-        max-width: 1400px;
+        max-width: 1550px;
         padding-top: 160px;
     }
 }
@@ -609,9 +609,15 @@ nav ul {
     }
 }
 
+@media (min-width: 769px) and (max-width: 1199px){
+    #hero {
+        height: 195vh;
+    }
+}
+
 @media (max-width: 768px) {
     #hero {
-        height: 145vh;
+        height: 310vh;
     }
 
     #hero h1 {

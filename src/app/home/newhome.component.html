@@ -84,9 +84,9 @@
             </div>
         </div>
         <div class="right col-xl-9">
-          <div class="panel">
+          <div class="panel" id="riskmap-panel">
             <div class="inner">
-              <div class="row">
+              <div class="row" style="background-color: white;">
                 <div class="col-xl-3" [innerHTML]="riskMapDescription"></div>
                 <div class="col-xl-9">
                   <select class="form-control" [value]="SelectedRiskMapProvider.title"
@@ -115,6 +115,8 @@
                         <input (change)="riskMapCurrentDateChange($event.target.value)" type="range" min="0" [max]="riskMapCurrentLayer.dates.length - 1" id="dataslider"  [value]="riskMapCurrentLayer.dates.length -1" class="slider">&nbsp;
                         <button type="button" class="btn slider-btn" (click)="moveDateSlider(1);"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
                       </div>
+                      {{ 'Home.Risk_map_weather_source' | translate }}: <a href="https://www.dwd.de/EN/ourservices/opendata/opendata.html" 
+                      target="_blank" rel="noopener noreferrer" id="weather-source-credit">Deutscher Wetterdienst</a> 
                     </div>
                     <div class="col-md-3">
                       <div id="riskmap-layers">
@@ -125,12 +127,6 @@
                           <label *ngIf="layer != 'WARNING_STATUS'" [for]="layer">{{RiskMapLayers[i-1]}}</label> <br>
                         </ng-template>
                       </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      {{ 'Home.Risk_map_weather_source' | translate }}: <a href="https://www.dwd.de/EN/ourservices/opendata/opendata.html" 
-                      target="_blank" rel="noopener noreferrer" id="weather-source-credit">Deutscher Wetterdienst</a> 
                     </div>
                   </div>
                 </div>

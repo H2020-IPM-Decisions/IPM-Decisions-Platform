@@ -322,7 +322,10 @@ div strong > a:hover{
   background-color: #fff;
   position: relative;
   box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.14);
+  max-height: 65vh;
 }
+
+
 
 .panel .inner{
   padding: 30px;
@@ -621,4 +624,18 @@ div strong > a:hover{
 
 #weather-source-credit:hover{
   color: #3b8af2;
+}
+
+#riskmap-explaination{
+  text-align: justify;
+  overflow-y: auto;
+  max-height: 50vh;
+}
+
+#riskmap-explaination::-webkit-scrollbar {
+  display: none;
+}
+
+#riskmap-panel{
+  min-width: 50vh;
 }
