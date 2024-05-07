@@ -1,7 +1,10 @@
 <div class="app-main__inner">
-  <div class="container mx-auto my-5 page-box">
+  <div class="container mx-auto my-5 page-box text-center">
     <p>{{ 'Farm_request.Insert_the_email' | translate }}</p>
     <input [(ngModel)]="email" type="email">&nbsp;
     <button type="button" class="btn btn-primary" (click)="sendRequest()">{{ 'Common_labels.Send' | translate }}</button>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger push-right" (click)="Close.emit()">{{ 'Common_labels.Close' | translate }}</button>
   </div>
 </div>

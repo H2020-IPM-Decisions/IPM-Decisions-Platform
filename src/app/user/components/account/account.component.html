@@ -80,15 +80,15 @@
                     </div>
                   </div>
            <!---->
-                  <div class="row" *ngIf="userRole.value == 'advisor'">
+                  <div class="row">
                     <div class="text-center col-sm-12">
-                      <button  type="button" class="profile-edit-btn"  (click)="openModal(FarmRequest,'modal-sm')">
+                      <button  type="button" class="profile-edit-btn mb-2"  (click)="openModal(FarmRequest,'modal-sm')">
                         {{ 'Farm_request.Farm_share_request' | translate }}
                       </button>
                     </div>
                   </div>
                   
-                  <div class="row" *ngIf="userRole.value == 'farmer'">
+                  <div class="row">
                     <div class="text-center col-sm-12">
                       <button  type="button" class="profile-edit-btn"  [routerLink]="['/user/account/share-request']">
                         {{ 'Farm_share.Farm_share_requests' | translate }}

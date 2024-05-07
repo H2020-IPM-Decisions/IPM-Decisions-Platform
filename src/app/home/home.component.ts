@@ -326,7 +326,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
           this.AvailableRiskMapProviders = response.body;
           this.SelectedRiskMapProvider = this.AvailableRiskMapProviders[0];
-          console.log(this.SelectedRiskMapProvider);
           this.getMapData();
       },
       (error: HttpErrorResponse) => {

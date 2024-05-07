@@ -26,7 +26,6 @@ export class FarmRequestComponent implements OnInit {
   modalRef: any;
 
   sendRequest() {
-    console.log("qui");
     this._userProfileService.sendFarmShareRequest(this.email).subscribe(
       (response: HttpResponse<any>) => {
         this._toastrTranslated.showTranslatedToastr("Information_messages.Farm_share_request_sent","Common_labels.Success","toast-success");

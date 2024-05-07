@@ -1,5 +1,5 @@
-import { HttpResponse } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { HttpErrorResponse, HttpResponse } from "@angular/common/http";
+import { Component, OnInit, TemplateRef } from "@angular/core";
 import { Router } from '@angular/router';
 import { FarmResponseModel } from "@app/shared/models/farm-response.model";
 import { Farm } from "@app/shared/models/farm.model";
@@ -8,6 +8,7 @@ import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { NGXLogger } from "ngx-logger";
 import { ToastrTranslationService } from "@app/shared/services/toastr-translation.service";
 import { IPagination } from "@app/shared/models/pagination.model";
+import { UserProfileService } from "@app/shared/services/upr/user-profile.service";
 
 @Component({
   selector: "app-farm-list",
@@ -20,12 +21,15 @@ export class FarmListComponent implements OnInit {
   pagination: IPagination;
   currentPage = 1;
 
+  public email: string;
+
   constructor(
     private _farmService: FarmService,
     private _modalService: BsModalService,
     private _logger: NGXLogger,
     private _toastrTranslated: ToastrTranslationService,
-    private _router: Router
+    private _router: Router,
+    private _userProfileService: UserProfileService,
   ) {}
 
   ngOnInit() {
@@ -66,7 +70,7 @@ export class FarmListComponent implements OnInit {
     });
   }
 
-  openModal(template) {
+  openModal(template: TemplateRef<any>, size?: string) {
     this.modalRef = this._modalService.show(template);
   }
 
@@ -138,4 +142,20 @@ export class FarmListComponent implements OnInit {
     return false;
   }
 
+  closeModal(){
+    this.modalRef.hide()
+  }
+
+  sendRequest() {
+    this._userProfileService.sendFarmShareRequest(this.email).subscribe(
+      (response: HttpResponse<any>) => {
+        this._toastrTranslated.showTranslatedToastr("Information_messages.Farm_share_request_sent","Common_labels.Success","toast-success");
+        this.closeModal();
+      },
+      (error: HttpErrorResponse) => {
+          console.log(error.message);
+          this._toastrTranslated.showTranslatedToastr("Error_messages.Farm_share_request_error","Common_labels.Error","toast-error");
+      }
+    );
+  }
 }

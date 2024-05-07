@@ -216,7 +216,7 @@ const appRoutes: Routes = [
     path: "user/account/share-request",
     component: FarmShareComponent,
     canActivate: [AuthGuard],
-    data: { roles: [], claims: ["farmer"] },
+    data: { roles: [], claims: ["developer", "farmer", "advisor","researcher"] },
   },
   {
     path: "user/account/password",
