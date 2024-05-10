@@ -629,7 +629,7 @@ div strong > a:hover{
 #riskmap-explaination{
   text-align: justify;
   overflow-y: auto;
-  max-height: 50vh;
+  max-height: 45vh;
 }
 
 #riskmap-explaination::-webkit-scrollbar {

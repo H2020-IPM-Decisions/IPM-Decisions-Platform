@@ -87,7 +87,10 @@
           <div class="panel" id="riskmap-panel">
             <div class="inner">
               <div class="row" style="background-color: white;">
-                <div class="col-xl-3" [innerHTML]="riskMapDescription"></div>
+                <div class="col-xl-3" >
+                  <div [innerHTML]="riskMapDescription"></div>
+                  <button class="btn btn-info mt-2" (click)="openModal(mapDisclaimer,'modal-xl')">{{ 'Home.Disclaimer' | translate }}</button>
+                </div>
                 <div class="col-xl-9">
                   <select class="form-control" [value]="SelectedRiskMapProvider.title"
                   (change)="riskMapProviderChanged($event)">
@@ -116,7 +119,7 @@
                         <button type="button" class="btn slider-btn" (click)="moveDateSlider(1);"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
                       </div>
                       {{ 'Home.Risk_map_weather_source' | translate }}: <a href="https://www.dwd.de/EN/ourservices/opendata/opendata.html" 
-                      target="_blank" rel="noopener noreferrer" id="weather-source-credit">Deutscher Wetterdienst</a> 
+                      target="_blank" rel="noopener noreferrer" id="weather-source-credit">Deutscher Wetterdienst</a> <br>
                     </div>
                     <div class="col-md-3">
                       <div id="riskmap-layers">
@@ -281,21 +284,51 @@
   </div>
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
-  <ng-template #mapDetails>
-    <div class="modal-header">
-      <h4 class="modal-title w-100" id="modal-basic-title">
-        <span class="modalInfoIcon fa-stack">
-        </span> <b>{{ SelectedRiskMap.title }}</b> </h4>
-      <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
-          <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body flex-grow-1">
-      <div class="form-group row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8" [innerHTML]="SelectedRiskMapConfiguration.abstract">
-        </div>
-        <div class="col-md-2"></div>
+<ng-template #mapDetails>
+  <div class="modal-header">
+    <h4 class="modal-title w-100" id="modal-basic-title">
+      <span class="modalInfoIcon fa-stack">
+      </span> <b>{{ SelectedRiskMap.title }}</b> </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body flex-grow-1">
+    <div class="form-group row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8" [innerHTML]="SelectedRiskMapConfiguration.abstract">
       </div>
+      <div class="col-md-2"></div>
     </div>
-  </ng-template>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+  </div>
+</ng-template>
+
+<ng-template #mapDisclaimer>
+  <div class="modal-header">
+    <h4 class="modal-title w-100" id="modal-basic-title">
+      <span class="modalInfoIcon fa-stack">
+      </span> <b>{{ 'Home.Disclaimer' | translate }}</b> </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body flex-grow-1">
+    <div class="form-group row">
+      <div class="col justify-content-center">
+        <div class="d-flex justify-content-center m-3 text-muted warningTextWrap">
+          <strong>
+            {{ 'DSS_use_dashboard.Platform_rationale_information' | translate }}
+            <br><br>
+            BASIS registered users of the IPM Decisions platform in the UK for the 2022-23 season can receive 2 CDP points by sending the following code to cpd@basis-reg.co.uk: IPM/125329/2223/h
+          </strong>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary push-right" (click)="modalRef.hide()">{{ 'Common_labels.Close' | translate }}</button>
+  </div>
+</ng-template>

@@ -249,7 +249,8 @@
         "Support":"Support",
         "Newsletter":"Newsletter",
         "Terms_and_conditions":"Terms & conditions",
-        "Risk_map_weather_source":"Weather Source"
+        "Risk_map_weather_source":"Weather Source",
+        "Disclaimer": "Disclaimer"
     },
     "Register": {
         "User_type":"User Type",
