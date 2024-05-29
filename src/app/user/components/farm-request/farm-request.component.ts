@@ -33,7 +33,7 @@ export class FarmRequestComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
           console.log(error.message);
-          this._toastrTranslated.showTranslatedToastr("Error_messages.Farm_share_request_error","Common_labels.Error","toast-error");
+          this._toastrTranslated.showTranslatedToastr(error.error["message"],"Common_labels.Error","toast-error");
       }
     );
   }
