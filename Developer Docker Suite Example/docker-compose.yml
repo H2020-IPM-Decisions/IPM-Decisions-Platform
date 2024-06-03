@@ -66,7 +66,7 @@ services:
       - ./UPR/Postgresql_Init_Script/2.dbBackup.sql:/docker-entrypoint-initdb.d/2.dbBackup.sql
       - ./UPR/Postgresql_Init_Script/3.defaultData.sql:/docker-entrypoint-initdb.d/3.defaultData.sql
   upr.api:
-    image: ipmdecisions/userprovisionservice:1.24.7
+    image: ipmdecisions/userprovisionservice:1.25.0
     container_name: upr-api
     hostname: upr.api
     restart: always

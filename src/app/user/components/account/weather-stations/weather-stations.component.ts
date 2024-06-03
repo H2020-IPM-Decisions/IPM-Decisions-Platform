@@ -259,7 +259,7 @@ export class WeaterStationsComponent implements OnInit {
                 this.modalRef.hide();
             },
             (error: HttpErrorResponse) => {
-                this._toastrTranslated.showTranslatedToastr("Error_messages.Weather_station_association_error",
+                this._toastrTranslated.showTranslatedToastr(error.error["message"],
                                                             "Common_labels.Error",
                                                             "toast-error");
             }
