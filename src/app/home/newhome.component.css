@@ -188,7 +188,7 @@
 }
 
 .developmentBanner p {
-  
+
   font-size: 0.8rem;
   color: #767676;;
   padding: 10px;
@@ -328,7 +328,7 @@ div strong > a:hover{
 
 
 .panel .inner{
-  padding: 30px;
+  padding: 15px;
 }
 
 #hero .container .row .right{
@@ -353,7 +353,7 @@ div strong > a:hover{
 }
 
 #hero .left .panel .inner{
-  padding: 15px;
+  padding: 10px;
 }
 
 #main{
@@ -380,8 +380,8 @@ div strong > a:hover{
     margin: auto;
     top: 5%;
   }
-  
- 
+
+
   .pad-col{
     align-content: center;
     flex-wrap: wrap;
@@ -638,4 +638,5 @@ div strong > a:hover{
 
 #riskmap-panel{
   min-width: 50vh;
+  overflow: auto;
 }

@@ -112,7 +112,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public SelectedRiskMapLayersName: string[] = [];
   public RiskMapLayers: string[] = [];
   public modalRef: BsModalRef;
-  
+
   public riskMapCurrentDate: string;
   public riskMapCurrentLayer: LayerConfigurarion;
   public selectedLayerLegendUrl: string = "";
@@ -206,7 +206,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       }),*/
       //cmsService.getTestNews(this.currentLanguage)
       cmsService.getNews(sessionStorage.getItem("selectedLanguage"))
-      .then((tnews: any) => { 
+      .then((tnews: any) => {
         this.testNews = tnews.entries
       }),
       cmsService.getHomeTitle()
@@ -323,7 +323,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this._userProfileService.getRiskMapProviders().subscribe(
       (response: HttpResponse<any>) => {
-
+          console.log(response)
           this.AvailableRiskMapProviders = response.body;
           this.SelectedRiskMapProvider = this.AvailableRiskMapProviders[0];
           this.getMapData();
@@ -332,7 +332,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         console.log(error.message);
       }
   );
-    
+
 
     window.onclick = (event) => {
       if(!event.target.matches('.related-projects-button')){
@@ -362,9 +362,9 @@ export class HomeComponent implements OnInit, OnDestroy {
             let layerName = layer.name.split(".")[1];
             this.SelectedRiskMapLayersName.push(layerName);
           }
-          
+
           this.configureMap();
-          
+
       },
       (error: HttpErrorResponse) => {
         console.log(error.message);
@@ -492,8 +492,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   riskMapProviderChanged($event: any) {
-    this.SelectedRiskMapProvider = this.AvailableRiskMapProviders.find((riskMapProvider) => riskMapProvider.providerId == $event.target.value);
+    console.log(this.SelectedRiskMapProvider);
+    console.log($event.target.value);
+    this.SelectedRiskMapProvider = this.AvailableRiskMapProviders.find((riskMapProvider) => riskMapProvider.id == $event.target.value.split('.')[0]);
     this.map.dispose();
+    console.log(this.SelectedRiskMapProvider)
     this.getMapData();
   }
 
@@ -512,7 +515,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   riskMapCurrentDateChange(value: any){
     this.riskMapCurrentDate = this.riskMapCurrentLayer.dates[value];
-    this.modifyMap();    
+    this.modifyMap();
   }
 
   riskMapCurrentLayerChanged(value: any){

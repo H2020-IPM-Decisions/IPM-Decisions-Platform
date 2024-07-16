@@ -11,7 +11,7 @@
               <span class="clickToExtend" (click)="extendSession()">{{ 'Common_labels.Click_here' | translate }}</span>&nbsp; {{ 'Information_messages.Session_expiration_message_end' | translate }}
           </div>
           <div *ngIf="sessionIsExpired" class="col d-flex justify-content-center"> {{ 'Information_messages.Session_expired' | translate }} </div>
-          
+
       </div>
     </div>
     <div class="contact-info mr-auto">
@@ -50,7 +50,7 @@
       </div>
     </div>
 </header><!-- End Header -->
-  
+
 <section id="hero" class="d-flex align-items-center">
   <div class="container">
     <div class="row">
@@ -59,26 +59,26 @@
                 <div class="inner">
                     <div class="login" *ngIf="(!isLoggedIn)">
                       <a (click)='goToRegistrationPage()' class="button button-secondary button-medium button full-width">
-                        <i class="bx bx-log-in-circle"></i>&nbsp; {{ 'Common_labels.Register' | translate }}</a> 
+                        <i class="bx bx-log-in-circle"></i>&nbsp; {{ 'Common_labels.Register' | translate }}</a>
                         <a routerLink="/login" class="button button-secondary button-medium button full-width">
                           <i class="fa fa-unlock-alt"></i>&nbsp; {{ 'Common_labels.Login' | translate }}</a>
                     </div>
                     <div class="login" *ngIf="(isLoggedIn)">
                       <div class="button button-secondary button-medium button full-width">
-                        <i class='bx bx-user mr-2'></i><span>{{ username }}</span></div> 
+                        <i class='bx bx-user mr-2'></i><span>{{ username }}</span></div>
                         <a (click)="navigateToPrivatePages()" class="button button-secondary button-medium button full-width">
                           <span class="loggedFarmLink"><i class="bx bx-log-in"></i>{{ 'Home.IPM_Private' | translate }}</span></a>
                     </div>
-                    <div class="quicklinks"> 
-                      <a href="https://www.ipmdecisions.net/documents/quick-start-guide-ipm-platform/" 
+                    <div class="quicklinks">
+                      <a href="https://www.ipmdecisions.net/documents/quick-start-guide-ipm-platform/"
                       target="_blank" rel="noopener noreferrer" class="button button-primary button-medium button full-width">
-                        <i class="fa fa-book"></i>&nbsp; {{ 'Home.Quickstart_guide' | translate }}</a> 
+                        <i class="fa fa-book"></i>&nbsp; {{ 'Home.Quickstart_guide' | translate }}</a>
                       <a href="mailto: contact@ipmdecisions.net" class="button button-primary button-medium button full-width"
-                      target="_blank" rel="noopener noreferrer"><i class="fa fa-headphones"></i>&nbsp; {{ 'Home.Support' | translate }}</a> 
+                      target="_blank" rel="noopener noreferrer"><i class="fa fa-headphones"></i>&nbsp; {{ 'Home.Support' | translate }}</a>
                       <a href="https://www.ipmdecisions.net/the-project/newsletters/" class="button button-primary button-medium button full-width"
-                      target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i>&nbsp; {{ 'Home.Newsletter' | translate }}</a> 
+                      target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i>&nbsp; {{ 'Home.Newsletter' | translate }}</a>
                       <a routerLink="/terms&conditions" class="button button-primary button-medium button full-width">
-                        <i class="fa fa-bars"></i>&nbsp; {{ 'Home.Terms_and_conditions' | translate }} </a> 
+                        <i class="fa fa-bars"></i>&nbsp; {{ 'Home.Terms_and_conditions' | translate }} </a>
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                   (change)="riskMapProviderChanged($event)">
                   <option hidden disabled selected value></option>
                   <ng-template ngFor let-provider [ngForOf]="AvailableRiskMapProviders">
-                    <option value='{{provider.providerId}}'> {{provider.title}}
+                    <option value='{{provider.id}}.{{provider.providerId}}'> {{provider.title}}
                     </option>
                   </ng-template>
                   </select>
@@ -111,21 +111,21 @@
                   </div>
                   <div id="riskmap" class="riskmap mt-1"></div>
                   <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-7">
                       <div id="riskmap-dataslider">
                         <span>{{ 'Common_labels.Date' | translate }}: {{riskMapCurrentDate}}</span><br>
                         <button type="button" class="btn slider-btn" (click)="moveDateSlider(-1);"><i class="fa fa-step-backward" aria-hidden="true"></i></button>&nbsp;
                         <input (change)="riskMapCurrentDateChange($event.target.value)" type="range" min="0" [max]="riskMapCurrentLayer.dates.length - 1" id="dataslider"  [value]="riskMapCurrentLayer.dates.length -1" class="slider">&nbsp;
                         <button type="button" class="btn slider-btn" (click)="moveDateSlider(1);"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
                       </div>
-                      {{ 'Home.Risk_map_weather_source' | translate }}: <a href="https://www.dwd.de/EN/ourservices/opendata/opendata.html" 
+                      {{ 'Home.Risk_map_weather_source' | translate }}: <a href="https://www.dwd.de/EN/ourservices/opendata/opendata.html"
                       target="_blank" rel="noopener noreferrer" id="weather-source-credit">Deutscher Wetterdienst</a> <br>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-5">
                       <div id="riskmap-layers">
                         <ng-template ngFor let-layer [ngForOf]="SelectedRiskMapLayersName" let-i="index">
-                          <input class="layer-button" (change)="riskMapCurrentLayerChanged($event.target.value)" type="radio" [id]="layer" [value]="layer" checked *ngIf="layer == 'WARNING_STATUS'"/> 
-                          <input class="layer-button" (change)="riskMapCurrentLayerChanged($event.target.value)" type="radio" [id]="layer" [value]="layer" *ngIf="layer != 'WARNING_STATUS'"/> 
+                          <input class="layer-button" (change)="riskMapCurrentLayerChanged($event.target.value)" type="radio" [id]="layer" [value]="layer" checked *ngIf="layer == 'WARNING_STATUS'"/>
+                          <input class="layer-button" (change)="riskMapCurrentLayerChanged($event.target.value)" type="radio" [id]="layer" [value]="layer" *ngIf="layer != 'WARNING_STATUS'"/>
                           &nbsp;<label *ngIf="layer == 'WARNING_STATUS'" [for]="layer">{{layer}}</label>
                           <label *ngIf="layer != 'WARNING_STATUS'" [for]="layer">{{RiskMapLayers[i-1]}}</label> <br>
                         </ng-template>
@@ -140,12 +140,12 @@
     </div>
   </div>
 </section>
-  
+
   <main id="main">
 
     <!-- ======= Featured Services Section ======= -->
     <section id="featured-services" class="featured-services">
-    
+
       <div class="container top-container">
         <div class="row">
           <div class="pad-col col-xl-3 d-flex align-items-stretch">
@@ -201,7 +201,7 @@
             </a>
           </div>
         </div>
-      </div>   
+      </div>
     </section><!-- End Featured Services Section -->
     <div class="container flex" id="latin-placeholder">
       <div class="container related-projects">
@@ -216,13 +216,13 @@
           <a href="https://www.effispray.com/" target="_blank" rel="noopener noreferrer">effispray.com</a>
         </div>
       </div>
-    </div> 
-  
+    </div>
+
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container container-wide flex">
         <div class="row">
-          <div class="col-md-4"> 
+          <div class="col-md-4">
             <a href="https://www.ipmdecisions.net/">
               <img src="img/logo-white.svg">
             </a>
@@ -262,9 +262,9 @@
         </div>
       </div>
     </section><!-- End Contact Section -->
-  
+
   </main><!-- End #main -->
-  
+
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="row">
@@ -280,7 +280,7 @@
     </div>
   </footer><!-- End Footer -->
   <div>
-  
+
   </div>
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
@@ -325,7 +325,7 @@
             BASIS registered users of the IPM Decisions platform in the UK for the 2022-23 season can receive 2 CDP points by sending the following code to cpd@basis-reg.co.uk: IPM/125329/2223/h
           </strong>
         </div>
-      </div> 
+      </div>
     </div>
   </div>
   <div class="modal-footer">

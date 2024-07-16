@@ -191,7 +191,7 @@ h6 {
 
 #hero {
     width: 100%;
-    height: 105vh;
+    min-height: 105vh;
     background: url("img/hero-bg.jpg") top center;
     background-size: cover;
     margin-bottom: -200px;
@@ -221,7 +221,7 @@ h6 {
 }
 
 .top-container{
-    margin-top: 170px; 
+    margin-top: 170px;
 }
 
 #header .logo a span {
@@ -772,9 +772,9 @@ section {
         width: 100%;
     }
   }
-  
+
   @media screen and (max-width: 1199px){
-  
+
     .featured-services a.link {
         width: 50%;
     }
@@ -802,10 +802,10 @@ section {
 .featured-services a.link:hover{
     text-decoration: unset;
     .icon{
-        opacity: 1;  
+        opacity: 1;
         transition: opacity 250ms ease-out;
-        -webkit-transition: opacity 250ms ease-out;  
-        -moz-transition: opacity 250ms ease-in-out;  
+        -webkit-transition: opacity 250ms ease-out;
+        -moz-transition: opacity 250ms ease-in-out;
     }
 }
 
