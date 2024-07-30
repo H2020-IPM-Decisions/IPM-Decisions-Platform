@@ -88,14 +88,11 @@
             <div class="inner">
               <div class="row" style="background-color: white;">
                 <div class="col-xl-3" >
-                  <div>
-                    <span>Current model:<br />{{SelectedRiskMap.title}}</span>
-                  </div>
                   <div [innerHTML]="riskMapDescription"></div>
                   <button class="btn btn-info mt-2" (click)="openModal(mapDisclaimer,'modal-xl')">{{ 'Home.Disclaimer' | translate }}</button>
                 </div>
                 <div class="col-xl-9">
-                  <select class="form-control" [value]="SelectedRiskMapProvider.title"
+                  <select class="form-control" [value]="SelectedRiskMapId"
                   (change)="riskMapProviderChanged($event)">
                   <option hidden disabled selected value></option>
                   <ng-template ngFor let-provider [ngForOf]="AvailableRiskMapProviders">

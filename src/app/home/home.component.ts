@@ -105,6 +105,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
   public AvailableRiskMapProviders: RiskMapProvider[];
+  public SelectedRiskMapId: string;
   public SelectedRiskMapProvider: RiskMapProvider;
   public SelectedRiskMap: RiskMap;
   public SelectedRiskMapConfiguration: MapConfiguration;
@@ -325,6 +326,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       (response: HttpResponse<any>) => {
           console.log(response)
           this.AvailableRiskMapProviders = response.body;
+          this.SelectedRiskMapId = `${this.AvailableRiskMapProviders[0].id}.${this.AvailableRiskMapProviders[0].providerId}`;
           this.SelectedRiskMapProvider = this.AvailableRiskMapProviders[0];
           this.getMapData();
       },
@@ -492,11 +494,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   riskMapProviderChanged($event: any) {
-    console.log(this.SelectedRiskMapProvider);
-    console.log($event.target.value);
-    this.SelectedRiskMapProvider = this.AvailableRiskMapProviders.find((riskMapProvider) => riskMapProvider.id == $event.target.value.split('.')[0]);
+    // console.log(this.SelectedRiskMapId);
+    // console.log(this.SelectedRiskMapProvider);
+    // console.log($event.target.value);
+    var selectedRMP = this.AvailableRiskMapProviders.find((riskMapProvider) => riskMapProvider.id == $event.target.value.split('.')[0])
+    this.SelectedRiskMapId = `${selectedRMP.id}.${selectedRMP.providerId}`;
+    this.SelectedRiskMapProvider = selectedRMP;
     this.map.dispose();
-    console.log(this.SelectedRiskMapProvider)
+    // console.log(this.SelectedRiskMapId)
+    // console.log(this.SelectedRiskMapProvider)
     this.getMapData();
   }
 
