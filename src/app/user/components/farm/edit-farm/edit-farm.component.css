@@ -16,7 +16,7 @@
   background-color: #f8f9fa !important;
   color: rgb(43, 41, 41) !important;
   position:relative;
- 
+
 }
 ::ng-deep div.panel-heading.card-header.panel-enabled:hover{
   background-color: #c9c9c9 !important;
@@ -49,3 +49,27 @@
 .icon-toggle {
   visibility: hidden;
 } */
+
+.pagination {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination span {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.pagination button {
+  color: white;
+  background-color: #0e6fee;
+  border: none;
+  border-radius: 5px;
+  padding: 0.25rem 1rem 0.25rem 1rem;
+}
+
+.pagination button:disabled {
+  background-color: #8ebaf3;
+}

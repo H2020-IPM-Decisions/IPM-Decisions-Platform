@@ -28,6 +28,8 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
   metStationSelected = 0;
   weatherForecastSelected = 1;
   sortHeaderIndex: number;
+  currentPage: number;
+  totalPages: number;
 
   constructor(
     public _modalService: BsModalService,
@@ -39,10 +41,11 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     if (this.farm.id) {
-      this.onGetFields(this.farm.id);
+      this.currentPage = 1;
+      this.onGetFields(this.farm.id, this.currentPage);
     }
     this.$subscription = this._modalService.onHide.subscribe((data) => {
-      this.onGetFields(this.farm.id);
+      this.onGetFields(this.farm.id, this.currentPage);
     })
   }
 
@@ -56,11 +59,15 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  onGetFields(farmId: string, onFieldUpdateFunc = () => { }) {
-    this._fieldService.getFields(farmId).subscribe(
+  onGetFields(farmId: string, pageNumber: number, onFieldUpdateFunc = () => { }) {
+    this._fieldService.getFields(farmId, pageNumber).subscribe(
       (fields: any) => {
-        if (fields && fields.value) {
-          this.fieldList = fields.value;
+        if (fields && fields.body.value) {
+          this.fieldList = fields.body.value;
+          let pagination = JSON.parse(fields.headers.get("X-Pagination"));
+          this.currentPage = pagination.CurrentPage;
+          this.totalPages = pagination.TotalPages;
+          // console.log(fields.headers.get("X-Pagination").CurrentPage)
           onFieldUpdateFunc()
         }
       },
@@ -132,6 +139,12 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
 
   compareByID(objOne: WeatherDataSource, objTwo: WeatherDataSource) {
     return objOne && objTwo && objOne.id == objTwo.id;
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    this.onGetFields(this.farm.id, this.currentPage);
+    // console.log(`Page changed to ${page}`);
   }
 
   //todo: duplicate method in field and farm edit component. put metod in service

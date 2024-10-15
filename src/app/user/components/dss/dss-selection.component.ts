@@ -29,7 +29,7 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
   selectedPest = '';
 
   remoteCallLoading = false;
-  
+
   farmSelectIsNewState = false;
   farmSelectedOption = -1;
   farms: Farm[] = [];
@@ -46,7 +46,7 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
   dssList: DssModel[];
   dssLoaded = false;
   dssSelected: DssModel;
-  
+
   $subscriptionStartup: Subscription;
   $subscriptionSubmit: Subscription;
   $subscriptionFields: Subscription;
@@ -61,7 +61,7 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
     private farmService: FarmService,
     private fieldService: FieldService
   ) { }
-    
+
   ngOnInit() {
     this.remoteCallLoading = true;
     this.$subscriptionStartup = this.farmService.getAllFarms().subscribe((response: HttpResponse<FarmResponseModel>) => {
@@ -112,10 +112,11 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
     // Enable spinner
     this.remoteCallLoading = true;
     // load remote field fetching by farm id
-    this.$subscriptionFields = this.fieldService.getFields(this.selectedFarm.id).subscribe(
-      (data: {links:any,value:Field[]}) => {
+    // TODO: Implement pagination
+    this.$subscriptionFields = this.fieldService.getFields(this.selectedFarm.id, 1).subscribe(
+      (data: {body: {links:any,value:Field[]}}) => {
         this.remoteCallLoading = false;
-        this.fields = data.value;
+        this.fields = data.body.value;
         this.fieldsLoaded = true;
       },
       ()=>{
@@ -148,7 +149,7 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
           if(response.body && response.body.length > 0 && response.body[0] && response.body[0].models){
             this.dssSelection = response.body[0];
             // Hardcoded change requested by Dave!!! TODO to change
-             this.dssList = this.dssSelection.models; 
+             this.dssList = this.dssSelection.models;
             //this.dssList = this.dssSelection.models.filter( (item) => item.id === "PSILARTEMP")
             // Hardcoded change requested by Dave!!! TODO to change
           }
@@ -213,11 +214,11 @@ export class DssSelectionComponent implements OnInit, OnDestroy {
           }else{
             this.toastrService.error("Operation Failed","No DSS Submitted, an error occurs");
           }
-          
+
         },
       )
     }
-  } 
+  }
 
   reset():void {
     // reset fields

@@ -13,7 +13,7 @@
         <thead>
           <tr>
             <th class="text-center tHeader" scope="col" (click)="sortTable(0)">
-              {{ 'DSS_information_table.Model_name' | translate }} 
+              {{ 'DSS_information_table.Model_name' | translate }}
               <i class="fas fa-caret-down pull-right" *ngIf="sortHeaderIndex == 0"></i>
             </th>
             <th class="text-center tHeader" scope="col" (click)="sortTable(1)">
@@ -50,7 +50,7 @@
                   </td>
                   <!-- Crop -->
                   <td class="text-center">
-                    
+
                       {{field.fieldCropDto.cropEppoCode | eppoCode}}
                      <!-- <small>({{field.fieldCropDto.cropEppoCode | uppercase}})</small>
                     <a class="details" (click)="openModal(template, field, 'modal-lg')">
@@ -73,19 +73,19 @@
                       </div>
                     </span>
                   </td>
-                  <!-- Validity status column 
+                  <!-- Validity status column
                 <td class="text-center"></td>-->
                   <!-- Actions -->
                   <td class="td-actions text-center py-1">
-    
-                    <a class="btn btn-link" 
+
+                    <a class="btn btn-link"
                     [tooltip]="('DSS_information_table.Model_parameters' | translate)"
                     *ngIf="model.cropPestDssDto.dssExecutionType !== 'link'"
-                    [routerLink]="['dss',model.id,'parameterisation']" 
-                    [state]="{ 
+                    [routerLink]="['dss',model.id,'parameterisation']"
+                    [state]="{
                       data: {
-                        dssId: model.cropPestDssDto.dssId, 
-                        dssModelId: model.cropPestDssDto.dssModelId, 
+                        dssId: model.cropPestDssDto.dssId,
+                        dssModelId: model.cropPestDssDto.dssModelId,
                         dssModelName: model.cropPestDssDto.dssModelName,
                         farmName: farm.name
                       }
@@ -102,8 +102,8 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        {{ 'Information_messages.You_are_about_to_delete' | translate }} 
-                        <b>{{ model.cropPestDssDto.dssName }} - {{model.cropPestDssDto.dssModelName}}</b>. 
+                        {{ 'Information_messages.You_are_about_to_delete' | translate }}
+                        <b>{{ model.cropPestDssDto.dssName }} - {{model.cropPestDssDto.dssModelName}}</b>.
                         <br>{{ 'Information_messages.Are_you_sure' | translate }}
                       </div>
                       <div class="modal-footer pull-right">
@@ -115,7 +115,7 @@
                       (click)="openModal(deleteTemplate, null)">
                       <i class="action-icon size-11 fas fa-trash"></i>
                     </button>
-                    
+
                   </td>
                 </tr>
               </ng-template>
@@ -132,6 +132,12 @@
       </table>
     </div>
   </div>
+</div>
+
+<div class="pagination">
+  <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
 </div>
 
 <ng-template #template>
@@ -199,11 +205,11 @@
                         </thead>
                         <tbody>
                           <ng-container *ngFor="let param of dss.dssParameters | keyvalue">
-                            <ng-container 
+                            <ng-container
                               [ngTemplateOutlet]="isObject(param.value)? paramIsAnObject : paramIsNotAnObject"
                               [ngTemplateOutletContext]="{param:param}">
                             </ng-container>
-  
+
                             <ng-template #paramIsNotAnObject let-param='param'>
                               <tr class="text-left" scope="col">
                                 <td class="text-center"><b>{{param.key}}</b></td>

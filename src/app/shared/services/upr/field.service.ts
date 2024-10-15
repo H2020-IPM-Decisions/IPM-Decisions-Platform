@@ -32,13 +32,14 @@ export class FieldService {
     );
   }
 
-  public getFields(farmId: string): Observable<any> {
+  public getFields(farmId: string, pageNumber: number): Observable<any> {
     return this._http
-      .get(`${this.apiUrl}/api/upr/farms/${farmId}/fields`, {
+      .get(`${this.apiUrl}/api/upr/farms/${farmId}/fields?pageNumber=${pageNumber}`, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/vnd.h2020ipmdecisions.field.withchildren+json",
         },
+        observe: 'response'
       })
       .pipe(share());
   }

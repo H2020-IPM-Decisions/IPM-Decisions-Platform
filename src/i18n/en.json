@@ -507,17 +507,17 @@
         "Return_to_user_edit":"Return to 'User Account'"
     },
     "Dss_info_list":{
-        "Integrated_dss_retrieve_success_message":"Integrated DSS models retrivied successfully!",
+        "Integrated_dss_retrieve_success_message":"Integrated DSS models retrieved successfully!",
         "Integrated_dss_retrieve_warning_message":"No integrated DSS available for the selected crops",
         "Integrated_dss_retrieve_error_message":"Fail to get the requested integrated models for selected crops!",
-        "External_dss_retrieve_success_message":"External DSS models retrivied successfully!",
+        "External_dss_retrieve_success_message":"External DSS models retrieved successfully!",
         "External_dss_retrieve_warning_message":"No External DSS available for the selected crops",
         "External_dss_retrieve_error_message":"Fail to get the requested external models for selected crops!"
     },
     "User_weather_stations":{
         "Weather_stations":"Weather stations",
-        "Add_istance":"Add instance",
-        "Associated_istances":"Associated instances",
+        "Add_istance":"Add weather station",
+        "Associated_istances":"Associated weather stations",
         "Station_name": "Station name",
         "Info_URL": "Information URL",
         "Associated":"Associated",
@@ -529,6 +529,6 @@
         "Weather_station_name":"Weather station name",
         "Associate_weather_station":"Associate weather station",
         "Weather_station_details": "Weather station details",
-        "Istance_management": "Instance management"
+        "Istance_management": "Weather station management"
     }
 }
