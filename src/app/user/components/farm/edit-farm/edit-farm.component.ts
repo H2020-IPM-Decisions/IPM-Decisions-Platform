@@ -45,6 +45,7 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
       this.onGetFields(this.farm.id, this.currentPage);
     }
     this.$subscription = this._modalService.onHide.subscribe((data) => {
+      this.currentPage = 1;
       this.onGetFields(this.farm.id, this.currentPage);
     })
   }
@@ -141,7 +142,8 @@ export class EditFarmComponent implements OnInit, AfterViewInit, OnDestroy {
     return objOne && objTwo && objOne.id == objTwo.id;
   }
 
-  onPageChange(page: number): void {
+  onPageChange(e: Event, page: number): void {
+    e.preventDefault();
     this.currentPage = page;
     this.onGetFields(this.farm.id, this.currentPage);
     // console.log(`Page changed to ${page}`);
