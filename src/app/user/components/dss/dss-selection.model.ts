@@ -140,6 +140,7 @@ export interface IDssFlat {
     id?: string;
     interval?: string;
     isValid?: boolean;
+    isOwner?: boolean
     outputTimeEnd?: string;
     outputTimeStart?: string;
     pestEppoCode?: string;

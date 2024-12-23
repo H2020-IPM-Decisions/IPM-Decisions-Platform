@@ -22,7 +22,7 @@
           <strong>
             {{ farm.farmName }}
           </strong>
-          <button type="button" rel="tooltip" class="btn btn-green btn-add pull-right" (click)="goToAddModelDSS(farm.farmId)">
+          <button [disabled]="!farm.isOwner" type="button" rel="tooltip" class="btn btn-green btn-add pull-right" (click)="goToAddModelDSS(farm.farmId)">
             <i class="action-icon fas fa-plus-circle fa-2x"></i> <strong>{{ 'Farm_list.Add_dss' | translate }}</strong>
           </button>
         </h3>
@@ -39,20 +39,20 @@
               <td class="col-12 w-570 ">
                 <div class="cardTdDSS" *ngFor="let item of crop.dssModels" style="position:relative">
                   <span *ngIf="item.dssExecutionType !== 'link'" style="position:relative">
-                    <eppo-code-badge 
-                      [dssDetail]="item" 
-                      [itemId]="item.id" 
+                    <eppo-code-badge
+                      [dssDetail]="item"
+                      [itemId]="item.id"
                       [code]="item.pestEppoCode"
                       [statusRepresentation]="item.warningStatusRepresentation"
-                      [dss]="item.dssModelName + ' (' + item.dssModelId +')'" 
+                      [dss]="item.dssModelName + ' (' + item.dssModelId +')'"
                       [status]="item.warningStatus"
-                      [executionType]="item.dssExecutionType" 
+                      [executionType]="item.dssExecutionType"
                       [dssDescription]="item.dssDescription"
-                      [errorType]="item.resultMessageType" 
+                      [errorType]="item.resultMessageType"
                       [errorMessage]="item.resultMessage"
                       [isQueued]="isQueued(item.dssTaskStatusDto.jobStatus)"
                       [isScheduled]="isScheduled(item.dssTaskStatusDto.jobStatus)"
-                      [scheduleTime]="item.dssTaskStatusDto.scheduleTime" 
+                      [scheduleTime]="item.dssTaskStatusDto.scheduleTime"
                       [isValid]="item.isValid"
                       [isDisabled]="item.isDisabled">
                     </eppo-code-badge>
@@ -65,9 +65,9 @@
                     <eppo-code-badge
                       [dssDetail]="dssLinked"
                       [dssDescription]="dssLinked.dssDescription"
-                      [endpoint]="dssLinked.dssEndPoint" 
+                      [endpoint]="dssLinked.dssEndPoint"
                       [code]="dssLinked.pestEppoCode"
-                      [dss]="dssLinked.dssModelName" 
+                      [dss]="dssLinked.dssModelName"
                       [executionType]="('link')">
                     </eppo-code-badge>
                   </div>
@@ -105,47 +105,47 @@
                   3 = Medium risk of infection, ORANGE
                   4 = High risk of infection. RED
                 -->
-              <eppo-code-badge 
-                [code]="" 
-                [dss]="( 'DSS_use_dashboard.Grey_box' | translate)" 
+              <eppo-code-badge
+                [code]=""
+                [dss]="( 'DSS_use_dashboard.Grey_box' | translate)"
                 [status]="0"
-                [statusRepresentation]="" 
+                [statusRepresentation]=""
                 [isLegend]="true">
               </eppo-code-badge>
             </div>
             <div class="p-2 mx-3">
-              <eppo-code-badge 
-                [code]="" 
-                [dss]="( 'DSS_use_dashboard.White_box' | translate)" 
+              <eppo-code-badge
+                [code]=""
+                [dss]="( 'DSS_use_dashboard.White_box' | translate)"
                 [status]="1"
-                [statusRepresentation]="" 
+                [statusRepresentation]=""
                 [isLegend]="true">
               </eppo-code-badge>
             </div>
             <div class="p-2 mx-3">
-              <eppo-code-badge 
-                [code]="" 
-                [dss]="( 'DSS_use_dashboard.Green_box' | translate)" 
+              <eppo-code-badge
+                [code]=""
+                [dss]="( 'DSS_use_dashboard.Green_box' | translate)"
                 [status]="2"
-                [statusRepresentation]="" 
+                [statusRepresentation]=""
                 [isLegend]="true">
               </eppo-code-badge>
             </div>
             <div class="p-2 mx-3">
-              <eppo-code-badge 
-                [code]="" 
-                [dss]="( 'DSS_use_dashboard.Yellow_box' | translate)" 
+              <eppo-code-badge
+                [code]=""
+                [dss]="( 'DSS_use_dashboard.Yellow_box' | translate)"
                 [status]="3"
-                [statusRepresentation]="" 
+                [statusRepresentation]=""
                 [isLegend]="true">
               </eppo-code-badge>
             </div>
             <div class="p-2 mx-3">
-              <eppo-code-badge 
-                [code]="" 
-                [dss]="( 'DSS_use_dashboard.Red_box' | translate)" 
+              <eppo-code-badge
+                [code]=""
+                [dss]="( 'DSS_use_dashboard.Red_box' | translate)"
                 [status]="4"
-                [statusRepresentation]="" 
+                [statusRepresentation]=""
                 [isLegend]="true">
               </eppo-code-badge>
             </div>
@@ -196,7 +196,7 @@
               BASIS registered users of the IPM Decisions platform in the UK for the 2022-23 season can receive 2 CDP points by sending the following code to cpd@basis-reg.co.uk: IPM/125329/2223/h
             </strong>
           </div>
-        </div> 
+        </div>
       </div>
     </div>
   </div>

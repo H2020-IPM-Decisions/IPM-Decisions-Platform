@@ -19,7 +19,7 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
   $startSubscription: Subscription;
   dssJobStatus: string[] = ["Enqueued", "Processing"];
   isSyncronizing: boolean = false;
-  
+
   constructor(
     protected service: DssSelectionService,
     private _logger: NGXLogger,
@@ -31,7 +31,7 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
     // CALL  api/dss  fetch user's DSS list
     this.initData();
     // detail /api/dss/{id}
-    
+
     // Scroll to farm section when back from detail page
     this._activatedRoute.fragment.subscribe((value)=>{
       if (value != null) {
@@ -79,7 +79,7 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
             if (resultTime < 5){
               resultTime = 5;
             }
-            scheduledTimes.push(resultTime);   
+            scheduledTimes.push(resultTime);
           }
         }
         this.farmsDssMap = this.service.getDssGroupedByFarms(dssList);
@@ -115,7 +115,7 @@ export class DssDashboardComponent implements OnInit, OnDestroy {
     return false;
   }
 
-  public isScheduled(statusVal: string): boolean { 
+  public isScheduled(statusVal: string): boolean {
     if (statusVal === "Scheduled") {
       return true;
     }

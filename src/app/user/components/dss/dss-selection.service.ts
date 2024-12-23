@@ -216,10 +216,12 @@ export class DssSelectionService {
 
     for (let [farmId, dssModels] of farmMap) {
       let farmName: string;
+      let isOwner: boolean;
       let dssMap: Map<string, IDssFlat[]> = new Map<string, IDssFlat[]>();
 
       for (let dss of dssModels) {
         farmName = dss.farmName;
+        isOwner = dss.isOwner
         let cropDssModels: IDssFlat[] = [];
         if (dssMap.has(dss.cropEppoCode)) {
           cropDssModels = dssMap.get(dss.cropEppoCode);
@@ -233,7 +235,7 @@ export class DssSelectionService {
         cropsDss.push(new DssGroupedByCrops(crop, dssArray));
       }
 
-      groupedDssModels.push(new DssGroupedByFarm(farmId, farmName, cropsDss));
+      groupedDssModels.push(new DssGroupedByFarm(farmId, farmName, isOwner, cropsDss));
     }
     return groupedDssModels;
   };
@@ -311,7 +313,7 @@ export class DssSelectionService {
     }
 
   }
-  
+
   convertDssSelectionModelToDssFlat(dss: DssSelection): IDssFlat[] {
     let resultDssList: IDssFlat [] = [];
     dss.models.forEach((model) => {
@@ -335,7 +337,7 @@ export class DssSelectionService {
         dssVersion: dss.version,
         pestEppoCode: model.pests[0]
       }
-      
+
       resultDssList.push(dssFlatData);
     })
     return resultDssList;
@@ -448,7 +450,7 @@ export class DssSelectionService {
                                 return label + ": "+mediumLabel;
                             case 4:
                                 return label + ": "+highLabel;
-                        } 
+                        }
                     }
                 }
             }
@@ -520,7 +522,7 @@ export class DssSelectionService {
     });
   }
 
-  public getDssToAdapt(dssId: string): Observable<HttpResponse<IDssForAdaptation>>{ 
+  public getDssToAdapt(dssId: string): Observable<HttpResponse<IDssForAdaptation>>{
     let requestUrl = `${environment.apiUrl}/api/upr/adaptation/${dssId}`;
     return this._http.get<IDssForAdaptation>(requestUrl, {
       headers: {
@@ -540,7 +542,7 @@ export class DssSelectionService {
       },
       observe: "response",
     });
-  }  
+  }
 
   public getDssAdaptationRevisedData(dssId: string, taskId: string): Observable<HttpResponse<any>> {
     let requestUrl = `${environment.apiUrl}/api/upr/adaptation/${dssId}/task?id=${taskId}`;

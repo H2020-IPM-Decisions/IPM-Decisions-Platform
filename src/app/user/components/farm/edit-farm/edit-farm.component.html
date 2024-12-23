@@ -135,9 +135,9 @@
 </div>
 
 <div class="pagination">
-  <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">&lt;</button>
+  <button (click)="onPageChange($event, currentPage - 1)" [disabled]="currentPage === 1">&lt;</button>
   <!-- <span>Page {{ currentPage }} of {{ totalPages }}</span> -->
-  <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages">&gt;</button>
+  <button (click)="onPageChange($event, currentPage + 1)" [disabled]="currentPage === totalPages">&gt;</button>
 </div>
 
 <ng-template #template>

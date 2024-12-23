@@ -4,6 +4,7 @@ export class DssGroupedByFarm {
     constructor(
         public farmId: string,
         public farmName: string,
+        public isOwner: boolean,
         public groupedByCrops: DssGroupedByCrops[]
     ){}
 }
