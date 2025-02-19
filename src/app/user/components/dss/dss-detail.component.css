@@ -104,7 +104,7 @@ img {
   font-size: 150%;
 }
 
-.group-chart-popup-btn{    
+.group-chart-popup-btn{
   position: absolute;
   bottom: -15px;
   right: 10px;
@@ -121,4 +121,8 @@ img {
 
 .newline-rendering{
   white-space: pre-wrap;
+}
+
+.dss-detail__container {
+  min-width: 100%
 }
