@@ -332,7 +332,7 @@ export class DssSelectionService {
         dssModelName: model.name,
         dssModelVersion: model.version,
         dssName: dss.name,
-        dssPurpose: dss.purpose,
+        dssPurpose: model.purpose,
         dssSource: dss.organization.name +" "+ dss.organization.country,
         dssVersion: dss.version,
         pestEppoCode: model.pests[0]
